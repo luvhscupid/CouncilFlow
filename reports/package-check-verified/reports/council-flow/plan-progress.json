@@ -1,0 +1,46 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-progress-receipt-final",
+  "message_type": "plan.progress",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/planner",
+    "role": "planner"
+  },
+  "created_at": "2026-11-11T11:09:00Z",
+  "in_reply_to": "manager-decision-accept-receipt-v1",
+  "payload": {
+    "objective": "Add a --version option to demo/receipt/receipt_calculator.py.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "verified_progress": [
+      "AC1: exact stdout bytes 312e302e300a, empty stderr, exit 0, verified by independent Tester and observed by Reviewer.",
+      "AC2: existing suite passed all 12 tests on the immutable candidate; sample receipt and help commands exited 0.",
+      "AC3: candidate manifest includes only receipt calculator and test; no protected CouncilFlow file paths present."
+    ],
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "path": "reports/council-flow/candidate.json",
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+      "kind": "candidate-manifest"
+    },
+    "next_action": "Planner final check against original plan and evidence.",
+    "status": "verified"
+  },
+  "evidence_refs": []
+}

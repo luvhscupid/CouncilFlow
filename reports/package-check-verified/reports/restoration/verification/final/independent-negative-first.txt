@@ -1,0 +1,90 @@
+test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) ... 
+  test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['S-AC1']) ... FAIL
+  test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['UNKNOWN']) ... FAIL
+test_actual_diagnostic_export_and_reference_sensitivity (test_final_independent_contracts.FinalIndependentChecks.test_actual_diagnostic_export_and_reference_sensitivity) ... ok
+test_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations) ... ok
+test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) ... 
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=42) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=False) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value={'path': 'not-a-list'}) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=42) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=False) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value={'path': 'not-a-list'}) ... FAIL
+test_repaired_message_identity_and_falsey_context_types (test_final_independent_contracts.FinalIndependentChecks.test_repaired_message_identity_and_falsey_context_types) ... ok
+
+======================================================================
+FAIL: test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['S-AC1'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 87, in test_accept_decision_cannot_declare_current_failed_criteria
+    with self.subTest(failed_ids=ids), self.assertRaises(c.ContractError):
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['UNKNOWN'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 87, in test_accept_decision_cannot_declare_current_failed_criteria
+    with self.subTest(failed_ids=ids), self.assertRaises(c.ContractError):
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 79, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 79, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value={'path': 'not-a-list'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 79, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 79, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 79, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value={'path': 'not-a-list'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 79, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.054s
+
+FAILED (failures=8)

@@ -1,0 +1,9 @@
+{
+  "packet": "reports/restoration/messages/REST-PLAN-STATUS-001.json",
+  "sha256": "ee0c428b51bb4a7e35f65b794461dd2d13e9c1b3d873b0d12b51816550d00f85",
+  "disposition": "REJECTED_NOT_ACCEPTED_IN_LIVE_ORDER",
+  "error": "acceptance",
+  "field": "payload.acceptance_ids",
+  "message": "acceptance at payload.acceptance_ids: cannot silently omit mandatory criteria",
+  "note": "Actual intermediate Planner packet preserved. Subset acceptance map cannot replace full original checklist; require complete original IDs at final check."
+}

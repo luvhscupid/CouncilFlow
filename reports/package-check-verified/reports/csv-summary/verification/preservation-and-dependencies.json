@@ -1,0 +1,23 @@
+{
+  "app_sha256": "96b272e33e451709a1ae4f58102043671bbab38559e62ce62339693bd41f0cec",
+  "imports": [
+    "argparse",
+    "csv",
+    "dataclasses",
+    "pathlib",
+    "re",
+    "typing",
+    "unicodedata"
+  ],
+  "all_imports_stdlib": true,
+  "source_contract_developer_tests_sample_docs_unchanged": true,
+  "digests_after": {
+    "reports/csv-summary/contract.json": "a21ae0c9b09a7c800d31f95fa82d75a414d0f034a7a949e692f2cdc266d977d1",
+    "demo/csv-summary/csv_summarizer.py": "96b272e33e451709a1ae4f58102043671bbab38559e62ce62339693bd41f0cec",
+    "demo/csv-summary/test_csv_summarizer.py": "f4cea35b304410920a3dfc4bd7b6c0a460b3a69a6cb8d4221a575805c0c54487",
+    "demo/csv-summary/sample.csv": "56b122059d93b26421b9b690ebd1f466010bc1a49e1bdcd6066f9d26b513e805",
+    "demo/csv-summary/README.md": "903ce11db0bd248a73ffd16d006dc7017a1351399d910847d7f9f548551502cd",
+    "README.md": "2c13bc740b3159fb3e056379c49e812b289196090c5b3fd55078b8eb3dc3c395"
+  },
+  "temporary_directories_remaining": []
+}

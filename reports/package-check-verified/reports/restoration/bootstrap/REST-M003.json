@@ -1,0 +1,52 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M003",
+  "message_type": "plan.progress",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T04:30:25Z",
+  "in_reply_to": "REST-M001",
+  "payload": {
+    "status": "planning",
+    "objective": "Finalize restoration plan using completed baseline and strict context requirements",
+    "scope": [
+      "/workspace/CouncilFlow/**"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12"
+    ],
+    "verified_progress": [
+      "All five baseline suites passed: 8 static, 11 receipt, 5 independent receipt, 15 CSV, 6 independent CSV =45. Intentional starter separately 2 tests/1 expected failure. Logs reports/restoration/baseline/results.json.",
+      "Manager will delegate activation capability checking independently while you finalize the plan; no implementation started."
+    ],
+    "next_action": "Persist actual incoming REST-M001 and this REST-M003 as bootstrap JSON packets if not already done, preserving their actual timestamps and fields, not inventing history. Ensure protocol validator distinguishes structural role/type checks from origin authentication: externally supplied expected sender role/instance and observed actor bindings must reject a Worker changing its sender to manager/owner when context is available. No structure-only authentication claim. Manager acceptance requires independent Tester and Reviewer reports associated with same candidate/task/attempt, not Worker assertions. Plan/acceptance context is immutable; no silent lowering. Validation of approval.decision must require actual external Owner provenance when context is available, and synthetic unit fixtures must never become real approval evidence. Request these minimum practical checks, no custom supervisor. Actual packet schemas should support the controlled plan.progress/job.assign payload fields used in bootstrap, or explicitly report bootstrap provenance as pre-schema and validate post-integration packets without rewriting history. Keep plan compact and ready for Worker; do not spend most run on reports."
+  },
+  "evidence_refs": [
+    {
+      "identity": "baseline-results",
+      "path": "reports/restoration/baseline/results.json"
+    }
+  ]
+}

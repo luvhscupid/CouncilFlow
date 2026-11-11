@@ -1,0 +1,160 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "reviewer-report-gate3b-attempt-2",
+  "message_type": "job.report",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/gate3b_reviewer_attempt2"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "manager-assign-reviewer-gate3b-attempt2",
+  "payload": {
+    "status": "passed",
+    "summary": "The frozen criteria, candidate manifest and independent Tester evidence agree. My independent rerun produced exactly b'1.0.0\\n', empty stderr, and exit 0; normalized stdout hash matches Tester.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    "findings": [],
+    "errors": [],
+    "comparison": {
+      "plan_ref": {
+        "artifact_id": "gate3b-version-plan",
+        "path": "reports/gate3b/plan.json",
+        "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+        "kind": "plan"
+      },
+      "tester_report_ref": {
+        "artifact_id": "gate3b-tester-report-attempt2",
+        "path": "reports/gate3b/tester-report-attempt2.json",
+        "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+        "kind": "tester-report"
+      },
+      "candidate_ref": {
+        "artifact_id": "gate3b-worker-candidate-attempt2",
+        "path": "reports/gate3b/candidate-attempt2.json",
+        "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+        "kind": "candidate-manifest"
+      },
+      "findings": [
+        "The candidate manifest hashes match the current bytes of both authorized receipt files.",
+        "AC1: independent rerun stdout was exactly six bytes b'1.0.0\\n', stderr empty, exit 0; normalized stdout SHA-256 and exit match Tester.",
+        "Tester reports all 12 receipt tests pass and AC3 scope/protected hashes pass; source scope evidence lists only the two authorized paths."
+      ],
+      "discrepancies": [],
+      "independent_rerun": {
+        "status": "MATCH",
+        "command_id": "version-exact",
+        "command": "python",
+        "arguments": [
+          "-B",
+          "demo/receipt/receipt_calculator.py",
+          "--version"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+        "candidate_ref": {
+          "artifact_id": "gate3b-worker-candidate-attempt2",
+          "path": "reports/gate3b/candidate-attempt2.json",
+          "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "gate3b-version-plan",
+            "path": "reports/gate3b/plan.json",
+            "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+            "kind": "plan"
+          },
+          {
+            "artifact_id": "manager-tester-assignment-attempt2",
+            "path": "reports/gate3b/tester-assign-attempt2.json",
+            "sha256": "7c4e7a20ae0ec03b17baa1570bcd25f070bf79c560dafa45286acd54232d1cb3",
+            "kind": "assignment"
+          },
+          {
+            "artifact_id": "gate3b-tester-report-attempt2",
+            "path": "reports/gate3b/tester-report-attempt2.json",
+            "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+            "kind": "tester-report"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+        "acceptance_id": "AC1",
+        "evidence_ref": {
+          "artifact_id": "reviewer-attempt2-rerun-evidence",
+          "path": "reports/gate3b/reviewer-rerun-evidence-attempt2.json",
+          "sha256": "449bdf30fc874a65fb1b68f61e459062c723cd16b6b23a551cd7719f361c13db",
+          "kind": "execution-evidence"
+        },
+        "tester_exit_code": 0,
+        "tester_stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+        "tester_evidence_ref": {
+          "artifact_id": "tester-version-exact-stdout-attempt2",
+          "path": "reports/gate3b/attempt2-tester-version.stdout.bin",
+          "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+          "kind": "stdout"
+        }
+      }
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "gate3b-tester-report-attempt2",
+      "path": "reports/gate3b/tester-report-attempt2.json",
+      "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+      "kind": "tester-report"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "reviewer-attempt2-rerun-evidence",
+      "path": "reports/gate3b/reviewer-rerun-evidence-attempt2.json",
+      "sha256": "449bdf30fc874a65fb1b68f61e459062c723cd16b6b23a551cd7719f361c13db",
+      "kind": "execution-evidence"
+    },
+    {
+      "artifact_id": "reviewer-attempt2-version-stdout",
+      "path": "reports/gate3b/reviewer-attempt2-version.stdout.bin",
+      "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "reviewer-attempt2-version-stderr",
+      "path": "reports/gate3b/reviewer-attempt2-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "reviewer-attempt2-version-exit",
+      "path": "reports/gate3b/reviewer-attempt2-version.exit.txt",
+      "sha256": "101770a4004c3406015d7e013e2729f1d23b7e8ceb486069d48f2693088cf7c4",
+      "kind": "exit-code"
+    }
+  ]
+}

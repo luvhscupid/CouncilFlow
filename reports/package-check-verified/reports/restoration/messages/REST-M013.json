@@ -1,0 +1,90 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M013",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A002",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_final"
+  },
+  "created_at": "2026-11-11T05:13:47.990902Z",
+  "in_reply_to": "REST-W2-REPORT-001",
+  "payload": {
+    "objective": "Independently verify repaired candidate002, original contract integration and real structured rework sequence without repairing product.",
+    "scope": [
+      "reports/restoration/verification/final/**"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "instructions": [
+      "Fresh independent Tester after repair Worker /root/restoration_repair STOPPED all mutations. Read original plan, current policy/spec/helper and candidate002 manifest, original failed report and fresh Worker output. Do not repair app/tests/docs or modify prior evidence. Role report status is your bounded technical result; final release/commit/Planner bookkeeping not yet done must remain clearly pending rather than claimed passed.",
+      "Run all current suites: tests (43), demo/receipt(11), reports/demo/verification(5), demo/csv-summary(15), reports/csv-summary/verification(6), demo/structured-flow(4), reports/restoration/verification/initial(8). Expected92 methods now pass. Confirm original failed logs remain, unchanged Tester tests now pass, current source matches candidate002 hashes and original45 behavior remains. Actually execute receipt sample Rp103,000 and new sum 2 3 -1=4 plus unrelated signed inputs, invalid/missing inputs and network-disabled execution where available.",
+      "Independently inspect/probe repaired malformed sequence, message-ID/context and expected-sender/provenance type boundaries; no unhandled traceback or silently accepted falsey wrong map. Add only a compact set of meaningful independent negative mutations if new concerns justify it; no need repeat every passing synthetic test for count. Confirm strict JSON/YAML/JSONL, candidate input-output and Tester oracle/Reviewer evidence boundaries. Do not weaken criteria or self-approve an oracle; use assigned strategy.",
+      "Validate actual full live-order through REST-M013 and your final report with --root . and actual external role bindings, then mutate at least causal/candidate/authority/acceptance to prove sensitivity. Validate actual events-prefix-001.jsonl with known message context (including the separately validated activation report); diagnostic export is optional, bounded, not an authoritative ledger. Synthetic fixture approvals remain synthetic.",
+      "All task evidence must be immutable referenced files under this final verification scope, temp files explicitly inside repo and cleaned. Save a compact report/log and terminal reports/restoration/messages/REST-T2-REPORT-001.json replying REST-M013, echoing exact candidate_ref, oracle_ref and assigned acceptance IDs. Validate before returning expected tester /root/restoration_tester_final and live context. Store meaningful errors/findings and per-check refs; if any mandatory behavior fails overall failed and Manager assigns fresh repair.",
+      "Native corrected discovery PASS but real invoked native thread got401/systemError; inspect current activation evidence and preserve explicit invocation/custom-role selection UNVERIFIED. Do not retry auth or claim full native activation. Separate Reviewer, final Planner, updated traceability/release report, archive verification and final commit remain Parent-coordinated. Stop all writes when done."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "REST-ACTUAL-EVENT-PREFIX-001",
+      "path": "reports/restoration/events-prefix-001.jsonl",
+      "sha256": "4016f7c988b66fb4828bd120682758688d3948af600e621976d050f9152967c5",
+      "kind": "diagnostic"
+    }
+  ]
+}

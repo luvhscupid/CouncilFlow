@@ -1,0 +1,66 @@
+{
+  "recorded_at": "2026-11-11T10:14:45.202158Z",
+  "planner_instance": "/root/restoration_planner",
+  "original_plan_sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+  "candidate_source_hashes_match": true,
+  "prior_apps_diff_from_6accda3": "empty",
+  "existing_commit_observed": "3e23bd8872417072377514fdfaff5afc0f23aa8f",
+  "independent_suite_evidence": {
+    "tests": 103,
+    "unexpected_failed_suites": 0,
+    "skipped": 0,
+    "scope": "saved actual separate Tester execution; not a new Planner test run"
+  },
+  "current_ordered_messages_validated": 20,
+  "origin_bindings": "Parent-observed actor context supplied, not authentication",
+  "jsonl_events_validated_with_actual_activation_report": 12,
+  "archive_sha256_observed": "a21a5f0dae7326632c98dac0fcedeb3d399b72529e4e83ac511fbb69065f0f10",
+  "archive_crc_safe_paths_and_exact_current_skill_native_files": "PASS",
+  "matched_required_archive_files": [
+    ".agents/skills/council-flow/SKILL.md",
+    ".agents/skills/council-flow/agents/openai.yaml",
+    ".agents/skills/council-flow/policies/roles.yaml",
+    ".agents/skills/council-flow/references/acceptance.md",
+    ".agents/skills/council-flow/references/communication.md",
+    ".agents/skills/council-flow/references/message-contract.json",
+    ".agents/skills/council-flow/references/recovery.md",
+    ".agents/skills/council-flow/references/roles.md",
+    ".agents/skills/council-flow/references/workflow.md",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    ".codex/agents/council-planner.toml",
+    ".codex/agents/council-reviewer.toml",
+    ".codex/agents/council-tester.toml",
+    ".codex/agents/council-worker.toml"
+  ],
+  "direct_commands_already_executed_this_turn": [
+    {
+      "command": "codex --version",
+      "exit": 0,
+      "stdout": "codex-cli 0.167.0-alpha.4\n"
+    },
+    {
+      "command": "python3 demo/receipt/receipt_calculator.py --item rice 2 30000 kg --item onions 1 43000 kg",
+      "exit": 0,
+      "stdout": "2 kg rice × Rp30,000 = Rp60,000\n1 kg onions × Rp43,000 = Rp43,000\nTotal = Rp103,000\n"
+    },
+    {
+      "command": "python3 demo/structured-flow/sum_values.py 2 3 -1",
+      "exit": 0,
+      "stdout": "4\n"
+    },
+    {
+      "command": "python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml",
+      "exit": 0,
+      "observed": "valid true; controlled records only boundary"
+    }
+  ],
+  "diagnostic_call_corrections": [
+    "An initial Planner API diagnostic supplied a mapping to messages instead of the supported message sequence and raised TypeError; this caller misuse is not counted as a test method or accepted validation.",
+    "The subsequent live-order-only diagnostic context correctly rejected event12 because the separate activation-task report was missing. The complete supported context adds that actual report; all12 events then validate. Neither earlier failed call was reclassified as a passing call."
+  ],
+  "limits": [
+    "Only current root/Planner/Reviewer remained in live inventory; earlier Worker/Tester sessions are evidenced by Parent-observed native assignments/results and origin bindings, not claimed simultaneously present.",
+    "No completed native explicit invocation; activation and custom-role-file selection success remain unverified.",
+    "Parent final metadata/archive refresh and final evidence commit are future closeout; no future ID invented."
+  ]
+}

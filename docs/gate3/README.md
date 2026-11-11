@@ -14,6 +14,9 @@ For conflicting older CouncilFlow documentation, the controlling order is:
 
 1. [Owner Charter](CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md).
 2. [Frozen Gate 3 v0.2 specification](CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md).
+   Council Round 6's approved E4 erratum is recorded separately at
+   [06-COUNCIL-APPROVED-ERRATUM-C3.md](CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md);
+   the frozen source and its historical outcomes remain unchanged.
 3. Earlier CouncilFlow documentation where consistent with those sources.
 
 In particular, the Charter supersedes the older definition of Reviewer chiefly

@@ -1,0 +1,5 @@
+AC1. Running the receipt calculator with --version prints exactly 1.0.0 followed by a newline and exits with code 0.
+
+AC2. All existing receipt-calculator functionality and automated tests continue to pass.
+
+AC3. Do not modify CouncilFlow's SKILL.md, role configurations, or policy files.

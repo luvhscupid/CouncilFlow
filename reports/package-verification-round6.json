@@ -1,0 +1,79 @@
+{
+  "archive": "dist/council-flow-round6.zip",
+  "sha256": "854f976a10c43acdd48ce596010253579aeae76aaffc5a8a1a97a8674d549f1f",
+  "entries": 322,
+  "crc": "PASS",
+  "safe_paths": "PASS",
+  "source_bytes_match": "PASS",
+  "required_members": [
+    ".agents/skills/council-flow/SKILL.md",
+    ".agents/skills/council-flow/policies/roles.yaml",
+    ".agents/skills/council-flow/references/message-contract.json",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    ".codex/agents/council-planner.toml",
+    ".codex/agents/council-worker.toml",
+    ".codex/agents/council-tester.toml",
+    ".codex/agents/council-reviewer.toml",
+    "tests/test_contracts.py",
+    "tests/test_skill_files.py",
+    "tests/validation_cases.json",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+    "reports/gate3b-results.md",
+    "reports/gate3b/frozen-task.txt",
+    "README.md",
+    "RELEASE.md"
+  ],
+  "excluded": [
+    ".git",
+    "Python caches",
+    "reports/runtime",
+    "verification report itself",
+    "archive/checksum"
+  ],
+  "baseline": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 47,
+    "failed": 0,
+    "skipped": 0,
+    "exit": 0
+  },
+  "source_test_results": {
+    "contract_skill": {
+      "command": "python -m unittest discover -s tests -v",
+      "passed": 64,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    "receipt": {
+      "command": "python -m unittest discover -s demo/receipt -v",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0
+    }
+  },
+  "native_execution": false,
+  "gate3b": "BLOCKED (EVIDENCE_INSUFFICIENT)",
+  "relocated_test_results": {
+    "councilflow": {
+      "command": "python -m unittest discover -s tests -v",
+      "passed": 64,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    "receipt_calculator": {
+      "command": "python -m unittest discover -s demo/receipt -v",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    "version": {
+      "command": "python demo/receipt/receipt_calculator.py --version",
+      "exit": 0,
+      "stdout": "1.0.0\\n"
+    }
+  }
+}

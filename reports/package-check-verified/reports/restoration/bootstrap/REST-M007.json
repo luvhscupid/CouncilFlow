@@ -1,0 +1,55 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M007",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/restoration_worker"
+  },
+  "created_at": "2026-11-11T04:47:57.436093Z",
+  "in_reply_to": "REST-M006",
+  "payload": {
+    "objective": "Finish required semantic consistency and independent-oracle boundaries in the same developer attempt.",
+    "scope": [
+      ".agents/skills/council-flow/**",
+      "tests/**",
+      "reports/restoration/worker/**"
+    ],
+    "acceptance_ids": [
+      "C03",
+      "C04",
+      "C08",
+      "C09",
+      "C12"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-WORKER-INPUT-CONTEXT-001",
+      "path": "reports/restoration/control/worker-input-001.json",
+      "sha256": "d7b4727084d3ceb77a1767c5dd688a9626a2e4fe37070ef958aec904e2bf8220",
+      "kind": "candidate"
+    },
+    "instructions": [
+      "Two concrete Manager static-review concerns to address before handoff: a Tester report currently can claim status passed while its checks include failed, and acceptance then trusts the passed label. Reject contradictory passing technical reports and acceptance of a candidate with supplied failed mandatory verification. Add adversarial tests; the deliberate fresh demo failure must still cause rework. Worker bounded developer-stage status need not pretend the whole task is accepted.",
+      "Enforce the approved policy that Tester cannot approve its own oracle: require a Manager-supplied oracle/test-strategy artifact for Tester assignments and bind the report to that assigned strategy where context is supplied. A simple immutable strategy JSON artifact from accepted plan is enough; do not create a new authority service. Reject Tester self-approval/changed strategy mutations and document structural/non-authentication limits.",
+      "Preserve evidence identity checks for nested references too: technical checks[].evidence_ref and Planner results[].evidence_refs must not reuse an artifact_id for different path/hash while only top-level refs are checked. Also require failed_acceptance_ids to be valid assigned/original criteria for rework. Add focused negative controls rather than a large framework.",
+      "These are static developer review findings, not independent executed failures; no fabricated result history. Keep all original acceptance and current candidate input/output clarification. Finish existing integration/tests and stop for separate Tester; do not expand scope or repeat already passing checks unnecessarily."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    }
+  ]
+}

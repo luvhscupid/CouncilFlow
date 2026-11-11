@@ -1,0 +1,108 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "worker-report-gate3b-attempt-2",
+  "message_type": "job.report",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/gate3b_worker_attempt2"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "manager-assign-worker-gate3b-attempt-2",
+  "payload": {
+    "status": "passed",
+    "summary": "Resolved AC1 byte-level discrepancy: --version emits exactly b\"1.0.0\\n\" with empty stderr and exit 0; all 12 receipt tests pass. Protected files match baseline.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "manager-worker-assignment-attempt2",
+      "path": "reports/gate3b/worker-assign-attempt2.json",
+      "sha256": "60ea8864f8c8e0373b5b44a04bedb3850be4f2374a78703495e1e14ad3053fbc",
+      "kind": "assignment"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "worker-command-evidence-attempt2",
+      "path": "reports/gate3b/worker-command-evidence-attempt2.json",
+      "sha256": "39c4922d040fc4b25d892a4ddff35e6fe80910d1e85b683b267729c460a138ba",
+      "kind": "command-evidence"
+    },
+    {
+      "artifact_id": "worker-scope-evidence-attempt2",
+      "path": "reports/gate3b/attempt2-scope-evidence.json",
+      "sha256": "c45a80ac921bbb97bdd3c6ffefa98efa94676557824b14c004e3e32b5a476e87",
+      "kind": "scope-check"
+    },
+    {
+      "artifact_id": "attempt2-version-stdout",
+      "path": "reports/gate3b/attempt2-version.stdout.bin",
+      "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "attempt2-version-stderr",
+      "path": "reports/gate3b/attempt2-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "attempt2-version-exit",
+      "path": "reports/gate3b/attempt2-version.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    },
+    {
+      "artifact_id": "attempt2-receipt-suite-stdout",
+      "path": "reports/gate3b/attempt2-receipt-suite.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "attempt2-receipt-suite-stderr",
+      "path": "reports/gate3b/attempt2-receipt-suite.stderr.bin",
+      "sha256": "af63d87f79d93cc8b684e7392838c5e34075dc1f47baef5d50ca94cc57282ec0",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "attempt2-receipt-suite-exit",
+      "path": "reports/gate3b/attempt2-receipt-suite.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M09-PROGRESS",
+  "message_type": "plan.progress",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "planner-1"
+  },
+  "in_reply_to": "M08-ACCEPT",
+  "payload": {
+    "status": "ready-for-original-check",
+    "objective": "Verify exact frozen output bytes.",
+    "scope": [
+      "reports/reliability-repair/fresh-verification/candidates/candidate-attempt1.py"
+    ],
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "verified_progress": [
+      "Initial Tester/Reviewer comparator records saved."
+    ],
+    "next_action": "Check exact AC1 bytes against the original plan.",
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "M08-ACCEPT",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/M08-ACCEPT.json",
+      "sha256": "36110359bd8c650f3f6d7a157f85d6e847ba2f8369a6f1c2792ba1001adf1974",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    }
+  ]
+}

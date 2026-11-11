@@ -1,0 +1,26 @@
+{
+  "unchanged_candidate_source_files": {
+    ".agents/skills/council-flow/SKILL.md": true,
+    ".agents/skills/council-flow/agents/openai.yaml": true,
+    ".agents/skills/council-flow/policies/roles.yaml": true,
+    ".agents/skills/council-flow/references/acceptance.md": true,
+    ".agents/skills/council-flow/references/recovery.md": true,
+    ".agents/skills/council-flow/references/roles.md": true,
+    ".agents/skills/council-flow/references/workflow.md": true,
+    ".codex/agents/council-planner.toml": true,
+    ".codex/agents/council-reviewer.toml": true,
+    ".codex/agents/council-tester.toml": true,
+    ".codex/agents/council-worker.toml": true,
+    "demo/structured-flow/README.md": true,
+    "demo/structured-flow/sum_values.py": true,
+    "demo/structured-flow/test_sum_values.py": true,
+    "tests/test_skill_files.py": true
+  },
+  "tester_files": {
+    "reports/restoration/verification/initial/test_independent_contracts.py": "cca92fc202664f7f2d42a64079081bcb07a8f487e6119044b44fadf33f3efb98",
+    "reports/restoration/verification/final/test_final_independent_contracts.py": "8553f09d0dc48871499f998300135402790e5442f96ce70dc88747c4a35a6e06"
+  },
+  "original_plan_sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+  "input_candidate_sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+  "boundary": "No prior evidence, application, or Tester code edited; only four assigned product/test/documentation files changed."
+}

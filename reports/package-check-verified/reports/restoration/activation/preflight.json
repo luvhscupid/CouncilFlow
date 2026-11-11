@@ -1,0 +1,39 @@
+{
+  "created_at": "2026-11-11T04:33:32.942019Z",
+  "phase": "pre-correction capability discovery; not fresh corrected activation",
+  "command": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--bind",
+    "/workspace/CouncilFlow",
+    "/workspace/CouncilFlow",
+    "--chdir",
+    "/workspace/CouncilFlow",
+    "--",
+    "codex",
+    "-c",
+    "log_dir=\"/workspace/CouncilFlow/reports/runtime/restoration-activation/log\"",
+    "-c",
+    "sqlite_home=\"/workspace/CouncilFlow/reports/runtime/restoration-activation/state\"",
+    "-c",
+    "history.persistence=\"none\"",
+    "app-server",
+    "--stdio"
+  ],
+  "safe_observations": [
+    {
+      "method": "initialize",
+      "response": null
+    }
+  ],
+  "process_exit_after_termination": 1,
+  "stderr_signals": {
+    "read_only_filesystem": true,
+    "auth_refresh_rejection": false,
+    "token_parse_rejection": false
+  },
+  "raw_stderr_stored": false,
+  "no_inference_attempted": true
+}

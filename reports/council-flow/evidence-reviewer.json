@@ -1,0 +1,38 @@
+{
+  "candidate_manifest_sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+  "snapshot_hashes": {
+    "program": "e1fed3858bba128aa43fba186e1f6b3dcff7f1e4fcb6e2ff36c64df15c4c351f",
+    "tests": "be1f2e14c188f34c0255687a4fa2d3ff14095ad9a9df4b903a42554666172b5c"
+  },
+  "observations": [
+    {
+      "interaction": "--version",
+      "stderr_hex": "",
+      "command": "python reports/council-flow/candidate/demo/receipt/receipt_calculator.py --version",
+      "stdout_hex": "312e302e300a",
+      "exit_code": 0
+    },
+    {
+      "interaction": "normal receipt",
+      "stderr_hex": "",
+      "command": "python reports/council-flow/candidate/demo/receipt/receipt_calculator.py --item rice 2 30000 kg --item onions 1 43000 kg",
+      "stdout_hex": "32206b67207269636520d720527033302c303030203d20527036302c3030300d0a31206b67206f6e696f6e7320d720527034332c303030203d20527034332c3030300d0a546f74616c203d2052703130332c3030300d0a",
+      "exit_code": 0
+    },
+    {
+      "interaction": "help",
+      "contains_version_option": true,
+      "command": "python reports/council-flow/candidate/demo/receipt/receipt_calculator.py --help",
+      "stderr_hex": "",
+      "exit_code": 0
+    }
+  ],
+  "inspected": {
+    "protected_councilflow_files_present": false,
+    "manifest_paths": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ]
+  },
+  "simulated": []
+}

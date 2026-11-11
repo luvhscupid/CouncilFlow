@@ -1,0 +1,52 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M006",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/restoration_worker"
+  },
+  "created_at": "2026-11-11T04:45:44.614699Z",
+  "in_reply_to": "REST-W-INTERFACE-001",
+  "payload": {
+    "objective": "Complete the same bounded restoration implementation, including correct input/output candidate semantics for real Worker implementation.",
+    "scope": [
+      ".agents/skills/council-flow/**",
+      "tests/**",
+      "reports/restoration/worker/**"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C09"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-WORKER-INPUT-CONTEXT-001",
+      "path": "reports/restoration/control/worker-input-001.json",
+      "sha256": "d7b4727084d3ceb77a1767c5dd688a9626a2e4fe37070ef958aec904e2bf8220",
+      "kind": "candidate"
+    },
+    "instructions": [
+      "Manager static review found current validate_sequence forces every job.report candidate_ref to equal assignment candidate_ref. This is correct for Tester/Reviewer but an implementing Worker naturally changes source bytes, so that rule makes real input-to-output repair impossible or encourages meaningless candidate hashes. Fix while this developer attempt is still active, without changing Owner criteria.",
+      "Use explicit documented Worker input/output semantics: Worker assignments may omit a candidate when creating new output; if repairing an existing candidate, input candidate identity can be supplied and echoed separately in Worker report. Worker job.report candidate_ref identifies actual output artifact/hash; do not require output equal input. Tester/Reviewer reports MUST remain bound to assigned output candidate exactly. Causal plan/task/attempt/actors/acceptance checks still apply, and final acceptance still needs independent reports for the same output. Add meaningful tests for valid Worker changes and wrong Tester/Reviewer candidate mutations.",
+      "This is developer-side inspection, not a claimed independently executed failure. Do not generate fake logs or rewrite earlier bootstrap messages. Preserve input/output candidate snapshots/manifests by immutable path/hash for the later real failure/rework demonstration so old evidence root verification remains possible after source repair.",
+      "Continue full original plan. Notify Manager when corrected SKILL/policy/helper interfaces are stable, then finish tests and hand off. The corrected activation probe will read files but cannot mutate product. No additional features or scope expansion."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    }
+  ]
+}

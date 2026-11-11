@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-reviewer-gate3b",
+  "message_type": "job.assign",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/gate3b_reviewer"
+  },
+  "in_reply_to": "tester-report-gate3b-attempt-1",
+  "payload": {
+    "objective": "Independently compare the frozen plan, Worker candidate and Tester evidence; rerun exactly one Tester-declared deterministic command.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    "instructions": [
+      "Read reports/gate3b/plan.json and reports/gate3b/tester-report.json; compare against all ACs and exact candidate manifest.",
+      "Independently rerun the Tester declared deterministic version-exact command exactly in the fixture root. Save raw stdout/stderr/exit. Compare exit code and stdout SHA-256 after CRLF-to-LF replacement only; record MATCH/MISMATCH and evidence.",
+      "Inspect the actual two-file diff and protected-file hashes; record findings. Do not edit product or CouncilFlow files.",
+      "Write reports/gate3b/reviewer-report.json as CouncilFlow 1.0 job.report with comparison and independent_rerun fields, exact candidate_ref, evidence refs, no created_at. Validate report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "gate3b-tester-report",
+      "path": "reports/gate3b/tester-report.json",
+      "sha256": "9ba346246aa95db75086f3ad97eec9d01a2deaaf53ffb2624153298682e34726",
+      "kind": "tester-report"
+    }
+  ]
+}

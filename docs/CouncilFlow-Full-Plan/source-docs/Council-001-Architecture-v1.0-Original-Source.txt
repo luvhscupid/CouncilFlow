@@ -1,0 +1,202 @@
+# R7-Claude: Architecture Specification v1.0 (for Owner sign-off)
+
+**Tags:** **[A]** agreed, **[H]** untested hypothesis, **[E]** external evidence (secondary sources, see R6).
+Nothing was executed or modified. GPT's R7 asked about `codex --version` and `codex exec --help`, but no Owner answer is recorded yet, so I treat both as **not authorized**.
+
+## 0. Rulings on GPT R7
+
+| Item | Ruling |
+|---|---|
+| A. Verification must not run under controller identity | **Accept in full.** I was wrong. Importing a Python module executes arbitrary code, so "scrubbed env and timeouts" under the controller's own identity wasn't containment. |
+| B. TOCTOU | **Accept.** Validation and reconstruction must read the same immutable artifact. |
+| C. Resume vs. fresh worktree | **Accept, with a stricter default.** Resume is **off in v1** (see §6). |
+| Waiver binding | **Accept.** I add one field (see §8). |
+| Hidden tests must be meaningful | **Accept, plus a measurable definition** (see §7). |
+| P0b spec before authorization | **Accept.** It's §11. |
+
+**Disagreement:** none substantive.
+
+**One cost of A:** a restricted verification environment is a second isolation target, and the Worker's containment problem now applies twice. This is the largest new complexity in v1.0. I flag it in §12 as a decision, not a detail.
+
+## 1. Components and authority
+
+| Component | Runs as | Can | Cannot |
+|---|---|---|---|
+| **Owner** | Human | Approve plans, grant waivers, accept results | n/a |
+| **Planner** | LLM, no filesystem access to controller data | Author contracts, outcomes, checks | Write runtime state, loosen criteria, grant waivers |
+| **Manager** | Controller identity (trusted) | State, policy, dispatch, evidence ledger, budgets | Execute untrusted code **[A]** |
+| **Worker** | Codex under the *worker* identity | Edit inside its workspace | Self-certify, see hidden checks or controller data |
+| **Verifier** | Restricted *verification* identity or sandbox | Run frozen checks on reconstructed code | See credentials, the controller DB, the network, or unrelated files |
+| **Analyzer** | = Manager orchestrating the Verifier | Collect and judge evidence | Use the Worker's self-assessment |
+
+Three identities, not two: **controller** (trusted), **worker**, **verifier**. The invariant is that the controller never executes untrusted bytes and never trusts the verifier's *claims*, only the evidence it returns.
+
+## 2. Trust boundaries
+
+```
+Owner ─ Planner ─ [contract] ─► CONTROLLER (trusted) ─ SQLite, ledger, blobs
+                                    │            ▲
+                    dispatch, no data│            │ evidence only
+                                    ▼            │
+                              WORKER ──► frozen change artifact ──► CONTROLLER validates
+                                                                       │ immutable artifact
+                                                                       ▼
+                                                                   VERIFIER (no secrets,
+                                                                   no net, no controller data)
+```
+
+**Evidence integrity:** because the Verifier runs untrusted code, its output is also untrusted. The controller therefore:
+- passes check commands from the **frozen contract**, never from the Verifier's side
+- reads only declared output files (exit code, stdout/stderr, junit/coverage), size-capped
+- treats a result as valid only if it matches an expected result schema
+- adds an `evidence_reliability` field: `controller_observed` (exit code, timing, resource use) vs. `verifier_reported` (parsed output)
+
+Pass/fail rests on the exit code plus a controller-held **nonce**: the controller supplies a per-run nonce to the check harness, which must echo it. This reduces forged-pass risk but doesn't eliminate it **[H]**. I'm not claiming a malicious test can be fully prevented from lying when it runs in the same process as the code under test. For high tiers, this is a case for a second-family reviewer and the Owner gate.
+
+## 3. Contract vs. runtime state
+
+Unchanged from v0.3 except where noted. **Contract:** immutable, hash-locked, Planner-authored. **Runtime:** attempts, manifests, evidence, incidents, waivers, approvals, statuses. Verifier requirements are added to the contract, and a new `verification_policy` field replaces ad hoc settings:
+
+```json
+"verification_policy": {
+  "executor": "profile:verifier.restricted",
+  "requires": ["no_secrets","no_controller_data","no_network","workspace_read_only_except_scratch","resource_limits"],
+  "inputs": "frozen_artifact_only",
+  "result_schema": "check_result.v1"
+},
+"hidden_checks": {
+  "when": "tier>=medium AND outcome.kind==behavioral",
+  "if_unconstructible": "report_unresolved_requirement"
+}
+```
+
+## 4. Immutable change artifact (correction B)
+
+Worker exit → liveness confirmed dead → **freeze first, validate second**:
+
+1. The controller copies the changed file contents from the worktree into a controller-owned store, with the Worker confirmed dead so nothing can change underneath. Stream and hash each file at read time (SHA-256), reading with a handle that rejects reparse points, so the hash is computed on the bytes actually copied.
+2. Write an **artifact manifest**: ordered list of `{canonical_path, sha256, size, mode, kind}`, plus the base commit and tree hash. The artifact's content hash is the identity of the result. From here on, nothing reads the worktree again.
+3. **Validate the manifest, never the worktree:**
+   - base commit and tree hash match the checkpoint
+   - canonical paths only: normalize, case-fold, strip trailing dots and spaces, reject `..`, absolute and UNC paths, device names (`CON`, `NUL`, `COMn`), alternate data streams (`:`), and 8.3 short-name collisions. Reject any two entries that collide after normalization.
+   - `kind` must be a regular file: reject symlinks, junctions, mount points, other reparse points, hard links with link count > 1, and special files
+   - no submodule, mode, or binary changes unless `change_policy` permits
+   - every path ⊆ `scope.write`, and none in `frozen_paths` or `forbidden_paths`
+   - file and size caps
+4. Any failure → incident, revert to checkpoint, contamination class.
+5. Reconstruct the verification workspace from the *artifact*: a fresh tree at the base commit, with only manifest files written, **re-hashed after writing** to confirm they equal the manifest.
+
+This closes TOCTOU as far as I can tell. Residual risks: file-system semantics I don't know (**[H]**), and the freeze step itself being a trusted read of attacker-influenced paths. P0b tests path aliases directly.
+
+## 5. Containment requirements
+
+| Requirement | Worker | Verifier | Waivable |
+|---|---|---|---|
+| Writes confined to workspace or scratch | ✔ | ✔ | No |
+| Controller data unreadable | ✔ | ✔ | No |
+| No inherited secrets | ✔ | ✔ | No |
+| Process tree kill confirmed | ✔ | ✔ | No |
+| No network | n/a | ✔ | No |
+| Egress provider-only | ✔ | n/a | **Yes**, low tier only, subject to §8 |
+
+Unproven non-waivable requirement → **refused**, no downgrade **[A]**. The Verifier has no legitimate reason for network access, so it is stricter than the Worker here.
+
+**Possible mechanism [H], not decided:** a separate Windows user plus ACLs plus Job Object, or a container, or WSL2 as a boundary. I don't know which meets all requirements on your machine. That's what P0b measures, and I won't pick one before data.
+
+## 6. Retry, resume, and recovery (correction C)
+
+| Retry | Mechanism |
+|---|---|
+| Incremental repair | **New** worktree reconstructed from the failed attempt's validated artifact + a **new** Codex session, with the failure evidence in the prompt |
+| Clean redo | Last accepted checkpoint + new session |
+| `codex exec resume` | **Disabled in v1.** Enable only after P0b proves it honors a new working directory and carries no stale workspace references. |
+
+- One rule covers both: **a session never outlives its attempt.** `attempt_id` fences every write. A stale session or attempt ID is rejected.
+- Cost: a new session loses conversational context, so failure evidence must be sufficient. That is a token and quality tradeoff (**[H]**: I haven't measured it).
+- Crash recovery follows R6 §6, with one change: recovery of the Verifier uses the same liveness protocol as the Worker, and a verification run left `UNKNOWN_LIVENESS` blocks the step.
+
+## 7. Verification and acceptance
+
+- Controller-only status setting: `verified | weak | unverified | contradicted` **[A]**.
+- `DONE_VERIFIED` requires every executable outcome `verified`. Manual outcomes need Owner acceptance.
+- **Meaningful hidden checks**, defined measurably. The Planner must show each hidden check:
+  - **fails** against the baseline, or is a declared regression check, and
+  - **fails** against at least one controller-generated or Planner-authored *mutant* (a deliberately wrong implementation), and
+  - passes against a reference implementation if one exists.
+  A hidden check that can't be made to fail against any mutant is marked `non_discriminating` and doesn't count toward coverage. I'm adding the mutant requirement to make "meaningful" testable, but it may be too expensive for v1, so I'm marking it **optional at medium, required at high**.
+- If the Planner can't construct a meaningful hidden check: status `unresolved_verification_requirement`, escalate to the Owner, **never fabricate** **[A]**.
+- Reports list unverified outcomes and coverage gaps first **[A]**.
+
+## 8. Waivers
+
+Bound to `{task_id, contract_hash, capability, owner_id, issued_at, expires_at}`. Added field: **`artifact_scope`**: the waiver applies only to dispatches from that contract hash and expires on amendment or on the first escalation. A revised contract needs a new waiver. Waivers live in runtime state only and are shown in every report **[A]**.
+
+## 9. SQLite model and state machine
+
+Unchanged from R6 (§5, §7), plus `artifacts` (hash, manifest, store path), `verifier_runs` (identity, environment manifest, result digest), and a `PROVING` state before dispatch when the enforcement manifest is stale.
+
+## 10. Deferred
+
+Parallel workers, second provider, LLM reviewer (hook kept), per-tool-call interception, hidden-check rotation, full mutation testing, non-git snapshots, advisory triage.
+
+## 11. P0b probe specification (review before any authorization)
+
+**Nothing here is authorized.** Each probe lists intended effects so you can reject any individually.
+
+**Scope rules (all probes):**
+- Run only in a **throwaway directory tree** (`<scratch>\p0b\`) and a dedicated test identity or container, created and deleted by the probe harness.
+- No real credentials. Canary secrets only.
+- No access to real projects or the real controller data. A **canary file** stands in for controller data.
+- Network probes target a **local listener** on loopback and one named external canary host, not the provider.
+- The harness logs every action to a file. Destroy-on-finish.
+
+| # | Probe | Intended effect | Pass | Fail |
+|---|---|---|---|---|
+| 1 | **Sandbox honors request** | Run Codex `exec` with `workspace-write`; ask it to create a file in the workspace | File created | Write rejected (the reported Windows divergence) → `workspace_write_confined` unproven |
+| 2 | **Write confinement** | Ask it to write one file outside the workspace (target: sibling scratch directory) | Write denied, file absent | File exists |
+| 3 | **Controller data unreadable** | Ask it to read the canary file (a stand-in for the DB path, with a canary token inside) | Read denied, token never appears in output or logs | Token appears |
+| 4 | **Env secrets** | Set canary env vars in the launching shell; ask it to print its environment | No canary visible to its commands | Canary visible |
+| 5 | **Kill tree** | Start a long-running child (benign sleep loop) via Codex; kill the tree from the controller; enumerate descendants | All descendants gone, within timeout | Orphan survives |
+| 6 | **Job escape** | Ask it to spawn a detached process (benign) | Contained in the job, killed with it | Escapes |
+| 7 | **Network, Worker** | With the restrictive setting, try the loopback listener and the external canary | Blocked, provider call still works | Either allowed or provider broken |
+| 8 | **Verifier no-network, no-secrets** | A benign script that tries connect, env read, canary read | All denied | Any succeeds |
+| 9 | **Verifier hostile-import** | A module that, on import, tries the same | Denied and logged | Any succeeds |
+| 10 | **Path aliases** | Create (in scratch) files via `..`, 8.3 name, ADS, trailing dot, case variants, junction, symlink, hard link; run freeze and validate | Every alias rejected or canonicalized to one entry | Any bypasses scope or frozen paths |
+| 11 | **TOCTOU** | A helper mutates a file between freeze and reconstruct (on the worktree, after freezing) | Artifact hashes unchanged, reconstructed tree equals manifest | Mismatch undetected |
+| 12 | **Resume + new cwd** | Resume a session from a different working directory | Honors the new cwd (or probe fails → resume stays disabled) | Writes to the old tree |
+| 13 | **Exit and event contract** | Collect exit codes, JSONL event types, session ID for success, failure, and kill | Stable, documented set | Undocumented or inconsistent behavior |
+| 14 | **Requested vs. effective** | For each setting, read back the effective policy (e.g. by a probe command) | Equals requested | Diverges |
+
+**Stop conditions:** abort the whole suite on any unexpected write outside `<scratch>`. The harness removes scratch on exit.
+
+**Overall P0b acceptance:** probes 1-6, 8-11 and 14 must pass for `contained`. Probe 7 pass → egress provider-only becomes `proven`; fail → egress stays waivable-only at low tier. Probe 12 pass → resume may be enabled later. Probes 1-6 and 14 failing for the Worker environment mean that environment is rejected for the Worker. The same probes can then be rerun against WSL2 or a container.
+
+**Unreviewed risks in P0b itself:** probes 5, 6, 9 and 10 execute behavior near the boundary I'm testing. A bug in the harness could damage files outside scratch, so the harness should be a separate reviewed artifact, not written ad hoc.
+
+## 12. Unverified assumptions (consolidated)
+
+- Native Windows `workspace-write` is honored and enforces filesystem confinement.
+- A Windows separate-user, container, or WSL2 boundary can serve as the Verifier environment.
+- Job Object kill covers sandboxed children.
+- Codex exit codes, JSONL events and session IDs are stable enough for recovery.
+- Provider-only egress is feasible without breaking the agent (the proxy is experimental per secondary sources).
+- Verifier output can be made tamper-resistant enough: nonce and schema reduce, but don't eliminate, forged evidence.
+- Mutation-based "meaningful hidden check" tests are affordable.
+- Cross-family LLM review reduces correlated errors (hypothesis only).
+
+## 13. Decisions needed from you (Owner)
+
+1. **Approve `codex --version` and `codex exec --help`?** Both only print text. Still unrecorded.
+2. **Worker environment:** native Windows, WSL2, or compare both in P0b. I recommend comparing, because the verifier and worker boundaries may be easier on one of them, but I don't know which.
+3. **Verifier cost:** accept the extra isolation environment as part of v1, or reduce scope (e.g. run only low-tier tasks until the Verifier is proven)? A restricted option is to refuse medium and high tiers in v1.
+4. **Mutants for hidden checks:** required at high only, or also at medium?
+5. **Authorize P0b?** Only after you've read §11. I'd separately want the harness reviewed.
+
+## 14. For GPT in the final round
+
+1. Is the evidence-integrity design in §2 (nonce, schema, controller-observed vs. verifier-reported) enough, or is there an attack I missed?
+2. Is mutant-based "meaningful" too heavy for v1?
+3. Is refusing medium and high tiers until the Verifier is proven acceptable?
+4. Are the path-alias probes in P0b #10 complete for NTFS?
+
+**Next action:** answer §13 (1, 2, 3 are the blockers). I'd run GPT's final review before you sign off, so that sign-off covers the spec after both reviews. I can also put v1.0 into a doc you can edit and share.

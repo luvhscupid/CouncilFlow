@@ -1,0 +1,60 @@
+{
+  "recorded_at": "2026-11-11T05:02:03.584286Z",
+  "changed_product_paths": [],
+  "all_observed_product_paths_unchanged": true,
+  "native_toml_static": {
+    "council-worker.toml": {
+      "keys": [
+        "description",
+        "developer_instructions",
+        "name"
+      ],
+      "name_matches": true,
+      "all_values_strings": true,
+      "documented_keys_only": true
+    },
+    "council-reviewer.toml": {
+      "keys": [
+        "description",
+        "developer_instructions",
+        "name"
+      ],
+      "name_matches": true,
+      "all_values_strings": true,
+      "documented_keys_only": true
+    },
+    "council-planner.toml": {
+      "keys": [
+        "description",
+        "developer_instructions",
+        "name"
+      ],
+      "name_matches": true,
+      "all_values_strings": true,
+      "documented_keys_only": true
+    },
+    "council-tester.toml": {
+      "keys": [
+        "description",
+        "developer_instructions",
+        "name"
+      ],
+      "name_matches": true,
+      "all_values_strings": true,
+      "documented_keys_only": true
+    }
+  },
+  "helper_imports": [
+    "__future__",
+    "argparse",
+    "datetime",
+    "hashlib",
+    "json",
+    "math",
+    "pathlib",
+    "re",
+    "sys"
+  ],
+  "all_standard_library": true,
+  "candidate_matches_observed_source": true
+}

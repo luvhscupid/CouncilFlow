@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-11-11T09:52:21.036514Z",
+  "saved_tester_report": "reports/restoration/messages/REST-T3-REPORT-001.json",
+  "native_turn_delivery": "Failed with usage-limit error after controlled report and validation artifacts were saved. This is not claimed as successful native final-response delivery.",
+  "report_origin": "Actual separate Tester /root/restoration_verifier; not generated or renamed by Manager.",
+  "saved_report_and_context": "PASS",
+  "candidate_sources_unchanged": true,
+  "tests_from_actual_tester_outputs": 103,
+  "failed_suites": 0,
+  "skipped": 0,
+  "next": "Separate Reviewer, final Planner, packaging and local commit remain."
+}

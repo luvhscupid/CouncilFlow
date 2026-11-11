@@ -1,0 +1,734 @@
+--- a/.agents/skills/council-flow/SKILL.md
++++ b/.agents/skills/council-flow/SKILL.md
+@@ -44,21 +44,25 @@
+    isolated workspaces.
+ 5. **Tester.** Fresh separate native Tester independently executes original
+    acceptance and the approved verification strategy on the exact candidate.
+-   For each suitable deterministic command, record command/arguments, working
+-   directory, candidate and relevant input identities/hashes, exit code, SHA-256
++   For each suitable deterministic command, record the exact executable path in
++   `command`, arguments, working directory, candidate and relevant input identities/hashes, exit code, SHA-256
+    of stdout after CRLF-to-LF replacement only, criterion ID and evidence artifact.
+    A declaration alone does not prove determinism. Do not repair product or approve
+    the oracle.
+ 6. **Reviewer.** Compare the frozen plan and criteria, Worker candidate and
+-   Tester's recorded technical evidence. Independently rerun one Tester-declared
+-   deterministic command; capture raw stdout/exit, apply CRLF-to-LF-only
++   Tester's recorded technical evidence. Receive and preserve the exact Tester
++   command/executable path, arguments, working directory, candidate and relevant
++   input references. Independently rerun that declared executable without a
++   shell alias; capture raw stdout/exit, apply CRLF-to-LF-only
+    normalization and SHA-256, and report both results and evidence to Manager.
+    Matching proves repeatability only for that command and recorded conditions.
+    Mismatches preserve both results and fail review; no command is
+    NOT_COMPARABLE and cannot pass E8. Do not implement, alter criteria, or perform
+    generalized UX evaluation.
+ 7. **Rework.** Manager records task.decision JSON from evidence: accept, reject,
+-   rework or escalate. Failed mandatory checks cannot be accepted. Repairs use
++   rework or escalate. When the original Planner check finds unmet criteria,
++   rework must reply to that exact check and preserve every failed criterion and
++   its evidence. Failed mandatory checks cannot be accepted. Repairs use
+    a fresh Worker/attempt under unchanged criteria, then affected independent
+    checks. Follow [recovery](references/recovery.md); no lifetime engineering
+    repair cap. Infrastructure retry 3/crash recovery 2 are instruction-only
+--- a/.agents/skills/council-flow/references/communication.md
++++ b/.agents/skills/council-flow/references/communication.md
+@@ -43,7 +43,10 @@
+ | approval.decision | human Owner → Manager | decision, approval_request_id, provenance_ref |
+ 
+ Report status is passed/failed/blocked/in_progress: technical observation, never
+-self-approval. Findings and every allowed changed_files value are bounded string
++self-approval. A Reviewer `tester_report_ref` identifies the exact earlier
++Tester message by its message ID and `kind: "message"`; it is not a self-hash
++inside the Tester message. With `--root`, the referenced file must contain that
++exact serialized Tester message and match its SHA-256. Findings and every allowed changed_files value are bounded string
+ arrays; Worker requires changed_files, while other roles may list generated
+ evidence files without gaining permission to edit product code. Errors are
+ {code,field,message}. Checks are {name,status,evidence_ref}, with status
+@@ -98,7 +101,12 @@
+ Ordered context rejects duplicate IDs, unknown predecessors, plan/task/revision
+ drift, report/assignment origin or attempt mismatch, changed candidate/hash,
+ unknown acceptance, omitted final mandatory criteria and mutated artifacts.
+-Rework requires a failed report; repair needs a fresh Worker and attempt.
++Rework requires genuine preceding failure evidence; repair needs a fresh Worker
++and attempt. If a failed or blocked Planner check triggers rework, the Manager
++decision replies to that exact check and preserves its complete failed criterion
++set. A completed Tester report reference is an immutable artifact outside the
++Tester message, avoiding a circular self-hash while remaining bound by message
++ID and (when available) exact file bytes.
+ Acceptance needs passing distinct Tester and Reviewer reports for the same
+ candidate/attempt with all required criteria; Worker assertion alone fails.
+ Planner checks the original plan. External origin bindings detect spoofed actor
+@@ -157,11 +165,14 @@
+ 
+ ## Deterministic command comparison
+ 
+-The Tester records each executed deterministic command: command and arguments,
++The Tester records each executed deterministic command: the exact invoked
++executable path in `command` and arguments,
+ working directory, candidate and relevant input references/hashes, integer exit
+ code, SHA-256 of `raw_stdout.replace(b"\r\n", b"\n")`, acceptance ID, and evidence
+-artifact. No other normalization is permitted. The Reviewer independently reruns
+-one declaration under matching conditions and records its execution artifact,
++artifact. No other normalization is permitted. The Reviewer receives and
++independently reruns one declaration using that exact executable path, arguments,
++working directory, candidate and relevant inputs; it must not substitute a shell
++alias or another executable. It records its execution artifact,
+ exit code and hash. A match proves repeatability for that command only. A mismatch
+ preserves both results and fails comparison. With no eligible command, record
+ `NOT_COMPARABLE`; it cannot pass E8. JSON assertions and structural validation do
+--- a/.agents/skills/council-flow/references/recovery.md
++++ b/.agents/skills/council-flow/references/recovery.md
+@@ -2,9 +2,13 @@
+ 
+ 1. Preserve the failing original acceptance ID, exact candidate, command/output
+    and evidence hash. Tester reports failed technical status through job.report
+-   JSON, not a prose substitute; it never repairs product code.
++   JSON, not a prose substitute; it never repairs product code. If the Planner
++   finds a mandatory criterion unmet after Manager acceptance, preserve that
++   failed plan.check and its cited evidence unchanged.
+ 2. Manager records task.decision rework/reject/escalate with causal report IDs and
+-   evidence. Never accept a mandatory failure or lower criteria. Ordinary scoped
++   evidence. For Planner-detected rework, the decision replies to the exact
++   failed plan.check and carries every failed original acceptance ID unchanged.
++   Never accept a mandatory failure or lower criteria. Ordinary scoped
+    engineering repair is already authorized and does not need Owner reapproval.
+ 3. Delegate job.assign JSON to a fresh native Worker and new attempt. Prior
+    Worker must stop. One mutating Worker per workspace; parallel implementation
+--- a/.agents/skills/council-flow/scripts/contracts.py
++++ b/.agents/skills/council-flow/scripts/contracts.py
+@@ -549,8 +549,12 @@
+                     fail("candidate", "payload.comparison.candidate_ref", "must bind the Worker's actual candidate checked by Tester")
+                 tc = comparison["independent_rerun"]
+                 tester_ref = comparison["tester_report_ref"]
+-                if not any(tester_ref == x for x in tester["evidence_refs"]):
+-                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "must reference the identified Tester evidence artifact")
++                if tester_ref["artifact_id"] != tester["message_id"] or tester_ref["kind"] != "message":
++                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "must reference the exact earlier Tester message")
++                if root is not None:
++                    tester_file = read_json(Path(root) / tester_ref["path"])
++                    if tester_file != tester:
++                        fail("comparison_evidence", "payload.comparison.tester_report_ref", "referenced bytes must contain the exact earlier Tester message")
+                 commands = tester["payload"].get("deterministic_commands", [])
+                 declared = next((x for x in commands if x["command_id"] == tc.get("command_id")), None)
+                 if tc["status"] == "NOT_COMPARABLE":
+@@ -620,18 +624,48 @@
+                     fail("acceptance", "payload.report_ids", "independent evidence omits required criteria")
+             if p["disposition"] == "rework":
+                 failures = [r for r in reports if r["payload"]["status"] == "failed"]
+-                if not failures:
+-                    fail("rework_evidence", "payload.report_ids", "failed verification must be explicit")
+-                known_failed = set().union(*(set(r["payload"]["acceptance_ids"]) for r in failures))
++                planner_check = predecessor if predecessor and predecessor["message_type"] == "plan.check" else None
++                if planner_check is not None:
++                    if planner_check["payload"]["status"] == "passed":
++                        fail("rework_evidence", "in_reply_to", "Planner rework must cite a failed or blocked check")
++                    check_progress = seen.get(planner_check["in_reply_to"])
++                    if not check_progress or check_progress["message_type"] != "plan.progress":
++                        fail("rework_evidence", "in_reply_to", "failed Planner check must follow Manager progress")
++                    prior_acceptance = seen.get(check_progress["in_reply_to"])
++                    if (not prior_acceptance or prior_acceptance["message_type"] != "task.decision"
++                            or prior_acceptance["payload"]["disposition"] != "accept"
++                            or prior_acceptance["payload"]["candidate_ref"] != p["candidate_ref"]
++                            or prior_acceptance["attempt_id"] != m["attempt_id"]):
++                        fail("rework_evidence", "in_reply_to", "Planner-detected rework must preserve the earlier Manager acceptance of this candidate")
++                    if not set(prior_acceptance["payload"]["report_ids"]) <= set(p["report_ids"]):
++                        fail("rework_evidence", "payload.report_ids", "rework must retain the reports cited by the earlier Manager acceptance")
++                    planner_failures = {result["acceptance_id"] for result in planner_check["payload"]["results"]
++                                        if result["status"] in {"failed", "blocked", "unverified"}}
++                    if not planner_failures:
++                        fail("rework_evidence", "in_reply_to", "failed Planner check must identify unmet original criteria")
++                    if set(p["failed_acceptance_ids"]) != planner_failures:
++                        fail("rework_evidence", "payload.failed_acceptance_ids", "must preserve every failed Planner criterion exactly")
++                elif not failures:
++                    fail("rework_evidence", "payload.report_ids", "failed verification or a failed Planner check must be explicit")
++                known_failed = set().union(*(set(r["payload"]["acceptance_ids"]) for r in failures)) if failures else set()
++                if planner_check is not None:
++                    known_failed.update(planner_failures)
+                 if not set(p["failed_acceptance_ids"]) <= (set(p["acceptance_ids"]) & known_failed):
+-                    fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned verification")
++                    fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned criteria and supplied failure evidence")
+         if kind == "plan.check" and key in plans:
+             if p["plan_ref"] != plans[key]["payload"]["plan_ref"]:
+                 fail("plan_immutable", "payload.plan_ref", "must check original plan")
+-            if p["status"] == "passed" and (not predecessor or predecessor["message_type"] != "task.decision"
+-                                           or predecessor["payload"]["disposition"] != "accept"
+-                                           or m["attempt_id"] != predecessor["attempt_id"]):
+-                fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance")
++            if p["status"] == "passed":
++                acceptance = predecessor if predecessor and predecessor["message_type"] == "task.decision" else None
++                if predecessor and predecessor["message_type"] == "plan.progress":
++                    progress_acceptance = seen.get(predecessor["in_reply_to"])
++                    if progress_acceptance and progress_acceptance["message_type"] == "task.decision":
++                        acceptance = progress_acceptance
++                        if predecessor["payload"].get("candidate_ref") not in (None, acceptance["payload"]["candidate_ref"]):
++                            fail("final_check_context", "in_reply_to", "Manager progress cannot change the accepted candidate")
++                if (acceptance is None or acceptance["payload"]["disposition"] != "accept"
++                        or acceptance["attempt_id"] != m["attempt_id"]):
++                    fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance, directly or through its progress packet")
+         if kind == "approval.decision":
+             if not predecessor or predecessor["message_type"] != "approval.request" or p["approval_request_id"] != reply:
+                 fail("approval_reference", "payload.approval_request_id", "actual prior request required")
+--- a/.codex/agents/council-reviewer.toml
++++ b/.codex/agents/council-reviewer.toml
+@@ -9,9 +9,11 @@
+ permissions. Only Manager gives Owner concise natural-language updates.
+ Act as a fresh independent Reviewer under .agents/skills/council-flow/SKILL.md
+ and references/roles.md. Compare frozen original plan/criteria, Worker candidate
+-and exact Tester execution evidence. Select one Tester-declared deterministic
+-command and independently execute it under the same recorded working directory,
+-candidate and inputs. Capture raw stdout and exit code; normalize only with
++and exact Tester execution evidence. Receive and preserve the selected Tester's
++exact `command` executable path, arguments, working directory, candidate
++identity, and relevant input references. Independently invoke that exact
++executable with those arguments; never substitute a shell alias or another
++executable. Capture raw stdout and exit code; normalize only with
+ raw_stdout.replace(b"\r\n", b"\n") and compute SHA-256. Record both execution
+ references/hashes, explicit result, discrepancies and missing evidence to
+ Manager. Equal exit/hash means repeatability for that command only. Mismatch
+--- a/.codex/agents/council-tester.toml
++++ b/.codex/agents/council-tester.toml
+@@ -12,8 +12,9 @@
+ from the parent Manager. Inspect and execute available tests independently;
+ Worker-authored tests alone do not prove correctness. Check actual behavior,
+ edge cases, and negative controls in the assigned test area where useful. Do
+-not repair implementation or weaken criteria. Return TesterResult with actual
+-commands, arguments, working directories, candidate/input identities, exits,
++not repair implementation or weaken criteria. Return TesterResult with each
++exact invoked executable path in `command`, arguments, working directories,
++candidate/input identities, exits,
+ stdout hashes using CRLF-to-LF replacement only, acceptance IDs, output
+ references, acceptance evidence, failures and unverified capabilities. Identify
+ suitable deterministic commands without treating the declaration as proof of
+--- a/tests/test_contracts.py
++++ b/tests/test_contracts.py
+@@ -18,8 +18,8 @@
+ STAMP = "2026-11-11T00:00:00Z"  # Synthetic fixture time, never runtime evidence.
+ 
+ 
+-def ref(identity="candidate", path="synthetic/candidate.json", content_hash="0" * 64):
+-    return {"artifact_id": identity, "path": path, "sha256": content_hash, "kind": "synthetic"}
++def ref(identity="candidate", path="synthetic/candidate.json", content_hash="0" * 64, kind="synthetic"):
++    return {"artifact_id": identity, "path": path, "sha256": content_hash, "kind": kind}
+ 
+ 
+ def message(mid, kind, role, recipient, payload, reply=None, attempt="A1", instance=None):
+@@ -50,7 +50,8 @@
+     return m
+ 
+ 
+-def report(mid, role, reply, candidate=None, status="passed", attempt="A1", instance=None, input_ref=None):
++def report(mid, role, reply, candidate=None, status="passed", attempt="A1", instance=None,
++           input_ref=None, tester_message_id="M5"):
+     p = {"status": status, "summary": "Synthetic observation, not live proof",
+          "acceptance_ids": AC, "candidate_ref": candidate or ref(), "findings": [], "errors": []}
+     if role == "worker":
+@@ -72,7 +73,7 @@
+         return m
+     if role == "reviewer":
+         p["comparison"] = {"plan_ref": ref("plan", "synthetic/plan.json"),
+-            "tester_report_ref": ref("tester-report", "synthetic/tester-report.json"),
++            "tester_report_ref": ref(tester_message_id, "synthetic/tester-report.json", kind="message"),
+             "candidate_ref": p["candidate_ref"], "findings": ["Compared original criteria, candidate and Tester evidence."],
+             "discrepancies": [], "independent_rerun": {"status": "MATCH", "command_id": "CMD1",
+                 "command": "python", "arguments": ["-m", "unittest"], "workdir": ".",
+@@ -392,12 +393,71 @@
+             changed[6]["payload"]["status"] = "failed"
+             with self.subTest(field=field), self.assertRaises(c.ContractError):c.validate_sequence(changed)
+ 
++    def test_exact_tester_executable_path_is_bound_to_reviewer_rerun(self):
++        data = sequence()
++        declared = data[4]["payload"]["deterministic_commands"][0]
++        declared["command"] = r"C:\Python312\python.exe"
++        data[6]["payload"]["comparison"]["independent_rerun"]["command"] = "python"
++        data[6]["payload"]["status"] = "failed"
++        data[6]["payload"]["comparison"]["independent_rerun"]["status"] = "MISMATCH"
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(data)
++
+     def test_reviewer_compares_frozen_plan_candidate_and_tester_record(self):
+         data = sequence();c.validate_sequence(data)
+         for field in ("plan_ref", "candidate_ref", "tester_report_ref"):
+             changed = copy.deepcopy(data)
+             changed[6]["payload"]["comparison"][field] = ref("forged-" + field, "synthetic/forged.json")
+             with self.subTest(field=field), self.assertRaises(c.ContractError):c.validate_sequence(changed)
++
++    def test_reviewer_report_reference_is_exact_prior_tester_message(self):
++        data = sequence(); c.validate_sequence(data)
++        for identity, kind in (("OTHER-TESTER", "message"), ("M6", "message"), ("M5", "report")):
++            changed = copy.deepcopy(data)
++            changed[6]["payload"]["comparison"]["tester_report_ref"] = ref(
++                identity, "synthetic/tester-report.json", kind=kind)
++            with self.subTest(identity=identity, kind=kind), self.assertRaises(c.ContractError):
++                c.validate_sequence(changed)
++
++    def test_reviewer_tester_message_reference_verifies_file_bytes_with_root(self):
++        data = sequence()
++        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
++            folder = Path(directory)
++            artifacts = folder / "artifacts"
++            artifacts.mkdir()
++            refs = {}
++            def replace_refs(value):
++                if isinstance(value, dict):
++                    if set(value) == {"artifact_id", "path", "sha256", "kind"}:
++                        identity = value["artifact_id"]
++                        if identity not in refs:
++                            path = f"artifacts/{len(refs)}.bin"
++                            content = (json.dumps({"plan_id": "P1", "plan_revision": 1,
++                                "acceptance": [{"id": "AC1"}, {"id": "AC2"}]})
++                                if identity == "plan" else identity)
++                            target = folder / path
++                            target.write_text(content, encoding="utf-8")
++                            refs[identity] = ref(identity, path,
++                                hashlib.sha256(target.read_bytes()).hexdigest(),
++                                "plan" if identity == "plan" else "synthetic")
++                        value.clear(); value.update(refs[identity])
++                    else:
++                        for child in value.values():
++                            replace_refs(child)
++                elif isinstance(value, list):
++                    for child in value:
++                        replace_refs(child)
++            for item in data:
++                replace_refs(item)
++            tester_path = folder / "tester-message.json"
++            tester_path.write_text(json.dumps(data[4]), encoding="utf-8")
++            data[6]["payload"]["comparison"]["tester_report_ref"] = ref(
++                data[4]["message_id"], "tester-message.json",
++                hashlib.sha256(tester_path.read_bytes()).hexdigest(), kind="message")
++            c.validate_sequence(data, root=folder)
++            tester_path.write_text("{}", encoding="utf-8")
++            with self.assertRaises(c.ContractError):
++                c.validate_sequence(data, root=folder)
+ 
+     def test_tester_deterministic_record_has_command_cwd_inputs_hash_and_evidence(self):
+         tester = report("T", "tester", "M4")["payload"]["deterministic_commands"][0]
+@@ -467,6 +527,112 @@
+         with self.assertRaises(c.ContractError):c.validate_sequence(data + [decision, bad])
+         data[-1]["payload"]["status"] = "passed"
+         with self.assertRaises(c.ContractError):c.validate_sequence(data + [decision])
++
++    def test_planner_failure_rework_completes_through_fresh_independent_checks(self):
++        data = sequence()
++        progress_before_check = message("P0", "plan.progress", "manager", "planner",
++            {"status": "checking", "objective": "Original task", "scope": ["demo/**"],
++             "acceptance_ids": AC, "verified_progress": ["Manager accepted candidate"],
++             "next_action": "Check original acceptance"}, "M8")
++        data.insert(-1, progress_before_check)
++        data[-1]["in_reply_to"] = "P0"
++        data[-1]["payload"]["status"] = "blocked"
++        data[-1]["payload"]["summary"] = "AC1 failed the frozen original check"
++        data[-1]["payload"]["results"][0]["status"] = "failed"
++        decision = message("D1", "task.decision", "manager", "planner",
++            {"disposition": "rework", "reason": "Planner evidence shows AC1 failed",
++             "acceptance_ids": AC, "candidate_ref": ref(), "report_ids": ["M3", "M5", "M7"],
++             "failed_acceptance_ids": ["AC1"]}, "M9")
++        worker = assignment("W2", "worker", "D1", ref(), "A2", "worker-2")
++        repaired_candidate = ref("candidate-v2", "synthetic/candidate-v2.json")
++        worker_report = report("WR2", "worker", "W2", repaired_candidate,
++                               attempt="A2", instance="worker-2", input_ref=ref())
++        tester_assignment = assignment("TA2", "tester", "WR2", repaired_candidate,
++                                       "A2", "tester-2")
++        tester_report = report("TR2", "tester", "TA2", repaired_candidate,
++                               attempt="A2", instance="tester-2")
++        reviewer_assignment = assignment("RA2", "reviewer", "TR2", repaired_candidate,
++                                         "A2", "reviewer-2")
++        reviewer_report = report("RR2", "reviewer", "RA2", repaired_candidate,
++                                  attempt="A2", instance="reviewer-2", tester_message_id="TR2")
++        accept = message("D2", "task.decision", "manager", "planner",
++            {"disposition": "accept", "reason": "Fresh independent evidence passes",
++             "acceptance_ids": AC, "candidate_ref": repaired_candidate,
++             "report_ids": ["WR2", "TR2", "RR2"]}, "RR2", "A2")
++        progress = message("P2", "plan.progress", "manager", "planner",
++            {"status": "ready", "objective": "Original task", "scope": ["demo/**"],
++             "acceptance_ids": AC, "verified_progress": ["Fresh Tester and Reviewer passed"],
++             "next_action": "Check frozen plan", "candidate_ref": repaired_candidate}, "D2", "A2")
++        final_check = message("PC2", "plan.check", "planner", "manager",
++            {"status": "passed", "summary": "Original acceptance passed after repair",
++             "acceptance_ids": AC, "plan_ref": ref("plan", "synthetic/plan.json"),
++             "results": [{"acceptance_id": a, "status": "passed", "evidence_refs": [ref()]} for a in AC]},
++            "P2", "A2")
++        complete = data + [decision, worker, worker_report, tester_assignment, tester_report,
++                           reviewer_assignment, reviewer_report, accept, progress, final_check]
++        c.validate_sequence(complete)
++
++        wrong_failed_id = copy.deepcopy(complete)
++        wrong_failed_id[10]["payload"]["failed_acceptance_ids"] = ["AC2"]
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(wrong_failed_id)
++        wrong_candidate = copy.deepcopy(complete)
++        wrong_candidate[10]["payload"]["candidate_ref"] = ref("other", "synthetic/other.json")
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(wrong_candidate)
++        erased_report = copy.deepcopy(complete)
++        erased_report[10]["payload"]["report_ids"].remove("M7")
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(erased_report)
++        erased_failure = copy.deepcopy(complete)
++        erased_failure[9]["payload"]["results"][0]["status"] = "passed"
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(erased_failure)
++        missing_transition = copy.deepcopy(complete)
++        missing_transition[11]["in_reply_to"] = "M9"
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(missing_transition)
++        same_worker = copy.deepcopy(complete)
++        same_worker[11]["recipient"]["instance_id"] = "worker-1"
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(same_worker)
++        same_attempt = copy.deepcopy(complete)
++        same_attempt[11]["attempt_id"] = "A1"
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(same_attempt)
++        duplicate_decision = copy.deepcopy(complete)
++        duplicate_decision.append(copy.deepcopy(duplicate_decision[10]))
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(duplicate_decision)
++        out_of_order = copy.deepcopy(complete)
++        out_of_order[10], out_of_order[11] = out_of_order[11], out_of_order[10]
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(out_of_order)
++        forged_transition = copy.deepcopy(complete)
++        forged_transition[10]["payload"]["disposition"] = "accept"
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(forged_transition)
++        changed_progress_candidate = copy.deepcopy(complete)
++        changed_progress_candidate[18]["payload"]["candidate_ref"] = ref("other", "synthetic/other.json")
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(changed_progress_candidate)
++
++    def test_rework_after_planner_check_requires_actual_failed_criteria(self):
++        data = sequence()
++        progress_before_check = message("P0", "plan.progress", "manager", "planner",
++            {"status": "checking", "objective": "Original task", "scope": ["demo/**"],
++             "acceptance_ids": AC, "verified_progress": ["Manager accepted candidate"],
++             "next_action": "Check original acceptance"}, "M8")
++        data.insert(-1, progress_before_check)
++        data[-1]["in_reply_to"] = "P0"
++        data[-1]["payload"]["status"] = "blocked"
++        data[-1]["payload"]["results"][0]["status"] = "failed"
++        decision = message("D", "task.decision", "manager", "planner",
++            {"disposition": "rework", "reason": "Planner failed AC1",
++             "acceptance_ids": AC, "candidate_ref": ref(), "report_ids": ["M5"],
++             "failed_acceptance_ids": ["AC2"]}, "M9")
++        with self.assertRaises(c.ContractError):
++            c.validate_sequence(data + [decision])
+ 
+     def test_passed_tester_cannot_hide_failed_or_unverified_checks(self):
+         for status in ("failed", "blocked", "unverified"):
+--- a/tests/test_skill_files.py
++++ b/tests/test_skill_files.py
+@@ -94,6 +94,25 @@
+         for forbidden in ("first-time user", "experience_review", "qualitative rubric"):
+             self.assertNotIn(forbidden, role + policy)
+ 
++    def test_review_binds_exact_executable_and_completed_tester_message(self) -> None:
++        reviewer = (ROOT / ".codex" / "agents" / "council-reviewer.toml").read_text()
++        tester = (ROOT / ".codex" / "agents" / "council-tester.toml").read_text()
++        communication = (SKILL / "references" / "communication.md").read_text()
++        for phrase in ("exact `command` executable path", "never substitute a shell alias",
++                       "working directory", "candidate", "relevant input references"):
++            self.assertIn(phrase, reviewer)
++        self.assertIn("exact invoked executable path", tester)
++        self.assertIn("exact earlier", communication)
++        self.assertIn("exact serialized Tester message", communication)
++
++    def test_planner_failure_requires_explicit_manager_rework(self) -> None:
++        skill = (SKILL / "SKILL.md").read_text()
++        communication = (SKILL / "references" / "communication.md").read_text()
++        recovery = (SKILL / "references" / "recovery.md").read_text()
++        self.assertIn("rework must reply to that exact check", skill)
++        self.assertIn("decision replies to that exact check", communication)
++        self.assertIn("replies to the exact", recovery)
++
+     def test_gate3_e4_erratum_preserves_frozen_specification(self) -> None:
+         erratum = ROOT / "docs" / "gate3" / "CouncilFlow-Gate3-v0.2" / "06-COUNCIL-APPROVED-ERRATUM-C3.md"
+         self.assertTrue(erratum.is_file())
+--- /dev/null
++++ b/reports/reliability-repair/create_fixture.py
+@@ -0,0 +1,284 @@
++"""Create honest local execution evidence for the bounded sequence regression.
++
++The role identities in this fixture are synthetic contract data. Subprocess
++outputs and hashes are real local observations; this is not native agent proof.
++"""
++from __future__ import annotations
++
++import hashlib
++import json
++import os
++from pathlib import Path
++import subprocess
++import sys
++
++
++ROOT = Path(__file__).resolve().parents[2]
++OUT = ROOT / "reports" / "reliability-repair" / "fresh-verification-final"
++ACCEPTANCE = ["AC1"]
++PLAN_ID = "RELIABILITY-PLAN-1"
++TASK_ID = "RELIABILITY-TASK-1"
++
++
++def sha(data: bytes) -> str:
++    return hashlib.sha256(data).hexdigest()
++
++
++def write_bytes(relative: str, content: bytes) -> dict:
++    path = OUT / relative
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_bytes(content)
++    return {"artifact_id": relative.replace("/", "-"),
++            "path": path.relative_to(ROOT).as_posix(), "sha256": sha(content), "kind": "evidence"}
++
++
++def write_json(relative: str, value: object, *, identity: str | None = None, kind="evidence") -> dict:
++    content = (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
++    path = OUT / relative
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_bytes(content)
++    return {"artifact_id": identity or relative.replace("/", "-"),
++            "path": path.relative_to(ROOT).as_posix(), "sha256": sha(content), "kind": kind}
++
++
++def envelope(mid, message_type, sender, recipient, attempt, reply, payload, evidence_refs):
++    return {"protocol": "council-flow", "version": "1.0", "message_id": mid,
++            "message_type": message_type, "plan_id": PLAN_ID, "plan_revision": 1,
++            "task_id": TASK_ID, "attempt_id": attempt,
++            "sender": {"role": sender[0], "instance_id": sender[1]},
++            "recipient": {"role": recipient[0], "instance_id": recipient[1]},
++            "in_reply_to": reply, "payload": payload, "evidence_refs": evidence_refs}
++
++
++def save_message(message):
++    return write_json(f"messages/{message['message_id']}.json", message,
++                      identity=message["message_id"], kind="message")
++
++
++def run_command(candidate_path: str, label: str):
++    argv = ["-B", candidate_path, "--version"]
++    result = subprocess.run([sys.executable, *argv], cwd=ROOT, capture_output=True, check=False)
++    raw_out, raw_err = result.stdout, result.stderr
++    stdout_ref = write_bytes(f"execution/{label}.stdout.bin", raw_out)
++    stderr_ref = write_bytes(f"execution/{label}.stderr.bin", raw_err)
++    exit_ref = write_bytes(f"execution/{label}.exit.txt", f"{result.returncode}\n".encode("ascii"))
++    normalized_hash = sha(raw_out.replace(b"\r\n", b"\n"))
++    execution_ref = write_json(f"execution/{label}.json", {
++        "executable": sys.executable, "arguments": argv, "working_directory": str(ROOT),
++        "stdout_ref": stdout_ref, "stderr_ref": stderr_ref, "exit_ref": exit_ref,
++        "exit_code": result.returncode, "normalized_stdout_sha256": normalized_hash,
++    }, identity=f"{label}-execution", kind="execution-evidence")
++    return {"stdout": raw_out, "stderr": raw_err, "exit_code": result.returncode,
++            "stdout_ref": stdout_ref, "stderr_ref": stderr_ref, "exit_ref": exit_ref,
++            "execution_ref": execution_ref, "stdout_sha256": normalized_hash,
++            "command": sys.executable, "arguments": argv,
++            "workdir": str(ROOT)}
++
++
++def run():
++    if OUT.exists() and any(OUT.iterdir()):
++        raise SystemExit(f"Refusing to overwrite existing evidence: {OUT}")
++    OUT.mkdir(parents=True, exist_ok=True)
++    messages = []
++    plan = {"plan_id": PLAN_ID, "plan_revision": 1,
++            "acceptance": [{"id": "AC1", "criterion":
++                "--version stdout bytes are exactly b'1.0.0\\n' and exit is 0."}]}
++    plan_ref = write_json("plan.json", plan, identity="plan-original", kind="plan")
++    oracle_ref = write_json("verification-strategy.json", {
++        "strategy_id": "exact-version-bytes", "command": "run --version and preserve raw stdout/exit"},
++        identity="manager-oracle", kind="verification-strategy")
++    plan_publish = envelope("M01", "plan.publish", ("planner", "planner-1"),
++        ("manager", "manager-1"), "A1", None,
++        {"objective": "Check exact version output and preserve original acceptance.",
++         "scope": ["reports/reliability-repair/fresh-verification/**"],
++         "acceptance_ids": ACCEPTANCE, "plan_ref": plan_ref}, [plan_ref])
++    messages.append(plan_publish); save_message(plan_publish)
++
++    candidate_paths = [
++        "reports/reliability-repair/fresh-verification/candidates/candidate-attempt1.py",
++        "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
++    ]
++    source_variants = [b"import sys\nsys.stdout.buffer.write(b'1.0.0\\r\\n')\n",
++                       b"import sys\nsys.stdout.buffer.write(b'1.0.0\\n')\n"]
++    candidate_refs = []
++    for path, content in zip(candidate_paths, source_variants):
++        artifact = write_bytes(path.removeprefix("reports/reliability-repair/fresh-verification/"), content)
++        candidate_refs.append({**artifact, "artifact_id": Path(path).stem, "kind": "candidate"})
++
++    def dispatch_and_check(index, attempt, worker_id, tester_id, reviewer_id, candidate_ref,
++                           input_ref=None, dispatch_reply=None):
++        suffix = f"A{index}"
++        worker_payload = {"objective": "Implement the exact AC1 command behavior.",
++            "scope": [candidate_paths[index - 1]], "acceptance_ids": ACCEPTANCE,
++            "instructions": ["Preserve the frozen plan and candidate snapshots."]}
++        if input_ref is not None:
++            worker_payload["candidate_ref"] = input_ref
++        assignment = envelope(f"M{suffix}-WORK-ASSIGN", "job.assign",
++            ("manager", "manager-1"), ("worker", worker_id), attempt,
++            "M01" if index == 1 else dispatch_reply, worker_payload,
++            [plan_ref] + ([input_ref] if input_ref else []))
++        messages.append(assignment); assignment_ref = save_message(assignment)
++        worker_evidence = write_json(f"evidence/{suffix}-worker.json", {
++            "candidate_ref": candidate_ref, "input_candidate_ref": input_ref,
++            "snapshot_sha256": candidate_ref["sha256"]}, identity=f"{suffix}-worker-evidence", kind="worker-evidence")
++        worker_payload_report = {"status": "passed", "summary": "Candidate snapshot recorded.",
++            "acceptance_ids": ACCEPTANCE, "candidate_ref": candidate_ref,
++            "findings": [], "errors": [],
++            "changed_files": [candidate_paths[index - 1].removeprefix("reports/reliability-repair/fresh-verification/")]}
++        if input_ref is not None:
++            worker_payload_report["input_candidate_ref"] = input_ref
++        worker_report = envelope(f"M{suffix}-WORK-REPORT", "job.report",
++            ("worker", worker_id), ("manager", "manager-1"), attempt,
++            assignment["message_id"], worker_payload_report,
++            [candidate_ref, worker_evidence, assignment_ref, plan_ref])
++        messages.append(worker_report); worker_report_ref = save_message(worker_report)
++
++        tester_assignment = envelope(f"M{suffix}-TEST-ASSIGN", "job.assign",
++            ("manager", "manager-1"), ("tester", tester_id), attempt,
++            worker_report["message_id"], {"objective": "Independently execute the approved exact-output check.",
++            "scope": [candidate_paths[index - 1]], "acceptance_ids": ACCEPTANCE,
++            "instructions": ["Record raw stdout and exit evidence."],
++            "candidate_ref": candidate_ref, "oracle_ref": oracle_ref},
++            [candidate_ref, oracle_ref, worker_report_ref])
++        messages.append(tester_assignment); tester_assignment_ref = save_message(tester_assignment)
++        tester_run = run_command(candidate_paths[index - 1], f"{suffix.lower()}-tester")
++        # Attempt one deliberately records the known false-positive interpretation
++        # that Planner must catch; the real stdout file records the unmet bytes.
++        tester_check = {"name": "AC1 result as reported by the initial checker",
++            "status": "passed", "evidence_ref": tester_run["stdout_ref"]}
++        tester_report_payload = {"status": "passed", "summary":
++            "Local command execution completed; raw output is preserved for Planner review.",
++            "acceptance_ids": ACCEPTANCE, "candidate_ref": candidate_ref,
++            "findings": [], "errors": [], "oracle_ref": oracle_ref,
++            "checks": [tester_check],
++            "deterministic_commands": [{"command_id": "VERSION", "command": tester_run["command"],
++                "arguments": tester_run["arguments"], "workdir": tester_run["workdir"],
++                "candidate_ref": candidate_ref, "input_refs": [plan_ref, tester_assignment_ref],
++                "exit_code": tester_run["exit_code"], "stdout_sha256": tester_run["stdout_sha256"],
++                "acceptance_id": "AC1", "evidence_ref": tester_run["execution_ref"]}]}
++        tester_report = envelope(f"M{suffix}-TEST-REPORT", "job.report",
++            ("tester", tester_id), ("manager", "manager-1"), attempt,
++            tester_assignment["message_id"], tester_report_payload,
++            [candidate_ref, oracle_ref, tester_assignment_ref, tester_run["stdout_ref"],
++             tester_run["stderr_ref"], tester_run["exit_ref"], tester_run["execution_ref"]])
++        messages.append(tester_report); tester_report_ref = save_message(tester_report)
++
++        reviewer_assignment = envelope(f"M{suffix}-REVIEW-ASSIGN", "job.assign",
++            ("manager", "manager-1"), ("reviewer", reviewer_id), attempt,
++            tester_report["message_id"], {"objective": "Compare the original plan, candidate and Tester evidence.",
++            "scope": [candidate_paths[index - 1]], "acceptance_ids": ACCEPTANCE,
++            "instructions": ["Rerun the exact Tester-declared executable and arguments."],
++            "candidate_ref": candidate_ref}, [candidate_ref, tester_report_ref, plan_ref])
++        messages.append(reviewer_assignment); reviewer_assignment_ref = save_message(reviewer_assignment)
++        reviewer_run = run_command(candidate_paths[index - 1], f"{suffix.lower()}-reviewer")
++        rerun_status = "MATCH" if (reviewer_run["exit_code"] == tester_run["exit_code"] and
++                                    reviewer_run["stdout_sha256"] == tester_run["stdout_sha256"]) else "MISMATCH"
++        tester_message_ref = {**tester_report_ref, "artifact_id": tester_report["message_id"]}
++        reviewer_report_payload = {"status": "passed" if rerun_status == "MATCH" else "failed",
++            "summary": "Independent local rerun comparison; no native Reviewer session is claimed.",
++            "acceptance_ids": ACCEPTANCE, "candidate_ref": candidate_ref,
++            "findings": ["Compared exact executable, arguments, working directory, candidate, inputs, exit and normalized stdout hash."],
++            "errors": [], "comparison": {"plan_ref": plan_ref,
++                "tester_report_ref": tester_message_ref, "candidate_ref": candidate_ref,
++                "findings": ["Tester report file matches the exact earlier Tester message."],
++                "discrepancies": [], "independent_rerun": {
++                    "status": rerun_status, "command_id": "VERSION", "command": reviewer_run["command"],
++                    "arguments": reviewer_run["arguments"], "workdir": reviewer_run["workdir"],
++                    "candidate_ref": candidate_ref, "input_refs": [plan_ref, tester_assignment_ref],
++                    "exit_code": reviewer_run["exit_code"], "stdout_sha256": reviewer_run["stdout_sha256"],
++                    "acceptance_id": "AC1", "evidence_ref": reviewer_run["execution_ref"],
++                    "tester_evidence_ref": tester_run["execution_ref"],
++                    "tester_exit_code": tester_run["exit_code"],
++                    "tester_stdout_sha256": tester_run["stdout_sha256"]}}}
++        reviewer_report = envelope(f"M{suffix}-REVIEW-REPORT", "job.report",
++            ("reviewer", reviewer_id), ("manager", "manager-1"), attempt,
++            reviewer_assignment["message_id"], reviewer_report_payload,
++            [candidate_ref, plan_ref, tester_message_ref, reviewer_assignment_ref,
++             reviewer_run["stdout_ref"], reviewer_run["stderr_ref"], reviewer_run["exit_ref"],
++             reviewer_run["execution_ref"]])
++        messages.append(reviewer_report); reviewer_report_ref = save_message(reviewer_report)
++        return {"worker": worker_report, "tester": tester_report, "reviewer": reviewer_report,
++                "tester_run": tester_run, "reviewer_run": reviewer_run,
++                "message_refs": [worker_report_ref, tester_report_ref, reviewer_report_ref]}
++
++    first = dispatch_and_check(1, "A1", "worker-1", "tester-1", "reviewer-1", candidate_refs[0])
++    accept1 = envelope("M08-ACCEPT", "task.decision", ("manager", "manager-1"),
++        ("planner", "planner-1"), "A1", first["reviewer"]["message_id"],
++        {"disposition": "accept", "reason": "Initial Tester and Reviewer records reported PASS.",
++         "acceptance_ids": ACCEPTANCE, "candidate_ref": candidate_refs[0],
++         "report_ids": [first[role]["message_id"] for role in ("worker", "tester", "reviewer")]},
++        [candidate_refs[0], *first["message_refs"]])
++    messages.append(accept1); accept1_ref = save_message(accept1)
++    progress1 = envelope("M09-PROGRESS", "plan.progress", ("manager", "manager-1"),
++        ("planner", "planner-1"), "A1", accept1["message_id"],
++        {"status": "ready-for-original-check", "objective": "Verify exact frozen output bytes.",
++         "scope": [candidate_paths[0]], "acceptance_ids": ACCEPTANCE,
++         "verified_progress": ["Initial Tester/Reviewer comparator records saved."],
++         "next_action": "Check exact AC1 bytes against the original plan.", "candidate_ref": candidate_refs[0]},
++        [accept1_ref, candidate_refs[0]])
++    messages.append(progress1); progress1_ref = save_message(progress1)
++    failed_check_ref = first["tester_run"]["stdout_ref"]
++    plan_check1 = envelope("M10-PLANNER-FAIL", "plan.check", ("planner", "planner-1"),
++        ("manager", "manager-1"), "A1", progress1["message_id"],
++        {"status": "blocked", "summary": "AC1 fails: initial stdout contains CRLF, not the frozen LF bytes.",
++         "acceptance_ids": ACCEPTANCE, "plan_ref": plan_ref,
++         "results": [{"acceptance_id": "AC1", "status": "failed", "evidence_refs":
++            [failed_check_ref, first["tester_run"]["exit_ref"], first["reviewer_run"]["execution_ref"]]}]},
++        [plan_ref, progress1_ref, candidate_refs[0], failed_check_ref,
++         first["tester_run"]["exit_ref"], first["reviewer_run"]["execution_ref"]])
++    messages.append(plan_check1); plan_check1_ref = save_message(plan_check1)
++    rework = envelope("M11-REWORK", "task.decision", ("manager", "manager-1"),
++        ("planner", "planner-1"), "A1", plan_check1["message_id"],
++        {"disposition": "rework", "reason": "Planner's original AC1 failure is confirmed by raw stdout evidence.",
++         "acceptance_ids": ACCEPTANCE, "candidate_ref": candidate_refs[0],
++         "report_ids": [first[role]["message_id"] for role in ("worker", "tester", "reviewer")],
++         "failed_acceptance_ids": ["AC1"]},
++        [plan_check1_ref, candidate_refs[0], failed_check_ref])
++    messages.append(rework); rework_ref = save_message(rework)
++
++    second = dispatch_and_check(2, "A2", "worker-2", "tester-2", "reviewer-2",
++                                candidate_refs[1], candidate_refs[0], rework["message_id"])
++    accept2 = envelope("M18-ACCEPT", "task.decision", ("manager", "manager-1"),
++        ("planner", "planner-1"), "A2", second["reviewer"]["message_id"],
++        {"disposition": "accept", "reason": "Fresh attempt's exact output and independent rerun match AC1.",
++         "acceptance_ids": ACCEPTANCE, "candidate_ref": candidate_refs[1],
++         "report_ids": [second[role]["message_id"] for role in ("worker", "tester", "reviewer")]},
++        [candidate_refs[1], rework_ref, *second["message_refs"]])
++    messages.append(accept2); accept2_ref = save_message(accept2)
++    progress2 = envelope("M19-PROGRESS", "plan.progress", ("manager", "manager-1"),
++        ("planner", "planner-1"), "A2", accept2["message_id"],
++        {"status": "ready-for-original-check", "objective": "Verify unchanged frozen AC1.",
++         "scope": [candidate_paths[1]], "acceptance_ids": ACCEPTANCE,
++         "verified_progress": ["Fresh Tester check and Reviewer rerun match."],
++         "next_action": "Perform the final original-plan check.", "candidate_ref": candidate_refs[1]},
++        [accept2_ref, candidate_refs[1]])
++    messages.append(progress2); progress2_ref = save_message(progress2)
++    plan_check2 = envelope("M20-PLANNER-PASS", "plan.check", ("planner", "planner-1"),
++        ("manager", "manager-1"), "A2", progress2["message_id"],
++        {"status": "passed", "summary": "AC1 exact LF output and zero exit are supported by fresh raw evidence.",
++         "acceptance_ids": ACCEPTANCE, "plan_ref": plan_ref,
++         "results": [{"acceptance_id": "AC1", "status": "passed", "evidence_refs":
++            [second["tester_run"]["stdout_ref"], second["tester_run"]["exit_ref"],
++             second["reviewer_run"]["execution_ref"]]}]},
++        [plan_ref, progress2_ref, candidate_refs[1], second["tester_run"]["stdout_ref"],
++         second["tester_run"]["exit_ref"], second["reviewer_run"]["execution_ref"]])
++    messages.append(plan_check2); save_message(plan_check2)
++
++    packet = ("\n".join(json.dumps(m, ensure_ascii=False, separators=(",", ":")) for m in messages) + "\n").encode("utf-8")
++    write_bytes("ordered-messages.jsonl", packet)
++    sequence_path = OUT / "sequence-files.txt"
++    sequence_path.write_text("\n".join(str((OUT / "messages" / f"{m['message_id']}.json").relative_to(ROOT)) for m in messages) + "\n", encoding="utf-8")
++    sys.path.insert(0, str(ROOT / ".agents" / "skills" / "council-flow" / "scripts"))
++    import contracts
++    contracts.validate_sequence(messages, root=ROOT)
++    (OUT / "sequence-validation.json").write_text(json.dumps({
++        "valid": True, "message_count": len(messages), "attempts": ["A1", "A2"],
++        "planner_failed_criterion": "AC1", "manager_rework_reply": "M10-PLANNER-FAIL",
++        "fresh_worker_instance": "worker-2", "final_planner_status": "passed",
++        "fixture_identities": "synthetic; not native agent observations",
++    }, indent=2) + "\n", encoding="utf-8")
++    return OUT
++
++
++if __name__ == "__main__":
++    print(run())

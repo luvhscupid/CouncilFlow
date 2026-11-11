@@ -1,0 +1,20 @@
+{
+  "protocol": "council-flow-test-strategy",
+  "version": "1.0",
+  "approved_by": "/root",
+  "approved_at": "2026-11-11T04:49:40.059054Z",
+  "authority": "Routine engineering test-strategy approval under the current explicit Owner instruction and original REST-P001 plan; not an Owner approval or OS permission.",
+  "plan_ref": {
+    "artifact_id": "REST-PLAN",
+    "path": "reports/restoration/plan.json",
+    "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+    "kind": "plan"
+  },
+  "oracles": {
+    "strict_contract": "Owner requirements C01-C12: reject malformed/duplicate/nonfinite/unknown/type/role/origin/context/candidate/evidence/acceptance mutations; test positive role/type examples separately from live messages.",
+    "policy": "Five AI roles plus human Owner match original boundaries; YAML never grants OS permissions, retries 3/crashes 2 instruction-only, no engineering attempt cap.",
+    "fresh_sum": "Owner-approved plan syntax sum_values.py 2 3 -1 must output 4; independently calculate integer sums for distinct signed inputs; initial deliberately incomplete fixture must not be accepted.",
+    "regressions": "Previously passing 45 checks must remain passing; intentional old starter is separate expected failure.",
+    "activation": "Use installed native app-server schemas. Discover corrected skill, submit literal $council-flow plus structured skill input using current native account/settings, and report completed inference or exact blocked result. No credential extraction, changed provider, bypass or identical retries."
+  }
+}

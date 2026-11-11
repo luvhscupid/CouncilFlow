@@ -1,0 +1,84 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M018",
+  "message_type": "task.decision",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T10:07:02.952310Z",
+  "in_reply_to": "REST-R-REPORT-001",
+  "payload": {
+    "disposition": "accept",
+    "reason": "Accept the communication-restoration candidate after independent103-test pass, separate eight-interaction review, prior failed-test rejection/fresh repairs, portable archive checks and actual local product commit. This is contract restoration only: new native invocation remains401/systemError-blocked and custom-role selection unverified. Original Planner final check and final evidence-only closeout remain.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "report_ids": [
+      "REST-T3-REPORT-001",
+      "REST-R-REPORT-001"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T3-REPORT-ARTIFACT",
+      "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+      "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "REST-R-REPORT-ARTIFACT",
+      "path": "reports/restoration/messages/REST-R-REPORT-001.json",
+      "sha256": "c8f38fb9eb4c85f5b6ce36cd4436f98d2a78e8d1655300060f7c446c2923cbf1",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "REST-PACKAGE-SNAPSHOT-001",
+      "path": "reports/restoration/package-verification-001.json",
+      "sha256": "721128f7e24a1c5cc45e6c9c4af65b3595bb1a80018990ee185474f3d58632a6",
+      "kind": "release-verification"
+    },
+    {
+      "artifact_id": "REST-ARCHIVE-RELOCATION-001",
+      "path": "reports/restoration/archive-relocation-verification.json",
+      "sha256": "2125667903d56a1376d13d7f59654d5d3c0c3c3d2dc50a6487f19527787a73a7",
+      "kind": "release-verification"
+    },
+    {
+      "artifact_id": "REST-RELEASE-COMMIT-001",
+      "path": "reports/restoration/release-commit-001.json",
+      "sha256": "d6de078a58704939c94b8e0b2bedc39152778e2d41b3af06d431602be7a76c31",
+      "kind": "commit-evidence"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) ... 
+  test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['S-AC1']) ... FAIL
+  test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['UNKNOWN']) ... FAIL
+test_actual_diagnostic_export_and_reference_sensitivity (test_final_independent_contracts.FinalIndependentChecks.test_actual_diagnostic_export_and_reference_sensitivity) ... ok
+test_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations) ... ok
+test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) ... 
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=42) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=False) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value={'path': 'not-a-list'}) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=42) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=False) ... FAIL
+  test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value={'path': 'not-a-list'}) ... FAIL
+test_passed_final_map_requires_explicit_per_criterion_evidence (test_final_independent_contracts.FinalIndependentChecks.test_passed_final_map_requires_explicit_per_criterion_evidence) ... FAIL
+test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) ... 
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=0) ... ERROR
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=1) ... ERROR
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=2) ... ERROR
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=3) ... ERROR
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=4) ... FAIL
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=5) ... ERROR
+  test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=6) ... ERROR
+test_repaired_message_identity_and_falsey_context_types (test_final_independent_contracts.FinalIndependentChecks.test_repaired_message_identity_and_falsey_context_types) ... ok
+
+======================================================================
+ERROR: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 136, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    c.validate_sequence([packet], root=ROOT)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 415, in validate_sequence
+    if plan.get("plan_id") != m["plan_id"] or plan.get("plan_revision") != m["plan_revision"]:
+       ^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 136, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    c.validate_sequence([packet], root=ROOT)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 415, in validate_sequence
+    if plan.get("plan_id") != m["plan_id"] or plan.get("plan_revision") != m["plan_revision"]:
+       ^^^^^^^^
+AttributeError: 'bool' object has no attribute 'get'
+
+======================================================================
+ERROR: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 136, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    c.validate_sequence([packet], root=ROOT)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 415, in validate_sequence
+    if plan.get("plan_id") != m["plan_id"] or plan.get("plan_revision") != m["plan_revision"]:
+       ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 136, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    c.validate_sequence([packet], root=ROOT)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 415, in validate_sequence
+    if plan.get("plan_id") != m["plan_id"] or plan.get("plan_revision") != m["plan_revision"]:
+       ^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 136, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    c.validate_sequence([packet], root=ROOT)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 417, in validate_sequence
+    ids = [x["id"] for x in plan.get("acceptance", [])]
+           ~^^^^^^
+TypeError: string indices must be integers, not 'str'
+
+======================================================================
+ERROR: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=6)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 136, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    c.validate_sequence([packet], root=ROOT)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 417, in validate_sequence
+    ids = [x["id"] for x in plan.get("acceptance", [])]
+           ~^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+FAIL: test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['S-AC1'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 90, in test_accept_decision_cannot_declare_current_failed_criteria
+    with self.subTest(failed_ids=ids), self.assertRaises(c.ContractError):
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) (failed_ids=['UNKNOWN'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 90, in test_accept_decision_cannot_declare_current_failed_criteria
+    with self.subTest(failed_ids=ids), self.assertRaises(c.ContractError):
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 82, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 82, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='tester', value={'path': 'not-a-list'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 82, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 82, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 82, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) (role='reviewer', value={'path': 'not-a-list'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 82, in test_every_recognized_changed_files_field_has_correct_type
+    with self.subTest(role=role, value=bad), self.assertRaises(c.ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_passed_final_map_requires_explicit_per_criterion_evidence (test_final_independent_contracts.FinalIndependentChecks.test_passed_final_map_requires_explicit_per_criterion_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 153, in test_passed_final_map_requires_explicit_per_criterion_evidence
+    with self.assertRaises(c.ContractError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) (value_index=4)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/final/test_final_independent_contracts.py", line 135, in test_referenced_plan_context_has_typed_identity_and_acceptance
+    with self.subTest(value_index=index), self.assertRaises(c.ContractError):
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.059s
+
+FAILED (failures=10, errors=6)

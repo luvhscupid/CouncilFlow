@@ -1,0 +1,40 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-decision-accept-receipt-v1",
+  "message_type": "task.decision",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/planner",
+    "role": "planner"
+  },
+  "created_at": "2026-11-11T11:08:00Z",
+  "in_reply_to": "reviewer-report-receipt-version-attempt-1",
+  "payload": {
+    "disposition": "accept",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "path": "reports/council-flow/candidate.json",
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+      "kind": "candidate-manifest"
+    },
+    "report_ids": [
+      "tester-report-receipt-version-attempt-1",
+      "reviewer-report-receipt-version-attempt-1"
+    ],
+    "reason": "Independent Tester passed exact version bytes, all 12 existing receipt tests, and sample behavior; independent Reviewer observed version, standard receipt, and help interactions; candidate manifest includes only approved receipt files."
+  },
+  "evidence_refs": []
+}

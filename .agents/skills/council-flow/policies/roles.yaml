@@ -29,8 +29,8 @@ roles:
     abilities: ["technical_test"]
     application_code: false
   reviewer:
-    responsibilities: ["Independent experiential review", "Distinguishes observed inspected and simulated behavior", "Does not edit code or replace Tester"]
-    abilities: ["experience_review"]
+    responsibilities: ["Independently compares frozen plan and acceptance, Worker candidate, and recorded Tester evidence", "Reruns one Tester-declared deterministic command and reports comparison findings to Manager", "Does not implement, alter criteria, or replace Tester"]
+    abilities: ["compare_evidence", "independent_rerun"]
     application_code: false
 workflow:
   order: ["owner", "planner", "manager", "worker", "tester", "reviewer", "manager", "planner", "owner"]
@@ -42,7 +42,8 @@ evidence:
   independent_tests: true
   candidate_hashes: true
   original_acceptance: true
-  review_modes: ["observed", "inspected", "simulated"]
+  reviewer_comparison: "original_plan_candidate_tester_evidence_and_independent_rerun"
+  execution_claims_require_recorded_evidence: true
   tester_self_approves_oracle: false
 context:
   fresh_worker_each_attempt: true

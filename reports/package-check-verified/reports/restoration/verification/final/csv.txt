@@ -1,0 +1,20 @@
+test_api_read_only_on_success_and_failure (test_csv_summarizer.CSVSummaryTests.test_api_read_only_on_success_and_failure) ... ok
+test_bad_headers_and_selections (test_csv_summarizer.CSVSummaryTests.test_bad_headers_and_selections) ... ok
+test_bom_unicode_crlf_quoted_commas_quotes_and_multiline (test_csv_summarizer.CSVSummaryTests.test_bom_unicode_crlf_quoted_commas_quotes_and_multiline) ... ok
+test_different_signed_fractional_data (test_csv_summarizer.CSVSummaryTests.test_different_signed_fractional_data) ... ok
+test_exact_accumulation_beyond_input_limits_and_low_context (test_csv_summarizer.CSVSummaryTests.test_exact_accumulation_beyond_input_limits_and_low_context) ... ok
+test_help_and_required_arguments (test_csv_summarizer.CSVSummaryTests.test_help_and_required_arguments) ... ok
+test_invalid_utf8 (test_csv_summarizer.CSVSummaryTests.test_invalid_utf8) ... ok
+test_malformed_quotes (test_csv_summarizer.CSVSummaryTests.test_malformed_quotes) ... ok
+test_multiline_descriptors_do_not_change_logical_error_record (test_csv_summarizer.CSVSummaryTests.test_multiline_descriptors_do_not_change_logical_error_record) ... ok
+test_normalized_headers_and_header_only (test_csv_summarizer.CSVSummaryTests.test_normalized_headers_and_header_only) ... ok
+test_numeric_rejections (test_csv_summarizer.CSVSummaryTests.test_numeric_rejections) ... ok
+test_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok
+test_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok
+test_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok
+test_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.762s
+
+OK

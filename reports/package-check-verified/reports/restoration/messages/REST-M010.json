@@ -1,0 +1,85 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M010",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_initial"
+  },
+  "created_at": "2026-11-11T04:57:08.705726Z",
+  "in_reply_to": "REST-PLAN-LIVE-001",
+  "payload": {
+    "objective": "Independently verify the corrected contract implementation and observe the fresh mandatory demo failure before authorized rework.",
+    "scope": [
+      "reports/restoration/verification/initial/**"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "instructions": [
+      "You are a fresh separate native Tester. Primary Worker /root/restoration_worker stopped all mutations and returned typed report worker/report.json. Do not repair product or developer tests. Read original plan, Owner instructions, current SKILL/policy/communication specification/helper and candidate manifest. Associate every result with this exact candidate/attempt/assignment and the Manager-approved strategy, never self-approve an oracle.",
+      "Independently run root tests (8 preserved static+31 focused contracts), old receipt11+independent5, CSV15+independent6; actual receipt sample must output Rp103,000. Independently run new demo/structured-flow tests and CLI 2 3 -1: initial fixture returns2, required4. This MUST be a failed mandatory result, not acceptance. Old starter expected failure remains separate. Any other defects also reported with exact evidence.",
+      "Add compact isolated independent adversarial tests under reports/restoration/verification/initial only. Probe duplicate keys/NaN/Infinity/overflow/surrogates/types/bools/unknown fields/limits/routes; causal/candidate/plan/attempt/hash/acceptance and origin-binding negatives; YAML restricted parser and semantics; JSONL references; wrong native role keys/Owner authority. Use real controlled packet mutations as well as clearly synthetic unit data. Do not count fixtures as agents.",
+      "Particular unverified static-review cases to execute: validate_sequence containing a non-object JSON item; bad --bindings types; direct malformed policy/event UTF-8 input; nested artifact identity changes; passed Tester with failed mandatory check; Tester oracle substitution/self-approval; Worker changed output versus immutable input and strict Tester/Reviewer binding. A rejection must be a controlled validation error, not an unhandled traceback. Do not alter product to make these pass.",
+      "Validate actual REST-M009 + REST-PLAN-LIVE-001 + REST-M010 + your final report using ordered context, root artifact hashes and externally known expected senders. Save structural and full-context result separately. Bootstrap history is preserved but must not be relabeled fully context-valid. Candidate manifest identifies observed source hashes; compare actual unchanged files before/after; preserve necessary failed-source snapshot if a defect is found.",
+      "Return ONLY schema-valid JSON job.report at reports/restoration/messages/REST-T1-REPORT-001.json, reply REST-M010, echo candidate_ref and oracle_ref exactly and all assigned acceptance IDs. Overall status failed if mandatory demo or another required check fails. Include bounded errors/findings, checks with artifact refs, and a concise detailed report/log under verification/initial. No Markdown message transport.",
+      "All temp fixtures explicitly inside authorized repo and cleaned. No dependency installation, chmod/security changes, other projects, auth/capability retries or native global config edits. Fresh current activation evidence is activation/REST-ACT-REPORT-001.json: discovery passed but native401/systemError leaves explicit invocation unverified. Do not upgrade it. Packaging/commit/final review are still pending, not falsely passed. When investigation is done, stop writes for fresh Worker repair."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    }
+  ]
+}

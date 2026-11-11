@@ -1,0 +1,48 @@
+[
+  {
+    "sent": {
+      "id": 2,
+      "method": "skills/list",
+      "params": {
+        "cwds": [
+          "/workspace/CouncilFlow"
+        ],
+        "forceReload": true
+      }
+    }
+  },
+  {
+    "received": {
+      "id": 2,
+      "result": {
+        "data": [
+          {
+            "cwd": "/workspace/CouncilFlow",
+            "skills": [
+              {
+                "name": "council-flow",
+                "description": "Coordinate an ordinary coding goal through a Planner, parent Manager, fresh Worker, independent Tester, and independent Reviewer using native Codex subagents. Invoke explicitly with $council-flow for implementation, repair, or refactoring that needs this five-role workflow. Do not use for general questions or pretend unavailable delegation works.",
+                "interface": {
+                  "displayName": "CouncilFlow",
+                  "shortDescription": "Coordinate coding with five distinct native agent roles",
+                  "iconSmall": null,
+                  "iconLarge": null,
+                  "iconSmallUrl": null,
+                  "iconLargeUrl": null,
+                  "brandColor": null,
+                  "defaultPrompt": "Use $council-flow to complete this coding goal with independent verification:"
+                },
+                "path": "/workspace/CouncilFlow/.agents/skills/council-flow/SKILL.md",
+                "scope": "repo",
+                "enabled": true,
+                "pluginId": null
+              }
+            ],
+            "errors": []
+          }
+        ]
+      }
+    },
+    "extraction_note": "Unrelated bundled system skill entries omitted; council-flow object copied unchanged."
+  }
+]

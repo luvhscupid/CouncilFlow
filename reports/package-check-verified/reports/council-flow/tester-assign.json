@@ -1,0 +1,50 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-tester-receipt-v1",
+  "message_type": "job.assign",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "created_at": "2026-11-11T10:55:00Z",
+  "in_reply_to": "worker-report-receipt-version-attempt-1",
+  "payload": {
+    "candidate_ref": {
+      "kind": "candidate-manifest",
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+      "path": "reports/council-flow/candidate.json"
+    },
+    "oracle_ref": {
+      "kind": "verification-strategy",
+      "artifact_id": "oracle-receipt-version",
+      "sha256": "4b6b7df267dab7013b116ca15d2539406b857f6d708b28f9dbc65e9c266a6bc2",
+      "path": "reports/council-flow/oracle.json"
+    },
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "instructions": [
+      "Validate and inspect exact candidate snapshots; do not repair product files.",
+      "Execute --version directly from candidate and compare stdout bytes exactly, stderr empty, exit 0.",
+      "Run the candidate test suite; verify existing calculator sample behavior and help/errors as meaningful.",
+      "Inspect all candidate paths for AC3. Report actual commands/exits and evidence; no self-approval."
+    ],
+    "scope": [
+      "Exact immutable candidate in reports/council-flow/candidate.json and its referenced snapshots"
+    ],
+    "objective": "Independently verify AC1-AC3 for the receipt calculator candidate."
+  },
+  "evidence_refs": []
+}

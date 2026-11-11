@@ -1,0 +1,64 @@
+{
+  "source_workspace": "E:\\Saint\\PROJECTS\\CouncilFlow-round6",
+  "isolated_workspace": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-reliability-repair",
+  "git_metadata": false,
+  "modified_source_files": [
+    {
+      "path": ".agents/skills/council-flow/SKILL.md",
+      "sha256": "76d481a58f900b8c77c3cd9cb4e0698cad1d94385183973b4163a49693fa710a",
+      "size": 6171
+    },
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "sha256": "0ca8ccefe43c2884304ce55cb26ec50825f91f6ef86e617ec77877726646111c",
+      "size": 12595
+    },
+    {
+      "path": ".agents/skills/council-flow/references/recovery.md",
+      "sha256": "702b3829ec1d2ca6aaeb01f93dc62ce0597c9fc87ce051a113457b97154c5d8d",
+      "size": 2659
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "3f26ea06bc61396a42be5b9279a39b4401581b6f999be851b48a312e36dbbaa0",
+      "size": 55250
+    },
+    {
+      "path": ".codex/agents/council-reviewer.toml",
+      "sha256": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4",
+      "size": 1630
+    },
+    {
+      "path": ".codex/agents/council-tester.toml",
+      "sha256": "6c45b0033a8aa7dc0c160972500eb40d0e3a255743c817941ea5eea2c4b387e4",
+      "size": 1597
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "e2b3e0a88585bdef0db8bd1e38e86a771383e1f10ad75a0d3d9bffce67b94057",
+      "size": 46273
+    },
+    {
+      "path": "tests/test_skill_files.py",
+      "sha256": "09371df619b6a4d7006f803a46a11aadb86c37381fb93977fc6463263459b751",
+      "size": 8364
+    }
+  ],
+  "historical_evidence_copies": {
+    "source": "E:/Saint/PROJECTS/CouncilFlow-round6-gate3b-fixture/reports/gate3b",
+    "destination": "reports/gate3b",
+    "files": 66,
+    "byte_identical": true
+  },
+  "new_verification_root": "reports/reliability-repair/fresh-verification-final",
+  "release_archive": {
+    "path": "dist/council-flow-reliability-repair.zip",
+    "sha256": "f0798e34d9eeb6cd92dcceb75e90b27543712d3a64f0ceaecc9b152d28656db7"
+  },
+  "patch_file": "reports/reliability-repair/changed-files.patch",
+  "evidence_inventory": "reports/reliability-repair/evidence-inventory.json",
+  "notes": [
+    "Original source workspace and historical fixture evidence remain unchanged.",
+    "reports/reliability-repair/fresh-verification/ is an incomplete generator scratch folder from a failed first setup and is excluded from release and verification claims."
+  ]
+}

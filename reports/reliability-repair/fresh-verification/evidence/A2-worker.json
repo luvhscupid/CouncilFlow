@@ -1,0 +1,15 @@
+{
+  "candidate_ref": {
+    "artifact_id": "candidate-attempt2",
+    "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+    "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+    "kind": "candidate"
+  },
+  "input_candidate_ref": {
+    "artifact_id": "candidate-attempt1",
+    "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt1.py",
+    "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+    "kind": "candidate"
+  },
+  "snapshot_sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6"
+}

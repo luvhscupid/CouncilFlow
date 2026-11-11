@@ -1,0 +1,114 @@
+[
+  {
+    "name": "contracts-and-skill",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 43,
+    "output": "reports/restoration/verification/final/contracts-and-skill.txt",
+    "skipped": 0
+  },
+  {
+    "name": "receipt",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 11,
+    "output": "reports/restoration/verification/final/receipt.txt",
+    "skipped": 0
+  },
+  {
+    "name": "receipt-independent",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 5,
+    "output": "reports/restoration/verification/final/receipt-independent.txt",
+    "skipped": 0
+  },
+  {
+    "name": "csv",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 15,
+    "output": "reports/restoration/verification/final/csv.txt",
+    "skipped": 0
+  },
+  {
+    "name": "csv-independent",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 6,
+    "output": "reports/restoration/verification/final/csv-independent.txt",
+    "skipped": 0
+  },
+  {
+    "name": "fresh-demo",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 4,
+    "output": "reports/restoration/verification/final/fresh-demo.txt",
+    "skipped": 0
+  },
+  {
+    "name": "initial-independent",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/restoration/verification/initial",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 8,
+    "output": "reports/restoration/verification/final/initial-independent.txt",
+    "skipped": 0
+  }
+]

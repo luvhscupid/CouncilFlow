@@ -1,0 +1,113 @@
+{
+  "archive": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-reliability-repair\\dist\\council-flow-reliability-repair.zip",
+  "archive_sha256": "f0798e34d9eeb6cd92dcceb75e90b27543712d3a64f0ceaecc9b152d28656db7",
+  "archive_size": 43149,
+  "entry_count": 16,
+  "crc_test": "PASS",
+  "content_hashes": "PASS",
+  "required_files": [
+    ".agents/skills/council-flow/SKILL.md",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    ".agents/skills/council-flow/policies/roles.yaml",
+    ".codex/agents/council-tester.toml",
+    ".codex/agents/council-reviewer.toml"
+  ],
+  "entries": [
+    {
+      "path": ".agents/skills/council-flow/agents/openai.yaml",
+      "sha256": "3a464c734167669588604d577aee29ff405f5ad20f709640fe5b954b3b6afff0",
+      "size": 262,
+      "crc32": "c4c98d63"
+    },
+    {
+      "path": ".agents/skills/council-flow/policies/roles.yaml",
+      "sha256": "4a03e4af7458c27cbcd65fcfd67def03aa4bc9cd77208427a71ddf0da47dddbf",
+      "size": 3117,
+      "crc32": "0790b202"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/acceptance.md",
+      "sha256": "85956ef54ce63278f9cf467cf6dc22428eb8834ed028b710a639d849366e596d",
+      "size": 4808,
+      "crc32": "77b65791"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "sha256": "0ca8ccefe43c2884304ce55cb26ec50825f91f6ef86e617ec77877726646111c",
+      "size": 12595,
+      "crc32": "e021c47c"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/message-contract.json",
+      "sha256": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783",
+      "size": 4771,
+      "crc32": "9e653780"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/recovery.md",
+      "sha256": "702b3829ec1d2ca6aaeb01f93dc62ce0597c9fc87ce051a113457b97154c5d8d",
+      "size": 2659,
+      "crc32": "d6ce9fa0"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/roles.md",
+      "sha256": "a0e6e870ff737302c331e00fe2c01ca9e99a0ca2b35aeed537edeab4780c9775",
+      "size": 3841,
+      "crc32": "b504dc40"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/workflow.md",
+      "sha256": "e0e1526cb793e5f60e288bf73303c08f140899ccc68b15bc1abb5bb3eb9a9e2f",
+      "size": 4531,
+      "crc32": "49a7aaf8"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "3f26ea06bc61396a42be5b9279a39b4401581b6f999be851b48a312e36dbbaa0",
+      "size": 55250,
+      "crc32": "20684285"
+    },
+    {
+      "path": ".agents/skills/council-flow/SKILL.md",
+      "sha256": "76d481a58f900b8c77c3cd9cb4e0698cad1d94385183973b4163a49693fa710a",
+      "size": 6171,
+      "crc32": "74a55d9c"
+    },
+    {
+      "path": ".codex/agents/council-planner.toml",
+      "sha256": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+      "size": 1423,
+      "crc32": "2b2d297b"
+    },
+    {
+      "path": ".codex/agents/council-reviewer.toml",
+      "sha256": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4",
+      "size": 1630,
+      "crc32": "f7788e28"
+    },
+    {
+      "path": ".codex/agents/council-tester.toml",
+      "sha256": "6c45b0033a8aa7dc0c160972500eb40d0e3a255743c817941ea5eea2c4b387e4",
+      "size": 1597,
+      "crc32": "0c345d62"
+    },
+    {
+      "path": ".codex/agents/council-worker.toml",
+      "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f",
+      "size": 1319,
+      "crc32": "dd213593"
+    },
+    {
+      "path": "README.md",
+      "sha256": "ad5699f5c152f70d8e9c2b07f0df8d9d1271dd450fd156944eeebe39fe5b36ea",
+      "size": 7871,
+      "crc32": "c5ec8731"
+    },
+    {
+      "path": "RELEASE.md",
+      "sha256": "49efb429ca4e7fdadd57561da6b000d914ee6b33736d6f55c4680ab7ee06ad2e",
+      "size": 7501,
+      "crc32": "4fbe79ce"
+    }
+  ]
+}

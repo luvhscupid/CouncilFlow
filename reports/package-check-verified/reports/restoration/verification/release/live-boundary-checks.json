@@ -1,0 +1,71 @@
+{
+  "positive_live_messages": 14,
+  "known_external_origin_bindings": 14,
+  "positive_actual_events": 6,
+  "negative_controls": [
+    {
+      "case": "unknown_actual_predecessor",
+      "result": "REJECTED",
+      "code": "causal_reference",
+      "field": "in_reply_to",
+      "mode": "Artificial mutation of an actual current packet sequence; not new session history"
+    },
+    {
+      "case": "wrong_actual_candidate_bytes",
+      "result": "REJECTED",
+      "code": "artifact_hash",
+      "field": "payload.candidate_ref",
+      "mode": "Artificial mutation of an actual current packet sequence; not new session history"
+    },
+    {
+      "case": "unknown_original_acceptance",
+      "result": "REJECTED",
+      "code": "acceptance",
+      "field": "payload.acceptance_ids",
+      "mode": "Artificial mutation of an actual current packet sequence; not new session history"
+    },
+    {
+      "case": "Worker_role_impersonates_Manager",
+      "result": "REJECTED",
+      "code": "route",
+      "field": "sender/recipient",
+      "mode": "Artificial mutation of an actual current packet sequence; not new session history"
+    },
+    {
+      "case": "externally_bound_origin_mutation",
+      "result": "REJECTED",
+      "code": "origin_binding",
+      "field": "sender",
+      "mode": "Artificial mutation of an actual current packet sequence; not new session history"
+    },
+    {
+      "case": "verification_attempt_mismatch",
+      "result": "REJECTED",
+      "code": "attempt",
+      "field": "attempt_id",
+      "mode": "Artificial mutation of an actual current packet sequence; not new session history"
+    },
+    {
+      "case": "unknown_message_reference",
+      "result": "REJECTED",
+      "code": "event_reference",
+      "field": "1",
+      "mode": "Artificial mutation of actual diagnostic records; not new events"
+    },
+    {
+      "case": "wrong_event_task",
+      "result": "REJECTED",
+      "code": "event_reference",
+      "field": "1",
+      "mode": "Artificial mutation of actual diagnostic records; not new events"
+    },
+    {
+      "case": "extra_event_field",
+      "result": "REJECTED",
+      "code": "unknown_field",
+      "field": "$",
+      "mode": "Artificial mutation of actual diagnostic records; not new events"
+    }
+  ],
+  "limitation": "Controlled-record validation only, not native-transport authentication or OS enforcement"
+}

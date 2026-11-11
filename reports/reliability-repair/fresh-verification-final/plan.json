@@ -1,0 +1,10 @@
+{
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "acceptance": [
+    {
+      "id": "AC1",
+      "criterion": "--version stdout bytes are exactly b'1.0.0\\n' and exit is 0."
+    }
+  ]
+}

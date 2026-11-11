@@ -1,0 +1,40 @@
+{
+  "strategy_id": "gate3b-verification-strategy",
+  "commands": [
+    {
+      "id": "version-exact",
+      "argv": [
+        "python",
+        "-B",
+        "demo/receipt/receipt_calculator.py",
+        "--version"
+      ],
+      "criterion": "AC1",
+      "deterministic": true
+    },
+    {
+      "id": "receipt-suite",
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "criterion": "AC2",
+      "deterministic": true
+    },
+    {
+      "id": "scope-check",
+      "argv": [],
+      "criterion": "AC3",
+      "deterministic": true,
+      "method": "Compare corrected CouncilFlow skill, all council-* role TOMLs, and policy bytes to reports/gate3b/protected-files-before.json. Confirm no changed files outside the two receipt paths."
+    }
+  ],
+  "stdout_normalization": "raw_stdout.replace(b'\\r\\n', b'\\n') only",
+  "scope": "Only demo/receipt/receipt_calculator.py and demo/receipt/test_receipt_calculator.py may be changed as application files. Do not alter skill/config/policy."
+}

@@ -1,0 +1,87 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M013B",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A002",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_final"
+  },
+  "created_at": "2026-11-11T05:19:54.122771Z",
+  "in_reply_to": "REST-M013",
+  "payload": {
+    "objective": "Finish the same independent verification with focused remaining context/evidence consistency probes before final handoff.",
+    "scope": [
+      "reports/restoration/verification/final/**"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "instructions": [
+      "Your B04/B05 findings are accepted as genuine; do not repair them. Before stopping, execute a few related bounded negative probes to avoid serial undiscovered type gaps: root-verified plan_ref artifact containing a JSON non-object, boolean plan_revision, or malformed acceptance entries must reject via controlled validation error rather than AttributeError/TypeError or acceptance. These are input-context type requirements, not a new schema engine.",
+      "Also check whether a passed plan.check can supply empty evidence for every passed result or precede any Manager evaluation, and whether acceptance can omit a previously failed Tester report for the same task/attempt/candidate from report_ids. Preserve exact observation if accepted, without claiming structure can prove evidence semantics or authentication. These checks concern original C04/C08/C09 minimum evidence, no new product purpose.",
+      "If terminal report001 was already created, preserve it unchanged and write a new final report002 for this additional actual assignment, with current time and in_reply_to REST-M013B, same candidate/oracle and full original acceptance IDs. If not yet created, use report001 replying to this actual assignment. Save immutable probe outputs, report only actual failures/limits, then stop. No need repeat passing92 tests; no code/docs/permission/auth changes."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "REST-ACTUAL-EVENT-PREFIX-001",
+      "path": "reports/restoration/events-prefix-001.jsonl",
+      "sha256": "4016f7c988b66fb4828bd120682758688d3948af600e621976d050f9152967c5",
+      "kind": "diagnostic"
+    }
+  ]
+}

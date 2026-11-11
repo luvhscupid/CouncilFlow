@@ -1,0 +1,59 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-decision-gate3b",
+  "message_type": "task.decision",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/gate3b_planner"
+  },
+  "in_reply_to": "plan-publish-gate3b",
+  "payload": {
+    "disposition": "accept",
+    "reason": "AC1 exact version output and zero exit passed; AC2 all 12 receipt tests passed; AC3 only the two receipt files changed and protected skill, policy, and role files retain baseline hashes.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    "report_ids": [
+      "worker-report-gate3b-attempt-1",
+      "tester-report-gate3b-attempt-1",
+      "reviewer-report-gate3b-attempt-1"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-worker-report",
+      "path": "reports/gate3b/worker-report.json",
+      "sha256": "79a42dde3f75c677974cada43920ccda10bf8bebd01d2aebc9b44878fe25cfda",
+      "kind": "worker-report"
+    },
+    {
+      "artifact_id": "gate3b-tester-report",
+      "path": "reports/gate3b/tester-report.json",
+      "sha256": "9ba346246aa95db75086f3ad97eec9d01a2deaaf53ffb2624153298682e34726",
+      "kind": "tester-report"
+    },
+    {
+      "artifact_id": "gate3b-reviewer-report",
+      "path": "reports/gate3b/reviewer-report.json",
+      "sha256": "0349eace4d55d4c5a23696f177576d91b1a1b225de0928bd61e5daf507e811bd",
+      "kind": "reviewer-report"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-worker-receipt-v1",
+  "message_type": "job.assign",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker"
+  },
+  "created_at": "2026-11-11T10:52:00Z",
+  "in_reply_to": "planner-publish-receipt-version-20261111",
+  "payload": {
+    "instructions": [
+      "Implement --version with version 1.0.0 so it can be invoked without required --item arguments.",
+      "Keep changes bounded to the approved scope; never edit CouncilFlow SKILL.md, role configurations, or policy files.",
+      "Run the existing receipt-calculator automated tests and direct --version invocation as developer checks.",
+      "Report changed files and concise actual command results; do not self-approve."
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "objective": "Add a --version option to demo/receipt/receipt_calculator.py.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py only if targeted regression assertion is useful"
+    ]
+  },
+  "evidence_refs": []
+}

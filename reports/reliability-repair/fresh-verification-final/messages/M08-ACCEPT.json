@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M08-ACCEPT",
+  "message_type": "task.decision",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "planner-1"
+  },
+  "in_reply_to": "MA1-REVIEW-REPORT",
+  "payload": {
+    "disposition": "accept",
+    "reason": "Initial Tester and Reviewer records reported PASS.",
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    },
+    "report_ids": [
+      "MA1-WORK-REPORT",
+      "MA1-TEST-REPORT",
+      "MA1-REVIEW-REPORT"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "MA1-WORK-REPORT",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/MA1-WORK-REPORT.json",
+      "sha256": "4a16cd962ca5a80da2d340d8f77ec8993626641c66413e4e675b5fa0aba8c677",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "MA1-TEST-REPORT",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/MA1-TEST-REPORT.json",
+      "sha256": "b157c7d2b8d0f0a222b80378c4357c212364a18956956ffe74661a3bc961a388",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "MA1-REVIEW-REPORT",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/MA1-REVIEW-REPORT.json",
+      "sha256": "64bdacf1bd0912aad8d83c0a60b13f0ab73d32f8455640898fb8d48ac05a93f4",
+      "kind": "message"
+    }
+  ]
+}

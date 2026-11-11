@@ -20,9 +20,12 @@ Planner final check → Owner. Preserve that responsibility order.
    candidate hash in its own job.assign. It executes original acceptance and
    meaningful negative controls, returns technical job.report, and never repairs.
    Worker self-report alone cannot satisfy acceptance.
-6. Fresh independent Reviewer then receives job.assign and actually exercises
-   relevant user interaction. Its job.report labels observed, inspected and
-   simulated scenarios; simulated behavior cannot become authentic observation.
+6. Fresh independent Reviewer receives job.assign after Tester evidence and
+   compares the original plan, candidate and Tester report. It independently
+   reruns one Tester-declared deterministic command, captures its own output/exit
+   evidence, and reports both hashes, comparison, discrepancies and missing
+   evidence to Manager. A match supports repeatability for that command only;
+   NOT_COMPARABLE does not pass E8.
 7. Manager records task.decision JSON, linking original criteria and actual
    reports/evidence. Mandatory failure triggers rejection/rework or a precise
    blocker. Fresh Worker repair preserves acceptance and authorization, followed

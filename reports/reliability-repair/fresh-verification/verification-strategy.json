@@ -1,0 +1,4 @@
+{
+  "strategy_id": "exact-version-bytes",
+  "command": "run --version and preserve raw stdout/exit"
+}

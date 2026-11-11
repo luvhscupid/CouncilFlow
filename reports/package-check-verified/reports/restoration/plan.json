@@ -1,0 +1,165 @@
+{
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "author_role": "planner",
+  "author_instance": "/root/restoration_planner",
+  "objective": "Restore the omitted JSON/YAML/JSONL communication design in the existing installable CouncilFlow skill; preserve the native five-role workflow and verify real supported behavior without redesign.",
+  "source": "Current explicit Owner restoration instructions, sections 1–14. No authoritative v0.2.1 Council schema was found by git grep in authorized tracked text; use council-flow 1.0 as a skill-level communication contract, not the trusted ACP Supervisor.",
+  "scope": [
+    ".agents/skills/council-flow/**",
+    ".codex/agents/council-*.toml",
+    "tests/**",
+    "demo/structured-flow/**",
+    "reports/restoration/**",
+    "reports/requirements-traceability.md",
+    "reports/final.md",
+    "README.md",
+    "RELEASE.md",
+    "dist/council-flow.zip",
+    "dist/council-flow.zip.sha256"
+  ],
+  "preserve": [
+    "demo/receipt/**",
+    "demo/starter/**",
+    "demo/csv-summary/**",
+    "historical role reports and accepted historical contracts",
+    "all supported existing role boundaries and Owner authority"
+  ],
+  "acceptance": [
+    {
+      "id": "C01",
+      "criterion": "Valid version-1.0 messages representing all five AI roles and every required purpose are accepted by deterministic validation. Actual current role-boundary packets use the contract; static fixtures are identified separately."
+    },
+    {
+      "id": "C02",
+      "criterion": "Strict UTF-8 JSON rejects malformed documents, duplicate keys at any depth, NaN/Infinity including overflowed numeric literals, unsupported protocol/version, unknown fields, wrong types, boolean-as-integer, empty identities, oversized/nested data and invalid timestamp/reference shapes."
+    },
+    {
+      "id": "C03",
+      "criterion": "Explicit routing and payload rules reject Worker/Tester/Reviewer authoritative Manager or Owner decisions, invalid roles, self-issued approvals and unsupported Owner impersonation. Known role-instance bindings are checked where supplied. Structural checks are not sender authentication."
+    },
+    {
+      "id": "C04",
+      "criterion": "With ordered known-message/plan context, validate unique identities, predecessor existence, plan/task/revision/attempt consistency, assignment-to-report binding, candidate/evidence identity and immutable acceptance references. Absence of optional context is disclosed, not called authentication or full causal proof."
+    },
+    {
+      "id": "C05",
+      "criterion": "Versioned human-readable YAML is the Council role/workflow policy source, covering five AI roles plus human Owner, allowed authorities, Owner-only consequential decisions, prohibited self-authorization, independent evidence and context isolation, rework and instruction-only retry/resource rules. Restricted-parser limitations are explicit and tested."
+    },
+    {
+      "id": "C06",
+      "criterion": "Preserve native TOML name/description/developer_instructions format and compatible inherited configuration, map YAML responsibilities into instructions without inventing keys; installed CLI/config capability checks distinguish syntax from actual custom-agent loading."
+    },
+    {
+      "id": "C07",
+      "criterion": "Skill and role instructions require JSON task assignments/reports, YAML policy and optional JSONL; ordinary Owner progress/results remain concise natural language. Reviewer observes this separation rather than treating format fixtures as user interaction."
+    },
+    {
+      "id": "C08",
+      "criterion": "A fresh isolated demo has a real failing mandatory behavioral test; separate Tester reports failure, Manager records rejection/rework, fresh Worker repairs under unchanged criteria, and independent verification reruns. No arbitrary lifetime limit on engineering attempts; stop identical unproductive retries."
+    },
+    {
+      "id": "C09",
+      "criterion": "Tester evidence names the original task, attempt, assignment and specific candidate artifact/hash, and comes from a distinct native instance. Worker assertion alone cannot satisfy acceptance. Reviewer records authentic observation versus inspection/simulation; Planner checks original published acceptance."
+    },
+    {
+      "id": "C10",
+      "criterion": "Corrected installable skill and deterministic helpers need only native Codex plus Python standard library; no ACP import, database, service, provider gateway, paid key, new dependency installation or claimed OS boundary."
+    },
+    {
+      "id": "C11",
+      "criterion": "All 45 previously passing checks remain passing: 8 skill/static, 11 receipt, 5 independent receipt, 15 CSV, 6 independent CSV. The 2-test intentional starter with 1 expected failure remains separate. Receipt sample still actually outputs Rp103,000."
+    },
+    {
+      "id": "C12",
+      "criterion": "Negative controls genuinely fail the validators: mutate real-style role/task packets, causal links, candidate hashes, acceptance references, duplicate keys/nesting/size/nonfinite values and policy semantics. A passing example-file read is not live communication proof."
+    },
+    {
+      "id": "R-ACTIVATION",
+      "criterion": "Make a new strongest safely supported native discovery and explicit-invocation attempt with current supported mechanisms and no credential extraction/bypass/provider changes. Run real current Planner/Manager/Worker/Tester/Reviewer sessions with JSON controlled task boundaries even if native activation blocks. Report real session count and preserve unresolved auth/unsupported status."
+    },
+    {
+      "id": "R-DIAGNOSTICS",
+      "criterion": "Provide optional bounded JSONL events with known event types, message/task/attempt/evidence references, strict one-object-per-line validation, no secrets/hidden reasoning/raw prompts and clear non-ledger/non-crash-safe limitation."
+    },
+    {
+      "id": "R-TRACEABILITY",
+      "criterion": "Permanent requirements-traceability map cites current Owner instruction/design principle, implementation file, verification method, actual status and limitation, separating specified/implemented/static/dynamic/native/blocked. No unit count overrides missing activation proof."
+    },
+    {
+      "id": "R-RELEASE",
+      "criterion": "Update current final report, install/reuse guidance and corrected ZIP. Verify complete actual skill/scripts/policy/TOML/references, safe paths/integrity/no runtime or credentials, installation relocation and current tests. Commit authorized repository changes; no push/publication. Use the exact truthful final classification requested by Owner."
+    }
+  ],
+  "implementation_contract": {
+    "communication": "Use the Owner exact envelope fields protocol, version, message_id, message_type, plan_id, plan_revision, task_id, attempt_id, sender, recipient, created_at, in_reply_to, payload, evidence_refs. version is the string 1.0; plan_revision is positive int excluding bool. Scope this to CouncilFlow-controlled UTF-8 packet/report files, not opaque native transport enforcement.",
+    "purposes": [
+      "plan.publish",
+      "job.assign",
+      "job.report",
+      "task.decision",
+      "plan.progress",
+      "plan.check",
+      "approval.request",
+      "approval.decision"
+    ],
+    "routing": "Define and test a single explicit route table: Planner publishes/checks to Manager; Manager assigns Worker/Tester/Reviewer, records task decisions and progress to Planner, and may request genuine human Owner approval. Assigned roles report only to Manager. Human Owner may decide only through approval.decision with actual Owner provenance; no AI may manufacture such a decision. Do not generate approval traffic for routine authorized work.",
+    "payloads": "Strict role-specific payloads preserve original acceptance IDs and plan artifact identity/hash. Assignment contains objective, scope, acceptance IDs, role/attempt/candidate where relevant. Report contains role-appropriate status, candidate identity/hash, results/findings/errors and evidence. Tester report requires technical candidate/assignment linkage; Reviewer observations label observed/inspected/simulated. Manager decisions need independent evidence for acceptance; rework refers to failed criteria. Plan.progress must support the actual bootstrap REST-M001 fields/status without claiming earlier schema validation.",
+    "bounds": "Explicit finite constants: maximum message 65536 UTF-8 bytes, maximum nesting 16 containers, IDs/actor instance IDs at most 128 characters, bounded arrays/strings and allowed object fields. Reject malformed UTF-8 and non-UTF-8-encodable lone surrogate strings. Evidence references carry nonempty artifact_id, repository-relative path, lowercase 64-hex sha256 and bounded kind; verify existence/hash when repository context is requested. Do not read a reference resolved outside the authorized root.",
+    "validation_interface": "Provide a small importable standard-library validator and CLI inside the installed skill scripts directory, documented commands for one/ordered message files, policy validation and optional JSONL. Ordered ordinary message files or explicit context support causal validation, actor-instance bindings and plan/candidate acceptance checks; no persistent ledger, orchestration engine, database or generic server. Return concise machine-readable/CLI errors with paths/codes; unknown context must not be fabricated.",
+    "yaml": "Use a deliberately restricted documented block YAML subset: two-space nested mappings, quoted scalar strings, strict scalar integers/booleans and scalar string lists as needed; reject duplicate keys, tags, anchors, aliases and unsupported YAML constructs. No new parser dependency. Policy semantic checks assert exact roles, authority matrix, Owner-only decisions, inheritance/no-OS-permission claims and native TOML mapping. Keep original responsibilities intact.",
+    "retry_policy": "No fixed engineering-rework lifetime cap. Infrastructure retries=3 and crash recoveries=2 are policy instructions only unless actual accounting is implemented, and must be distinguished from ordinary fresh Worker attempts. No custom runtime/accounting needed for this task.",
+    "integration": "Keep SKILL.md body under existing 100-line limit. Link detailed communication, schema/policy and validator usage references. All four native role developer_instructions require the JSON/policy boundary. Replace JSON-or-equivalent-prose permission in current role references. Preserve legacy historical reports as historical non-versioned evidence, not fabricated migrated history.",
+    "existing_test_change": "The old static test forbidding any scripts and only allowing .md/.yaml intentionally conflicts with this newly authorized deterministic validator requirement. Replace that obsolete restriction with real standard-library-only helper/dependency checks; retain all other protections and explain the Owner-authorized expectation change.",
+    "examples": "Keep compact valid/invalid fixtures for deterministic checks, explicitly artificial. Actual new messages are current-timestamp JSON packets under reports/restoration/messages, with artifact hashes and real available task-path session identities. Preserve bootstrap messages and later validate them with disclosed bootstrap context.",
+    "demo": "Create a tiny new isolated offline integer-summing CLI at demo/structured-flow/sum_values.py plus executable tests. Syntax accepts positional signed ASCII integers; normal 2 3 -1 returns 4; malformed/no-input errors are clear/nonzero and no traceback. Primary Worker creates a deliberately incomplete valid fixture that ignores operands beyond the first so the mandatory multi-value test truly fails. A distinct Tester observes the failure. Manager issues JSON rework decision/assignment to a fresh Worker, who completes the program without changing tests/acceptance. Existing receipt is regression only, never counted as fresh demo.",
+    "evidence": "Actual commands/exits/output stored in bounded files, passed by artifact identity/hash rather than pasted as giant messages. Packet structure and known context checks do not authenticate sender, enforce OS isolation, make a crash-safe ledger or guarantee native transport compliance. User-facing replies never dump internal JSON/YAML/JSONL."
+  },
+  "work_units": [
+    {
+      "id": "W1",
+      "role": "worker",
+      "scope": "Correct skill, policy, contracts, deterministic helpers and tests, docs and initial fresh failing fixture; no old app change. Return JSON job.report with candid candidate/evidence references; stop all writes."
+    },
+    {
+      "id": "T1",
+      "role": "tester",
+      "scope": "Independently validate protocol/policy/integration regressions and actual baseline demo failure; add isolated negative controls only under reports/restoration/verification. Do not repair product."
+    },
+    {
+      "id": "W2",
+      "role": "worker",
+      "scope": "Fresh native Worker completes only failed demo and any proven authorized repair requested by Manager under unchanged plan; return structured evidence; stop writes."
+    },
+    {
+      "id": "T2",
+      "role": "tester",
+      "scope": "Independent affected recheck after repair, including actual controlled JSON packet sequence and evidence identity/causal negative controls. All required suites run to final passing state."
+    },
+    {
+      "id": "R1",
+      "role": "reviewer",
+      "scope": "Separate native first-use experience for skill/validator/docs/demo and Owner-facing natural-language separation; no edits; JSON report labels observed vs inspected vs simulated."
+    },
+    {
+      "id": "F1",
+      "role": "planner",
+      "scope": "Original acceptance-to-evidence final map and plan.check JSON; Manager then final records/package/commit bookkeeping. Final classification cannot upgrade missing activation proof."
+    }
+  ],
+  "dependencies": [
+    "Primary Worker starts only after Manager accepts this immutable plan.",
+    "Full existing baseline completed before implementation; Manager record shows 45 passing checks plus separate expected starter failure.",
+    "Only one Worker mutates workspace at a time. Testers and Reviewer are fresh native sessions distinct from Worker; original Planner reused at final check.",
+    "All test fixtures/temp files explicitly inside /workspace/CouncilFlow and cleaned; no global Codex config, auth extraction, dependency installation, external project or permission changes."
+  ],
+  "risks": [
+    "Overbroad schemas may accept unsupported actor authority or allow hidden acceptance drift; test actual negative mutations.",
+    "A generic policy parser/schema framework would exceed scope; use small restricted stdlib helpers and disclose unsupported YAML.",
+    "Context-free structural checks cannot prove causal or identity authenticity; require supplied context for those checks and state limits.",
+    "Native activation may remain blocked by token refresh or unsupported catalog; continue independent authorized restoration, preserve exact blocker and final classification.",
+    "Packaging a stale helper/policy or runtime/credential artifacts would invalidate delivery; verify archive bytes and relocated install tests."
+  ],
+  "final_classification": "CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED if restoration acceptance passes but native activation does not. COUNCILFLOW_FULLY_VERIFIED only after genuine invocation plus required distinct native execution succeeds. Otherwise PARTIAL or FAILED with precise remaining requirement."
+}

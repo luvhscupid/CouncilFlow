@@ -16,7 +16,7 @@ MAX_ITEMS = 128
 MAX_STRING = 8192
 ROLES = {"planner", "manager", "worker", "tester", "reviewer", "owner"}
 FIELDS = {"protocol", "version", "message_id", "message_type", "plan_id", "plan_revision",
-          "task_id", "attempt_id", "sender", "recipient", "created_at", "in_reply_to",
+          "task_id", "attempt_id", "sender", "recipient", "in_reply_to",
           "payload", "evidence_refs"}
 ROUTES = {
     "plan.publish": ("planner", {"manager"}),
@@ -212,7 +212,6 @@ def validate_message(message, *, root=None, expected_sender=None):
         _identity(message[field], field)
     if type(message["plan_revision"]) is not int or not 1 <= message["plan_revision"] <= 2147483647:
         fail("integer", "plan_revision", "expected positive integer, never bool")
-    _timestamp(message["created_at"])
     if message["in_reply_to"] is not None:
         _identity(message["in_reply_to"], "in_reply_to")
         if message["in_reply_to"] == message["message_id"]:
@@ -254,7 +253,8 @@ def validate_message(message, *, root=None, expected_sender=None):
             artifact(p["oracle_ref"], root, "payload.oracle_ref")
     elif kind == "job.report":
         _object(p, {"status", "summary", "acceptance_ids", "candidate_ref", "findings", "errors"},
-                {"changed_files", "checks", "observations", "input_candidate_ref", "oracle_ref"}, "payload")
+                {"changed_files", "checks", "input_candidate_ref", "oracle_ref",
+                 "deterministic_commands", "comparison"}, "payload")
         _enum(p["status"], {"passed", "failed", "blocked", "in_progress"}, "payload.status")
         _string(p["summary"], "payload.summary")
         _ids(p["acceptance_ids"], "payload.acceptance_ids")
@@ -277,11 +277,38 @@ def validate_message(message, *, root=None, expected_sender=None):
         if "changed_files" in p:
             _strings(p["changed_files"], "payload.changed_files")
         if role == "tester":
+            if "deterministic_commands" not in p:
+                fail("required", "payload.deterministic_commands", "Tester must declare deterministic commands or an empty list")
             if not p.get("checks"):
                 fail("required", "payload.checks", "Tester must supply technical checks")
             if "oracle_ref" not in p:
                 fail("required", "payload.oracle_ref", "Tester must echo Manager-assigned strategy")
             artifact(p["oracle_ref"], root, "payload.oracle_ref")
+            commands = p.get("deterministic_commands", [])
+            if type(commands) is not list or len(commands) > MAX_ITEMS:
+                fail("array", "payload.deterministic_commands", "expected bounded command records")
+            for i, command in enumerate(commands):
+                field = f"payload.deterministic_commands[{i}]"
+                _object(command, {"command_id", "command", "arguments", "workdir", "candidate_ref",
+                                  "input_refs", "exit_code", "stdout_sha256", "acceptance_id", "evidence_ref"}, field=field)
+                _identity(command["command_id"], field + ".command_id")
+                _string(command["command"], field + ".command")
+                _strings(command["arguments"], field + ".arguments")
+                _string(command["workdir"], field + ".workdir", 1024)
+                artifact(command["candidate_ref"], root, field + ".candidate_ref")
+                _refs(command["input_refs"], root, field + ".input_refs")
+                if type(command["exit_code"]) is not int:
+                    fail("integer", field + ".exit_code", "expected actual integer exit code")
+                if type(command["stdout_sha256"]) is not str or not re.fullmatch(r"[0-9a-f]{64}", command["stdout_sha256"]):
+                    fail("hash", field + ".stdout_sha256", "expected SHA-256 of CRLF-to-LF normalized stdout")
+                _identity(command["acceptance_id"], field + ".acceptance_id")
+                artifact(command["evidence_ref"], root, field + ".evidence_ref")
+                if command["candidate_ref"] != p["candidate_ref"] or command["acceptance_id"] not in p["acceptance_ids"]:
+                    fail("command_binding", field, "command must bind to this report candidate and original criterion")
+            if len({x["command_id"] for x in commands}) != len(commands):
+                fail("command_identity", "payload.deterministic_commands", "command IDs must be unique")
+        elif "deterministic_commands" in p:
+            fail("role_payload", "payload.deterministic_commands", "only Tester declares deterministic commands")
         elif "oracle_ref" in p:
             fail("role_payload", "payload.oracle_ref", "only Tester echoes assigned verification strategy")
         if "checks" in p:
@@ -294,14 +321,49 @@ def validate_message(message, *, root=None, expected_sender=None):
                 artifact(check["evidence_ref"], root, "payload.checks.evidence_ref")
             if role == "tester" and p["status"] == "passed" and any(x["status"] != "passed" for x in p["checks"]):
                 fail("contradictory_report", "payload.status", "passed technical report cannot contain unmet mandatory checks")
-        if role == "reviewer" and "observations" not in p:
-            fail("required", "payload.observations", "Reviewer must distinguish interaction modes")
-        if "observations" in p:
-            _object(p["observations"], {"observed", "inspected", "simulated"}, field="payload.observations")
-            for mode, values in p["observations"].items():
-                _strings(values, "payload.observations." + mode)
-            if role == "reviewer" and p["status"] == "passed" and not p["observations"]["observed"]:
-                fail("observation", "payload.observations", "passing review needs actual observation")
+        if role == "reviewer" and "comparison" not in p:
+            fail("required", "payload.comparison", "Reviewer must compare plan, candidate and Tester evidence and rerun a declared command")
+        if "comparison" in p:
+            if role != "reviewer":
+                fail("role_payload", "payload.comparison", "only Reviewer submits comparator findings")
+            comparison = p["comparison"]
+            _object(comparison, {"plan_ref", "tester_report_ref", "candidate_ref", "findings", "discrepancies", "independent_rerun"}, field="payload.comparison")
+            for key in ("plan_ref", "tester_report_ref", "candidate_ref"):
+                artifact(comparison[key], root, "payload.comparison." + key)
+            if comparison["candidate_ref"] != p["candidate_ref"]:
+                fail("candidate", "payload.comparison.candidate_ref", "must identify the compared candidate")
+            _strings(comparison["findings"], "payload.comparison.findings")
+            _strings(comparison["discrepancies"], "payload.comparison.discrepancies")
+            rerun = comparison["independent_rerun"]
+            _object(rerun, {"status"}, {"command_id", "command", "arguments", "workdir", "candidate_ref", "input_refs", "exit_code", "stdout_sha256", "acceptance_id", "evidence_ref", "tester_evidence_ref", "tester_exit_code", "tester_stdout_sha256"}, "payload.comparison.independent_rerun")
+            _enum(rerun["status"], {"MATCH", "MISMATCH", "NOT_COMPARABLE"}, "payload.comparison.independent_rerun.status")
+            if rerun["status"] == "NOT_COMPARABLE":
+                _object(rerun, {"status"}, field="payload.comparison.independent_rerun")
+                if p["status"] == "passed":
+                    fail("comparison", "payload.comparison.independent_rerun", "NOT_COMPARABLE cannot satisfy mandatory review")
+            else:
+                required = {"command_id", "command", "arguments", "workdir", "candidate_ref", "input_refs", "exit_code", "stdout_sha256", "acceptance_id", "evidence_ref", "tester_evidence_ref", "tester_exit_code", "tester_stdout_sha256"}
+                _object(rerun, required, {"status"}, "payload.comparison.independent_rerun")
+                for key in ("command_id", "command", "workdir", "acceptance_id"):
+                    _string(rerun[key], "payload.comparison.independent_rerun." + key)
+                _strings(rerun["arguments"], "payload.comparison.independent_rerun.arguments")
+                _refs(rerun["input_refs"], root, "payload.comparison.independent_rerun.input_refs")
+                artifact(rerun["candidate_ref"], root, "payload.comparison.independent_rerun.candidate_ref")
+                artifact(rerun["evidence_ref"], root, "payload.comparison.independent_rerun.evidence_ref")
+                artifact(rerun["tester_evidence_ref"], root, "payload.comparison.independent_rerun.tester_evidence_ref")
+                for key in ("exit_code", "tester_exit_code"):
+                    if type(rerun[key]) is not int: fail("integer", "payload.comparison.independent_rerun." + key, "expected integer exit code")
+                for key in ("stdout_sha256", "tester_stdout_sha256"):
+                    if type(rerun[key]) is not str or not re.fullmatch(r"[0-9a-f]{64}", rerun[key]): fail("hash", "payload.comparison.independent_rerun." + key, "expected normalized stdout SHA-256")
+                equal = rerun["exit_code"] == rerun["tester_exit_code"] and rerun["stdout_sha256"] == rerun["tester_stdout_sha256"]
+                if (rerun["status"] == "MATCH") != equal:
+                    fail("comparison", "payload.comparison.independent_rerun.status", "recorded result must equal the exit-code and stdout-hash comparison")
+                if rerun["candidate_ref"] != comparison["candidate_ref"]:
+                    fail("candidate", "payload.comparison.independent_rerun.candidate_ref", "rerun candidate identity changed")
+                if rerun["status"] == "MISMATCH" and p["status"] == "passed":
+                    fail("comparison", "payload.status", "mismatching independent rerun cannot pass")
+            if comparison["discrepancies"] and p["status"] == "passed":
+                fail("comparison", "payload.status", "a comparison with unresolved discrepancies cannot pass")
         if p["status"] != "in_progress" and not message["evidence_refs"]:
             fail("evidence", "evidence_refs", "completed report requires evidence references")
     elif kind == "task.decision":
@@ -470,6 +532,50 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                 fail("candidate", "payload.candidate_ref", "verification candidate differs from assignment")
             if m["sender"]["role"] == "tester" and p["oracle_ref"] != predecessor["payload"]["oracle_ref"]:
                 fail("oracle_binding", "payload.oracle_ref", "Tester cannot change or self-approve strategy")
+            if m["sender"]["role"] == "reviewer":
+                comparison = p["comparison"]
+                plan = plans.get(key)
+                if plan is None or comparison["plan_ref"] != plan["payload"]["plan_ref"]:
+                    fail("plan_immutable", "payload.comparison.plan_ref", "Reviewer must identify original frozen plan")
+                tester = next((x for x in seen.values() if x["message_type"] == "job.report"
+                               and x["sender"]["role"] == "tester" and x["task_id"] == m["task_id"]
+                               and x["attempt_id"] == m["attempt_id"] and x["payload"]["candidate_ref"] == p["candidate_ref"]), None)
+                if tester is None:
+                    fail("comparison_evidence", "payload.comparison", "actual prior Tester report for exact candidate required")
+                worker = next((x for x in seen.values() if x["message_type"] == "job.report"
+                               and x["sender"]["role"] == "worker" and x["task_id"] == m["task_id"]
+                               and x["attempt_id"] == m["attempt_id"] and x["payload"]["candidate_ref"] == p["candidate_ref"]), None)
+                if worker is None or tester["payload"]["candidate_ref"] != worker["payload"]["candidate_ref"]:
+                    fail("candidate", "payload.comparison.candidate_ref", "must bind the Worker's actual candidate checked by Tester")
+                tc = comparison["independent_rerun"]
+                tester_ref = comparison["tester_report_ref"]
+                if tester_ref["artifact_id"] != tester["message_id"] or tester_ref["kind"] != "message":
+                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "must reference the exact earlier Tester message")
+                if root is not None:
+                    tester_file = read_json(Path(root) / tester_ref["path"])
+                    if tester_file != tester:
+                        fail("comparison_evidence", "payload.comparison.tester_report_ref", "referenced bytes must contain the exact earlier Tester message")
+                commands = tester["payload"].get("deterministic_commands", [])
+                declared = next((x for x in commands if x["command_id"] == tc.get("command_id")), None)
+                if tc["status"] == "NOT_COMPARABLE":
+                    if commands:
+                        fail("comparison", "payload.comparison.independent_rerun", "Tester declared a deterministic command; Reviewer must select one")
+                else:
+                    if declared is None:
+                        fail("comparison_evidence", "payload.comparison.independent_rerun.command_id", "must select an actual Tester-declared command")
+                    for field in ("command", "arguments", "workdir", "candidate_ref", "input_refs", "acceptance_id"):
+                        if tc[field] != declared[field]:
+                            fail("comparison_binding", "payload.comparison.independent_rerun." + field, "rerun conditions differ from Tester record")
+                    if tc["tester_exit_code"] != declared["exit_code"] or tc["tester_stdout_sha256"] != declared["stdout_sha256"] or tc["tester_evidence_ref"] != declared["evidence_ref"]:
+                        fail("comparison_binding", "payload.comparison.independent_rerun", "Tester execution result/evidence identity changed")
+                    if not any(tc["tester_evidence_ref"] == x for x in tester["evidence_refs"]):
+                        fail("comparison_evidence", "payload.comparison.independent_rerun.tester_evidence_ref", "Tester execution record must be cited by Tester report")
+                    if not any(tc["evidence_ref"] == x for x in m["evidence_refs"]):
+                        fail("comparison_evidence", "payload.comparison.independent_rerun.evidence_ref", "Reviewer rerun record must be cited by Reviewer report")
+                    if (tc["status"] == "MATCH") != (p["status"] == "passed"):
+                        fail("comparison", "payload.status", "only an exactly matching independent rerun can pass review")
+                if not comparison["findings"]:
+                    fail("comparison", "payload.comparison.findings", "record comparison findings against plan, candidate and Tester evidence")
             if p["acceptance_ids"] != predecessor["payload"]["acceptance_ids"]:
                 fail("acceptance", "payload.acceptance_ids", "report changed assigned criteria")
         if kind == "job.assign" and predecessor:
@@ -518,18 +624,48 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                     fail("acceptance", "payload.report_ids", "independent evidence omits required criteria")
             if p["disposition"] == "rework":
                 failures = [r for r in reports if r["payload"]["status"] == "failed"]
-                if not failures:
-                    fail("rework_evidence", "payload.report_ids", "failed verification must be explicit")
-                known_failed = set().union(*(set(r["payload"]["acceptance_ids"]) for r in failures))
+                planner_check = predecessor if predecessor and predecessor["message_type"] == "plan.check" else None
+                if planner_check is not None:
+                    if planner_check["payload"]["status"] == "passed":
+                        fail("rework_evidence", "in_reply_to", "Planner rework must cite a failed or blocked check")
+                    check_progress = seen.get(planner_check["in_reply_to"])
+                    if not check_progress or check_progress["message_type"] != "plan.progress":
+                        fail("rework_evidence", "in_reply_to", "failed Planner check must follow Manager progress")
+                    prior_acceptance = seen.get(check_progress["in_reply_to"])
+                    if (not prior_acceptance or prior_acceptance["message_type"] != "task.decision"
+                            or prior_acceptance["payload"]["disposition"] != "accept"
+                            or prior_acceptance["payload"]["candidate_ref"] != p["candidate_ref"]
+                            or prior_acceptance["attempt_id"] != m["attempt_id"]):
+                        fail("rework_evidence", "in_reply_to", "Planner-detected rework must preserve the earlier Manager acceptance of this candidate")
+                    if not set(prior_acceptance["payload"]["report_ids"]) <= set(p["report_ids"]):
+                        fail("rework_evidence", "payload.report_ids", "rework must retain the reports cited by the earlier Manager acceptance")
+                    planner_failures = {result["acceptance_id"] for result in planner_check["payload"]["results"]
+                                        if result["status"] in {"failed", "blocked", "unverified"}}
+                    if not planner_failures:
+                        fail("rework_evidence", "in_reply_to", "failed Planner check must identify unmet original criteria")
+                    if set(p["failed_acceptance_ids"]) != planner_failures:
+                        fail("rework_evidence", "payload.failed_acceptance_ids", "must preserve every failed Planner criterion exactly")
+                elif not failures:
+                    fail("rework_evidence", "payload.report_ids", "failed verification or a failed Planner check must be explicit")
+                known_failed = set().union(*(set(r["payload"]["acceptance_ids"]) for r in failures)) if failures else set()
+                if planner_check is not None:
+                    known_failed.update(planner_failures)
                 if not set(p["failed_acceptance_ids"]) <= (set(p["acceptance_ids"]) & known_failed):
-                    fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned verification")
+                    fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned criteria and supplied failure evidence")
         if kind == "plan.check" and key in plans:
             if p["plan_ref"] != plans[key]["payload"]["plan_ref"]:
                 fail("plan_immutable", "payload.plan_ref", "must check original plan")
-            if p["status"] == "passed" and (not predecessor or predecessor["message_type"] != "task.decision"
-                                           or predecessor["payload"]["disposition"] != "accept"
-                                           or m["attempt_id"] != predecessor["attempt_id"]):
-                fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance")
+            if p["status"] == "passed":
+                acceptance = predecessor if predecessor and predecessor["message_type"] == "task.decision" else None
+                if predecessor and predecessor["message_type"] == "plan.progress":
+                    progress_acceptance = seen.get(predecessor["in_reply_to"])
+                    if progress_acceptance and progress_acceptance["message_type"] == "task.decision":
+                        acceptance = progress_acceptance
+                        if predecessor["payload"].get("candidate_ref") not in (None, acceptance["payload"]["candidate_ref"]):
+                            fail("final_check_context", "in_reply_to", "Manager progress cannot change the accepted candidate")
+                if (acceptance is None or acceptance["payload"]["disposition"] != "accept"
+                        or acceptance["attempt_id"] != m["attempt_id"]):
+                    fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance, directly or through its progress packet")
         if kind == "approval.decision":
             if not predecessor or predecessor["message_type"] != "approval.request" or p["approval_request_id"] != reply:
                 fail("approval_reference", "payload.approval_request_id", "actual prior request required")
@@ -540,6 +676,13 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
         refs = list(m["evidence_refs"])
         refs.extend(p[name] for name in ("candidate_ref", "input_candidate_ref", "plan_ref", "oracle_ref", "operation_ref", "provenance_ref") if name in p)
         refs.extend(check["evidence_ref"] for check in p.get("checks", []))
+        for command in p.get("deterministic_commands", []):
+            refs.extend([command["candidate_ref"], command["evidence_ref"]] + command["input_refs"])
+        if "comparison" in p:
+            refs.extend(p["comparison"][k] for k in ("plan_ref", "tester_report_ref", "candidate_ref"))
+            rerun = p["comparison"]["independent_rerun"]
+            refs.extend(rerun[k] for k in ("candidate_ref", "evidence_ref", "tester_evidence_ref") if k in rerun)
+            refs.extend(rerun.get("input_refs", []))
         refs.extend(ref for result in p.get("results", []) for ref in result["evidence_refs"])
         for ref in refs:
             previous = artifact_ids.get(ref["artifact_id"])
@@ -609,7 +752,8 @@ def validate_policy(policy):
                                                "deployment", "paid_provider", "weaken_acceptance"],
                       "ordinary_repair_owner_approval": False},
         "evidence": {"independent_tests": True, "candidate_hashes": True, "original_acceptance": True,
-                     "review_modes": ["observed", "inspected", "simulated"], "tester_self_approves_oracle": False},
+                     "reviewer_comparison": "original_plan_candidate_tester_evidence_and_independent_rerun",
+                     "execution_claims_require_recorded_evidence": True, "tester_self_approves_oracle": False},
         "context": {"fresh_worker_each_attempt": True, "independent_tester": True,
                     "independent_reviewer": True, "one_mutating_worker": True},
         "resources": {"engineering_rework": "no_fixed_lifetime_limit",
@@ -627,7 +771,7 @@ def validate_policy(policy):
     _object(policy["roles"], ROLES, field="roles")
     abilities = {"owner": [], "planner": ["plan", "final_check"],
                  "manager": ["delegate", "request_rework", "evaluate_evidence"],
-                 "worker": ["implement"], "tester": ["technical_test"], "reviewer": ["experience_review"]}
+                 "worker": ["implement"], "tester": ["technical_test"], "reviewer": ["compare_evidence", "independent_rerun"]}
     for role in ROLES:
         definition = policy["roles"][role]
         _object(definition, {"responsibilities", "abilities", "application_code"}, field="roles." + role)

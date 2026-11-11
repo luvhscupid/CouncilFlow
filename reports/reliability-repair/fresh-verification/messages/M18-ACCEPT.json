@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M18-ACCEPT",
+  "message_type": "task.decision",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "planner-1"
+  },
+  "in_reply_to": "MA2-REVIEW-REPORT",
+  "payload": {
+    "disposition": "accept",
+    "reason": "Fresh attempt's exact output and independent rerun match AC1.",
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    "report_ids": [
+      "MA2-WORK-REPORT",
+      "MA2-TEST-REPORT",
+      "MA2-REVIEW-REPORT"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "M11-REWORK",
+      "path": "reports/reliability-repair/fresh-verification/messages/M11-REWORK.json",
+      "sha256": "7240acdf4687d10ad470a1637454ca02ad7ca698b97068733f431b9921616905",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "MA2-WORK-REPORT",
+      "path": "reports/reliability-repair/fresh-verification/messages/MA2-WORK-REPORT.json",
+      "sha256": "5c10ffd1e41199c2dc37a9b702d27cb80017ffdad8845924e8bff4fc687bd57e",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "MA2-TEST-REPORT",
+      "path": "reports/reliability-repair/fresh-verification/messages/MA2-TEST-REPORT.json",
+      "sha256": "b0ff73e20270a288b6bc9ae3a535e2aa4426e35aba7e10e8c2f19f9e8ca3745f",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "MA2-REVIEW-REPORT",
+      "path": "reports/reliability-repair/fresh-verification/messages/MA2-REVIEW-REPORT.json",
+      "sha256": "e85a1f48aa146bf975f05fa4798fadd971e8f452b4a4c099126acdfa3ef73a4e",
+      "kind": "message"
+    }
+  ]
+}

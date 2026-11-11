@@ -1,0 +1,46 @@
+{
+  "commands": [
+    {
+      "id": "attempt2-version",
+      "argv": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "demo/receipt/receipt_calculator.py",
+        "--version"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+      "exit_code": 0,
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "raw_stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/gate3b/attempt2-version.stdout.bin",
+      "stderr_path": "reports/gate3b/attempt2-version.stderr.bin",
+      "exit_path": "reports/gate3b/attempt2-version.exit.txt",
+      "stdout_bytes": 6,
+      "stderr_bytes": 0
+    },
+    {
+      "id": "attempt2-receipt-suite",
+      "argv": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "af63d87f79d93cc8b684e7392838c5e34075dc1f47baef5d50ca94cc57282ec0",
+      "stdout_path": "reports/gate3b/attempt2-receipt-suite.stdout.bin",
+      "stderr_path": "reports/gate3b/attempt2-receipt-suite.stderr.bin",
+      "exit_path": "reports/gate3b/attempt2-receipt-suite.exit.txt",
+      "stdout_bytes": 0,
+      "stderr_bytes": 1341
+    }
+  ]
+}

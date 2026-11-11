@@ -1,0 +1,8 @@
+{
+  "identity": "REST-WORKER-INPUT-CONTEXT-001",
+  "captured_at": "2026-11-11T04:45:44.614452Z",
+  "plan_id": "REST-P001",
+  "attempt_id": "REST-A001",
+  "inspected_helper_sha256": "460edc9043accd73cf5ef1c52ef8ed9f12ba7fb2a88c081ef02f1336a449da75",
+  "purpose": "Immutable record of the input context for a developer-side contract-integration clarification; not an assertion that this pre-handoff helper is verified."
+}

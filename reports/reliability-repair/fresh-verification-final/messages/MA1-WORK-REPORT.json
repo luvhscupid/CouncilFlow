@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "MA1-WORK-REPORT",
+  "message_type": "job.report",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A1",
+  "sender": {
+    "role": "worker",
+    "instance_id": "worker-1"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "in_reply_to": "MA1-WORK-ASSIGN",
+  "payload": {
+    "status": "passed",
+    "summary": "Candidate snapshot recorded.",
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "candidates/candidate-attempt1.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "A1-worker-evidence",
+      "path": "reports/reliability-repair/fresh-verification-final/evidence/A1-worker.json",
+      "sha256": "092e46180901d8a70cd845b8a56cbc90dd1f356c56e2f07312f435c3515af119",
+      "kind": "worker-evidence"
+    },
+    {
+      "artifact_id": "MA1-WORK-ASSIGN",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/MA1-WORK-ASSIGN.json",
+      "sha256": "aec8e250cf4d1b6aa6d18e4222180430767ab8717b4504527d715ea774708a46",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "plan-original",
+      "path": "reports/reliability-repair/fresh-verification-final/plan.json",
+      "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+      "kind": "plan"
+    }
+  ]
+}

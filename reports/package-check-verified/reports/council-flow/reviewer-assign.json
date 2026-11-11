@@ -1,0 +1,44 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-reviewer-receipt-v1",
+  "message_type": "job.assign",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer"
+  },
+  "created_at": "2026-11-11T11:01:00Z",
+  "in_reply_to": "tester-report-receipt-version-attempt-1",
+  "payload": {
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "scope": [
+      "Exact immutable candidate snapshots"
+    ],
+    "instructions": [
+      "Exercise the candidate as a user by running --version and a normal receipt command.",
+      "Inspect help output and usability, but do not modify code.",
+      "Report observed commands/output, inspected paths, and simulated cases separately.",
+      "Keep findings specific and do not substitute for technical testing."
+    ],
+    "objective": "Review the user-facing command-line behavior of the receipt calculator candidate.",
+    "candidate_ref": {
+      "path": "reports/council-flow/candidate.json",
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": []
+}

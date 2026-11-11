@@ -42,15 +42,27 @@ language; do not expose internal envelopes or long logs by default.
    edits. Worker cannot approve itself. Manager writes no application code.
    One Worker mutates a workspace; parallel implementation requires authorized
    isolated workspaces.
-5. **Tester.** Fresh separate native Tester independently executes the original
-   acceptance and Manager-approved verification strategy on that exact candidate.
-   Return job.report with checks/evidence; do not repair product or approve its
-   own oracle. Worker tests/assertions alone never establish independent success.
-6. **Reviewer.** After technical verification, fresh separate native Reviewer
-   exercises the result as a user. Return job.report JSON separating observed,
-   inspected and simulated behavior. No code edits or substitution for Tester.
+5. **Tester.** Fresh separate native Tester independently executes original
+   acceptance and the approved verification strategy on the exact candidate.
+   For each suitable deterministic command, record the exact executable path in
+   `command`, arguments, working directory, candidate and relevant input identities/hashes, exit code, SHA-256
+   of stdout after CRLF-to-LF replacement only, criterion ID and evidence artifact.
+   A declaration alone does not prove determinism. Do not repair product or approve
+   the oracle.
+6. **Reviewer.** Compare the frozen plan and criteria, Worker candidate and
+   Tester's recorded technical evidence. Receive and preserve the exact Tester
+   command/executable path, arguments, working directory, candidate and relevant
+   input references. Independently rerun that declared executable without a
+   shell alias; capture raw stdout/exit, apply CRLF-to-LF-only
+   normalization and SHA-256, and report both results and evidence to Manager.
+   Matching proves repeatability only for that command and recorded conditions.
+   Mismatches preserve both results and fail review; no command is
+   NOT_COMPARABLE and cannot pass E8. Do not implement, alter criteria, or perform
+   generalized UX evaluation.
 7. **Rework.** Manager records task.decision JSON from evidence: accept, reject,
-   rework or escalate. Failed mandatory checks cannot be accepted. Repairs use
+   rework or escalate. When the original Planner check finds unmet criteria,
+   rework must reply to that exact check and preserve every failed criterion and
+   its evidence. Failed mandatory checks cannot be accepted. Repairs use
    a fresh Worker/attempt under unchanged criteria, then affected independent
    checks. Follow [recovery](references/recovery.md); no lifetime engineering
    repair cap. Infrastructure retry 3/crash recovery 2 are instruction-only
@@ -63,7 +75,9 @@ language; do not expose internal envelopes or long logs by default.
 ## Evidence and limits
 
 Follow [workflow](references/workflow.md). Keep real task/plan/attempt/message IDs,
-UTC timestamps, causal references, commands/exits and evidence hashes. Structural
+validated causal order, causal references, commands/exits and evidence hashes.
+Agent-authored envelopes omit `created_at`; diagnostic timestamp syntax does not
+prove trusted clock provenance. Structural
 validation is not sender authentication, native-transport control or OS isolation.
 Without supplied context, only structure is checked; disclose missing context.
 No JSON/YAML declaration grants filesystem, network, execution or approval power.

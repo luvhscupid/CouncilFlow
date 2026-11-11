@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "MA2-TEST-ASSIGN",
+  "message_type": "job.assign",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "tester-2"
+  },
+  "in_reply_to": "MA2-WORK-REPORT",
+  "payload": {
+    "objective": "Independently execute the approved exact-output check.",
+    "scope": [
+      "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py"
+    ],
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "instructions": [
+      "Record raw stdout and exit evidence."
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "manager-oracle",
+      "path": "reports/reliability-repair/fresh-verification-final/verification-strategy.json",
+      "sha256": "753a9585b83c58e7c5589afd8e92e3b9ef034fc8ff48baae44641de200a355b1",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "manager-oracle",
+      "path": "reports/reliability-repair/fresh-verification-final/verification-strategy.json",
+      "sha256": "753a9585b83c58e7c5589afd8e92e3b9ef034fc8ff48baae44641de200a355b1",
+      "kind": "verification-strategy"
+    },
+    {
+      "artifact_id": "MA2-WORK-REPORT",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/MA2-WORK-REPORT.json",
+      "sha256": "d4c0b1e9f0288fb3138c672a29d3ee55067f4c027539a2d8fe64b7c079eb8021",
+      "kind": "message"
+    }
+  ]
+}

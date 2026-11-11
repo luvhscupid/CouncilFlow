@@ -1,0 +1,59 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-decision-gate3b-attempt2",
+  "message_type": "task.decision",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/gate3b_planner"
+  },
+  "in_reply_to": "worker-report-gate3b-attempt-2",
+  "payload": {
+    "disposition": "accept",
+    "reason": "Attempt 2 satisfies AC1 with exact raw stdout b'1.0.0\\n', empty stderr and exit 0; AC2 passes all 12 tests; AC3 limits changes to the two receipt files with protected hashes unchanged.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    "report_ids": [
+      "worker-report-gate3b-attempt-2",
+      "tester-report-gate3b-attempt-2",
+      "reviewer-report-gate3b-attempt-2"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-worker-report-attempt2",
+      "path": "reports/gate3b/worker-report-attempt2.json",
+      "sha256": "ac4c7610e271f4ce087c97f85e25c62ac79d6d24ec47170ebe188ef759d43b8d",
+      "kind": "worker-report"
+    },
+    {
+      "artifact_id": "gate3b-tester-report-attempt2",
+      "path": "reports/gate3b/tester-report-attempt2.json",
+      "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+      "kind": "tester-report"
+    },
+    {
+      "artifact_id": "gate3b-reviewer-report-attempt2",
+      "path": "reports/gate3b/reviewer-report-attempt2.json",
+      "sha256": "92f4ecc7bed476e0e728231e4e40a5c625abad99d4861bd5b2eea9c468ae7aea",
+      "kind": "reviewer-report"
+    }
+  ]
+}

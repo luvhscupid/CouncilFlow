@@ -1,0 +1,244 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "tester-report-gate3b-attempt-1",
+  "message_type": "job.report",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/gate3b_tester"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "manager-assign-tester-gate3b",
+  "payload": {
+    "status": "passed",
+    "summary": "Independently ran the assigned version command and receipt suite; all 12 tests passed. Confirmed exact version content after CRLF-to-LF normalization and unchanged protected files.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "gate3b-manager-oracle",
+      "path": "reports/gate3b/verification-strategy.json",
+      "sha256": "a120ecaf5abca262792a1fed123038a479072507ebbde5eb5d340dc45023fcea",
+      "kind": "verification-strategy"
+    },
+    "checks": [
+      {
+        "name": "AC1 exact --version output and zero exit",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-version-stdout",
+          "path": "reports/gate3b/tester-version.stdout.bin",
+          "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1",
+          "kind": "stdout"
+        }
+      },
+      {
+        "name": "AC2 existing receipt suite passes (12 tests including focused version test)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-suite-stderr",
+          "path": "reports/gate3b/tester-receipt-suite.stderr.bin",
+          "sha256": "f8a53b9d826c3bdd534b61321698995c3dead6718ecafabfc5a57ce692998a65",
+          "kind": "stderr"
+        }
+      },
+      {
+        "name": "AC3 only two receipt paths differ; protected skill, policy and TOML hashes unchanged",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-scope-evidence",
+          "path": "reports/gate3b/tester-scope-check.json",
+          "sha256": "ea37f7f0f178f5fd28c905c0bf1a4283465e5aea168845eb537c42d1a5b7a0f7",
+          "kind": "scope-check"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "version-exact",
+        "command": "python",
+        "arguments": [
+          "-B",
+          "demo/receipt/receipt_calculator.py",
+          "--version"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+        "candidate_ref": {
+          "artifact_id": "gate3b-worker-candidate",
+          "path": "reports/gate3b/candidate-worker.json",
+          "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "gate3b-version-plan",
+            "path": "reports/gate3b/plan.json",
+            "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+            "kind": "plan"
+          },
+          {
+            "artifact_id": "manager-tester-assignment",
+            "path": "reports/gate3b/tester-assign.json",
+            "sha256": "f1d72796886770f730346ed7234c5ade96723e69025bc70e6dd5a12550428565",
+            "kind": "assignment"
+          },
+          {
+            "artifact_id": "gate3b-worker-report",
+            "path": "reports/gate3b/worker-report.json",
+            "sha256": "79a42dde3f75c677974cada43920ccda10bf8bebd01d2aebc9b44878fe25cfda",
+            "kind": "worker-report"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+        "acceptance_id": "AC1",
+        "evidence_ref": {
+          "artifact_id": "execution-version-exact",
+          "path": "reports/gate3b/tester-version.stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "kind": "execution-stderr"
+        }
+      },
+      {
+        "command_id": "receipt-suite",
+        "command": "python",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+        "candidate_ref": {
+          "artifact_id": "gate3b-worker-candidate",
+          "path": "reports/gate3b/candidate-worker.json",
+          "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "gate3b-version-plan",
+            "path": "reports/gate3b/plan.json",
+            "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+            "kind": "plan"
+          },
+          {
+            "artifact_id": "manager-tester-assignment",
+            "path": "reports/gate3b/tester-assign.json",
+            "sha256": "f1d72796886770f730346ed7234c5ade96723e69025bc70e6dd5a12550428565",
+            "kind": "assignment"
+          },
+          {
+            "artifact_id": "gate3b-worker-report",
+            "path": "reports/gate3b/worker-report.json",
+            "sha256": "79a42dde3f75c677974cada43920ccda10bf8bebd01d2aebc9b44878fe25cfda",
+            "kind": "worker-report"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "AC2",
+        "evidence_ref": {
+          "artifact_id": "execution-receipt-suite",
+          "path": "reports/gate3b/tester-receipt-suite.stderr.bin",
+          "sha256": "f8a53b9d826c3bdd534b61321698995c3dead6718ecafabfc5a57ce692998a65",
+          "kind": "execution-stderr"
+        }
+      }
+    ],
+    "findings": [],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "manager-tester-assignment",
+      "path": "reports/gate3b/tester-assign.json",
+      "sha256": "f1d72796886770f730346ed7234c5ade96723e69025bc70e6dd5a12550428565",
+      "kind": "assignment"
+    },
+    {
+      "artifact_id": "gate3b-worker-report",
+      "path": "reports/gate3b/worker-report.json",
+      "sha256": "79a42dde3f75c677974cada43920ccda10bf8bebd01d2aebc9b44878fe25cfda",
+      "kind": "worker-report"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "gate3b-manager-oracle",
+      "path": "reports/gate3b/verification-strategy.json",
+      "sha256": "a120ecaf5abca262792a1fed123038a479072507ebbde5eb5d340dc45023fcea",
+      "kind": "verification-strategy"
+    },
+    {
+      "artifact_id": "tester-scope-evidence",
+      "path": "reports/gate3b/tester-scope-check.json",
+      "sha256": "ea37f7f0f178f5fd28c905c0bf1a4283465e5aea168845eb537c42d1a5b7a0f7",
+      "kind": "scope-check"
+    },
+    {
+      "artifact_id": "tester-version-stdout",
+      "path": "reports/gate3b/tester-version.stdout.bin",
+      "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "tester-version-stderr",
+      "path": "reports/gate3b/tester-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "tester-version-exit",
+      "path": "reports/gate3b/tester-version.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    },
+    {
+      "artifact_id": "tester-suite-stdout",
+      "path": "reports/gate3b/tester-receipt-suite.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "tester-suite-stderr",
+      "path": "reports/gate3b/tester-receipt-suite.stderr.bin",
+      "sha256": "f8a53b9d826c3bdd534b61321698995c3dead6718ecafabfc5a57ce692998a65",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "tester-suite-exit",
+      "path": "reports/gate3b/tester-receipt-suite.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    }
+  ]
+}

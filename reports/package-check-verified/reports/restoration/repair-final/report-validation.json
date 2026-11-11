@@ -1,0 +1,10 @@
+{
+  "valid": true,
+  "message": "reports/restoration/messages/REST-W3-REPORT-001.json",
+  "sequence_messages": 13,
+  "expected_sender": {
+    "role": "worker",
+    "instance_id": "/root/restoration_repair_final"
+  },
+  "boundary": "Controlled records, artifact bytes and supplied external bindings; no transport authentication."
+}

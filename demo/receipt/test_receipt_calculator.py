@@ -63,6 +63,11 @@ class CommandLineTests(unittest.TestCase):
     def run_cli(self, *arguments: str) -> subprocess.CompletedProcess[str]:
         return subprocess.run([sys.executable, str(PROGRAM), *arguments], text=True, capture_output=True, check=False)
 
+    def test_version(self) -> None:
+        result = self.run_cli("--version")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "1.0.0\n")
+
     def test_sample_cli(self) -> None:
         result = self.run_cli("--item", "rice", "2", "30000", "kg", "--item", "onions", "1", "43000", "kg")
         self.assertEqual(result.returncode, 0, result.stderr)

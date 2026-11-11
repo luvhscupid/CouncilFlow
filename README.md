@@ -6,12 +6,12 @@ fresh Worker, requests separate Tester and Reviewer assessments, coordinates
 repairs, and asks the Planner for a final objective check. Only the Manager gives
 routine progress and results to the human Owner.
 
-**CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED.** Communication restoration
-passed independent technical verification, experiential review and the original
-Planner's final check. Fresh native discovery passed, but explicit invocation
-remains **UNVERIFIED** after HTTP 401
-authentication rejection. The real-agent workflow does not replace that missing
-proof. See [current results](reports/final.md) and [traceability](reports/requirements-traceability.md).
+**Council Round 6 corrections are implemented and deterministically verified in
+the isolated `CouncilFlow-round6` copy. Gate 3b is blocked** because this
+workspace has no Git history or recoverable clean pre-test receipt-calculator
+fixture: the available candidate already contains the requested `--version`
+feature. No fresh activation was claimed. See [Gate 3b results](reports/gate3b-results.md),
+[release details](RELEASE.md), and historical results in [reports/final.md](reports/final.md).
 
 It uses native Codex delegation and inherited account/provider permissions. It
 needs no API key, subscription, database, server, or custom agent runtime. Role
@@ -85,10 +85,11 @@ python3 -m unittest discover -s tests -v
 ```
 
 This suite combines static metadata/reference/native-TOML checks and executable
-deterministic JSON/YAML/JSONL validator tests. It does not establish native skill
+deterministic JSON/YAML/JSONL validator tests, including synthetic C1/C2 controls. It does not establish native skill
 invocation or real role independence. Application and native-agent observations
 are tested and recorded separately. The V01–V14 definitions remain in
-`tests/validation_cases.json`; current C01–C12 evidence is in the traceability map.
+`tests/validation_cases.json`; T01–T24 are synthetic regression definitions, not
+real native-agent execution evidence.
 
 See [RELEASE.md](RELEASE.md) for package contents, portability, and release checks.
 
@@ -126,8 +127,10 @@ python3 -m unittest discover -s tests -v
 
 Sequence context and externally observed actor bindings are not copied from
 self-asserted sender labels. A Worker output may differ from its assigned input;
-Tester/Reviewer must verify that exact output. Manager assigns the test strategy,
-and a Tester cannot self-approve or substitute its oracle.
+Tester and Reviewer must verify the exact output. Reviewer also compares original
+criteria and Tester evidence and reruns one declared deterministic command.
+Manager assigns the test strategy, and a Tester cannot self-approve or substitute
+its oracle.
 For a Tester assignment, `oracle_ref` is **required** and the report must echo
 it exactly. General optional-reference wording applies to other assignments;
 it does not waive the Tester's Manager-approved strategy requirement.

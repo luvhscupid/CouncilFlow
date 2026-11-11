@@ -1,0 +1,3 @@
+# Actual pre-validator bootstrap messages
+
+REST-M001 and REST-M003 preserve received Manager packets, including actual timestamps and fields. They were sent before the restored schema existed and are not retroactively claimed as validated communication. REST-M003 has an identity/path-only evidence reference without a hash; the strict final evidence-reference schema must reject that draft shape rather than weaken the contract or rewrite this history. Future messages must use the restored complete shape. REST-M002 is the actual Planner publication under messages/; its plan artifact hash is preserved.

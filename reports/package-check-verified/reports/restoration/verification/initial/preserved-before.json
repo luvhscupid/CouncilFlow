@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-11-11T04:58:11.191200Z",
+  "files": {
+    ".agents/skills/council-flow/SKILL.md": "fd458cea49398728b0b3f9520bbe52f2df9e4a89c13b8363f6b33940bcceeca9",
+    ".agents/skills/council-flow/policies/roles.yaml": "c74b606a502b43622a2abe531634ac3f575d5a5a5bef70f7b57d14575515305b",
+    ".agents/skills/council-flow/agents/openai.yaml": "3a464c734167669588604d577aee29ff405f5ad20f709640fe5b954b3b6afff0",
+    ".agents/skills/council-flow/references/acceptance.md": "dead0f5499959be0803334d72f3284a0bad8e08cec654416da711530c6db59fb",
+    ".agents/skills/council-flow/references/roles.md": "4f395e96c2c92b2dab4504783ebbe50e4fbbe1e5c31f50cb5e1ebabe6b72ba26",
+    ".agents/skills/council-flow/references/workflow.md": "1d06608f8a51b4a25083262aeb711dded1e90201d67f0898d06f85848e6bf6f8",
+    ".agents/skills/council-flow/references/recovery.md": "19896e94d13bbbe076a2e0d5bab1b7507016cb52b8498f7c0c2c5520b30fdf1f",
+    ".agents/skills/council-flow/references/message-contract.json": "c193bf29daf7fe5a1fecb41900508d33c86e7114f810dbde013b83b052205057",
+    ".agents/skills/council-flow/references/communication.md": "13c4aecba45a9308ab4821d533853ef197da80c854db878afadf9a81f8bd964e",
+    ".agents/skills/council-flow/scripts/contracts.py": "724549a9be37543b867214be316f8f2b6a063493e4ff6e9e39c97182ae6ca27b",
+    ".codex/agents/council-worker.toml": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f",
+    ".codex/agents/council-reviewer.toml": "76ed8dff878fbb6ae5fad80e2b33243e1ea676fe21a9e9a85d123544e3464d44",
+    ".codex/agents/council-planner.toml": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+    ".codex/agents/council-tester.toml": "f63da0d34d80bde80443d1ebf1ce82d9b81fb76d9673d95d8157d7ffe051c118",
+    "README.md": "27ca4e59fd5d35efe3477de12712a08f6ed20ba6562d1c5399824e9008487872",
+    "RELEASE.md": "b395d05e570de6b9b9c577967725f88bdfdd990946335ed9a57c10ba3a8ce7b8",
+    "tests/test_contracts.py": "50fbb283aa017ee7ff8c216e87f159ef2faa59606a5303a9fcca259341b535d6",
+    "tests/test_skill_files.py": "1ae944e45f032874da406c0d9fc81dcd4e4f0909a65fc88f3900d6571daa85a4",
+    "demo/structured-flow/sum_values.py": "0d82ff4029a964d159e93bc66661ed4da9682388fd1064e5b939ec22f9be78ea",
+    "demo/structured-flow/test_sum_values.py": "c3c43c6eac2fcb77dfc4e93532f3f5223f029e9a7d5481320ad7545572ca5430",
+    "reports/restoration/plan.json": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+    "reports/restoration/oracle.json": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+    "reports/restoration/worker/candidate-001-final.json": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f"
+  }
+}

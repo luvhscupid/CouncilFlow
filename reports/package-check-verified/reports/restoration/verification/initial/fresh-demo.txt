@@ -1,0 +1,20 @@
+test_invalid_values_are_clear_without_traceback (test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback) ... ok
+test_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok
+test_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... FAIL
+test_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok
+
+======================================================================
+FAIL: test_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/demo/structured-flow/test_sum_values.py", line 18, in test_multiple_signed_values
+    self.assertEqual(result.stdout, "4\n")
+AssertionError: '2\n' != '4\n'
+- 2
++ 4
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.195s
+
+FAILED (failures=1)

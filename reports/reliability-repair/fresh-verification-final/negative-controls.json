@@ -1,0 +1,46 @@
+{
+  "fixture": "fresh-verification-final",
+  "controls": [
+    {
+      "id": "wrong_tester_message_reference",
+      "rejected": true,
+      "reason": "comparison_evidence at payload.comparison.tester_report_ref: must reference the exact earlier Tester message"
+    },
+    {
+      "id": "candidate_hash_tampering",
+      "rejected": true,
+      "reason": "artifact_hash at payload.candidate_ref: reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py"
+    },
+    {
+      "id": "reviewer_command_identity_mismatch",
+      "rejected": true,
+      "reason": "comparison_binding at payload.comparison.independent_rerun.command: rerun conditions differ from Tester record"
+    },
+    {
+      "id": "failed_criterion_identity_forgery",
+      "rejected": true,
+      "reason": "acceptance at payload.failed_acceptance_ids: failed criteria must be assigned criteria"
+    },
+    {
+      "id": "rework_assignment_bypass",
+      "rejected": true,
+      "reason": "attempt at attempt_id: unexpected attempt change"
+    },
+    {
+      "id": "same_worker_reuse",
+      "rejected": true,
+      "reason": "fresh_worker at recipient.instance_id: repair requires fresh native Worker"
+    },
+    {
+      "id": "same_attempt_reuse",
+      "rejected": true,
+      "reason": "fresh_attempt at attempt_id: repair requires fresh attempt"
+    },
+    {
+      "id": "accepted_candidate_swapped_in_final_progress",
+      "rejected": true,
+      "reason": "final_check_context at in_reply_to: Manager progress cannot change the accepted candidate"
+    }
+  ],
+  "all_rejected": true
+}

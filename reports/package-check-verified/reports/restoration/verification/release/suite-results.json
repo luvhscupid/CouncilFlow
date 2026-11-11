@@ -1,0 +1,157 @@
+{
+  "observed_at": "2026-11-11T05:35:48.624166Z",
+  "candidate_ref": {
+    "artifact_id": "REST-CANDIDATE-003",
+    "path": "reports/restoration/repair-final/candidate-003.json",
+    "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+    "kind": "candidate"
+  },
+  "oracle_ref": {
+    "artifact_id": "REST-MANAGER-ORACLE-001",
+    "path": "reports/restoration/oracle.json",
+    "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+    "kind": "oracle"
+  },
+  "results": [
+    {
+      "suite": "contracts-and-skill",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 47,
+      "expected_methods": 47,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/contracts-and-skill.txt"
+    },
+    {
+      "suite": "receipt",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 11,
+      "expected_methods": 11,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/receipt.txt"
+    },
+    {
+      "suite": "receipt-independent",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 5,
+      "expected_methods": 5,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/receipt-independent.txt"
+    },
+    {
+      "suite": "csv",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 15,
+      "expected_methods": 15,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/csv.txt"
+    },
+    {
+      "suite": "csv-independent",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 6,
+      "expected_methods": 6,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/csv-independent.txt"
+    },
+    {
+      "suite": "fresh-demo",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 4,
+      "expected_methods": 4,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/fresh-demo.txt"
+    },
+    {
+      "suite": "first-independent",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/restoration/verification/initial",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 8,
+      "expected_methods": 8,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/first-independent.txt"
+    },
+    {
+      "suite": "second-independent",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/restoration/verification/final",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 7,
+      "expected_methods": 7,
+      "skipped": 0,
+      "output": "reports/restoration/verification/release/second-independent.txt"
+    }
+  ],
+  "total_methods": 103,
+  "unexpected_failed_suites": 0,
+  "skipped": 0,
+  "note": "Eight actual independently executed suites; old deliberate starter not included. Historical failed logs preserved."
+}

@@ -1,0 +1,17 @@
+{
+  "structural": "PASS",
+  "ordered_context_root_artifacts_and_known_origin": "PASS",
+  "actual_input_files": [
+    "reports/restoration/messages/REST-M009.json",
+    "reports/restoration/messages/REST-PLAN-LIVE-001.json",
+    "reports/restoration/messages/REST-M010.json",
+    "reports/restoration/messages/REST-T1-REPORT-001.json",
+    "reports/restoration/messages/REST-M011.json",
+    "reports/restoration/messages/REST-M012.json",
+    "reports/restoration/messages/REST-W2-REPORT-001.json",
+    "reports/restoration/messages/REST-M013.json",
+    "reports/restoration/messages/REST-M013B.json"
+  ],
+  "terminal_report": "reports/restoration/messages/REST-T2-REPORT-001.json",
+  "boundary": "Controlled packet validation only; failed technical findings remain failed, not accepted."
+}

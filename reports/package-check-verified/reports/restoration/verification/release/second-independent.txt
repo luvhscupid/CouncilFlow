@@ -1,0 +1,12 @@
+test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) ... ok
+test_actual_diagnostic_export_and_reference_sensitivity (test_final_independent_contracts.FinalIndependentChecks.test_actual_diagnostic_export_and_reference_sensitivity) ... ok
+test_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations) ... ok
+test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) ... ok
+test_passed_final_map_requires_explicit_per_criterion_evidence (test_final_independent_contracts.FinalIndependentChecks.test_passed_final_map_requires_explicit_per_criterion_evidence) ... ok
+test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) ... ok
+test_repaired_message_identity_and_falsey_context_types (test_final_independent_contracts.FinalIndependentChecks.test_repaired_message_identity_and_falsey_context_types) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.053s
+
+OK

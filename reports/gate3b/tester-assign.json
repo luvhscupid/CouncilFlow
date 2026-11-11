@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-tester-gate3b",
+  "message_type": "job.assign",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/gate3b_tester"
+  },
+  "in_reply_to": "worker-report-gate3b-attempt-1",
+  "payload": {
+    "objective": "Independently verify the immutable Worker candidate against the frozen AC1-AC3.",
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "instructions": [
+      "Execute both commands in your own session in the fixture root and retain raw stdout, stderr and exit evidence.",
+      "Record exact command, arguments, working directory, candidate_ref, input_refs, exit code, and SHA-256 of stdout normalized only by CRLF-to-LF.",
+      "Compare skill/policy/role files and application changes against reports/gate3b/protected-files-before.json; only the two receipt paths may differ.",
+      "Write reports/gate3b/tester-report.json and referenced evidence. Do not modify product or CouncilFlow files and do not self-approve."
+    ],
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "oracle_ref": {
+      "artifact_id": "gate3b-manager-oracle",
+      "path": "reports/gate3b/verification-strategy.json",
+      "sha256": "a120ecaf5abca262792a1fed123038a479072507ebbde5eb5d340dc45023fcea",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "gate3b-worker-report",
+      "path": "reports/gate3b/worker-report.json",
+      "kind": "worker-report",
+      "sha256": "79a42dde3f75c677974cada43920ccda10bf8bebd01d2aebc9b44878fe25cfda"
+    },
+    {
+      "artifact_id": "protected-files-before",
+      "path": "reports/gate3b/protected-files-before.json",
+      "sha256": "2113087d89a1af8a794e1d9be1e8ed330a2a5da6c4d6ee4623caba1f12909a78",
+      "kind": "scope-baseline"
+    }
+  ]
+}

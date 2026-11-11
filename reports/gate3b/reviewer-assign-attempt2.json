@@ -1,0 +1,68 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-reviewer-gate3b-attempt2",
+  "message_type": "job.assign",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/gate3b_reviewer_attempt2"
+  },
+  "in_reply_to": "tester-report-gate3b-attempt2",
+  "payload": {
+    "objective": "Independently compare attempt-2 against frozen plan, Worker candidate and Tester evidence, and rerun one Tester deterministic command.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    "instructions": [
+      "Read frozen plan, attempt-2 Worker and Tester reports, candidate manifest and evidence. Inspect source diff/protected hashes.",
+      "Independently rerun one Tester deterministic command: python -B demo/receipt/receipt_calculator.py --version. Verify raw stdout exactly b'1.0.0\\n', stderr empty, exit 0; compare Tester exit and normalized stdout hash. Preserve your own raw evidence.",
+      "Write reports/gate3b/reviewer-report-attempt2.json as valid CouncilFlow 1.0 job.report with comparison and independent_rerun fields, exact candidate_ref, findings/errors and evidence. State MATCH only for exact rerun equality. No created_at. Do not edit source/protected files."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "gate3b-worker-report-attempt2",
+      "path": "reports/gate3b/worker-report-attempt2.json",
+      "sha256": "ac4c7610e271f4ce087c97f85e25c62ac79d6d24ec47170ebe188ef759d43b8d",
+      "kind": "worker-report"
+    },
+    {
+      "artifact_id": "gate3b-tester-report-attempt2",
+      "path": "reports/gate3b/tester-report-attempt2.json",
+      "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+      "kind": "tester-report"
+    }
+  ]
+}

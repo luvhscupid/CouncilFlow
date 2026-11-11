@@ -1,0 +1,78 @@
+{
+  "type": "PlannerResult",
+  "request_ref": "Parent native PlannerRequest CF-DEMO-001",
+  "task_id": "CF-DEMO-001",
+  "revision": 1,
+  "role": "Planner",
+  "agent_id": "/root/demo_planner",
+  "plan_mode": "native",
+  "contract_ref": "reports/contracts/demo.json",
+  "objective": "Complete and independently verify an offline Decimal-safe receipt calculator from the deliberately incomplete fixture, using the CouncilFlow role sequence.",
+  "scope": [
+    "demo/receipt/**",
+    "demo/README.md (finished-demo execution instructions only)",
+    "reports/demo/** (role reports, command outputs, acceptance evidence)"
+  ],
+  "requirements": [
+    "R1: Accept multiple actual product entries, quantity, and unit price.",
+    "R2: Calculate accurate line totals and grand total using Decimal-safe money arithmetic.",
+    "R3: Reject negative quantities and invalid prices, including non-finite values.",
+    "R4: Display currency amounts in Indonesian rupiah with the Owner's comma-thousands example convention.",
+    "R5: Run offline with executable automated tests.",
+    "R6: Preserve the starter defect and its failing evidence; do not hardcode desired output."
+  ],
+  "acceptance": [
+    "D01: A runnable Python standard-library-only program exists at demo/receipt/receipt_calculator.py; no network, paid API, additional installation, or predecessor-project import is needed.",
+    "D02: CLI accepts repeatable --item NAME QUANTITY UNIT_PRICE UNIT arguments. The command --item rice 2 30000 kg --item onions 1 43000 kg displays both actual line calculations and Total = Rp103,000; each line total is Rp60,000 and Rp43,000 respectively.",
+    "D03: Different product names and values produce calculated output, demonstrated by at least one non-sample multi-item receipt; empty input is rejected with a concise usage/error message and nonzero exit.",
+    "D04: ProductEntry(name, quantity, unit_price, unit=''), line_total, grand_total(entries), and format_rupiah(amount) remain importable for behavioral checks. Stored quantities/prices and monetary results use Decimal, never binary floating arithmetic. Accepted fractional calculations retain their exact monetary value, including 0.1 x 0.2 = 0.02 and a value beyond two fractional places. Either accept numeric precision exactly or explicitly reject unsupported bounds rather than silently round it.",
+    "D05: Negative quantities, negative prices, malformed prices, NaN, positive/negative infinity, and malformed quantities are rejected. CLI returns nonzero with a clear actionable error and no traceback for these user inputs. Zero quantity and zero price are accepted as nonnegative values.",
+    "D06: Rupiah formatting uses Rp and comma thousands separators (Rp103,000). Accepted fractional money remains visible and correct with a dot decimal separator (for example Rp0.02); no silent integer truncation or unexplained rounding.",
+    "D07: Executable unittest coverage exercises multi-entry arithmetic, a non-sample receipt, Decimal fractional arithmetic, invalid and non-finite inputs, and CLI success/error behavior. Worker developer checks pass, then a distinct Tester independently executes the tests and additional meaningful behavioral checks against this unchanged contract.",
+    "D08: CLI --help and concise demo instructions explain the exact repeated-item syntax, plain decimal numeric inputs without currency/thousands separators, unit input, the sample command, and how to run tests. A distinct Reviewer actually runs help, a normal invocation, and an error path, distinguishing interaction from inspection.",
+    "D09: demo/starter/ remains unchanged. Its original quantity-ignoring failure is retained as evidence and explicitly rejected by the Manager. A fresh Worker distinct from W001 implements the correction in demo/receipt/; mandatory later failures require fresh Worker repair or a blocked disposition, never criterion weakening.",
+    "D10: Actual role identifiers, changed files, commands, exit statuses, outputs, Tester and Reviewer findings, repair decisions, and final Planner mapping are recorded. The demo may pass its application criteria while full skill explicit invocation remains UNVERIFIED; no report may convert manual workflow execution into native activation proof."
+  ],
+  "constraints": [
+    "Authorized root /workspace/CouncilFlow only; no other projects, global configuration, existing installations, permission changes, deployment, or publication.",
+    "Manager coordinates without writing application code. Only one Worker mutates this workspace at a time.",
+    "Tester is a fresh separate native agent and cannot repair implementation; isolated extra tests may be placed under reports/demo/verification/.",
+    "Reviewer is a fresh separate native agent and cannot edit code.",
+    "Acceptance D01-D10 is immutable for Worker, Tester, Reviewer, and Manager; record findings rather than lower criteria.",
+    "Use the current native session's supported tools and inherited model/provider; no simulated roles, custom orchestrator, or invented identifiers.",
+    "Use plain decimal numeric input without grouping/currency symbols; document any supported numeric magnitude/precision bounds. Blank names and units should yield a clear input error."
+  ],
+  "work_units": [
+    "W1: Fresh Worker creates the finished CLI/API and developer tests under demo/receipt/, with usage instructions and command evidence.",
+    "T1: Fresh independent Tester verifies D01-D07 and D09-D10, records edge cases and failures without repairs.",
+    "R1: Fresh independent Reviewer exercises help, success, and error flows and reports D08 experience.",
+    "F1: Manager determines rework or acceptance; Planner maps original D01-D10 to final evidence."
+  ],
+  "dependencies": [
+    "W001 has stopped mutations; its deliberately incomplete starter exists and baseline tests failed meaningfully.",
+    "Python 3.12 standard library and actual native collaboration tools are available.",
+    "Independent testing follows Worker completion; experiential review follows technical verification."
+  ],
+  "risks": [
+    "Decimal context precision can silently round accepted large or highly fractional input unless handled or bounded explicitly.",
+    "NaN and infinity parse as Decimal but must be rejected before comparison/calculation.",
+    "Argparse may interpret negative numeric tokens as options; all invalid inputs still require clear nonzero errors without traceback.",
+    "Native discovery is observed, but separate CLI inference failed; explicit invocation success remains unverified and does not become a demo pass by assertion."
+  ],
+  "implementation_status": "PLANNED_NOT_IMPLEMENTED",
+  "evidence": [
+    "demo/README.md",
+    "demo/starter/receipt_calculator.py",
+    "demo/starter/test_receipt_calculator.py",
+    "reports/starter-failure.txt",
+    "reports/runtime/skills-list.json"
+  ],
+  "open_findings": [
+    "Finished application has not been implemented or independently verified.",
+    "Native explicit invocation inference remains UNVERIFIED; native collaboration is available."
+  ],
+  "repair_decisions": [
+    "Manager rejected starter Rp73,000 result; fresh Worker must implement actual quantity multiplication and remaining behavior in a separate final demo workspace."
+  ],
+  "final_disposition": "PENDING_MANAGER_ACCEPTANCE_AND_IMPLEMENTATION"
+}

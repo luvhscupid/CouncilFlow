@@ -1,0 +1,122 @@
+{
+  "baseline": {
+    "skill_contracts": {
+      "command": "python -m unittest discover -s tests -v",
+      "tests": 64,
+      "passed": 64,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "receipt_regression": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/receipt",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "csv_demo": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/csv-summary",
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "structured_demo": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/structured-flow",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "starter_failure_fixture": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/starter",
+      "tests": 2,
+      "passed": 1,
+      "failed": 1,
+      "status": "EXPECTED_FAILURE_FIXTURE",
+      "failure": "73000 != 103000"
+    }
+  },
+  "after": {
+    "skill_contracts": {
+      "command": "python -m unittest discover -s tests -v",
+      "tests": 71,
+      "passed": 71,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "receipt_regression": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/receipt",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "csv_demo": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/csv-summary",
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "structured_demo": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/structured-flow",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "starter_failure_fixture": {
+      "command": "python -m unittest -v",
+      "cwd": "demo/starter",
+      "tests": 2,
+      "passed": 1,
+      "failed": 1,
+      "status": "EXPECTED_FAILURE_FIXTURE",
+      "failure": "73000 != 103000"
+    },
+    "policy_validation": {
+      "command": "python -B .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    "complete_sequence": {
+      "command": "python -B .agents/skills/council-flow/scripts/contracts.py sequence <20 ordered message files> --root .",
+      "exit_code": 0,
+      "messages": 20,
+      "attempts": [
+        "A1",
+        "A2"
+      ],
+      "status": "PASS"
+    },
+    "negative_controls": {
+      "file": "fresh-verification-final/negative-controls.json",
+      "rejected": 8,
+      "passed": 0,
+      "status": "PASS"
+    }
+  },
+  "historical": {
+    "baseline_validator": {
+      "status": "FAIL_AS_RECORDED",
+      "error": "comparison_evidence at payload.comparison.tester_report_ref: must reference the identified Tester evidence artifact"
+    },
+    "repaired_validator": {
+      "status": "FAIL_AS_RECORDED",
+      "error": "comparison_evidence at payload.comparison.tester_report_ref: must reference the exact earlier Tester message"
+    },
+    "preservation": "Original Gate 3b evidence not rewritten; source and fixture hash inventories match their baselines."
+  },
+  "native_workflow": {
+    "status": "UNVERIFIED",
+    "reason": "No authenticated native $council-flow activation or genuine role-session observations were available in this execution."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "valid": true,
+  "message_count": 20,
+  "attempts": [
+    "A1",
+    "A2"
+  ],
+  "planner_failed_criterion": "AC1",
+  "manager_rework_reply": "M10-PLANNER-FAIL",
+  "fresh_worker_instance": "worker-2",
+  "final_planner_status": "passed",
+  "fixture_identities": "synthetic; not native agent observations"
+}

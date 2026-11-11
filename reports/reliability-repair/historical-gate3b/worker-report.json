@@ -1,0 +1,102 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "worker-report-gate3b-attempt-1",
+  "message_type": "job.report",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/gate3b_worker"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "manager-assign-worker-gate3b",
+  "payload": {
+    "status": "passed",
+    "summary": "Added argparse --version output and a focused exact-output CLI test; developer checks completed successfully.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "manager-worker-assignment",
+      "path": "reports/gate3b/worker-assign.json",
+      "sha256": "599f8157a4a6274f10147dc2f0250b9297a6c6e8dc6dfaf14293c19bb9b9ea85",
+      "kind": "assignment"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "worker-command-evidence",
+      "path": "reports/gate3b/worker-command-evidence.json",
+      "sha256": "2c10ced4b91ff2b7dad0b1a45fae28bbf72799b230ec03058d99468a35a85e79",
+      "kind": "command-evidence"
+    },
+    {
+      "artifact_id": "worker-version-stdout",
+      "path": "reports/gate3b/worker-version.stdout.bin",
+      "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "worker-version-stderr",
+      "path": "reports/gate3b/worker-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "worker-version-exit",
+      "path": "reports/gate3b/worker-version.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    },
+    {
+      "artifact_id": "worker-suite-stdout",
+      "path": "reports/gate3b/worker-receipt-suite.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "worker-suite-stderr",
+      "path": "reports/gate3b/worker-receipt-suite.stderr.bin",
+      "sha256": "687516e0d6a9d27aab5bc1be62029b89d224de703af68701a6e6d11919cc02fb",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "worker-suite-exit",
+      "path": "reports/gate3b/worker-receipt-suite.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    }
+  ]
+}

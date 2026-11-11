@@ -1,0 +1,430 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-PLAN-FINAL-001",
+  "message_type": "plan.check",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T10:16:57Z",
+  "in_reply_to": "REST-M018",
+  "payload": {
+    "status": "passed",
+    "summary": "All16 original restoration/attempt criteria pass within their stated evidence scope. Final classification CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED: genuine explicit inference remains401/systemError-blocked and live custom-role selection unverified. This is not COUNCILFLOW_FULLY_VERIFIED. Actual independent103-test pass, separate eight-interaction review, failed-test rejection/fresh repairs, exact installed archive bytes/relocation and observed local commit support the map. Parent final metadata/archive refresh and evidence commit remain closeout, with no future ID invented.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "plan_ref": {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    },
+    "results": [
+      {
+        "acceptance_id": "C01",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-SUITES-001",
+            "path": "reports/restoration/verification/release/suite-results.json",
+            "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+            "kind": "test-evidence"
+          },
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C02",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-SUITES-001",
+            "path": "reports/restoration/verification/release/suite-results.json",
+            "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+            "kind": "test-evidence"
+          },
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C03",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-SUITES-001",
+            "path": "reports/restoration/verification/release/suite-results.json",
+            "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+            "kind": "test-evidence"
+          },
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-PLANNER-BINDINGS-001",
+            "path": "reports/restoration/planner-final/context-bindings-inspected.json",
+            "sha256": "0422e8ed47c4051ec5ad27d21f1bb23c96959c1620615d7cd7084ed70f47f5a7",
+            "kind": "origin-context-snapshot"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C04",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          },
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-PLANNER-BINDINGS-001",
+            "path": "reports/restoration/planner-final/context-bindings-inspected.json",
+            "sha256": "0422e8ed47c4051ec5ad27d21f1bb23c96959c1620615d7cd7084ed70f47f5a7",
+            "kind": "origin-context-snapshot"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C05",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-POLICY-001",
+            "path": ".agents/skills/council-flow/policies/roles.yaml",
+            "sha256": "c74b606a502b43622a2abe531634ac3f575d5a5a5bef70f7b57d14575515305b",
+            "kind": "policy"
+          },
+          {
+            "artifact_id": "REST-PLANNER-SUITES-001",
+            "path": "reports/restoration/verification/release/suite-results.json",
+            "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+            "kind": "test-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C06",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PACKAGE-SNAPSHOT-001",
+            "path": "reports/restoration/package-verification-001.json",
+            "sha256": "721128f7e24a1c5cc45e6c9c4af65b3595bb1a80018990ee185474f3d58632a6",
+            "kind": "release-verification"
+          },
+          {
+            "artifact_id": "REST-PLANNER-ACTIVATION-REPORT-001",
+            "path": "reports/restoration/activation/REST-ACT-REPORT-001.json",
+            "sha256": "dae936937318bb55c333021b933837ffd9488c77539e65476f93e48256f40b2f",
+            "kind": "activation-evidence"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C07",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-R-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-R-REPORT-001.json",
+            "sha256": "c8f38fb9eb4c85f5b6ce36cd4436f98d2a78e8d1655300060f7c446c2923cbf1",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-PLANNER-README-001",
+            "path": "reports/restoration/planner-final/README-inspected.md",
+            "sha256": "17dc8220c5edf7a6731c5da64eb02ff5d81a96ac44c5c3662db741c623bfe35f",
+            "kind": "documentation-snapshot"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C08",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-T1-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T1-REPORT-001.json",
+            "sha256": "fd012854ce223d0464d72d86ee45d9934582b809cd168f5f02568ac8e7ec20e4",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-PLANNER-REWORK-001",
+            "path": "reports/restoration/messages/REST-M011.json",
+            "sha256": "7263674d99005184642c8b5c31b23f06660b970d3cd483fb575512946d066699",
+            "kind": "decision"
+          },
+          {
+            "artifact_id": "REST-PLANNER-REWORK-002",
+            "path": "reports/restoration/messages/REST-M014.json",
+            "sha256": "ff9db8fde3174458607c9338858674198846a1d42232123c846a8a692751b34c",
+            "kind": "decision"
+          },
+          {
+            "artifact_id": "REST-PLANNER-WORKER3-001",
+            "path": "reports/restoration/messages/REST-W3-REPORT-001.json",
+            "sha256": "db8652b307ec8d5ab7119c2dea2f5bb4ca6dffa2985b2561fcf66d3231e7d879",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C09",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-R-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-R-REPORT-001.json",
+            "sha256": "c8f38fb9eb4c85f5b6ce36cd4436f98d2a78e8d1655300060f7c446c2923cbf1",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-MANAGER-ACCEPT-001",
+            "path": "reports/restoration/messages/REST-M018.json",
+            "sha256": "64be5fe3b78aa4df1c568385ee597106b271436d2e7ec38c999878255bdc24d2",
+            "kind": "decision"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C10",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PACKAGE-SNAPSHOT-001",
+            "path": "reports/restoration/package-verification-001.json",
+            "sha256": "721128f7e24a1c5cc45e6c9c4af65b3595bb1a80018990ee185474f3d58632a6",
+            "kind": "release-verification"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C11",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-SUITES-001",
+            "path": "reports/restoration/verification/release/suite-results.json",
+            "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+            "kind": "test-evidence"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C12",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-SUITES-001",
+            "path": "reports/restoration/verification/release/suite-results.json",
+            "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+            "kind": "test-evidence"
+          },
+          {
+            "artifact_id": "REST-T3-REPORT-ARTIFACT",
+            "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+            "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "REST-PLANNER-INTERIM-REJECTION-001",
+            "path": "reports/restoration/planner-interim-rejection.json",
+            "sha256": "93a487df7374aadc2b7d3d7821dadf6d45c3797ad09676fc90e656d15c17be90",
+            "kind": "negative-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "R-ACTIVATION",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-ACTIVATION-REPORT-001",
+            "path": "reports/restoration/activation/REST-ACT-REPORT-001.json",
+            "sha256": "dae936937318bb55c333021b933837ffd9488c77539e65476f93e48256f40b2f",
+            "kind": "activation-evidence"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "R-DIAGNOSTICS",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-EVENTS-001",
+            "path": "reports/restoration/planner-final/events-inspected.jsonl",
+            "sha256": "f91c82dab08532ff93a76f4eac7e22c69490061ca6855c1c09a3abe1caa88d2f",
+            "kind": "diagnostic-snapshot"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "R-TRACEABILITY",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PLANNER-TRACEABILITY-001",
+            "path": "reports/restoration/planner-final/requirements-traceability-inspected.md",
+            "sha256": "7369c6a259ec0a3610f11cace9518a621caff2ae5f98afec5a03947f7627b4ca",
+            "kind": "report-snapshot"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "R-RELEASE",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "REST-PACKAGE-SNAPSHOT-001",
+            "path": "reports/restoration/package-verification-001.json",
+            "sha256": "721128f7e24a1c5cc45e6c9c4af65b3595bb1a80018990ee185474f3d58632a6",
+            "kind": "release-verification"
+          },
+          {
+            "artifact_id": "REST-ARCHIVE-RELOCATION-001",
+            "path": "reports/restoration/archive-relocation-verification.json",
+            "sha256": "2125667903d56a1376d13d7f59654d5d3c0c3c3d2dc50a6487f19527787a73a7",
+            "kind": "release-verification"
+          },
+          {
+            "artifact_id": "REST-RELEASE-COMMIT-001",
+            "path": "reports/restoration/release-commit-001.json",
+            "sha256": "d6de078a58704939c94b8e0b2bedc39152778e2d41b3af06d431602be7a76c31",
+            "kind": "commit-evidence"
+          },
+          {
+            "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+            "path": "reports/restoration/planner-final/observations.json",
+            "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+            "kind": "planner-evidence"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-PLANNER-FINAL-REPORT-001",
+      "path": "reports/restoration/planner-final/report.md",
+      "sha256": "0cfe8c9de1f706cd8d974879c5b66730792f34d32cef315a4d9270c25b256902",
+      "kind": "planner-report"
+    },
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "REST-PLANNER-OBSERVATIONS-001",
+      "path": "reports/restoration/planner-final/observations.json",
+      "sha256": "c8f30a338f57748d3429d7787180cce195f179fba589198e3d77fa4078c1331d",
+      "kind": "planner-evidence"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ACCEPT-001",
+      "path": "reports/restoration/messages/REST-M018.json",
+      "sha256": "64be5fe3b78aa4df1c568385ee597106b271436d2e7ec38c999878255bdc24d2",
+      "kind": "decision"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-R-REPORT-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/restoration_reviewer"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T09:57:10.637470Z",
+  "in_reply_to": "REST-M017",
+  "payload": {
+    "status": "passed",
+    "summary": "Independent experiential review PASS: eight actual CLI interactions, clear normal Owner invocation without JSON authoring, current sum output and error paths correct. No blocking usability or code repair requested. Two low-severity release-copy notes remain for planned status/test-scope wording refresh; no tests were rerun or source edited. Native invocation/custom-role selection remain unverified.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "findings": [
+      "LOW D01: Refresh README/RELEASE current-status wording during final release closeout; existing leading PARTIAL label describes previous release.",
+      "LOW D02: Root tests description should distinguish dynamic validator tests from static/native evidence; clarify generic optional oracle_ref wording because Tester assignments require it."
+    ],
+    "errors": [],
+    "observations": {
+      "observed": [
+        "Helper help, actual policy and real saved packet validation succeed with documented boundary notices.",
+        "Synthetic unauthorized packet is rejected through actionable route error without traceback.",
+        "Fresh sum help, sample2 3 -1=4, invalid2 nope error2, and unrelated signed input102 observed in real subprocess calls.",
+        "Parent ordinary progress in inherited conversation is concise natural language, not internal envelopes."
+      ],
+      "inspected": [
+        "Whole-skill installation includes scripts/policy/references plus four native TOMLs, with ordinary coding invocation before developer details.",
+        "Policy and role references separate JSON/YAML/TOML/JSONL and native permissions, evidence context, fresh roles, authorized rework and instruction-only resource policy.",
+        "Current release metadata and root suite wording need the stated nonblocking closeout refresh; final Planner/package/commit still pending."
+      ],
+      "simulated": [
+        "Unauthorized temporary packet was a synthetic mutation used only for actual CLI rejection review; it was never dispatched as real role history."
+      ]
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-REVIEWER-DETAILS",
+      "path": "reports/restoration/review/report.md",
+      "sha256": "fc386924e0e5ae4e1e322bb448f17eb459179f1eea75bf559215685c871605da",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-REVIEWER-COMMANDS",
+      "path": "reports/restoration/review/commands.json",
+      "sha256": "707342220326e4bac8314c3accbaca92082009ed9514ff9a53107c648c6bc9ba",
+      "kind": "review-evidence"
+    }
+  ]
+}

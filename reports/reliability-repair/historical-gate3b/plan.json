@@ -1,0 +1,28 @@
+{
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "objective": "Add a --version option to demo/receipt/receipt_calculator.py.",
+  "scope": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "acceptance": [
+    {
+      "id": "AC1",
+      "criterion": "Running the receipt calculator with --version prints exactly 1.0.0 followed by a newline and exits with code 0."
+    },
+    {
+      "id": "AC2",
+      "criterion": "All existing receipt-calculator functionality and automated tests continue to pass."
+    },
+    {
+      "id": "AC3",
+      "criterion": "Do not modify CouncilFlow's SKILL.md, role configurations, or policy files."
+    }
+  ],
+  "verification_strategy": [
+    "Run receipt_calculator.py --version and verify stdout is exactly b'1.0.0\\n', stderr is empty, and exit code is 0.",
+    "Run the existing automated receipt-calculator test suite and verify all tests pass.",
+    "Inspect changed files and verify only the two authorized receipt files changed; CouncilFlow SKILL.md, role configurations, and policy files remain unchanged."
+  ]
+}

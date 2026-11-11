@@ -1,0 +1,106 @@
+{
+  "reference_root": "E:\\Saint\\PROJECTS\\CouncilFlow-round6",
+  "fixture_root": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+  "changed_paths_vs_corrected_workspace": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "authorized_paths": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "only_authorized_paths_changed": true,
+  "protected_hashes": [
+    {
+      "path": ".agents/skills/council-flow/agents/openai.yaml",
+      "expected": "3a464c734167669588604d577aee29ff405f5ad20f709640fe5b954b3b6afff0",
+      "actual": "3a464c734167669588604d577aee29ff405f5ad20f709640fe5b954b3b6afff0",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/policies/roles.yaml",
+      "expected": "4a03e4af7458c27cbcd65fcfd67def03aa4bc9cd77208427a71ddf0da47dddbf",
+      "actual": "4a03e4af7458c27cbcd65fcfd67def03aa4bc9cd77208427a71ddf0da47dddbf",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/references/acceptance.md",
+      "expected": "85956ef54ce63278f9cf467cf6dc22428eb8834ed028b710a639d849366e596d",
+      "actual": "85956ef54ce63278f9cf467cf6dc22428eb8834ed028b710a639d849366e596d",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "expected": "d3a2f0435c03d64d3ec929935ea1bc129e48afa9d8be73371963760441a7e3cb",
+      "actual": "d3a2f0435c03d64d3ec929935ea1bc129e48afa9d8be73371963760441a7e3cb",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/references/message-contract.json",
+      "expected": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783",
+      "actual": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/references/recovery.md",
+      "expected": "b90f9b59038b4c4c61ff2982e7725aa117eb08ab1b6348ee5c193ac22a51f4e1",
+      "actual": "b90f9b59038b4c4c61ff2982e7725aa117eb08ab1b6348ee5c193ac22a51f4e1",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/references/roles.md",
+      "expected": "a0e6e870ff737302c331e00fe2c01ca9e99a0ca2b35aeed537edeab4780c9775",
+      "actual": "a0e6e870ff737302c331e00fe2c01ca9e99a0ca2b35aeed537edeab4780c9775",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/references/workflow.md",
+      "expected": "e0e1526cb793e5f60e288bf73303c08f140899ccc68b15bc1abb5bb3eb9a9e2f",
+      "actual": "e0e1526cb793e5f60e288bf73303c08f140899ccc68b15bc1abb5bb3eb9a9e2f",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/__pycache__/contracts.cpython-312.pyc",
+      "expected": "77550e0890938463f52d14355da5010acd090fdf1db8f018c5f1e053d5890c53",
+      "actual": "77550e0890938463f52d14355da5010acd090fdf1db8f018c5f1e053d5890c53",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "expected": "43fa5295f582c6eb163de3109c040044a952740f2e66c00d43ff19ef73d7bbc9",
+      "actual": "43fa5295f582c6eb163de3109c040044a952740f2e66c00d43ff19ef73d7bbc9",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/SKILL.md",
+      "expected": "b5154172e19b5f30ee84f9af8fa1b45633d4dc5ba9283e136c7d68232b6a49f6",
+      "actual": "b5154172e19b5f30ee84f9af8fa1b45633d4dc5ba9283e136c7d68232b6a49f6",
+      "matches": true
+    },
+    {
+      "path": ".codex/agents/council-planner.toml",
+      "expected": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+      "actual": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+      "matches": true
+    },
+    {
+      "path": ".codex/agents/council-reviewer.toml",
+      "expected": "e700d05a6e8196919f001531a0aba625ea81e62e6bb4479f937211cc39d57030",
+      "actual": "e700d05a6e8196919f001531a0aba625ea81e62e6bb4479f937211cc39d57030",
+      "matches": true
+    },
+    {
+      "path": ".codex/agents/council-tester.toml",
+      "expected": "6f3c9253106f6efd99c08d38d811ba9b29ffcb97c2f98609d6d5164f61d64e66",
+      "actual": "6f3c9253106f6efd99c08d38d811ba9b29ffcb97c2f98609d6d5164f61d64e66",
+      "matches": true
+    },
+    {
+      "path": ".codex/agents/council-worker.toml",
+      "expected": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f",
+      "actual": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f",
+      "matches": true
+    }
+  ],
+  "protected_hashes_match": true
+}

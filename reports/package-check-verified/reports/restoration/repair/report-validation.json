@@ -1,0 +1,40 @@
+[
+  {
+    "command": [
+      "python3",
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "reports/restoration/messages/REST-W2-REPORT-001.json",
+      "--root",
+      ".",
+      "--expected-sender",
+      "worker",
+      "--expected-instance",
+      "/root/restoration_repair"
+    ],
+    "exit": 0,
+    "stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python3",
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "sequence",
+      "reports/restoration/messages/REST-M009.json",
+      "reports/restoration/messages/REST-PLAN-LIVE-001.json",
+      "reports/restoration/messages/REST-M010.json",
+      "reports/restoration/messages/REST-T1-REPORT-001.json",
+      "reports/restoration/messages/REST-M011.json",
+      "reports/restoration/messages/REST-M012.json",
+      "reports/restoration/messages/REST-W2-REPORT-001.json",
+      "--root",
+      ".",
+      "--bindings",
+      "reports/restoration/repair/observed-bindings.json"
+    ],
+    "exit": 0,
+    "stdout": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 7, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+    "stderr": ""
+  }
+]

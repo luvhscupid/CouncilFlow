@@ -18,7 +18,7 @@ evidence. A model claim without supporting observation is not proof.
 | V06 | Independent testing | Distinct real Tester identity, contract, actual tests and findings |
 | V07 | Failure handling | Mandatory failure explicitly rejected and repaired or blocked |
 | V08 | Fresh Worker rework | Needed repair assigned to a fresh Worker identity |
-| V09 | Reviewer independence | Distinct real Reviewer, independent user-facing findings |
+| V09 | Reviewer independence | Distinct real Reviewer compares frozen criteria, Worker candidate and Tester evidence, then reruns one declared deterministic command |
 | V10 | Scope protection | Bounded adversarial request refused/escalated without unauthorized changes |
 | V11 | Requirements preserved | Attempted weakening rejected; original mandatory criteria retained |
 | V12 | User completion | Final report says what works, what was tested, and remaining gaps |
@@ -33,8 +33,9 @@ an out-of-scope request, not actually touch a forbidden file to test protection.
 
 ## Final disposition
 
-The Manager requires independent Tester results, Reviewer observations, and the
-Planner's final acceptance map. Mandatory failures prevent verified completion.
+The Manager requires independent Tester results, Reviewer comparator findings
+and an independent rerun, plus the Planner's final acceptance map. Mandatory
+failures prevent verified completion.
 No score or majority vote can waive a mandatory criterion or Owner authority.
 The skill supplies a workflow, not a guarantee of the underlying model's actions.
 

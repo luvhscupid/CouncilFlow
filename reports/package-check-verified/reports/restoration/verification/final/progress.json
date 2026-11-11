@@ -1,0 +1,106 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-T2-PROGRESS-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A002",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T05:17:08.695903Z",
+  "in_reply_to": "REST-M013",
+  "payload": {
+    "status": "in_progress",
+    "summary": "All92 assigned regression/developer/initial-independent methods independently passed. Additional focused payload mutations found two required defects: wrong-type changed_files on Tester/Reviewer reports is accepted, and accept decisions containing nonempty failed_acceptance_ids (even unknown IDs) pass. No repair made; preserving evidence and finishing compact failed report.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "findings": [
+      "B04: Tester/Reviewer changed_files=42,false,object is recognized but not type-validated; violates closed correct-type role contracts.",
+      "B05: Manager accept may declare failed_acceptance_ids including original or unknown criteria and still pass supplied positive context. Current failed criteria should not coexist with accept."
+    ],
+    "errors": [
+      {
+        "code": "role_payload_type",
+        "field": "C02/C03/C12",
+        "message": "Observed malformed optional role field acceptance."
+      },
+      {
+        "code": "contradictory_acceptance",
+        "field": "C04/C08/C12",
+        "message": "Observed accept decision with explicit failed criteria accepted."
+      }
+    ],
+    "checks": [
+      {
+        "name": "Role payload wrong types rejected",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "REST-T2-ROLE-PAYLOAD-PROBES",
+          "path": "reports/restoration/verification/final/role-payload-probes.json",
+          "sha256": "57a4a27bac59305a5f453ced9d2d3221bfbbf32a861e23f3ec60278e488abd3f",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Acceptance cannot declare current failed criteria",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "REST-T2-DECISION-PROBES",
+          "path": "reports/restoration/verification/final/decision-probes.json",
+          "sha256": "17cc1fba58d5134762b6aed8fcac38634b9cc728d575643f8a1f79852243e3d2",
+          "kind": "test-output"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T2-ROLE-PAYLOAD-PROBES",
+      "path": "reports/restoration/verification/final/role-payload-probes.json",
+      "sha256": "57a4a27bac59305a5f453ced9d2d3221bfbbf32a861e23f3ec60278e488abd3f",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T2-DECISION-PROBES",
+      "path": "reports/restoration/verification/final/decision-probes.json",
+      "sha256": "17cc1fba58d5134762b6aed8fcac38634b9cc728d575643f8a1f79852243e3d2",
+      "kind": "test-output"
+    }
+  ]
+}

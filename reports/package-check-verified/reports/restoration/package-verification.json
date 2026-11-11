@@ -1,0 +1,56 @@
+{
+  "observed_at": "2026-11-11T10:20:45.131534Z",
+  "scope": "Final corrected archive after original Planner check; source-byte verification and controlled-record relocation replay, not new native invocation",
+  "archive": "dist/council-flow.zip",
+  "sha256": "2c969199d53131de6db19172aaeed7394b8f80fd01bfd7be0be95cfb541a4538",
+  "files": 286,
+  "crc": "PASS",
+  "safe_paths": "PASS",
+  "all_archived_bytes_match_source": "PASS",
+  "required_complete_files": "PASS",
+  "runtime_credentials_cache_exclusions": "PASS",
+  "credential_pattern_scan": "No matches in packaged files; bounded pattern scan is not a universal secret detector.",
+  "unchanged_tested_product_files": 29,
+  "basis": "reports/restoration/package-verification-001.json: all29 product hashes unchanged since independent103-test execution and full extracted103-test run",
+  "final_extracted_context": {
+    "messages": 21,
+    "events": 12,
+    "policy": "PASS",
+    "causal_and_artifact_hash_validation": "PASS",
+    "native_execution": false
+  },
+  "actual_extracted_program_checks": [
+    {
+      "command": [
+        "python3",
+        "demo/receipt/receipt_calculator.py",
+        "--item",
+        "rice",
+        "2",
+        "30000",
+        "kg",
+        "--item",
+        "onions",
+        "1",
+        "43000",
+        "kg"
+      ],
+      "exit": 0,
+      "stdout": "2 kg rice × Rp30,000 = Rp60,000\n1 kg onions × Rp43,000 = Rp43,000\nTotal = Rp103,000\n"
+    },
+    {
+      "command": [
+        "python3",
+        "demo/structured-flow/sum_values.py",
+        "2",
+        "3",
+        "-1"
+      ],
+      "exit": 0,
+      "stdout": "4\n"
+    }
+  ],
+  "temporary_extraction_cleaned": true,
+  "report_excluded_from_own_archive": true,
+  "historical_package_verification_included": true
+}

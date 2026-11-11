@@ -1,0 +1,15 @@
+{
+  "reference_root": "E:\\Saint\\PROJECTS\\CouncilFlow-round6",
+  "fixture_root": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+  "changed_paths": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "expected_changed_paths": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "candidate_manifest_matches": true,
+  "protected_hashes_match": true,
+  "scope_passed": true
+}

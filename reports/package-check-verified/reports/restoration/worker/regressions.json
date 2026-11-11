@@ -1,0 +1,58 @@
+[
+  {
+    "name": "receipt",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/worker/receipt-regression.txt"
+  },
+  {
+    "name": "receipt-independent",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/worker/receipt-independent-regression.txt"
+  },
+  {
+    "name": "csv",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/worker/csv-regression.txt"
+  },
+  {
+    "name": "csv-independent",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/worker/csv-independent-regression.txt"
+  }
+]

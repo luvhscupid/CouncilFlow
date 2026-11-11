@@ -1,0 +1,83 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "tester-report-receipt-version-attempt-1",
+  "message_type": "job.report",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T10:58:00Z",
+  "in_reply_to": "manager-assign-tester-receipt-v1",
+  "payload": {
+    "checks": [
+      {
+        "name": "AC1 exact --version output",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-evidence",
+          "path": "reports/council-flow/evidence-tester.json",
+          "kind": "verification-evidence",
+          "sha256": "0e79a9868951c590e639a4a2372d591917a6647c50e4a797cae86f23cedf8d0b"
+        }
+      },
+      {
+        "name": "AC2 existing tests and sample behavior",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-evidence",
+          "path": "reports/council-flow/evidence-tester.json",
+          "kind": "verification-evidence",
+          "sha256": "0e79a9868951c590e639a4a2372d591917a6647c50e4a797cae86f23cedf8d0b"
+        }
+      },
+      {
+        "name": "AC3 protected CouncilFlow files untouched in candidate",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-evidence",
+          "path": "reports/council-flow/evidence-tester.json",
+          "kind": "verification-evidence",
+          "sha256": "0e79a9868951c590e639a4a2372d591917a6647c50e4a797cae86f23cedf8d0b"
+        }
+      }
+    ],
+    "errors": [],
+    "summary": "Independent execution against the exact candidate snapshots passed AC1, AC2, and AC3.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "status": "passed",
+    "oracle_ref": {
+      "artifact_id": "oracle-receipt-version",
+      "path": "reports/council-flow/oracle.json",
+      "kind": "verification-strategy",
+      "sha256": "4b6b7df267dab7013b116ca15d2539406b857f6d708b28f9dbc65e9c266a6bc2"
+    },
+    "candidate_ref": {
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "path": "reports/council-flow/candidate.json",
+      "kind": "candidate-manifest",
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e"
+    },
+    "findings": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "tester-evidence",
+      "path": "reports/council-flow/evidence-tester.json",
+      "kind": "verification-evidence",
+      "sha256": "0e79a9868951c590e639a4a2372d591917a6647c50e4a797cae86f23cedf8d0b"
+    }
+  ]
+}

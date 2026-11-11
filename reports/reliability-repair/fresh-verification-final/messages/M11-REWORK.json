@@ -1,0 +1,60 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M11-REWORK",
+  "message_type": "task.decision",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "planner-1"
+  },
+  "in_reply_to": "M10-PLANNER-FAIL",
+  "payload": {
+    "disposition": "rework",
+    "reason": "Planner's original AC1 failure is confirmed by raw stdout evidence.",
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    },
+    "report_ids": [
+      "MA1-WORK-REPORT",
+      "MA1-TEST-REPORT",
+      "MA1-REVIEW-REPORT"
+    ],
+    "failed_acceptance_ids": [
+      "AC1"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "M10-PLANNER-FAIL",
+      "path": "reports/reliability-repair/fresh-verification-final/messages/M10-PLANNER-FAIL.json",
+      "sha256": "10e1bc16e55c49af69010637c5b4c9a1c64b75d370c77b1d21ae449856ad7523",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification-final/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "execution-a1-tester.stdout.bin",
+      "path": "reports/reliability-repair/fresh-verification-final/execution/a1-tester.stdout.bin",
+      "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1",
+      "kind": "evidence"
+    }
+  ]
+}

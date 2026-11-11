@@ -1,0 +1,53 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M19-PROGRESS",
+  "message_type": "plan.progress",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "planner-1"
+  },
+  "in_reply_to": "M18-ACCEPT",
+  "payload": {
+    "status": "ready-for-original-check",
+    "objective": "Verify unchanged frozen AC1.",
+    "scope": [
+      "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py"
+    ],
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "verified_progress": [
+      "Fresh Tester check and Reviewer rerun match."
+    ],
+    "next_action": "Perform the final original-plan check.",
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "M18-ACCEPT",
+      "path": "reports/reliability-repair/fresh-verification/messages/M18-ACCEPT.json",
+      "sha256": "ed4cab18c8a038d7a52642348cd64ff21a70c099bf8bcd61bab5dac0b476e88e",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    }
+  ]
+}

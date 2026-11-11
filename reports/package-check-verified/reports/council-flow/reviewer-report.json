@@ -1,0 +1,57 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "reviewer-report-receipt-version-attempt-1",
+  "message_type": "job.report",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T11:05:00Z",
+  "in_reply_to": "manager-assign-reviewer-receipt-v1",
+  "payload": {
+    "observations": {
+      "observed": [
+        "Ran --version: exit 0, exact stdout 1.0.0 with LF, empty stderr.",
+        "Ran the normal two-item receipt command: exit 0 and total Rp103,000.",
+        "Ran --help: exit 0 and it documents --version and --item."
+      ],
+      "inspected": [
+        "Candidate manifest and both referenced snapshot files; only receipt calculator and its tests are included.",
+        "Help text retains required-item and usage guidance while showing version option."
+      ],
+      "simulated": []
+    },
+    "candidate_ref": {
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+      "kind": "candidate-manifest",
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "path": "reports/council-flow/candidate.json"
+    },
+    "status": "passed",
+    "errors": [],
+    "summary": "The candidate provides clear user-facing version output and preserves familiar receipt and help workflows.",
+    "findings": [],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "sha256": "eca30b2fe1850c2f0ea42da9aa364d716c0e39ad272e6a34a76716c7461ce4f5",
+      "kind": "experience-review-evidence",
+      "artifact_id": "reviewer-evidence-attempt-1",
+      "path": "reports/council-flow/evidence-reviewer.json"
+    }
+  ]
+}

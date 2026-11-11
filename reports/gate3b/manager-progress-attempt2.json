@@ -1,0 +1,52 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-progress-gate3b-attempt2",
+  "message_type": "plan.progress",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/gate3b_planner"
+  },
+  "in_reply_to": "manager-decision-gate3b-attempt2",
+  "payload": {
+    "status": "verified",
+    "objective": "Add --version option to receipt calculator.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "verified_progress": [
+      "AC1 raw stdout exactly b'1.0.0\\n', empty stderr, exit 0; Tester and Reviewer match.",
+      "AC2 receipt test suite passes all 12 tests independently.",
+      "AC3 only assigned receipt paths differ; all protected CouncilFlow hashes match."
+    ],
+    "next_action": "Planner performs final plan check against attempt-2 evidence."
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-manager-decision-attempt2",
+      "path": "reports/gate3b/manager-decision-attempt2.json",
+      "sha256": "ca89b4f04f8a75c69b11a2c400e1e8612a983cda2065a1e6ba5bc38f512f5e22",
+      "kind": "task-decision"
+    },
+    {
+      "artifact_id": "gate3b-reviewer-report-attempt2",
+      "path": "reports/gate3b/reviewer-report-attempt2.json",
+      "sha256": "92f4ecc7bed476e0e728231e4e40a5c625abad99d4861bd5b2eea9c468ae7aea",
+      "kind": "reviewer-report"
+    }
+  ]
+}

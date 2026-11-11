@@ -1,0 +1,29 @@
+{
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+    "--version"
+  ],
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-reliability-repair",
+  "stdout_ref": {
+    "artifact_id": "execution-a2-reviewer.stdout.bin",
+    "path": "reports/reliability-repair/fresh-verification-final/execution/a2-reviewer.stdout.bin",
+    "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+    "kind": "evidence"
+  },
+  "stderr_ref": {
+    "artifact_id": "execution-a2-reviewer.stderr.bin",
+    "path": "reports/reliability-repair/fresh-verification-final/execution/a2-reviewer.stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kind": "evidence"
+  },
+  "exit_ref": {
+    "artifact_id": "execution-a2-reviewer.exit.txt",
+    "path": "reports/reliability-repair/fresh-verification-final/execution/a2-reviewer.exit.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "kind": "evidence"
+  },
+  "exit_code": 0,
+  "normalized_stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03"
+}

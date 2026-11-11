@@ -1,0 +1,86 @@
+[
+  {
+    "check": "sample",
+    "command": [
+      "python3",
+      "demo/csv-summary/csv_summarizer.py",
+      "demo/csv-summary/sample.csv",
+      "--column",
+      "amount",
+      "--column",
+      "quantity"
+    ],
+    "exit": 0,
+    "stdout": "Rows: 3\nTotal amount: 30\nTotal quantity: 6\n",
+    "stderr": ""
+  },
+  {
+    "check": "selection order",
+    "command": [
+      "python3",
+      "demo/csv-summary/csv_summarizer.py",
+      "demo/csv-summary/sample.csv",
+      "--column",
+      "quantity",
+      "--column",
+      "amount"
+    ],
+    "exit": 0,
+    "stdout": "Rows: 3\nTotal quantity: 6\nTotal amount: 30\n",
+    "stderr": ""
+  },
+  {
+    "check": "help",
+    "command": [
+      "python3",
+      "demo/csv-summary/csv_summarizer.py",
+      "--help"
+    ],
+    "exit": 0,
+    "stdout": "usage: csv_summarizer.py [-h] --column NAME INPUT\n\nCount CSV data records and print exact totals for selected numeric columns,\noffline.\n\npositional arguments:\n  INPUT          local comma-delimited CSV file with a header\n\noptions:\n  -h, --help     show this help message and exit\n  --column NAME  numeric header name after trimming outer header whitespace;\n                 repeat for multiple totals\n\nUse comma-delimited UTF-8 CSV with a unique nonblank header (optional BOM).\nRepeat --column for each numeric column; other columns may contain text.\nNumbers are signed plain decimals, up to 18 integer and 12 fractional digits\nincluding zeros; no grouping, currency symbols or exponent notation. Header-\nonly files yield zero totals; empty files and blank records are errors. Inputs\nare never modified. Example: csv_summarizer.py sample.csv --column amount\n--column quantity\n",
+    "stderr": ""
+  },
+  {
+    "check": "missing column",
+    "command": [
+      "python3",
+      "demo/csv-summary/csv_summarizer.py",
+      "demo/csv-summary/sample.csv",
+      "--column",
+      "missing"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "error: demo/csv-summary/sample.csv: requested column 'missing' is not in the header\n"
+  },
+  {
+    "check": "network-disabled sample",
+    "command": [
+      "bwrap",
+      "--ro-bind",
+      "/",
+      "/",
+      "--unshare-net",
+      "--chdir",
+      "/workspace/CouncilFlow",
+      "--",
+      "python3",
+      "demo/csv-summary/csv_summarizer.py",
+      "demo/csv-summary/sample.csv",
+      "--column",
+      "amount",
+      "--column",
+      "quantity"
+    ],
+    "exit": 0,
+    "stdout": "Rows: 3\nTotal amount: 30\nTotal quantity: 6\n",
+    "stderr": ""
+  },
+  {
+    "check": "sample and immutable contract preservation",
+    "sample_sha256_before_and_after": "56b122059d93b26421b9b690ebd1f466010bc1a49e1bdcd6066f9d26b513e805",
+    "contract_sha256": "a21ae0c9b09a7c800d31f95fa82d75a414d0f034a7a949e692f2cdc266d977d1",
+    "sample_matches_contract": true,
+    "remaining_test_fixture_directories": []
+  }
+]

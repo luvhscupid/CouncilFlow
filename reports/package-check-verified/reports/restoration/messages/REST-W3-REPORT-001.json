@@ -1,0 +1,167 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-W3-REPORT-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/restoration_repair_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T05:32:09.714233Z",
+  "in_reply_to": "REST-M015",
+  "payload": {
+    "status": "passed",
+    "summary": "B04-B07 repaired; all Worker mutations stopped after validation. All 66 bounded developer reruns pass: 47 root, 8 first independent, 7 second independent, 4 fresh demo; no skips. Failed logs and Tester code unchanged. Independent acceptance/release remain pending; no self-approval or activation claim.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "changed_files": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      ".agents/skills/council-flow/references/communication.md",
+      ".agents/skills/council-flow/references/message-contract.json",
+      "tests/test_contracts.py"
+    ],
+    "findings": [
+      "Other 37 receipt/CSV regressions will be independently rerun by final Tester; this Worker changed no application.",
+      "Native authentication and custom-role selection limitations unchanged."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "47 root/static and focused protocol checks",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W3-ROOT-TESTS",
+          "path": "reports/restoration/repair-final/contracts-and-skill.txt",
+          "sha256": "9efc95853d86fdd9cc4e5535559b0573108c2a71ff959021283c3328d3e0884c",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Same 8 first independent checks",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W3-T1-RERUN",
+          "path": "reports/restoration/repair-final/initial-independent.txt",
+          "sha256": "b164238c2394abf33c539b3ce3ead2981aed57a104f009681603ffd569bd4deb",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Same 7 second independent checks",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W3-T2-RERUN",
+          "path": "reports/restoration/repair-final/independent-after.txt",
+          "sha256": "ee301b6c09446529d076e11b0d954f82c495d2c082b8a53fdac6efa077f07ec9",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Same 4 fresh-demo checks",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W3-DEMO",
+          "path": "reports/restoration/repair-final/fresh-demo.txt",
+          "sha256": "6b3106afeb4be2fe22e7f3d9091c5614dc6d55972943c362a4b7fc43c463e054",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Untouched source/plan/Tester preservation",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W3-PRESERVATION",
+          "path": "reports/restoration/repair-final/preservation.json",
+          "sha256": "cb55d58b0fe563d8301984e6e2a88710a9b170c8b20774ef4a5ab64fe53a56cf",
+          "kind": "inspection"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-W3-DETAILS",
+      "path": "reports/restoration/repair-final/report.md",
+      "sha256": "0c85a3f92e2e96f64f2e5147b62e4e4c7c89e6cfff581460f9b3a2ba563d8772",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-W3-CHECK-INDEX",
+      "path": "reports/restoration/repair-final/checks.json",
+      "sha256": "29a645596f90f9a4f0d0e25ebe26229429d323a65c9edcddcafa53f85ffbeffc",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-W3-ROOT-TESTS",
+      "path": "reports/restoration/repair-final/contracts-and-skill.txt",
+      "sha256": "9efc95853d86fdd9cc4e5535559b0573108c2a71ff959021283c3328d3e0884c",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W3-T1-RERUN",
+      "path": "reports/restoration/repair-final/initial-independent.txt",
+      "sha256": "b164238c2394abf33c539b3ce3ead2981aed57a104f009681603ffd569bd4deb",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W3-T2-RERUN",
+      "path": "reports/restoration/repair-final/independent-after.txt",
+      "sha256": "ee301b6c09446529d076e11b0d954f82c495d2c082b8a53fdac6efa077f07ec9",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W3-DEMO",
+      "path": "reports/restoration/repair-final/fresh-demo.txt",
+      "sha256": "6b3106afeb4be2fe22e7f3d9091c5614dc6d55972943c362a4b7fc43c463e054",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W3-PRESERVATION",
+      "path": "reports/restoration/repair-final/preservation.json",
+      "sha256": "cb55d58b0fe563d8301984e6e2a88710a9b170c8b20774ef4a5ab64fe53a56cf",
+      "kind": "inspection"
+    }
+  ]
+}

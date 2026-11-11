@@ -1,0 +1,12 @@
+{
+  "candidate_manifest_sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+  "snapshot_hashes_verified": {
+    "reports/council-flow/candidate/demo/receipt/receipt_calculator.py": "e1fed3858bba128aa43fba186e1f6b3dcff7f1e4fcb6e2ff36c64df15c4c351f",
+    "reports/council-flow/candidate/demo/receipt/test_receipt_calculator.py": "be1f2e14c188f34c0255687a4fa2d3ff14095ad9a9df4b903a42554666172b5c"
+  },
+  "checks": {
+    "AC1": {"command": "python reports/council-flow/candidate/demo/receipt/receipt_calculator.py --version", "exit_code": 0, "stdout_hex": "312e302e300a", "stderr_hex": "", "result": "PASS"},
+    "AC2": {"command": "python -m unittest test_receipt_calculator.py", "cwd": "reports/council-flow/candidate/demo/receipt", "exit_code": 0, "output": "Ran 12 tests; OK", "sample_command": "python reports/council-flow/candidate/demo/receipt/receipt_calculator.py --item rice 2 30000 kg --item onions 1 43000 kg", "sample_exit_code": 0, "help_exit_code": 0, "result": "PASS"},
+    "AC3": {"candidate_manifest_paths": ["demo/receipt/receipt_calculator.py", "demo/receipt/test_receipt_calculator.py"], "inspected": true, "CouncilFlow_SKILL_role_configs_and_policies_in_candidate": false, "result": "PASS"}
+  }
+}

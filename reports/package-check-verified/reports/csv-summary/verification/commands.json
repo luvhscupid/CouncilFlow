@@ -1,0 +1,90 @@
+[
+  {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "cwd": "/workspace/CouncilFlow",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_api_read_only_on_success_and_failure (test_csv_summarizer.CSVSummaryTests.test_api_read_only_on_success_and_failure) ... ok\ntest_bad_headers_and_selections (test_csv_summarizer.CSVSummaryTests.test_bad_headers_and_selections) ... ok\ntest_bom_unicode_crlf_quoted_commas_quotes_and_multiline (test_csv_summarizer.CSVSummaryTests.test_bom_unicode_crlf_quoted_commas_quotes_and_multiline) ... ok\ntest_different_signed_fractional_data (test_csv_summarizer.CSVSummaryTests.test_different_signed_fractional_data) ... ok\ntest_exact_accumulation_beyond_input_limits_and_low_context (test_csv_summarizer.CSVSummaryTests.test_exact_accumulation_beyond_input_limits_and_low_context) ... ok\ntest_help_and_required_arguments (test_csv_summarizer.CSVSummaryTests.test_help_and_required_arguments) ... ok\ntest_invalid_utf8 (test_csv_summarizer.CSVSummaryTests.test_invalid_utf8) ... ok\ntest_malformed_quotes (test_csv_summarizer.CSVSummaryTests.test_malformed_quotes) ... ok\ntest_multiline_descriptors_do_not_change_logical_error_record (test_csv_summarizer.CSVSummaryTests.test_multiline_descriptors_do_not_change_logical_error_record) ... ok\ntest_normalized_headers_and_header_only (test_csv_summarizer.CSVSummaryTests.test_normalized_headers_and_header_only) ... ok\ntest_numeric_rejections (test_csv_summarizer.CSVSummaryTests.test_numeric_rejections) ... ok\ntest_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok\ntest_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok\ntest_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 1.662s\n\nOK\n",
+    "evidence": "reports/csv-summary/verification/application-tests.txt"
+  },
+  {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "cwd": "/workspace/CouncilFlow",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_encoding_file_errors_help_and_required_arguments (test_independent_csv.IndependentCSVChecks.test_encoding_file_errors_help_and_required_arguments) ... ok\ntest_headers_selections_and_header_only_records (test_independent_csv.IndependentCSVChecks.test_headers_selections_and_header_only_records) ... ok\ntest_independent_rational_totals_at_bounds_and_many_records (test_independent_csv.IndependentCSVChecks.test_independent_rational_totals_at_bounds_and_many_records) ... ok\ntest_late_bad_numeric_cells_never_emit_partial_summary (test_independent_csv.IndependentCSVChecks.test_late_bad_numeric_cells_never_emit_partial_summary) ... ok\ntest_shape_quotes_and_logical_record_error_context (test_independent_csv.IndependentCSVChecks.test_shape_quotes_and_logical_record_error_context) ... ok\ntest_utf8_bom_crlf_multiline_quotes_and_requested_order (test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 1.729s\n\nOK\n",
+    "evidence": "reports/csv-summary/verification/independent-tests.txt"
+  },
+  {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "cwd": "/workspace/CouncilFlow",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ok\ntest_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ok\ntest_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... ok\ntest_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ok\ntest_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... ok\ntest_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ok\ntest_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ok\ntest_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n",
+    "evidence": "reports/csv-summary/verification/skill-regression.txt"
+  },
+  {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "cwd": "/workspace/CouncilFlow",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_context_independence_and_large_sum (test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum) ... ok\ntest_different_receipt (test_receipt_calculator.ArithmeticTests.test_different_receipt) ... ok\ntest_exact_fraction_and_display (test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display) ... ok\ntest_owner_sample (test_receipt_calculator.ArithmeticTests.test_owner_sample) ... ok\ntest_reject_blank_and_control_labels (test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels) ... ok\ntest_reject_invalid_numbers (test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers) ... ok\ntest_zero_and_generator (test_receipt_calculator.ArithmeticTests.test_zero_and_generator) ... ok\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.377s\n\nOK\n",
+    "evidence": "reports/csv-summary/verification/receipt-regression.txt"
+  },
+  {
+    "command": [
+      "bwrap",
+      "--unshare-net",
+      "--ro-bind",
+      "/",
+      "/",
+      "--chdir",
+      "/workspace/CouncilFlow",
+      "--",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "demo/csv-summary/csv_summarizer.py",
+      "demo/csv-summary/sample.csv",
+      "--column",
+      "amount",
+      "--column",
+      "quantity"
+    ],
+    "cwd": "/workspace/CouncilFlow",
+    "exit": 0,
+    "stdout": "Rows: 3\nTotal amount: 30\nTotal quantity: 6\n",
+    "stderr": "",
+    "evidence": "reports/csv-summary/verification/offline-sample.txt"
+  }
+]

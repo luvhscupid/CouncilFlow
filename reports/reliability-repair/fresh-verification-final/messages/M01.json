@@ -1,0 +1,42 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M01",
+  "message_type": "plan.publish",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A1",
+  "sender": {
+    "role": "planner",
+    "instance_id": "planner-1"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "in_reply_to": null,
+  "payload": {
+    "objective": "Check exact version output and preserve original acceptance.",
+    "scope": [
+      "reports/reliability-repair/fresh-verification/**"
+    ],
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "plan_ref": {
+      "artifact_id": "plan-original",
+      "path": "reports/reliability-repair/fresh-verification-final/plan.json",
+      "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+      "kind": "plan"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "plan-original",
+      "path": "reports/reliability-repair/fresh-verification-final/plan.json",
+      "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+      "kind": "plan"
+    }
+  ]
+}

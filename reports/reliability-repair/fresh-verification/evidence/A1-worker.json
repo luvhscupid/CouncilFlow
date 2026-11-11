@@ -1,0 +1,10 @@
+{
+  "candidate_ref": {
+    "artifact_id": "candidate-attempt1",
+    "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt1.py",
+    "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+    "kind": "candidate"
+  },
+  "input_candidate_ref": null,
+  "snapshot_sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8"
+}

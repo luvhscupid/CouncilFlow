@@ -1,0 +1,49 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "worker-report-receipt-version-attempt-1",
+  "message_type": "job.report",
+  "plan_id": "plan-receipt-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-receipt-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T10:51:01Z",
+  "in_reply_to": "manager-assign-worker-receipt-v1",
+  "payload": {
+    "status": "passed",
+    "summary": "Added --version with exact LF output; targeted and existing receipt checks passed.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-receipt-version-attempt-1",
+      "path": "reports/council-flow/candidate.json",
+      "sha256": "8eb5cd762b3d75450726f1fd1122ad1be777953317ebcf6708f6efda67a7a16e",
+      "kind": "candidate-manifest"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "worker-checks-attempt-1",
+      "path": "reports/council-flow/evidence-worker.json",
+      "sha256": "31b9ec09c1bd8ff3a73f47891ada4cdeaed8c90e69fdfd89efbc2825df70fd2c",
+      "kind": "verification-evidence"
+    }
+  ]
+}

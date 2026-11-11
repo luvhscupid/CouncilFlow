@@ -1,0 +1,86 @@
+{
+  "REST-M009": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-PLAN-LIVE-001": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "REST-M010": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-T1-REPORT-001": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_initial"
+  },
+  "REST-M011": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M012": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-W2-REPORT-001": {
+    "role": "worker",
+    "instance_id": "/root/restoration_repair"
+  },
+  "REST-M013": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M013B": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-T2-REPORT-001": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_final"
+  },
+  "REST-M014": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M015": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-W3-REPORT-001": {
+    "role": "worker",
+    "instance_id": "/root/restoration_repair_final"
+  },
+  "REST-M016": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-T3-REPORT-001": {
+    "role": "tester",
+    "instance_id": "/root/restoration_verifier"
+  },
+  "REST-M017": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-R-REPORT-001": {
+    "role": "reviewer",
+    "instance_id": "/root/restoration_reviewer"
+  },
+  "REST-M018": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M019": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M019B": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-PLAN-FINAL-001": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  }
+}

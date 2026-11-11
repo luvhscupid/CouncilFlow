@@ -1,0 +1,72 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M017",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/restoration_reviewer"
+  },
+  "created_at": "2026-11-11T09:52:45.586455Z",
+  "in_reply_to": "REST-T3-REPORT-001",
+  "payload": {
+    "objective": "Independently review the corrected skill, helper and fresh demo from first-use experience after technical verification.",
+    "scope": [
+      "reports/restoration/review/**",
+      "reports/restoration/messages/REST-R-REPORT-001.json"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "instructions": [
+      "Fresh separate native Reviewer. Read original REST-P001 plan, current SKILL/references/policies/native definitions, README/RELEASE and demo/structured-flow README. User goal is the operational installable skill, not a new platform. Current independent technical result is103 tests PASS/0 skips, B01-B07 repaired; genuine Tester saved complete JSON before its native turn delivery hit usage limit. Parent validated saved report and unchanged source hashes. Do not claim that delivery or native explicit invocation succeeded.",
+      "Actually run helper --help, policy validation, one real current valid packet with --root . and one malformed/unauthorized temporary packet, plus fresh sum help/sample2 3 -1=4 and an invalid input. Keep fixtures/temp directories explicitly inside this repo under review/ and clean them. Do not repeat the passing technical suite. Distinguish authentic observed CLI interaction, inspected instructions and simulated controls.",
+      "Assess installation completeness (whole skill folder including scripts/policy plus4TOMLs), ordinary $council-flow coding request clarity without Owner reading JSON, exact JSON/YAML/TOML/JSONL distinctions, protocol/sandbox limits, artifact/context use, error usability and any misleading/unfinished behavior. Owner-facing normal progress remains prose; actual Parent commentary is visible in context. This is experiential review, not a replacement for Tester or genuine skill activation.",
+      "No code, test, documentation, policy or prior-evidence repairs. Write compact report and immutable command/output/exit evidence under review/. Return ONLY schema-valid job.report at messages/REST-R-REPORT-001.json replying REST-M017, same plan/task/attempt/all assigned IDs and candidate_ref. Include all three observations arrays observed/inspected/simulated; passed review requires actual observation. Validate structure/artifacts/known reviewer identity and full live context before handoff. Report actionable severity/findings; stop all writes when done.",
+      "Native corrected discovery passed but explicit invoked thread got401/systemError; custom-role selection remains unverified. No auth retries, providers, dependencies, permission/global changes or other projects. Final Planner, release artifact refresh and local commit remain Parent closeout."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-T3-REPORT-ARTIFACT",
+      "path": "reports/restoration/messages/REST-T3-REPORT-001.json",
+      "sha256": "5bdd64b5d89216af14aef1444674a8efa098b3523980796e2a48efb830732561",
+      "kind": "message"
+    }
+  ]
+}

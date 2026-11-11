@@ -1,0 +1,59 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-worker-gate3b",
+  "message_type": "job.assign",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/gate3b_worker"
+  },
+  "in_reply_to": "plan-publish-gate3b",
+  "payload": {
+    "objective": "Add the frozen --version feature to the exact clean receipt baseline.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "instructions": [
+      "Implement the minimal --version option; stdout must be exactly 1.0.0 followed by LF and exit 0.",
+      "Preserve all existing calculator behavior and tests; add a focused version assertion to the receipt tests.",
+      "Do not modify any CouncilFlow SKILL.md, role TOML, or policy file.",
+      "Run developer checks and preserve raw stdout/stderr/exit artifacts under reports/gate3b/.",
+      "Create an immutable candidate manifest at reports/gate3b/candidate-worker.json with the exact SHA-256 of both authorized receipt files.",
+      "Return a council-flow 1.0 job.report JSON artifact with the candidate_ref, acceptance IDs, changed_files, findings, actual command/evidence references. No created_at field."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "gate3b-baseline-evidence",
+      "path": "reports/gate3b/baseline-evidence.json",
+      "sha256": "a5c59e3197b46d7dc999f3bb4934894bba4dfe082ab1634b389858890883d18d",
+      "kind": "baseline-evidence"
+    },
+    {
+      "artifact_id": "protected-files-before",
+      "path": "reports/gate3b/protected-files-before.json",
+      "sha256": "2113087d89a1af8a794e1d9be1e8ed330a2a5da6c4d6ee4623caba1f12909a78",
+      "kind": "scope-baseline"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "MA2-REVIEW-ASSIGN",
+  "message_type": "job.assign",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "reviewer-2"
+  },
+  "in_reply_to": "MA2-TEST-REPORT",
+  "payload": {
+    "objective": "Compare the original plan, candidate and Tester evidence.",
+    "scope": [
+      "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py"
+    ],
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "instructions": [
+      "Rerun the exact Tester-declared executable and arguments."
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "MA2-TEST-REPORT",
+      "path": "reports/reliability-repair/fresh-verification/messages/MA2-TEST-REPORT.json",
+      "sha256": "b0ff73e20270a288b6bc9ae3a535e2aa4426e35aba7e10e8c2f19f9e8ca3745f",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "plan-original",
+      "path": "reports/reliability-repair/fresh-verification/plan.json",
+      "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+      "kind": "plan"
+    }
+  ]
+}

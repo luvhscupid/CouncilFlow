@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-11-11T04:52:10.491944Z",
+  "command": [
+    "python3",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "message",
+    "reports/restoration/activation/REST-ACT-REPORT-001.json",
+    "--root",
+    ".",
+    "--expected-sender",
+    "tester",
+    "--expected-instance",
+    "/root/activation_probe"
+  ],
+  "exit": 0,
+  "stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+  "stderr": "",
+  "boundary": "Current structural/role/origin-binding and actual artifact hash checks. Native transport opaque; separate activation ancillary task is not represented as a complete ordered main-demo trace."
+}

@@ -1,0 +1,137 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "MA2-TEST-REPORT",
+  "message_type": "job.report",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A2",
+  "sender": {
+    "role": "tester",
+    "instance_id": "tester-2"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "in_reply_to": "MA2-TEST-ASSIGN",
+  "payload": {
+    "status": "passed",
+    "summary": "Local command execution completed; raw output is preserved for Planner review.",
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    "findings": [],
+    "errors": [],
+    "oracle_ref": {
+      "artifact_id": "manager-oracle",
+      "path": "reports/reliability-repair/fresh-verification/verification-strategy.json",
+      "sha256": "753a9585b83c58e7c5589afd8e92e3b9ef034fc8ff48baae44641de200a355b1",
+      "kind": "verification-strategy"
+    },
+    "checks": [
+      {
+        "name": "AC1 result as reported by the initial checker",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "execution-a2-tester.stdout.bin",
+          "path": "reports/reliability-repair/fresh-verification/execution/a2-tester.stdout.bin",
+          "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+          "kind": "evidence"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "VERSION",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+          "--version"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-reliability-repair",
+        "candidate_ref": {
+          "artifact_id": "candidate-attempt2",
+          "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+          "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+          "kind": "candidate"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "plan-original",
+            "path": "reports/reliability-repair/fresh-verification/plan.json",
+            "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+            "kind": "plan"
+          },
+          {
+            "artifact_id": "MA2-TEST-ASSIGN",
+            "path": "reports/reliability-repair/fresh-verification/messages/MA2-TEST-ASSIGN.json",
+            "sha256": "e131d37f74eaae30e9ffca811c101d6567195d7390f00f710e5bcf7c2467748d",
+            "kind": "message"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+        "acceptance_id": "AC1",
+        "evidence_ref": {
+          "artifact_id": "a2-tester-execution",
+          "path": "reports/reliability-repair/fresh-verification/execution/a2-tester.json",
+          "sha256": "3313c4f04b59283c0cd2c59d333bfa0dafee00f48a8b47ad4d7024abb67501e0",
+          "kind": "execution-evidence"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "manager-oracle",
+      "path": "reports/reliability-repair/fresh-verification/verification-strategy.json",
+      "sha256": "753a9585b83c58e7c5589afd8e92e3b9ef034fc8ff48baae44641de200a355b1",
+      "kind": "verification-strategy"
+    },
+    {
+      "artifact_id": "MA2-TEST-ASSIGN",
+      "path": "reports/reliability-repair/fresh-verification/messages/MA2-TEST-ASSIGN.json",
+      "sha256": "e131d37f74eaae30e9ffca811c101d6567195d7390f00f710e5bcf7c2467748d",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "execution-a2-tester.stdout.bin",
+      "path": "reports/reliability-repair/fresh-verification/execution/a2-tester.stdout.bin",
+      "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "kind": "evidence"
+    },
+    {
+      "artifact_id": "execution-a2-tester.stderr.bin",
+      "path": "reports/reliability-repair/fresh-verification/execution/a2-tester.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "evidence"
+    },
+    {
+      "artifact_id": "execution-a2-tester.exit.txt",
+      "path": "reports/reliability-repair/fresh-verification/execution/a2-tester.exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "kind": "evidence"
+    },
+    {
+      "artifact_id": "a2-tester-execution",
+      "path": "reports/reliability-repair/fresh-verification/execution/a2-tester.json",
+      "sha256": "3313c4f04b59283c0cd2c59d333bfa0dafee00f48a8b47ad4d7024abb67501e0",
+      "kind": "execution-evidence"
+    }
+  ]
+}

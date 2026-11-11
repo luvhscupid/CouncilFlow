@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "manager-assign-worker-gate3b-attempt-2",
+  "message_type": "job.assign",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/gate3b_worker_attempt2"
+  },
+  "in_reply_to": "planner-check-gate3b",
+  "payload": {
+    "objective": "Resolve the AC1 byte-level verification discrepancy while preserving AC1-AC3.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "instructions": [
+      "The plan oracle requires exact stdout bytes b'1.0.0\\n' on --version. Current Windows argparse emits CRLF. Make only --version output emit literal LF bytes on every platform, exit 0, empty stderr.",
+      "Add/update focused test to assert raw stdout bytes exactly b'1.0.0\\n'; preserve existing functionality and tests.",
+      "Only modify the two authorized receipt files. Do not change CouncilFlow skills, roles, or policy.",
+      "Run version and receipt suite and preserve raw output/exit evidence. Write candidate-attempt2.json manifest and worker-report-attempt2.json CouncilFlow 1.0 job.report, no created_at, with actual evidence refs. Validate report. Do not self-approve."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "planner-check-gate3b",
+      "path": "reports/gate3b/plan-check.json",
+      "sha256": "d253ed366c498efa8241a32405ea7da9d37d431c9af22ff3ed88304f4f401df6",
+      "kind": "plan-check"
+    },
+    {
+      "artifact_id": "protected-files-before",
+      "path": "reports/gate3b/protected-files-before.json",
+      "sha256": "2113087d89a1af8a794e1d9be1e8ed330a2a5da6c4d6ee4623caba1f12909a78",
+      "kind": "scope-baseline"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate",
+      "path": "reports/gate3b/candidate-worker.json",
+      "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+      "kind": "candidate-manifest"
+    }
+  ]
+}

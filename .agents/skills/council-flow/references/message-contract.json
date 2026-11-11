@@ -13,7 +13,6 @@
     "attempt_id",
     "sender",
     "recipient",
-    "created_at",
     "in_reply_to",
     "payload",
     "evidence_refs"
@@ -134,13 +133,8 @@
     "worker": [
       "changed_files"
     ],
-    "tester": [
-      "checks",
-      "oracle_ref"
-    ],
-    "reviewer": [
-      "observations"
-    ]
+    "tester": ["checks", "oracle_ref", "deterministic_commands"],
+    "reviewer": ["comparison"]
   },
   "validator": "../scripts/contracts.py",
   "examples_are_synthetic": true,
@@ -156,10 +150,12 @@
       "reviewer": "candidate_ref required exact verification output"
     },
     "worker.job.report": "candidate_ref is output; input_candidate_ref echoes assigned input if supplied",
-    "tester.job.report": "candidate_ref and oracle_ref exactly echo Manager assignment; passed status requires passed mandatory checks",
+    "tester.job.report": "candidate_ref and oracle_ref exactly echo Manager assignment; passed status requires passed mandatory checks. Optional deterministic_commands records include command/arguments, workdir, candidate/input identity hashes, exit code, SHA-256 of stdout after CRLF-to-LF replacement only, acceptance criterion and evidence artifact.",
+    "reviewer.job.report": "comparison binds original plan, Worker candidate and Tester report evidence. independent_rerun records one selected Tester command, exact matching conditions, its own exit/hash/evidence, and comparison to Tester result. MATCH requires equal exit and normalized stdout hash; MISMATCH cannot pass; NOT_COMPARABLE cannot satisfy E8.",
     "job.report.changed_files": "Required for Worker and optional for other roles; always a bounded string array, never authority to edit product code.",
     "task.decision.failed_acceptance_ids": "Only valid assigned/original criterion identities; accept cannot contain a nonempty failure list.",
     "plan.check.results": "Every passed criterion requires explicit nonempty evidence_refs; structural citations do not prove evidence semantics.",
-    "plan.publish.plan_ref": "With root context: JSON object containing matching typed plan_id, positive nonboolean integer plan_revision, and nonempty acceptance objects with unique id strings; criterion text validated when present."
+    "plan.publish.plan_ref": "With root context: JSON object containing matching typed plan_id, positive nonboolean integer plan_revision, and nonempty acceptance objects with unique id strings; criterion text validated when present.",
+    "message.created_at": "Agent-authored messages omit created_at. Diagnostic created_at syntax validation does not prove trusted clock provenance."
   }
 }

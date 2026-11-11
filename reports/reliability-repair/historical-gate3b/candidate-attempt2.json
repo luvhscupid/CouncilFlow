@@ -1,0 +1,19 @@
+{
+  "candidate_id": "gate3b-version-attempt-2-worker",
+  "plan_id": "gate3b-version-20261111",
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "source": "worker output after bounded rework",
+  "files": [
+    {
+      "path": "demo/receipt/receipt_calculator.py",
+      "sha256": "79847fb02b107f588d756d5a39c468f109d2bd1636c646be55020fe2561ee046",
+      "bytes": 5614
+    },
+    {
+      "path": "demo/receipt/test_receipt_calculator.py",
+      "sha256": "4c85c19622de46cc80270171c877db6c441b309f7509227db238acc32519ee18",
+      "bytes": 5387
+    }
+  ]
+}

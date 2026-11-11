@@ -1,0 +1,38 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "plan-publish-gate3b",
+  "message_type": "plan.publish",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/gate3b_planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": null,
+  "payload": {
+    "objective": "Add a --version option to demo/receipt/receipt_calculator.py.",
+    "scope": [
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "plan_ref": {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    }
+  },
+  "evidence_refs": []
+}

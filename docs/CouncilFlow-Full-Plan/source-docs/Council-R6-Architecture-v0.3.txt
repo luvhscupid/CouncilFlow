@@ -1,0 +1,181 @@
+# R6-Claude: Architecture Specification v0.3 (draft for Owner approval)
+
+**Tags:** **[A]** agreed by the council and Owner, **[H]** untested hypothesis, **[E]** external documentation evidence. No probes were run and nothing was modified. My Codex findings come from web search only, mostly third-party sources, so they are leads for P0, not facts.
+
+## 1. Components and authority
+
+| Component | Is | May | May never |
+|---|---|---|---|
+| **Owner** | Human | Approve plans, grant waivers, accept results | n/a |
+| **Planner** | LLM | Write contracts, outcomes, checks | Write runtime state, loosen criteria alone, grant waivers |
+| **Manager** | Python + SQLite | All state transitions, dispatch, budgets, verification, risk floors | Delegate policy or verification **[A]** |
+| **Worker** | Codex CLI agent | Edit inside its workspace | Self-report success as evidence, see hidden checks |
+| **Analyzer** | Checks run by the controller, optional LLM review | Execute frozen checks, cite evidence | Use the Worker's self-assessment |
+
+## 2. Contract vs. runtime state
+
+- **Contract:** immutable, versioned, hash-locked, written by the Planner and admitted by the controller **[A]**.
+- **Runtime state:** attempt IDs, PIDs, manifests, evidence, incidents, waivers and approvals, outcome statuses, resolved model IDs, costs. The Planner never writes any of it.
+- **Waivers live only in runtime state.** A Planner-written contract can't request its own safeguard exemptions.
+
+**Changes from v0.2** (the rest is unchanged):
+
+```json
+"risk":        {"task_tier_proposed": "low"},
+"execution":   {"backend": "profile:codex.exec", "commands_hint": ["python","pytest","ruff","git"]},
+"exposure":    {"requires": ["workspace_write_confined","controller_data_unreadable",
+                             "env_scrubbed","kill_tree_confirmed","egress_provider_only"]},
+"change_policy": {"max_files": 10, "max_bytes": 200000, "allow_binary": false,
+                  "allow_symlinks": false, "allow_submodules": false, "allow_mode_changes": false},
+"acceptance":  {"executable_outcomes": "all_verified", "manual_outcomes": "owner",
+                "report_coverage_gaps": true}
+```
+
+- **Task risk** is the consequence of wrong output. The controller computes the effective tier as `max(planner, rule floor, diff-derived)`. It can fall after a revert; incidents persist **[A]**.
+- **Execution exposure** is computed from the proven enforcement manifest, never declared. The result is `contained`, `partial(egress)`, or `refused`.
+
+## 3. Containment decision (your R6 challenge)
+
+I accept the split between result integrity and execution containment. Integrity comes from extract-and-verify. Containment is a separate set of requirements:
+
+| Requirement | Waivable? |
+|---|---|
+| `workspace_write_confined` | **No** |
+| `controller_data_unreadable` | **No** |
+| `env_scrubbed` | **No** |
+| `kill_tree_confirmed` | **No** |
+| `egress_provider_only` | **Yes**, only if effective tier is low. Needs a per-task Owner waiver event. The report marks it `containment: partial` and lists what was waived. |
+
+- Unproven non-waivable requirements mean dispatch is **refused**. No silent downgrade.
+- **Hidden checks:** they never sit in the worktree and are materialized only after the Worker is confirmed dead. Since `controller_data_unreadable` is mandatory, hidden-check isolation follows from it, and no separate disable rule is needed. If you'd rather keep your "disable when isolation isn't proven" rule as a redundant guard, I won't object.
+- **Open question:** whether Codex's own sandbox (which wraps the model's shell commands) can meet these. The Codex process itself runs outside that boundary **[H]**.
+
+## 4. Extract-and-verify
+
+1. Confirm the Worker process tree is dead (§6). Otherwise → `UNKNOWN_LIVENESS`.
+2. Using the controller's own git binary and config (never the Worker's `.git` config or hooks), compute the change set against the recorded base commit.
+3. **Validate the change manifest** (GPT amendment A):
+   - base commit matches the record
+   - paths normalized: no `..`, no absolute paths, with Windows case-insensitivity, 8.3 short names, alternate data streams and reserved names handled
+   - no symlinks, junctions or other reparse points, submodule changes, mode changes or binary changes unless `change_policy` allows them
+   - file and size caps respected
+   - every path ⊆ `scope.write`, and none in `frozen_paths` or `forbidden_paths`
+4. Any violation: **incident**, revert to the checkpoint, and classify as contamination.
+5. Create a clean scratch checkout at the base commit, with hooks disabled.
+6. **Copy only the validated files' contents** into it (no applying arbitrary patches).
+7. Materialize hidden payloads.
+8. Run checks under the controller's identity with a scrubbed environment and timeouts. `read_only` checks get a before/after tree hash.
+9. Record evidence (exit code, raw output refs, tree hashes, live/mock tag). Coverage is recorded as support only **[A]**.
+10. Compute outcome statuses.
+
+## 5. SQLite consistency model
+
+- The controller is the single writer, and the DB sits outside the Worker's reach.
+- WAL mode with `synchronous=FULL`.
+- `events` is append-only, enforced by triggers.
+- **Each event and its state projection commit in one transaction.**
+- **Intent → side effect → outcome:** intent events carry `UNIQUE(attempt_id, action)`. A startup reconcile pass resolves every intent that has no outcome.
+- JSONL is a derived export only **[A]**.
+
+## 6. Dispatch, process ownership, recovery
+
+- Each dispatch gets a new `attempt_id` (the fencing token), a fresh worktree, and a scrubbed environment. Reports with a stale `attempt_id` are discarded.
+- **Windows process ownership [H]:** a Job Object with kill-on-close owns the Codex tree, and the controller records PID and creation time. Whether sandboxed children can escape the job must be tested.
+- **Liveness is never assumed.** Process absent with a mismatched creation time → dead. Present → kill the tree and confirm. Unconfirmable → `UNKNOWN_LIVENESS`: no redispatch, no workspace reuse, wait, then escalate **[A]**.
+- **Crash recovery:**
+
+| Last event | Action |
+|---|---|
+| `DISPATCHED`, no report | Confirm dead. If the tree hash differs from the checkpoint, restore. Fresh redispatch, with its own `crash_recoveries` cap. `idempotent: false` → escalate. |
+| `REPORTED` or `VERIFYING` | Rerun `read_only` and `isolated_mutation` checks only. `external_side_effect` checks are never auto-rerun. |
+| Checkpoint intent with no outcome | Verify the ref exists, else recreate from the last good state. |
+
+- **Checkpoints** are refs in a private namespace or snapshots, never commits on the user's branch **[A]**.
+
+## 7. State machine
+
+```
+Step: PENDING → READY → [containment gate] → DISPATCHED → REPORTED → VERIFYING ─pass→ PASSED
+        containment unproven → REFUSED         │ stuck → UNKNOWN_LIVENESS → ESCALATED
+        needs out-of-scope access → BLOCKED → ESCALATED
+        VERIFYING ─fail→ classify by rule ─→ RETRY_PENDING | ESCALATED(planner|owner)
+
+Task: DRAFT → ADMISSION → AWAITING_PLAN_APPROVAL → RUNNING ⇄ AWAITING_OWNER
+      → DONE_VERIFIED | AWAITING_OWNER_ACCEPTANCE | DONE_PARTIAL | FAILED | ABORTED
+```
+
+## 8. Failures and retries
+
+| Class | Detected by | Action |
+|---|---|---|
+| Infra | Timeout, missing dependency, provider error | Own cap; doesn't consume Worker retries |
+| Contamination | Out-of-scope or frozen path touched, regression, manifest violation | Immediate clean redo |
+| Check flaw | Check fails against known-good state | Escalate to the Planner |
+| Implementation | Executable check fails | Retry 1: incremental repair with the failure evidence as new input. Retry 2: fresh worktree and session. |
+| Unknown | None of the above | One incremental retry, then Planner, then Owner |
+
+- A fingerprint repeating twice triggers escalation, as a signal not a verdict **[A]**.
+- Codex's `exec resume` can be used for incremental repair only. A clean redo always starts a new session **[H]**.
+
+## 9. Verification and acceptance rules
+
+- Only the controller sets an outcome to `verified | weak | unverified | contradicted`. A Worker report is never evidence **[A]**.
+- Worker-authored tests don't count as evidence unless adopted by an approved amendment.
+- Tier ≥ medium needs at least one end-to-end objective check. Hidden checks are required when tier ≥ medium and the outcome is behavioral.
+- `DONE_VERIFIED` requires every executable outcome `verified`. Manual outcomes → `AWAITING_OWNER_ACCEPTANCE`.
+- **Every report lists `unverified`/`weak` outcomes and coverage gaps first.** Passing checks do not equal fulfilled intent (amendment E).
+- Amendments can't loosen outcomes, checks, scope, limits or gates without Owner approval, and the controller decides what counts as loosening.
+
+## 10. P0 findings so far (read-only, documentation only)
+
+| Item | Finding | Status |
+|---|---|---|
+| Headless mode | `codex exec` exists, streams JSONL events with `--json`, and can resume sessions. By default, non-interactive mode runs read-only and doesn't ask for approvals; `--full-auto` allows edits. | [E], secondary; verify against the installed version |
+| Output and session | A final-message output file flag, an output-schema option, a resume subcommand, and a git-repo requirement that can be skipped by flag exist. Auth can be overridden via an API-key environment variable. | [E] |
+| Flags | `-C` sets the working directory, `-s` sets the sandbox, `-c` overrides config **[E]** (from a cheatsheet) | [E], weak source |
+| Sandbox | Sandboxing is OS-level, including a native Windows sandbox; `.git` and similar paths stay read-only even in writable roots, and network is off by default. On Windows it is described as restricted tokens plus ACLs. | [E], third-party blogs |
+| Scope limit | The sandbox wraps model-generated shell commands. One comparison states that none of the agents sandbox everything they do. This matches my concern that Codex's own process is outside the boundary. | [E] → [H] |
+| **Requested ≠ effective** | One reported issue on native Windows says a requested workspace-write run had model-generated writes rejected as read-only: the effective permission diverged from the request. This is a single report on an alpha build, unconfirmed, but it supports probing over trusting config. | [E], unconfirmed |
+| Network | One issue reports git HTTPS operations failing inside the Windows sandbox even with network access enabled. An experimental allowlist-first egress proxy is reported to exist, off by default. `egress_provider_only` rests on that experimental feature. | [E], [H] |
+| Deny-read | Recent versions are reported to support deny-read path rules and a Windows "elevated"/"unelevated" sandbox variant. Candidate for `controller_data_unreadable` | [E], [H] |
+| Env scrubbing | A shell-environment policy that inherits nothing is reported. That would scrub the *commands'* environment, not Codex's own. | [E], [H] |
+
+**Gap:** I didn't reach OpenAI's official documentation, so the table above is secondary evidence. P0 should treat the official docs and `codex exec --help` for your installed version as authoritative.
+
+**P0a (authorized: read-only) acceptance criteria:**
+1. Every requirement in §3 is classified as *established by official docs*, *needs a probe*, or *unsupported*, with source and version.
+2. The installed Codex version and platform (native Windows vs. WSL2) are recorded.
+3. Exec flags, JSONL event types and exit codes are enumerated from official docs.
+4. Unknowns are listed explicitly rather than guessed.
+
+**Needs your OK (they only print text):** running `codex --version` and `codex exec --help`. I treated them as outside the current authorization, since you said no execution.
+
+**P0b (not authorized):** a probe suite as the Worker identity. Pass criteria: it can't read controller data, can't write outside the workspace, sees no env secrets, the process tree is confirmed killed, and the requested sandbox equals the effective one.
+
+## 11. Unverified assumptions
+
+- Native Windows enforcement behaves as documented, including `workspace-write` actually being honored.
+- Job Object containment holds against sandboxed child processes.
+- The experimental egress proxy supports provider-only policy without breaking auth or telemetry.
+- Codex's exit codes, JSONL events and session IDs are stable enough for a recovery protocol.
+- `exec resume` is safe in a reused worktree.
+- WSL2 is an acceptable alternative backend.
+
+## 12. Deferred
+
+Parallel workers, a second provider adapter (interface only), the LLM reviewer (hook kept), per-tool-call interception, hidden-check rotation, mutation testing, non-git snapshots, an advisory triage LLM.
+
+## 13. For GPT in R7
+
+1. Do you accept the waiver rule (only `egress_provider_only`, only at low tier)?
+2. Do you accept that waivers live in runtime state and never in the contract?
+3. Is the manifest list in §4 missing an attack on Windows?
+4. Should the P0b probes be written as a spec before authorization, so you can review them?
+
+## 14. For you (Owner)
+
+- Approve running `codex --version` and `codex exec --help`?
+- Native Windows or WSL2 for the Worker? It changes the whole enforcement story.
+- Once GPT answers R7, I'll consolidate into a final v1.0 spec for your sign-off.
+
+I can also put this spec in a doc you can edit, share, or download as Word or PDF, if you want it outside the chat.

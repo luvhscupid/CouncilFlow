@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "MA2-WORK-REPORT",
+  "message_type": "job.report",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A2",
+  "sender": {
+    "role": "worker",
+    "instance_id": "worker-2"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "in_reply_to": "MA2-WORK-ASSIGN",
+  "payload": {
+    "status": "passed",
+    "summary": "Candidate snapshot recorded.",
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "candidate_ref": {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "candidates/candidate-attempt2.py"
+    ],
+    "input_candidate_ref": {
+      "artifact_id": "candidate-attempt1",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt1.py",
+      "sha256": "8eaff311c343e59af39a652202866c6d64a30b6b0a0082d0c0d6622955d6eef8",
+      "kind": "candidate"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "candidate-attempt2",
+      "path": "reports/reliability-repair/fresh-verification/candidates/candidate-attempt2.py",
+      "sha256": "308809044f96765530bdba26149068996ab12e2a51c71aec150eb2aea2de77c6",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "A2-worker-evidence",
+      "path": "reports/reliability-repair/fresh-verification/evidence/A2-worker.json",
+      "sha256": "811483f27a1f69035e65943385d767455789b73c70331115975a9f1b8d8680b4",
+      "kind": "worker-evidence"
+    },
+    {
+      "artifact_id": "MA2-WORK-ASSIGN",
+      "path": "reports/reliability-repair/fresh-verification/messages/MA2-WORK-ASSIGN.json",
+      "sha256": "8bc585a8bdc628b9d4ec3fc05e904fa353b4f419263e4a4f8f64138d96767b62",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "plan-original",
+      "path": "reports/reliability-repair/fresh-verification/plan.json",
+      "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+      "kind": "plan"
+    }
+  ]
+}

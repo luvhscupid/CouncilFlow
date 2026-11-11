@@ -1,0 +1,39 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "MA1-WORK-ASSIGN",
+  "message_type": "job.assign",
+  "plan_id": "RELIABILITY-PLAN-1",
+  "plan_revision": 1,
+  "task_id": "RELIABILITY-TASK-1",
+  "attempt_id": "A1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "manager-1"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "worker-1"
+  },
+  "in_reply_to": "M01",
+  "payload": {
+    "objective": "Implement the exact AC1 command behavior.",
+    "scope": [
+      "reports/reliability-repair/fresh-verification/candidates/candidate-attempt1.py"
+    ],
+    "acceptance_ids": [
+      "AC1"
+    ],
+    "instructions": [
+      "Preserve the frozen plan and candidate snapshots."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "plan-original",
+      "path": "reports/reliability-repair/fresh-verification-final/plan.json",
+      "sha256": "86c3c6b909c13725e2e94b5b603f0c428ff7efe9e0d29b61b15e7cb8f0798eef",
+      "kind": "plan"
+    }
+  ]
+}

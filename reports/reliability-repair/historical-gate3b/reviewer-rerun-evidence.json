@@ -1,0 +1,60 @@
+{
+  "command": "python",
+  "arguments": [
+    "-B",
+    "demo/receipt/receipt_calculator.py",
+    "--version"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+  "candidate_ref": {
+    "artifact_id": "gate3b-worker-candidate",
+    "path": "reports/gate3b/candidate-worker.json",
+    "sha256": "c29c6b9d26654aea70da92ddf2926e5c2eebb7c3b58ecfac95433bbad0b68387",
+    "kind": "candidate-manifest"
+  },
+  "input_refs": [
+    {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "manager-tester-assignment",
+      "path": "reports/gate3b/tester-assign.json",
+      "sha256": "f1d72796886770f730346ed7234c5ade96723e69025bc70e6dd5a12550428565",
+      "kind": "assignment"
+    },
+    {
+      "artifact_id": "gate3b-worker-report",
+      "path": "reports/gate3b/worker-report.json",
+      "sha256": "79a42dde3f75c677974cada43920ccda10bf8bebd01d2aebc9b44878fe25cfda",
+      "kind": "worker-report"
+    }
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+  "raw_stdout_sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "acceptance_id": "AC1",
+  "evidence_refs": [
+    {
+      "artifact_id": "reviewer-version-stdout",
+      "path": "reports/gate3b/reviewer-version.stdout.bin",
+      "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1",
+      "kind": "stdout"
+    },
+    {
+      "artifact_id": "reviewer-version-stderr",
+      "path": "reports/gate3b/reviewer-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "stderr"
+    },
+    {
+      "artifact_id": "reviewer-version-exit",
+      "path": "reports/gate3b/reviewer-version.exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "kind": "exit-code"
+    }
+  ]
+}

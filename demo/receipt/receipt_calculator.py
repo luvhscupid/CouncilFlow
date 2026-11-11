@@ -4,6 +4,7 @@ import argparse
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation, localcontext
 import re
+import sys
 from typing import Iterable
 
 
@@ -97,6 +98,12 @@ def _plain(number: Decimal) -> str:
     return text.rstrip("0").rstrip(".") if "." in text else text
 
 
+class _VersionAction(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None) -> None:
+        sys.stdout.buffer.write(b"1.0.0\n")
+        parser.exit()
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Calculate an offline receipt in Indonesian rupiah using exact decimal arithmetic.",
@@ -106,6 +113,7 @@ def main(argv: list[str] | None = None) -> int:
             "Quote names/units containing spaces. Example: --item rice 2 30000 kg --item onions 1 43000 kg"
         ),
     )
+    parser.add_argument("--version", action=_VersionAction, nargs=0, help="show program version and exit")
     parser.add_argument(
         "--item", action="append", nargs=4, required=True,
         metavar=("NAME", "QUANTITY", "UNIT_PRICE", "UNIT"),

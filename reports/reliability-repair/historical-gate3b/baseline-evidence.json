@@ -1,0 +1,43 @@
+{
+  "baseline_candidate": {
+    "path": "demo/receipt/receipt_calculator.py",
+    "sha256": "f8a542dd410cf658a44e23220f17603508d04bdc04f037e079755c43a84cba3d"
+  },
+  "baseline_tests": {
+    "argv": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "stdout_ref": "reports/gate3b/baseline-tests.stdout.bin",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_ref": "reports/gate3b/baseline-tests.stderr.bin",
+    "stderr_sha256": "870d2c67e28b94158aedb3f23cf6be24079e6e00e5427da32bfbed2345c92c62",
+    "summary": "11 tests; OK"
+  },
+  "baseline_version_probe": {
+    "argv": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "demo/receipt/receipt_calculator.py",
+      "--item",
+      "probe",
+      "1",
+      "2",
+      "ea",
+      "--version"
+    ],
+    "cwd": ".",
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "usage: receipt_calculator.py [-h] --item NAME QUANTITY UNIT_PRICE UNIT\r\nreceipt_calculator.py: error: unrecognized arguments: --version\r\n",
+    "expected_absent_option": true
+  }
+}

@@ -2,14 +2,18 @@
 
 1. Preserve the failing original acceptance ID, exact candidate, command/output
    and evidence hash. Tester reports failed technical status through job.report
-   JSON, not a prose substitute; it never repairs product code.
+   JSON, not a prose substitute; it never repairs product code. If the Planner
+   finds a mandatory criterion unmet after Manager acceptance, preserve that
+   failed plan.check and its cited evidence unchanged.
 2. Manager records task.decision rework/reject/escalate with causal report IDs and
-   evidence. Never accept a mandatory failure or lower criteria. Ordinary scoped
+   evidence. For Planner-detected rework, the decision replies to the exact
+   failed plan.check and carries every failed original acceptance ID unchanged.
+   Never accept a mandatory failure or lower criteria. Ordinary scoped
    engineering repair is already authorized and does not need Owner reapproval.
 3. Delegate job.assign JSON to a fresh native Worker and new attempt. Prior
    Worker must stop. One mutating Worker per workspace; parallel implementation
    requires independently authorized isolation. Preserve original plan/hash.
-4. Independently recheck changed candidate, then relevant experiential review;
+4. Independently recheck changed candidate, then the approved Reviewer comparison;
    finish with original Planner plan.check. Keep old failures and actual repair
    decisions instead of overwriting inconvenient history.
 5. There is no arbitrary lifetime engineering-repair cap. Continue useful,

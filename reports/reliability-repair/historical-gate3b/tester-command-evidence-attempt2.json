@@ -1,0 +1,98 @@
+{
+  "commands": [
+    {
+      "command_id": "version-exact",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "demo/receipt/receipt_calculator.py",
+        "--version"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+      "candidate_ref": {
+        "artifact_id": "gate3b-worker-candidate-attempt2",
+        "path": "reports/gate3b/candidate-attempt2.json",
+        "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+        "kind": "candidate-manifest"
+      },
+      "input_refs": [
+        {
+          "artifact_id": "gate3b-version-plan",
+          "path": "reports/gate3b/plan.json",
+          "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+          "kind": "plan"
+        },
+        {
+          "artifact_id": "manager-tester-assignment-attempt2",
+          "path": "reports/gate3b/tester-assign-attempt2.json",
+          "sha256": "7c4e7a20ae0ec03b17baa1570bcd25f070bf79c560dafa45286acd54232d1cb3",
+          "kind": "assignment"
+        },
+        {
+          "artifact_id": "gate3b-worker-report-attempt2",
+          "path": "reports/gate3b/worker-report-attempt2.json",
+          "sha256": "ac4c7610e271f4ce087c97f85e25c62ac79d6d24ec47170ebe188ef759d43b8d",
+          "kind": "worker-report"
+        }
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "acceptance_id": "AC1",
+      "evidence_ref": {
+        "artifact_id": "tester-version-exact-stdout-attempt2",
+        "path": "reports/gate3b/attempt2-tester-version.stdout.bin",
+        "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+        "kind": "execution-stdout"
+      }
+    },
+    {
+      "command_id": "receipt-suite",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+      "candidate_ref": {
+        "artifact_id": "gate3b-worker-candidate-attempt2",
+        "path": "reports/gate3b/candidate-attempt2.json",
+        "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+        "kind": "candidate-manifest"
+      },
+      "input_refs": [
+        {
+          "artifact_id": "gate3b-version-plan",
+          "path": "reports/gate3b/plan.json",
+          "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+          "kind": "plan"
+        },
+        {
+          "artifact_id": "manager-tester-assignment-attempt2",
+          "path": "reports/gate3b/tester-assign-attempt2.json",
+          "sha256": "7c4e7a20ae0ec03b17baa1570bcd25f070bf79c560dafa45286acd54232d1cb3",
+          "kind": "assignment"
+        },
+        {
+          "artifact_id": "gate3b-worker-report-attempt2",
+          "path": "reports/gate3b/worker-report-attempt2.json",
+          "sha256": "ac4c7610e271f4ce087c97f85e25c62ac79d6d24ec47170ebe188ef759d43b8d",
+          "kind": "worker-report"
+        }
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "acceptance_id": "AC2",
+      "evidence_ref": {
+        "artifact_id": "tester-receipt-suite-stdout-attempt2",
+        "path": "reports/gate3b/attempt2-tester-suite.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "kind": "execution-stdout"
+      }
+    }
+  ]
+}

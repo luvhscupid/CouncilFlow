@@ -1,0 +1,72 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A002",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T05:26:17.058184Z",
+  "in_reply_to": "REST-T2-REPORT-001",
+  "message_id": "REST-M014",
+  "message_type": "task.decision",
+  "payload": {
+    "disposition": "rework",
+    "reason": "Reject candidate002 for independently reproduced B04-B07: recognized optional field types, contradictory acceptance, malformed referenced-plan types and uncited passed Planner results. All92 prior assigned tests pass, but these new mandatory negative controls fail. Fresh repair remains inside original scope and unchanged criteria; no Owner decision needed. This is an intermediate rework update, not the final Planner check.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "report_ids": [
+      "REST-T2-REPORT-001"
+    ],
+    "failed_acceptance_ids": [
+      "C02",
+      "C04",
+      "C08",
+      "C09",
+      "C12"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T2-REPORT-ARTIFACT",
+      "path": "reports/restoration/messages/REST-T2-REPORT-001.json",
+      "sha256": "add3ab525ce03a73dcf6ec056abfc9f525ec519ea76ccd8ac8efed265be21b89",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "REST-T2-DETAILS",
+      "path": "reports/restoration/verification/final/report.md",
+      "sha256": "8007a66b37b9d6df81f19c02948c480b85e871a7ac864a033737e43a0d38fd10",
+      "kind": "report"
+    }
+  ]
+}

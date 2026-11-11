@@ -1,0 +1,134 @@
+[
+  {
+    "sent": {
+      "id": 2,
+      "method": "thread/start",
+      "params": {
+        "cwd": "/workspace/CouncilFlow",
+        "ephemeral": true
+      }
+    }
+  },
+  {
+    "received": {
+      "id": 2,
+      "result": {
+        "thread": {
+          "id": "01a1c898-388a-75a2-806a-f8d4bfb65b21",
+          "environments": [
+            {
+              "environmentId": "local",
+              "cwd": "/workspace/CouncilFlow",
+              "runtimeWorkspaceRoots": [
+                "/workspace/CouncilFlow"
+              ]
+            }
+          ],
+          "extra": null,
+          "sessionId": "01a1c898-388a-75a2-806a-f8d4bfb65b21",
+          "forkedFromId": null,
+          "parentThreadId": null,
+          "preview": "",
+          "ephemeral": true,
+          "section": null,
+          "sectionEnteredAt": null,
+          "projectId": null,
+          "historyMode": "paginated",
+          "modelProvider": "openai",
+          "model": "gpt-6.1-sol",
+          "reasoningEffort": null,
+          "createdAt": 1794366781,
+          "updatedAt": 1794366781,
+          "recencyAt": 1794366781,
+          "status": {
+            "type": "idle"
+          },
+          "path": null,
+          "cwd": "/workspace/CouncilFlow",
+          "cliVersion": "0.167.0-alpha.4",
+          "originator": "councilflow_validation",
+          "source": "vscode",
+          "canAcceptDirectInput": true,
+          "threadSource": null,
+          "agentNickname": null,
+          "agentRole": null,
+          "gitInfo": null,
+          "name": null,
+          "daybreakEnabled": null,
+          "turns": []
+        },
+        "model": "gpt-6.1-sol",
+        "modelProvider": "openai",
+        "serviceTier": null,
+        "disabledPluginIds": [],
+        "cwd": "/workspace/CouncilFlow",
+        "runtimeWorkspaceRoots": [
+          "/workspace/CouncilFlow"
+        ],
+        "instructionSources": [],
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "sandbox": {
+          "type": "readOnly",
+          "networkAccess": false
+        },
+        "activePermissionProfile": {
+          "id": ":read-only",
+          "extends": null
+        },
+        "reasoningEffort": null,
+        "multiAgentMode": "explicitRequestOnly"
+      }
+    }
+  },
+  {
+    "sent": {
+      "id": 3,
+      "method": "turn/start",
+      "params": {
+        "threadId": "01a1c898-388a-75a2-806a-f8d4bfb65b21",
+        "input": [
+          {
+            "type": "text",
+            "text": "$council-flow Goal: complete the offline receipt calculator with Decimal-safe arithmetic and independent verification. This turn is ONLY the explicit activation check: confirm which skill was loaded and its role sequence. Do not implement, edit files, delegate, inspect other projects, or make additional tool calls. Parent Manager will then execute the full workflow using native collaboration."
+          },
+          {
+            "type": "skill",
+            "name": "council-flow",
+            "path": "/workspace/CouncilFlow/.agents/skills/council-flow/SKILL.md"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "received": {
+      "id": 3,
+      "result": {
+        "turn": {
+          "id": "01a1c898-39c2-7aa3-b8b0-ae8b1a142c21",
+          "rootTurnId": "01a1c898-39c2-7aa3-b8b0-ae8b1a142c21",
+          "items": [],
+          "itemsView": "notLoaded",
+          "status": "inProgress",
+          "error": null,
+          "startedAt": null,
+          "completedAt": null,
+          "durationMs": null
+        }
+      }
+    }
+  },
+  {
+    "received": {
+      "method": "thread/status/changed",
+      "params": {
+        "threadId": "01a1c898-388a-75a2-806a-f8d4bfb65b21",
+        "status": {
+          "type": "systemError"
+        }
+      },
+      "emittedAtMs": 1794366782651
+    }
+  }
+]

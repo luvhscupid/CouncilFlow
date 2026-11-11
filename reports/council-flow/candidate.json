@@ -1,0 +1,15 @@
+{
+  "candidate_id": "candidate-receipt-version-attempt-1",
+  "files": [
+    {
+      "path": "demo/receipt/receipt_calculator.py",
+      "snapshot_path": "reports/council-flow/candidate/demo/receipt/receipt_calculator.py",
+      "sha256": "e1fed3858bba128aa43fba186e1f6b3dcff7f1e4fcb6e2ff36c64df15c4c351f"
+    },
+    {
+      "path": "demo/receipt/test_receipt_calculator.py",
+      "snapshot_path": "reports/council-flow/candidate/demo/receipt/test_receipt_calculator.py",
+      "sha256": "be1f2e14c188f34c0255687a4fa2d3ff14095ad9a9df4b903a42554666172b5c"
+    }
+  ]
+}

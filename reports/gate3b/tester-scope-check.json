@@ -1,0 +1,20 @@
+{
+  "comparison_root": "E:\\Saint\\PROJECTS\\CouncilFlow-round6",
+  "fixture_root": "E:\\Saint\\PROJECTS\\CouncilFlow-round6-gate3b-fixture",
+  "excluded_directories": [
+    ".git",
+    "reports"
+  ],
+  "changed_paths": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "missing_from_reference": [],
+  "authorized_paths": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "only_authorized_receipt_paths_changed": true,
+  "protected_manifest": "reports/gate3b/protected-files-before.json",
+  "protected_file_hashes_match": true
+}

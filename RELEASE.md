@@ -1,5 +1,26 @@
 # CouncilFlow release
 
+## Council Round 6 correction package
+
+The corrected release is built from the isolated copy at
+`E:\Saint\PROJECTS\CouncilFlow-round6`. C1 changes the Reviewer to compare the
+frozen plan, Worker candidate and Tester evidence, then independently rerun one
+Tester-declared deterministic command. C2 removes `created_at` from new message
+envelopes while keeping optional diagnostic timestamps with an explicit
+provenance limitation. C3 is recorded as a separate erratum without rewriting
+the frozen Gate 3 source or historical outcomes.
+
+Engineering regression checks passed: 64 CouncilFlow tests plus 12 receipt
+calculator application tests. The tests use synthetic contract fixtures and do
+not demonstrate live native role behavior. Gate 3b is blocked because no
+authentic clean pre-test revision/fixture can be recovered from this no-Git
+workspace; the available receipt-calculator already has `--version`. See
+`reports/gate3b-results.md` for E1–E10 status.
+
+The corrected distributable is `dist/council-flow-round6.zip`, with a sibling
+SHA-256 file. This work did not install the skill into the
+Owner's active repository.
+
 The primary installable product is `.agents/skills/council-flow/`, with native
 custom agents in `.codex/agents/`. Both are ordinary text files; no rebuild or
 package installation is required. Current format references and runtime
@@ -27,7 +48,7 @@ COUNCILFLOW_FULLY_VERIFIED while the actual activation result is blocked.
 
 ## Archive and installation
 
-Archive: `dist/council-flow.zip`. It preserves repository-relative `.agents/`
+Archive: `dist/council-flow-round6.zip`. It preserves repository-relative `.agents/`
 and `.codex/` paths. Source-controlled product, demonstration, tests, and selected
 evidence are included. Generated native CLI state under `reports/runtime/`,
 credential paths, bundled system assets, schema dumps, caches, `.git`, and the

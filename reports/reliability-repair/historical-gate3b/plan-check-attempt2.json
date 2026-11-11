@@ -1,0 +1,146 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "planner-check-gate3b-attempt2",
+  "message_type": "plan.check",
+  "plan_id": "gate3b-version-20261111",
+  "plan_revision": 1,
+  "task_id": "task-gate3b-version-20261111",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/gate3b_planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "manager-progress-gate3b-attempt2",
+  "payload": {
+    "status": "passed",
+    "summary": "Attempt 2 satisfies all original frozen criteria: exact six-byte LF version output and exit 0; all 12 receipt tests pass; only the two authorized receipt files differ and protected hashes match.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3"
+    ],
+    "plan_ref": {
+      "artifact_id": "gate3b-version-plan",
+      "path": "reports/gate3b/plan.json",
+      "sha256": "660f3f3769e57bb58a173f08a75f6a0df1acb71e38e9f5307ccce4c58d1e8584",
+      "kind": "plan"
+    },
+    "results": [
+      {
+        "acceptance_id": "AC1",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "attempt2-tester-version-stdout",
+            "path": "reports/gate3b/attempt2-tester-version.stdout.bin",
+            "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+            "kind": "stdout"
+          },
+          {
+            "artifact_id": "attempt2-tester-version-stderr",
+            "path": "reports/gate3b/attempt2-tester-version.stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "kind": "stderr"
+          },
+          {
+            "artifact_id": "attempt2-tester-version-exit",
+            "path": "reports/gate3b/attempt2-tester-version.exit.txt",
+            "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+            "kind": "exit-code"
+          },
+          {
+            "artifact_id": "attempt2-reviewer-rerun-evidence",
+            "path": "reports/gate3b/reviewer-rerun-evidence-attempt2.json",
+            "sha256": "449bdf30fc874a65fb1b68f61e459062c723cd16b6b23a551cd7719f361c13db",
+            "kind": "execution-evidence"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "AC2",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "gate3b-tester-report-attempt2",
+            "path": "reports/gate3b/tester-report-attempt2.json",
+            "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+            "kind": "tester-report"
+          },
+          {
+            "artifact_id": "attempt2-tester-suite-stderr",
+            "path": "reports/gate3b/attempt2-tester-suite.stderr.bin",
+            "sha256": "61e6051be510bdf14637f3c28c2759f82ca90c2f728d0d0ab224294067a69aa1",
+            "kind": "test-output"
+          },
+          {
+            "artifact_id": "attempt2-tester-suite-exit",
+            "path": "reports/gate3b/attempt2-tester-suite.exit.txt",
+            "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+            "kind": "exit-code"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "AC3",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "attempt2-tester-scope-evidence",
+            "path": "reports/gate3b/tester-scope-check-attempt2.json",
+            "sha256": "f7d30a9e2f56d75ba63d746abdd4a31e5302eda43d708bf673cc866a6f365f93",
+            "kind": "scope-check"
+          },
+          {
+            "artifact_id": "gate3b-worker-candidate-attempt2",
+            "path": "reports/gate3b/candidate-attempt2.json",
+            "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+            "kind": "candidate-manifest"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "gate3b-manager-decision-attempt2",
+      "path": "reports/gate3b/manager-decision-attempt2.json",
+      "sha256": "ca89b4f04f8a75c69b11a2c400e1e8612a983cda2065a1e6ba5bc38f512f5e22",
+      "kind": "task-decision"
+    },
+    {
+      "artifact_id": "gate3b-manager-progress-attempt2",
+      "path": "reports/gate3b/manager-progress-attempt2.json",
+      "sha256": "017d14e6e488768f1b411a4f97c80079d1e552049d480d15af11ab06774b4f77",
+      "kind": "plan-progress"
+    },
+    {
+      "artifact_id": "gate3b-worker-report-attempt2",
+      "path": "reports/gate3b/worker-report-attempt2.json",
+      "sha256": "ac4c7610e271f4ce087c97f85e25c62ac79d6d24ec47170ebe188ef759d43b8d",
+      "kind": "worker-report"
+    },
+    {
+      "artifact_id": "gate3b-tester-report-attempt2",
+      "path": "reports/gate3b/tester-report-attempt2.json",
+      "sha256": "cba79c07c2490c2ee2f7278fc8c49525516a73ed89529a5ef6fdc9808c786705",
+      "kind": "tester-report"
+    },
+    {
+      "artifact_id": "gate3b-reviewer-report-attempt2",
+      "path": "reports/gate3b/reviewer-report-attempt2.json",
+      "sha256": "92f4ecc7bed476e0e728231e4e40a5c625abad99d4861bd5b2eea9c468ae7aea",
+      "kind": "reviewer-report"
+    },
+    {
+      "artifact_id": "gate3b-worker-candidate-attempt2",
+      "path": "reports/gate3b/candidate-attempt2.json",
+      "sha256": "47bce2c917595fd9dcdf95d695c83302f7ea978495e98d7a4af01e7b8ed33522",
+      "kind": "candidate-manifest"
+    }
+  ]
+}
