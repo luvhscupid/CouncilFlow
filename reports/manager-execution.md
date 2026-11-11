@@ -8,6 +8,7 @@
 - Environment: Codex Cloud, Python 3.12.14, `codex-cli 0.167.0-alpha.4`, standard `zip` available. No package installation required.
 - Manager performs coordination, read-only inspection, command execution, and execution/release records. Application and validation code changes are delegated to Workers.
 - No project dependency is taken on ACP, Execution Kernel, or Codex on Crack. No other project, existing installation, global configuration, ACL, or approval policy is modified.
+- Provenance correction: during initial capability discovery, the Manager unnecessarily read an available cloud-hosted `execution-kernel` instruction resource. It was not adopted, copied, imported, or used as a CouncilFlow dependency; no filesystem installation or predecessor project was opened or modified. That unrelated instruction read should have been skipped under the Owner's boundary. V14 establishes dependency independence, not a claim that this read never occurred.
 
 ## Actual native delegations
 
