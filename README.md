@@ -90,6 +90,14 @@ invocation or real role independence. Application and native-agent observations
 are tested and recorded separately. The V01–V14 definitions remain in
 `tests/validation_cases.json`; current C01–C12 evidence is in the traceability map.
 
+The corrected skill validates closed JSON packets, role policy, artifact identity,
+causal context and recorded verification evidence. Those checks validate supplied
+data; they do not authenticate native senders or enforce native transport,
+permissions or process isolation. Native skill activation and whether a host
+actually loaded each `.codex/agents/council-*.toml` remain separate host-level
+checks. A role label alone does not prove custom-agent loading; see the
+[Gate 3 E4 erratum](docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md).
+
 See [RELEASE.md](RELEASE.md) for package contents, portability, and release checks.
 
 ## Offline CSV summarizer

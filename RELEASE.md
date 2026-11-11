@@ -25,6 +25,23 @@ The truthful release classification is
 authentication or require a new key, provider or subscription. It cannot claim
 COUNCILFLOW_FULLY_VERIFIED while the actual activation result is blocked.
 
+The integration correction updates the skill's JSON contracts and evidence
+handling, four role TOMLs, deterministic validator tests, and the approved Gate 3
+E4 erratum. E4 passes only with host-observed configuration identity or agent
+type; a role label is insufficient. Insufficient host evidence is UNVERIFIED,
+and evidence of a different/default configuration is FAIL. These source changes
+do not resolve the existing native activation or custom-agent-loading gaps.
+
+Run the repository suites and receipt regression from the repository root:
+
+```sh
+python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s demo/receipt -p 'test_*.py' -v
+```
+
+These local checks establish contract, file and receipt behavior only. They do
+not establish live skill activation, native role independence or E4 host identity.
+
 ## Archive and installation
 
 Archive: `dist/council-flow.zip`. It preserves repository-relative `.agents/`
