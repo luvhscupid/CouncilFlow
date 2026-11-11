@@ -8,7 +8,8 @@ not the trusted ACP Supervisor. Original REST-P001 plan/hash is unchanged.
 Layers below are separate: **S** specified, **I** implemented, **SV** statically
 validated, **D** dynamically tested, **N** observed in actual native role activity,
 **B/U** blocked or unverified. PASS applies only to the named observation, never
-as an override of missing native activation. Release closeout is still pending.
+as an override of missing native activation. The original Planner's final map
+and Manager closeout preserve these distinctions.
 Skill-relative paths below begin at `.agents/skills/council-flow/`.
 
 | Requirement / explicit source | Implementation | Actual verification and layer/status | Remaining limitation |
@@ -23,13 +24,13 @@ Skill-relative paths below begin at `.agents/skills/council-flow/`.
 | C06 / §4 native format | `.codex/agents/council-*.toml`; YAML native mapping | SV PASS: four exact supported name/description/developer_instructions string definitions; current native CLI schemas/help inspected; N actual native delegation works | U: live selection/loading of the custom-role files; role-instruction fallback used |
 | C07 / §§6–7: Owner prose, internal JSON/YAML/TOML/JSONL | SKILL, role refs/TOMLs, README/RELEASE | SV PASS; N Owner progress is natural language; separate Reviewer eight actual CLI interactions PASS, no blocking issue; release wording clarified | Internal records are developer artifacts, not an Owner authoring requirement |
 | C08 / §§4,8–9: failed mandatory test causes rework | recovery.md, fresh `demo/structured-flow/`, REST-M011/M012 and REST-M014/M015 | N PASS: real initial sum failure and independent validator failures rejected; three fresh Workers across REST-A001/A002/A003; independent retests now pass | Earlier failed logs/snapshots retained; old receipt is regression, not counted as this fresh demo |
-| C09 / §§3A,7–8: independent candidate-bound evidence and original Planner check | candidate/input refs, mandatory Tester oracle_ref, Reviewer observations, evidence-based decisions, original plan.check | D/N technical and Reviewer PASS on candidate003; Worker assertion alone rejected; passed checks require evidence; final Planner map pending | Structure cannot establish semantic truth; final map/decision will be added at closeout |
+| C09 / §§3A,7–8: independent candidate-bound evidence and original Planner check | candidate/input refs, mandatory Tester oracle_ref, Reviewer observations, evidence-based decisions, original plan.check | D/N PASS on candidate003: distinct Tester/Reviewer, Manager REST-M018 acceptance and original Planner REST-PLAN-FINAL-001 all16-criteria map; passed results require explicit evidence | Structural validation cannot establish semantic truth or native sender authentication |
 | C10 / §§1–2,8: no new platform/infrastructure | installed stdlib helper and native skill/agent files | SV PASS: stdlib-only imports; D relocated helper/policy/message/context checks PASS; no installation, database/server/provider/API key introduced | Native Codex remains required for actual AI roles |
 | C11 / §§2,8,11: original functionality | unchanged receipt/CSV/starter and prior tests | D PASS: all45 previously passing checks retained; actual receipt Rp103,000; current sum4; final full run103 methods,0 unexpected failed suites,0 skips | Old two-test starter has one deliberate baseline failure and is excluded from passing counts |
 | C12 / §8: genuine negative-control sensitivity | `tests/test_contracts.py`; two independent test modules; actual packet mutations | D PASS after B01–B07 repairs; 9 final mutations of actual context/events reject; actual partial Planner map rejected for omitted original criteria | Artificial mutations are not counted as new AI sessions; rejected packet remains preserved |
-| Diagnostics / §5 | `validate_jsonl`, `events-prefix-001.jsonl`, final export at closeout | D/N six actual prefix events and event-reference negatives PASS | Optional bounded export ≤1MiB/1024 lines; not authoritative/crash-safe ledger; operators must keep secrets/private reasoning out |
+| Diagnostics / §5 | `validate_jsonl`, `events-prefix-001.jsonl`, `events.jsonl` | D/N PASS: twelve actual events validate against known role messages plus actual activation report; event-reference negatives reject | Optional bounded export ≤1MiB/1024 lines; not authoritative/crash-safe ledger; operators must keep secrets/private reasoning out |
 | Fresh activation / §§9,12 | `reports/restoration/activation/REST-ACT-REPORT-001.json` and underlying attempt | N fresh corrected skill discovery PASS; real structured explicit input accepted, then native thread systemError/HTTP401; actual returned IDs saved | B/U: no completed invoked inference; custom-role selection unverified; no bypass or repeated identical attempt |
-| Permanent traceability/release / §§10–12 | this map, current final.md, corrected dist ZIP and checksum | I in progress: all code/tests/review complete; release archive/source/relocation checks, original Planner and local commit closeout next | Cannot claim COUNCILFLOW_FULLY_VERIFIED from test counts |
+| Permanent traceability/release / §§10–12 | this map, current final.md, corrected dist ZIP/checksum, `restoration/package-verification.json` | I/SV/D/N PASS within correction scope: complete archive/source/safe-path checks, extracted103-test relocation, original Planner map, implementation commit3e23bd8 and final evidence commit at HEAD; all29 tested product files unchanged | Extracted tests used the immutable numbered release snapshot; final archive adds evidence/copy only. Cannot claim COUNCILFLOW_FULLY_VERIFIED from test counts |
 
 ## Evidence index and execution limits
 
@@ -47,6 +48,10 @@ Skill-relative paths below begin at `.agents/skills/council-flow/`.
   interactions; artificial unauthorized packet is labeled as a negative control.
 - A rejected actual interim Planner packet is retained with
   `planner-interim-rejection.json`; it is not in the accepted live order.
-- Known communication-correction classification after final closeout:
+- Original Planner final map: `reports/restoration/planner-final/report.md` and
+  `messages/REST-PLAN-FINAL-001.json`; all16 unchanged criteria have evidence.
+  The final supplied sequence contains21 messages. Immutable inspected snapshots
+  preserve hashes while current release copy reflects completed closeout.
+- Communication-correction classification:
   **CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED**, not a new claim that the
   earlier native authentication failure has been repaired.

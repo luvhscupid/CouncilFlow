@@ -7,8 +7,8 @@ observations live under `reports/environment/`.
 
 ## This build's verification limit
 
-The communication restoration has passed 103 independently executed tests and
-separate experiential review. Final Planner/release closeout is in progress.
+The communication restoration passed 103 independently executed tests,
+separate experiential review and the original Planner's final check.
 Fresh native discovery passed; documented explicit structured skill input was
 accepted, then the actual native thread entered systemError with HTTP 401
 authentication rejection. Successful invocation remains **UNVERIFIED**.
@@ -20,7 +20,7 @@ unverified; native subagents received the documented role-instruction fallback.
 See `reports/restoration/activation/`, `reports/restoration/manager.md`, and
 `reports/final.md`. Earlier release reports are historical evidence.
 
-When closeout passes, the truthful classification is
+The truthful release classification is
 **CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED**. This build does not alter
 authentication or require a new key, provider or subscription. It cannot claim
 COUNCILFLOW_FULLY_VERIFIED while the actual activation result is blocked.
@@ -104,4 +104,6 @@ failure must not be hidden by unit-test totals. Final classification:
 CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED if correction passes while native
 activation remains unverified; COUNCILFLOW_FULLY_VERIFIED only after genuine
 invocation and required real role sessions. Current results belong in final.md
-and requirements-traceability.md; this section does not certify pending work.
+and requirements-traceability.md. Current archive verification is recorded in
+`reports/restoration/package-verification.json`; the earlier numbered archive
+snapshot and its extracted 103-test run remain immutable historical evidence.

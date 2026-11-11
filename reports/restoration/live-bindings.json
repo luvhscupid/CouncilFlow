@@ -66,5 +66,21 @@
   "REST-R-REPORT-001": {
     "role": "reviewer",
     "instance_id": "/root/restoration_reviewer"
+  },
+  "REST-M018": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M019": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-M019B": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-PLAN-FINAL-001": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
   }
 }

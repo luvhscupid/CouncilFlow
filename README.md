@@ -6,9 +6,10 @@ fresh Worker, requests separate Tester and Reviewer assessments, coordinates
 repairs, and asks the Planner for a final objective check. Only the Manager gives
 routine progress and results to the human Owner.
 
-Communication restoration has passed independent technical and experiential
-verification; final release closeout is in progress. Fresh native discovery
-passed, but explicit invocation remains **UNVERIFIED** after HTTP 401
+**CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED.** Communication restoration
+passed independent technical verification, experiential review and the original
+Planner's final check. Fresh native discovery passed, but explicit invocation
+remains **UNVERIFIED** after HTTP 401
 authentication rejection. The real-agent workflow does not replace that missing
 proof. See [current results](reports/final.md) and [traceability](reports/requirements-traceability.md).
 

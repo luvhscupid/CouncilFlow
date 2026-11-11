@@ -145,3 +145,29 @@ inside the repository reran all103 methods, policy, actual-message replay,
 receipt Rp103,000 and sum4 successfully. See `package-verification-001.json` and
 `archive-relocation-verification.json`. This replay is not new AI execution.
 Final Manager acceptance/original Planner map and final record commit follow.
+
+## Final disposition
+
+REST-M018 accepted the corrected candidate on independent technical and
+experiential evidence. The original Planner returned REST-PLAN-FINAL-001,
+anchored to that decision and the unchanged plan, mapping all16 criteria to
+explicit artifact hashes. Parent validated the full21-message supplied sequence
+and12 actual JSONL events, including separate activation context. The previous
+partial Planner map remains rejected historical evidence.
+
+Final classification: **CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED**.
+Fresh discovery passed, but the accepted native explicit invocation entered
+systemError/HTTP401 without completed inference; custom-role-file selection is
+also unverified. Neither criterion is promoted by the passing test count.
+No application repair or Owner decision remains indicated.
+
+All29 tested product files remain byte-identical to the independent103-test
+candidate and extracted installation. Final release changes are factual status
+copy and evidence only. Immutable Planner snapshots preserve inspected hashes.
+The final archive's integrity, source equality, complete records and safe
+exclusions are recorded separately in `package-verification.json`; its earlier
+numbered snapshot remains historical and is included for causal evidence.
+Implementation commit3e23bd8872417072377514fdfaff5afc0f23aa8f is observed in
+`release-commit-001.json`. Final metadata/archive/evidence are committed together
+at repository HEAD, whose actual ID is supplied in the Owner response. No push,
+publication, global configuration change or permission escalation is performed.

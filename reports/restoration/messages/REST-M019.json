@@ -1,0 +1,87 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M019",
+  "message_type": "plan.progress",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T10:08:09.233283Z",
+  "in_reply_to": "REST-M018",
+  "payload": {
+    "status": "manager_accepted_original_objective_check",
+    "objective": "Perform final original REST-P001 acceptance map and report exact restoration classification after actual tests, review, archive and local commit.",
+    "scope": [
+      "reports/restoration/planner-final/**",
+      "reports/restoration/messages/REST-PLAN-FINAL-001.json"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "verified_progress": [
+      "All103 methods passed independently with0 skips/unexpected failed suites; prior failures B01-B07 preserved and repaired using3 fresh Workers. Final Tester saved full report before native turn usage error; Manager revalidated genuine saved result/current hashes and full context on Owner continuation.",
+      "Separate Reviewer passed8 actual CLI interactions, no blocking finding; minor release-copy observations addressed in README/RELEASE without product/code changes.",
+      "Corrected ZIP verified for CRC/safe paths/complete current skill/helper/policy/TOML/source bytes/no runtime or credentials; fresh extracted archive passed all103 tests, policy/message replay, receipt Rp103,000 and sum4. Complete skill standalone relocation also passed.",
+      "Actual local implementation/release-candidate commit3e23bd8872417072377514fdfaff5afc0f23aa8f exists; clean before final records. Current new evidence in release-commit-001.json and package-verification-001.json. Final record/package refresh and final evidence commit will follow your map; tested product bytes will remain unchanged.",
+      "Fresh corrected native discovery passed but explicit native turn entered401/systemError; no completed invoked response. Custom-role file selection remains unverified. Actual5 roles across9 workflow sessions plus extra capability Tester observed.12 actual optional diagnostic events validated against known messages/root hashes.",
+      "Your earlier interim subset plan.check was rejected because full original acceptance IDs are required; preserved in planner-interim-rejection.json. This was never accepted as final proof or used to lower criteria."
+    ],
+    "next_action": "Read original plan and current evidence. Write only final Planner records (no implementation/docs/code changes): reports/restoration/planner-final/report.md plus schema-valid plan.check at messages/REST-PLAN-FINAL-001.json. Include ALL16 original IDs exactly once, explicit nonempty evidence refs for every passed result, original plan_ref unchanged. IMPORTANT passing plan.check must anchor in_reply_to REST-M018 Manager accept (not advisory REST-M019), as current helper requires. Validate expected sender planner /root/restoration_planner and full live context. All restoration requirements can pass if evidence supports them; R-ACTIVATION is attempted-and-honestly-reported criterion, not successful invocation. Native activation success remainsUNVERIFIED, so outcome must CONTRACT_RESTORED \u2014 NATIVE_ACTIVATION_UNVERIFIED, never FULLY_VERIFIED. Do not invent future commit IDs or native successes. Distinguish actual scope from static/dynamic/native/replay evidence and any remaining gap. Return ONLY JSON and stop writes. Final archive metadata-only update and commit are Parent bookkeeping."
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ACCEPT-001",
+      "path": "reports/restoration/messages/REST-M018.json",
+      "sha256": "64be5fe3b78aa4df1c568385ee597106b271436d2e7ec38c999878255bdc24d2",
+      "kind": "decision"
+    },
+    {
+      "artifact_id": "REST-ACTUAL-EVENTS-FINAL",
+      "path": "reports/restoration/events.jsonl",
+      "sha256": "f91c82dab08532ff93a76f4eac7e22c69490061ca6855c1c09a3abe1caa88d2f",
+      "kind": "diagnostic"
+    },
+    {
+      "artifact_id": "REST-RELEASE-COMMIT-001",
+      "path": "reports/restoration/release-commit-001.json",
+      "sha256": "d6de078a58704939c94b8e0b2bedc39152778e2d41b3af06d431602be7a76c31",
+      "kind": "commit-evidence"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 # CouncilFlow current delivery
 
-**PARTIAL — release closeout and original Planner check pending.**
+**CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED**
 
-Communication-contract implementation and independent technical/experiential
-verification are complete. The corrected archive and final commit are being
-prepared. Successful native explicit invocation remains UNVERIFIED after a fresh
-HTTP401/systemError result; this file will retain that limitation at closeout.
+Communication-contract implementation, independent technical verification,
+experiential review and the original Planner's final check passed. The corrected
+skill is packaged with its supporting files. Successful native explicit invocation
+remains UNVERIFIED after a fresh HTTP401/systemError result.
 
 ## Changes and product
 
@@ -92,13 +92,28 @@ fallback. No auth extraction/bypass, new provider/key or repeated identical atte
 ## Deliverables and closeout
 
 - Skill: `/workspace/CouncilFlow/.agents/skills/council-flow/SKILL.md`.
-- Archive: `dist/council-flow.zip`, checksum beside it; refreshed release and
-  archive/relocation checks are pending closeout, not asserted here.
+- Archive: `dist/council-flow.zip`, checksum beside it; current integrity,
+  complete-file/source-byte and exclusion checks are recorded in
+  `reports/restoration/package-verification.json`. The immutable numbered
+  archive verification and extracted installation rerun of all103 tests are
+  preserved separately; final closeout changes only evidence and release copy,
+  with all29 tested product files byte-identical.
 - Permanent map: `reports/requirements-traceability.md` separates specified,
   implemented, static, dynamic, native and blocked evidence.
-- Final original Planner check and local commit are pending. No application or
-  ordinary Owner decision remains requested. No publishing/push is authorized by
-  this closeout, and none is performed.
+- Original Planner final check: `reports/restoration/planner-final/report.md`
+  and `messages/REST-PLAN-FINAL-001.json`, all16 original criteria mapped to
+  explicit evidence. The21-message supplied causal sequence and12 optional
+  actual events validate with Parent-observed role context; these checks are
+  not authentication or new native inference.
+- Implementation commit: `3e23bd8872417072377514fdfaff5afc0f23aa8f`.
+  The final evidence/archive commit is repository HEAD, reported to the Owner;
+  obtain its exact ID with `git log -1 --format=%H`. No push/publication is
+  performed. No application repair or Owner decision remains requested.
+
+All communication-restoration criteria pass within their documented scope.
+Successful native explicit inference and live custom-role-file selection remain
+unverified. R-ACTIVATION in the unchanged plan requires the fresh attempt and
+honest reporting; passing that criterion does not pass native activation itself.
 
 In a compatible authenticated Codex session opened at the repository root:
 

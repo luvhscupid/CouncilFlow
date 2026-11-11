@@ -1,0 +1,21 @@
+{
+  "observed_at": "2026-11-11T10:20:04.951365Z",
+  "classification": "CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED",
+  "final_planner_message": "REST-PLAN-FINAL-001",
+  "final_planner_status": "passed",
+  "unchanged_original_criteria": 16,
+  "validated_supplied_messages": 21,
+  "validated_actual_events": 12,
+  "observed_actor_context": "Parent-observed native task paths; not authentication",
+  "byte_identical_tested_product_files": 29,
+  "independent_tests": {
+    "passed": 103,
+    "unexpected_failed_suites": 0,
+    "skipped": 0,
+    "source": "reports/restoration/verification/release/suite-results.json"
+  },
+  "native_invocation": "UNVERIFIED: real accepted turn then systemError/HTTP401; no completed inference",
+  "live_custom_role_selection": "UNVERIFIED",
+  "scope": "Final controlled-record checks; no new AI session, no rerun claimed for unchanged source",
+  "final_packet_sha256": "c948fecc2db7818e554439ae0145cd425b19ec341cf36151d9b223c4d3d81841"
+}
