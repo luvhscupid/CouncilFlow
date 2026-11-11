@@ -89,3 +89,15 @@ independence, or application correctness. The V01–V14 definitions are in
 `tests/validation_cases.json`; runtime evidence must be recorded separately.
 
 See [RELEASE.md](RELEASE.md) for package contents, portability, and release checks.
+
+## Offline CSV summarizer
+
+The [CSV summarizer](demo/csv-summary/README.md) counts data records and prints
+exact totals for explicitly selected numeric columns, with input validation:
+
+```sh
+python3 demo/csv-summary/csv_summarizer.py demo/csv-summary/sample.csv --column amount --column quantity
+python3 -m unittest discover -s demo/csv-summary -v
+```
+
+It uses only the Python standard library, preserves its input, and works offline.

@@ -1,0 +1,93 @@
+{
+  "type": "ReviewerInteractionEvidence",
+  "task_id": "CF-CSV-001",
+  "agent_id": "/root/csv_reviewer",
+  "observations": [
+    {
+      "label": "help",
+      "cwd": "/workspace/CouncilFlow",
+      "command": [
+        "python3",
+        "demo/csv-summary/csv_summarizer.py",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "usage: csv_summarizer.py [-h] --column NAME INPUT\n\nCount CSV data records and print exact totals for selected numeric columns,\noffline.\n\npositional arguments:\n  INPUT          local comma-delimited CSV file with a header\n\noptions:\n  -h, --help     show this help message and exit\n  --column NAME  numeric header name after trimming outer header whitespace;\n                 repeat for multiple totals\n\nUse comma-delimited UTF-8 CSV with a unique nonblank header (optional BOM).\nRepeat --column for each numeric column; other columns may contain text.\nNumbers are signed plain decimals, up to 18 integer and 12 fractional digits\nincluding zeros; no grouping, currency symbols or exponent notation. Header-\nonly files yield zero totals; empty files and blank records are errors. Inputs\nare never modified. Example: csv_summarizer.py sample.csv --column amount\n--column quantity\n",
+      "stderr": ""
+    },
+    {
+      "label": "documented_sample",
+      "cwd": "/workspace/CouncilFlow",
+      "command": [
+        "python3",
+        "demo/csv-summary/csv_summarizer.py",
+        "demo/csv-summary/sample.csv",
+        "--column",
+        "amount",
+        "--column",
+        "quantity"
+      ],
+      "exit": 0,
+      "stdout": "Rows: 3\nTotal amount: 30\nTotal quantity: 6\n",
+      "stderr": ""
+    },
+    {
+      "label": "unknown_column",
+      "cwd": "/workspace/CouncilFlow",
+      "command": [
+        "python3",
+        "demo/csv-summary/csv_summarizer.py",
+        "demo/csv-summary/sample.csv",
+        "--column",
+        "missing"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "error: demo/csv-summary/sample.csv: requested column 'missing' is not in the header\n"
+    },
+    {
+      "label": "late_invalid_numeric_value",
+      "cwd": "/workspace/CouncilFlow",
+      "command": [
+        "python3",
+        "demo/csv-summary/csv_summarizer.py",
+        "/workspace/CouncilFlow/reports/csv-summary/review/cli-review-5g8vaoc4/invalid.csv",
+        "--column",
+        "amount"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "error: /workspace/CouncilFlow/reports/csv-summary/review/cli-review-5g8vaoc4/invalid.csv: record 3, column 'amount': expected a finite plain decimal (e.g. -2, +3.5 or .25; no commas or exponents)\n"
+    },
+    {
+      "label": "header_only",
+      "cwd": "/workspace/CouncilFlow",
+      "command": [
+        "python3",
+        "demo/csv-summary/csv_summarizer.py",
+        "/workspace/CouncilFlow/reports/csv-summary/review/cli-review-5g8vaoc4/header-only.csv",
+        "--column",
+        "amount"
+      ],
+      "exit": 0,
+      "stdout": "Rows: 0\nTotal amount: 0\n",
+      "stderr": ""
+    }
+  ],
+  "application_sample_docs_contract_unchanged": true,
+  "before_sha256": {
+    "demo/csv-summary/csv_summarizer.py": "96b272e33e451709a1ae4f58102043671bbab38559e62ce62339693bd41f0cec",
+    "demo/csv-summary/sample.csv": "56b122059d93b26421b9b690ebd1f466010bc1a49e1bdcd6066f9d26b513e805",
+    "demo/csv-summary/README.md": "903ce11db0bd248a73ffd16d006dc7017a1351399d910847d7f9f548551502cd",
+    "README.md": "2c13bc740b3159fb3e056379c49e812b289196090c5b3fd55078b8eb3dc3c395",
+    "reports/csv-summary/contract.json": "a21ae0c9b09a7c800d31f95fa82d75a414d0f034a7a949e692f2cdc266d977d1"
+  },
+  "after_sha256": {
+    "demo/csv-summary/csv_summarizer.py": "96b272e33e451709a1ae4f58102043671bbab38559e62ce62339693bd41f0cec",
+    "demo/csv-summary/sample.csv": "56b122059d93b26421b9b690ebd1f466010bc1a49e1bdcd6066f9d26b513e805",
+    "demo/csv-summary/README.md": "903ce11db0bd248a73ffd16d006dc7017a1351399d910847d7f9f548551502cd",
+    "README.md": "2c13bc740b3159fb3e056379c49e812b289196090c5b3fd55078b8eb3dc3c395",
+    "reports/csv-summary/contract.json": "a21ae0c9b09a7c800d31f95fa82d75a414d0f034a7a949e692f2cdc266d977d1"
+  },
+  "fixture_note": "Temporary CSV fixtures were created inside reports/csv-summary/review/ and removed on context exit."
+}
