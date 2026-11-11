@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python3",
+    "demo/receipt/receipt_calculator.py",
+    "--item",
+    "tea",
+    "3",
+    "12500",
+    "box",
+    "--item",
+    "sugar",
+    "1.5",
+    "14000",
+    "kg"
+  ],
+  "exit": 0,
+  "stdout": "3 box tea \u00d7 Rp12,500 = Rp37,500\n1.5 kg sugar \u00d7 Rp14,000 = Rp21,000\nTotal = Rp58,500\n",
+  "stderr": ""
+}

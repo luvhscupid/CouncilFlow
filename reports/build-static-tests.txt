@@ -1,0 +1,16 @@
+Command: ['python3', '-m', 'unittest', 'discover', '-s', 'tests', '-v']
+Exit status: 0
+
+test_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ok
+test_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ok
+test_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... ok
+test_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ok
+test_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... ok
+test_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ok
+test_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ok
+test_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "demo/receipt/receipt_calculator.py",
+    "--item",
+    "rice",
+    "2",
+    "NaN",
+    "kg"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "usage: receipt_calculator.py [-h] --item NAME QUANTITY UNIT_PRICE UNIT\nreceipt_calculator.py: error: item 1: unit price must be a plain decimal, e.g. 2 or 30000.50 (no Rp or commas)\n"
+}

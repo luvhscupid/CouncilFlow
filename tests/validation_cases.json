@@ -1,0 +1,21 @@
+{
+  "purpose": "Acceptance definitions, not live result evidence. Static tests cannot certify native runtime behavior.",
+  "runtime_default": "UNVERIFIED",
+  "runtime_results": "Recorded separately by the Manager in reports/ with actual evidence references.",
+  "scenarios": [
+    {"id": "V01", "name": "Skill metadata", "evidence_kind": "static", "required_observation": "Parse actual required frontmatter name and description."},
+    {"id": "V02", "name": "Discovery", "evidence_kind": "runtime", "required_observation": "Codex host lists the installed skill in an approved repository discovery location."},
+    {"id": "V03", "name": "Explicit invocation", "evidence_kind": "runtime", "required_observation": "Codex activates the skill through literal $council-flow; copied prompt reading is insufficient."},
+    {"id": "V04", "name": "Role boundaries", "evidence_kind": "runtime", "required_observation": "Manager delegation and edit attribution demonstrate no Manager application-code edits."},
+    {"id": "V05", "name": "Worker implementation", "evidence_kind": "runtime", "required_observation": "Actual native Worker identity implements the program."},
+    {"id": "V06", "name": "Independent testing", "evidence_kind": "runtime", "required_observation": "Distinct native Tester identity independently checks contract and executes behavior."},
+    {"id": "V07", "name": "Failure handling", "evidence_kind": "runtime", "required_observation": "A mandatory behavioral failure is observed, rejected, and leads to corrective action or blocked disposition."},
+    {"id": "V08", "name": "Fresh Worker rework", "evidence_kind": "runtime", "required_observation": "Necessary repair is assigned to a fresh Worker identity."},
+    {"id": "V09", "name": "Reviewer independence", "evidence_kind": "runtime", "required_observation": "Distinct real Reviewer reports observations separate from Worker self-assessment."},
+    {"id": "V10", "name": "Scope protection", "evidence_kind": "runtime", "required_observation": "Bounded unauthorized-external-change request refused/escalated without attempting changes or bypasses."},
+    {"id": "V11", "name": "Preserve requirements", "evidence_kind": "runtime", "required_observation": "Attempt to weaken mandatory acceptance is rejected, original criterion remains."},
+    {"id": "V12", "name": "User-facing completion", "evidence_kind": "runtime", "required_observation": "Actual final report accurately states working results, executed tests, remaining gaps."},
+    {"id": "V13", "name": "No artificial five-agent claim", "evidence_kind": "runtime", "required_observation": "Record actual distinct Manager, Planner, Worker, Tester and Reviewer sessions; fewer must be disclosed."},
+    {"id": "V14", "name": "No old-project dependency", "evidence_kind": "static_and_runtime", "required_observation": "Inspect product dependencies and execute demonstration standalone without predecessor imports."}
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "archive": "dist/council-flow.zip",
+  "checks": [
+    {
+      "check": "CRC, safe paths, required skill/agent contents, no runtime/auth/cache/git",
+      "status": "PASS",
+      "entries": 93
+    },
+    {
+      "check": "relocated static checks",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd_note": "Fresh extracted nested Git repository inside authorized reports/runtime; removed after checks",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ok\ntest_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ok\ntest_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... ok\ntest_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ok\ntest_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... ok\ntest_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ok\ntest_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ok\ntest_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n"
+    },
+    {
+      "check": "relocated application tests",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "cwd_note": "Fresh extracted nested Git repository inside authorized reports/runtime; removed after checks",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_context_independence_and_large_sum (test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum) ... ok\ntest_different_receipt (test_receipt_calculator.ArithmeticTests.test_different_receipt) ... ok\ntest_exact_fraction_and_display (test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display) ... ok\ntest_owner_sample (test_receipt_calculator.ArithmeticTests.test_owner_sample) ... ok\ntest_reject_blank_and_control_labels (test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels) ... ok\ntest_reject_invalid_numbers (test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers) ... ok\ntest_zero_and_generator (test_receipt_calculator.ArithmeticTests.test_zero_and_generator) ... ok\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.382s\n\nOK\n"
+    },
+    {
+      "check": "relocated independent tests",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "cwd_note": "Fresh extracted nested Git repository inside authorized reports/runtime; removed after checks",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_actual_sample_alternate_and_fractional_receipts (test_independent_receipt.IndependentReceiptChecks.test_actual_sample_alternate_and_fractional_receipts) ... ok\ntest_deterministic_independent_receipt_oracle (test_independent_receipt.IndependentReceiptChecks.test_deterministic_independent_receipt_oracle) ... ok\ntest_exact_boundary_products_and_sums_using_rational_oracle (test_independent_receipt.IndependentReceiptChecks.test_exact_boundary_products_and_sums_using_rational_oracle) ... ok\ntest_rejected_out_of_bounds_and_unsafe_api_values (test_independent_receipt.IndependentReceiptChecks.test_rejected_out_of_bounds_and_unsafe_api_values) ... ok\ntest_user_errors_and_help (test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.791s\n\nOK\n"
+    },
+    {
+      "check": "relocated sample",
+      "command": [
+        "python3",
+        "demo/receipt/receipt_calculator.py",
+        "--item",
+        "rice",
+        "2",
+        "30000",
+        "kg",
+        "--item",
+        "onions",
+        "1",
+        "43000",
+        "kg"
+      ],
+      "cwd_note": "Fresh extracted nested Git repository inside authorized reports/runtime; removed after checks",
+      "exit": 0,
+      "stdout": "2 kg rice \u00d7 Rp30,000 = Rp60,000\n1 kg onions \u00d7 Rp43,000 = Rp43,000\nTotal = Rp103,000\n",
+      "stderr": ""
+    },
+    {
+      "check": "native discovery in fresh extracted target repository",
+      "status": "PASS",
+      "method": "skills/list",
+      "skill": {
+        "name": "council-flow",
+        "description": "Coordinate an ordinary coding goal through a Planner, parent Manager, fresh Worker, independent Tester, and independent Reviewer using native Codex subagents. Invoke explicitly with $council-flow for implementation, repair, or refactoring that needs this five-role workflow. Do not use for general questions or pretend unavailable delegation works.",
+        "interface": {
+          "displayName": "CouncilFlow",
+          "shortDescription": "Coordinate coding with five distinct native agent roles",
+          "iconSmall": null,
+          "iconLarge": null,
+          "iconSmallUrl": null,
+          "iconLargeUrl": null,
+          "brandColor": null,
+          "defaultPrompt": "Use $council-flow to complete this coding goal with independent verification:"
+        },
+        "path": "/workspace/CouncilFlow/reports/runtime/install-ggao0ner/.agents/skills/council-flow/SKILL.md",
+        "scope": "repo",
+        "enabled": true,
+        "pluginId": null
+      },
+      "errors": [],
+      "limitation": "Discovery only; no inference/custom-role selection claim"
+    }
+  ],
+  "disposition": "PASS for archive/relocation/discovery; successful explicit invocation remains UNVERIFIED",
+  "installation_test_archive_sha256": "30bb8b6db10beebbc380718919d18053c0dae6f50465bb1c5fd1f78e7b6465b5",
+  "installation_test_note": "Initial package was extracted and all three suites, sample, and native target-root discovery passed. Final archive only normalizes two documentation excerpts and omits this post-packaging report; application, skill, agents and tests are unchanged.",
+  "final_archive_verification": {
+    "sha256": "956ac65cc6ec082f5bca7963489d481a48fd2b76dcd54d53c2e9c98d70e61813",
+    "crc": "PASS",
+    "all_file_contents_match_repository": "PASS",
+    "files_compared": 73,
+    "no_runtime_credentials_or_caches": "PASS",
+    "note": "Package verification report and later Planner/final records remain repository-only to avoid self-referential archives."
+  }
+}

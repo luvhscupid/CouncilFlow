@@ -1,0 +1,59 @@
+{
+  "task_id": "CF-BUILD-001",
+  "request_type": "PlannerRequest",
+  "result_type": "PlannerResult",
+  "role": "Planner",
+  "objective": "Deliver, demonstrate, validate, package, and commit an installable repository-scoped council-flow Codex skill.",
+  "scope": ["/workspace/CouncilFlow/**"],
+  "constraints": [
+    "Use the connected repository; do not access or alter ACP, other projects, existing skill installations, or global Codex configuration.",
+    "No external deployment, publication, paid backend, database, custom orchestration runtime, permission escalation, or Windows operations.",
+    "Manager coordinates and records evidence; Workers alone implement application and project code.",
+    "Only one Worker mutates this workspace at a time.",
+    "Tester and Reviewer are separate fresh native agents and cannot repair implementation.",
+    "Preserve mandatory acceptance criteria through repairs; changes in scope or consequential authority belong to Owner.",
+    "Use inherited available model/provider configuration; do not invent model IDs or configuration keys.",
+    "Use native delegation; never simulate role sessions.",
+    "A skill is an instruction workflow, not an OS security boundary.",
+    "Continue useful authorized repairs; stop identical failures without a new remedy."
+  ],
+  "implementation_status": "NOT_STARTED",
+  "acceptance": [
+    "P01: Official-format .agents/skills/council-flow/SKILL.md has valid name and description, concise operational instructions, explicit $council-flow activation, and useful references.",
+    "P02: Include role, workflow, acceptance, and recovery references; purposefully populated native custom-agent definitions and optional metadata use verified official syntax.",
+    "P03: Native Planner and approved external-plan modes work as instructions; external mode never claims to invoke an external ChatGPT conversation.",
+    "P04: Separate request/result types preserve task identity, objective, scope, requirements, immutable acceptance, status, evidence, findings, repair decisions, and disposition.",
+    "P05: Actual native Codex discovery and explicit invocation are observed. Path placement, frontmatter validation, or manually reading a copied prompt do not establish this.",
+    "P06: Produce a valid deliberately incomplete offline receipt-calculator fixture with at least one genuinely failing behavioral test; retain reproducible baseline evidence.",
+    "P07: Through the newly invoked workflow, a real Planner defines the demo contract before implementation; parent Manager assigns a fresh Worker; separate Tester verifies; separate Reviewer evaluates; Planner performs the final objective check.",
+    "P08: Finished receipt_calculator.py accepts multiple entries, quantity and unit price, computes Decimal-safe line and grand totals, rejects negative quantity and invalid prices, formats rupiah, and needs no network.",
+    "P09: Executable behavioral tests and an actual user-facing demonstration run successfully against the final application, including the rice/onions Rp103,000 example.",
+    "P10: A mandatory failing verification is explicitly rejected and triggers corrective work or a blocked disposition; necessary repair uses a fresh Worker.",
+    "P11: Compact validation addresses V01–V14, clearly separating live runtime, static inspection, failures, and UNVERIFIED capabilities.",
+    "P12: Durable reports contain actual native role/session identifiers available to the Manager, contracts, changed files, commands, exit results/output, independent findings, repair decisions, final check, and unsupported capabilities.",
+    "P13: README and RELEASE explain installation, exact invocation, demonstration, verification, boundaries, and limitations; provide the complete skill, custom agents, and a standard-tool distributable ZIP.",
+    "P14: Commit the completed in-repository deliverables to the current repository; preserve the initial repository assets and leave no unauthorized modifications.",
+    "P15: Owner report begins COMPLETE only when every Definition-of-Done condition is observed. Any unverified required capability requires PARTIAL with its precise blocker."
+  ],
+  "evidence_required": [
+    "Official format source URLs and local capability observations",
+    "Native discovery and invocation evidence",
+    "Immutable demo Planner contract",
+    "Failing starter command/output/exit status",
+    "Native delegation identifiers and role results",
+    "Final automated-test command/output/exit status",
+    "Actual receipt application output",
+    "Tester findings and Reviewer findings",
+    "Repair decisions and fresh Worker identifiers where applicable",
+    "Planner final requirements-to-outcome check",
+    "V01–V14 result matrix with evidence classification",
+    "ZIP contents/integrity result and Git commit identifier"
+  ],
+  "open_findings": [
+    "Native discovery and explicit invocation remain unverified.",
+    "Repository-scoped custom-agent parsing and use remain unverified.",
+    "Demonstration and release artifacts do not yet exist."
+  ],
+  "repair_decisions": [],
+  "final_disposition": "PENDING"
+}

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python3",
+    "demo/receipt/receipt_calculator.py",
+    "--help"
+  ],
+  "exit": 0,
+  "stdout": "usage: receipt_calculator.py [-h] --item NAME QUANTITY UNIT_PRICE UNIT\n\nCalculate an offline receipt in Indonesian rupiah using exact decimal\narithmetic.\n\noptions:\n  -h, --help            show this help message and exit\n  --item NAME QUANTITY UNIT_PRICE UNIT\n                        add one product; UNIT is a nonblank label such as kg\n                        or each\n\nRepeat --item for each product. Use plain decimals without Rp, commas, or\nexponent notation; up to 18 integer and 12 fractional digits per\nquantity/price. Zero is accepted. Quote names/units containing spaces.\nExample: --item rice 2 30000 kg --item onions 1 43000 kg\n",
+  "stderr": ""
+}

@@ -1,0 +1,16 @@
+test_context_independence_and_large_sum (test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum) ... ok
+test_different_receipt (test_receipt_calculator.ArithmeticTests.test_different_receipt) ... ok
+test_exact_fraction_and_display (test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display) ... ok
+test_owner_sample (test_receipt_calculator.ArithmeticTests.test_owner_sample) ... ok
+test_reject_blank_and_control_labels (test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels) ... ok
+test_reject_invalid_numbers (test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers) ... ok
+test_zero_and_generator (test_receipt_calculator.ArithmeticTests.test_zero_and_generator) ... ok
+test_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok
+test_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok
+test_help (test_receipt_calculator.CommandLineTests.test_help) ... ok
+test_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.355s
+
+OK
