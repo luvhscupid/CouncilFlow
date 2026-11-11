@@ -1,0 +1,181 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-T2-REPORT-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A002",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T05:24:31.707135Z",
+  "in_reply_to": "REST-M013B",
+  "payload": {
+    "status": "failed",
+    "summary": "Independent rerun passes 92 assigned tests with 0 skips and confirms the sum repair, but 7 new focused methods expose remaining defects: wrong-type changed_files on non-Worker reports accepted; accept decisions may declare failed criteria; malformed root-verified plan artifacts crash or bool revision is accepted; passed Planner results may all omit explicit evidence. Additional suite reports 10 failures and 6 errors across parameterized cases. No repair made; required fresh correction remains.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "findings": [
+      "B04 recognized changed_files lacks type validation on Tester/Reviewer reports.",
+      "B05 accept may declare current failed or unknown criteria.",
+      "B06 decoded referenced-plan context has unchecked object/revision/acceptance-entry types.",
+      "B07 passed per-criterion Planner evidence arrays can all be empty; preserve explicit citation requirement.",
+      "Prior sequence/bindings fixes, actual sum/receipt behavior and actual causal/diagnostic controls pass. Reviewer/final release remain pending; native activation stays unverified."
+    ],
+    "errors": [
+      {
+        "code": "role_payload_type",
+        "field": "C02/C12",
+        "message": "Observed six malformed changed_files mutations accepted."
+      },
+      {
+        "code": "contradictory_acceptance",
+        "field": "C04/C08/C12",
+        "message": "Observed accept with explicit failed or unknown criteria accepted."
+      },
+      {
+        "code": "plan_context_types",
+        "field": "C02/C04/C12",
+        "message": "Observed AttributeError/TypeError and boolean plan revision accepted."
+      },
+      {
+        "code": "missing_final_evidence",
+        "field": "C09/C12",
+        "message": "Observed passed final map with all empty per-criterion evidence accepted."
+      }
+    ],
+    "checks": [
+      {
+        "name": "92 assigned regression and repair methods independently rerun",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T2-SUITES",
+          "path": "reports/restoration/verification/final/suite-results.json",
+          "sha256": "4c73381200675c0b8d6c65af1acf23c4d5030db8c2578c455b4e6dee37ee9f10",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "Additional role/context/evidence rejection methods",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "REST-T2-INDEPENDENT-FAILURES",
+          "path": "reports/restoration/verification/final/independent-terminal.txt",
+          "sha256": "6a822273f540d5b75d24a78765d2ec23cd9a722bc487e2101fba984e3b4e2f8e",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Actual sum/receipt/error/offline execution",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T2-PROGRAMS",
+          "path": "reports/restoration/verification/final/program-observations.json",
+          "sha256": "dcc13385b0fefd355fa1b67436207c0bebcca4454a7b04134e6c03fbb3dac0d6",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "Source preservation and standard-library dependency inspection",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T2-PRESERVATION",
+          "path": "reports/restoration/verification/final/preservation-and-inspection.json",
+          "sha256": "4c24403b9ebf830399e0da37567c5101e52dc6b77a110f6342a569a7a94f3ed4",
+          "kind": "inspection"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T2-DETAILS",
+      "path": "reports/restoration/verification/final/report.md",
+      "sha256": "8007a66b37b9d6df81f19c02948c480b85e871a7ac864a033737e43a0d38fd10",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-T2-SUITES",
+      "path": "reports/restoration/verification/final/suite-results.json",
+      "sha256": "4c73381200675c0b8d6c65af1acf23c4d5030db8c2578c455b4e6dee37ee9f10",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-T2-INDEPENDENT-FAILURES",
+      "path": "reports/restoration/verification/final/independent-terminal.txt",
+      "sha256": "6a822273f540d5b75d24a78765d2ec23cd9a722bc487e2101fba984e3b4e2f8e",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T2-ROLE-PAYLOAD-PROBES",
+      "path": "reports/restoration/verification/final/role-payload-probes.json",
+      "sha256": "57a4a27bac59305a5f453ced9d2d3221bfbbf32a861e23f3ec60278e488abd3f",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T2-DECISION-PROBES",
+      "path": "reports/restoration/verification/final/decision-probes.json",
+      "sha256": "17cc1fba58d5134762b6aed8fcac38634b9cc728d575643f8a1f79852243e3d2",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T2-CONTEXT-EVIDENCE-PROBES",
+      "path": "reports/restoration/verification/final/context-evidence-probes.json",
+      "sha256": "68ce3ba0c41dcba530fda62385b780e1670863a3b6aa213ea9bffb24d7ae25e8",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T2-PROGRAMS",
+      "path": "reports/restoration/verification/final/program-observations.json",
+      "sha256": "dcc13385b0fefd355fa1b67436207c0bebcca4454a7b04134e6c03fbb3dac0d6",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-T2-PRESERVATION",
+      "path": "reports/restoration/verification/final/preservation-and-inspection.json",
+      "sha256": "4c24403b9ebf830399e0da37567c5101e52dc6b77a110f6342a569a7a94f3ed4",
+      "kind": "inspection"
+    },
+    {
+      "artifact_id": "REST-T2-FAILED-HELPER-SNAPSHOT",
+      "path": "reports/restoration/verification/final/contracts-candidate002.py",
+      "sha256": "47a8194dc97c5a02a082b4ad4861d32150996fdcc5953ccd65113ec74fa24529",
+      "kind": "source-snapshot"
+    }
+  ]
+}

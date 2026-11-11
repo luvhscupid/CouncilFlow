@@ -6,11 +6,11 @@ fresh Worker, requests separate Tester and Reviewer assessments, coordinates
 repairs, and asks the Planner for a final objective check. Only the Manager gives
 routine progress and results to the human Owner.
 
-This build is **PARTIAL**: native discovery succeeded, but successful explicit
-invocation is unverified because the separate native CLI rejected its existing
-authentication token. The real-agent demonstration applies the skill manually;
-it does not prove successful `$council-flow` activation. See [RELEASE.md](RELEASE.md)
-and [execution evidence](reports/manager-execution.md).
+Communication restoration has passed independent technical and experiential
+verification; final release closeout is in progress. Fresh native discovery
+passed, but explicit invocation remains **UNVERIFIED** after HTTP 401
+authentication rejection. The real-agent workflow does not replace that missing
+proof. See [current results](reports/final.md) and [traceability](reports/requirements-traceability.md).
 
 It uses native Codex delegation and inherited account/provider permissions. It
 needs no API key, subscription, database, server, or custom agent runtime. Role
@@ -83,10 +83,11 @@ Static product checks use only Python 3.11+ standard library:
 python3 -m unittest discover -s tests -v
 ```
 
-These checks validate metadata, references, custom-agent TOML syntax, and workflow
-instruction coverage. They do not establish live discovery, invocation, role
-independence, or application correctness. The V01–V14 definitions are in
-`tests/validation_cases.json`; runtime evidence must be recorded separately.
+This suite combines static metadata/reference/native-TOML checks and executable
+deterministic JSON/YAML/JSONL validator tests. It does not establish native skill
+invocation or real role independence. Application and native-agent observations
+are tested and recorded separately. The V01–V14 definitions remain in
+`tests/validation_cases.json`; current C01–C12 evidence is in the traceability map.
 
 See [RELEASE.md](RELEASE.md) for package contents, portability, and release checks.
 
@@ -101,3 +102,43 @@ python3 -m unittest discover -s demo/csv-summary -v
 ```
 
 It uses only the Python standard library, preserves its input, and works offline.
+
+## Structured internal communication
+
+CouncilFlow 1.0 now defines **UTF-8 JSON** task packets for Planner, Manager,
+Worker, Tester and Reviewer. The role/workflow source is
+[versioned YAML policy](.agents/skills/council-flow/policies/roles.yaml);
+Codex-native agents remain TOML. Optional bounded JSONL is diagnostics.
+Owner progress and results remain concise natural language.
+
+Read the [communication contract](.agents/skills/council-flow/references/communication.md)
+for closed payloads, causal/candidate/origin checks, limits and exact examples.
+The small installed Python helper is standard-library-only:
+
+~~~sh
+python3 .agents/skills/council-flow/scripts/contracts.py message packet.json --root .
+python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
+python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
+python3 .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
+python3 -m unittest discover -s tests -v
+~~~
+
+Sequence context and externally observed actor bindings are not copied from
+self-asserted sender labels. A Worker output may differ from its assigned input;
+Tester/Reviewer must verify that exact output. Manager assigns the test strategy,
+and a Tester cannot self-approve or substitute its oracle.
+For a Tester assignment, `oracle_ref` is **required** and the report must echo
+it exactly. General optional-reference wording applies to other assignments;
+it does not waive the Tester's Manager-approved strategy requirement.
+
+These are controlled-file checks, not authentication, transport enforcement,
+permissions, a database or a new agent engine. The policy uses a restricted,
+documented YAML subset without installing a parser. Product source and all
+subfolders of the skill must be copied together when installing elsewhere.
+
+The fresh [structured-flow demo](demo/structured-flow/README.md) supplies a real
+mandatory failure/rework path, separate from old demonstrations.
+[Requirements traceability](reports/requirements-traceability.md) distinguishes
+static, dynamic, native and blocked evidence. The current final classification
+and new activation result are recorded by Manager after independent verification
+in [reports/final.md](reports/final.md); prior evidence is not a new invocation.

@@ -1,0 +1,102 @@
+{
+  "created_at": "2026-11-11T04:28:16.078536Z",
+  "start_commit": "6accda38bfd0b7ff8b23d47d18fc1b0612fe3fb9",
+  "results": [
+    {
+      "suite": "skill",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 8,
+      "output": "reports/restoration/baseline/skill.txt",
+      "expected_failure": false
+    },
+    {
+      "suite": "receipt",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 11,
+      "output": "reports/restoration/baseline/receipt.txt",
+      "expected_failure": false
+    },
+    {
+      "suite": "receipt_independent",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 5,
+      "output": "reports/restoration/baseline/receipt_independent.txt",
+      "expected_failure": false
+    },
+    {
+      "suite": "csv",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 15,
+      "output": "reports/restoration/baseline/csv.txt",
+      "expected_failure": false
+    },
+    {
+      "suite": "csv_independent",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 6,
+      "output": "reports/restoration/baseline/csv_independent.txt",
+      "expected_failure": false
+    },
+    {
+      "suite": "intentional_starter",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/starter",
+        "-v"
+      ],
+      "exit": 1,
+      "tests": 2,
+      "output": "reports/restoration/baseline/intentional_starter.txt",
+      "expected_failure": true
+    }
+  ]
+}

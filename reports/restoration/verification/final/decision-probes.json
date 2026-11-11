@@ -1,0 +1,18 @@
+[
+  {
+    "case": "accept_with_failed_criteria",
+    "failed_acceptance_ids": [
+      "S-AC1"
+    ],
+    "observed": "ACCEPTED",
+    "scope": "Artificial independent format-control sequence, not native task history"
+  },
+  {
+    "case": "accept_with_failed_criteria",
+    "failed_acceptance_ids": [
+      "UNKNOWN"
+    ],
+    "observed": "ACCEPTED",
+    "scope": "Artificial independent format-control sequence, not native task history"
+  }
+]

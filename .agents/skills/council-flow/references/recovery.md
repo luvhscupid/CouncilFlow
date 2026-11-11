@@ -1,27 +1,35 @@
 # Rework and recovery
 
-1. Record the failing criterion, observed command/output, severity, and affected
-   files. The Manager explicitly rejects mandatory failure; it does not accept
-   the Worker's self-assessment as a waiver.
-2. Keep original acceptance and scope. Send a corrected bounded contract to a
-   **fresh Worker** for each independent implementation attempt. Include proven
-   evidence, not accidental assumptions inherited from the previous Worker.
-3. Allow one mutating Worker per workspace. End or interrupt the prior attempt
-   and confirm it has stopped before beginning another. Parallel Workers require
-   independent authorized workspaces; otherwise sequence the work.
-4. Re-run affected independent Tester checks, then relevant Reviewer interaction.
-   Finish with the Planner's original-objective check. Record repair decisions
-   and link old failures to new evidence; never erase an inconvenient result.
-5. Continue useful authorized repairs while budget permits; there is no arbitrary
-   fixed number. Stop repeated identical failures without new evidence/remedy.
-   Record the precise environmental/resource blocker and preserved artifacts.
-6. Escalate only consequential changes beyond existing Owner authorization.
-   Refuse unauthorized outside-file operations without touching those files.
-   Do not weaken sandbox/approval policy, change global configuration, request
-   admin rights, or bypass permission controls.
+1. Preserve the failing original acceptance ID, exact candidate, command/output
+   and evidence hash. Tester reports failed technical status through job.report
+   JSON, not a prose substitute; it never repairs product code.
+2. Manager records task.decision rework/reject/escalate with causal report IDs and
+   evidence. Never accept a mandatory failure or lower criteria. Ordinary scoped
+   engineering repair is already authorized and does not need Owner reapproval.
+3. Delegate job.assign JSON to a fresh native Worker and new attempt. Prior
+   Worker must stop. One mutating Worker per workspace; parallel implementation
+   requires independently authorized isolation. Preserve original plan/hash.
+4. Independently recheck changed candidate, then relevant experiential review;
+   finish with original Planner plan.check. Keep old failures and actual repair
+   decisions instead of overwriting inconvenient history.
+5. There is no arbitrary lifetime engineering-repair cap. Continue useful,
+   authorized progress within budget/native limits. Stop identical unproductive
+   retries when no new evidence or meaningful alternative exists.
+6. YAML's three infrastructure retries and two crash recoveries are **policy
+   instructions only**. CouncilFlow has no corresponding persistent accounting
+   runtime; do not confuse these numbers with normal Worker repair attempts or
+   claim enforcement/crash safety.
+7. Only genuinely consequential new scope/authorization or required subjective
+   acceptance needs Owner action. Prepare a concrete reviewable result before
+   approval.request. approval.decision must reference actual Owner input, never
+   an AI-created permission. No external-path, global-config, security-policy,
+   paid-provider, ACL or authentication bypass may be self-authorized.
 
-If tests or agents cannot run, say what was inspected and what remains unverified.
-Do not replace native delegation with scripted role messages or rename a single
-agent's successive thoughts. If explicit skill activation cannot be observed,
-manual execution of its instructions may still be useful, but it is not proof of
-real skill invocation and cannot satisfy that acceptance criterion.
+JSON structure/context validation does not authenticate a sender or enforce OS
+isolation. Respect native permissions. If native activation, a role or tests
+cannot run, preserve evidence, mark the precise gap, and continue independent
+authorized work. Never replace unavailable native agents with scripted exchanges.
+
+Contract restoration may pass while native activation is UNVERIFIED. Use
+CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED for that case. Only genuine
+invocation plus real required roles supports COUNCILFLOW_FULLY_VERIFIED.

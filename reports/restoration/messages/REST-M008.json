@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M008",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-ACT001",
+  "attempt_id": "REST-ACT-A1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/activation_probe"
+  },
+  "created_at": "2026-11-11T04:49:40.059522Z",
+  "in_reply_to": "REST-ACT-PREFLIGHT-003",
+  "payload": {
+    "objective": "Perform one fresh strongest safely supported corrected-skill native discovery and explicit invocation attempt now.",
+    "scope": [
+      "reports/restoration/activation/**",
+      "reports/runtime/restoration-activation/**"
+    ],
+    "acceptance_ids": [
+      "C06",
+      "R-ACTIVATION"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-ACT-CORRECTED-SKILL-001",
+      "path": "reports/restoration/activation/corrected-candidate.json",
+      "sha256": "47d39dd327c80eab6456328c1780ef4b5e3fee1d8fbf7ca8b1a51e58975d8594",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "instructions": [
+      "Corrected SKILL.md is now saved (81 lines) and links communication.md, strict helper and YAML policy. Native role instructions are updated. Core helper developer tests still in progress; do not claim final product tested. Record exact SKILL hash before/after and distinguish any changed file. You may start the prepared read-only activation probe now.",
+      "Only invoke native CLI/app-server with its supported generated schema and existing provider credentials/settings. No authentication file contents may be read/printed/copied, no token extraction, custom header/endpoint/provider, network policy change or dependency installation. Process-local namespace read-only native auth/config exposure may be used only as described in your preflight; it must not modify real global files or grant new permissions. All runtime writes remain inside repository, HOME/CODEX_HOME variables unchanged.",
+      "Fresh skills/list must identify corrected repo skill. Submit literal $council-flow and structured skill input in a real turn, asking only to confirm loaded current protocol/policy and no code edits/delegation so it cannot race with Worker. A mere accepted turn or text render is not successful invocation. If it reaches real completed inference, report actual response/IDs; if auth or capability fails, capture exact terminal result and stop without identical new attempts.",
+      "Save selected safe current evidence and a strict JSON job.report. Use current scripts/contracts.py helper for structural validation with expected sender tester and native instance /root/activation_probe, and artifact hashes. Reply to REST-M008, echo candidate_ref and Manager oracle_ref (if report schema now supports it); keep pre-schema history unchanged. Optional checks can be blocked/unverified, so overall status must not claim passing inference when it did not finish. No Owner routine messages or hidden prompts/private reasoning in logs."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-ACT-CORRECTED-SKILL-001",
+      "path": "reports/restoration/activation/corrected-candidate.json",
+      "sha256": "47d39dd327c80eab6456328c1780ef4b5e3fee1d8fbf7ca8b1a51e58975d8594",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    }
+  ]
+}

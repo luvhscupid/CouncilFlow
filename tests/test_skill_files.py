@@ -9,6 +9,7 @@ import ast
 import json
 from pathlib import Path
 import re
+import sys
 import tomllib
 import unittest
 
@@ -90,13 +91,24 @@ class SkillFilesTests(unittest.TestCase):
                       (fixture / "test_receipt_calculator.py").read_text())
 
     def test_product_has_no_runtime_or_external_dependency(self) -> None:
-        self.assertFalse((SKILL / "scripts").exists())
+        # Owner restoration explicitly authorizes deterministic stdlib validators.
+        # Replace the obsolete blanket no-scripts assertion, retaining dependency protection.
+        self.assertTrue((SKILL / "scripts" / "contracts.py").is_file())
         for path in SKILL.rglob("*"):
-            if path.is_file():
-                self.assertIn(path.suffix, (".md", ".yaml"))
+            if path.is_file() and "__pycache__" not in path.parts:
+                self.assertIn(path.suffix, (".md", ".yaml", ".json", ".py"))
                 source = path.read_text()
                 self.assertNotIn("import acp", source.lower())
                 self.assertNotIn("import execution_kernel", source.lower())
+                if path.suffix == ".py":
+                    imports = set()
+                    for node in ast.walk(ast.parse(source)):
+                        if isinstance(node, ast.Import):
+                            imports.update(item.name.split(".")[0] for item in node.names)
+                        elif isinstance(node, ast.ImportFrom):
+                            imports.add(node.module.split(".")[0])
+                    self.assertTrue(imports <= sys.stdlib_module_names)
+                    self.assertFalse(imports & {"sqlite3", "http", "socket", "urllib"})
         # Static dependency inspection only; independent offline execution is separate.
 
 

@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M009",
+  "message_type": "plan.progress",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T04:53:28.272968Z",
+  "in_reply_to": null,
+  "payload": {
+    "status": "implementation_pending_independent_verification",
+    "objective": "Open a fully validated controlled-packet round by republishing the unchanged original accepted plan.",
+    "scope": [
+      ".agents/skills/council-flow/**",
+      ".codex/agents/council-*.toml",
+      "tests/**",
+      "demo/structured-flow/**",
+      "reports/restoration/**",
+      "reports/requirements-traceability.md",
+      "reports/final.md",
+      "README.md",
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "verified_progress": [
+      "Full45 prior tests passed before edits; original plan artifact/hash unchanged.",
+      "Corrected SKILL/policy/helper and native instructions saved. Worker developer tests show37 skill+contract tests passing; Worker handoff still pending, no independent approval.",
+      "Fresh corrected discovery passed, but real explicit native turn entered systemError with401 authentication rejection. Evidence activation/REST-ACT-REPORT-001.json; no successful invocation claimed or identical retry planned."
+    ],
+    "next_action": "Publish original REST-P001 revision1 again as a real current plan.publish packet with unique ID REST-PLAN-LIVE-001, reply to REST-M009, and original plan_ref/acceptance IDs unchanged. This is a current republish for the corrected boundary, not retroactive migration or a new plan after implementation. Save reports/restoration/messages/REST-PLAN-LIVE-001.json, validate using scripts/contracts.py message with --root . and expected planner instance, then return ONLY that JSON. No code edits. The subsequent real Tester failure, fresh Worker repair, final Tester/Reviewer/decision/Planner check will use this same plan/task with real attempt transitions. Keep this reply concise and stop writes until final check."
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    }
+  ]
+}

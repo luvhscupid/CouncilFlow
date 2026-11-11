@@ -1,0 +1,165 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "description": "Closed CouncilFlow skill-level contract; not JSON Schema or ACP Supervisor transport.",
+  "envelope_required": [
+    "protocol",
+    "version",
+    "message_id",
+    "message_type",
+    "plan_id",
+    "plan_revision",
+    "task_id",
+    "attempt_id",
+    "sender",
+    "recipient",
+    "created_at",
+    "in_reply_to",
+    "payload",
+    "evidence_refs"
+  ],
+  "bounds": {
+    "message_bytes": 65536,
+    "container_depth": 16,
+    "container_entries": 128,
+    "string_characters": 8192,
+    "identity_characters": 128,
+    "artifact_path_characters": 1024,
+    "context_messages": 1024
+  },
+  "artifact_required": [
+    "artifact_id",
+    "path",
+    "sha256",
+    "kind"
+  ],
+  "routes": {
+    "plan.publish": [
+      "planner",
+      "manager"
+    ],
+    "plan.check": [
+      "planner",
+      "manager"
+    ],
+    "plan.progress": [
+      "manager",
+      "planner"
+    ],
+    "job.assign": [
+      "manager",
+      [
+        "worker",
+        "tester",
+        "reviewer"
+      ]
+    ],
+    "job.report": [
+      [
+        "worker",
+        "tester",
+        "reviewer"
+      ],
+      "manager"
+    ],
+    "task.decision": [
+      "manager",
+      "planner"
+    ],
+    "approval.request": [
+      "manager",
+      "owner"
+    ],
+    "approval.decision": [
+      "owner",
+      "manager"
+    ]
+  },
+  "payload_required": {
+    "plan.publish": [
+      "objective",
+      "scope",
+      "acceptance_ids",
+      "plan_ref"
+    ],
+    "job.assign": [
+      "objective",
+      "scope",
+      "acceptance_ids",
+      "instructions"
+    ],
+    "job.report": [
+      "status",
+      "summary",
+      "acceptance_ids",
+      "candidate_ref",
+      "findings",
+      "errors"
+    ],
+    "task.decision": [
+      "disposition",
+      "reason",
+      "acceptance_ids",
+      "candidate_ref",
+      "report_ids"
+    ],
+    "plan.progress": [
+      "status",
+      "objective",
+      "scope",
+      "acceptance_ids",
+      "verified_progress",
+      "next_action"
+    ],
+    "plan.check": [
+      "status",
+      "summary",
+      "acceptance_ids",
+      "plan_ref",
+      "results"
+    ],
+    "approval.request": [
+      "question",
+      "reason",
+      "options",
+      "operation_ref"
+    ],
+    "approval.decision": [
+      "decision",
+      "approval_request_id",
+      "provenance_ref"
+    ]
+  },
+  "role_report_requirements": {
+    "worker": [
+      "changed_files"
+    ],
+    "tester": [
+      "checks",
+      "oracle_ref"
+    ],
+    "reviewer": [
+      "observations"
+    ]
+  },
+  "validator": "../scripts/contracts.py",
+  "examples_are_synthetic": true,
+  "limits": [
+    "Structural checks do not authenticate senders or enforce native transport.",
+    "Provide externally observed identity and ordered context for causal/origin checks.",
+    "Use root to verify artifact bytes, not merely hash syntax."
+  ],
+  "conditional_fields": {
+    "job.assign": {
+      "worker": "candidate_ref optional immutable input",
+      "tester": "candidate_ref and Manager-assigned oracle_ref required",
+      "reviewer": "candidate_ref required exact verification output"
+    },
+    "worker.job.report": "candidate_ref is output; input_candidate_ref echoes assigned input if supplied",
+    "tester.job.report": "candidate_ref and oracle_ref exactly echo Manager assignment; passed status requires passed mandatory checks",
+    "job.report.changed_files": "Required for Worker and optional for other roles; always a bounded string array, never authority to edit product code.",
+    "task.decision.failed_acceptance_ids": "Only valid assigned/original criterion identities; accept cannot contain a nonempty failure list.",
+    "plan.check.results": "Every passed criterion requires explicit nonempty evidence_refs; structural citations do not prove evidence semantics.",
+    "plan.publish.plan_ref": "With root context: JSON object containing matching typed plan_id, positive nonboolean integer plan_revision, and nonempty acceptance objects with unique id strings; criterion text validated when present."
+  }
+}

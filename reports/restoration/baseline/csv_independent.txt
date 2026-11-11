@@ -1,0 +1,11 @@
+test_encoding_file_errors_help_and_required_arguments (test_independent_csv.IndependentCSVChecks.test_encoding_file_errors_help_and_required_arguments) ... ok
+test_headers_selections_and_header_only_records (test_independent_csv.IndependentCSVChecks.test_headers_selections_and_header_only_records) ... ok
+test_independent_rational_totals_at_bounds_and_many_records (test_independent_csv.IndependentCSVChecks.test_independent_rational_totals_at_bounds_and_many_records) ... ok
+test_late_bad_numeric_cells_never_emit_partial_summary (test_independent_csv.IndependentCSVChecks.test_late_bad_numeric_cells_never_emit_partial_summary) ... ok
+test_shape_quotes_and_logical_record_error_context (test_independent_csv.IndependentCSVChecks.test_shape_quotes_and_logical_record_error_context) ... ok
+test_utf8_bom_crlf_multiline_quotes_and_requested_order (test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.693s
+
+OK

@@ -1,0 +1,149 @@
+test_actual_packets_and_mutated_role_task_origin (test_independent_contracts.IndependentContractChecks.test_actual_packets_and_mutated_role_task_origin) ... ok
+test_artifact_contents_and_authorized_root_boundaries (test_independent_contracts.IndependentContractChecks.test_artifact_contents_and_authorized_root_boundaries) ... ok
+test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) ... 
+  test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) (arguments=['/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py', 'sequence', '/workspace/CouncilFlow/reports/restoration/verification/initial/fixtures-0yj0mmit/nonobject.json']) ... FAIL
+  test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) (arguments=['/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py', 'sequence', '/workspace/CouncilFlow/reports/restoration/messages/REST-M009.json', '--bindings', '/workspace/CouncilFlow/reports/restoration/verification/initial/fixtures-0yj0mmit/bindings.json']) ... FAIL
+test_independence_oracle_candidate_and_acceptance_negatives (test_independent_contracts.IndependentContractChecks.test_independence_oracle_candidate_and_acceptance_negatives) ... ok
+test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) ... 
+  test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=[]) ... ERROR
+  test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=1) ... ERROR
+  test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=False) ... ERROR
+  test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=None) ... ERROR
+  test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value='message') ... ERROR
+test_restricted_yaml_and_jsonl_controls (test_independent_contracts.IndependentContractChecks.test_restricted_yaml_and_jsonl_controls) ... ok
+test_strict_json_mutations_and_bounds (test_independent_contracts.IndependentContractChecks.test_strict_json_mutations_and_bounds) ... ok
+test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) ... 
+  test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=[]) ... FAIL
+  test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=[1]) ... ERROR
+  test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=True) ... ERROR
+  test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=1) ... ERROR
+  test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value='bindings') ... ERROR
+
+======================================================================
+ERROR: test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 123, in test_nonobject_sequence_items_are_controlled_errors
+    c.validate_sequence([value])
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                                        ^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 123, in test_nonobject_sequence_items_are_controlled_errors
+    c.validate_sequence([value])
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                                        ^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 123, in test_nonobject_sequence_items_are_controlled_errors
+    c.validate_sequence([value])
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                                        ^^^^^
+AttributeError: 'bool' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 123, in test_nonobject_sequence_items_are_controlled_errors
+    c.validate_sequence([value])
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                                        ^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) (value='message')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 123, in test_nonobject_sequence_items_are_controlled_errors
+    c.validate_sequence([value])
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                                        ^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+ERROR: test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=[1])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 129, in test_wrong_bindings_types_are_controlled_errors
+    c.validate_sequence([seed], expected_senders=value)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                   ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 129, in test_wrong_bindings_types_are_controlled_errors
+    c.validate_sequence([seed], expected_senders=value)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                   ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'bool' object has no attribute 'get'
+
+======================================================================
+ERROR: test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 129, in test_wrong_bindings_types_are_controlled_errors
+    c.validate_sequence([seed], expected_senders=value)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                   ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value='bindings')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 129, in test_wrong_bindings_types_are_controlled_errors
+    c.validate_sequence([seed], expected_senders=value)
+  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence
+    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))
+                                                   ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+FAIL: test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) (arguments=['/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py', 'sequence', '/workspace/CouncilFlow/reports/restoration/verification/initial/fixtures-0yj0mmit/nonobject.json'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 141, in test_cli_bad_context_never_accepted_or_traceback
+    self.assertNotIn("Traceback", result.stderr)
+AssertionError: 'Traceback' unexpectedly found in 'Traceback (most recent call last):\n  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 670, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 650, in main\n    validate_sequence([read_json(p) for p in args.files], root=args.root,\n  File "/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py", line 368, in validate_sequence\n    validate_message(m, root=root, expected_sender=expected_senders.get(m.get("message_id")))\n                                                                        ^^^^^\nAttributeError: \'list\' object has no attribute \'get\'\n'
+
+======================================================================
+FAIL: test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) (arguments=['/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py', 'sequence', '/workspace/CouncilFlow/reports/restoration/messages/REST-M009.json', '--bindings', '/workspace/CouncilFlow/reports/restoration/verification/initial/fixtures-0yj0mmit/bindings.json'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 140, in test_cli_bad_context_never_accepted_or_traceback
+    self.assertNotEqual(result.returncode, 0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/reports/restoration/verification/initial/test_independent_contracts.py", line 128, in test_wrong_bindings_types_are_controlled_errors
+    with self.subTest(value=value), self.assertRaises(c.ContractError):
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.091s
+
+FAILED (failures=3, errors=9)

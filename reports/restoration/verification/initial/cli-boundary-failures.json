@@ -1,0 +1,28 @@
+[
+  {
+    "case": "nonobject",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "sequence",
+      "/workspace/CouncilFlow/reports/restoration/verification/initial/cli-probes-3m3r8j4g/bad.json"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py\", line 670, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py\", line 650, in main\n    validate_sequence([read_json(p) for p in args.files], root=args.root,\n  File \"/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py\", line 368, in validate_sequence\n    validate_message(m, root=root, expected_sender=expected_senders.get(m.get(\"message_id\")))\n                                                                        ^^^^^\nAttributeError: 'list' object has no attribute 'get'\n"
+  },
+  {
+    "case": "bindings-empty-array",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "sequence",
+      "reports/restoration/messages/REST-M009.json",
+      "--bindings",
+      "/workspace/CouncilFlow/reports/restoration/verification/initial/cli-probes-3m3r8j4g/bindings.json"
+    ],
+    "exit": 0,
+    "stdout": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+    "stderr": ""
+  }
+]

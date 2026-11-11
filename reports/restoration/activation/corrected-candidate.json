@@ -1,0 +1,11 @@
+{
+  "captured_at": "2026-11-11T04:49:40.059288Z",
+  "identity": "REST-ACT-CORRECTED-SKILL-001",
+  "skill": {
+    "artifact_id": "REST-ACT-SKILL-SOURCE-001",
+    "path": ".agents/skills/council-flow/SKILL.md",
+    "sha256": "fd458cea49398728b0b3f9520bbe52f2df9e4a89c13b8363f6b33940bcceeca9",
+    "kind": "skill"
+  },
+  "boundary": "Current corrected SKILL/policy references saved before activation probe; helper developer checks still in progress. This is an activation target identity, not a verification assertion."
+}

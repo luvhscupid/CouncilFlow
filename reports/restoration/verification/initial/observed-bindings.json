@@ -1,0 +1,18 @@
+{
+  "REST-M009": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-PLAN-LIVE-001": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "REST-M010": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "REST-T1-REPORT-001": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_initial"
+  }
+}

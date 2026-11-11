@@ -1,0 +1,44 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M004",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-ACT001",
+  "attempt_id": "REST-ACT-A1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/activation_probe"
+  },
+  "created_at": "2026-11-11T04:31:55Z",
+  "in_reply_to": null,
+  "payload": {
+    "objective": "Independently inspect the strongest supported native activation mechanism; attempt fresh corrected skill activation after Manager signals readiness.",
+    "scope": [
+      "/workspace/CouncilFlow/reports/restoration/activation/**",
+      "/workspace/CouncilFlow/reports/runtime/restoration-activation/**"
+    ],
+    "acceptance_ids": [
+      "C06",
+      "native-discovery",
+      "native-explicit-invocation"
+    ],
+    "candidate_id": "6accda3-baseline-inspection",
+    "instructions": [
+      "Read only current repository evidence, native CLI help/status, and available tool schemas; no product implementation, dependency installation, network-policy changes, global config changes, token extraction, auth bypass or custom provider endpoints.",
+      "Native CLI version was 0.167.0-alpha.4, app-server skills/list discovered prior skill, structured turn/start skill input was accepted but model auth refresh rejected. Read reports/environment/format.md and reports/activation to understand prior evidence; do not treat old run as fresh.",
+      "Determine supported current CLI/schema/config syntax. Can generate app-server schemas strictly inside reports/runtime. Prefer native existing provider credentials normally without reading or displaying token contents; no copying authentication files. Do not repurpose HOME or CODEX_HOME env vars.",
+      "Contain all writes within repository, using existing restrictive bwrap read-only root and repo writable if necessary. Per-process local log/state overrides and process-local namespace mounts only if needed, no changes to actual global configuration/security. If this prevents startup, accurately report boundary rather than bypass it.",
+      "Do not attempt live inference until corrected skill saved and Manager sends a JSON readiness message. You may perform current discovery and read-only capability inspection beforehand. Plan one strongest new corrected invocation attempt and truthful failure capture; do not repeat identical auth failures.",
+      "After readiness, discover corrected skill, explicitly invoke through documented native mechanism with literal $council-flow and structured skill item if supported, requesting only confirmation of loaded corrected communication policy so it cannot race with implementation. Actual real full role demo is coordinated separately in parent unless native activation works.",
+      "Return ONLY UTF-8 JSON job.report envelope with real native identifiers/timestamps, observed commands/exits/results, and artifact identity/path/hash refs. Save safe selected evidence only; no raw credentials, hidden prompts, private reasoning or long diagnostic streams. Full provenance before schema is bootstrap; follow corrected schema once available.",
+      "Record TOML documented syntax compatibility separately from runtime custom-role selection; no invented keys/models. Report actual unsupported capabilities UNVERIFIED. No Owner routine progress; only parent Manager communicates. Wait for readiness after inspection."
+    ]
+  },
+  "evidence_refs": []
+}

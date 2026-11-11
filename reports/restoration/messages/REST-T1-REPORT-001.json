@@ -1,0 +1,169 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "message_id": "REST-T1-REPORT-001",
+  "message_type": "job.report",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/restoration_tester_initial"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T05:03:17.744348Z",
+  "in_reply_to": "REST-M010",
+  "payload": {
+    "status": "failed",
+    "summary": "Independent verification fails: fresh 4-test demo has 1 mandatory failure (2 instead of 4); non-object sequence entries crash with AttributeError and malformed bindings crash or empty-array bindings incorrectly pass. All 45 existing checks plus 31 focused contracts pass. Additional 8 Tester methods produce 3 failures and 9 errors across parameterized defect subcases; 5 methods pass. No product repairs made; all writes stop after final validation.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "findings": [
+      "B01: malformed sequence message types must reject through controlled ContractError/CLI JSON error, not AttributeError traceback.",
+      "B02: malformed expected-sender bindings must reject; [] currently disables checking and succeeds.",
+      "B03: fresh multi-value CLI prints 2 where unchanged mandatory acceptance requires 4.",
+      "Reviewer/final Planner/release bookkeeping remain pending; fresh native invocation remains authentication-blocked, not passing."
+    ],
+    "errors": [
+      {
+        "code": "sequence_type_guard",
+        "field": "C02/C04/C12",
+        "message": "Non-object sequence entries raise uncaught AttributeError before type validation."
+      },
+      {
+        "code": "bindings_type_guard",
+        "field": "C02/C04/C12",
+        "message": "Truthy malformed bindings crash; empty-list bindings are incorrectly accepted."
+      },
+      {
+        "code": "mandatory_demo_failure",
+        "field": "C08",
+        "message": "Actual 2 3 -1 invocation prints 2; mandatory result is 4."
+      }
+    ],
+    "checks": [
+      {
+        "name": "45 previous checks plus31 focused contract checks independently rerun",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T1-COMMANDS",
+          "path": "reports/restoration/verification/initial/commands.json",
+          "sha256": "39b2fd69480d3a6211feb791c80579d0d70ff860b273d013153bc1e014da8626",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "Independent malformed boundary sensitivity and clean rejection",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "REST-T1-INDEPENDENT-FAILURES",
+          "path": "reports/restoration/verification/initial/independent-first.txt",
+          "sha256": "1ae5cca7abcd688b15aeda8c0a91b316082e2f2baa84ccf42c7b1d53f1a37b3e",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Fresh mandatory multi-value implementation",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "REST-T1-DEMO-FAILURE",
+          "path": "reports/restoration/verification/initial/fresh-demo.txt",
+          "sha256": "7410615e8a7a76a3c75e051cc4e5eed2e55f0d28089636ad7d4a0b65b2aeced9",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Source and contract preservation plus static native/dependency inspection",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T1-PRESERVATION",
+          "path": "reports/restoration/verification/initial/preservation-and-inspection.json",
+          "sha256": "cdcacf7460cffbe21dbc12058d273bde7ebf160d5278257ee4a1df0de0b59d0a",
+          "kind": "inspection"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T1-DETAILS",
+      "path": "reports/restoration/verification/initial/report.md",
+      "sha256": "69e4cf584a27a24b98201606103d6c90fd12e826c101b1ead1f91a30e22043bc",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-T1-COMMANDS",
+      "path": "reports/restoration/verification/initial/commands.json",
+      "sha256": "39b2fd69480d3a6211feb791c80579d0d70ff860b273d013153bc1e014da8626",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-T1-INDEPENDENT-FAILURES",
+      "path": "reports/restoration/verification/initial/independent-first.txt",
+      "sha256": "1ae5cca7abcd688b15aeda8c0a91b316082e2f2baa84ccf42c7b1d53f1a37b3e",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T1-BOUNDARY-PROBES",
+      "path": "reports/restoration/verification/initial/boundary-probes.json",
+      "sha256": "4844a0d03aa47de80a66053fc2dc7919de9acbb67528e857d5a543bbb28f3702",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T1-CLI-FAILURES",
+      "path": "reports/restoration/verification/initial/cli-boundary-failures.json",
+      "sha256": "cd98a97b4881d61e5429103f6d5c98c823b8c5ef96b98ac1d95895d6c744ed9c",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T1-DEMO-FAILURE",
+      "path": "reports/restoration/verification/initial/fresh-demo.txt",
+      "sha256": "7410615e8a7a76a3c75e051cc4e5eed2e55f0d28089636ad7d4a0b65b2aeced9",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-T1-PRESERVATION",
+      "path": "reports/restoration/verification/initial/preservation-and-inspection.json",
+      "sha256": "cdcacf7460cffbe21dbc12058d273bde7ebf160d5278257ee4a1df0de0b59d0a",
+      "kind": "inspection"
+    },
+    {
+      "artifact_id": "REST-T1-FAILED-HELPER-SNAPSHOT",
+      "path": "reports/restoration/verification/initial/contracts-candidate001.py",
+      "sha256": "724549a9be37543b867214be316f8f2b6a063493e4ff6e9e39c97182ae6ca27b",
+      "kind": "source-snapshot"
+    }
+  ]
+}

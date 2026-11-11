@@ -1,0 +1,13 @@
+test_actual_packets_and_mutated_role_task_origin (test_independent_contracts.IndependentContractChecks.test_actual_packets_and_mutated_role_task_origin) ... ok
+test_artifact_contents_and_authorized_root_boundaries (test_independent_contracts.IndependentContractChecks.test_artifact_contents_and_authorized_root_boundaries) ... ok
+test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) ... ok
+test_independence_oracle_candidate_and_acceptance_negatives (test_independent_contracts.IndependentContractChecks.test_independence_oracle_candidate_and_acceptance_negatives) ... ok
+test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) ... ok
+test_restricted_yaml_and_jsonl_controls (test_independent_contracts.IndependentContractChecks.test_restricted_yaml_and_jsonl_controls) ... ok
+test_strict_json_mutations_and_bounds (test_independent_contracts.IndependentContractChecks.test_strict_json_mutations_and_bounds) ... ok
+test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.089s
+
+OK

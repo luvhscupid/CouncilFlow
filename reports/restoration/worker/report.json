@@ -1,0 +1,148 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-W001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/restoration_worker"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T04:55:21.288910Z",
+  "in_reply_to": "REST-M007",
+  "payload": {
+    "status": "failed",
+    "summary": "Primary implementation complete; all edits stopped. All 45 previous checks plus 31 focused contract checks pass. New 4-test demo has 1 mandatory failure (2 versus 4), intentionally preserved for independent Tester and fresh Worker rework. Core helper, SKILL, policy and interfaces are stable; native activation probe may proceed. Manager input/output and strategy/consistency concerns addressed. No self-approval.",
+    "acceptance_ids": [
+      "C03",
+      "C04",
+      "C08",
+      "C09",
+      "C12"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "REST-WORKER-INPUT-CONTEXT-001",
+      "path": "reports/restoration/control/worker-input-001.json",
+      "sha256": "d7b4727084d3ceb77a1767c5dd688a9626a2e4fe37070ef958aec904e2bf8220",
+      "kind": "candidate"
+    },
+    "findings": [
+      "Fresh demo intentionally incomplete; requires separate Tester report and fresh Worker repair under unchanged plan.",
+      "Native independent verification, review, activation, packaging and final check remain Manager-coordinated pending work.",
+      "Bootstrap and mutable early interface announcement remain historical, not current immutable/casual-proof claims."
+    ],
+    "errors": [
+      {
+        "code": "mandatory_demo_failure",
+        "field": "C08",
+        "message": "Fresh multiple signed operand test outputs 2; original acceptance requires4."
+      }
+    ],
+    "changed_files": [
+      ".agents/skills/council-flow/SKILL.md",
+      ".agents/skills/council-flow/policies/roles.yaml",
+      ".agents/skills/council-flow/references/acceptance.md",
+      ".agents/skills/council-flow/references/communication.md",
+      ".agents/skills/council-flow/references/message-contract.json",
+      ".agents/skills/council-flow/references/recovery.md",
+      ".agents/skills/council-flow/references/roles.md",
+      ".agents/skills/council-flow/references/workflow.md",
+      ".agents/skills/council-flow/scripts/contracts.py",
+      ".codex/agents/council-planner.toml",
+      ".codex/agents/council-reviewer.toml",
+      ".codex/agents/council-tester.toml",
+      ".codex/agents/council-worker.toml",
+      "README.md",
+      "RELEASE.md",
+      "demo/structured-flow/README.md",
+      "demo/structured-flow/sum_values.py",
+      "demo/structured-flow/test_sum_values.py",
+      "reports/requirements-traceability.md",
+      "tests/test_contracts.py",
+      "tests/test_skill_files.py"
+    ],
+    "checks": [
+      {
+        "name": "8 preserved static checks plus 31 focused contract checks",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-WORKER-TESTS",
+          "path": "reports/restoration/worker/skill-contract-tests.txt",
+          "sha256": "13706c5c5539254d6bb5b9091a8684a8fc5ec8afa5d8fc135077ee7cb1a8019e",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Other 37 preserved receipt and CSV checks",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-WORKER-REGRESSIONS",
+          "path": "reports/restoration/worker/regressions.json",
+          "sha256": "b62432146bc5e44e1cdab92d08a5be4e23106ca9be2dc317b1efe91516335f80",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "fresh isolated mandatory multi-value acceptance",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "REST-INITIAL-DEMO-FAILURE",
+          "path": "reports/restoration/worker/fresh-fixture-failure.txt",
+          "sha256": "efe8fac28593dc7c5c46ed661b5b8e337d9b9a042122eccd8cee5253f9986265",
+          "kind": "test-output"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-WORKER-REPORT",
+      "path": "reports/restoration/worker/report.md",
+      "sha256": "7ef503a9efac0795c179e2637196b12bdd83112806435275bac48ecb4da8d944",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-WORKER-TESTS",
+      "path": "reports/restoration/worker/skill-contract-tests.txt",
+      "sha256": "13706c5c5539254d6bb5b9091a8684a8fc5ec8afa5d8fc135077ee7cb1a8019e",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-INITIAL-DEMO-FAILURE",
+      "path": "reports/restoration/worker/fresh-fixture-failure.txt",
+      "sha256": "efe8fac28593dc7c5c46ed661b5b8e337d9b9a042122eccd8cee5253f9986265",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-INITIAL-DEMO-SNAPSHOT",
+      "path": "reports/restoration/worker/initial_sum_values.py",
+      "sha256": "0d82ff4029a964d159e93bc66661ed4da9682388fd1064e5b939ec22f9be78ea",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "REST-WORKER-REGRESSIONS",
+      "path": "reports/restoration/worker/regressions.json",
+      "sha256": "b62432146bc5e44e1cdab92d08a5be4e23106ca9be2dc317b1efe91516335f80",
+      "kind": "test-index"
+    }
+  ]
+}

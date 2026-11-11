@@ -1,0 +1,68 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M002",
+  "message_type": "plan.publish",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T04:32:30Z",
+  "in_reply_to": "REST-M001",
+  "payload": {
+    "objective": "Restore the omitted JSON/YAML/JSONL communication design in the existing installable CouncilFlow skill; preserve the native five-role workflow and verify real supported behavior without redesign.",
+    "scope": [
+      ".agents/skills/council-flow/**",
+      ".codex/agents/council-*.toml",
+      "tests/**",
+      "demo/structured-flow/**",
+      "reports/restoration/**",
+      "reports/requirements-traceability.md",
+      "reports/final.md",
+      "README.md",
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "plan_ref": {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    }
+  ]
+}

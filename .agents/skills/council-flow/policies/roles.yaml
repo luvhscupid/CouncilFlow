@@ -1,0 +1,66 @@
+# CouncilFlow skill policy 1.0. Restricted block YAML; not Codex permissions.
+protocol: "council-flow-policy"
+version: "1.0"
+communication:
+  tasks: "utf-8-json"
+  policy: "yaml"
+  native: "toml"
+  diagnostics: "optional-jsonl"
+  owner: "concise-natural-language"
+roles:
+  owner:
+    responsibilities: ["Sets goals and constraints", "Approves consequential scope or authorization changes", "Decides required subjective acceptance"]
+    abilities: []
+    application_code: false
+  planner:
+    responsibilities: ["Publishes original objectives and acceptance", "Checks completed outcome against original plan", "Does not implement"]
+    abilities: ["plan", "final_check"]
+    application_code: false
+  manager:
+    responsibilities: ["Parent coordinator selects compatible skills and models where supported", "Delegates and manages authorized engineering rework", "Evaluates independent evidence and approves test strategy", "Does not implement"]
+    abilities: ["delegate", "request_rework", "evaluate_evidence"]
+    application_code: false
+  worker:
+    responsibilities: ["Fresh native implementation attempt within approved scope", "Performs developer checks", "Cannot self-approve"]
+    abilities: ["implement"]
+    application_code: true
+  tester:
+    responsibilities: ["Independent technical verification of exact candidate", "Does not repair product", "Does not approve its own oracle"]
+    abilities: ["technical_test"]
+    application_code: false
+  reviewer:
+    responsibilities: ["Independent experiential review", "Distinguishes observed inspected and simulated behavior", "Does not edit code or replace Tester"]
+    abilities: ["experience_review"]
+    application_code: false
+workflow:
+  order: ["owner", "planner", "manager", "worker", "tester", "reviewer", "manager", "planner", "owner"]
+authority:
+  owner_only: ["consequential_scope", "new_authorization", "subjective_acceptance"]
+  never_self_authorize: ["external_paths", "global_configuration", "permission_bypass", "deployment", "paid_provider", "weaken_acceptance"]
+  ordinary_repair_owner_approval: false
+evidence:
+  independent_tests: true
+  candidate_hashes: true
+  original_acceptance: true
+  review_modes: ["observed", "inspected", "simulated"]
+  tester_self_approves_oracle: false
+context:
+  fresh_worker_each_attempt: true
+  independent_tester: true
+  independent_reviewer: true
+  one_mutating_worker: true
+resources:
+  engineering_rework: "no_fixed_lifetime_limit"
+  stop_identical_unproductive_retries: true
+  infrastructure_retries: 3
+  crash_recoveries: 2
+  retry_accounting: "instruction_only"
+security:
+  permissions: "inherit_native_codex"
+  grants_os_permissions: false
+  authenticates_senders: false
+  native_transport_enforced: false
+native:
+  format: "toml"
+  fields: ["name", "description", "developer_instructions"]
+  mapping: "policy responsibilities become developer_instructions; no invented keys"

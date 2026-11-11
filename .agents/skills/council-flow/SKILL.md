@@ -5,62 +5,77 @@ description: "Coordinate an ordinary coding goal through a Planner, parent Manag
 
 # CouncilFlow
 
-Invoke with `$council-flow <ordinary coding goal>` in a supported Codex host.
+Invoke explicitly with $council-flow followed by an ordinary coding goal.
+Use native Codex tools, inherited provider/model configuration, actual workspace
+permissions and budget. This is an instruction skill, not a security sandbox.
+It needs no new key, subscription, database, service or custom supervisor.
+Only parent **Manager** gives ordinary progress/results to the Owner.
 
-Use native Codex agents and the current session's approved tools, credentials,
-permissions, models, and budget. This skill is an instruction workflow, not a
-security sandbox. It needs no API key, service, database, or custom supervisor.
-Only the parent **Manager** gives routine progress and results to the Owner.
+## Required communication
+
+Read [communication](references/communication.md), [roles](references/roles.md)
+and the versioned [YAML policy](policies/roles.yaml).
+Agent task assignments, plans, reports and decisions **MUST be UTF-8 JSON**
+under council-flow 1.0. Markdown/prose cannot replace those controlled packets.
+Keep large evidence in immutable files referenced by identity/path/SHA-256.
+YAML is role/workflow policy; native custom-agent configuration remains TOML.
+JSONL diagnostics are optional. Owner-facing communication stays concise natural
+language; do not expose internal envelopes or long logs by default.
 
 ## Execute the goal
 
-1. **Establish scope.** Read repository instructions and status. Record the
-   Owner's goal, authorized paths, constraints, and observable acceptance. Inspect
-   available delegation and model controls; do not invent tool names or models.
-   Read [roles](references/roles.md) and [workflow](references/workflow.md).
-2. **Planner.** In native mode, ask a dedicated real Planner subagent for an
-   immutable implementation contract before implementation. In external mode,
-   preserve the Owner-approved supplied plan verbatim; record its provenance and
-   do not claim to contact that external ChatGPT conversation. Have a native
-   Planner check completeness if available. Resolve material gaps with the Owner
-   only when existing authority cannot resolve them.
-3. **Manager.** Accept and record the contract and acceptance IDs. Delegate a
-   bounded request to a fresh real Worker, using the available custom role if
-   supported or passing the role instructions to the native subagent. Inherit
-   the current model configuration unless a supported, justified choice exists.
-   The Manager does not write application code. Permit only one Worker to mutate
-   a workspace at once; parallel implementation requires authorized isolation.
-4. **Worker.** Implement within scope, run developer checks, and return changed
-   files and actual results. A Worker cannot approve its own work or change the
-   contract. Wait for implementation to finish before verification.
-5. **Tester.** Assign a fresh separate native Tester the approved contract and
-   implementation. Require independent execution and acceptance checks. The
-   Tester reports failures and unknowns and never repairs implementation.
-6. **Reviewer.** After technical verification, assign a fresh separate native
-   Reviewer to approach the result as a user, inspect instructions, and exercise
-   relevant interaction. Require observations distinct from inspection; never
-   substitute a score for technical evidence. The Reviewer does not edit code.
-7. **Rework.** Evaluate findings against unchanged criteria. Reject any failed
-   mandatory check. Send a corrected bounded request to a fresh Worker for
-   needed repairs, then repeat affected independent verification and review.
-   Follow [recovery](references/recovery.md); no arbitrary repair-count limit.
-8. **Final Planner check.** Ask the Planner to map every original acceptance ID
-   to observed evidence and open gaps. The Manager evaluates all results and
-   reports the outcome to the Owner using [acceptance](references/acceptance.md).
+1. **Establish scope.** Inspect repository instructions/status and real native
+   capabilities. Define the Owner objective, approved paths and observable
+   acceptance. Never invent tool names, models, permissions or session IDs.
+2. **Planner.** Dedicated native Planner publishes plan.publish JSON before
+   implementation. Preserve original plan and mandatory acceptance. External
+   mode preserves an Owner-approved supplied plan and provenance unchanged;
+   never claim to contact the external ChatGPT conversation.
+3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
+   Worker. Validate controlled packets before dispatch and results on receipt
+   using the installed contracts.py helper, known actor bindings, candidate
+   hashes and available ordered context. Native transport itself is not enforced
+   by this helper. Pass role instructions to native subagents when custom-role
+   selection is unavailable, and disclose that fallback.
+4. **Worker.** Implement only bounded work, perform developer checks, return
+   job.report JSON with actual candidate/evidence and changed files, then stop
+   edits. Worker cannot approve itself. Manager writes no application code.
+   One Worker mutates a workspace; parallel implementation requires authorized
+   isolated workspaces.
+5. **Tester.** Fresh separate native Tester independently executes the original
+   acceptance and Manager-approved verification strategy on that exact candidate.
+   Return job.report with checks/evidence; do not repair product or approve its
+   own oracle. Worker tests/assertions alone never establish independent success.
+6. **Reviewer.** After technical verification, fresh separate native Reviewer
+   exercises the result as a user. Return job.report JSON separating observed,
+   inspected and simulated behavior. No code edits or substitution for Tester.
+7. **Rework.** Manager records task.decision JSON from evidence: accept, reject,
+   rework or escalate. Failed mandatory checks cannot be accepted. Repairs use
+   a fresh Worker/attempt under unchanged criteria, then affected independent
+   checks. Follow [recovery](references/recovery.md); no lifetime engineering
+   repair cap. Infrastructure retry 3/crash recovery 2 are instruction-only
+   policy, not runtime accounting.
+8. **Final Planner check.** Manager sends verified plan.progress JSON. Planner
+   returns plan.check against original acceptance and evidence, not a rewritten
+   Worker checklist. Manager gives the Owner concise natural-language results
+   using [acceptance](references/acceptance.md).
 
-## Truthful completion
+## Evidence and limits
 
-Keep compact requests/results and evidence in ordinary project files when
-durability is useful. Record actual available session identifiers, commands,
-exit status, artifact paths, findings, repairs, and final disposition. Keep long
-logs out of routine Owner updates. JSON is a record, never permission authority.
+Follow [workflow](references/workflow.md). Keep real task/plan/attempt/message IDs,
+UTC timestamps, causal references, commands/exits and evidence hashes. Structural
+validation is not sender authentication, native-transport control or OS isolation.
+Without supplied context, only structure is checked; disclose missing context.
+No JSON/YAML declaration grants filesystem, network, execution or approval power.
 
-If discovery, invocation, native delegation, a role, test, or interaction is
-unavailable, explicitly mark it **UNVERIFIED** or **BLOCKED**. Deliver useful
-authorized artifacts, but never simulate agents, rename self-review as
-independent review, or declare the complete workflow verified. Report
-**PARTIAL — precise missing capability** when mandatory evidence is missing.
+Ordinary in-scope repair needs no repeated Owner approval. Consequential new
+scope/authorization and required subjective decisions belong to the Owner.
+Use approval.request only for a concrete necessary decision; record
+approval.decision only from actual Owner input/provenance, never AI invention.
+Refuse unauthorized external changes without attempting permission bypass.
 
-Keep Owner authority over consequential or out-of-scope actions. Refuse or
-escalate unauthorized external changes without attempting them. Continue
-ordinary authorized engineering work without repeated approval requests.
+If native discovery, invocation, a role, test or actual interaction is unavailable,
+record UNVERIFIED/BLOCKED. Never simulate agents or upgrade static checks into
+live proof. Preserve useful work and report the exact gap. Contract restoration
+with blocked activation is CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED;
+COUNCILFLOW_FULLY_VERIFIED requires genuine invocation and real required roles.

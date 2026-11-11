@@ -1,0 +1,9 @@
+{
+  "message": "reports/restoration/messages/REST-T3-REPORT-001.json",
+  "structural": "PASS",
+  "root_artifacts": "PASS",
+  "observed_sender": "PASS",
+  "ordered_context": "PASS",
+  "messages_validated": 15,
+  "limitations": "Controlled packets, not native transport authentication or OS isolation."
+}

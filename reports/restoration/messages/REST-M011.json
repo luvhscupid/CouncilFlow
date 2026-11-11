@@ -1,0 +1,71 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T05:05:10.806331Z",
+  "in_reply_to": "REST-T1-REPORT-001",
+  "message_id": "REST-M011",
+  "message_type": "task.decision",
+  "payload": {
+    "disposition": "rework",
+    "reason": "Reject candidate001: independent Tester observed uncontrolled malformed sequence/bindings errors, acceptance of empty list bindings, and mandatory sum output2 instead of4. Preserve failed evidence; repair under unchanged original criteria using a fresh Worker and new attempt.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    "report_ids": [
+      "REST-T1-REPORT-001"
+    ],
+    "failed_acceptance_ids": [
+      "C02",
+      "C04",
+      "C08",
+      "C12"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T1-REPORT-ARTIFACT",
+      "path": "reports/restoration/messages/REST-T1-REPORT-001.json",
+      "sha256": "fd012854ce223d0464d72d86ee45d9934582b809cd168f5f02568ac8e7ec20e4",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "REST-T1-DETAILS",
+      "path": "reports/restoration/verification/initial/report.md",
+      "sha256": "69e4cf584a27a24b98201606103d6c90fd12e826c101b1ead1f91a30e22043bc",
+      "kind": "report"
+    }
+  ]
+}

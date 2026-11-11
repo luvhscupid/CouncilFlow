@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-11-11T05:11:16.354834Z",
+  "unchanged_original_sources": {
+    "reports/restoration/plan.json": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+    "demo/structured-flow/test_sum_values.py": "c3c43c6eac2fcb77dfc4e93532f3f5223f029e9a7d5481320ad7545572ca5430",
+    "reports/restoration/verification/initial/test_independent_contracts.py": "cca92fc202664f7f2d42a64079081bcb07a8f487e6119044b44fadf33f3efb98",
+    "reports/restoration/messages/REST-T1-REPORT-001.json": "fd012854ce223d0464d72d86ee45d9934582b809cd168f5f02568ac8e7ec20e4",
+    "reports/restoration/worker/candidate-001-final.json": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f"
+  },
+  "statement": "Original plan, input candidate, mandatory demo tests, Tester-authored checks and failed report were not edited by repair."
+}

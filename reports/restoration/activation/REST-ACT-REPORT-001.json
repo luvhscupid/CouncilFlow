@@ -1,0 +1,123 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-ACT-REPORT-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-ACT001",
+  "attempt_id": "REST-ACT-A1",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/activation_probe"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T04:52:10Z",
+  "in_reply_to": "REST-M008",
+  "payload": {
+    "status": "blocked",
+    "summary": "Fresh corrected repository skill discovery PASS. Literal $council-flow plus documented structured skill input was accepted in a real ephemeral native turn, then the thread entered systemError while configured authentication was rejected with HTTP 401: Could not parse your authentication token. No successfully completed invoked inference or final answer occurred; explicit invocation remains UNVERIFIED. One attempt only. Corrected SKILL hash was unchanged before/after. Native TOML parses with documented fields, while live custom-role selection remains UNVERIFIED.",
+    "acceptance_ids": [
+      "C06",
+      "R-ACTIVATION"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-ACT-CORRECTED-SKILL-001",
+      "path": "reports/restoration/activation/corrected-candidate.json",
+      "sha256": "47d39dd327c80eab6456328c1780ef4b5e3fee1d8fbf7ca8b1a51e58975d8594",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "findings": [
+      "Native thread 01a1c8f1-4e44-7832-be05-c85e530bdc0a and accepted turn 01a1c8f1-4f6d-7463-a085-33100e5d5e80 are actual returned identifiers; accepted input is not successful invocation.",
+      "Native provider authentication failure and optional MCP HTTP 451 were observed. No authentication bypass, token extraction, credential-file copying, provider/configuration change or dependency installation was performed."
+    ],
+    "errors": [
+      {
+        "code": "native_authentication",
+        "field": "explicit_invocation",
+        "message": "Fresh invoked native thread entered systemError; native model refresh returned HTTP 401 and Could not parse your authentication token. Please try signing in again."
+      }
+    ],
+    "checks": [
+      {
+        "name": "Fresh corrected native repository skill discovery",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-FRESH-NATIVE-ATTEMPT-001",
+          "path": "reports/restoration/activation/corrected-native-attempt.json",
+          "sha256": "8404dc289773b7697b51fbe9f2469010ad370f960aa6ae0bb97cf5d68b8e40e0",
+          "kind": "activation-evidence"
+        }
+      },
+      {
+        "name": "Genuine explicit invoked turn completed successfully",
+        "status": "blocked",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-FRESH-NATIVE-ATTEMPT-001",
+          "path": "reports/restoration/activation/corrected-native-attempt.json",
+          "sha256": "8404dc289773b7697b51fbe9f2469010ad370f960aa6ae0bb97cf5d68b8e40e0",
+          "kind": "activation-evidence"
+        }
+      },
+      {
+        "name": "Corrected native agent TOML documented-key and string syntax",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-FRESH-NATIVE-ATTEMPT-001",
+          "path": "reports/restoration/activation/corrected-native-attempt.json",
+          "sha256": "8404dc289773b7697b51fbe9f2469010ad370f960aa6ae0bb97cf5d68b8e40e0",
+          "kind": "activation-evidence"
+        }
+      },
+      {
+        "name": "Live custom-role-file selection",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-FRESH-NATIVE-ATTEMPT-001",
+          "path": "reports/restoration/activation/corrected-native-attempt.json",
+          "sha256": "8404dc289773b7697b51fbe9f2469010ad370f960aa6ae0bb97cf5d68b8e40e0",
+          "kind": "activation-evidence"
+        }
+      },
+      {
+        "name": "Assigned candidate, strategy and SKILL preservation",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-FRESH-NATIVE-ATTEMPT-001",
+          "path": "reports/restoration/activation/corrected-native-attempt.json",
+          "sha256": "8404dc289773b7697b51fbe9f2469010ad370f960aa6ae0bb97cf5d68b8e40e0",
+          "kind": "activation-evidence"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-ACT-CORRECTED-SKILL-001",
+      "path": "reports/restoration/activation/corrected-candidate.json",
+      "sha256": "47d39dd327c80eab6456328c1780ef4b5e3fee1d8fbf7ca8b1a51e58975d8594",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    {
+      "artifact_id": "REST-ACT-FRESH-NATIVE-ATTEMPT-001",
+      "path": "reports/restoration/activation/corrected-native-attempt.json",
+      "sha256": "8404dc289773b7697b51fbe9f2469010ad370f960aa6ae0bb97cf5d68b8e40e0",
+      "kind": "activation-evidence"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+[
+  {
+    "name": "contracts-and-skill",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/verification/initial/contracts-and-skill.txt"
+  },
+  {
+    "name": "receipt",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/verification/initial/receipt.txt"
+  },
+  {
+    "name": "receipt-independent",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/verification/initial/receipt-independent.txt"
+  },
+  {
+    "name": "csv",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/verification/initial/csv.txt"
+  },
+  {
+    "name": "csv-independent",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/verification/initial/csv-independent.txt"
+  },
+  {
+    "name": "fresh-demo",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "exit": 1,
+    "output": "reports/restoration/verification/initial/fresh-demo.txt"
+  },
+  {
+    "name": "fresh-cli",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "demo/structured-flow/sum_values.py",
+      "2",
+      "3",
+      "-1"
+    ],
+    "exit": 0,
+    "stdout": "2\n",
+    "stderr": ""
+  },
+  {
+    "name": "receipt-cli",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "demo/receipt/receipt_calculator.py",
+      "--item",
+      "rice",
+      "2",
+      "30000",
+      "kg",
+      "--item",
+      "onions",
+      "1",
+      "43000",
+      "kg"
+    ],
+    "exit": 0,
+    "stdout": "2 kg rice \u00d7 Rp30,000 = Rp60,000\n1 kg onions \u00d7 Rp43,000 = Rp43,000\nTotal = Rp103,000\n",
+    "stderr": ""
+  }
+]

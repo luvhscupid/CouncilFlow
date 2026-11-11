@@ -1,0 +1,48 @@
+[
+  {
+    "case": "invalid_changed_files_type",
+    "role": "tester",
+    "value": 42,
+    "observed": "ACCEPTED",
+    "scope": "Synthetic mutation of real-style packet; not new native history"
+  },
+  {
+    "case": "invalid_changed_files_type",
+    "role": "tester",
+    "value": false,
+    "observed": "ACCEPTED",
+    "scope": "Synthetic mutation of real-style packet; not new native history"
+  },
+  {
+    "case": "invalid_changed_files_type",
+    "role": "tester",
+    "value": {
+      "path": "not-a-list"
+    },
+    "observed": "ACCEPTED",
+    "scope": "Synthetic mutation of real-style packet; not new native history"
+  },
+  {
+    "case": "invalid_changed_files_type",
+    "role": "reviewer",
+    "value": 42,
+    "observed": "ACCEPTED",
+    "scope": "Synthetic mutation of real-style packet; not new native history"
+  },
+  {
+    "case": "invalid_changed_files_type",
+    "role": "reviewer",
+    "value": false,
+    "observed": "ACCEPTED",
+    "scope": "Synthetic mutation of real-style packet; not new native history"
+  },
+  {
+    "case": "invalid_changed_files_type",
+    "role": "reviewer",
+    "value": {
+      "path": "not-a-list"
+    },
+    "observed": "ACCEPTED",
+    "scope": "Synthetic mutation of real-style packet; not new native history"
+  }
+]

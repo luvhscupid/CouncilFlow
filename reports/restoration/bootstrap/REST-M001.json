@@ -1,0 +1,49 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M001",
+  "message_type": "plan.progress",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/restoration_planner"
+  },
+  "created_at": "2026-11-11T04:28:12Z",
+  "in_reply_to": null,
+  "payload": {
+    "status": "planning",
+    "objective": "Restore communication contracts in the existing CouncilFlow skill under the Owner's current complete authorization.",
+    "scope": [
+      "/workspace/CouncilFlow/**"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12"
+    ],
+    "verified_progress": [
+      "Repository clean at 6accda3; skill, all references, TOML agents, tests, reports/final.md inspected by Manager.",
+      "Existing roles.md has unversioned JSON-or-equivalent prose envelope; no dedicated versioned protocol or YAML role/workflow policy found in inspected sources.",
+      "Full existing baseline suite running before any implementation; output reports/restoration/baseline/results.json when complete.",
+      "Executor skills catalog empty; previous native CLI auth refresh failure remains historical, not retested yet."
+    ],
+    "next_action": "Read current Owner instructions and existing repository. Search authorized tracked sources for authoritative Council v0.2.1 schema; do not access other projects or external skills. If absent use Owner council-flow 1.0 envelope explicitly skill-level, not ACP Supervisor. Author compact immutable restoration plan before Worker implementation, as a UTF-8 JSON plan.publish message at reports/restoration/messages/REST-M002.json. Include objective, scope, original acceptance criteria C01-C12 and Owner requirements, bounded work units, interfaces, dependencies and risks. Return ONLY JSON envelope to parent, referencing full plan artifact by path/hash if large. Initial Manager bootstrap plan.progress is actual planning progress/request; no approval or successful native activation claimed. No product code edits. Plan must call for strict duplicate-key/nonfinite/UTF8/types/unknown-field/depth/size/role/type/causal-context validation with stdlib; five-role YAML policy in restricted documented subset or trusted available parser with no installation; JSONL optional diagnostics; integrate JSON task packet requirements into concise skill+all references/TOML agents, replacing permissive prose without regressing original protections. Deterministic validators belong inside installable skill package scripts (old static no-scripts assertion must be revised honestly because new explicit Owner requirement supersedes it). Native TOML keys remain only documented fields. Preserve receipt+CSV+historical records; current reports/final.md and README/RELEASE/ZIP/requirements-traceability may update. Fresh real demo must use corrected JSON packets at supported boundaries and new Worker implementation, separate Tester and Reviewer, Manager decision, final Planner. Include actual failing mandatory fixture that triggers recorded rework/rejection with fresh Worker, not only static examples; keep demo tiny. Author contract implementation details concrete enough for one Worker, no framework/database/provider/service. Validate role/type payload routes and bounded identifiers, evidence identities/hashes without structural authentication claims. Approval records cannot invent Owner decisions, include role owner only for actual Owner provenance. Native transport wrapper cannot enforce envelope; validate controlled packet/report files and document this boundary. Resource retry3 and crash2 as instruction-only unless real accounting exists; no engineering retry lifetime cap. Strongest current supported activation attempted without auth extraction/bypass/provider changes; honest statuses. Need final traceability map with specified/implemented/static/dynamic/native/blocked distinction. Package complete corrected skill, tests, demos and safe evidence; commit locally, NO PUSH requested now. All agent-to-agent messages/results JSON, role policy YAML, native configuration TOML, Owner updates prose. This bootstrap is not yet schema-validated; Worker must cover actual bootstrap/adapt schema consistently without claiming preexisting validation. Keep plan compact. Stop after plan records; reuse you for final check. Only Manager communicates routine Owner progress."
+  },
+  "evidence_refs": []
+}

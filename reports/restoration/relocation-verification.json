@@ -1,0 +1,50 @@
+{
+  "scope": "Relocated complete skill/agent-file validation only; synthetic packet is not an AI session or native invocation",
+  "checks": [
+    {
+      "name": "complete corrected skill bytes and four native TOML definitions copied unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "relocated YAML policy",
+      "command": [
+        "python3",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09/.agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09/.agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"policy\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "relocated strict message and hash",
+      "command": [
+        "python3",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09/.agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09/install-message.json",
+        "--root",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09"
+      ],
+      "exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "relocated ordered context",
+      "command": [
+        "python3",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09/.agents/skills/council-flow/scripts/contracts.py",
+        "sequence",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09/install-message.json",
+        "--root",
+        "/workspace/CouncilFlow/reports/runtime/restoration-install/target-piwrdc09"
+      ],
+      "exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": ""
+    }
+  ],
+  "status": "passed"
+}

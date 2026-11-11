@@ -1,0 +1,134 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-T3-REPORT-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/restoration_verifier"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T05:38:04.216134Z",
+  "in_reply_to": "REST-M016",
+  "payload": {
+    "status": "passed",
+    "summary": "Independent final technical verification PASS: all103 assigned methods passed, zero unexpected failed suites and zero skips. B01-B07 regressions pass unchanged. Actual receipt Rp103,000 and sum4 plus unrelated signed/error/offline checks pass. Actual14-message context and6 event records validate,9 focused mutations reject. No product repairs made; Reviewer/Planner/release closeout and native authentication limit remain separate.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "findings": [
+      "No remaining defect or repair requested in assigned technical scope.",
+      "Passing final plan.check should anchor in_reply_to to Manager accept task.decision; plan.progress is advisory, not that acceptance anchor.",
+      "Native explicit invocation and live custom-role selection remain UNVERIFIED; final Reviewer, Planner, ZIP/relocation and commit bookkeeping are not certified by this technical report."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "103 actual current regression and independent test methods;0 skips",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T3-SUITES",
+          "path": "reports/restoration/verification/release/suite-results.json",
+          "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "Actual sum receipt error and disabled-network executions",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T3-PROGRAMS",
+          "path": "reports/restoration/verification/release/program-observations.json",
+          "sha256": "7e8a705271355aeec46ad87cb85df2398e2d5196ca8df84f11429d6263a4d958",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "Actual causal context and event linkage with9 negative controls",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T3-LIVE-CONTROLS",
+          "path": "reports/restoration/verification/release/live-boundary-checks.json",
+          "sha256": "7e9a5f2d7dd0dd2874127fc3095af7292fcd4f9ee63bf872ef2de5a28cd1f10a",
+          "kind": "validation-output"
+        }
+      },
+      {
+        "name": "Candidate and historical failure preservation plus policy/native/stdlib inspection",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-T3-PRESERVATION",
+          "path": "reports/restoration/verification/release/preservation-and-inspection.json",
+          "sha256": "3767001167888fb1a84995207e58b49f4dbd143bde2b8674f762b44cab976228",
+          "kind": "inspection"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-T3-DETAILS",
+      "path": "reports/restoration/verification/release/report.md",
+      "sha256": "ca0b6d2eb031cfc533ded37c4c399784df05881d3814622c2ec8c3e9ebc8fca7",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-T3-SUITES",
+      "path": "reports/restoration/verification/release/suite-results.json",
+      "sha256": "c511596ec7c3876f1115ee22e420f360747fb9d1d8161ed9831b13495426bd43",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-T3-PROGRAMS",
+      "path": "reports/restoration/verification/release/program-observations.json",
+      "sha256": "7e8a705271355aeec46ad87cb85df2398e2d5196ca8df84f11429d6263a4d958",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-T3-LIVE-CONTROLS",
+      "path": "reports/restoration/verification/release/live-boundary-checks.json",
+      "sha256": "7e9a5f2d7dd0dd2874127fc3095af7292fcd4f9ee63bf872ef2de5a28cd1f10a",
+      "kind": "validation-output"
+    },
+    {
+      "artifact_id": "REST-T3-PRESERVATION",
+      "path": "reports/restoration/verification/release/preservation-and-inspection.json",
+      "sha256": "3767001167888fb1a84995207e58b49f4dbd143bde2b8674f762b44cab976228",
+      "kind": "inspection"
+    }
+  ]
+}

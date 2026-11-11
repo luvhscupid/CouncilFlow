@@ -1,0 +1,166 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-W2-REPORT-001",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A002",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/restoration_repair"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T05:11:53.630158Z",
+  "in_reply_to": "REST-M012",
+  "payload": {
+    "status": "passed",
+    "summary": "Fresh Worker repair complete: malformed sequence entries and invalid/falsey sender bindings now reject through controlled validation errors; supplied actor/provenance context is typed. Sum demo computes all signed operands. Developer suites (43 + 8 + 4 + 37) total 92 tests passed, no skips. All mutations stopped after this handoff. Final independent verification, review and release remain pending; no self-approval or native activation claim.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-001-FINAL",
+      "path": "reports/restoration/worker/candidate-001-final.json",
+      "sha256": "72ba379287b19146c19912fa9b8bef778aa321606d726ad960fc8882ee73410f",
+      "kind": "candidate"
+    },
+    "findings": [
+      "This Worker made no native authentication or custom-role selection attempt; the prior block remains unchanged."
+    ],
+    "errors": [],
+    "changed_files": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      "demo/structured-flow/sum_values.py",
+      "demo/structured-flow/README.md"
+    ],
+    "checks": [
+      {
+        "name": "43 existing/static and focused contract tests",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W2-CONTRACT-TESTS",
+          "path": "reports/restoration/repair/contracts-and-skill.txt",
+          "sha256": "1d3f5b5a7b915aa700026e517cb01ee8e80c1a0aac14ce70cb6797f0eae4b845",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Same 8 independent Tester methods rerun without modifying them",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W2-INDEPENDENT-RERUN",
+          "path": "reports/restoration/repair/independent-after.txt",
+          "sha256": "b8ad9fc9465d630b6313eb56b6acb04c75e4b31fc4805661e84495fc647ba7cd",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Same 4 mandatory fresh demo tests",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W2-DEMO-TESTS",
+          "path": "reports/restoration/repair/fresh-demo.txt",
+          "sha256": "d59ae4421a76ef3d73cbb903d906df305c5ff4dd5dc49f3372af8b81e19f71e7",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "37 receipt/CSV regressions and actual sample/offline/error commands",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W2-REGRESSIONS",
+          "path": "reports/restoration/repair/regressions.json",
+          "sha256": "beeeab1197c70559e33a7d804dd7e456da34b01e0811b6272b574de69465ccf9",
+          "kind": "test-index"
+        }
+      },
+      {
+        "name": "Original plan, candidate and test evidence preserved",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-W2-PRESERVATION",
+          "path": "reports/restoration/repair/preservation.json",
+          "sha256": "ab45cbacf760d5ccf5cc536a0233685fa222a6e550b9420b704a67e1860d0726",
+          "kind": "inspection"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-002",
+      "path": "reports/restoration/repair/candidate-002.json",
+      "sha256": "7f9624b4ce4c70ad222055341e846fd9aa1ed8a8f7418fb19103544fbce96917",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-W2-DETAILS",
+      "path": "reports/restoration/repair/report.md",
+      "sha256": "70c3498c27760ecc49bff4c44f25dac0b807614e48a3731cef59eb0e981ca013",
+      "kind": "report"
+    },
+    {
+      "artifact_id": "REST-W2-CONTRACT-TESTS",
+      "path": "reports/restoration/repair/contracts-and-skill.txt",
+      "sha256": "1d3f5b5a7b915aa700026e517cb01ee8e80c1a0aac14ce70cb6797f0eae4b845",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W2-INDEPENDENT-RERUN",
+      "path": "reports/restoration/repair/independent-after.txt",
+      "sha256": "b8ad9fc9465d630b6313eb56b6acb04c75e4b31fc4805661e84495fc647ba7cd",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W2-DEMO-TESTS",
+      "path": "reports/restoration/repair/fresh-demo.txt",
+      "sha256": "d59ae4421a76ef3d73cbb903d906df305c5ff4dd5dc49f3372af8b81e19f71e7",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "REST-W2-REGRESSIONS",
+      "path": "reports/restoration/repair/regressions.json",
+      "sha256": "beeeab1197c70559e33a7d804dd7e456da34b01e0811b6272b574de69465ccf9",
+      "kind": "test-index"
+    },
+    {
+      "artifact_id": "REST-W2-PRESERVATION",
+      "path": "reports/restoration/repair/preservation.json",
+      "sha256": "ab45cbacf760d5ccf5cc536a0233685fa222a6e550b9420b704a67e1860d0726",
+      "kind": "inspection"
+    },
+    {
+      "artifact_id": "REST-W2-DEMO-SNAPSHOT",
+      "path": "reports/restoration/repair/sum_values-candidate002.py",
+      "sha256": "702061caf76c823607b459e3c27fa3081c1f0fdfdcd1a9695fa29db881c2e57a",
+      "kind": "source-snapshot"
+    }
+  ]
+}

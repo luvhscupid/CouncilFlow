@@ -1,0 +1,58 @@
+[
+  {
+    "suite": "contracts-and-skill",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/repair-final/contracts-and-skill.txt"
+  },
+  {
+    "suite": "initial-independent",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/restoration/verification/initial",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/repair-final/initial-independent.txt"
+  },
+  {
+    "suite": "independent-after",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/restoration/verification/final",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/repair-final/independent-after.txt"
+  },
+  {
+    "suite": "fresh-demo",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "reports/restoration/repair-final/fresh-demo.txt"
+  }
+]

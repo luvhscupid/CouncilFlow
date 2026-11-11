@@ -48,3 +48,25 @@ delegation status; implemented behavior and actual test totals; Tester and
 Reviewer findings; repairs; passed/failed/unverified acceptance; exact next-task
 invocation. Put verbose logs in reports, not the main report. Do not invent token
 costs, usage, session IDs, or execution results.
+
+## Restored communication acceptance
+
+The Owner's explicit contract restoration distinguishes task JSON, role/workflow
+YAML, native TOML, optional JSONL and concise Owner prose. Use communication.md,
+policies/roles.yaml and scripts/contracts.py at actual controlled boundaries.
+C01–C12 tests cover real invalid mutations, not merely reading valid examples.
+Five-role examples are synthetic unless tied to actual native assignments/results.
+
+Reports must identify task, original plan/revision, attempt, candidate/hash,
+causal assignment and actual test/review evidence. A Manager accept decision
+requires distinct passing Tester and Reviewer records; Worker assertion is
+insufficient. Planner checks original mandatory acceptance, never a Worker-edited
+checklist. Context-free validation proves only structure. Optional root checking
+proves actual referenced file bytes at that check, not evidence semantics.
+
+The current Owner-directed final classifications supersede the prior build's
+generic PARTIAL wording for this restoration: CONTRACT_RESTORED —
+NATIVE_ACTIVATION_UNVERIFIED when corrected contract work passes but genuine
+activation remains blocked; COUNCILFLOW_FULLY_VERIFIED only for actual native
+invocation plus required separate roles. Otherwise PARTIAL or FAILED with the
+precise remaining failure. Do not rewrite historical reports as new proof.

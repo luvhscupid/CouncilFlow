@@ -1,0 +1,17 @@
+{
+  "candidate_id": "REST-CANDIDATE-001",
+  "created_at": "2026-11-11T04:53:47.069935Z",
+  "stage": "initial intentionally incomplete demo candidate; not accepted final output",
+  "source_hashes_at_observation": {
+    ".agents/skills/council-flow/SKILL.md": "fd458cea49398728b0b3f9520bbe52f2df9e4a89c13b8363f6b33940bcceeca9",
+    ".agents/skills/council-flow/scripts/contracts.py": "724549a9be37543b867214be316f8f2b6a063493e4ff6e9e39c97182ae6ca27b",
+    ".agents/skills/council-flow/policies/roles.yaml": "c74b606a502b43622a2abe531634ac3f575d5a5a5bef70f7b57d14575515305b",
+    ".agents/skills/council-flow/references/communication.md": "13c4aecba45a9308ab4821d533853ef197da80c854db878afadf9a81f8bd964e",
+    ".agents/skills/council-flow/references/message-contract.json": "630c9d7405fe70e8a3ab9c83418ef3b41027b241b87794aad141d97391ba3ea1",
+    "demo/structured-flow/sum_values.py": "0d82ff4029a964d159e93bc66661ed4da9682388fd1064e5b939ec22f9be78ea",
+    "demo/structured-flow/test_sum_values.py": "c3c43c6eac2fcb77dfc4e93532f3f5223f029e9a7d5481320ad7545572ca5430",
+    "reports/restoration/worker/initial_sum_values.py": "0d82ff4029a964d159e93bc66661ed4da9682388fd1064e5b939ec22f9be78ea"
+  },
+  "immutable_initial_demo_snapshot": "reports/restoration/worker/initial_sum_values.py",
+  "limits": "This manifest is immutable. Source paths may later be repaired; historical initial demo bytes are preserved in immutable_initial_demo_snapshot. Artifact validation hashes the manifest itself, not a claim of filesystem immutability."
+}

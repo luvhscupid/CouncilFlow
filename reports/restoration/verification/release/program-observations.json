@@ -1,0 +1,92 @@
+[
+  {
+    "observation": "receipt-sample",
+    "command": [
+      "python3",
+      "demo/receipt/receipt_calculator.py",
+      "--item",
+      "rice",
+      "2",
+      "30000",
+      "kg",
+      "--item",
+      "onions",
+      "1",
+      "43000",
+      "kg"
+    ],
+    "exit": 0,
+    "stdout": "2 kg rice \u00d7 Rp30,000 = Rp60,000\n1 kg onions \u00d7 Rp43,000 = Rp43,000\nTotal = Rp103,000\n",
+    "stderr": ""
+  },
+  {
+    "observation": "sum-sample",
+    "command": [
+      "python3",
+      "demo/structured-flow/sum_values.py",
+      "2",
+      "3",
+      "-1"
+    ],
+    "exit": 0,
+    "stdout": "4\n",
+    "stderr": ""
+  },
+  {
+    "observation": "sum-other",
+    "command": [
+      "python3",
+      "demo/structured-flow/sum_values.py",
+      "-7",
+      "12",
+      "-3",
+      "100"
+    ],
+    "exit": 0,
+    "stdout": "102\n",
+    "stderr": ""
+  },
+  {
+    "observation": "sum-empty",
+    "command": [
+      "python3",
+      "demo/structured-flow/sum_values.py"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "usage: sum_values.py [-h] values [values ...]\nsum_values.py: error: the following arguments are required: values\n"
+  },
+  {
+    "observation": "sum-invalid",
+    "command": [
+      "python3",
+      "demo/structured-flow/sum_values.py",
+      "3",
+      "NaN"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "usage: sum_values.py [-h] values [values ...]\nsum_values.py: error: argument values: use a signed ASCII integer, for example -2 or 3\n"
+  },
+  {
+    "observation": "offline-sum",
+    "command": [
+      "bwrap",
+      "--unshare-net",
+      "--ro-bind",
+      "/",
+      "/",
+      "--chdir",
+      "/workspace/CouncilFlow",
+      "--",
+      "python3",
+      "demo/structured-flow/sum_values.py",
+      "2",
+      "3",
+      "-1"
+    ],
+    "exit": 0,
+    "stdout": "4\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-ACT-PREFLIGHT-003",
+  "message_type": "job.report",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-ACT001",
+  "attempt_id": "REST-ACT-A1",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/activation_probe"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "created_at": "2026-11-11T04:46:06Z",
+  "in_reply_to": "REST-M004",
+  "payload": {
+    "status": "in_progress",
+    "summary": "Capability preparation complete; waiting for Manager corrected-skill readiness. No inference attempted. Current native schema supports structured skill input. Native configured login exists, but read-only default runtime cannot initialize; one contained corrected invocation client is ready. This is a standalone validated current capability report, not proof that pre-schema bootstrap packets had causal validation.",
+    "acceptance_ids": [
+      "C06",
+      "R-ACTIVATION"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-ACT-CAPABILITIES",
+      "path": "reports/restoration/activation/capabilities.json",
+      "sha256": "801c3e5a3d8cdff23f792b93e665d121ca5a81e30c1437cd064f554f1a981ef8",
+      "kind": "candidate"
+    },
+    "findings": [],
+    "errors": [],
+    "checks": [
+      {
+        "name": "Installed native invocation schema generated and inspected",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-CAPABILITIES",
+          "path": "reports/restoration/activation/capabilities.json",
+          "sha256": "801c3e5a3d8cdff23f792b93e665d121ca5a81e30c1437cd064f554f1a981ef8",
+          "kind": "candidate"
+        }
+      },
+      {
+        "name": "Default read-only native runtime startup",
+        "status": "blocked",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-READONLY-PREFLIGHT",
+          "path": "reports/restoration/activation/preflight.json",
+          "sha256": "63534b8beaf37d0aecc30d784fb03001a609a7db5f7ab7ecfcba63103436939f",
+          "kind": "evidence"
+        }
+      },
+      {
+        "name": "Fresh corrected-skill invocation awaiting readiness",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "REST-ACT-CAPABILITIES",
+          "path": "reports/restoration/activation/capabilities.json",
+          "sha256": "801c3e5a3d8cdff23f792b93e665d121ca5a81e30c1437cd064f554f1a981ef8",
+          "kind": "candidate"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-ACT-CAPABILITIES",
+      "path": "reports/restoration/activation/capabilities.json",
+      "sha256": "801c3e5a3d8cdff23f792b93e665d121ca5a81e30c1437cd064f554f1a981ef8",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-ACT-READONLY-PREFLIGHT",
+      "path": "reports/restoration/activation/preflight.json",
+      "sha256": "63534b8beaf37d0aecc30d784fb03001a609a7db5f7ab7ecfcba63103436939f",
+      "kind": "evidence"
+    }
+  ]
+}

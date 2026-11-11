@@ -1,0 +1,56 @@
+[
+  {
+    "case": "sequence_nonobject",
+    "observed": "AttributeError",
+    "detail": "'list' object has no attribute 'get'",
+    "controlled_rejection": false,
+    "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"<stdin>\", line 5, in <lambda>\n  File \"/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py\", line 368, in validate_sequence\n    validate_message(m, root=root, expected_sender=expected_senders.get(m.get(\"message_id\")))\n                                                                        ^^^^^\nAttributeError: 'list' object has no attribute 'get'\n"
+  },
+  {
+    "case": "sequence_scalar",
+    "observed": "AttributeError",
+    "detail": "'int' object has no attribute 'get'",
+    "controlled_rejection": false,
+    "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"<stdin>\", line 5, in <lambda>\n  File \"/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py\", line 368, in validate_sequence\n    validate_message(m, root=root, expected_sender=expected_senders.get(m.get(\"message_id\")))\n                                                                        ^^^^^\nAttributeError: 'int' object has no attribute 'get'\n"
+  },
+  {
+    "case": "bindings_list",
+    "observed": "AttributeError",
+    "detail": "'list' object has no attribute 'get'",
+    "controlled_rejection": false,
+    "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"<stdin>\", line 5, in <lambda>\n  File \"/workspace/CouncilFlow/.agents/skills/council-flow/scripts/contracts.py\", line 368, in validate_sequence\n    validate_message(m, root=root, expected_sender=expected_senders.get(m.get(\"message_id\")))\n                                                   ^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'list' object has no attribute 'get'\n"
+  },
+  {
+    "case": "bindings_empty_list",
+    "observed": "ACCEPTED",
+    "controlled_rejection": false
+  },
+  {
+    "case": "policy_bad_utf8",
+    "observed": "ContractError",
+    "code": "policy_utf8",
+    "detail": "policy_utf8 at $: policy must be UTF-8",
+    "controlled_rejection": true
+  },
+  {
+    "case": "policy_surrogate",
+    "observed": "ContractError",
+    "code": "policy_utf8",
+    "detail": "policy_utf8 at $: policy must be UTF-8",
+    "controlled_rejection": true
+  },
+  {
+    "case": "events_bad_utf8",
+    "observed": "ContractError",
+    "code": "json",
+    "detail": "json at $: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte",
+    "controlled_rejection": true
+  },
+  {
+    "case": "events_surrogate",
+    "observed": "ContractError",
+    "code": "events_utf8",
+    "detail": "events_utf8 at $: events must be UTF-8",
+    "controlled_rejection": true
+  }
+]

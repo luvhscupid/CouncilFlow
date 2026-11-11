@@ -1,0 +1,102 @@
+[
+  {
+    "check": "sum-sample",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/CouncilFlow/demo/structured-flow/sum_values.py",
+      "2",
+      "3",
+      "-1"
+    ],
+    "exit": 0,
+    "stdout": "4\n",
+    "stderr": ""
+  },
+  {
+    "check": "sum-different",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/CouncilFlow/demo/structured-flow/sum_values.py",
+      "7",
+      "-4",
+      "2"
+    ],
+    "exit": 0,
+    "stdout": "5\n",
+    "stderr": ""
+  },
+  {
+    "check": "sum-negative",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/CouncilFlow/demo/structured-flow/sum_values.py",
+      "-5",
+      "-6"
+    ],
+    "exit": 0,
+    "stdout": "-11\n",
+    "stderr": ""
+  },
+  {
+    "check": "sum-missing",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/CouncilFlow/demo/structured-flow/sum_values.py"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "usage: sum_values.py [-h] values [values ...]\nsum_values.py: error: the following arguments are required: values\n"
+  },
+  {
+    "check": "sum-invalid",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/CouncilFlow/demo/structured-flow/sum_values.py",
+      "1.5"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "usage: sum_values.py [-h] values [values ...]\nsum_values.py: error: argument values: use a signed ASCII integer, for example -2 or 3\n"
+  },
+  {
+    "check": "receipt-sample",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "demo/receipt/receipt_calculator.py",
+      "--item",
+      "rice",
+      "2",
+      "30000",
+      "kg",
+      "--item",
+      "onions",
+      "1",
+      "43000",
+      "kg"
+    ],
+    "exit": 0,
+    "stdout": "2 kg rice \u00d7 Rp30,000 = Rp60,000\n1 kg onions \u00d7 Rp43,000 = Rp43,000\nTotal = Rp103,000\n",
+    "stderr": ""
+  },
+  {
+    "check": "sum-offline",
+    "command": [
+      "bwrap",
+      "--unshare-net",
+      "--ro-bind",
+      "/",
+      "/",
+      "--chdir",
+      "/workspace/CouncilFlow",
+      "--",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/CouncilFlow/demo/structured-flow/sum_values.py",
+      "2",
+      "3",
+      "-1"
+    ],
+    "exit": 0,
+    "stdout": "4\n",
+    "stderr": ""
+  }
+]

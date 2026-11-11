@@ -1,0 +1,90 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "REST-M016",
+  "message_type": "job.assign",
+  "plan_id": "REST-P001",
+  "plan_revision": 1,
+  "task_id": "REST-T001",
+  "attempt_id": "REST-A003",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/restoration_verifier"
+  },
+  "created_at": "2026-11-11T05:33:56.067938Z",
+  "in_reply_to": "REST-W3-REPORT-001",
+  "payload": {
+    "objective": "Independently recheck final candidate003 against original contract, all known regressions and the actual causal repair loop.",
+    "scope": [
+      "reports/restoration/verification/release/**"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "R-ACTIVATION",
+      "R-DIAGNOSTICS",
+      "R-TRACEABILITY",
+      "R-RELEASE"
+    ],
+    "candidate_ref": {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    "oracle_ref": {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    "instructions": [
+      "Fresh independent Tester after third Worker stopped all mutations. Read original plan, current helper/policy/spec and candidate003; preserve all original criteria and prior failed logs. No app, tests, docs or prior evidence repairs. Role status is bounded technical verification, not full native activation or future release bookkeeping.",
+      "Run complete current passing suites exactly: tests47, demo/receipt11, reports/demo/verification5, demo/csv-summary15, reports/csv-summary/verification6, demo/structured-flow4, reports/restoration/verification/initial8, reports/restoration/verification/final7. Expected103 methods. Independently confirm B01-B07 fixed, old45 remain passing and initial failed snapshots/logs unchanged. Run receipt sample Rp103,000, fresh sum4 plus distinct signed values, malformed/no-input and actual network-disabled sum.",
+      "Validate actual live-order through this assignment and your final report with root hashes and externally observed bindings. Run compact mutations of that real context (role/causal/candidate/criteria) and actual JSONL prefix to verify negatives fail. Use existing independent negatives; after all required checks pass, do not broaden/repeat absent a concrete new defect or unresolved concern. No extra test infrastructure or schema redesign.",
+      "Check decoded plan object/revision/acceptance guards, recognized optional field types, accept/failed-IDs contradiction, per-criterion passed evidence, pre-Manager Planner gate and omitted failed-verification guards remain working. Immutable candidate source hashes must match before/after. Structural validation is not authentication/OS or native transport enforcement.",
+      "Return only validated terminal JSON at reports/restoration/messages/REST-T3-REPORT-001.json, reply REST-M016, attempt REST-A003, full assigned IDs, exact candidate_ref and Manager oracle_ref. Record actual counts/exits/output/no skips or actual skips, compact technical report and immutable logs in release/; do not claim Reviewer/Planner/package/commit completed before observed. All tempfiles explicitly inside repo and cleaned; no dependencies/permissions/global/auth/provider work.",
+      "Current activation attempt is fresh and failed401/systemError after discovery. Preserve native invocation and custom-role-selection UNVERIFIED. Distinct Reviewer follows only after your technical result. Stop all writes at handoff."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "REST-CANDIDATE-003",
+      "path": "reports/restoration/repair-final/candidate-003.json",
+      "sha256": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "REST-MANAGER-ORACLE-001",
+      "path": "reports/restoration/oracle.json",
+      "sha256": "797c607e70cab233228fd1e57fa5f6322c557b98ca67da4d28f24ef4904f0615",
+      "kind": "oracle"
+    },
+    {
+      "artifact_id": "REST-PLAN",
+      "path": "reports/restoration/plan.json",
+      "sha256": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "REST-ACTUAL-EVENT-PREFIX-001",
+      "path": "reports/restoration/events-prefix-001.jsonl",
+      "sha256": "4016f7c988b66fb4828bd120682758688d3948af600e621976d050f9152967c5",
+      "kind": "diagnostic"
+    }
+  ]
+}

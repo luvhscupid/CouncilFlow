@@ -1,0 +1,165 @@
+{
+  "observed_at": "2026-11-11T09:54:07.293357Z",
+  "reviewer_instance": "/root/restoration_reviewer",
+  "commands": [
+    {
+      "name": "helper help",
+      "command": [
+        "python3",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "--help"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "usage: contracts.py [-h] [--root ROOT]\n                    [--expected-sender {manager,owner,planner,reviewer,tester,worker}]\n                    [--expected-instance EXPECTED_INSTANCE]\n                    [--bindings BINDINGS]\n                    [--owner-provenance OWNER_PROVENANCE]\n                    {message,sequence,policy,events} files [files ...]\n\nCouncilFlow 1.0 controlled-file validation, not a transport or security\nsandbox.\n\npositional arguments:\n  {message,sequence,policy,events}\n  files\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT           verify referenced artifact existence/hash inside this\n                        root\n  --expected-sender {manager,owner,planner,reviewer,tester,worker}\n  --expected-instance EXPECTED_INSTANCE\n  --bindings BINDINGS   trusted JSON map message_id -> externally observed\n                        actor\n  --owner-provenance OWNER_PROVENANCE\n                        externally confirmed Owner artifact identity\n",
+      "stderr": "",
+      "observation_kind": "Authentic executed CLI interaction; not native skill activation"
+    },
+    {
+      "name": "actual YAML policy validation",
+      "command": [
+        "python3",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"policy\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": "",
+      "observation_kind": "Authentic executed CLI interaction against current policy"
+    },
+    {
+      "name": "real current packet structural/artifact validation",
+      "command": [
+        "python3",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "reports/restoration/messages/REST-PLAN-LIVE-001.json",
+        "--root",
+        ".",
+        "--expected-sender",
+        "planner",
+        "--expected-instance",
+        "/root/restoration_planner"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": "",
+      "observation_kind": "Authentic executed validation of an actual saved Planner packet; not a newly invoked Planner session"
+    },
+    {
+      "name": "unauthorized packet is rejected",
+      "command": [
+        "python3",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "/workspace/CouncilFlow/reports/restoration/review/fixtures-ynpvea3h/unauthorized.json",
+        "--root",
+        "."
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "",
+      "stderr": "{\"valid\": false, \"error\": \"route\", \"field\": \"sender/recipient\", \"message\": \"route at sender/recipient: role cannot send this message type to recipient\"}\n",
+      "observation_kind": "Synthetic mutation of a real-shaped packet; actual CLI rejection observed, not real agent history"
+    },
+    {
+      "name": "sum help",
+      "command": [
+        "python3",
+        "demo/structured-flow/sum_values.py",
+        "--help"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "usage: sum_values.py [-h] values [values ...]\n\nSum one or more signed ASCII integers, offline.\n\npositional arguments:\n  values\n\noptions:\n  -h, --help  show this help message and exit\n",
+      "stderr": "",
+      "observation_kind": "Authentic executed CLI interaction"
+    },
+    {
+      "name": "sum documented sample",
+      "command": [
+        "python3",
+        "demo/structured-flow/sum_values.py",
+        "2",
+        "3",
+        "-1"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "4\n",
+      "stderr": "",
+      "observation_kind": "Authentic executed CLI interaction"
+    },
+    {
+      "name": "sum invalid user input",
+      "command": [
+        "python3",
+        "demo/structured-flow/sum_values.py",
+        "2",
+        "nope"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "",
+      "stderr": "usage: sum_values.py [-h] values [values ...]\nsum_values.py: error: argument values: use a signed ASCII integer, for example -2 or 3\n",
+      "observation_kind": "Authentic executed CLI interaction"
+    },
+    {
+      "name": "sum unrelated signed values",
+      "command": [
+        "python3",
+        "demo/structured-flow/sum_values.py",
+        "-7",
+        "12",
+        "-3",
+        "100"
+      ],
+      "cwd": "/workspace/CouncilFlow",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "102\n",
+      "stderr": "",
+      "observation_kind": "Authentic executed CLI interaction"
+    }
+  ],
+  "preserved_before": {
+    ".agents/skills/council-flow/SKILL.md": "fd458cea49398728b0b3f9520bbe52f2df9e4a89c13b8363f6b33940bcceeca9",
+    ".agents/skills/council-flow/scripts/contracts.py": "dbb8630c077a43395075769b4abbfa1464ddc9f31f283278029837bcdbbd9c0a",
+    ".agents/skills/council-flow/policies/roles.yaml": "c74b606a502b43622a2abe531634ac3f575d5a5a5bef70f7b57d14575515305b",
+    ".agents/skills/council-flow/references/communication.md": "44ef4ced7fd068758d688d372b1d2b4aa28f84afb038d27c5faf4d983c507c58",
+    "README.md": "27ca4e59fd5d35efe3477de12712a08f6ed20ba6562d1c5399824e9008487872",
+    "RELEASE.md": "b395d05e570de6b9b9c577967725f88bdfdd990946335ed9a57c10ba3a8ce7b8",
+    "demo/structured-flow/sum_values.py": "702061caf76c823607b459e3c27fa3081c1f0fdfdcd1a9695fa29db881c2e57a",
+    "demo/structured-flow/README.md": "ae072fabdea2a5a3bc998a829393fd8db6d1957310546a10c869f979702625f7",
+    "reports/restoration/plan.json": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+    "reports/restoration/repair-final/candidate-003.json": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d"
+  },
+  "preserved_after": {
+    ".agents/skills/council-flow/SKILL.md": "fd458cea49398728b0b3f9520bbe52f2df9e4a89c13b8363f6b33940bcceeca9",
+    ".agents/skills/council-flow/scripts/contracts.py": "dbb8630c077a43395075769b4abbfa1464ddc9f31f283278029837bcdbbd9c0a",
+    ".agents/skills/council-flow/policies/roles.yaml": "c74b606a502b43622a2abe531634ac3f575d5a5a5bef70f7b57d14575515305b",
+    ".agents/skills/council-flow/references/communication.md": "44ef4ced7fd068758d688d372b1d2b4aa28f84afb038d27c5faf4d983c507c58",
+    "README.md": "27ca4e59fd5d35efe3477de12712a08f6ed20ba6562d1c5399824e9008487872",
+    "RELEASE.md": "b395d05e570de6b9b9c577967725f88bdfdd990946335ed9a57c10ba3a8ce7b8",
+    "demo/structured-flow/sum_values.py": "702061caf76c823607b459e3c27fa3081c1f0fdfdcd1a9695fa29db881c2e57a",
+    "demo/structured-flow/README.md": "ae072fabdea2a5a3bc998a829393fd8db6d1957310546a10c869f979702625f7",
+    "reports/restoration/plan.json": "4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b",
+    "reports/restoration/repair-final/candidate-003.json": "34ae400e38925da3eea65464da16283b5359923a133feb87d371ba2b147df05d"
+  },
+  "temp_fixtures": "Explicitly inside reports/restoration/review and cleaned; synthetic invalid packet was never dispatched as a real role message",
+  "observed_interactions": 8,
+  "limitations": [
+    "No new native skill invocation or custom-role selection was performed",
+    "This is experiential review, not a replacement for independent technical testing"
+  ]
+}

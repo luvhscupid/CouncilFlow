@@ -1,91 +1,111 @@
-# ManagerResult — CouncilFlow delivery
+# CouncilFlow current delivery
 
-**PARTIAL — successful explicit invocation blocked by standalone native CLI authentication.**
+**PARTIAL — release closeout and original Planner check pending.**
 
-- Type: `ManagerResult`; task: CF-BUILD-001 / CF-DEMO-001; role/session: parent Manager `/root`.
-- Objective: deliver the installable coding-workflow skill, demonstrate real native roles, verify outcomes, package and commit inside `/workspace/CouncilFlow`.
-- Implementation status: skill, definitions, calculator, tests, documentation and package delivered. Final application D01–D10 PASS, independently checked by final Planner.
-- Final disposition: PARTIAL. P05's invocation portion and P07's activation-dependent end-to-end proof remain UNVERIFIED. No threshold was lowered.
+Communication-contract implementation and independent technical/experiential
+verification are complete. The corrected archive and final commit are being
+prepared. Successful native explicit invocation remains UNVERIFIED after a fresh
+HTTP401/systemError result; this file will retain that limitation at closeout.
 
-## Delivered artifacts
+## Changes and product
 
-- Skill: `.agents/skills/council-flow/SKILL.md`, complete references and `agents/openai.yaml`.
-- Four official-format role definitions: `.codex/agents/council-*.toml`; Manager remains parent.
-- ZIP: `dist/council-flow.zip`, checksum `dist/council-flow.zip.sha256`.
-- Finished application: `demo/receipt/receipt_calculator.py`; preserved defective baseline: `demo/starter/`.
-- Installation/usage: `README.md`, `RELEASE.md`, `demo/README.md`.
-- Implementation/package commit: `3da0410abab20f59e9360e04e57f5dc583fe2309`. These later final records are committed separately; `git log -1` identifies the final evidence commit. The archive is a tested earlier evidence snapshot; final reports are repository-only, as RELEASE documents.
+The product remains `.agents/skills/council-flow/`, an installable instruction
+skill using native Codex subagents. JSON task packets now use the Owner's
+`council-flow`/`1.0` envelope with unique IDs, roles, task/plan/revision/attempt,
+UTC timestamps, causal and candidate references, role-specific payloads and
+artifact hashes. No authoritative v0.2.1 project schema was found; no full ACP
+Supervisor implementation is claimed.
 
-## Actual verified behavior
+- `scripts/contracts.py`: strict stdlib JSON validation, supplied-context/origin
+  checks, hash/root checks, restricted YAML validation and optional JSONL.
+- `policies/roles.yaml`: versioned role/workflow/Owner/evidence/isolation/resource
+  policy. Native configuration stays in four `.codex/agents/*.toml` files.
+- SKILL and all role references/instructions require the formats at controlled
+  boundaries. Owner progress and results remain concise natural language.
+- The native transport/authentication and actual permissions are outside this
+  helper. YAML and JSON cannot grant authority or an OS sandbox. Infrastructure
+  retries3/crash recoveries2 are instructions, not enforced accounting; productive
+  engineering rework has no lifetime cap.
 
-Native Codex app-server discovers the enabled repo-scoped skill without errors,
-including a fresh extracted target repository. Structured explicit skill input
-was accepted, but authenticated inference did not complete: the separate native
-CLI reported that its access token could not be refreshed. The active Cloud
-session's working native collaboration tools manually executed the packaged
-workflow. This is not a claim of successful explicit activation.
+Complete skill subfolders, including helper and policy, must be copied when
+installing elsewhere. README and RELEASE explain this without a rebuild, package
+installation, API key, database, server, external provider or custom supervisor.
 
-Actual ordered five-role demo sessions: Planner `/root/demo_planner`, parent
-Manager `/root`, fresh Worker `/root/demo_worker`, independent Tester
-`/root/demo_tester`, independent Reviewer `/root/demo_reviewer`, then Manager
-decision and original Planner final check. W001 `/root/skill_worker` was a
-different earlier Worker. The Manager wrote no application code.
+## Actual verification
 
-Independent results: 11 application tests PASS, 5 independently authored
-Fraction-oracle tests PASS, 8 static checks PASS. Actual disabled-network sample
-output is Rp60,000 + Rp43,000 = Rp103,000. Different receipts, exact fractional
-money, bounds, zeros, and invalid-input paths were independently checked.
-Tester found no remaining implementation defect. Reviewer exercised seven CLI
-interactions and found no blocking usability issue. Final Planner maps every
-original application criterion to PASS.
+Final independent Tester: **103 methods PASS, 0 unexpected failed suites,
+0 skips**. Exact commands/counts/exits are in
+`reports/restoration/verification/release/suite-results.json`:
 
-Rework: Manager rejected the starter's wrong Rp73,000 total (2 tests, 1 failure)
-and assigned correction/completion to fresh W002. The starter remains preserved,
-separate from the passing final application. W002 also repaired runtime-file
-exclusion. No post-independent-test application repair was needed.
+| Suite command (`python3 -m unittest discover -s … -v`) | Tests |
+|---|---:|
+| `tests` | 47 |
+| `demo/receipt` | 11 |
+| `reports/demo/verification` | 5 |
+| `demo/csv-summary` | 15 |
+| `reports/csv-summary/verification` | 6 |
+| `demo/structured-flow` | 4 |
+| `reports/restoration/verification/initial` | 8 |
+| `reports/restoration/verification/final` | 7 |
 
-Package: ZIP integrity PASS; 73 archived file contents matched repository at
-packaging. A fresh extracted snapshot passed 8 static, 11 application and 5
-independent checks, sample execution, and native discovery. Final archive only
-normalized documentation excerpts and omitted its own later verification report;
-skill, definitions, application and tests are identical to the tested snapshot.
-No runtime state, credentials, bundled system assets, caches or Git data are in
-the archive. See `package-verification.json` for precise artifact observations.
+All45 previously passing checks remain passing. The old starter was separately
+executed at baseline: 2 tests, 1 intentional failure, excluded from passing
+counts. New real failures were preserved, rejected and repaired by fresh Workers:
+initial sum2 versus required4; malformed context errors; optional-field types;
+contradictory acceptance; referenced-plan types and missing passed-result evidence.
+Earlier failed logs/snapshots remain intact. Actual output checks include receipt
+Rp103,000, sum4, unrelated signed values, error paths and disabled-network runs.
 
-## Acceptance and limits
+The final Tester executed and saved its complete structured report before its
+native delivery turn hit a usage limit. On resume, Parent validated the genuine
+saved report, all hashes and supplied context; it did not relabel its own work as
+Tester or claim successful native final-response delivery. See
+`reports/restoration/resume-verification.json`.
 
-V01–V02 and V04–V14 have the observed results described in
-`validation-results.md`; V10/V11 are bounded native decision probes, not OS
-enforcement tests. V03 success remains UNVERIFIED; its live invocation probe
-failed authentication. Live custom-role-file selection is also UNVERIFIED;
-genuine native subagents used the documented role-instruction fallback.
+Independent Reviewer: eight actual CLI interactions PASS, no blocking usability
+finding. Two low-severity release-copy notes are addressed in current README and
+RELEASE: current status, static versus dynamic evidence and mandatory Tester
+oracle reference. Full review/evidence: `reports/restoration/review/`.
 
-The Manager unnecessarily read unrelated cloud-hosted Execution Kernel
-instructions during discovery. This was not adopted, copied or imported, and no
-predecessor filesystem installation/project was opened or modified. This process
-deviation is disclosed in `manager-execution.md` and `planner-final.md`; V14's
-dependency independence does not erase it. No existing project was modified, no
-global installation/configuration or permissions were changed, and nothing was
-deployed or published.
+## Live workflow and limits
 
-## Run and reuse
+Actual five AI roles were observed: parent Manager, dedicated Planner, fresh
+Workers, independent Testers, and separate Reviewer. Nine workflow sessions
+participated (Manager1, Planner1, Workers3, Testers3, Reviewer1), plus a separate
+native-activation capability Tester. Real IDs and packets are in
+`reports/restoration/messages/`, with accepted causal order and Parent-observed
+origin bindings in `live-order.json`/`live-bindings.json`.
 
-From the repository root:
+Bootstrap packets remain explicitly pre-schema. A real interim Planner subset
+map was rejected and preserved, rather than weakening original acceptance.
+Optional actual diagnostic exports are bounded JSONL, not a crash-safe ledger.
+Synthetic fixtures/mutations are never counted as native agent sessions.
 
-```sh
-python3 demo/receipt/receipt_calculator.py --item rice 2 30000 kg --item onions 1 43000 kg
-python3 -m unittest discover -s demo/receipt -v
-python3 -m unittest discover -s reports/demo/verification -v
-python3 -m unittest discover -s tests -v
-```
+Fresh native corrected discovery passed. Explicit literal `$council-flow` plus
+structured skill input was accepted, then the actual native thread entered
+systemError with HTTP401 authentication rejection. No completed invoked answer
+occurred. Actual IDs, safe outputs and unchanged SKILL hash are in
+`reports/restoration/activation/`. Live custom-role-file selection remains
+UNVERIFIED; genuine native subagents received the documented role-instruction
+fallback. No auth extraction/bypass, new provider/key or repeated identical attempt.
 
-In a compatible authenticated Codex session opened at the installed repository:
+## Deliverables and closeout
+
+- Skill: `/workspace/CouncilFlow/.agents/skills/council-flow/SKILL.md`.
+- Archive: `dist/council-flow.zip`, checksum beside it; refreshed release and
+  archive/relocation checks are pending closeout, not asserted here.
+- Permanent map: `reports/requirements-traceability.md` separates specified,
+  implemented, static, dynamic, native and blocked evidence.
+- Final original Planner check and local commit are pending. No application or
+  ordinary Owner decision remains requested. No publishing/push is authorized by
+  this closeout, and none is performed.
+
+In a compatible authenticated Codex session opened at the repository root:
 
 ```text
-$council-flow Implement an offline CSV summarizer in this repository, validate its columns, print totals, and add tests. Stay within demo/csv-summary/.
+$council-flow Implement the approved coding goal in this repository with independent tests and review.
 ```
 
-The construction prompt is not needed. Copy the complete skill folder and four
-role TOMLs into another authorized repository, preserving existing files, as
-README describes. No rebuild, new backend, paid API, database, supervisor or
-global configuration change is required by the skill.
+No construction prompt or Owner-authored JSON is needed. Native activation must
+remain unverified until a genuine invoked turn and required workflow succeed;
+a passing unit count cannot justify COUNCILFLOW_FULLY_VERIFIED.

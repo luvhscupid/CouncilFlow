@@ -1,0 +1,210 @@
+{
+  "archive_sha256": "a21a5f0dae7326632c98dac0fcedeb3d399b72529e4e83ac511fbb69065f0f10",
+  "scope": "Fresh extraction wholly inside repository; replay/relocation, not new native AI execution",
+  "tests_passed": 103,
+  "failed_commands": 0,
+  "results": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 47,
+      "expected": 47,
+      "stdout": "",
+      "stderr": "test_acceptance_cannot_hide_known_failed_candidate_report (test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report) ... ok\ntest_all_purposes_and_synthetic_owner_provenance (test_contracts.JSONContractTests.test_all_purposes_and_synthetic_owner_provenance) ... ok\ntest_artifact_path_shape_and_actual_hash_sensitivity (test_contracts.JSONContractTests.test_artifact_path_shape_and_actual_hash_sensitivity) ... ok\ntest_cli_invalid_json_fails_with_structured_error_no_traceback (test_contracts.JSONContractTests.test_cli_invalid_json_fails_with_structured_error_no_traceback) ... ok\ntest_cli_sequence_type_errors_are_json_without_traceback (test_contracts.JSONContractTests.test_cli_sequence_type_errors_are_json_without_traceback) ... ok\ntest_context_unknown_duplicate_and_changed_causal_identity (test_contracts.JSONContractTests.test_context_unknown_duplicate_and_changed_causal_identity) ... ok\ntest_decisions_cannot_accept_failures_or_name_unassigned_failures (test_contracts.JSONContractTests.test_decisions_cannot_accept_failures_or_name_unassigned_failures) ... ok\ntest_expected_origin_rejects_a_spoofed_manager_label (test_contracts.JSONContractTests.test_expected_origin_rejects_a_spoofed_manager_label) ... ok\ntest_invalid_roles_routes_and_self_approved_oracle (test_contracts.JSONContractTests.test_invalid_roles_routes_and_self_approved_oracle) ... ok\ntest_malformed_duplicate_nonfinite_overflow_and_utf8 (test_contracts.JSONContractTests.test_malformed_duplicate_nonfinite_overflow_and_utf8) ... ok\ntest_nested_artifact_identity_conflict_is_rejected (test_contracts.JSONContractTests.test_nested_artifact_identity_conflict_is_rejected) ... ok\ntest_optional_changed_files_is_typed_for_every_report_role (test_contracts.JSONContractTests.test_optional_changed_files_is_typed_for_every_report_role) ... ok\ntest_original_plan_and_final_acceptance_cannot_be_weakened (test_contracts.JSONContractTests.test_original_plan_and_final_acceptance_cannot_be_weakened) ... ok\ntest_owner_provenance_context_types_are_controlled_errors (test_contracts.JSONContractTests.test_owner_provenance_context_types_are_controlled_errors) ... ok\ntest_passed_planner_criteria_need_explicit_citations (test_contracts.JSONContractTests.test_passed_planner_criteria_need_explicit_citations) ... ok\ntest_passed_tester_cannot_hide_failed_or_unverified_checks (test_contracts.JSONContractTests.test_passed_tester_cannot_hide_failed_or_unverified_checks) ... ok\ntest_passing_final_check_requires_manager_evidence_acceptance (test_contracts.JSONContractTests.test_passing_final_check_requires_manager_evidence_acceptance) ... ok\ntest_plan_artifact_acceptance_is_checked_not_only_packet (test_contracts.JSONContractTests.test_plan_artifact_acceptance_is_checked_not_only_packet) ... ok\ntest_referenced_plan_context_types_and_preserved_metadata (test_contracts.JSONContractTests.test_referenced_plan_context_types_and_preserved_metadata) ... ok\ntest_reports_bound_to_assignment_actor_and_acceptance (test_contracts.JSONContractTests.test_reports_bound_to_assignment_actor_and_acceptance) ... ok\ntest_reviewer_must_distinguish_actual_observation (test_contracts.JSONContractTests.test_reviewer_must_distinguish_actual_observation) ... ok\ntest_rework_requires_failure_and_fresh_worker_attempt (test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt) ... ok\ntest_rework_unknown_failed_criterion_is_rejected (test_contracts.JSONContractTests.test_rework_unknown_failed_criterion_is_rejected) ... ok\ntest_sequence_nonobjects_and_bad_identity_are_controlled_errors (test_contracts.JSONContractTests.test_sequence_nonobjects_and_bad_identity_are_controlled_errors) ... ok\ntest_size_depth_array_and_surrogate_limits (test_contracts.JSONContractTests.test_size_depth_array_and_surrogate_limits) ... ok\ntest_supplied_sender_bindings_are_strict_even_when_falsey (test_contracts.JSONContractTests.test_supplied_sender_bindings_are_strict_even_when_falsey) ... ok\ntest_tester_strategy_is_assigned_not_self_approved (test_contracts.JSONContractTests.test_tester_strategy_is_assigned_not_self_approved) ... ok\ntest_types_versions_unknown_fields_and_identifiers (test_contracts.JSONContractTests.test_types_versions_unknown_fields_and_identifiers) ... ok\ntest_unknown_role_specific_and_nested_check_fields (test_contracts.JSONContractTests.test_unknown_role_specific_and_nested_check_fields) ... ok\ntest_valid_all_five_ai_roles_and_full_ordered_sequence (test_contracts.JSONContractTests.test_valid_all_five_ai_roles_and_full_ordered_sequence) ... ok\ntest_worker_assertion_cannot_satisfy_independent_acceptance (test_contracts.JSONContractTests.test_worker_assertion_cannot_satisfy_independent_acceptance) ... ok\ntest_worker_can_create_and_change_candidate_but_verifier_cannot (test_contracts.JSONContractTests.test_worker_can_create_and_change_candidate_but_verifier_cannot) ... ok\ntest_contract_spec_tracks_exact_envelope_and_routes (test_contracts.PolicyAndDiagnosticTests.test_contract_spec_tracks_exact_envelope_and_routes) ... ok\ntest_examples_are_explicitly_synthetic (test_contracts.PolicyAndDiagnosticTests.test_examples_are_explicitly_synthetic) ... ok\ntest_integration_requires_formats_in_real_skill_and_native_roles (test_contracts.PolicyAndDiagnosticTests.test_integration_requires_formats_in_real_skill_and_native_roles) ... ok\ntest_jsonl_real_reference_checks_and_invalid_lines (test_contracts.PolicyAndDiagnosticTests.test_jsonl_real_reference_checks_and_invalid_lines) ... ok\ntest_real_restricted_policy_roles_and_native_mapping (test_contracts.PolicyAndDiagnosticTests.test_real_restricted_policy_roles_and_native_mapping) ... ok\ntest_yaml_authority_retry_and_boolean_mutations_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_authority_retry_and_boolean_mutations_fail) ... ok\ntest_yaml_duplicates_and_unsupported_features_really_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_duplicates_and_unsupported_features_really_fail) ... ok\ntest_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ok\ntest_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ok\ntest_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... ok\ntest_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ok\ntest_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... ok\ntest_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ok\ntest_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ok\ntest_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok\n\n----------------------------------------------------------------------\nRan 47 tests in 0.468s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 11,
+      "expected": 11,
+      "stdout": "",
+      "stderr": "test_context_independence_and_large_sum (test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum) ... ok\ntest_different_receipt (test_receipt_calculator.ArithmeticTests.test_different_receipt) ... ok\ntest_exact_fraction_and_display (test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display) ... ok\ntest_owner_sample (test_receipt_calculator.ArithmeticTests.test_owner_sample) ... ok\ntest_reject_blank_and_control_labels (test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels) ... ok\ntest_reject_invalid_numbers (test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers) ... ok\ntest_zero_and_generator (test_receipt_calculator.ArithmeticTests.test_zero_and_generator) ... ok\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.421s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 5,
+      "expected": 5,
+      "stdout": "",
+      "stderr": "test_actual_sample_alternate_and_fractional_receipts (test_independent_receipt.IndependentReceiptChecks.test_actual_sample_alternate_and_fractional_receipts) ... ok\ntest_deterministic_independent_receipt_oracle (test_independent_receipt.IndependentReceiptChecks.test_deterministic_independent_receipt_oracle) ... ok\ntest_exact_boundary_products_and_sums_using_rational_oracle (test_independent_receipt.IndependentReceiptChecks.test_exact_boundary_products_and_sums_using_rational_oracle) ... ok\ntest_rejected_out_of_bounds_and_unsafe_api_values (test_independent_receipt.IndependentReceiptChecks.test_rejected_out_of_bounds_and_unsafe_api_values) ... ok\ntest_user_errors_and_help (test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.833s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 15,
+      "expected": 15,
+      "stdout": "",
+      "stderr": "test_api_read_only_on_success_and_failure (test_csv_summarizer.CSVSummaryTests.test_api_read_only_on_success_and_failure) ... ok\ntest_bad_headers_and_selections (test_csv_summarizer.CSVSummaryTests.test_bad_headers_and_selections) ... ok\ntest_bom_unicode_crlf_quoted_commas_quotes_and_multiline (test_csv_summarizer.CSVSummaryTests.test_bom_unicode_crlf_quoted_commas_quotes_and_multiline) ... ok\ntest_different_signed_fractional_data (test_csv_summarizer.CSVSummaryTests.test_different_signed_fractional_data) ... ok\ntest_exact_accumulation_beyond_input_limits_and_low_context (test_csv_summarizer.CSVSummaryTests.test_exact_accumulation_beyond_input_limits_and_low_context) ... ok\ntest_help_and_required_arguments (test_csv_summarizer.CSVSummaryTests.test_help_and_required_arguments) ... ok\ntest_invalid_utf8 (test_csv_summarizer.CSVSummaryTests.test_invalid_utf8) ... ok\ntest_malformed_quotes (test_csv_summarizer.CSVSummaryTests.test_malformed_quotes) ... ok\ntest_multiline_descriptors_do_not_change_logical_error_record (test_csv_summarizer.CSVSummaryTests.test_multiline_descriptors_do_not_change_logical_error_record) ... ok\ntest_normalized_headers_and_header_only (test_csv_summarizer.CSVSummaryTests.test_normalized_headers_and_header_only) ... ok\ntest_numeric_rejections (test_csv_summarizer.CSVSummaryTests.test_numeric_rejections) ... ok\ntest_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok\ntest_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok\ntest_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 1.995s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 6,
+      "expected": 6,
+      "stdout": "",
+      "stderr": "test_encoding_file_errors_help_and_required_arguments (test_independent_csv.IndependentCSVChecks.test_encoding_file_errors_help_and_required_arguments) ... ok\ntest_headers_selections_and_header_only_records (test_independent_csv.IndependentCSVChecks.test_headers_selections_and_header_only_records) ... ok\ntest_independent_rational_totals_at_bounds_and_many_records (test_independent_csv.IndependentCSVChecks.test_independent_rational_totals_at_bounds_and_many_records) ... ok\ntest_late_bad_numeric_cells_never_emit_partial_summary (test_independent_csv.IndependentCSVChecks.test_late_bad_numeric_cells_never_emit_partial_summary) ... ok\ntest_shape_quotes_and_logical_record_error_context (test_independent_csv.IndependentCSVChecks.test_shape_quotes_and_logical_record_error_context) ... ok\ntest_utf8_bom_crlf_multiline_quotes_and_requested_order (test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 2.163s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 4,
+      "expected": 4,
+      "stdout": "",
+      "stderr": "test_invalid_values_are_clear_without_traceback (test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback) ... ok\ntest_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok\ntest_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok\ntest_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.246s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/restoration/verification/initial",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 8,
+      "expected": 8,
+      "stdout": "",
+      "stderr": "test_actual_packets_and_mutated_role_task_origin (test_independent_contracts.IndependentContractChecks.test_actual_packets_and_mutated_role_task_origin) ... ok\ntest_artifact_contents_and_authorized_root_boundaries (test_independent_contracts.IndependentContractChecks.test_artifact_contents_and_authorized_root_boundaries) ... ok\ntest_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) ... ok\ntest_independence_oracle_candidate_and_acceptance_negatives (test_independent_contracts.IndependentContractChecks.test_independence_oracle_candidate_and_acceptance_negatives) ... ok\ntest_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) ... ok\ntest_restricted_yaml_and_jsonl_controls (test_independent_contracts.IndependentContractChecks.test_restricted_yaml_and_jsonl_controls) ... ok\ntest_strict_json_mutations_and_bounds (test_independent_contracts.IndependentContractChecks.test_strict_json_mutations_and_bounds) ... ok\ntest_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.105s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/restoration/verification/final",
+        "-v"
+      ],
+      "exit": 0,
+      "tests": 7,
+      "expected": 7,
+      "stdout": "",
+      "stderr": "test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) ... ok\ntest_actual_diagnostic_export_and_reference_sensitivity (test_final_independent_contracts.FinalIndependentChecks.test_actual_diagnostic_export_and_reference_sensitivity) ... ok\ntest_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations) ... ok\ntest_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) ... ok\ntest_passed_final_map_requires_explicit_per_criterion_evidence (test_final_independent_contracts.FinalIndependentChecks.test_passed_final_map_requires_explicit_per_criterion_evidence) ... ok\ntest_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) ... ok\ntest_repaired_message_identity_and_falsey_context_types (test_final_independent_contracts.FinalIndependentChecks.test_repaired_message_identity_and_falsey_context_types) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.080s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"policy\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "sequence",
+        "reports/restoration/messages/REST-M009.json",
+        "reports/restoration/messages/REST-PLAN-LIVE-001.json",
+        "reports/restoration/messages/REST-M010.json",
+        "reports/restoration/messages/REST-T1-REPORT-001.json",
+        "reports/restoration/messages/REST-M011.json",
+        "reports/restoration/messages/REST-M012.json",
+        "reports/restoration/messages/REST-W2-REPORT-001.json",
+        "reports/restoration/messages/REST-M013.json",
+        "reports/restoration/messages/REST-M013B.json",
+        "reports/restoration/messages/REST-T2-REPORT-001.json",
+        "reports/restoration/messages/REST-M014.json",
+        "reports/restoration/messages/REST-M015.json",
+        "reports/restoration/messages/REST-W3-REPORT-001.json",
+        "reports/restoration/messages/REST-M016.json",
+        "reports/restoration/messages/REST-T3-REPORT-001.json",
+        "reports/restoration/messages/REST-M017.json",
+        "reports/restoration/messages/REST-R-REPORT-001.json",
+        "--root",
+        ".",
+        "--bindings",
+        "reports/restoration/live-bindings.json"
+      ],
+      "exit": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 17, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "demo/receipt/receipt_calculator.py",
+        "--item",
+        "rice",
+        "2",
+        "30000",
+        "kg",
+        "--item",
+        "onions",
+        "1",
+        "43000",
+        "kg"
+      ],
+      "exit": 0,
+      "stdout": "2 kg rice \u00d7 Rp30,000 = Rp60,000\n1 kg onions \u00d7 Rp43,000 = Rp43,000\nTotal = Rp103,000\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "demo/structured-flow/sum_values.py",
+        "2",
+        "3",
+        "-1"
+      ],
+      "exit": 0,
+      "stdout": "4\n",
+      "stderr": ""
+    }
+  ],
+  "temporary_target_cleaned": true
+}

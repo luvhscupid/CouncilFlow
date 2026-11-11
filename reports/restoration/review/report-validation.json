@@ -1,0 +1,9 @@
+{
+  "message": "reports/restoration/messages/REST-R-REPORT-001.json",
+  "structural": "PASS",
+  "root_artifacts": "PASS",
+  "observed_sender": "PASS",
+  "ordered_context": "PASS",
+  "messages_validated": 17,
+  "limitation": "Controlled records; not native authentication or OS isolation."
+}

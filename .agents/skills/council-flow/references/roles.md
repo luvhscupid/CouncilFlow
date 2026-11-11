@@ -1,68 +1,53 @@
-# Roles and compact contracts
+# Roles and JSON contracts
 
-The Owner defines goals and authority. The parent Manager alone communicates
-routine progress and final results to the Owner. Agent messages are internal
-engineering results. Role instructions do not create OS isolation or grant
-permissions; the host's actual sandbox and approval mechanisms govern.
+The Owner is the human authority. Parent Manager alone gives routine progress and
+results to Owner. Role policy is versioned YAML at ../policies/roles.yaml;
+[communication.md](communication.md) defines the closed JSON task contract.
+All CouncilFlow-controlled task packets and role results MUST be UTF-8 JSON;
+ordinary Markdown role prose is not an equivalent message format.
 
 | Role | Required work | Prohibited work |
-| --- | --- | --- |
-| Planner | Define deliverables, work units, dependencies, risks, and observable acceptance before implementation; final requirements-to-outcome check | Application code; lowering criteria; silent scope changes |
-| Manager (parent) | Accept contract, choose supported resources/skills, delegate, track evidence/open findings, decide rework/disposition, report | Application code; self-certification from a Worker's claim; changing mandatory criteria |
-| Worker (fresh attempt) | Bounded implementation, necessary project files, developer checks, changed-file/result report | Self-approval; scope expansion; permissions on Manager's behalf; criterion weakening |
-| Tester (fresh separate agent) | Independently inspect and run behavior/tests; negative controls in an assigned test area where useful; report observed gaps | Implementation repairs; treating Worker tests alone as proof |
-| Reviewer (fresh separate agent) | First-use instructions and experience, relevant actual interaction, confusing/missing/unfinished behavior, evidence-backed findings | Code edits; presenting inspection or simulated behavior as actual interaction |
+|---|---|---|
+| Planner | Publish original objective, scope, dependencies and acceptance; final original-objective check | Application code, hidden scope changes or lower criteria |
+| Manager | Parent coordinator, supported skill/model choice, delegation, evidence evaluation and authorized rework | Application code, accepting Worker assertion as verification, silent acceptance weakening |
+| Worker | Fresh bounded implementation attempt and developer checks, changed-file/candidate report | Self-approval, permissions on Manager's behalf, scope expansion |
+| Tester | Fresh separate technical verification of exact candidate and original acceptance | Product repairs, self-approval of its oracle, treating Worker tests alone as proof |
+| Reviewer | Fresh separate user-experience review with authentic observation distinguished from inspection/simulation | Code edits, replacing Tester or Owner subjective acceptance |
 
-Use an actual separate native session for each required subagent role. Reuse the
-Planner for final check; Worker rework uses a fresh session. Tester and Reviewer
-are not the Worker or the Manager under a new label. The Manager counts as the
-fifth distinct role session. Report actual IDs made available by the host; do not
-invent opaque identifiers, model usage, or costs.
+Manager approves the verification strategy/oracle provenance in the original
+plan or assignment; Tester may propose or write isolated negative controls but
+cannot authoritatively approve its own oracle. Owner decides consequential new
+scope/authorization and required subjective acceptance. No role wording grants
+OS isolation or native permission authority.
 
-## Shared envelope
+## Separate request/result purposes
 
-Use compact JSON or equivalent structured records. Every request/result carries
-these fields; use `[]` for no findings and a clear status rather than omissions:
+These human labels identify responsibilities, not extra wire message types:
 
-```json
-{
-  "type": "WorkerRequest",
-  "task_id": "T001",
-  "role": "Worker",
-  "contract_ref": "reports/T001/contract.json",
-  "objective": "Complete the approved local feature",
-  "scope": ["authorized/project/path/**"],
-  "requirements": ["R1"],
-  "acceptance": ["A1: observable mandatory behavior"],
-  "constraints": ["No unauthorized changes"],
-  "implementation_status": "ASSIGNED",
-  "evidence": [],
-  "open_findings": [],
-  "repair_decisions": [],
-  "final_disposition": "PENDING"
-}
-```
+| Responsibility labels | Actual JSON purposes |
+|---|---|
+| PlannerRequest / PlannerResult | Manager plan.progress → Planner plan.publish; final plan.check |
+| ManagerRequest / ManagerResult | Owner goal → Manager controlled assignments, task.decision and plan.progress; Owner result is prose |
+| WorkerRequest / WorkerResult | Manager job.assign → Worker job.report with changed_files |
+| TesterRequest / TesterResult | Manager job.assign → Tester job.report with checks and exact candidate |
+| ReviewerRequest / ReviewerResult | Manager job.assign → Reviewer job.report with observed/inspected/simulated observations |
 
-The initial Planner request may use `contract_ref: null`; its result creates the
-contract. Results add `request_ref`, actual available `agent_id`, changed files,
-and command/output references as appropriate. Copy the original acceptance IDs
-unchanged; append findings instead of editing criteria. Store the original
-contract once; optionally record a standard SHA-256 digest to detect drift.
-Owner-approved amendments are new versions with explicit provenance, never
-silent replacement.
+The shared envelope carries task_id, plan_id/revision, attempt_id, message_id,
+sender/recipient roles and instance IDs, created_at, in_reply_to, payload and
+evidence_refs. Payload objective, scope and acceptance_ids preserve the immutable
+plan. Conceptual legacy terms map explicitly: implementation_status to status,
+evidence to evidence_refs, open_findings to findings, repair_decisions to
+task.decision, final_disposition to disposition. They are not alternative JSON
+fields. Unknown fields fail validation.
 
-## Separate request/result types
+Use an actual separate native session for each required role; reuse Planner for
+final check. Rework Worker is fresh. Report only actual exposed session/task-path
+IDs and inherited supported model selection. Separate contexts do not establish
+separate model providers or OS-enforced boundaries. Custom-agent files remain
+.codex/agents/*.toml (the native directory is .codex/agents/); use their compatible
+developer_instructions mapping from policy, or pass role instructions through
+native delegation if custom-role selection is not exposed.
 
-| Request type → Result type | Required additional content |
-| --- | --- |
-| PlannerRequest → PlannerResult | Goal, plan mode/provenance → bounded units, dependencies, risks, immutable contract and acceptance IDs. At final check, `phase: final` plus evidence map and unmet IDs |
-| ManagerRequest → ManagerResult | Owner request and approved authority → delegation decisions, role IDs, unfinished criteria, accepted/rejected findings, disposition |
-| WorkerRequest → WorkerResult | Bounded files/work unit, unchanged acceptance, attempt identity → actual changed files, developer commands/results, limitations; never approval |
-| TesterRequest → TesterResult | Contract and produced artifacts, isolated test scope → acceptance-by-acceptance observations, commands/exits, failures, edge cases, unverified behavior; no repairs |
-| ReviewerRequest → ReviewerResult | Intended user, instructions, relevant interaction → actual interaction versus inspection, usability findings/severity, optional stated scoring rubric; no edits |
-
-These are record types, not an orchestration API. Use the host's real native
-delegation tool and supported arguments after inspecting them. If custom agents
-are supported, select `council-planner`, `council-worker`, `council-tester`, or
-`council-reviewer`; otherwise pass that role's instructions to a native subagent
-and disclose that custom-role-file loading itself was not verified.
+External Planner mode preserves the actual Owner-approved input and provenance;
+it must not claim an external ChatGPT conversation was invoked. Native Planner
+mode requires no external integration.
