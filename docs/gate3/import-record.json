@@ -1,0 +1,77 @@
+{
+  "integration_scope": "Reference and testing documentation only; no Gate 3 experiment or implementation correction",
+  "imported_at_utc": "2026-11-11T10:38:59.065115Z",
+  "inspected_baseline_commit": "8a7a39695b6dd50273f92f0f5b61f92daee00adb",
+  "source_archive": {
+    "filename": "CouncilFlow-Gate3-v0.2-Frozen.zip",
+    "bytes": 10434,
+    "sha256": "333f080c1ff3bf1c1fd9ee1b55caaf4e83f685993a53b5601d623d7bf9ed2c91"
+  },
+  "preserved_document_root": "docs/gate3/CouncilFlow-Gate3-v0.2",
+  "validation": {
+    "archive_crc_valid": true,
+    "all_archive_members_preserved_byte_for_byte": true,
+    "archive_members": 7,
+    "original_manifest_document_hashes_verified": 6,
+    "existing_tracked_files_unchanged_from_inspected_baseline": true,
+    "application_or_skill_tests_executed": false,
+    "gate3_experiment_executed": false,
+    "blank_experiment_record_unchanged": true,
+    "gate3_results_assigned": false,
+    "new_document_links_resolve": 30,
+    "link_check_note": "Initial check preceded creation of this import record and reported its missing target; after record creation, all links were rechecked successfully."
+  },
+  "precedence": "Owner Charter > frozen Gate 3 v0.2 > older CouncilFlow documentation where inconsistent; installed candidate intentionally unchanged",
+  "provenance": "READ: all seven source members and installed definitions inspected; archive/link/preservation checks concern the import only. Earlier demonstrations are not a Gate 3 run.",
+  "members": [
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "bytes": 2195,
+      "sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "listed_in_original_manifest": true
+    },
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "bytes": 8929,
+      "sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "listed_in_original_manifest": true
+    },
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/03-EXPERIMENT-RECORD.md",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/03-EXPERIMENT-RECORD.md",
+      "bytes": 2857,
+      "sha256": "1ae70e5a3f77767015b887d36e86bade702b4c61a5ff2d29e7e68b2086072ad1",
+      "listed_in_original_manifest": true
+    },
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/04-TASK-FIXTURE-EXAMPLE.md",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/04-TASK-FIXTURE-EXAMPLE.md",
+      "bytes": 1055,
+      "sha256": "1b315295ce7d48762fd3d5d88c4a10438a1d25dc1481121807588f484025f9a3",
+      "listed_in_original_manifest": true
+    },
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/05-COUNCIL-RATIFICATION.md",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/05-COUNCIL-RATIFICATION.md",
+      "bytes": 2061,
+      "sha256": "ba4fc7f9be4175573004fcf3a4df30b2bd1fcdc3742370673daefe7962ce6250",
+      "listed_in_original_manifest": true
+    },
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/README.md",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/README.md",
+      "bytes": 1671,
+      "sha256": "432c9deeb8cb9416836ea438395996db2373ab37854678568de59f384f3d0cfb",
+      "listed_in_original_manifest": true
+    },
+    {
+      "source_member": "CouncilFlow-Gate3-v0.2/SHA256SUMS.txt",
+      "repository_path": "docs/gate3/CouncilFlow-Gate3-v0.2/SHA256SUMS.txt",
+      "bytes": 528,
+      "sha256": "78dfce253e079072e5e4a1b82cf3222075d494dcacc4bcaa1d8e7b19a6c5c3c8",
+      "listed_in_original_manifest": false
+    }
+  ]
+}
