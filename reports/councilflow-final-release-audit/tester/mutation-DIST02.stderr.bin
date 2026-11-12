@@ -1,0 +1,14 @@
+test_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound) ... FAIL
+
+======================================================================
+FAIL: test_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\DIST02\demo\structured-flow\test_sum_values.py", line 52, in test_large_valid_operands_handle_output_conversion_bound
+    self.assertIn("error:", result.stderr)
+AssertionError: 'error:' not found in 'Traceback (most recent call last):\n  File "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST02\\demo\\structured-flow\\sum_values.py", line 24, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST02\\demo\\structured-flow\\sum_values.py", line 19, in main\n    print(sum(args.values))\nValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit\n'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.102s
+
+FAILED (failures=1)

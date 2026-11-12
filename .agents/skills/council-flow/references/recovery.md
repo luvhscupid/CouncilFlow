@@ -29,6 +29,13 @@
    an AI-created permission. No external-path, global-config, security-policy,
    paid-provider, ACL or authentication bypass may be self-authorized.
 
+Newly discovered authorized follow-up work is distinct from failed mandatory
+acceptance. Preserve successful candidate verification and start a separate
+bounded task/plan publication boundary when appropriate. Record a real failed
+Tester/Reviewer report or Planner check only when its actual criterion is unmet;
+sequence grammar never justifies manufacturing a failure. Keep invalid historical
+message chains unchanged and identify the new boundary and its causal reason.
+
 JSON structure/context validation does not authenticate a sender or enforce OS
 isolation. Respect native permissions. If native activation, a role or tests
 cannot run, preserve evidence, mark the precise gap, and continue independent

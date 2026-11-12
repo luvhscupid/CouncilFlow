@@ -1,0 +1,74 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-R001",
+  "message_type": "job.assign",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer"
+  },
+  "in_reply_to": "FRA-T002",
+  "payload": {
+    "objective": "Independently compare original plan, frozen candidate and exact Tester evidence; rerun the unchanged declared deterministic command.",
+    "scope": [
+      "Read original plan/source/candidate/Tester/evidence",
+      "Write new Reviewer comparison/rerun evidence only under reports/councilflow-final-release-audit/reviewer/"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "instructions": [
+      "Follow reviewer-instructions.txt; you are not alone. No product/archive/criteria/oracle/other-role evidence edits. Actual canonical task /root/reviewer; requested role type is not proof of effective TOML.",
+      "Tester report hash5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5. Selected command FRA-T-DET01 exact Python executable+arguments in Tester report/deterministic-execution.json, exit0 normalized SHA0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc. Preserve conditions and hash harness/input bytes before and after.",
+      "Candidate117 files manifest9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113, ZIP117 entries SHA8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f. Source stopped. Direct-source fallback because postWorker MCP Transport closed. No freshness/OS/authentication/native activation claim.",
+      "Independent Windows checkout148/144pass/4skip; C: extraction148/145pass/3skip.12valid mutants killed;65supplemental controls63satisfied2skip. Archived failures remain separate. Check raw evidence yourself.",
+      "Tester child platform escalation remained pending600.8s and was interrupted. Canonical Tester packet frozen with platform UNVERIFIED. Manager now requested same inspected harness once through genuine parent approval; supplemental platform result is Manager-thread provenance, never Tester-thread execution or a replacement oracle. Inspect platforms-approved.json if available; root will send actual result. No new Gate3. Final Git/Planner postconditions belong to Manager/Planner."
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-original-plan",
+      "path": "reports/councilflow-final-release-audit/planner/plan.json",
+      "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "FRA-T002",
+      "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+      "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-reviewer-instructions",
+      "path": "reports/councilflow-final-release-audit/reviewer-instructions.txt",
+      "sha256": "c4807c45dd8380979239c05402fd9f3452ad45a58b14368c2ee394eb5d264cfc",
+      "kind": "instructions"
+    },
+    {
+      "artifact_id": "FRA-T-deterministic-execution",
+      "path": "reports/councilflow-final-release-audit/tester/deterministic-execution.json",
+      "sha256": "170ba4f68f7180ebe23dec466d410ed428ab66c86d18dbb5f9c9cd8b7b18b591",
+      "kind": "execution"
+    }
+  ]
+}

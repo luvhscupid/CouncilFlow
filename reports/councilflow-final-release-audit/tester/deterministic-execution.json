@@ -1,0 +1,76 @@
+{
+  "command_id": "FRA-T-DET01",
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "reports/councilflow-final-release-audit/tester/deterministic.py"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "candidate_ref": {
+    "artifact_id": "FRA-A01-cumulative",
+    "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+    "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+    "kind": "candidate-manifest"
+  },
+  "input_refs": [
+    {
+      "artifact_id": "FRA-T-deterministic-harness",
+      "path": "reports/councilflow-final-release-audit/tester/deterministic.py",
+      "sha256": "04a0beca1f025e4e1f129659ff84cb0ba8a790e7163f74b4803f728c6f8f6d97",
+      "kind": "test-harness"
+    },
+    {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "FRA-final-archive",
+      "path": "dist/council-flow.zip",
+      "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+      "kind": "release-archive"
+    }
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+  "acceptance_id": "C02",
+  "raw_stdout": {
+    "artifact_id": "FRA-T-det-stdout",
+    "path": "reports/councilflow-final-release-audit/tester/deterministic-1.stdout.bin",
+    "sha256": "1db2092ff4bec5e6d1110135ac83119464908ea7bfb1971750c7812f27f31172",
+    "kind": "raw-stdout"
+  },
+  "raw_stderr": {
+    "artifact_id": "FRA-T-det-stderr",
+    "path": "reports/councilflow-final-release-audit/tester/deterministic-1.stderr.bin",
+    "sha256": "d5dbc621d43c30342b3baddd52936100a7cc57eca0989f0b151ac614a42cc5de",
+    "kind": "raw-stderr"
+  },
+  "normalization": "raw_stdout.replace(b\"\\r\\n\", b\"\\n\") only; no other post-processing",
+  "actual_stdout_definition": "Command itself emits sorted test IDs/status/counts; timings/random path strings are deliberately not its defined stdout. Full raw unittest logs retained as stderr.",
+  "counts": {
+    "run": 148,
+    "passed": 144,
+    "skipped": 4,
+    "failed": 0,
+    "errors": 0
+  },
+  "second_execution": {
+    "exit_code": 0,
+    "stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+    "raw_stdout": {
+      "artifact_id": "FRA-T-det-repeat-stdout",
+      "path": "reports/councilflow-final-release-audit/tester/deterministic-2.stdout.bin",
+      "sha256": "1db2092ff4bec5e6d1110135ac83119464908ea7bfb1971750c7812f27f31172",
+      "kind": "raw-stdout"
+    },
+    "raw_stderr": {
+      "artifact_id": "FRA-T-det-repeat-stderr",
+      "path": "reports/councilflow-final-release-audit/tester/deterministic-2.stderr.bin",
+      "sha256": "765f774761d662c88c1401ab30af6c9e04732cf8f60e06f4936d23afd56c837b",
+      "kind": "raw-stderr"
+    }
+  },
+  "repeatability_scope": "These exact source/harness/manifest/archive bytes and current Windows runtime; no Gate3 E8 or cross-platform determinism claim."
+}

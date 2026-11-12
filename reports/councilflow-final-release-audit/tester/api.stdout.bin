@@ -1,0 +1,54 @@
+{
+  "source": "current",
+  "source_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+  "kind": "synthetic-API-controls",
+  "cases": 6,
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "results": [
+    {
+      "case": "authoritative_reference_surrogate_identity",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "utf8"
+    },
+    {
+      "case": "valid_authoritative_reference_prefix",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "valid_closed_tester_message",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "boolean_exit_code_rejected",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "integer"
+    },
+    {
+      "case": "unknown_payload_field_rejected",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "unknown_field"
+    },
+    {
+      "case": "unknown_nested_command_field_rejected",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "unknown_field"
+    }
+  ],
+  "limits": "Prefix validation is not completion evidence. No authentic Owner fixture or host provenance established."
+}

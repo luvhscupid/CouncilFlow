@@ -1,0 +1,18 @@
+test_invalid_values_are_clear_without_traceback (test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback) ... ok
+test_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound) ... FAIL
+test_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok
+test_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok
+test_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok
+
+======================================================================
+FAIL: test_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Saint\PROJECTS\CouncilFlow-main\demo\structured-flow\test_sum_values.py", line 52, in test_large_valid_operands_handle_output_conversion_bound
+    self.assertIn("error:", result.stderr)
+AssertionError: 'error:' not found in 'Traceback (most recent call last):\n  File "E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\structured-flow\\sum_values.py", line 24, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File "E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\structured-flow\\sum_values.py", line 19, in main\n    print(sum(args.values))\nValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit\n'
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.091s
+
+FAILED (failures=1)

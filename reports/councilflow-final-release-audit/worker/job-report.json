@@ -1,0 +1,119 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-W002",
+  "message_type": "job.report",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker_a01"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "FRA-W001",
+  "payload": {
+    "status": "passed",
+    "summary": "Bounded implementation and developer release checks complete; cumulative source and final ZIP stopped for independent verification. This report does not approve the release.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "FRA-baseline",
+      "path": "reports/councilflow-final-release-audit/baseline.json",
+      "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+      "kind": "baseline"
+    },
+    "findings": [
+      "Final ZIP117 entries SHA2568a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f; every source/extracted byte, CRC, names and frozen hashes verified.",
+      "Windows developer checkout148run144passed4skips; final extraction148run145passed3skips, six suites exit0 each. Extraction hardlink regression ran/passed; checkout hardlink WinError5 and symlink/junction limitations remain separately recorded.",
+      "CA01-08 synthetic production controls pass; operational JSON examples2 and policy validate. No authentic separately Owner-approved Gate3 fixture supplied or new experiment run.",
+      "Current audit evidence is excluded from package/candidate product bytes; pre-DIST05 draft outputs retained and labeled superseded.",
+      "Native activation/effective TOML identity, trustworthy actor authentication, race-free filesystem isolation and live MCP failure injection are not established by Worker checks."
+    ],
+    "errors": [],
+    "changed_files": [
+      ".agents/skills/council-flow/references/codebase-memory.md",
+      ".agents/skills/council-flow/references/communication.md",
+      ".agents/skills/council-flow/references/recovery.md",
+      ".agents/skills/council-flow/references/workflow.md",
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "README.md",
+      "RELEASE.md",
+      "demo/receipt/receipt_calculator.py",
+      "demo/receipt/test_receipt_calculator.py",
+      "demo/structured-flow/README.md",
+      "demo/structured-flow/sum_values.py",
+      "demo/structured-flow/test_sum_values.py",
+      "dist/council-flow.manifest.json",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "tests/test_contracts.py",
+      "tests/test_release.py",
+      "tools/build_release.py",
+      "reports/councilflow-final-release-audit/worker/worker-file-inventory.json",
+      "reports/councilflow-final-release-audit/worker/change-ledger.json",
+      "reports/councilflow-final-release-audit/worker/draft-disposition.json"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "FRA-worker-final-executions",
+      "path": "reports/councilflow-final-release-audit/worker/final/final-executions.json",
+      "sha256": "9df0746a128478fbbb137c88e18e091d2ab15ba2edf3613e6e04ab8ec2707478",
+      "kind": "execution"
+    },
+    {
+      "artifact_id": "FRA-worker-package-verification",
+      "path": "reports/councilflow-final-release-audit/worker/final/package-verification.json",
+      "sha256": "0fa156eb87b811461c65a6353019a184c78af299f5765bc31353c4c3177083ee",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-worker-change-ledger",
+      "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+      "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+      "kind": "changes"
+    },
+    {
+      "artifact_id": "FRA-worker-evidence-inventory",
+      "path": "reports/councilflow-final-release-audit/worker/worker-file-inventory.json",
+      "sha256": "dc55c19e6f4a8c2a9e657c43f210af0ef96f1341032d05b6ede8bdaa8dd9bcaa",
+      "kind": "manifest"
+    },
+    {
+      "artifact_id": "FRA-worker-red-controls",
+      "path": "reports/councilflow-final-release-audit/worker/red-results.json",
+      "sha256": "64956c583f7aea79f58c02b426ba3f30e21f13734c2b1977d4d4bdf239de7dda",
+      "kind": "negative-controls"
+    },
+    {
+      "artifact_id": "FRA-worker-draft-disposition",
+      "path": "reports/councilflow-final-release-audit/worker/draft-disposition.json",
+      "sha256": "6d9184c5091b8085c9694b2562392c5327698399255e65c8f56a98640c972a31",
+      "kind": "history"
+    }
+  ]
+}

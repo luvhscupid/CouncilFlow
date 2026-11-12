@@ -814,6 +814,15 @@ class JSONContractTests(unittest.TestCase):
         packet["evidence_refs"] = [plan_ref]
         return packet, source_ref, source, plan
 
+    def test_authoritative_reference_api_rejects_unencodable_identity(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            _, source_ref, _, _ = self._fidelity_context(
+                directory, [{"id": "AC1", "criterion": "Exact synthetic criterion."}])
+            source_ref["artifact_id"] = "\ud800"
+            with self.assertRaises(c.ContractError):
+                c.validate_sequence([], root=ROOT, authoritative_criteria_ref=source_ref,
+                                    require_criteria_fidelity=True)
+
     def test_synthetic_corrected_plan_after_rejection_retains_authoritative_criteria(self):
         fixture = [
             {"id": "AC1", "criterion": "Print " + chr(96) + "5" + chr(96) + " for values in " + chr(96) + "amount" + chr(96) + "."},
@@ -1029,6 +1038,87 @@ class PolicyAndDiagnosticTests(unittest.TestCase):
         self.assertEqual(set(spec["envelope_required"]), c.FIELDS)
         self.assertEqual(set(spec["routes"]), set(c.ROUTES))
         self.assertEqual(spec["bounds"]["message_bytes"], c.MAX_BYTES)
+
+    def test_unmet_planner_check_cannot_be_bypassed_in_same_attempt(self):
+        for action in ("final_check", "accept"):
+            data = sequence()
+            failed = copy.deepcopy(data[-1])
+            failed["message_id"] = "FAILED-CHECK"
+            failed["payload"]["status"] = "failed"
+            failed["payload"]["results"][0]["status"] = "failed"
+            data.insert(-1, failed)
+            if action == "accept":
+                data[-1] = copy.deepcopy(data[7])
+                data[-1]["message_id"] = "ACCEPT-AGAIN"
+            with self.subTest(action=action), self.assertRaises(c.ContractError):
+                c.validate_sequence(data)
+
+    def test_windows_drive_paths_are_never_repository_relative(self):
+        with tempfile.TemporaryDirectory(dir=ROOT, prefix="drive-path-control-") as directory:
+            target = Path(directory) / "evidence.txt"
+            target.write_bytes(b"disposable evidence")
+            digest = hashlib.sha256(target.read_bytes()).hexdigest()
+            for path in (target.as_posix(), "C:evidence.txt", "C:/evidence.txt"):
+                # POSIX absolute target is independently rejected on Linux.
+                for root in (None, ROOT):
+                    with self.subTest(path=path, root=root), self.assertRaises(c.ContractError):
+                        c.artifact(ref("drive-path", path, digest), root=root)
+
+    def test_public_artifact_validation_rejects_unencodable_unicode(self):
+        for field in ("artifact_id", "path", "kind"):
+            item = ref()
+            item[field] = "\ud800"
+            with self.subTest(field=field), self.assertRaises(c.ContractError):
+                c.artifact(item)
+
+    def test_known_failed_reviewer_cannot_be_hidden_from_acceptance(self):
+        data = sequence()
+        failed = report("FAILED-REVIEW", "reviewer", "M6", status="failed")
+        failed["payload"]["comparison"]["independent_rerun"].update(
+            status="MISMATCH", stdout_sha256="b" * 64)
+        data.insert(6, failed)
+        with self.assertRaises(c.ContractError):
+            c.validate_sequence(data)
+
+    def test_tester_and_reviewer_must_each_cover_all_accepted_criteria(self):
+        for tester_ids, reviewer_ids in ((["AC1"], AC), (AC, ["AC1"]), (["AC1"], ["AC2"])):
+            data = sequence()
+            data[3]["payload"]["acceptance_ids"] = tester_ids
+            data[4]["payload"]["acceptance_ids"] = tester_ids
+            data[5]["payload"]["acceptance_ids"] = reviewer_ids
+            data[6]["payload"]["acceptance_ids"] = reviewer_ids
+            with self.subTest(tester=tester_ids, reviewer=reviewer_ids), self.assertRaises(c.ContractError):
+                c.validate_sequence(data)
+
+    def test_matching_rerun_can_truthfully_report_substantive_review_failure(self):
+        data = sequence()[:7]
+        data[-1]["payload"]["status"] = "failed"
+        data[-1]["payload"]["comparison"]["discrepancies"] = ["AC2 is unmet despite repeatable command."]
+        c.validate_sequence(data)
+        accept = sequence()[7]
+        with self.assertRaises(c.ContractError):
+            c.validate_sequence(data + [accept])
+
+    def test_final_check_uses_original_planner_and_manager_actors(self):
+        for field in ("sender", "recipient"):
+            data = sequence()
+            data[-1][field]["instance_id"] = "replacement-" + field
+            with self.subTest(field=field), self.assertRaises(c.ContractError):
+                c.validate_sequence(data)
+
+    def test_republication_preserves_full_payload_and_original_actors(self):
+        for field in ("objective", "scope", "sender", "recipient"):
+            data = sequence()
+            republish = copy.deepcopy(data[0])
+            republish["message_id"] = "REPUBLISH"
+            if field in ("sender", "recipient"):
+                republish[field]["instance_id"] = "replacement-" + field
+            else:
+                republish["payload"][field] = "Changed objective" if field == "objective" else ["elsewhere/**"]
+            with self.subTest(field=field), self.assertRaises(c.ContractError):
+                c.validate_sequence([data[0], republish])
+        republish = copy.deepcopy(data[0]); republish["message_id"] = "EXACT-REPUBLISH"
+        c.validate_sequence([data[0], republish] + data[1:])
 
     def test_integration_requires_formats_in_real_skill_and_native_roles(self):
         text = (SKILL / "SKILL.md").read_text()

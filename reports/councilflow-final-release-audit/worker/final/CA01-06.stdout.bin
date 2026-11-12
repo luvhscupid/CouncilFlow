@@ -1,0 +1,75 @@
+{
+  "kind": "synthetic-negative-controls",
+  "production_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+  "results": [
+    {
+      "case": "valid_baseline",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "mandatory_planner_failure_bypassed",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": {
+        "code": "failed_planner_check",
+        "field": "attempt_id",
+        "detail": "an unmet original Planner check requires preserved rework and a fresh attempt"
+      }
+    },
+    {
+      "case": "mandatory_reviewer_failure_hidden",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": {
+        "code": "failed_verification",
+        "field": "payload.report_ids",
+        "detail": "cannot hide known failed mandatory verification for this candidate"
+      }
+    },
+    {
+      "case": "independent_required_coverage_split",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": {
+        "code": "comparison_binding",
+        "field": "payload.comparison.independent_rerun.acceptance_id",
+        "detail": "rerun must address an assigned Reviewer criterion"
+      }
+    },
+    {
+      "case": "truthful_reviewer_failure_with_match",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "original_planner_replaced",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": {
+        "code": "plan_origin",
+        "field": "sender/recipient",
+        "detail": "final check requires the original Planner and Manager actors"
+      }
+    },
+    {
+      "case": "publication_objective_scope_changed",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": {
+        "code": "plan_immutable",
+        "field": "payload",
+        "detail": "published objective, scope, acceptance, plan or actors changed"
+      }
+    }
+  ]
+}

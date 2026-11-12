@@ -1,0 +1,167 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-R002",
+  "message_type": "job.report",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "FRA-R001",
+  "payload": {
+    "status": "passed",
+    "summary": "Independent technical comparison passed and exact declared rerun matched; no additional reproducible source blocker found. Final Manager/Planner completion duties remain.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    "findings": [
+      "Independent exact Tester-declared executable/arguments/cwd rerun exit0 and CRLF-to-LF-only stdout SHA2560d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc MATCH; meaningful148test-status stdout unchanged; inputs and117source hashes verified before/after.",
+      "Raw Windows suite logs independently recomputed: checkout148run144pass4skip; C: extraction148run145pass3skip.12valid compiled production mutants killed by intended regressions; corrected raw-source/aggregate metadata preserves original records without changing oracle.",
+      "Source fixes match CA01-08/DIST02-03/DIST05 mechanisms; documentation and coverage drift dispositions preserve exact criteria, ordinary requests and historical failures. Ancillary bounded source reviewer found no additional reproducible blocker; required rerun was performed by this Reviewer.",
+      "ZIP117entries CRC/safe unique names/every source byte/frozen hashes verified. Manager supplemental execution inspected: native Linux /tmp final extraction148pass0skip and three symlink plus three Windows junction controls pass. This is Manager-thread evidence, not Tester-thread or OS isolation proof.",
+      "No new Gate3 experiment or authentic approved fixture established. Historical E10 FAIL and E1/E2/E4 UNVERIFIED remain. MCP unavailable transport uses direct inspection; host model/effective TOML/authentication/race-free containment not inferred.",
+      "This is passed technical review, not mission self-approval. Manager intended-file local Git checkpoint, final original Planner map and concise Owner handoff remain workflow postconditions."
+    ],
+    "errors": [],
+    "comparison": {
+      "plan_ref": {
+        "artifact_id": "FRA-original-plan",
+        "path": "reports/councilflow-final-release-audit/planner/plan.json",
+        "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+        "kind": "plan"
+      },
+      "tester_report_ref": {
+        "artifact_id": "FRA-T002",
+        "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+        "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+        "kind": "message"
+      },
+      "candidate_ref": {
+        "artifact_id": "FRA-A01-cumulative",
+        "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+        "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "kind": "candidate-manifest"
+      },
+      "findings": [
+        "Independent exact Tester-declared executable/arguments/cwd rerun exit0 and CRLF-to-LF-only stdout SHA2560d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc MATCH; meaningful148test-status stdout unchanged; inputs and117source hashes verified before/after.",
+        "Raw Windows suite logs independently recomputed: checkout148run144pass4skip; C: extraction148run145pass3skip.12valid compiled production mutants killed by intended regressions; corrected raw-source/aggregate metadata preserves original records without changing oracle.",
+        "Source fixes match CA01-08/DIST02-03/DIST05 mechanisms; documentation and coverage drift dispositions preserve exact criteria, ordinary requests and historical failures. Ancillary bounded source reviewer found no additional reproducible blocker; required rerun was performed by this Reviewer.",
+        "ZIP117entries CRC/safe unique names/every source byte/frozen hashes verified. Manager supplemental execution inspected: native Linux /tmp final extraction148pass0skip and three symlink plus three Windows junction controls pass. This is Manager-thread evidence, not Tester-thread or OS isolation proof.",
+        "No new Gate3 experiment or authentic approved fixture established. Historical E10 FAIL and E1/E2/E4 UNVERIFIED remain. MCP unavailable transport uses direct inspection; host model/effective TOML/authentication/race-free containment not inferred.",
+        "This is passed technical review, not mission self-approval. Manager intended-file local Git checkpoint, final original Planner map and concise Owner handoff remain workflow postconditions."
+      ],
+      "discrepancies": [],
+      "independent_rerun": {
+        "status": "MATCH",
+        "command_id": "FRA-T-DET01",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "reports/councilflow-final-release-audit/tester/deterministic.py"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "artifact_id": "FRA-A01-cumulative",
+          "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+          "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "FRA-T-deterministic-harness",
+            "path": "reports/councilflow-final-release-audit/tester/deterministic.py",
+            "sha256": "04a0beca1f025e4e1f129659ff84cb0ba8a790e7163f74b4803f728c6f8f6d97",
+            "kind": "test-harness"
+          },
+          {
+            "artifact_id": "FRA-A01-cumulative",
+            "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+            "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+            "kind": "candidate-manifest"
+          },
+          {
+            "artifact_id": "FRA-final-archive",
+            "path": "dist/council-flow.zip",
+            "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+            "kind": "release-archive"
+          }
+        ],
+        "acceptance_id": "C02",
+        "exit_code": 0,
+        "stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+        "evidence_ref": {
+          "artifact_id": "FRA-R-rerun",
+          "path": "reports/councilflow-final-release-audit/reviewer/rerun-execution.json",
+          "sha256": "e42c069fe54810e426bafdaa883f10a6085ca5a5d5249b900f0a7940554bbc0e",
+          "kind": "execution"
+        },
+        "tester_evidence_ref": {
+          "artifact_id": "FRA-T-deterministic-execution",
+          "path": "reports/councilflow-final-release-audit/tester/deterministic-execution.json",
+          "sha256": "170ba4f68f7180ebe23dec466d410ed428ab66c86d18dbb5f9c9cd8b7b18b591",
+          "kind": "execution"
+        },
+        "tester_exit_code": 0,
+        "tester_stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc"
+      }
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-R-rerun",
+      "path": "reports/councilflow-final-release-audit/reviewer/rerun-execution.json",
+      "sha256": "e42c069fe54810e426bafdaa883f10a6085ca5a5d5249b900f0a7940554bbc0e",
+      "kind": "execution"
+    },
+    {
+      "artifact_id": "FRA-R-comparison",
+      "path": "reports/councilflow-final-release-audit/reviewer/comparison-evidence.json",
+      "sha256": "155b62c50cd2aa0ea8b5cfbeb23f496226832b5be0eaa2684cbb8f27bc35c2ae",
+      "kind": "review"
+    },
+    {
+      "artifact_id": "FRA-T002",
+      "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+      "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-manager-platform-execution",
+      "path": "reports/councilflow-final-release-audit/manager-platform-execution.json",
+      "sha256": "49c10856a620bcacdf7f2ab229218957f6e4de9a934336477266f6b8179f52fc",
+      "kind": "execution"
+    },
+    {
+      "artifact_id": "FRA-R-raw-stdout",
+      "path": "reports/councilflow-final-release-audit/reviewer/rerun.stdout.bin",
+      "sha256": "1db2092ff4bec5e6d1110135ac83119464908ea7bfb1971750c7812f27f31172",
+      "kind": "raw-stdout"
+    },
+    {
+      "artifact_id": "FRA-R-raw-stderr",
+      "path": "reports/councilflow-final-release-audit/reviewer/rerun.stderr.bin",
+      "sha256": "3bf66b17bcabfc83bc9f6f25ab2909fb295ec9bb40e4ec038ed9783017f3d66f",
+      "kind": "raw-stderr"
+    }
+  ]
+}

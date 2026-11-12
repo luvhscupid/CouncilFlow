@@ -1,0 +1,6 @@
+{
+  "message_and_ordered_root_context": "PASS",
+  "bindings": "Known observed canonical task paths; consistency only, not native authentication",
+  "report_sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+  "candidate_source_after": true
+}

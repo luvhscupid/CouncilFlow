@@ -2,7 +2,7 @@
 
 import argparse
 from dataclasses import dataclass
-from decimal import Decimal, InvalidOperation, localcontext
+from decimal import Decimal, InvalidOperation, MAX_EMAX, MIN_EMIN, localcontext
 import re
 import sys
 from typing import Iterable
@@ -71,6 +71,7 @@ class ProductEntry:
     def line_total(self) -> Decimal:
         with localcontext() as context:
             context.prec = _PRODUCT_PRECISION
+            context.Emax, context.Emin, context.clamp = MAX_EMAX, MIN_EMIN, 0
             return self.quantity * self.unit_price
 
 
@@ -79,6 +80,7 @@ def grand_total(entries: Iterable[ProductEntry]) -> Decimal:
     with localcontext() as context:
         # Exact products need at most 60 places; summation adds at most digits(n).
         context.prec = _PRODUCT_PRECISION + len(str(len(totals))) + 1
+        context.Emax, context.Emin, context.clamp = MAX_EMAX, MIN_EMIN, 0
         return sum(totals, Decimal(0))
 
 

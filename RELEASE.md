@@ -1,29 +1,49 @@
 # CouncilFlow release
 
-## Current-checkout package (2026-11-12)
+## Current-checkout release candidate
 
 This section describes the package built from the current verified repository
-worktree for this hardening run. The Round 6 statements and reports below are
+worktree for the final release audit. The Round 6 statements and reports below are
 historical evidence from earlier snapshots; they do not describe the current
 checkout or prove that its archive is present.
 
 Archive: `dist/council-flow.zip`. Its sibling SHA-256 file is
-`dist/council-flow.zip.sha256`. The package preserves repository-relative paths
-and is built from an explicit allowlist in this checkout. It includes the
+`dist/council-flow.zip.sha256`; `dist/council-flow.manifest.json` records every
+entry's size and SHA-256. The package preserves repository-relative paths
+and is built by `python tools/build_release.py` from an explicit allowlist. It includes the
 complete `.agents/skills/council-flow/` skill and the four native TOML files
 under `.codex/agents/`, README, this release guide, demos, tests, the frozen
 Gate 3 requirements, the Full Plan supporting documents, and demo verification
 reports. Older mission and release reports remain in the checkout but are not
 packaged as current verification evidence. It excludes `.git`, caches, bytecode, credentials, native
 runtime state, temporary files, the archive itself, and the current hardening
-evidence packet.
+evidence packet. The reproducible builder itself is included; it writes package
+inventory and checksum records outside the archive to avoid self-inclusion.
 
 Package verification for this run is recorded outside the archive in
-`reports/councilflow-e10/release/`. The archive is checked for CRC
+`reports/councilflow-final-release-audit/`. The archive is checked for CRC
 integrity, safe relative paths, required and excluded entries, and exact file
 hashes against the worktree. It is extracted to a temporary directory for test
 execution. Use `python -m zipfile -t dist/council-flow.zip` to check its ZIP
 container and verify the sibling digest with SHA-256 before distribution.
+
+Run all six current suites on the checkout and again from a fresh final extraction:
+
+```sh
+python -m unittest discover -s tests -v
+python -m unittest discover -s demo/receipt -v
+python -m unittest discover -s demo/csv-summary -v
+python -m unittest discover -s demo/structured-flow -v
+python -m unittest discover -s reports/demo/verification -v
+python -m unittest discover -s reports/csv-summary/verification -v
+```
+
+The starter demo is intentionally incomplete. Archived restoration tests use older
+contract fixtures; their outcomes are historical and are reported separately from
+these current suites. The prior E10 extraction check omitted CSV and the independent
+demo suites; its old full-suite label is retained as historical coverage drift.
+Current exact counts, platform skips, raw execution records, independent Reviewer
+comparison, frozen-source hashes and final package digest live in the audit report.
 
 This package is an installable source bundle; it does not establish successful
 native `$council-flow` activation, custom-agent TOML loading, or Gate 3 E1-E10

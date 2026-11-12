@@ -1,0 +1,62 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "FRA-P001",
+  "message_type": "plan.publish",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": null,
+  "payload": {
+    "objective": "Deliver the best justified, stable, independently verified CouncilFlow release candidate by auditing the ENTIRE current project and repairing ALL confirmed, in-scope, technically repairable defects, not just E10. Eliminate repeated speculative loops. Preserve Owner authority and frozen governance.",
+    "scope": [
+      ".agents/skills/council-flow/",
+      ".codex/agents/",
+      "tests/",
+      "demo/ (current completed demos only)",
+      "README.md",
+      "RELEASE.md",
+      "dist/",
+      "reports/councilflow-final-release-audit/",
+      "Other active in-repository docs/examples only when a confirmed minimal in-scope correction is necessary"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "plan_ref": {
+      "artifact_id": "FRA-original-plan",
+      "path": "reports/councilflow-final-release-audit/planner/plan.json",
+      "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+      "kind": "plan"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-original-map",
+      "path": "reports/councilflow-final-release-audit/planner/acceptance-map.json",
+      "sha256": "8eec87398a5e2eb20e419e70af786766409208aedc33b0fd19e281f765c4c254",
+      "kind": "traceability"
+    },
+    {
+      "artifact_id": "FRA-baseline",
+      "path": "reports/councilflow-final-release-audit/baseline.json",
+      "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+      "kind": "baseline"
+    }
+  ]
+}

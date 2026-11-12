@@ -1,0 +1,10 @@
+{
+  "message_validation": "passed",
+  "sequence_validation": "passed",
+  "root": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "external_owner_fixture_used": false,
+  "plan_sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+  "map_sha256": "8eec87398a5e2eb20e419e70af786766409208aedc33b0fd19e281f765c4c254",
+  "criterion_count": 7,
+  "mapping_rows": 25
+}

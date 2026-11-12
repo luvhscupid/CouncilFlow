@@ -1,0 +1,713 @@
+{
+  "command_id": "FRA-T-DET01",
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "reports/councilflow-final-release-audit/tester/deterministic.py"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "candidate_ref": {
+    "artifact_id": "FRA-A01-cumulative",
+    "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+    "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+    "kind": "candidate-manifest"
+  },
+  "input_refs": [
+    {
+      "artifact_id": "FRA-T-deterministic-harness",
+      "path": "reports/councilflow-final-release-audit/tester/deterministic.py",
+      "sha256": "04a0beca1f025e4e1f129659ff84cb0ba8a790e7163f74b4803f728c6f8f6d97",
+      "kind": "test-harness"
+    },
+    {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "FRA-final-archive",
+      "path": "dist/council-flow.zip",
+      "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+      "kind": "release-archive"
+    }
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+  "acceptance_id": "C02",
+  "evidence_ref": {
+    "artifact_id": "FRA-T-deterministic-execution",
+    "path": "reports/councilflow-final-release-audit/tester/deterministic-execution.json",
+    "sha256": "170ba4f68f7180ebe23dec466d410ed428ab66c86d18dbb5f9c9cd8b7b18b591",
+    "kind": "execution"
+  },
+  "tester_exit_code": 0,
+  "tester_stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+  "raw_stdout_sha256": "1db2092ff4bec5e6d1110135ac83119464908ea7bfb1971750c7812f27f31172",
+  "raw_stderr_sha256": "3bf66b17bcabfc83bc9f6f25ab2909fb295ec9bb40e4ec038ed9783017f3d66f",
+  "raw_stdout_path": "reports/councilflow-final-release-audit/reviewer/rerun.stdout.bin",
+  "raw_stderr_path": "reports/councilflow-final-release-audit/reviewer/rerun.stderr.bin",
+  "stdout_bytes": 15845,
+  "stdout_crlf_count": 1,
+  "normalization": "raw_stdout.replace(b\"\\r\\n\",b\"\\n\") only",
+  "result": "MATCH",
+  "input_and_117_source_hashes_before_after": "PASS",
+  "provenance": "Executed independently by /root/reviewer with exact declared executable, arguments and cwd; no alias/oracle change. Repeatability scope only.",
+  "stdout_summary": {
+    "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+    "suites": [
+      {
+        "errors": 0,
+        "failed": 0,
+        "passed": 100,
+        "records": [
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_fresh_agents_receive_bounded_context_and_coverage_gaps",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_graph_capability_preserves_roles_verification_and_authority",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection",
+            "passed"
+          ],
+          [
+            "test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_retired_standalone_paths_are_absent",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_agent_messages_reject_model_written_created_at",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_all_purposes_and_synthetic_owner_provenance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_artifact_in_root_symlink_is_allowed_when_supported",
+            "skipped"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_artifact_path_shape",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_artifact_stale_digest_is_rejected",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_artifact_symlink_escape_is_rejected_when_supported",
+            "skipped"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_authoritative_criteria_fixture_rejects_unsafe_controls_and_accepts_multiline",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_authoritative_reference_api_rejects_unencodable_identity",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_changed_candidate_and_relevant_input_invalidate_rerun",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_cli_invalid_json_fails_with_structured_error_no_traceback",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_cli_pre_dispatch_fidelity_mode_fails_closed_without_fixture",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_cli_sequence_type_errors_are_json_without_traceback",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_context_unknown_duplicate_and_changed_causal_identity",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_decisions_cannot_accept_failures_or_name_unassigned_failures",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_exact_fidelity_rejects_missing_duplicate_reordered_or_added_criteria",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_exact_fidelity_rejects_spacing_newlines_case_and_unicode_changes",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_exact_tester_executable_path_is_bound_to_reviewer_rerun",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_exit_code_mismatch_fails_reviewer_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_expected_origin_rejects_a_spoofed_manager_label",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_historical_csv_criteria_mutations_fail_exact_fidelity",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_invalid_roles_routes_and_self_approved_oracle",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_json_assertion_without_execution_artifacts_is_rejected",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_malformed_duplicate_nonfinite_overflow_and_utf8",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_missing_reviewer_comparison_evidence_cannot_pass_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_nested_artifact_identity_conflict_is_rejected",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_normalization_is_crlf_to_lf_only",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_not_comparable_never_passes_e8",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_optional_changed_files_is_typed_for_every_report_role",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_original_plan_and_final_acceptance_cannot_be_weakened",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_owner_provenance_context_types_are_controlled_errors",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_passed_planner_criteria_need_explicit_citations",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_passed_tester_cannot_hide_failed_or_unverified_checks",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_passing_final_check_requires_manager_evidence_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_plan_artifact_acceptance_is_checked_not_only_packet",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_plan_criteria_preserve_multiline_text_but_reject_other_controls",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_published_json_message_examples_match_current_contract",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_referenced_plan_context_types_and_preserved_metadata",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reports_bound_to_assignment_actor_and_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_required_criteria_source_fails_closed_when_missing_or_stale",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reviewer_compares_frozen_plan_candidate_and_tester_record",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reviewer_must_compare_original_plan_candidate_tester_and_rerun",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reviewer_report_cannot_edit_candidate_criteria_or_tester_evidence",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reviewer_report_reference_is_exact_prior_tester_message",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reviewer_requires_tester_declared_deterministic_execution",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_reviewer_tester_message_reference_verifies_file_bytes_with_root",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_rework_after_planner_check_requires_actual_failed_criteria",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_rework_unknown_failed_criterion_is_rejected",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_sequence_nonobjects_and_bad_identity_are_controlled_errors",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_size_depth_array_and_surrogate_limits",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_stdout_hash_mismatch_fails_reviewer_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_supplied_sender_bindings_are_strict_even_when_falsey",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_synthetic_corrected_plan_after_rejection_retains_authoritative_criteria",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_must_match",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_tester_deterministic_record_has_command_cwd_inputs_hash_and_evidence",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_tester_strategy_is_assigned_not_self_approved",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_types_versions_unknown_fields_and_identifiers",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_unknown_role_specific_and_nested_check_fields",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_unresolved_comparator_discrepancy_cannot_be_reported_as_passed",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_valid_all_five_ai_roles_and_full_ordered_sequence",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_worker_assertion_cannot_satisfy_independent_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.JSONContractTests.test_worker_can_create_and_change_candidate_but_verifier_cannot",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_contract_spec_tracks_exact_envelope_and_routes",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_diagnostic_clock_timestamp_is_syntax_only_not_provenance",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_examples_are_explicitly_synthetic",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_final_check_uses_original_planner_and_manager_actors",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_integration_requires_formats_in_real_skill_and_native_roles",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_jsonl_real_reference_checks_and_invalid_lines",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_known_failed_reviewer_cannot_be_hidden_from_acceptance",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_matching_rerun_can_truthfully_report_substantive_review_failure",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_public_artifact_validation_rejects_unencodable_unicode",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_real_restricted_policy_roles_and_native_mapping",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_yaml_authority_retry_and_boolean_mutations_fail",
+            "passed"
+          ],
+          [
+            "test_contracts.PolicyAndDiagnosticTests.test_yaml_duplicates_and_unsupported_features_really_fail",
+            "passed"
+          ],
+          [
+            "test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes",
+            "skipped"
+          ],
+          [
+            "test_release.ReleaseOutputTests.test_linked_output_directory_is_rejected_before_writes",
+            "skipped"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_gate3_e4_erratum_preserves_frozen_specification",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_planner_failure_requires_explicit_manager_rework",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_required_frontmatter_subset",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_review_binds_exact_executable_and_completed_tester_message",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_reviewer_is_comparator_not_ux_evaluator",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented",
+            "passed"
+          ],
+          [
+            "test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes",
+            "passed"
+          ]
+        ],
+        "run": 104,
+        "skipped": 4,
+        "suite": "tests"
+      },
+      {
+        "errors": 0,
+        "failed": 0,
+        "passed": 13,
+        "records": [
+          [
+            "test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_different_receipt",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_owner_sample",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.ArithmeticTests.test_zero_and_generator",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.CommandLineTests.test_help",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.CommandLineTests.test_sample_cli",
+            "passed"
+          ],
+          [
+            "test_receipt_calculator.CommandLineTests.test_version",
+            "passed"
+          ]
+        ],
+        "run": 13,
+        "skipped": 0,
+        "suite": "demo/receipt"
+      },
+      {
+        "errors": 0,
+        "failed": 0,
+        "passed": 15,
+        "records": [
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_api_read_only_on_success_and_failure",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_bad_headers_and_selections",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_bom_unicode_crlf_quoted_commas_quotes_and_multiline",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_different_signed_fractional_data",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_exact_accumulation_beyond_input_limits_and_low_context",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_help_and_required_arguments",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_invalid_utf8",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_malformed_quotes",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_multiline_descriptors_do_not_change_logical_error_record",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_normalized_headers_and_header_only",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_numeric_rejections",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order",
+            "passed"
+          ],
+          [
+            "test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format",
+            "passed"
+          ]
+        ],
+        "run": 15,
+        "skipped": 0,
+        "suite": "demo/csv-summary"
+      },
+      {
+        "errors": 0,
+        "failed": 0,
+        "passed": 5,
+        "records": [
+          [
+            "test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback",
+            "passed"
+          ],
+          [
+            "test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound",
+            "passed"
+          ],
+          [
+            "test_sum_values.SumValuesTests.test_missing_values_and_help",
+            "passed"
+          ],
+          [
+            "test_sum_values.SumValuesTests.test_multiple_signed_values",
+            "passed"
+          ],
+          [
+            "test_sum_values.SumValuesTests.test_single_and_zero",
+            "passed"
+          ]
+        ],
+        "run": 5,
+        "skipped": 0,
+        "suite": "demo/structured-flow"
+      },
+      {
+        "errors": 0,
+        "failed": 0,
+        "passed": 5,
+        "records": [
+          [
+            "test_independent_receipt.IndependentReceiptChecks.test_actual_sample_alternate_and_fractional_receipts",
+            "passed"
+          ],
+          [
+            "test_independent_receipt.IndependentReceiptChecks.test_deterministic_independent_receipt_oracle",
+            "passed"
+          ],
+          [
+            "test_independent_receipt.IndependentReceiptChecks.test_exact_boundary_products_and_sums_using_rational_oracle",
+            "passed"
+          ],
+          [
+            "test_independent_receipt.IndependentReceiptChecks.test_rejected_out_of_bounds_and_unsafe_api_values",
+            "passed"
+          ],
+          [
+            "test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help",
+            "passed"
+          ]
+        ],
+        "run": 5,
+        "skipped": 0,
+        "suite": "reports/demo/verification"
+      },
+      {
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "records": [
+          [
+            "test_independent_csv.IndependentCSVChecks.test_encoding_file_errors_help_and_required_arguments",
+            "passed"
+          ],
+          [
+            "test_independent_csv.IndependentCSVChecks.test_headers_selections_and_header_only_records",
+            "passed"
+          ],
+          [
+            "test_independent_csv.IndependentCSVChecks.test_independent_rational_totals_at_bounds_and_many_records",
+            "passed"
+          ],
+          [
+            "test_independent_csv.IndependentCSVChecks.test_late_bad_numeric_cells_never_emit_partial_summary",
+            "passed"
+          ],
+          [
+            "test_independent_csv.IndependentCSVChecks.test_shape_quotes_and_logical_record_error_context",
+            "passed"
+          ],
+          [
+            "test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order",
+            "passed"
+          ]
+        ],
+        "run": 6,
+        "skipped": 0,
+        "suite": "reports/csv-summary/verification"
+      }
+    ]
+  }
+}

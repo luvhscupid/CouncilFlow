@@ -1,0 +1,11 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "reports\\councilflow-final-release-audit\\contract-audit\\extra\\challenge.py"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 1,
+  "stdout_sha256": "956781f12b7fb924a9edd37ade32a22f035ec60dbf6dfc1a728b84f684f57838",
+  "source_identity": "3879c3d97efb6dfb5256445bf21748a95d0d2eab:.agents/skills/council-flow/scripts/contracts.py",
+  "reproduction_sha256": "83cef97cec312ae732d718322570cf58c568f9b897ed7a11d4e502fa63238c7a"
+}

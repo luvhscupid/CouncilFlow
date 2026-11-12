@@ -1,0 +1,532 @@
+{
+  "source": "Owner message in this native session, sections 0-7; derived traceability only, not a new Owner-approved external fixture",
+  "original_completion_criteria": [
+    {
+      "id": "C01",
+      "criterion": "Full scoped audit performed with evidence, and no confirmed in-scope repairable defect knowingly left without disposition."
+    },
+    {
+      "id": "C02",
+      "criterion": "Source fixes independently tested with meaningful negative controls; E10 integrity intact."
+    },
+    {
+      "id": "C03",
+      "criterion": "Independent Tester and Reviewer command comparison accepted, with final Planner original-criteria map."
+    },
+    {
+      "id": "C04",
+      "criterion": "All applicable final checkout/extraction suites have accurate outcomes; no hidden mandatory failures."
+    },
+    {
+      "id": "C05",
+      "criterion": "Frozen governance unchanged; no unauthorized actions, false identity/OS sandbox claims or historical evidence rewriting."
+    },
+    {
+      "id": "C06",
+      "criterion": "Release package/checksum verified, installation instructions coherent, and local Git checkpoint finalized if changes were made."
+    },
+    {
+      "id": "C07",
+      "criterion": "Gate 3 separately and truthfully classified as verified/failed/blocked/unverified per its frozen evidence rules, rather than treated as a release-test checkbox."
+    }
+  ],
+  "assessment_rules": {
+    "PASS": "Required observable work has sufficient evidence; honest host limits may be the required disposition where Owner permits them.",
+    "FAIL": "Positive evidence contradicts a mandatory required behavior or work remains defective.",
+    "BLOCKED": "A mandatory deliverable cannot be completed due to a demonstrated external/capability/authorization/resource dependency.",
+    "UNVERIFIED": "Evidence is insufficient; do not infer pass/fail.",
+    "status_at_publication": "All work items await execution; no prospective PASS."
+  },
+  "requirements": [
+    {
+      "source": "0 authoritative state, authority order and fixed workflow",
+      "derived_checklist": [
+        "Verify claimed HEAD/parent/tree/remote tracking and past outcomes; distinguish normative documents from historical claims.",
+        "Use real native role sessions, JSON/YAML/TOML policy, Manager-only ordinary Owner interface; preserve Owner authority.",
+        "No invented models, identities, approvals, measured usage, host activation, containment or historical success.",
+        "Do not recreate cf-recall."
+      ],
+      "expected_evidence": [
+        "baseline.json",
+        "source/document inspection",
+        "native tool call records",
+        "final handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "1A",
+      "derived_checklist": [
+        "Record root, branch, HEAD/parent/tree, staged/unstaged/untracked/ignored status and tracked inventory.",
+        "Hash protected frozen files, inspect installed/project skill copies, role TOMLs, ZIP, reports and instructions."
+      ],
+      "expected_evidence": [
+        "baseline.json",
+        "baseline.sha256",
+        "baseline-archive.json"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "1B",
+      "derived_checklist": [
+        "Read active skill and six references, policy YAML, four TOMLs, contracts and tests, README/RELEASE, recent mission evidence.",
+        "Discover actual native/MCP interfaces; direct inspection for unavailable capabilities."
+      ],
+      "expected_evidence": [
+        "inspection ledger",
+        "capability evidence"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "1C",
+      "derived_checklist": [
+        "Freeze baseline manifest and original acceptance map before source edits; keep outside historical records.",
+        "Separate already fixed issues from open findings."
+      ],
+      "expected_evidence": [
+        "baseline.json",
+        "planner/plan.json",
+        "planner/acceptance-map.json",
+        "finding ledger"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "1D",
+      "derived_checklist": [
+        "Bound implementation units and define risk-based verification.",
+        "Use genuine CouncilFlow role dispatch; record actual unavailable capabilities."
+      ],
+      "expected_evidence": [
+        "planner/plan.json",
+        "controlled assignments",
+        "native dispatch records"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "1E",
+      "derived_checklist": [
+        "Protect Charter, frozen Gate 3 and C3, historical failed records and external ACP/Execution Kernel projects."
+      ],
+      "expected_evidence": [
+        "before/after SHA256 comparison",
+        "final diff"
+      ],
+      "completion_ids": [
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "1F",
+      "derived_checklist": [
+        "Keep exact original acceptance and authorization boundaries.",
+        "Classify newly discovered follow-up tasks separately from genuine failed mandatory rework; preserve causal records."
+      ],
+      "expected_evidence": [
+        "immutable plan",
+        "decision/sequence ledger"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "2A original acceptance and E10 fidelity",
+      "derived_checklist": [
+        "Challenge IDs/order, exact UTF-8/Unicode, whitespace, Markdown, punctuation, CRLF/LF, case, additions/omissions/duplication/reordering.",
+        "Challenge stale/altered references, renamed paths, duplicate JSON keys and mismatched source IDs.",
+        "Distinguish trusted Owner provenance from agent-written source or matching hash; fail closed when invocation requires a frozen source.",
+        "Preserve ordinary coding requests without fabricating Owner-approved sidecars.",
+        "Validate fidelity before Worker dispatch and final Planner check as applicable; preserve rejected artifacts and fresh valid corrections."
+      ],
+      "expected_evidence": [
+        "source inspection",
+        "adversarial negative controls",
+        "pre-dispatch sequence validation",
+        "final exact criterion comparison",
+        "provenance limitations"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "2B orchestration and recovery",
+      "derived_checklist": [
+        "Inspect role boundaries, fresh attempts, dispatch, causal links, approval handling, concurrent writes and final original check.",
+        "Inspect A004-A009 churn; preserve passing verification; record real failures only and separate authorized follow-ups.",
+        "Exercise replay, ordering, stale/cross-attempt references, acceptance after mandatory failure, missing evidence, invalid oracle identities and role spoofing.",
+        "Inspect incomplete termination, interruption/recovery; stop identical unproductive retries and state instruction-only accounting."
+      ],
+      "expected_evidence": [
+        "source/policy inspection",
+        "sequence negative controls",
+        "historical chain assessment",
+        "native role reports"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "2C contract/evidence integrity",
+      "derived_checklist": [
+        "Exercise closed JSON/schema, duplicate keys, Unicode/control, multiline criteria, bool integers, overflow/bounds, unknown fields, hashes and paths.",
+        "Separate structural actor labels/bindings from host identity.",
+        "Bind exact executable, arguments, cwd, cumulative candidate, input bytes, actual exit/raw output and CRLF-to-LF-only hash; Reviewer reruns unchanged.",
+        "Exercise stale/swapped candidates and full cumulative manifest coverage."
+      ],
+      "expected_evidence": [
+        "contract tests",
+        "negative controls",
+        "candidate manifest",
+        "Tester and Reviewer raw execution files",
+        "host tool records"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "2D filesystem boundary",
+      "derived_checklist": [
+        "Use disposable roots only for traversal, absolute paths, in-root symlink allow, out-of-root reject and stale digest reject.",
+        "Exercise junction/reparse cases and WSL/Linux actual outside-root fixture where genuinely available.",
+        "Record WinError1314 skips as skips; record TOCTOU/resolve/open and OS isolation limits accurately.",
+        "No global ACL, registry, OS or sandbox edits."
+      ],
+      "expected_evidence": [
+        "disposable boundary tests",
+        "platform availability/output",
+        "security limits"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C04",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "2E Codebase Memory",
+      "derived_checklist": [
+        "Inspect empty/install-only zero-call rule, exact root binding, readiness/freshness/generation and coverage.",
+        "Inspect post-Worker synchronization after edits stop, new-project transition and direct fallback.",
+        "Exercise controlled missing/offline/stale/pending/partial/wrong-root/identity mismatch only where safely available; label static vs live evidence.",
+        "Reject graph prompt authority, cross-project leakage, stale correctness and unbounded query loops.",
+        "No active retired cf-recall surfaces or extra memory engine/service/database."
+      ],
+      "expected_evidence": [
+        "live call records",
+        "static lifecycle tests",
+        "source fallback evidence",
+        "active artifact inventory"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C04",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "2F tests portability distribution docs",
+      "derived_checklist": [
+        "Use targeted mutation controls on production behavior for confirmed high-impact findings and inspect logically wrong fixtures.",
+        "Run all current repository/demo suites, classify archived/intentional starter failures separately.",
+        "Run Windows and genuinely available focused WSL/Linux checks; disclose skips/platform gaps.",
+        "Inspect README/RELEASE/examples/install paths/TOMLs/recovery/dependencies and packaging manifest drift.",
+        "Scan tracked/packaged credentials, caches, git/runtime temps, duplicates and large historical artifacts without destructive cleanup.",
+        "Validate safe ZIP names, exclusions, full installable product/docs/tests, CRC, bytes/hash and fresh extraction tests; no recursive self-inclusion."
+      ],
+      "expected_evidence": [
+        "test matrix/raw outputs",
+        "mutation report",
+        "documentation diff",
+        "inventory/secret scan",
+        "package manifest/extraction evidence"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "3 finding workflow and priorities",
+      "derived_checklist": [
+        "Classify every investigated concern; fix reproducible in-scope findings P0 then P1 then P2 then measured P3.",
+        "Capture failing controls and immutable input/candidate before minimal patch.",
+        "Fresh bounded Worker owns code; one mutating Worker; independent fresh Tester/Reviewer and final original Planner.",
+        "Preserve failures with actual causal decisions; change approach before retry.",
+        "Stop only consequential unapproved change, record precise approval need and continue other approved work."
+      ],
+      "expected_evidence": [
+        "finding/change ledger",
+        "Worker/Tester/Reviewer packets",
+        "candidate snapshots",
+        "decision ledger"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "4 Gate 3",
+      "derived_checklist": [
+        "Do not launch new experiment without separate Owner approval and required fresh session/fixture.",
+        "Keep historical E10 FAIL and E1/E2/E4 UNVERIFIED; revalidate surviving evidence for historical E3/E5/E6/E7/E8/E9 only if available.",
+        "Once only inspect current E1/E2/E4 host capability; missing metadata becomes UNVERIFIED (HOST_CAPABILITY_MISSING); do not infer from requested agent type or static TOML.",
+        "Publish precise E1-E10 evidence/disposition matrix and residual host/Owner/native-observation needs.",
+        "Software readiness is separate; no fabricated full verification or self-authorized ACCEPTED_WITH_GAP."
+      ],
+      "expected_evidence": [
+        "one capability inspection",
+        "historical evidence references",
+        "Gate3 matrix",
+        "authorization statement"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5A",
+      "derived_checklist": [
+        "Independently run every current applicable suite in final checkout and isolated FINAL archive extraction, capture command/count/exit/skip reasons.",
+        "Run genuine supported boundary/platform checks with accurate limits."
+      ],
+      "expected_evidence": [
+        "Tester checkout/extraction matrix",
+        "raw stdout/stderr and exits",
+        "platform record"
+      ],
+      "completion_ids": [
+        "C02",
+        "C04",
+        "C06"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5B",
+      "derived_checklist": [
+        "Run adversarial E10 and task/sequence end-to-end validation with synthetic vs authentic Owner provenance clearly labeled."
+      ],
+      "expected_evidence": [
+        "negative controls",
+        "sequence validation",
+        "provenance disposition"
+      ],
+      "completion_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5C",
+      "derived_checklist": [
+        "Compare frozen hashes to baseline; validate operational JSON examples, inventory, ZIP SHA256/CRC/extracted bytes.",
+        "Check current behavior/package for retired recall surfaces."
+      ],
+      "expected_evidence": [
+        "frozen comparison",
+        "examples validation",
+        "package manifest",
+        "extraction comparison"
+      ],
+      "completion_ids": [
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5D",
+      "derived_checklist": [
+        "Independently check Tester/Reviewer exact candidate, evidence and rerun.",
+        "Final Planner maps every original mission requirement and confirmed finding to PASS/FAIL/BLOCKED/UNVERIFIED."
+      ],
+      "expected_evidence": [
+        "Reviewer report and raw rerun",
+        "final Planner check",
+        "completed acceptance map"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5E",
+      "derived_checklist": [
+        "Ledger every investigated issue with fixed/already covered/confirmed unresolved/unverified-host/out-of-scope disposition.",
+        "Claim all confirmed in-scope fixable findings dispositioned, never all bugs eliminated."
+      ],
+      "expected_evidence": [
+        "audit finding ledger",
+        "handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5F",
+      "derived_checklist": [
+        "Produce new baseline, changes, command/raw outputs, controls, test matrix, security, Gate3, package and independent/final reports."
+      ],
+      "expected_evidence": [
+        "reports/councilflow-final-release-audit/ inventory"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C04",
+        "C06",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5G",
+      "derived_checklist": [
+        "Stage only intended files; inspect staged diff for secrets/protected/unrelated changes.",
+        "Create local checkpoint if changes; temporary author configuration only; no persistent git changes/push/history rewrite."
+      ],
+      "expected_evidence": [
+        "staged diff review",
+        "commit output"
+      ],
+      "completion_ids": [
+        "C05",
+        "C06"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "5H",
+      "derived_checklist": [
+        "Verify final HEAD/branch/staged/unstaged state, retained pre-existing files, ZIP hash and report locations after commit."
+      ],
+      "expected_evidence": [
+        "postcommit handoff/status"
+      ],
+      "completion_ids": [
+        "C05",
+        "C06"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "6 completion/stop",
+      "derived_checklist": [
+        "Evaluate C01-C07 below exactly; missing mandatory deliverable means PARTIAL/BLOCKED with precise reason.",
+        "Preserve useful verified work; no fabricated commit or indefinite attempts to relabel status.",
+        "At most one request for genuinely consequential Owner decision; routine authorized work continues."
+      ],
+      "expected_evidence": [
+        "final Planner check",
+        "final status/handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    },
+    {
+      "source": "7 final Owner format",
+      "derived_checklist": [
+        "Report actual host-disclosed model or NOT_DISCLOSED, mission status, full baseline/final commits, branch and no push.",
+        "Report fixes/evidence/paths, already covered, exact tests/skips, independent role/rerun records, security and MCP limits.",
+        "Report historical/current Gate3 disposition and no new experiment, exact ZIP count/hash/extraction, real open items and one minimal next action.",
+        "Concise final response; complete evidence in files; no promised later work or external-model fiction."
+      ],
+      "expected_evidence": [
+        "final Owner response",
+        "handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "status": "NOT_YET_ASSESSED"
+    }
+  ]
+}

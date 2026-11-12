@@ -16,7 +16,11 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Sum one or more signed ASCII integers, offline.")
     parser.add_argument("values", nargs="+", type=integer)
     args = parser.parse_args(argv)
-    print(sum(args.values))
+    try:
+        total = str(sum(args.values))
+    except ValueError:
+        parser.error("sum exceeds supported Python integer output bounds")
+    print(total)
     return 0
 
 

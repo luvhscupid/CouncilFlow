@@ -1,0 +1,42 @@
+test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) ... 
+  test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='objective') ... FAIL
+  test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='scope') ... FAIL
+  test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='sender') ... FAIL
+  test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='recipient') ... FAIL
+
+======================================================================
+FAIL: test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='objective')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA06\tests\test_contracts.py", line 1118, in test_republication_preserves_full_payload_and_original_actors
+    with self.subTest(field=field), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='scope')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA06\tests\test_contracts.py", line 1118, in test_republication_preserves_full_payload_and_original_actors
+    with self.subTest(field=field), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='sender')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA06\tests\test_contracts.py", line 1118, in test_republication_preserves_full_payload_and_original_actors
+    with self.subTest(field=field), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_republication_preserves_full_payload_and_original_actors (test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors) (field='recipient')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA06\tests\test_contracts.py", line 1118, in test_republication_preserves_full_payload_and_original_actors
+    with self.subTest(field=field), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=4)

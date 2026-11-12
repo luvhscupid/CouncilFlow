@@ -1,0 +1,14 @@
+[
+  {
+    "operation": "line_total",
+    "exception": "Overflow",
+    "message": "[<class 'decimal.Overflow'>]",
+    "context_Emax": 3
+  },
+  {
+    "operation": "grand_total",
+    "exception": "Overflow",
+    "message": "[<class 'decimal.Overflow'>]",
+    "context_Emax": 3
+  }
+]

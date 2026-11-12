@@ -10,20 +10,23 @@ Planner final check → Owner. Preserve that responsibility order.
 2. Dedicated Planner returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
-   Before dispatch, Manager runs sequence validation with
+   For an invocation requiring an authoritative frozen criteria artifact,
+   before dispatch Manager runs sequence validation with
    `--require-criteria-fidelity` and `--authoritative-criteria-ref` pointing to
    the unchanged Owner-approved criteria artifact. Its kind is
    `owner-approved-criteria`, and its JSON shape is
    `{ "criteria": [{"id": "...", "criterion": "..."}] }`. IDs and criterion
    strings are compared in order, exactly, without normalization. The caller
    establishes Owner approval; SHA-256 detects stale bytes but is not
-   authentication. Missing, stale, or mismatching sources block dispatch.
+   authentication. Missing, stale, or mismatching required sources block dispatch.
    Preserve rejected plans and evidence; corrections require a new plan through
    the existing authorized workflow. All roles use stable IDs and the immutable
-   artifact instead of rewriting criterion text.
+   artifact instead of rewriting criterion text. Ordinary Owner requests without
+   a required external frozen artifact may generate a native plan under existing
+   policy and use normal sequence validation, preserving the actual request.
 3. Manager constructs bounded job.assign JSON with objective, scope, original
    acceptance IDs, exact candidate reference and instructions. Validate the
-   controlled packet, file hashes and criteria fidelity before delegation. Supply known native
+   controlled packet, file hashes and any required criteria fidelity before delegation. Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not
@@ -49,6 +52,8 @@ Planner final check → Owner. Preserve that responsibility order.
    mapping every original criterion. Manager reconciles all evidence and gives
    Owner concise prose: requested, implemented, tests, Reviewer, open gaps and
    any genuinely necessary Owner decision.
+   For required frozen-criteria invocations, repeat exact fidelity validation
+   against the original trusted reference before accepting this final check.
 
 ## Practical file boundary
 

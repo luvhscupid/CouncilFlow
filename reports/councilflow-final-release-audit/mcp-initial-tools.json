@@ -1,0 +1,29 @@
+[
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "function: E-Saint-PROJECTS-CouncilFlow-main.agents.skills.council-flow.scripts.contracts.validate_sequence\ndirection: both\ncallees_total: 12\ncallees_total_relation: eq\ncallees: 12  (rows: name hop; qn = group prefix empty ? name : prefix + \".\" + name; \"\" marks empty prefix)\nE-Saint-PROJECTS-CouncilFlow-main.agents.skills.council-flow.scripts.contracts:\n  _actor 1\n  _authoritative_criteria 1\n  _compare_authoritative_criteria 1\n  _criterion 1\n  _identity 1\n  _tree 1\n  fail 1\n  read_json 1\n  validate_message 1\nbuiltins:\n  len 1\n  list 1\nbuiltins.list:\n  append 1\ncallers_total: 1\ncallers_total_relation: eq\ncallers: 1  (cols: qn hop)\n  E-Saint-PROJECTS-CouncilFlow-main.agents.skills.council-flow.scripts.contracts.main 1\n"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "name: _compare_authoritative_criteria\nqualified_name: E-Saint-PROJECTS-CouncilFlow-main.agents.skills.council-flow.scripts.contracts._compare_authoritative_criteria\nlabel: Function\nfile_path: E:/Saint/PROJECTS/CouncilFlow-main/.agents/skills/council-flow/scripts/contracts.py\nstart_line: 133\nend_line: 145\nsource_mode: full\nsource: |\n  def _compare_authoritative_criteria(plan, expected):\n      acceptance = plan.get(\"acceptance\")\n      if type(acceptance) is not list or len(acceptance) != len(expected):\n          fail(\"acceptance_fidelity\", \"plan.acceptance\", \"criteria count differs from authoritative source\")\n      actual = []\n      for entry in acceptance:\n          if type(entry) is not dict:\n              fail(\"acceptance_fidelity\", \"plan.acceptance\", \"criterion entry must be an object\")\n          identity = _identity(entry.get(\"id\"), \"plan.acceptance.id\")\n          criterion = _criterion(entry.get(\"criterion\"), \"plan.acceptance.criterion\")\n          actual.append((identity, criterion))\n      if actual != expected:\n          fail(\"acceptance_fidelity\", \"plan.acceptance\", \"ordered criteria differ byte-for-byte from authoritative source\")\ncallers: 1\ncallees: 5\n"
+      }
+    ],
+    "isError": false
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "project: E-Saint-PROJECTS-CouncilFlow-main\nsignal: best_effort\nindexed_at: 2026-11-12T16:14:44Z\nmetadata:\n  generation: 2026-11-12T16:14:44Z\n  index_mode: full\n  recorded_at: 2026-11-12T16:14:44Z\n  recording_status: complete\n  ignored_files_stored: 408\n  ignored_files_total: 408\n  hash_records_complete: true\n  coverage_version: 9\n  generation_matches: true\npaths: 7  (cols: requested_path path status freshness recommended_action coverage)\n  .agents/skills/council-flow/scripts/contracts.py .agents/skills/council-flow/scripts/contracts.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  tests/test_contracts.py tests/test_contracts.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  tests/test_skill_files.py tests/test_skill_files.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  tests/test_codebase_memory_integration.py tests/test_codebase_memory_integration.py no_recorded_issue metadata_match use_graph_with_best_effort_caveat []\n  demo/csv-summary/app.py demo/csv-summary/app.py no_recorded_issue missing read_source_and_reindex []\n  demo/receipt/receipt.py demo/receipt/receipt.py no_recorded_issue missing read_source_and_reindex []\n  demo/structured-flow/flow.py demo/structured-flow/flow.py no_recorded_issue missing read_source_and_reindex []\npath_total: 7\npath_returned: 7\npath_has_more: false\nscopes: 4  (cols: requested_scope scope total returned truncated entries status)\n  .agents .agents 1 1 false \"[{\\\"path\\\":\\\".agents/skills/council-flow/scripts/__pycache__\\\",\\\"kind\\\":\\\"not_indexed_dir\\\",\\\"detail\\\":\\\"excluded subtree\\\"}]\" known_gaps\n  .codex .codex 0 0 false [] no_recorded_issue\n  tests tests 1 1 false \"[{\\\"path\\\":\\\"tests/__pycache__\\\",\\\"kind\\\":\\\"not_indexed_dir\\\",\\\"detail\\\":\\\"excluded subtree\\\"}]\" known_gaps\n  demo demo 3 3 false \"[{\\\"path\\\":\\\"demo/csv-summary/__pycache__\\\",\\\"kind\\\":\\\"not_indexed_dir\\\",\\\"detail\\\":\\\"excluded subtree\\\"},{\\\"path\\\":\\\"demo/receipt/__pycache__\\\",\\\"kind\\\":\\\"not_indexed_dir\\\",\\\"detail\\\":\\\"excluded subtree\\\"},{\\\"path\\\":\\\"demo/structured-flow/__pycache__\\\",\\\"kind\\\":\\\"not_indexed_dir\\\",\\\"detail\\\":\\\"excluded subtree\\\"}]\" known_gaps\nscope_total: 5\nscope_returned: 5\nscope_truncated: false\nhas_more: false\ncaveat: \"Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable.\"\n"
+      }
+    ],
+    "isError": false
+  }
+]

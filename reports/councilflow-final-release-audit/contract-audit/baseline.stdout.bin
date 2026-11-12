@@ -1,0 +1,59 @@
+{
+  "kind": "synthetic-negative-controls",
+  "production_sha256": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+  "results": [
+    {
+      "case": "valid_baseline",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "mandatory_planner_failure_bypassed",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "mandatory_reviewer_failure_hidden",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "independent_required_coverage_split",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "truthful_reviewer_failure_with_match",
+      "expected_valid": true,
+      "actual_valid": false,
+      "satisfied": false,
+      "error": {
+        "code": "comparison",
+        "field": "payload.status",
+        "detail": "only an exactly matching independent rerun can pass review"
+      }
+    },
+    {
+      "case": "original_planner_replaced",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "publication_objective_scope_changed",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    }
+  ]
+}

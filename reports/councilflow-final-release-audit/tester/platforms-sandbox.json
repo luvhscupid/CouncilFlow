@@ -1,0 +1,57 @@
+{
+  "command": "C:\\Windows\\System32\\wsl.exe",
+  "arguments": [
+    "-d",
+    "Ubuntu",
+    "--",
+    "python3",
+    "-B",
+    "/mnt/e/Saint/PROJECTS/CouncilFlow-main/reports/councilflow-final-release-audit/tester/linux_checks.py"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 4294967295,
+  "stdout_sha256": "3dd421bd57d7d9f56445a8f063dfcb7924eaf937692ab9bcc5c05c12735379a2",
+  "junction": {
+    "commands": [
+      {
+        "arguments": [
+          "cmd",
+          "/c",
+          "mklink",
+          "/J",
+          "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{6653db84-9afc-4ed7-8a71-97f78e8e9de1}\\Temp\\cf-junction-independent-mdgjkmme\\authorized\\inside",
+          "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{6653db84-9afc-4ed7-8a71-97f78e8e9de1}\\Temp\\cf-junction-independent-mdgjkmme\\authorized\\data"
+        ],
+        "exit_code": 1,
+        "stdout_base64": "",
+        "stderr_base64": "QWNjZXNzIGlzIGRlbmllZC4NCg=="
+      },
+      {
+        "arguments": [
+          "cmd",
+          "/c",
+          "mklink",
+          "/J",
+          "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{6653db84-9afc-4ed7-8a71-97f78e8e9de1}\\Temp\\cf-junction-independent-mdgjkmme\\authorized\\escape",
+          "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{6653db84-9afc-4ed7-8a71-97f78e8e9de1}\\Temp\\cf-junction-independent-mdgjkmme\\outside"
+        ],
+        "exit_code": 1,
+        "stdout_base64": "",
+        "stderr_base64": "QWNjZXNzIGlzIGRlbmllZC4NCg=="
+      }
+    ],
+    "checks": [
+      {
+        "case": "inside-junction",
+        "status": "UNVERIFIED",
+        "reason": "mklink failed"
+      },
+      {
+        "case": "escape-junction",
+        "status": "UNVERIFIED",
+        "reason": "mklink failed"
+      }
+    ],
+    "limit": "Disposable Windows junction behavior only; not race-free or OS-enforced isolation."
+  }
+}

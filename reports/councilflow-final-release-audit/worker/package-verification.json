@@ -1,0 +1,18 @@
+{
+  "archive": "dist/council-flow.zip",
+  "sha256": "3ad303145c48d6e772a3e45045d6de99a73f67abf95af432e32377540078702c",
+  "entry_count": 116,
+  "crc": "PASS",
+  "source_byte_mapping": "PASS",
+  "extracted_byte_mapping": "PASS",
+  "safe_names": "PASS",
+  "frozen_hashes": {
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e"
+  },
+  "extraction": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+  "extraction_retained": true,
+  "developer_only": true,
+  "independent_verification": "Manager must assign fresh Tester and Reviewer"
+}

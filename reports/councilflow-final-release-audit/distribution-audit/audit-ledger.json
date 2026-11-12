@@ -1,0 +1,135 @@
+{
+  "auditor": "/root/distribution_audit",
+  "role": "ancillary read-only audit, not mandatory Tester or Reviewer",
+  "baseline_commit": "3879c3d97efb6dfb5256445bf21748a95d0d2eab",
+  "findings": [
+    {
+      "id": "DIST-01",
+      "classification": "DOCUMENTATION DRIFT",
+      "severity": "P2",
+      "paths": [
+        "README.md:9-14"
+      ],
+      "mechanism": "Current lead says this workspace is no-Git isolated CouncilFlow-round6 copy. Actual root has Git history/HEAD3879c3d and current dist release. It also implies historical release classification describes current tree.",
+      "minimal_patch": "Replace lead with current checkout purpose/status and explicitly label Round6 evidence historical; link this mission report when stable.",
+      "acceptance": "README current intro consistent with actual Git/package state and separates software readiness from frozen Gate3."
+    },
+    {
+      "id": "DIST-02",
+      "classification": "CONFIRMED DEFECT",
+      "severity": "P2",
+      "paths": [
+        "demo/structured-flow/sum_values.py:19",
+        "demo/structured-flow/test_sum_values.py"
+      ],
+      "mechanism": "Two accepted 4300-digit ASCII integers sum to 4301 digits; print(total) raises unhandled ValueError at default Python conversion bound. Current four tests pass despite this real defect.",
+      "negative_control": "Invoke exact Python executable with program and two strings of 4300 nines. Exit1 traceback captured structured-overflow.stderr.bin.",
+      "minimal_patch": "Catch total-to-string conversion ValueError and use parser.error with explicit supported output bound; retain exact results for representable totals and do not change global interpreter settings. Alternatively exact chunked formatting only if original acceptance requires arbitrary output size.",
+      "acceptance": "Regression asserts no traceback/partial stdout and clear failure at boundary; nearby valid 4300-digit total succeeds; cancellation succeeds."
+    },
+    {
+      "id": "DIST-03",
+      "classification": "CONFIRMED DEFECT",
+      "severity": "P2",
+      "paths": [
+        "demo/receipt/receipt_calculator.py:82-96",
+        "demo/receipt/test_receipt_calculator.py:test_context_independence_and_large_sum"
+      ],
+      "mechanism": "line_total and grand_total set only prec inside inherited localcontext. Under ambient Decimal Emax=3, valid rice quantity2/unit_price30000 raises decimal.Overflow, contradicting supported exact arithmetic/API context independence. Existing test varies only precision and misses exponent-range inheritance.",
+      "negative_control": "with localcontext() as c: c.Emax=3; ProductEntry(\"rice\",\"2\",\"30000\",\"kg\").line_total -> Overflow. Same for grand_total. Evidence receipt-context-probe.json.",
+      "minimal_patch": "Set an explicit sufficient exponent range/clamp for internal exact arithmetic contexts as well as precision, without mutating ambient context. Preserve Decimal API and existing bounds.",
+      "acceptance": "Test exact allowed max/min fractional products and totals under restrictive caller Emax/Emin/clamp/traps; assert outer context unchanged."
+    },
+    {
+      "id": "DIST-04",
+      "classification": "DOCUMENTATION DRIFT",
+      "severity": "P2",
+      "paths": [
+        "reports/councilflow-e10/release/build_package.py",
+        "reports/councilflow-e10/release/package-verification.json"
+      ],
+      "mechanism": "Historical E10 package builder ran tests+receipt+structured+MCP+two examples but omitted current CSV15 and independent receipt5/CSV6 while recording independent_full_suites PASS_IN_EXTRACTED_PACKAGE. This is a historical coverage limit, not proof package source fails.",
+      "minimal_patch": "Preserve E10 evidence; new release verification must enumerate all six current suites on checkout/extraction, with exact totals and selective/overlap checks labeled.",
+      "acceptance": "New report includes each of tests, receipt, CSV, structured, independent receipt and independent CSV."
+    }
+  ],
+  "already_covered": [
+    {
+      "area": "archive baseline",
+      "evidence": "archive-audit.json",
+      "result": "115 entries; CRC clean; safe relative unique names; exact worktree byte correspondence; no tested credential patterns; no .git/cache/dist self inclusion."
+    },
+    {
+      "area": "MCP local lifecycle",
+      "paths": [
+        ".agents/skills/council-flow/references/codebase-memory.md",
+        "tests/test_codebase_memory_integration.py"
+      ],
+      "result": "Instructions cover zero calls for installation-only root, exact project-root identity, freshness/pending/partial/offline fallback, bounded retrieval+coverage, post-edit synchronization, new project transition and graph context not authority. Nine tests are static instruction checks and passed within tests93. No local lifecycle runtime exists to exercise independently, and static tests are honestly described."
+    },
+    {
+      "area": "retired standalone recall",
+      "result": "Current active README/skill/workflow/reference static absence checks pass. Historical references remain historical. No operational dependency found."
+    },
+    {
+      "area": "demo existing behavior",
+      "evidence": "suite-results.json",
+      "result": "Six current suites exit0:135 tests run,133 passed,2symlink privilege skips, before proposed repairs. CSV and independent arithmetic oracles pass."
+    }
+  ],
+  "historical_sequence_summary": [
+    {
+      "attempt": "A004",
+      "source": "reports/councilflow-hardening/manager/rework-decision-a005.json",
+      "observation": "Real failure: top-level manifest digest conflicted in execution evidence. Fresh evidence-only A005 corrects identities; no need mutate prior reports."
+    },
+    {
+      "attempt": "A005",
+      "source": "reports/councilflow-hardening/manager/rework-decision-a006.json",
+      "observation": "Reviewer rerun matched but Tester selected command evidence_ref omitted at top-level; sequence correctly failed. Report-specific evidence defect, not application failure."
+    },
+    {
+      "attempt": "A006",
+      "source": "reports/councilflow-hardening/tester-a006/job-report.json",
+      "observation": "Current suites125/124pass1skip and candidate checks passed, but full prefix continued to fail because preserved invalid A005 remained in supplied context. A006 correction cannot retroactively validate A005."
+    },
+    {
+      "attempt": "A007",
+      "source": "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+      "observation": "New fully validated boundary used actual plan.publish in_reply_to null, original P004 criteria. Candidate independently verified. Earlier history retained with its limitations."
+    },
+    {
+      "attempt": "A008",
+      "source": "reports/councilflow-hardening/manager/rework-decision-a008.json; reports/councilflow-hardening/tester-a008/job-report.json",
+      "observation": "New package gap was real but M041 called it rework while citing passing reports and no failed Planner check; sequence correctly rejected rework_evidence. Package118 entries and six suites independently passed. Preserve successful candidate/package evidence separately; newly discovered work can be a new bounded authorized follow-up boundary with original criteria, not a synthetic failed report."
+    },
+    {
+      "attempt": "A009",
+      "source": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json; reports/councilflow-hardening/manager/worker-a009-assign.json",
+      "observation": "New genuine plan.publish null boundary and fresh evidence-only Worker bind completed A008 package output. Invalid M041 and A008 sequence remain cited as historical, not made valid."
+    }
+  ],
+  "historical_tests": {
+    "evidence": "historical-suite-results.json",
+    "starter": "2 tests,1 pass1 intentionally failing quantity fixture",
+    "restoration_initial": "8 tests,5pass3errors (obsolete created_at and unavailable symlink privilege); preserved unchanged",
+    "restoration_final": "7 tests,5pass2errors (obsolete created_at); preserved unchanged",
+    "rule": "Do not mix these historical compatibility failures into current pass totals or rewrite fixtures to erase history."
+  },
+  "MCP_evidence_limits": {
+    "live": "Only parent exact-root MCP availability/status is observed; this audit called check_index_coverage for nine exact demo/test paths, all metadata_match generation2026-11-12T16:26:10Z, no recorded issues; demo scope exclusions are generated caches. Critical production files read directly.",
+    "unverified": [
+      "empty-install-only live invocation",
+      "missing/offline/stale/pending/partial/wrong-root/mismatched server identity live scenarios",
+      "automatic native activation/delegation causality",
+      "effective custom TOML identity"
+    ],
+    "no_extra_live_probe": "Parent already inspected host once; no repeat host capability investigation performed."
+  },
+  "credential_scan": "tracked-scan.json",
+  "limitations": [
+    "Pattern scans cannot prove absence of every secret.",
+    "No Windows/WSL filesystem enforcement claims from these tests.",
+    "No new Gate3 experiment, no global installation updates, no product source changes by auditor."
+  ]
+}

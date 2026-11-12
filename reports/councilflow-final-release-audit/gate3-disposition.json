@@ -1,0 +1,119 @@
+{
+  "new_gate3_experiment": false,
+  "owner_approved_fixture": "NOT_ESTABLISHED; reports/gate3-next/OWNER-TASK-DRAFT.txt explicitly NOT OWNER-APPROVED",
+  "historical_outcome": "Mandatory E10 FAIL retained; no NATIVE_ROLE_WORKFLOW_OBSERVED or COUNCILFLOW_FULLY_VERIFIED claim.",
+  "rows": [
+    {
+      "id": "E1",
+      "frozen_text": "### E1 — Native discovery and invocation\nRecord separately (a) listing/picker visibility and (b) direct `$council-flow` selection. **PASS requires host-observed successful native invocation.** Missing picker entry alone does not invalidate working direct invocation.",
+      "historical_status": "UNVERIFIED",
+      "primary_class": "HOST_CAPABILITY_MISSING",
+      "provenance": "Current tool inventory exposes no trustworthy activation, activation-to-delegation causality or effective custom TOML identity; inspected once, no retry.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "UNVERIFIED (HOST_CAPABILITY_MISSING)"
+    },
+    {
+      "id": "E2",
+      "frozen_text": "### E2 — Native delegation trigger\n**PASS requires host-observed delegation attributable to the activated skill** without an additional explicit spawning instruction. If invocation succeeds but host evidence positively shows non-delegation, **FAIL (WORKFLOW_BEHAVIOR)**. If causation is not observable, **UNVERIFIED**. Alternative invocation wording requires a subsequent Owner decision, not an instruction added during this experiment.",
+      "historical_status": "UNVERIFIED",
+      "primary_class": "HOST_CAPABILITY_MISSING",
+      "provenance": "Current tool inventory exposes no trustworthy activation, activation-to-delegation causality or effective custom TOML identity; inspected once, no retry.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "UNVERIFIED (HOST_CAPABILITY_MISSING)"
+    },
+    {
+      "id": "E3",
+      "frozen_text": "### E3 — Actual spawns\nRecord host-observed subagent count, role/agent_type, and thread labels/IDs, without inventing identifiers. The required distinct-role observation is assessed together with E6.",
+      "historical_status": "PASS",
+      "primary_class": null,
+      "provenance": "Historical status supplied by Owner from previously recovered host evidence. Surviving agent-authored CSV role/command reports inspected; raw host observation not recovered in this checkout. This mission does not freshly establish historical PASS.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    },
+    {
+      "id": "E4",
+      "frozen_text": "### E4 — Role configuration applied\nCheck whether intended `council-*` custom-agent TOML settings are actually effective using host-exposed turn/thread settings. **PASS** needs affirmative evidence. **FAIL** needs evidence of a mismatch/non-application. Invisible effective settings = **UNVERIFIED**, not a claim that roles were prompt-only.",
+      "historical_status": "UNVERIFIED",
+      "primary_class": "HOST_CAPABILITY_MISSING",
+      "provenance": "Current tool inventory exposes no trustworthy activation, activation-to-delegation causality or effective custom TOML identity; inspected once, no retry.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "UNVERIFIED (HOST_CAPABILITY_MISSING)"
+    },
+    {
+      "id": "E5",
+      "frozen_text": "### E5 — Independent Tester command\nHost evidence shows the Tester executed its commands **in its own Tester thread**, not merely a Worker report copied to Tester.",
+      "historical_status": "PASS",
+      "primary_class": null,
+      "provenance": "Historical status supplied by Owner from previously recovered host evidence. Surviving agent-authored CSV role/command reports inspected; raw host observation not recovered in this checkout. This mission does not freshly establish historical PASS.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    },
+    {
+      "id": "E6",
+      "frozen_text": "### E6 — Distinct role threads\nHost evidence shows Worker, Tester and Reviewer as **three distinct threads**. A single model adopting three role names is insufficient.",
+      "historical_status": "PASS",
+      "primary_class": null,
+      "provenance": "Historical status supplied by Owner from previously recovered host evidence. Surviving agent-authored CSV role/command reports inspected; raw host observation not recovered in this checkout. This mission does not freshly establish historical PASS.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    },
+    {
+      "id": "E7",
+      "frozen_text": "### E7 — Zero Owner courier work\nCount courier interventions after initial submission. **PASS requires exactly zero.** Courier work includes the Owner moving any message/output/file content from one agent to another, retyping instructions already available to agents, or being asked to carry data that another agent could hand over. Legitimate host permission prompts and explicit Planner/Manager Owner decisions are logged separately as **AUTHORIZATION**, not courier work. Evidence: OWNER-LOG and available interaction records.",
+      "historical_status": "PASS",
+      "primary_class": null,
+      "provenance": "Historical status supplied by Owner from previously recovered host evidence. Surviving agent-authored CSV role/command reports inspected; raw host observation not recovered in this checkout. This mission does not freshly establish historical PASS.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    },
+    {
+      "id": "E8",
+      "frozen_text": "### E8 — Reviewer verification rerun\nThe Tester identifies which of its commands are deterministic. Reviewer independently re-executes **one** deterministic Tester command and compares its **exit code** and **SHA-256 of normalized stdout** to the Tester-recorded result. Normalization must be documented, identical on both sides, and must not erase meaningful differences. Evidence must contain recorded commands, exit codes, normalized output hashes and the rerun comparison. No comparable deterministic command = `NOT_COMPARABLE` and E8 does **not** PASS.",
+      "historical_status": "PASS",
+      "primary_class": null,
+      "provenance": "Historical status supplied by Owner from previously recovered host evidence. Surviving agent-authored CSV role/command reports inspected; raw host observation not recovered in this checkout. This mission does not freshly establish historical PASS.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    },
+    {
+      "id": "E9",
+      "frozen_text": "### E9 — Plain-English Owner interface\nRoutine **agent-generated** Owner-directed communication comes only from Planner or Manager and uses plain English. Owner is not required to read, interpret, copy or relay raw inter-agent messages. Optional inspection of agent records does not violate E9. Host-generated permission dialogs and genuine explicit Owner decisions are separately permitted/logged.",
+      "historical_status": "PASS",
+      "primary_class": null,
+      "provenance": "Historical status supplied by Owner from previously recovered host evidence. Surviving agent-authored CSV role/command reports inspected; raw host observation not recovered in this checkout. This mission does not freshly establish historical PASS.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    },
+    {
+      "id": "E10",
+      "frozen_text": "### E10 — Frozen criteria fidelity\nPlanner reproduces the Owner's saved mandatory acceptance criteria **verbatim**. PASS requires a direct **DIFF** or equivalent byte-for-byte/line-preserving comparison against the saved fixture. Separately identifiable metadata such as IDs and traceability references may be added; criteria may not be paraphrased, omitted, weakened, or silently augmented.",
+      "historical_status": "FAIL",
+      "primary_class": "WORKFLOW_BEHAVIOR",
+      "provenance": "Historical CSV Planner paraphrased mandatory criterion text. Owner reports this failed observation; surviving prior mission note preserves it. Original raw fixture/experiment not independently recovered here.",
+      "fresh_experiment": "NOT_RUN",
+      "current_revalidation": "NOT_REOBSERVED"
+    }
+  ],
+  "controlling_sources": [
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e"
+    }
+  ],
+  "sources": [
+    "Original Owner mission authoritative reported historical statuses",
+    "reports/councilflow-e10/historical-e10-failure.md",
+    "reports/csv-summary/final.md",
+    "reports/csv-summary/verification/commands.json",
+    "reports/csv-summary/review/commands.json"
+  ],
+  "next_requirement": "For any new Gate3 observation: host must expose admissible activation/causality/TOML identity evidence; Owner must separately approve and save exact fixture and authorize new native session. This release mission never grants that authorization."
+}

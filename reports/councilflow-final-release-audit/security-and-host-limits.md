@@ -1,0 +1,11 @@
+# Security and host evidence limits
+
+MODEL: NOT_DISCLOSED. The target request does not disclose the executing root model. Native role requests inherit the host route; no provider or model identity is inferred.
+
+CouncilFlow was applied once by reading the explicit project skill and using real native role tools. No separate native activation API or trustworthy skill-load record is exposed. There is no installed/native crack route in the inspected skill catalogs. The project skill is the controlling implementation; differing user-wide copies were inspected and left unchanged. Four user-wide council TOML bytes match project definitions, but file equality and requested agent_type do not prove effective child configuration. Native canonical task handles are host-observed; self-reported sender fields and Manager bindings are structural cross-checks, not authentication.
+
+The baseline records filesystem restrictions supplied by this session only through described boundaries; helper validation cannot establish OS isolation. Path resolution/hash/containment is best effort and races with concurrent path swaps. Disposable symlink/junction tests prove tested path behavior only. WinError1314 skips are not passes. No real forbidden path was mutated; no ACL/registry/global configuration was changed. Optional WSL execution needs the supported host permission route; listing Ubuntu alone is not Linux test execution.
+
+Hashes bind recorded bytes, not Owner approval or truth of execution. This ordinary audit request has explicit Owner authorization in the conversation. Its Planner copied the seven completion criteria exactly, checked by Manager; it is not a separately Owner-approved Gate3 fixture. Mandatory frozen invocations must fail closed on absent/stale authentic criteria. The Gate3 draft stays unapproved and the historical E10 failure stays a failure.
+
+The initial credential scan inspected 1911 tracked files (about 9 MB), with no tested key signatures, tracked cache/.git entries or files over 1 MB. This is a heuristic scan, not proof against every possible secret. Historical duplicated snapshots remain retained. Current transient audit evidence is excluded from the installable release archive.

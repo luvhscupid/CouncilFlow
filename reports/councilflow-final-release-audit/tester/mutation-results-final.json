@@ -1,0 +1,363 @@
+{
+  "kind": "isolated production mutation checks",
+  "results": [
+    {
+      "id": "CA01",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA01",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA01\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "2623ad129e9ce40b989bab2cc7894843e7ec67f7197709d12fcc1be714180596",
+      "mutation_old": "fail(\"failed_planner_check\", \"attempt_id\", \"an unmet original Planner check requires preserved rework and a fresh attempt\")",
+      "mutation_new": "pass",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA01.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA01.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA02",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_known_failed_reviewer_cannot_be_hidden_from_acceptance",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_known_failed_reviewer_cannot_be_hidden_from_acceptance",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA02",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA02\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "4b8ba29f9cc4ccbb69660fce45bcd2c7915924c0f176e1948e6c4b5031c4c11e",
+      "mutation_old": "if r[\"message_type\"] == \"job.report\" and r[\"sender\"][\"role\"] in {\"tester\", \"reviewer\"}",
+      "mutation_new": "if r[\"message_type\"] == \"job.report\" and r[\"sender\"][\"role\"] == \"tester\"",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA02.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA02.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA03",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA03",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA03\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "281e7d536eb8487b93b295a8a31fdbbfbc75c5f43379419ca69da73e713f9527",
+      "mutation_old": "for role_reports in (testers, reviewers):",
+      "mutation_new": "for role_reports in (testers + reviewers,):",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA03.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA03.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA04",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_matching_rerun_can_truthfully_report_substantive_review_failure",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_matching_rerun_can_truthfully_report_substantive_review_failure",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA04",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA04\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "c759ebeb5f3793e4d758e136ec870b5f10bcc1394e9fa7e5e174b671abd67dba",
+      "mutation_old": "if p[\"status\"] == \"passed\" and tc[\"status\"] != \"MATCH\":",
+      "mutation_new": "if (tc[\"status\"] == \"MATCH\") != (p[\"status\"] == \"passed\"):",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA04.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA04.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA05",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_final_check_uses_original_planner_and_manager_actors",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_final_check_uses_original_planner_and_manager_actors",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA05",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA05\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "9f02482b64ac5d46d2b3e50d2c1a6406bb8806cc1ec3902b1be00d81cd35cc7b",
+      "mutation_old": "fail(\"plan_origin\", \"sender/recipient\", \"final check requires the original Planner and Manager actors\")",
+      "mutation_new": "pass",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA05.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA05.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA06",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_republication_preserves_full_payload_and_original_actors",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA06",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA06\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "c838bc56cc0586b7cc7358201d01534b6f8fb92f31482d4e6c237608bb66bb2c",
+      "mutation_old": "if p != original[\"payload\"] or any(m[actor] != original[actor] for actor in (\"sender\", \"recipient\")):",
+      "mutation_new": "if p[\"plan_ref\"] != original[\"payload\"][\"plan_ref\"] or p[\"acceptance_ids\"] != original[\"payload\"][\"acceptance_ids\"]:",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA06.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA06.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA07",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA07",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA07\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "7e1fd392c9ae8877cedfa6aa7c1722976b5ec1627188d98220f5dca4e5a76511",
+      "mutation_old": " or PureWindowsPath(path).drive",
+      "mutation_new": "",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA07.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA07.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "CA08",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.JSONContractTests.test_authoritative_reference_api_rejects_unencodable_identity",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.JSONContractTests.test_authoritative_reference_api_rejects_unencodable_identity",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA08",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\CA08\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "3699fa2ca32e3601b2af2ddb766b7bdb62bed4bc0e48c59f37b565a96f455ed8",
+      "mutation_old": "def artifact(value, root=None, field=\"evidence_ref\"):\n    _tree(value)\n",
+      "mutation_new": "def artifact(value, root=None, field=\"evidence_ref\"):\n",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-CA08.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-CA08.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "E10",
+      "source": ".agents/skills/council-flow/scripts/contracts.py",
+      "test": "test_contracts.JSONContractTests.test_exact_fidelity_rejects_spacing_newlines_case_and_unicode_changes",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.JSONContractTests.test_exact_fidelity_rejects_spacing_newlines_case_and_unicode_changes",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\E10",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\E10\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+      "mutant_sha256": "0544cf874fc494caaa34ef60bcd5e674ffd661da818b2d36302f672c34188fde",
+      "mutation_old": "if actual != expected:",
+      "mutation_new": "if False:",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-E10.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-E10.stderr.bin",
+      "original_decoded_text_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+    },
+    {
+      "id": "DIST02",
+      "source": "demo/structured-flow/sum_values.py",
+      "test": "test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST02",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST02\\demo\\structured-flow",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "304d4ab669113604c16b16d65ffecaa5db9cb01ae2f76cf90ca40c1fbdad571f",
+      "mutant_sha256": "702061caf76c823607b459e3c27fa3081c1f0fdfdcd1a9695fa29db881c2e57a",
+      "mutation_old": "    try:\n        total = str(sum(args.values))\n    except ValueError:\n        parser.error(\"sum exceeds supported Python integer output bounds\")\n    print(total)",
+      "mutation_new": "    print(sum(args.values))",
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-DIST02.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-DIST02.stderr.bin",
+      "original_decoded_text_sha256": "304d4ab669113604c16b16d65ffecaa5db9cb01ae2f76cf90ca40c1fbdad571f"
+    },
+    {
+      "id": "DIST03",
+      "source": "demo/receipt/receipt_calculator.py",
+      "test": "test_receipt_calculator.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_receipt_calculator.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST03",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST03\\demo\\receipt",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "26ad35aae5d439e88a7db91ea653967a9c99cb8cc7be41381a193157a2f9360a",
+      "mutant_sha256": "21321da8d7cc99e6cbdbcbd81b92dc7744aee394c0b58d2f5d62a867da88e715",
+      "mutation_old": null,
+      "mutation_new": null,
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-DIST03.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-DIST03.stderr.bin",
+      "mutation_definition": "Remove both internal Decimal exponent/clamp assignments",
+      "original_decoded_text_sha256": "bb462c63bf74a6532a340fd46e569c622165746d891989f8d84e2022b8139fff"
+    },
+    {
+      "id": "DIST05",
+      "source": "tools/build_release.py",
+      "test": "test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST05",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\\Temp\\cf-independent-mutations-se23rg0h\\DIST05\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "original_sha256": "658fca83695ab7f0334348997c7ec6f760d496ada547f18bc0d246663680ea9a",
+      "mutant_sha256": "32c419a41d3f4b57624e3587ceeddaaaa2b0b4d541afaac159356e5344688fc7",
+      "mutation_old": null,
+      "mutation_new": null,
+      "valid_compiled": true,
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "KILLED",
+      "stdout_path": "reports/councilflow-final-release-audit/tester/mutation-DIST05.stdout.bin",
+      "stderr_path": "reports/councilflow-final-release-audit/tester/mutation-DIST05.stderr.bin",
+      "mutation_definition": "Replace atomic_write body with path.write_bytes(data)",
+      "original_decoded_text_sha256": "658fca83695ab7f0334348997c7ec6f760d496ada547f18bc0d246663680ea9a"
+    }
+  ],
+  "totals": {
+    "KILLED": 12,
+    "SURVIVED": 0,
+    "INVALID": 0,
+    "SKIPPED": 0
+  },
+  "limits": "Killed means this designated regression detected this valid mutant, not universal test adequacy.",
+  "identity_note": "Original mutation-results.json hashed read_text()-decoded source (universal newline decoding) before mutation. This final record retains that decoded-text hash and explicitly adds exact candidate raw source-byte identity. Mutant hash is exact UTF8/LF bytes written/executed. Actual commands/results/raw logs unchanged; original report preserved."
+}

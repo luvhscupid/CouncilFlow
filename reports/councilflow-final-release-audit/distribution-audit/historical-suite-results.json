@@ -1,0 +1,26 @@
+[
+  {
+    "scope": "demo/starter",
+    "historical": true,
+    "exit": 1,
+    "tests": 2,
+    "failure_summary": "failures=1",
+    "stderr_tail": "test_multiple_product_quantities (test_receipt_calculator.StarterReceiptTests.test_multiple_product_quantities) ... FAIL\r\ntest_single_unit_format (test_receipt_calculator.StarterReceiptTests.test_single_unit_format) ... ok\r\n\r\n======================================================================\r\nFAIL: test_multiple_product_quantities (test_receipt_calculator.StarterReceiptTests.test_multiple_product_quantities)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\starter\\test_receipt_calculator.py\", line 17, in test_multiple_product_quantities\r\n    self.assertEqual(grand_total(entries), Decimal(\"103000\"))\r\nAssertionError: Decimal('73000') != Decimal('103000')\r\n\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.001s\r\n\r\nFAILED (failures=1)\r\n"
+  },
+  {
+    "scope": "reports/restoration/verification/initial",
+    "historical": true,
+    "exit": 1,
+    "tests": 8,
+    "failure_summary": "errors=3",
+    "stderr_tail": "artifacts-2mcr9i5w\\\\allowed\\\\link'\r\n\r\n======================================================================\r\nERROR: test_independence_oracle_candidate_and_acceptance_negatives (test_independent_contracts.IndependentContractChecks.test_independence_oracle_candidate_and_acceptance_negatives)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\restoration\\verification\\initial\\test_independent_contracts.py\", line 102, in test_independence_oracle_candidate_and_acceptance_negatives\r\n    c.validate_sequence(synthetic_sequence())\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 521, in validate_sequence\r\n    validate_message(m, root=root)\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 264, in validate_message\r\n    _object(message, FIELDS)\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 152, in _object\r\n    fail(\"unknown_field\", field, \",\".join(sorted(set(value) - set(required) - set(optional))))\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 42, in fail\r\n    raise ContractError(code, field, detail)\r\ncontracts.ContractError: unknown_field at $: created_at\r\n\r\n----------------------------------------------------------------------\r\nRan 8 tests in 0.238s\r\n\r\nFAILED (errors=3)\r\n"
+  },
+  {
+    "scope": "reports/restoration/verification/final",
+    "historical": true,
+    "exit": 1,
+    "tests": 7,
+    "failure_summary": "errors=2",
+    "stderr_tail": "==============================================\r\nERROR: test_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\restoration\\verification\\final\\test_final_independent_contracts.py\", line 36, in test_actual_round_and_causal_candidate_authority_acceptance_mutations\r\n    c.validate_sequence(messages, root=ROOT, expected_senders=bindings)\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 521, in validate_sequence\r\n    validate_message(m, root=root)\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 264, in validate_message\r\n    _object(message, FIELDS)\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 152, in _object\r\n    fail(\"unknown_field\", field, \",\".join(sorted(set(value) - set(required) - set(optional))))\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py\", line 42, in fail\r\n    raise ContractError(code, field, detail)\r\ncontracts.ContractError: unknown_field at $: created_at\r\n\r\n----------------------------------------------------------------------\r\nRan 7 tests in 0.080s\r\n\r\nFAILED (errors=2)\r\n"
+  }
+]

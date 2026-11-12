@@ -1,0 +1,81 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-T001",
+  "message_type": "job.assign",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "in_reply_to": "FRA-W002",
+  "payload": {
+    "objective": "Independently verify the exact frozen release candidate against original Owner mission and approved strategy.",
+    "scope": [
+      "Read frozen product/candidate/archive/plan and audit evidence",
+      "Write new verification evidence only under reports/councilflow-final-release-audit/tester/",
+      "Use safely disposable copies and native Linux /tmp extraction for controls; no product or final ZIP changes"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "instructions": [
+      "Follow tester-instructions.txt and immutable manager-oracle.json. Actual canonical task path /root/tester; do not claim model or effective TOML identity.",
+      "Worker stopped all edits. Candidate 9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113, ZIP8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f 117 entries. Verify cumulative 117 file hashes before/after.",
+      "MCP Tier2 before edits metadata matched, but postWorker same-root refresh failed Transport closed. Freshness UNVERIFIED; direct source/manifest fallback. Do not retry unavailable MCP absent new evidence.",
+      "Do not flatten platform counts: Worker checkout148 run144pass4skip; Windows extraction148 run145pass3skip. These are developer-only, rerun independently. Test release link controls on native Linux /tmp final-archive extraction, not only /mnt/e.",
+      "No new Gate3. All fixtures synthetic unless original Owner provenance genuinely established; none Gate3 approved. Preserve errors/skips and real limitations."
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "FRA-approved-oracle",
+      "path": "reports/councilflow-final-release-audit/manager-oracle.json",
+      "sha256": "630de811a3a1b5f21ba611372a49a394245caa8103f54583906ef2dfc229b6e8",
+      "kind": "test-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-original-plan",
+      "path": "reports/councilflow-final-release-audit/planner/plan.json",
+      "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "FRA-W002",
+      "path": "reports/councilflow-final-release-audit/worker/job-report.json",
+      "sha256": "08544431b48c098cf9a5c4e34a6f2d72f1c92ad25c6e06b2f5ce66832c050d75",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-tester-instructions",
+      "path": "reports/councilflow-final-release-audit/tester-instructions.txt",
+      "sha256": "442d1ed061cce33e7dbb6448d27b2a399050f3889ff1d29aa90b7968a0ff8323",
+      "kind": "instructions"
+    },
+    {
+      "artifact_id": "FRA-postworker-MCP",
+      "path": "reports/councilflow-final-release-audit/mcp-postworker.json",
+      "sha256": "ce45dfb2902fdf180d6cc9668fed23396aeab579c2b39d11f9a05004c152c508",
+      "kind": "navigation-limit"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import argparse
 import hashlib
 import json
 import math
-from pathlib import Path, PurePosixPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 import sys
 from datetime import datetime
@@ -210,12 +210,13 @@ def _timestamp(value, field="created_at"):
 
 
 def artifact(value, root=None, field="evidence_ref"):
+    _tree(value)
     _object(value, {"artifact_id", "path", "sha256", "kind"}, field=field)
     _identity(value["artifact_id"], field + ".artifact_id")
     _string(value["kind"], field + ".kind", 64)
     path = _string(value["path"], field + ".path", 1024)
     pure = PurePosixPath(path)
-    if pure.is_absolute() or "\\" in path or ".." in pure.parts or path in {".", ""}:
+    if pure.is_absolute() or PureWindowsPath(path).drive or "\\" in path or ".." in pure.parts or path in {".", ""}:
         fail("artifact_path", field, "expected repository-relative POSIX path")
     if type(value["sha256"]) is not str or not re.fullmatch(r"[0-9a-f]{64}", value["sha256"]):
         fail("hash", field + ".sha256", "expected lowercase SHA-256")
@@ -542,11 +543,12 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
         key = (m["plan_id"], m["plan_revision"])
         if kind == "plan.publish":
             if key in plans:
-                if p["plan_ref"] != plans[key]["payload"]["plan_ref"] or p["acceptance_ids"] != plans[key]["payload"]["acceptance_ids"]:
-                    fail("plan_immutable", "payload", "published acceptance or plan changed")
+                original = plans[key]
+                if p != original["payload"] or any(m[actor] != original[actor] for actor in ("sender", "recipient")):
+                    fail("plan_immutable", "payload", "published objective, scope, acceptance, plan or actors changed")
             if any(plan == m["plan_id"] and revision != m["plan_revision"] for plan, revision in plans):
                 fail("plan_revision", "plan_revision", "amendments need separately approved context; not inferred")
-            plans[key] = m
+            plans.setdefault(key, m)
             if root is not None:
                 plan = read_json(Path(root) / p["plan_ref"]["path"])
                 # Plan metadata is project-owned, not a second wire schema. Its
@@ -585,6 +587,12 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
             if kind in {"plan.check", "task.decision"} and (kind == "plan.check" or p["disposition"] == "accept"):
                 if set(p["acceptance_ids"]) != published:
                     fail("acceptance", "payload.acceptance_ids", "cannot silently omit mandatory criteria")
+        if ((kind == "task.decision" and p["disposition"] == "accept")
+                or (kind == "plan.check" and p["status"] == "passed")):
+            if any(check["message_type"] == "plan.check" and check["payload"]["status"] != "passed"
+                   and all(check[field] == m[field] for field in ("plan_id", "plan_revision", "task_id", "attempt_id"))
+                   for check in seen.values()):
+                fail("failed_planner_check", "attempt_id", "an unmet original Planner check requires preserved rework and a fresh attempt")
         if kind == "job.report":
             if not predecessor or predecessor["message_type"] != "job.assign":
                 fail("assignment", "in_reply_to", "report must reply to actual assignment")
@@ -631,6 +639,8 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                 else:
                     if declared is None:
                         fail("comparison_evidence", "payload.comparison.independent_rerun.command_id", "must select an actual Tester-declared command")
+                    if tc["acceptance_id"] not in p["acceptance_ids"]:
+                        fail("comparison_binding", "payload.comparison.independent_rerun.acceptance_id", "rerun must address an assigned Reviewer criterion")
                     for field in ("command", "arguments", "workdir", "candidate_ref", "input_refs", "acceptance_id"):
                         if tc[field] != declared[field]:
                             fail("comparison_binding", "payload.comparison.independent_rerun." + field, "rerun conditions differ from Tester record")
@@ -640,7 +650,7 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                         fail("comparison_evidence", "payload.comparison.independent_rerun.tester_evidence_ref", "Tester execution record must be cited by Tester report")
                     if not any(tc["evidence_ref"] == x for x in m["evidence_refs"]):
                         fail("comparison_evidence", "payload.comparison.independent_rerun.evidence_ref", "Reviewer rerun record must be cited by Reviewer report")
-                    if (tc["status"] == "MATCH") != (p["status"] == "passed"):
+                    if p["status"] == "passed" and tc["status"] != "MATCH":
                         fail("comparison", "payload.status", "only an exactly matching independent rerun can pass review")
                 if not comparison["findings"]:
                     fail("comparison", "payload.comparison.findings", "record comparison findings against plan, candidate and Tester evidence")
@@ -671,13 +681,13 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                 reports.append(report)
             if p["disposition"] == "accept":
                 known_failures = [r for r in seen.values()
-                                  if r["message_type"] == "job.report" and r["sender"]["role"] == "tester"
+                                  if r["message_type"] == "job.report" and r["sender"]["role"] in {"tester", "reviewer"}
                                   and r["payload"]["status"] == "failed"
                                   and all(r[f] == m[f] for f in ("plan_id", "plan_revision", "task_id", "attempt_id"))
                                   and r["payload"]["candidate_ref"] == p["candidate_ref"]]
                 if known_failures:
                     fail("failed_verification", "payload.report_ids", "cannot hide known failed mandatory verification for this candidate")
-                if any(r["sender"]["role"] == "tester" and r["payload"]["status"] != "passed" for r in reports):
+                if any(r["sender"]["role"] in {"tester", "reviewer"} and r["payload"]["status"] != "passed" for r in reports):
                     fail("failed_verification", "payload.report_ids", "cannot accept supplied failed mandatory verification")
                 testers = [r for r in reports if r["sender"]["role"] == "tester" and r["payload"]["status"] == "passed"]
                 reviewers = [r for r in reports if r["sender"]["role"] == "reviewer" and r["payload"]["status"] == "passed"]
@@ -687,9 +697,10 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                 identities = {r["sender"]["instance_id"] for r in testers + reviewers}
                 if len(identities) < 2 or identities & workers:
                     fail("independent_evidence", "payload.report_ids", "role sessions must be distinct")
-                covered = set().union(*(set(r["payload"]["acceptance_ids"]) for r in testers + reviewers))
-                if not set(p["acceptance_ids"]) <= covered:
-                    fail("acceptance", "payload.report_ids", "independent evidence omits required criteria")
+                for role_reports in (testers, reviewers):
+                    covered = set().union(*(set(r["payload"]["acceptance_ids"]) for r in role_reports))
+                    if not set(p["acceptance_ids"]) <= covered:
+                        fail("acceptance", "payload.report_ids", "Tester and Reviewer must each cover all required criteria")
             if p["disposition"] == "rework":
                 failures = [r for r in reports if r["payload"]["status"] == "failed"]
                 planner_check = predecessor if predecessor and predecessor["message_type"] == "plan.check" else None
@@ -721,6 +732,9 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                 if not set(p["failed_acceptance_ids"]) <= (set(p["acceptance_ids"]) & known_failed):
                     fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned criteria and supplied failure evidence")
         if kind == "plan.check" and key in plans:
+            original = plans[key]
+            if m["sender"] != original["sender"] or m["recipient"] != original["recipient"]:
+                fail("plan_origin", "sender/recipient", "final check requires the original Planner and Manager actors")
             if p["plan_ref"] != plans[key]["payload"]["plan_ref"]:
                 fail("plan_immutable", "payload.plan_ref", "must check original plan")
             if p["status"] == "passed":

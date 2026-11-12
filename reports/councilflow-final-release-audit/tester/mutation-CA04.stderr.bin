@@ -1,0 +1,18 @@
+test_matching_rerun_can_truthfully_report_substantive_review_failure (test_contracts.PolicyAndDiagnosticTests.test_matching_rerun_can_truthfully_report_substantive_review_failure) ... ERROR
+
+======================================================================
+ERROR: test_matching_rerun_can_truthfully_report_substantive_review_failure (test_contracts.PolicyAndDiagnosticTests.test_matching_rerun_can_truthfully_report_substantive_review_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA04\tests\test_contracts.py", line 1097, in test_matching_rerun_can_truthfully_report_substantive_review_failure
+    c.validate_sequence(data)
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA04\.agents\skills\council-flow\scripts\contracts.py", line 654, in validate_sequence
+    fail("comparison", "payload.status", "only an exactly matching independent rerun can pass review")
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA04\.agents\skills\council-flow\scripts\contracts.py", line 42, in fail
+    raise ContractError(code, field, detail)
+contracts.ContractError: comparison at payload.status: only an exactly matching independent rerun can pass review
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (errors=1)

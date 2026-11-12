@@ -1,6 +1,6 @@
 """Executable behavioral checks for the finished program, not the starter."""
 
-from decimal import Decimal, localcontext
+from decimal import Decimal, Clamped, Inexact, Rounded, Subnormal, localcontext
 from pathlib import Path
 import subprocess
 import sys
@@ -42,6 +42,26 @@ class ArithmeticTests(unittest.TestCase):
         self.assertEqual(grand_total(entries), Decimal(0))
         self.assertEqual(grand_total([]), Decimal(0))
         self.assertEqual(format_rupiah(Decimal("-0.00")), "Rp0")
+
+    def test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic(self) -> None:
+        with localcontext() as context:
+            context.prec = 2
+            context.Emax = 3
+            context.Emin = -3
+            context.clamp = 1
+            for signal in (Clamped, Inexact, Rounded, Subnormal):
+                context.traps[signal] = True
+            before = context.copy()
+            large = ProductEntry("large", "999999999999999999", "999999999999999999")
+            small = ProductEntry("small", "0.000000000001", "0.000000000001")
+            self.assertEqual(large.line_total, Decimal("999999999999999998000000000000000001"))
+            self.assertEqual(small.line_total, Decimal("0.000000000000000000000001"))
+            self.assertEqual(grand_total([large, small]),
+                             Decimal("999999999999999998000000000000000001.000000000000000000000001"))
+            self.assertEqual((context.prec, context.Emax, context.Emin, context.clamp),
+                             (before.prec, before.Emax, before.Emin, before.clamp))
+            self.assertEqual(context.traps, before.traps)
+            self.assertEqual(context.flags, before.flags)
 
     def test_reject_invalid_numbers(self) -> None:
         for value in ["-1", "NaN", "sNaN", "Infinity", "-Infinity", "abc", "Rp100", "1,000", "1e3", "", "1000000000000000000", "0.0000000000001", 0.1, True]:

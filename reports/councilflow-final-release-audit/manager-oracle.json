@@ -1,0 +1,30 @@
+{
+  "approved_by": "/root",
+  "plan_ref": {
+    "artifact_id": "FRA-original-plan",
+    "path": "reports/councilflow-final-release-audit/planner/plan.json",
+    "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+    "kind": "plan"
+  },
+  "candidate_binding": "Cumulative allowlisted product/source/tests/docs bytes plus final archive SHA256; no current report self-inclusion. Verify all before/after testing.",
+  "suites": [
+    "tests",
+    "demo/receipt",
+    "demo/csv-summary",
+    "demo/structured-flow",
+    "reports/demo/verification",
+    "reports/csv-summary/verification"
+  ],
+  "platforms": "Windows six current suites + archive extraction; WSL Ubuntu focused repository/contracts/path tests if runnable with supported permission. Never alter global OS/Python conversion settings.",
+  "negative_controls": [
+    "contract-audit/negative_controls.py unchanged from baseline",
+    "E10 exact ordered Unicode/line endings/whitespace/Markdown/punctuation/case/duplicate keys/source hashes/paths and ordinary no-sidecar mode",
+    "Targeted isolated source mutants for repaired high-impact guards; run relevant regression tests against actual mutant modules",
+    "Disposable path/symlink/junction within root ALLOW correct hash, escape REJECT, stale hash REJECT. 1314 skip separately; no OS isolation claim.",
+    "Structured large-valid-operands output bounds and CLI errors",
+    "Frozen SHA256/source and pre-existing work unchanged; package CRC/safe names/every byte/no current evidence/cache/secret/self-inclusion; operational JSON examples/policy"
+  ],
+  "deterministic_command": "Tester may write isolated evidence harness using unittest for six suites, emitting sorted test IDs/status/skips/counts without timing; record exact executable,args,cwd,candidate,input refs, raw stdout/stderr, exit, CRLF-to-LF-only stdout hash. Reviewer reruns EXACT declaration with no oracle substitution.",
+  "history": "Intentional starter and restoration initial/final snapshot tests classified separately, never rewritten to pass current schema.",
+  "MCP": "Normal live exact-root ready status/coverage/postWorker synchronization; unavailable injected states static instructions only, never live proof."
+}

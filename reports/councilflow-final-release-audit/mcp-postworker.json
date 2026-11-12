@@ -1,0 +1,19 @@
+{
+  "request": {
+    "repo_path": "E:/Saint/PROJECTS/CouncilFlow-main",
+    "mode": "full",
+    "async": true,
+    "persistence": false
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codebase-memory-mcp/index_repository`\n\nCaused by:\n    Transport closed"
+      }
+    ],
+    "isError": true
+  },
+  "disposition": "Post-Worker refresh failed with Transport closed. No repeated query/reinstall/reconfigure. Source freshness UNVERIFIED; direct source/manifest inspection fallback used. Initial normal live navigation observed; actual unavailable-transport fallback observed after edits stopped. This does not diagnose server outage or prove other live negative lifecycle branches.",
+  "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113"
+}

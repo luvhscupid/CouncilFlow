@@ -1,0 +1,380 @@
+{
+  "tester": "/root/tester",
+  "candidate_ref": {
+    "artifact_id": "FRA-A01-cumulative",
+    "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+    "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+    "kind": "candidate-manifest"
+  },
+  "archive": {
+    "path": "dist/council-flow.zip",
+    "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+    "entries": 117
+  },
+  "Windows": {
+    "checkout": {
+      "run": 148,
+      "passed": 144,
+      "skipped": 4
+    },
+    "extraction": {
+      "run": 148,
+      "passed": 145,
+      "skipped": 3
+    }
+  },
+  "suites": [
+    {
+      "suite": "tests",
+      "checkout": {
+        "label": "checkout-0",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/checkout-0.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/checkout-0.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 104,
+        "skipped": 4,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 100
+      },
+      "extraction": {
+        "label": "extraction-0",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/extraction-0.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/extraction-0.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 104,
+        "skipped": 3,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 101
+      }
+    },
+    {
+      "suite": "demo/receipt",
+      "checkout": {
+        "label": "checkout-1",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/checkout-1.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/checkout-1.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 13,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 13
+      },
+      "extraction": {
+        "label": "extraction-1",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/extraction-1.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/extraction-1.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 13,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 13
+      }
+    },
+    {
+      "suite": "demo/csv-summary",
+      "checkout": {
+        "label": "checkout-2",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/checkout-2.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/checkout-2.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 15,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 15
+      },
+      "extraction": {
+        "label": "extraction-2",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/extraction-2.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/extraction-2.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 15,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 15
+      }
+    },
+    {
+      "suite": "demo/structured-flow",
+      "checkout": {
+        "label": "checkout-3",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/checkout-3.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/checkout-3.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 5,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 5
+      },
+      "extraction": {
+        "label": "extraction-3",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/extraction-3.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/extraction-3.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 5,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 5
+      }
+    },
+    {
+      "suite": "reports/demo/verification",
+      "checkout": {
+        "label": "checkout-4",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/checkout-4.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/checkout-4.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 5,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 5
+      },
+      "extraction": {
+        "label": "extraction-4",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/extraction-4.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/extraction-4.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 5,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 5
+      }
+    },
+    {
+      "suite": "reports/csv-summary/verification",
+      "checkout": {
+        "label": "checkout-5",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/checkout-5.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/checkout-5.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 6,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 6
+      },
+      "extraction": {
+        "label": "extraction-5",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/councilflow-final-release-audit/tester/extraction-5.stdout.bin",
+        "stderr_path": "reports/councilflow-final-release-audit/tester/extraction-5.stderr.bin",
+        "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+        "run": 6,
+        "skipped": 0,
+        "result": "passed",
+        "failure_summary": null,
+        "passed": 6
+      }
+    }
+  ],
+  "mutations": {
+    "valid": 12,
+    "killed": 12,
+    "survived": 0,
+    "invalid": 0,
+    "skipped": 0
+  },
+  "synthetic_controls": {
+    "cases": 65,
+    "satisfied": 63,
+    "failed": 0,
+    "skipped": 2,
+    "provenance": "Synthetic fixtures only; no authentic Owner Gate3 fixture."
+  },
+  "platform_disposition": {
+    "Tester_windows_junction": "UNVERIFIED: cmd mklink denied by sandbox",
+    "Tester_WSL": "UNVERIFIED: sandbox Access denied, require_escalated tool request pending600.8s then aborted by parent interruption; no execution handle or approved result observed before finalization",
+    "Manager_supplemental": "If later available, must remain separate Manager-thread provenance; not retrospectively this Tester execution."
+  },
+  "mandatory_workflow_postconditions": "Manager evidence decision, distinct Reviewer exact deterministic rerun, original Planner check and local Git checkpoint belong to remaining parent workflow; no prospective PASS claimed here.",
+  "limits": [
+    "WinError1314 and WinError5 skips are not security passes.",
+    "No host/OS isolation, actor authentication, native activation/effective TOML identity or authentic Owner approval is established by tests.",
+    "MCP post-edit freshness remains UNVERIFIED after Transport closed; direct source/manifest inspection used."
+  ],
+  "criteria_observations": {
+    "C01": "Technical source/finding coverage checked; final finding ledger disposition remains Manager/Planner duty.",
+    "C02": "Independent Windows suites, exact synthetic E10/adversarial/API controls and12valid mutation kills support repaired source.",
+    "C03": "Exact deterministic command recorded and repeated; distinct Reviewer and final Planner still pending.",
+    "C04": "All six current checkout/extraction Windows suites executed; WSL/junction disposition explicitly unverified as above.",
+    "C05": "Protected frozen hashes and all baseline tracked bytes outside intended changes preserved; no new Gate3 or global changes performed by Tester.",
+    "C06": "ZIP117CRC/names/source/extracted bytes/checksum/inventory verified; Git checkpoint remains Manager duty.",
+    "C07": "No new experiment; historical E10 FAIL and E1/E2/E4 UNVERIFIED preserved separately, not release checks."
+  }
+}

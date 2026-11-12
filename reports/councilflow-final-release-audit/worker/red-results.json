@@ -1,0 +1,46 @@
+[
+  {
+    "suite": "contracts",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_contracts.py",
+      "-v"
+    ],
+    "exit_code": 1,
+    "tail": "nnot_be_bypassed_in_same_attempt) (action='final_check')\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\tests\\test_contracts.py\", line 1044, in test_unmet_planner_check_cannot_be_bypassed_in_same_attempt\r\n    with self.subTest(action=action), self.assertRaises(c.ContractError):\r\nAssertionError: ContractError not raised\r\n\r\n======================================================================\r\nFAIL: test_unmet_planner_check_cannot_be_bypassed_in_same_attempt (test_contracts.PolicyAndDiagnosticTests.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt) (action='accept')\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\tests\\test_contracts.py\", line 1044, in test_unmet_planner_check_cannot_be_bypassed_in_same_attempt\r\n    with self.subTest(action=action), self.assertRaises(c.ContractError):\r\nAssertionError: ContractError not raised\r\n\r\n----------------------------------------------------------------------\r\nRan 78 tests in 1.810s\r\n\r\nFAILED (failures=12, errors=1, skipped=2)\r\n"
+  },
+  {
+    "suite": "receipt",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "exit_code": 1,
+    "tail": "s.test_sample_cli) ... ok\r\ntest_version (test_receipt_calculator.CommandLineTests.test_version) ... ok\r\n\r\n======================================================================\r\nERROR: test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic (test_receipt_calculator.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\receipt\\test_receipt_calculator.py\", line 57, in test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic\r\n    self.assertEqual(large.line_total, Decimal(\"999999999999999998000000000000000001\"))\r\n                     ^^^^^^^^^^^^^^^^\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\receipt\\receipt_calculator.py\", line 74, in line_total\r\n    return self.quantity * self.unit_price\r\n           ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~\r\ndecimal.Overflow: [<class 'decimal.Overflow'>, <class 'decimal.Inexact'>, <class 'decimal.Rounded'>]\r\n\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.628s\r\n\r\nFAILED (errors=1)\r\n"
+  },
+  {
+    "suite": "structured",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "exit_code": 1,
+    "tail": "Tests.test_single_and_zero) ... ok\r\n\r\n======================================================================\r\nFAIL: test_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\structured-flow\\test_sum_values.py\", line 52, in test_large_valid_operands_handle_output_conversion_bound\r\n    self.assertIn(\"error:\", result.stderr)\r\nAssertionError: 'error:' not found in 'Traceback (most recent call last):\\n  File \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-main\\\\demo\\\\structured-flow\\\\sum_values.py\", line 24, in <module>\\n    raise SystemExit(main())\\n                     ^^^^^^\\n  File \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-main\\\\demo\\\\structured-flow\\\\sum_values.py\", line 19, in main\\n    print(sum(args.values))\\nValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit\\n'\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 1.091s\r\n\r\nFAILED (failures=1)\r\n"
+  }
+]

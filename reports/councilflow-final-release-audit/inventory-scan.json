@@ -1,0 +1,22 @@
+{
+  "tracked_files": 1911,
+  "tracked_bytes": 9050885,
+  "large_tracked": [],
+  "credential_pattern_hit_paths_only": [],
+  "scan_limits": "Heuristic signatures; not proof of absence of every secret. Historical records retained.",
+  "role_toml_copies": {
+    "E:\\Saint\\PROJECTS\\CouncilFlow-main\\.codex\\agents": {
+      "council-planner.toml": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+      "council-reviewer.toml": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4",
+      "council-tester.toml": "6c45b0033a8aa7dc0c160972500eb40d0e3a255743c817941ea5eea2c4b387e4",
+      "council-worker.toml": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
+    },
+    "C:\\Users\\cupid\\.codex\\agents": {
+      "council-planner.toml": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+      "council-reviewer.toml": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4",
+      "council-tester.toml": "6c45b0033a8aa7dc0c160972500eb40d0e3a255743c817941ea5eea2c4b387e4",
+      "council-worker.toml": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
+    }
+  },
+  "wsl_exe": null
+}

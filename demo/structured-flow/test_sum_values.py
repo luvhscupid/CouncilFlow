@@ -42,6 +42,23 @@ class SumValuesTests(unittest.TestCase):
         self.assertEqual(help_result.returncode, 0)
         self.assertIn("signed ASCII integers", help_result.stdout)
 
+    def test_large_valid_operands_handle_output_conversion_bound(self):
+        limit = sys.get_int_max_str_digits()
+        if not limit:
+            self.skipTest("interpreter explicitly disables integer conversion bounds")
+        operand = "9" * limit
+        result = self.run_program(operand, operand)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("error:", result.stderr)
+        self.assertIn("output bounds", result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+        self.assertEqual(result.stdout, "")
+        for arguments, expected in (((operand, "0"), operand), ((operand, "-" + operand), "0")):
+            with self.subTest(arguments=tuple(len(x) for x in arguments)):
+                result = self.run_program(*arguments)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout, expected + "\n")
+
 
 if __name__ == "__main__":
     unittest.main()

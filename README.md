@@ -6,12 +6,14 @@ fresh Worker, requests separate Tester and Reviewer assessments, coordinates
 repairs, and asks the Planner for a final objective check. Only the Manager gives
 routine progress and results to the human Owner.
 
-**Council Round 6 corrections are implemented and deterministically verified in
-the isolated `CouncilFlow-round6` copy. Gate 3b is blocked** because this
-workspace has no Git history or recoverable clean pre-test receipt-calculator
-fixture: the available candidate already contains the requested `--version`
-feature. No fresh activation was claimed. See [Gate 3b results](reports/gate3b-results.md),
-[release details](RELEASE.md), and historical results in [reports/final.md](reports/final.md).
+This Git repository contains the current source, regression tests, and installable
+`dist/council-flow.zip` release candidate. Current audit and independent release
+evidence are recorded in `reports/councilflow-final-release-audit/`; see
+[release details](RELEASE.md) for the package and verification commands.
+Software release verification is separate from the frozen Gate 3 experiment.
+Historical Round 6/Gate 3b reports describe earlier workspaces and remain
+unchanged; they do not establish this checkout's activation or configuration.
+No new separately approved Gate 3 experiment is included in this release audit.
 
 It uses native Codex delegation and inherited account/provider permissions. It
 needs no API key, subscription, database, server, or custom agent runtime. Role
@@ -33,6 +35,12 @@ Supply an ordinary coding request with scope and constraints. The skill creates
 compact internal contracts. Native Planner mode is the default. To supply an
 external plan, explicitly identify it as Owner-approved and include the original
 plan; the Manager preserves it and does not claim to call external ChatGPT.
+
+An invocation that requires an authoritative frozen criteria artifact fails closed
+when that approved source is missing, stale, or differs from the plan. Ordinary
+coding requests without that requirement may generate their native plan without
+inventing an external approval fixture. A matching digest proves integrity, not
+Owner approval; the original request and any actual approval remain authoritative.
 
 Codex should detect skill changes automatically. If the selector does not update,
 restart Codex in this repository and check `/skills` or type `$` in CLI/IDE. This

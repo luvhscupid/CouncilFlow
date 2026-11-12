@@ -1,0 +1,139 @@
+{
+  "actor": "/root",
+  "native_thread_provenance": "Manager supplemental execution, not Tester-thread execution",
+  "tool": "exec_command require_escalated; host-approved command prefix observed",
+  "command": "C:/Users/cupid/AppData/Local/Programs/Python/Python312/python.exe",
+  "arguments": [
+    "-B",
+    "reports/councilflow-final-release-audit/tester/platforms.py",
+    "--label",
+    "approved"
+  ],
+  "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exec_session": 37561,
+  "exit_code": 0,
+  "record_ref": {
+    "artifact_id": "FRA-manager-platforms-approved",
+    "path": "reports/councilflow-final-release-audit/tester/platforms-approved.json",
+    "sha256": "994d9e85d23fe68d2f30a5393c9594c1261014df0c7ac1cf30ee9190c8466e82",
+    "kind": "execution"
+  },
+  "raw_stdout_ref": {
+    "artifact_id": "FRA-manager-WSL-raw",
+    "path": "reports/councilflow-final-release-audit/tester/wsl-approved.stdout.bin",
+    "sha256": "2aa05df84a19df31debb64ec16277fc16bd4061993590295774a1799c21008e0",
+    "kind": "raw-output"
+  },
+  "raw_stderr_ref": {
+    "artifact_id": "FRA-manager-WSL-stderr",
+    "path": "reports/councilflow-final-release-audit/tester/wsl-approved.stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kind": "raw-output"
+  },
+  "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+  "archive_sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+  "linux": {
+    "platform": "linux",
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+    "executable": "/usr/bin/python3",
+    "native_filesystem_root": "/tmp/cf-linux-final-3a_w3ero",
+    "suite_counts": [
+      {
+        "suite": "tests",
+        "run": 104,
+        "passed": 104,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "suite": "demo/receipt",
+        "run": 13,
+        "passed": 13,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "suite": "demo/csv-summary",
+        "run": 15,
+        "passed": 15,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "suite": "demo/structured-flow",
+        "run": 5,
+        "passed": 5,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "suite": "reports/demo/verification",
+        "run": 5,
+        "passed": 5,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "suite": "reports/csv-summary/verification",
+        "run": 6,
+        "passed": 6,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    ],
+    "run": 148,
+    "passed": 148,
+    "skipped": 0,
+    "symlink_controls": [
+      {
+        "actual_allowed": true,
+        "case": "inside-symlink-correct-hash",
+        "error": null,
+        "expected_allowed": true,
+        "passed": true
+      },
+      {
+        "actual_allowed": false,
+        "case": "inside-symlink-stale-hash",
+        "error": "artifact_hash",
+        "expected_allowed": false,
+        "passed": true
+      },
+      {
+        "actual_allowed": false,
+        "case": "outside-symlink-correct-hash",
+        "error": "artifact_path",
+        "expected_allowed": false,
+        "passed": true
+      }
+    ]
+  },
+  "windows_junction_controls": [
+    {
+      "case": "inside-matching-hash",
+      "status": "PASS",
+      "actual_allowed": true,
+      "expected_allowed": true,
+      "error": null
+    },
+    {
+      "case": "inside-stale",
+      "status": "PASS",
+      "actual_allowed": false,
+      "expected_allowed": false,
+      "error": "artifact_hash"
+    },
+    {
+      "case": "escape-matching-hash",
+      "status": "PASS",
+      "actual_allowed": false,
+      "expected_allowed": false,
+      "error": "artifact_path"
+    }
+  ],
+  "limits": [
+    "Independent Windows tests remain original Tester evidence. This Manager supplemental result does not retroactively modify that report or establish Tester-thread WSL proof.",
+    "Native Linux /tmp extraction and exact117source hashes were checked. Tested symlink/junction/hardlink behavior is not race-free access or OS isolation.",
+    "Host execution approval is not a new Gate3 Owner fixture approval; no new experiment ran."
+  ]
+}

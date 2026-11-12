@@ -1,0 +1,104 @@
+[
+  {
+    "scope": "tests",
+    "command": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 93,
+    "skips": 2,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "02dd0aecd06f6a6c6764b664b99ee255f5ceac00ee374b1e8f82f5b8722d91bb"
+  },
+  {
+    "scope": "demo/receipt",
+    "command": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 12,
+    "skips": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4b547ebacee947a1fb338b18d415758556b1cac25d721baa12c553fa02fefe64"
+  },
+  {
+    "scope": "demo/csv-summary",
+    "command": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 15,
+    "skips": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "348e0fdfd6e85687633fc33bfb521ac18ca6eebba6e7c4586ac8eeb157fad678"
+  },
+  {
+    "scope": "demo/structured-flow",
+    "command": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 4,
+    "skips": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "959844ccf9fbe58f260f2676ea2335fca79acee326210ae5d6c313fa64e47435"
+  },
+  {
+    "scope": "reports/demo/verification",
+    "command": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 5,
+    "skips": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "195ae240511fadd006cf4ed2114d4052cb619cda8e0058b0d839da041438f83a"
+  },
+  {
+    "scope": "reports/csv-summary/verification",
+    "command": [
+      "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 6,
+    "skips": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "614d16db68b0e335159ae032b6d21972d89c5f4c9fa01f4deeb18706dbb1112f"
+  }
+]

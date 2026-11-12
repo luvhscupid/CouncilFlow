@@ -1,0 +1,347 @@
+[
+  {
+    "name": "build",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "tools/build_release.py"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "5201ff42ea6bd8304676dbfcf1c78077cbef460d1d067f21cade0f7b6ffe4844",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "checkout-0",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "c2a5c654fdca5403047f97d7bd00bb13c9f1548e95914f829aea8b976a5e67bd",
+    "tests_run": 102,
+    "skipped": 2
+  },
+  {
+    "name": "checkout-1",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "75b7901712edc9174daad175ebec298c60955d47a1c71bb7eb087817cc8071bd",
+    "tests_run": 13,
+    "skipped": 0
+  },
+  {
+    "name": "checkout-2",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "a6b5040815bd08d78ef841d710c80834ab1b84395a0d61779e4979b45fe28acf",
+    "tests_run": 15,
+    "skipped": 0
+  },
+  {
+    "name": "checkout-3",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "7678ff2bc2064a33dbd8d62d1b1b6900eac16f0c29b305a11d6448b676edd85c",
+    "tests_run": 5,
+    "skipped": 0
+  },
+  {
+    "name": "checkout-4",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "360ededf3abe5c6b987781723b8d688c42d4e6baedc334e4281d4ad11f6b89a2",
+    "tests_run": 5,
+    "skipped": 0
+  },
+  {
+    "name": "checkout-5",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "d5135a124900c968f8d3ef2b466c8e6f1bc2aeeeb61c86d6f1342e08b3c3ff89",
+    "tests_run": 6,
+    "skipped": 0
+  },
+  {
+    "name": "CA01-06",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-final-release-audit/contract-audit/negative_controls.py"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "0bf05a1f44df269ebf4898e95da7a9ecdeffbc21453cb136627af43f55b7ac80",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "CA07-current",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-final-release-audit/contract-audit/extra/challenge.py",
+      "--current"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "175936dad06606aef4feb907bc127ea78c3a9b75ec4e9bf80a09dec9973df5f4",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "CA08-current",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-final-release-audit/contract-audit/extra/api_controls.py",
+      "--current"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "81f64bb4ac58fa0c64d6ab38710c124898cd219c3f535618a8958b8b5836bd4c",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "examples",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "--root",
+      "."
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "9f03a65923ff8d8b60eaf657ce3336e645f1ac9cf669f2f7454555ce047a5971",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "policy",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "policy",
+      ".agents/skills/council-flow/policies/roles.yaml"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e00d2405ad16b1c98fe682dbb1308d86f9bb86c5a475c71371f9e969ccb018a7",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "diff-check",
+    "command": "git",
+    "arguments": [
+      "-c",
+      "core.whitespace=cr-at-eol",
+      "diff",
+      "--check",
+      "--",
+      ".agents",
+      "tests",
+      "demo/receipt",
+      "demo/structured-flow",
+      "README.md",
+      "RELEASE.md",
+      "tools"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "fb43040f0fac16fb59acbca804811fae0ade6dc3f83a2464888beb1786c6917d",
+    "tests_run": null,
+    "skipped": 0
+  },
+  {
+    "name": "extraction-0",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "74be4abaef206a0dd265adaa1ac752ec7fb20fab0af8d8056e51ccbd182dc90f",
+    "tests_run": 102,
+    "skipped": 2
+  },
+  {
+    "name": "extraction-1",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "b3fe6915e1f11035c9a734d3ac579c972685648fe7829e33ac92682240463e82",
+    "tests_run": 13,
+    "skipped": 0
+  },
+  {
+    "name": "extraction-2",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "a90efd85f28ce8f70521834862a92a57e80721927905a2590ec559808864d34a",
+    "tests_run": 15,
+    "skipped": 0
+  },
+  {
+    "name": "extraction-3",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "a23e8e350f0eb6068bf81bc464dd9d5fd6c69a1c76be7bbf2ff90ed804df9d28",
+    "tests_run": 5,
+    "skipped": 0
+  },
+  {
+    "name": "extraction-4",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "d8a967278fc8cf7824b21383199b1e1ae183147a136ee26798d406155c89099c",
+    "tests_run": 5,
+    "skipped": 0
+  },
+  {
+    "name": "extraction-5",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "35d3c37f5d9b2a56ae023a3083169dd7a5297e21f9366760037d2b929aa91dff",
+    "tests_run": 6,
+    "skipped": 0
+  },
+  {
+    "name": "extracted-examples",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "--root",
+      "."
+    ],
+    "cwd": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{ec07f20c-c4a6-4486-b344-a714496d955f}\\Temp\\councilflow-worker-final-r8dmq9_2",
+    "exit_code": 0,
+    "stdout_sha256": "9f03a65923ff8d8b60eaf657ce3336e645f1ac9cf669f2f7454555ce047a5971",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests_run": null,
+    "skipped": 0
+  }
+]

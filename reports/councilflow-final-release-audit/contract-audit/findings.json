@@ -1,0 +1,106 @@
+{
+  "scope": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    ".agents/skills/council-flow/references/message-contract.json",
+    "tests/test_contracts.py"
+  ],
+  "graph": {
+    "project": "E-Saint-PROJECTS-CouncilFlow-main",
+    "generation": "2026-11-12T16:27:29Z",
+    "coverage": "three scoped files metadata_match/no recorded issue; best effort only",
+    "source_fallback": "All production helper paths inspected directly; tests read in bounded chunks, with literal method search."
+  },
+  "execution": {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports\\councilflow-final-release-audit\\contract-audit\\negative_controls.py"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 1,
+    "stdout_sha256": "65a6230028c5d01c3b78677ff5ac078904a7693098ed80e1de1abdc15c89d8fc",
+    "production_sha256": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+    "fixture_sha256": "2fef58b03f8827f64f17ab365ceef5e6213d40d3ee26c08a08c8406ae039e3d2",
+    "reproduction_sha256": "39840746b73a90d8270004197295f0c71035284b993bddc2f18c0fe1e06158ae"
+  },
+  "findings": [
+    {
+      "id": "CA01",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P0",
+      "severity": "high",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:729",
+      "case": "mandatory_planner_failure_bypassed",
+      "mechanism": "Passing final checks only require an earlier Manager accept; supplied earlier failed Planner checks in the same attempt are ignored. A duplicate later check can change FAIL to PASS against unchanged candidate without rework.",
+      "minimal_patch": "Reject accept/passed final-check paths when a known unmet original Planner result remains for this task/plan/attempt; repairs retain failed history and use a new authorized attempt.",
+      "acceptance_test": "Our negative control rejected; existing failed-Planner fresh-Worker recovery positive control remains valid."
+    },
+    {
+      "id": "CA02",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "high",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:664",
+      "case": "mandatory_reviewer_failure_hidden",
+      "mechanism": "Known failures lookup considers only failed Tester reports. A prior real Reviewer MISMATCH/failed result for exact candidate can be omitted from report_ids and accepted after another passing Reviewer result.",
+      "minimal_patch": "Reject acceptance when earlier supplied failed mandatory Reviewer reports remain for exact task/attempt/candidate, preserving failure in new-attempt recovery.",
+      "acceptance_test": "Insert failed MISMATCH report before later passing Reviewer; accept must reject even when report_ids omits failed report."
+    },
+    {
+      "id": "CA03",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "high",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:689",
+      "case": "independent_required_coverage_split",
+      "mechanism": "accept coverage unions Tester and Reviewer acceptance IDs. Tester can verify AC1 only, Reviewer report AC2 only while rerunning AC1, and Manager accepts AC1+AC2. AC2 has no independent Tester verification.",
+      "minimal_patch": "Require separate passing Tester coverage and passing Reviewer coverage for all accepted original criteria; validate rerun acceptance_id against Reviewer assignment if relevant.",
+      "acceptance_test": "Split AC1/AC2 coverage rejected; full original sequence and valid bounded non-final assignments remain supported."
+    },
+    {
+      "id": "CA04",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:634",
+      "case": "truthful_reviewer_failure_with_match",
+      "mechanism": "Sequence equates MATCH with passed report status. A Reviewer cannot truthfully fail original-plan comparison for a substantive discrepancy when independent deterministic rerun correctly matches. validate_message accepts the failed report but validate_sequence rejects it.",
+      "minimal_patch": "Require MATCH for passing report, but allow failed/blocked report with MATCH. Preserve discrepancy and failure; repeated command is repeatability only.",
+      "acceptance_test": "MATCH plus failed report and substantive discrepancy validates as an observed failed report; Manager acceptance still rejects it. MISMATCH plus passed continues rejection."
+    },
+    {
+      "id": "CA05",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:728",
+      "case": "original_planner_replaced",
+      "mechanism": "Final plan.check compares plan_ref only; a different Planner instance can issue it under the same original plan although workflow requires original Planner final comparison.",
+      "minimal_patch": "Bind plan.check sender/recipient to original plan.publish actors as supplied consistency, not authentication.",
+      "acceptance_test": "Changed final Planner rejected; same original Planner recovery accepted. External provenance remains host-observed."
+    },
+    {
+      "id": "CA06",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:550",
+      "case": "publication_objective_scope_changed",
+      "mechanism": "Republished same plan_id/revision checks only plan_ref and acceptance_ids; published objective and scope can change silently with unchanged referenced plan.",
+      "minimal_patch": "Require complete immutable published payload and actors for same plan/revision (except envelope message ID/reply) or reject republication; do not silently overwrite original plan record.",
+      "acceptance_test": "Changed objective or scope republication rejected; exact republication behavior explicitly documented."
+    }
+  ],
+  "already_covered": [
+    "Strict bounded UTF-8 decoding, duplicate JSON keys, NaN/Infinity/numeric overflow, unencodable surrogates, boolean plan revision/exit rejection, unknown fields, ordered criterion text/ID fidelity with no normalization, stale source digest, role-specific schema and hash/containment checks exist and are exercised by current tests.",
+    "authoritative_criteria_ref is trusted caller input; SHA256 does not authenticate Owner approval. No authentic separately approved Gate3 fixture established.",
+    "Context-free structure or manager-created actor labels cannot establish actual host identity; expected_senders must come from observed transport.",
+    "Prefix sequences intentionally support pre-dispatch validation; acceptance of a prefix or empty list is not task-completion evidence. No final completion claim made from prefix validation."
+  ],
+  "unverified_or_instruction_only": [
+    "Simultaneous Worker assignments are not rejected by the helper. One-mutating-Worker is policy; no scheduler/OS enforcement is promised.",
+    "Unknown terminal report duplicates and blocked-report recovery need explicit causal semantics before treating as mandatory failure; no speculative scheduler added.",
+    "Artifact checks resolve then open and remain TOCTOU vulnerable; not OS isolation. Windows symlink privilege can skip tests; this does not pass isolation.",
+    "No live runtime authenticity can be established by syntactic executable/workdir strings or evidence references alone. Native command observations are required."
+  ],
+  "no_source_edits": true
+}

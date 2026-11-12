@@ -1,0 +1,382 @@
+{
+  "candidate_manifest": "worker/final/candidate-manifest.json",
+  "archive_sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+  "rows": [
+    {
+      "suite": "tests",
+      "command_template": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "windows_checkout_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "run": 104,
+        "passed": 100,
+        "skipped": 4
+      },
+      "windows_final_extraction_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "run": 104,
+        "passed": 101,
+        "skipped": 3
+      },
+      "linux_final_extraction_manager": {
+        "suite": "tests",
+        "run": 104,
+        "passed": 104,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "suite": "demo/receipt",
+      "command_template": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "windows_checkout_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "run": 13,
+        "passed": 13,
+        "skipped": 0
+      },
+      "windows_final_extraction_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "run": 13,
+        "passed": 13,
+        "skipped": 0
+      },
+      "linux_final_extraction_manager": {
+        "suite": "demo/receipt",
+        "run": 13,
+        "passed": 13,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "suite": "demo/csv-summary",
+      "command_template": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "windows_checkout_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "run": 15,
+        "passed": 15,
+        "skipped": 0
+      },
+      "windows_final_extraction_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "run": 15,
+        "passed": 15,
+        "skipped": 0
+      },
+      "linux_final_extraction_manager": {
+        "suite": "demo/csv-summary",
+        "run": 15,
+        "passed": 15,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "suite": "demo/structured-flow",
+      "command_template": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "windows_checkout_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "run": 5,
+        "passed": 5,
+        "skipped": 0
+      },
+      "windows_final_extraction_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "run": 5,
+        "passed": 5,
+        "skipped": 0
+      },
+      "linux_final_extraction_manager": {
+        "suite": "demo/structured-flow",
+        "run": 5,
+        "passed": 5,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "suite": "reports/demo/verification",
+      "command_template": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "windows_checkout_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "run": 5,
+        "passed": 5,
+        "skipped": 0
+      },
+      "windows_final_extraction_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "run": 5,
+        "passed": 5,
+        "skipped": 0
+      },
+      "linux_final_extraction_manager": {
+        "suite": "reports/demo/verification",
+        "run": 5,
+        "passed": 5,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    },
+    {
+      "suite": "reports/csv-summary/verification",
+      "command_template": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "windows_checkout_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "run": 6,
+        "passed": 6,
+        "skipped": 0
+      },
+      "windows_final_extraction_tester": {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{7cf54607-e2a4-443d-a86a-f5028c08c2f3}\\Temp\\cf-tester-extract-wef535ro",
+        "exit_code": 0,
+        "run": 6,
+        "passed": 6,
+        "skipped": 0
+      },
+      "linux_final_extraction_manager": {
+        "suite": "reports/csv-summary/verification",
+        "run": 6,
+        "passed": 6,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    }
+  ],
+  "totals": {
+    "windows_checkout_tester": {
+      "run": 148,
+      "passed": 144,
+      "skipped": 4,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "windows_final_extraction_tester": {
+      "run": 148,
+      "passed": 145,
+      "skipped": 3,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "linux_final_extraction_manager": {
+      "run": 148,
+      "passed": 148,
+      "skipped": 0,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "extra_controls": {
+    "synthetic": {
+      "cases": 65,
+      "satisfied": 63,
+      "skipped": 2,
+      "failed": 0
+    },
+    "mutants": {
+      "killed": 12,
+      "survived": 0,
+      "invalid": 0,
+      "skipped": 0
+    },
+    "approved_windows_junction": {
+      "passed": 3
+    },
+    "native_linux_symlink": {
+      "passed": 3
+    }
+  },
+  "historical_separate": "distribution-audit/historical-suite-results.json: starter2 with1 intentional failure; restoration initial8 with3 errors, final7 with2 obsolete fixture errors; unchanged, excluded from current pass totals.",
+  "provenance": "Windows own native Tester thread; Linux and approved junctions Manager supplemental execution after child approval request remained pending and was interrupted. Original Tester packet remains unchanged.",
+  "normalization": "stdout.replace(CRLF,LF) only; exact harness/executable/args/cwd/inputs in tester/deterministic-execution.json."
+}

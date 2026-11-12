@@ -1,0 +1,640 @@
+{
+  "scope": "Existing generated Worker evidence before job.report; no recursive self-hash. Product files separately enumerated.",
+  "files": [
+    {
+      "path": "reports/councilflow-final-release-audit/worker/auditor-controls-green.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/auditor-controls-green.stdout.bin",
+      "size": 2221,
+      "sha256": "e86c433736c768382e23309e474fddaada7e855c4b7b890022d4b2f25dff62be"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/build.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/build.stdout.bin",
+      "size": 257,
+      "sha256": "8176530ad475373c5f9673a2abbd13c5405b0f72a84ed8aac93838dff7260037"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA01-06-final.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA01-06-final.stdout.bin",
+      "size": 2221,
+      "sha256": "45a0d433ce7b8d4c9c626d7e0c0c884eb3cc8c13545503476b9ac6b6d41a4a0a"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA01-06.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA01-06.stdout.bin",
+      "size": 2221,
+      "sha256": "45a0d433ce7b8d4c9c626d7e0c0c884eb3cc8c13545503476b9ac6b6d41a4a0a"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA07-08-red.stderr.bin",
+      "size": 20094,
+      "sha256": "6f79326b2abb67b8cfd13bf4e54c4061edee5b3c5e5db0c53ceea85d6e56e761"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA07-08-red.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA07-current.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA07-current.stdout.bin",
+      "size": 9441,
+      "sha256": "7f95b4d6c2204e29f0890d9934ee8e60503521d231476066e39bcbe12d2efd3c"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA07-final.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA07-final.stdout.bin",
+      "size": 9441,
+      "sha256": "7f95b4d6c2204e29f0890d9934ee8e60503521d231476066e39bcbe12d2efd3c"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA08-current.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA08-current.stdout.bin",
+      "size": 1441,
+      "sha256": "66f018b5e20f7adf35c76ecf29f515ac5af2e51d538514dab67d46ef37acf298"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA08-final.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/CA08-final.stdout.bin",
+      "size": 1441,
+      "sha256": "66f018b5e20f7adf35c76ecf29f515ac5af2e51d538514dab67d46ef37acf298"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/candidate-manifest.json",
+      "size": 22355,
+      "sha256": "59eaab0e7c5a395fa575c2b223c21bb084e8baf033ae11400584e1d6af551538"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+      "size": 2426,
+      "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/changed-product-files.json",
+      "size": 732,
+      "sha256": "b018a4d8ce52eac1e9565506a37b52af672fae43040abf29d2cd089592cdedad"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-0.stderr.bin",
+      "size": 17583,
+      "sha256": "c2a5c654fdca5403047f97d7bd00bb13c9f1548e95914f829aea8b976a5e67bd"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-0.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-1.stderr.bin",
+      "size": 1533,
+      "sha256": "75b7901712edc9174daad175ebec298c60955d47a1c71bb7eb087817cc8071bd"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-1.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-2.stderr.bin",
+      "size": 1910,
+      "sha256": "a6b5040815bd08d78ef841d710c80834ab1b84395a0d61779e4979b45fe28acf"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-2.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-3.stderr.bin",
+      "size": 674,
+      "sha256": "7678ff2bc2064a33dbd8d62d1b1b6900eac16f0c29b305a11d6448b676edd85c"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-3.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-4.stderr.bin",
+      "size": 873,
+      "sha256": "360ededf3abe5c6b987781723b8d688c42d4e6baedc334e4281d4ad11f6b89a2"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-4.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-5.stderr.bin",
+      "size": 1063,
+      "sha256": "d5135a124900c968f8d3ef2b466c8e6f1bc2aeeeb61c86d6f1342e08b3c3ff89"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/checkout-5.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/contracts-green.stderr.bin",
+      "size": 13608,
+      "sha256": "efcdbb59e3cdf7b973599ddc1d65362e9393b8c7919951c841b4787944eedc9b"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/contracts-green.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/contracts-red.stderr.bin",
+      "size": 24592,
+      "sha256": "86151889ac1bc8e21f756980531b9c01e094db4c558224ea86172a902a858b25"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/contracts-red.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/csv-final.stderr.bin",
+      "size": 1910,
+      "sha256": "f6c87baceea22a1ebabc8221b65d9be9c76e7a6359006df6cec358be4d8644fb"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/csv-final.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/developer-results.json",
+      "size": 5620,
+      "sha256": "e31cc9c7bcc9ff98bdbe6c81a8b1587428dc923d15dab4bc06ee584406ecbefa"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/diff-check.stderr.bin",
+      "size": 1033,
+      "sha256": "fb43040f0fac16fb59acbca804811fae0ade6dc3f83a2464888beb1786c6917d"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/diff-check.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/draft-disposition.json",
+      "size": 591,
+      "sha256": "6d9184c5091b8085c9694b2562392c5327698399255e65c8f56a98640c972a31"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/examples.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/examples.stdout.bin",
+      "size": 195,
+      "sha256": "4fbbf286cebc4ce2cb5be53d6ba3e3757a1c583a221af2d8c9b092a203561f96"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extracted-examples.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extracted-examples.stdout.bin",
+      "size": 195,
+      "sha256": "4fbbf286cebc4ce2cb5be53d6ba3e3757a1c583a221af2d8c9b092a203561f96"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-0.stderr.bin",
+      "size": 17583,
+      "sha256": "74be4abaef206a0dd265adaa1ac752ec7fb20fab0af8d8056e51ccbd182dc90f"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-0.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-1.stderr.bin",
+      "size": 1533,
+      "sha256": "b3fe6915e1f11035c9a734d3ac579c972685648fe7829e33ac92682240463e82"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-1.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-2.stderr.bin",
+      "size": 1910,
+      "sha256": "a90efd85f28ce8f70521834862a92a57e80721927905a2590ec559808864d34a"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-2.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-3.stderr.bin",
+      "size": 674,
+      "sha256": "a23e8e350f0eb6068bf81bc464dd9d5fd6c69a1c76be7bbf2ff90ed804df9d28"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-3.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-4.stderr.bin",
+      "size": 873,
+      "sha256": "d8a967278fc8cf7824b21383199b1e1ae183147a136ee26798d406155c89099c"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-4.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-5.stderr.bin",
+      "size": 1063,
+      "sha256": "35d3c37f5d9b2a56ae023a3083169dd7a5297e21f9366760037d2b929aa91dff"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/extraction-5.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/build.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/build.stdout.bin",
+      "size": 257,
+      "sha256": "96fc09af0b906a0d6a7bdfb81841853470ec3050b36c46a72d7e96780f352974"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/CA01-06.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/CA01-06.stdout.bin",
+      "size": 2221,
+      "sha256": "45a0d433ce7b8d4c9c626d7e0c0c884eb3cc8c13545503476b9ac6b6d41a4a0a"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/CA07-current.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/CA07-current.stdout.bin",
+      "size": 9441,
+      "sha256": "7f95b4d6c2204e29f0890d9934ee8e60503521d231476066e39bcbe12d2efd3c"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/CA08-current.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/CA08-current.stdout.bin",
+      "size": 1441,
+      "sha256": "66f018b5e20f7adf35c76ecf29f515ac5af2e51d538514dab67d46ef37acf298"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "size": 22515,
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-0.stderr.bin",
+      "size": 18546,
+      "sha256": "fb32412e32565d769d0ed4fae53b4ea62c28a78290ec901b1c52fbf62d05f04f"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-0.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-1.stderr.bin",
+      "size": 1533,
+      "sha256": "f4fd3c8f739379bbb5aa09f33726c64bba74fad75ab8df9817f4d085b17071c8"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-1.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-2.stderr.bin",
+      "size": 1910,
+      "sha256": "61fdc9412c3bdf66babfac81fc037b034ba0f1f2d0d866e5e79a73217d876d59"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-2.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-3.stderr.bin",
+      "size": 674,
+      "sha256": "7be4e7e8dac17b40c0f040feddbe39111fe3ff826788ebc6a1d90a69073ddeb3"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-3.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-4.stderr.bin",
+      "size": 873,
+      "sha256": "f3840d0e5151fa3109ced86ab790593710b280568264176debd88e198c76e898"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-4.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-5.stderr.bin",
+      "size": 1063,
+      "sha256": "be98a154005044441f13a08f29aa5a69a7c91626d85f4fed7fb9df79110a4023"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/checkout-5.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/diff-check.stderr.bin",
+      "size": 1033,
+      "sha256": "fb43040f0fac16fb59acbca804811fae0ade6dc3f83a2464888beb1786c6917d"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/diff-check.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/examples.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/examples.stdout.bin",
+      "size": 195,
+      "sha256": "4fbbf286cebc4ce2cb5be53d6ba3e3757a1c583a221af2d8c9b092a203561f96"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extracted-examples.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extracted-examples.stdout.bin",
+      "size": 195,
+      "sha256": "4fbbf286cebc4ce2cb5be53d6ba3e3757a1c583a221af2d8c9b092a203561f96"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-0.stderr.bin",
+      "size": 18513,
+      "sha256": "fcbeb57bd8108322b54cf0564e24b87bca8d6ce2144375d0c19ddacd4a624fd0"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-0.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-1.stderr.bin",
+      "size": 1533,
+      "sha256": "5168ed235eef524d01c164f9120f1c9ae858b3bbf397650fe2deea52be7554d1"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-1.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-2.stderr.bin",
+      "size": 1910,
+      "sha256": "177d20550a27a6fe4b058a25d6f925aafcd0f420e0b5d867f4b54165eb0efac0"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-2.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-3.stderr.bin",
+      "size": 674,
+      "sha256": "7603caf1a116308f2d58b0fc009176377a0233ed3d5c979bc00941ccb2bbc382"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-3.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-4.stderr.bin",
+      "size": 873,
+      "sha256": "c0caad1802d669b3c1588275e899a18547ffc1162196bf8a59cbf2dd40b957a0"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-4.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-5.stderr.bin",
+      "size": 1063,
+      "sha256": "4df8d771697d2833da1b405e6aa2c87cc4566a81a6fe8e2128c2b649cce080b2"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/extraction-5.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/final-executions.json",
+      "size": 12413,
+      "sha256": "9df0746a128478fbbb137c88e18e091d2ab15ba2edf3613e6e04ab8ec2707478"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/package-verification.json",
+      "size": 1022,
+      "sha256": "0fa156eb87b811461c65a6353019a184c78af299f5765bc31353c4c3177083ee"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/policy.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final/policy.stdout.bin",
+      "size": 194,
+      "sha256": "074f588ee6b65188c7986423198d2e9ee80eda0e0bf564c2ca8b911090a04457"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/final-executions.json",
+      "size": 12413,
+      "sha256": "16aa046b47c3e9f1bba9165f3a1645b72bbebb4ed26f18cfbe7434119ef1d13e"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/finish_release.py",
+      "size": 6759,
+      "sha256": "7c66f33f520b60afe5bfccea5279aef0380b3394012e70061203a8c064f2fdcb"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/green-results.json",
+      "size": 4369,
+      "sha256": "0e2483704abc1612f0d9672d6d414991c97c849057561eac240af8bbab6e62e0"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/independent-csv-final.stderr.bin",
+      "size": 1063,
+      "sha256": "03388dfe738e4d2587f3bf092ac894871937f8bdc5466e56a023c58e3fe3ad33"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/independent-csv-final.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/independent-receipt-final.stderr.bin",
+      "size": 873,
+      "sha256": "3779395e9fdc81b078859ffd01dcfbe29467202f287841503be77b8e74e33cfb"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/independent-receipt-final.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/package-verification.json",
+      "size": 1022,
+      "sha256": "8ee8962b4347e6c25a89ddd8b23611a7cf6b024b566dad5467e12780773f9a1a"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/policy.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/policy.stdout.bin",
+      "size": 194,
+      "sha256": "074f588ee6b65188c7986423198d2e9ee80eda0e0bf564c2ca8b911090a04457"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/receipt-final.stderr.bin",
+      "size": 1533,
+      "sha256": "2b9f693215a1d02fc3df47294368f6dafe5d597676f5a8e93bc40d6d57aa95d7"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/receipt-final.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/receipt-green.stderr.bin",
+      "size": 1533,
+      "sha256": "4fc42da3ea2fb22c17c7ccf5e84e249b41ec5fa137991a9b12f7568fb4030ecd"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/receipt-green.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/receipt-red.stderr.bin",
+      "size": 2528,
+      "sha256": "75f97fb5073f47b2a1e9c75eacd2e6d497c9bdd3d234bce27e9f1ed3b018cf33"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/receipt-red.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/red-results.json",
+      "size": 4712,
+      "sha256": "64956c583f7aea79f58c02b426ba3f30e21f13734c2b1977d4d4bdf239de7dda"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/repository-final.stderr.bin",
+      "size": 17583,
+      "sha256": "b3df1951e0df9f125750b5fd450264387b1280e8de637bf91e61e99240cc9159"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/repository-final.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/structured-final.stderr.bin",
+      "size": 674,
+      "sha256": "536347c5d926eeea4a090f574b0628c8020a3db64f774273c8029bb34fe83ccc"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/structured-final.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/structured-green.stderr.bin",
+      "size": 674,
+      "sha256": "7229e0b1c04e42617cbc04dd49eaa62241d80de6b1365a889357d8d9fcd45c32"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/structured-green.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/structured-red.stderr.bin",
+      "size": 1737,
+      "sha256": "8464f25cf52a76a672704a202785dd9b912bcc0ecd15d0895e5d1e36243b0607"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/worker/structured-red.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

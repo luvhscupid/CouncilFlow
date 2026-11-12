@@ -1,0 +1,471 @@
+{
+  "baseline": "3879c3d97efb6dfb5256445bf21748a95d0d2eab",
+  "status": "all_14_scoped_findings_addressed_and_independently_reviewed",
+  "findings": [
+    {
+      "id": "CA01",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P0",
+      "severity": "high",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:729",
+      "case": "mandatory_planner_failure_bypassed",
+      "mechanism": "Passing final checks only require an earlier Manager accept; supplied earlier failed Planner checks in the same attempt are ignored. A duplicate later check can change FAIL to PASS against unchanged candidate without rework.",
+      "minimal_patch": "Reject accept/passed final-check paths when a known unmet original Planner result remains for this task/plan/attempt; repairs retain failed history and use a new authorized attempt.",
+      "acceptance_test": "Our negative control rejected; existing failed-Planner fresh-Worker recovery positive control remains valid.",
+      "classification": "CONFIRMED DEFECT",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA02",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "high",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:664",
+      "case": "mandatory_reviewer_failure_hidden",
+      "mechanism": "Known failures lookup considers only failed Tester reports. A prior real Reviewer MISMATCH/failed result for exact candidate can be omitted from report_ids and accepted after another passing Reviewer result.",
+      "minimal_patch": "Reject acceptance when earlier supplied failed mandatory Reviewer reports remain for exact task/attempt/candidate, preserving failure in new-attempt recovery.",
+      "acceptance_test": "Insert failed MISMATCH report before later passing Reviewer; accept must reject even when report_ids omits failed report.",
+      "classification": "CONFIRMED DEFECT",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA03",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "high",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:689",
+      "case": "independent_required_coverage_split",
+      "mechanism": "accept coverage unions Tester and Reviewer acceptance IDs. Tester can verify AC1 only, Reviewer report AC2 only while rerunning AC1, and Manager accepts AC1+AC2. AC2 has no independent Tester verification.",
+      "minimal_patch": "Require separate passing Tester coverage and passing Reviewer coverage for all accepted original criteria; validate rerun acceptance_id against Reviewer assignment if relevant.",
+      "acceptance_test": "Split AC1/AC2 coverage rejected; full original sequence and valid bounded non-final assignments remain supported.",
+      "classification": "CONFIRMED DEFECT",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA04",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:634",
+      "case": "truthful_reviewer_failure_with_match",
+      "mechanism": "Sequence equates MATCH with passed report status. A Reviewer cannot truthfully fail original-plan comparison for a substantive discrepancy when independent deterministic rerun correctly matches. validate_message accepts the failed report but validate_sequence rejects it.",
+      "minimal_patch": "Require MATCH for passing report, but allow failed/blocked report with MATCH. Preserve discrepancy and failure; repeated command is repeatability only.",
+      "acceptance_test": "MATCH plus failed report and substantive discrepancy validates as an observed failed report; Manager acceptance still rejects it. MISMATCH plus passed continues rejection.",
+      "classification": "CONFIRMED DEFECT",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA05",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:728",
+      "case": "original_planner_replaced",
+      "mechanism": "Final plan.check compares plan_ref only; a different Planner instance can issue it under the same original plan although workflow requires original Planner final comparison.",
+      "minimal_patch": "Bind plan.check sender/recipient to original plan.publish actors as supplied consistency, not authentication.",
+      "acceptance_test": "Changed final Planner rejected; same original Planner recovery accepted. External provenance remains host-observed.",
+      "classification": "CONFIRMED DEFECT",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA06",
+      "class": "CONFIRMED DEFECT",
+      "priority": "P1",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:550",
+      "case": "publication_objective_scope_changed",
+      "mechanism": "Republished same plan_id/revision checks only plan_ref and acceptance_ids; published objective and scope can change silently with unchanged referenced plan.",
+      "minimal_patch": "Require complete immutable published payload and actors for same plan/revision (except envelope message ID/reply) or reject republication; do not silently overwrite original plan record.",
+      "acceptance_test": "Changed objective or scope republication rejected; exact republication behavior explicitly documented.",
+      "classification": "CONFIRMED DEFECT",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "DIST-01",
+      "classification": "DOCUMENTATION DRIFT",
+      "severity": "P2",
+      "paths": [
+        "README.md:9-14"
+      ],
+      "mechanism": "Current lead says this workspace is no-Git isolated CouncilFlow-round6 copy. Actual root has Git history/HEAD3879c3d and current dist release. It also implies historical release classification describes current tree.",
+      "minimal_patch": "Replace lead with current checkout purpose/status and explicitly label Round6 evidence historical; link this mission report when stable.",
+      "acceptance": "README current intro consistent with actual Git/package state and separates software readiness from frozen Gate3.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "DIST-02",
+      "classification": "CONFIRMED DEFECT",
+      "severity": "P2",
+      "paths": [
+        "demo/structured-flow/sum_values.py:19",
+        "demo/structured-flow/test_sum_values.py"
+      ],
+      "mechanism": "Two accepted 4300-digit ASCII integers sum to 4301 digits; print(total) raises unhandled ValueError at default Python conversion bound. Current four tests pass despite this real defect.",
+      "negative_control": "Invoke exact Python executable with program and two strings of 4300 nines. Exit1 traceback captured structured-overflow.stderr.bin.",
+      "minimal_patch": "Catch total-to-string conversion ValueError and use parser.error with explicit supported output bound; retain exact results for representable totals and do not change global interpreter settings. Alternatively exact chunked formatting only if original acceptance requires arbitrary output size.",
+      "acceptance": "Regression asserts no traceback/partial stdout and clear failure at boundary; nearby valid 4300-digit total succeeds; cancellation succeeds.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "DIST-03",
+      "classification": "CONFIRMED DEFECT",
+      "severity": "P2",
+      "paths": [
+        "demo/receipt/receipt_calculator.py:82-96",
+        "demo/receipt/test_receipt_calculator.py:test_context_independence_and_large_sum"
+      ],
+      "mechanism": "line_total and grand_total set only prec inside inherited localcontext. Under ambient Decimal Emax=3, valid rice quantity2/unit_price30000 raises decimal.Overflow, contradicting supported exact arithmetic/API context independence. Existing test varies only precision and misses exponent-range inheritance.",
+      "negative_control": "with localcontext() as c: c.Emax=3; ProductEntry(\"rice\",\"2\",\"30000\",\"kg\").line_total -> Overflow. Same for grand_total. Evidence receipt-context-probe.json.",
+      "minimal_patch": "Set an explicit sufficient exponent range/clamp for internal exact arithmetic contexts as well as precision, without mutating ambient context. Preserve Decimal API and existing bounds.",
+      "acceptance": "Test exact allowed max/min fractional products and totals under restrictive caller Emax/Emin/clamp/traps; assert outer context unchanged.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "DIST-04",
+      "classification": "DOCUMENTATION DRIFT",
+      "severity": "P2",
+      "paths": [
+        "reports/councilflow-e10/release/build_package.py",
+        "reports/councilflow-e10/release/package-verification.json"
+      ],
+      "mechanism": "Historical E10 package builder ran tests+receipt+structured+MCP+two examples but omitted current CSV15 and independent receipt5/CSV6 while recording independent_full_suites PASS_IN_EXTRACTED_PACKAGE. This is a historical coverage limit, not proof package source fails.",
+      "minimal_patch": "Preserve E10 evidence; new release verification must enumerate all six current suites on checkout/extraction, with exact totals and selective/overlap checks labeled.",
+      "acceptance": "New report includes each of tests, receipt, CSV, structured, independent receipt and independent CSV.",
+      "implementation_disposition": "Historical record preserved; all six current suites now required for checkout and final extraction",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "DOC-05",
+      "classification": "DOCUMENTATION DRIFT",
+      "severity": "P1",
+      "paths": [
+        ".agents/skills/council-flow/references/communication.md",
+        ".agents/skills/council-flow/references/workflow.md"
+      ],
+      "mechanism": "Instructions demand external approved criteria sidecar before every dispatch, while ordinary coding goals explicitly supported and helper ordinary mode accepts them. This blocks normal use or invites invented Owner fixture.",
+      "minimal_patch": "Apply required artifact fidelity only to invocations whose policy requires authoritative frozen criteria; ordinary requests use original native plan; no invented approval. Recheck fidelity at final check when required.",
+      "acceptance": "Ordinary no-sidecar valid; explicit required mode missing/stale rejects; exact source text compared before dispatch and final check.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA07",
+      "classification": "CONFIRMED DEFECT",
+      "priority": "P2",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:artifact",
+      "mechanism": "PurePosixPath.is_absolute misses Windows drive-prefixed spellings. C:/.../authorized/evidence.txt and C:evidence.txt are accepted on Windows with matching bytes inside root; both shapes also pass without root. This contradicts portable repository-relative POSIX artifact contract.",
+      "affected_cases": [
+        "path_windows_absolute_shape",
+        "path_windows_drive_relative_shape",
+        "path_windows_absolute_in_root",
+        "path_windows_drive_relative_in_root"
+      ],
+      "minimal_patch": "Reject Windows drive prefixes portably before filesystem resolution while preserving allowed in-root symlinks.",
+      "acceptance": "All four controls reject drive-prefixed paths; ordinary relative paths continue passing; outside containment remains enforced.",
+      "boundary": "No outside-root escape observed.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "CA08",
+      "classification": "CONFIRMED DEFECT",
+      "priority": "P2",
+      "severity": "low",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:_authoritative_criteria",
+      "mechanism": "Python API supplied authoritative_criteria_ref is not passed through _tree/serialization; artifact_id with lone surrogate is accepted although it cannot encode as strict UTF-8. CLI read_json already rejects.",
+      "affected_cases": [
+        "authoritative_reference_surrogate_identity"
+      ],
+      "minimal_patch": "Validate supplied authoritative reference with _tree before artifact use, matching other supplied-context guards; or guard artifact string UTF-8 encodability.",
+      "acceptance": "Actual surrogate API input raises controlled ContractError; valid authoritative reference remains accepted.",
+      "boundary": "No Owner authentication or containment bypass demonstrated.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    },
+    {
+      "id": "DIST-05",
+      "classification": "CONFIRMED DEFECT",
+      "severity": "P1",
+      "paths": [
+        "tools/build_release.py"
+      ],
+      "mechanism": "New builder used fixed temporary archive name with truncating open; disposable authorized-root temp was hardlinked to sibling disposable sentinel and build modified outside sentinel bytes. Sidecar write_text similarly needs atomic replacement.",
+      "reproduction": "builder-hardlink-negative-control.json; build accepted, outside_bytes_changed=true; no real external path touched.",
+      "minimal_patch": "Validate output directory link/containment best effort; unique exclusive temporary writes with atomic replacement for archive/checksum/manifest, preserving pre-existing link targets and temp path.",
+      "acceptance": "Actual hardlink sentinel unchanged for archive temp and sidecars; supported output-dir junction/symlink rejects before write; current normal/extracted builder tests and byte mapping pass.",
+      "implementation_disposition": "Patched in FRA-A01; independent Tester/Reviewer evidence pending",
+      "final_disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "verification": [
+        "worker/change-ledger.json",
+        "tester/job-report.json",
+        "tester/mutation-results-final.json",
+        "reviewer/job-report.json"
+      ]
+    }
+  ],
+  "already_covered": [
+    "Strict bounded UTF-8 decoding, duplicate JSON keys, NaN/Infinity/numeric overflow, unencodable surrogates, boolean plan revision/exit rejection, unknown fields, ordered criterion text/ID fidelity with no normalization, stale source digest, role-specific schema and hash/containment checks exist and are exercised by current tests.",
+    "authoritative_criteria_ref is trusted caller input; SHA256 does not authenticate Owner approval. No authentic separately approved Gate3 fixture established.",
+    "Context-free structure or manager-created actor labels cannot establish actual host identity; expected_senders must come from observed transport.",
+    "Prefix sequences intentionally support pre-dispatch validation; acceptance of a prefix or empty list is not task-completion evidence. No final completion claim made from prefix validation.",
+    {
+      "area": "archive baseline",
+      "evidence": "archive-audit.json",
+      "result": "115 entries; CRC clean; safe relative unique names; exact worktree byte correspondence; no tested credential patterns; no .git/cache/dist self inclusion."
+    },
+    {
+      "area": "MCP local lifecycle",
+      "paths": [
+        ".agents/skills/council-flow/references/codebase-memory.md",
+        "tests/test_codebase_memory_integration.py"
+      ],
+      "result": "Instructions cover zero calls for installation-only root, exact project-root identity, freshness/pending/partial/offline fallback, bounded retrieval+coverage, post-edit synchronization, new project transition and graph context not authority. Nine tests are static instruction checks and passed within tests93. No local lifecycle runtime exists to exercise independently, and static tests are honestly described."
+    },
+    {
+      "area": "retired standalone recall",
+      "result": "Current active README/skill/workflow/reference static absence checks pass. Historical references remain historical. No operational dependency found."
+    },
+    {
+      "area": "demo existing behavior",
+      "evidence": "suite-results.json",
+      "result": "Six current suites exit0:135 tests run,133 passed,2symlink privilege skips, before proposed repairs. CSV and independent arithmetic oracles pass."
+    }
+  ],
+  "host_unverified": [
+    {
+      "id": "HOST-01",
+      "classification": "EXTERNAL HOST LIMITATION",
+      "status": "UNVERIFIED (HOST_CAPABILITY_MISSING)",
+      "scope": "E1/E2/E4 activation/causality/effective TOML metadata",
+      "disposition": "One capability inspection; no new Gate3 experiment."
+    },
+    {
+      "id": "MCP-01",
+      "classification": "SECURITY RISK/UNVERIFIED",
+      "scope": "Live empty/install-only/missing/offline/stale/pending/partial/wrong-root/new-project negative lifecycle states",
+      "disposition": "Initial normal navigation observed; actual postWorker refresh Transport closed. Direct-source fallback executed. Other live negative states remain unverified/static coverage only."
+    },
+    {
+      "id": "FS-01",
+      "classification": "SECURITY RISK/UNVERIFIED",
+      "scope": "Concurrent path-swap TOCTOU, OS sandbox enforcement, role authentication",
+      "disposition": "Best-effort helper validation cannot prove these; no speculative runtime/authority added."
+    },
+    {
+      "id": "INSTALL-01",
+      "classification": "DOCUMENTATION DRIFT",
+      "scope": "User-wide installed skill copies differ from project",
+      "disposition": "Outside authorized repository edits; preserved, project release authoritative. No global action needed for project-scoped controlled use."
+    }
+  ],
+  "historical_disposition": [
+    {
+      "attempt": "A004",
+      "source": "reports/councilflow-hardening/manager/rework-decision-a005.json",
+      "observation": "Real failure: top-level manifest digest conflicted in execution evidence. Fresh evidence-only A005 corrects identities; no need mutate prior reports."
+    },
+    {
+      "attempt": "A005",
+      "source": "reports/councilflow-hardening/manager/rework-decision-a006.json",
+      "observation": "Reviewer rerun matched but Tester selected command evidence_ref omitted at top-level; sequence correctly failed. Report-specific evidence defect, not application failure."
+    },
+    {
+      "attempt": "A006",
+      "source": "reports/councilflow-hardening/tester-a006/job-report.json",
+      "observation": "Current suites125/124pass1skip and candidate checks passed, but full prefix continued to fail because preserved invalid A005 remained in supplied context. A006 correction cannot retroactively validate A005."
+    },
+    {
+      "attempt": "A007",
+      "source": "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+      "observation": "New fully validated boundary used actual plan.publish in_reply_to null, original P004 criteria. Candidate independently verified. Earlier history retained with its limitations."
+    },
+    {
+      "attempt": "A008",
+      "source": "reports/councilflow-hardening/manager/rework-decision-a008.json; reports/councilflow-hardening/tester-a008/job-report.json",
+      "observation": "New package gap was real but M041 called it rework while citing passing reports and no failed Planner check; sequence correctly rejected rework_evidence. Package118 entries and six suites independently passed. Preserve successful candidate/package evidence separately; newly discovered work can be a new bounded authorized follow-up boundary with original criteria, not a synthetic failed report."
+    },
+    {
+      "attempt": "A009",
+      "source": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json; reports/councilflow-hardening/manager/worker-a009-assign.json",
+      "observation": "New genuine plan.publish null boundary and fresh evidence-only Worker bind completed A008 package output. Invalid M041 and A008 sequence remain cited as historical, not made valid."
+    }
+  ],
+  "historical_test_limits": {
+    "evidence": "historical-suite-results.json",
+    "starter": "2 tests,1 pass1 intentionally failing quantity fixture",
+    "restoration_initial": "8 tests,5pass3errors (obsolete created_at and unavailable symlink privilege); preserved unchanged",
+    "restoration_final": "7 tests,5pass2errors (obsolete created_at); preserved unchanged",
+    "rule": "Do not mix these historical compatibility failures into current pass totals or rewrite fixtures to erase history."
+  },
+  "architecture_limit": "No scheduler, authority server, new recall component, global policy change or frozen-rule amendment.",
+  "remaining_adversarial_baseline": {
+    "cases": {
+      "cases": 58,
+      "passed": 51,
+      "failed": 5,
+      "skipped": 2,
+      "note": "Five failed controls represent two newly confirmed defects. Synthetic control totals are not unittest suite totals."
+    },
+    "note": "51 expected behaviors covered; 5 failed controls led to CA07/CA08; 2 Windows symlink controls skipped. Final candidate checks must be run separately."
+  },
+  "final_dispositions": [
+    {
+      "id": "CA01",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA02",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA03",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA04",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA05",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA06",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "DIST-01",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "DIST-02",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "DIST-03",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "DIST-04",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "DOC-05",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA07",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "CA08",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    },
+    {
+      "id": "DIST-05",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained"
+    }
+  ],
+  "claim_limit": "All confirmed in-scope fixable findings from this bounded audit addressed; no claim that every possible bug is eliminated.",
+  "evidence_corrections": [
+    {
+      "issue": "Tester driver aggregate count initially captured first suite; final metadata derives148 aggregate from unchanged raw deterministic stdout.",
+      "record": "tester/windows-executions-final.json",
+      "oracle_changed": false
+    },
+    {
+      "issue": "Mutation decoded-source hash initially differed from raw bytes; exact raw-byte identities retained in final correction.",
+      "record": "tester/mutation-results-final.json",
+      "oracle_changed": false
+    }
+  ],
+  "untracked_preservation_limit": "Initial untracked paths were inventoried and retained, not all initially byte-hashed. Do not claim universal byte preservation for them."
+}

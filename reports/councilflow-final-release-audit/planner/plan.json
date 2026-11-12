@@ -1,0 +1,191 @@
+{
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "objective": "Deliver the best justified, stable, independently verified CouncilFlow release candidate by auditing the ENTIRE current project and repairing ALL confirmed, in-scope, technically repairable defects, not just E10. Eliminate repeated speculative loops. Preserve Owner authority and frozen governance.",
+  "acceptance": [
+    {
+      "id": "C01",
+      "criterion": "Full scoped audit performed with evidence, and no confirmed in-scope repairable defect knowingly left without disposition."
+    },
+    {
+      "id": "C02",
+      "criterion": "Source fixes independently tested with meaningful negative controls; E10 integrity intact."
+    },
+    {
+      "id": "C03",
+      "criterion": "Independent Tester and Reviewer command comparison accepted, with final Planner original-criteria map."
+    },
+    {
+      "id": "C04",
+      "criterion": "All applicable final checkout/extraction suites have accurate outcomes; no hidden mandatory failures."
+    },
+    {
+      "id": "C05",
+      "criterion": "Frozen governance unchanged; no unauthorized actions, false identity/OS sandbox claims or historical evidence rewriting."
+    },
+    {
+      "id": "C06",
+      "criterion": "Release package/checksum verified, installation instructions coherent, and local Git checkpoint finalized if changes were made."
+    },
+    {
+      "id": "C07",
+      "criterion": "Gate 3 separately and truthfully classified as verified/failed/blocked/unverified per its frozen evidence rules, rather than treated as a release-test checkbox."
+    }
+  ],
+  "criteria_provenance": {
+    "source": "Original Owner mission in inherited native session; exact seven COMPLETE bullets copied without changing text",
+    "external_owner_fixture": "NOT_ESTABLISHED",
+    "gate3_fixture_approval": "NOT_ESTABLISHED",
+    "derived_map_is_not_owner_approval": true,
+    "mandatory_frozen_gate3_run": "NOT_AUTHORIZED"
+  },
+  "scope": [
+    ".agents/skills/council-flow/",
+    ".codex/agents/",
+    "tests/",
+    "demo/ (current completed demos only)",
+    "README.md",
+    "RELEASE.md",
+    "dist/",
+    "reports/councilflow-final-release-audit/",
+    "Other active in-repository docs/examples only when a confirmed minimal in-scope correction is necessary"
+  ],
+  "protected": [
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+    "All pre-existing historical records and Owner working changes/untracked artifacts",
+    "Global Codex/OS configuration and other projects"
+  ],
+  "authority": "This mission authorization, subject to frozen governance; then Charter/frozen Gate3/C3; current normative skill/policy/contracts; source/current evidence; historical context last.",
+  "baseline_ref": {
+    "path": "reports/councilflow-final-release-audit/baseline.json",
+    "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0"
+  },
+  "acceptance_map_ref": {
+    "path": "reports/councilflow-final-release-audit/planner/acceptance-map.json",
+    "sha256": "8eec87398a5e2eb20e419e70af786766409208aedc33b0fd19e281f765c4c254"
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "owner": "Manager/read-only auditors",
+      "work": "Inspect all current source/config/docs/tests/releases and relevant historical chains; independently reproduce findings; create classification ledger.",
+      "dependency": [],
+      "output": "Audit ledger and immutable minimal reproductions; no speculative repairs."
+    },
+    {
+      "id": "T02",
+      "owner": "Fresh Worker, single mutator",
+      "work": "Repair every confirmed in-scope fixable finding with minimal code/tests/docs changes and developer checks; cumulative candidate inventory binds all active source bytes.",
+      "dependency": [
+        "T01",
+        "Manager validated plan/assignment"
+      ],
+      "output": "Worker report, changed files, stopped edits, cumulative immutable candidate."
+    },
+    {
+      "id": "T03",
+      "owner": "Fresh Tester then distinct Reviewer",
+      "work": "Independently verify exact stabilized candidate with current suites and meaningful controls, followed by unchanged deterministic command rerun and original-plan comparison.",
+      "dependency": [
+        "T02",
+        "Manager-approved oracle and post-Worker MCP synchronization/fallback"
+      ],
+      "output": "Actual command/raw output/exits/input and candidate hashes; separate role reports."
+    },
+    {
+      "id": "T04",
+      "owner": "Fresh bounded packaging Worker or authorized release-file Worker before final verification",
+      "work": "Build one final allowlisted release ZIP with source/tests/docs, excluding current transient evidence/history duplicates; independently test final checkout and fresh final extraction.",
+      "dependency": [
+        "stabilized source/doc bytes"
+      ],
+      "output": "Final ZIP/checksum/entry manifest/CRC/byte comparison and extraction results."
+    },
+    {
+      "id": "T05",
+      "owner": "Manager then original Planner then Manager",
+      "work": "Reconcile immutable evidence, original map and findings; record final check; stage/review only intended files, commit locally and verify postcommit state.",
+      "dependency": [
+        "T03",
+        "T04"
+      ],
+      "output": "Final Planner results, local commit and concise Owner handoff."
+    }
+  ],
+  "rework_policy": "A genuine mandatory failure requires preserved evidence and causal rework with fresh Worker/attempt and independent recheck. Newly discovered authorized release/docs follow-up may begin its own truthful task boundary; do not invent failed Tester/Planner decisions to force sequence grammar. No arbitrary lifetime repair cap; stop identical evidence-free retries.",
+  "verification_strategy": {
+    "approval": "Proposal for parent Manager to approve in assignment; Tester cannot self-approve or substitute oracle.",
+    "current_suites": [
+      [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ]
+    ],
+    "suite_inventory": "Inspect every current test/demo/operational command; add any further applicable current suite discovered. Intentional demo/starter and archived historical snapshots must be separately labeled, never mixed into current pass totals.",
+    "controls": [
+      "Exact E10 ordered string/ID mutations and absent/stale required artifact; ordinary no-sidecar plan remains valid.",
+      "Controlled JSON/schema/context/origin/candidate/oracle/replay/rework/mandatory-failure mutations tied to production helper.",
+      "Disposable path/symlink/junction inside/outside/stale checks; Windows and genuinely available WSL/Linux separately.",
+      "Targeted production mutation testing in disposable copies for confirmed high-impact findings.",
+      "MCP live bounded same-root status/coverage and post-edit refresh; static missing/offline/etc lifecycle checks labeled static when live injection unavailable.",
+      "JSON operational examples, policy/TOML parsers, package secret/cache/runtime/name scan, CRC and every extracted byte."
+    ],
+    "execution_evidence": "Resolve exact Python executable path; record arguments, cwd, candidate and input identities, actual exit, raw stdout/stderr; normalized stdout SHA256 uses only CRLF-to-LF replacement. Select a deterministic command with meaningful stdout such as stable sorted test-result JSON, excluding timing, before Reviewer sees results; do not alter oracle after results.",
+    "final_archive": "Run all applicable suites again from isolated extraction of FINAL archive; verify hash/name/size/CRC/bytes for every entry and no self-inclusion.",
+    "independence": "Fresh native Worker/Tester/Reviewer are distinct; Reviewer independently invokes exact Tester declaration, not shell alias; Planner final check uses immutable original C01-C07 plus full derived map.",
+    "limits": "Host activation/TOML provenance and OS isolation are separate from structural/runtime tests; synthetic fixtures cannot prove real Owner approval; WinError1314 skips do not pass security checks."
+  },
+  "gate3_disposition": "No new separately approved experiment. Current E1/E2/E4 capability inspection already completed once by Manager: UNVERIFIED (HOST_CAPABILITY_MISSING). Preserve historical E10 FAIL and historical supported E3/E5/E6/E7/E8/E9 only with surviving sources; this release cannot retroactively change them.",
+  "risks": [
+    {
+      "risk": "Current workflow/communication require criteria sidecar universally while Owner explicitly allows ordinary coding requests without one.",
+      "handling": "Treat as a candidate documentation/behavior finding; independently reproduce, minimally clarify distinction; do not manufacture Owner approval."
+    },
+    {
+      "risk": "Candidate/package/report self-reference leads to A004-A009-style churn.",
+      "handling": "Freeze cumulative product bytes and archive before final verification, store current evidence outside ZIP, separate genuine follow-up tasks from failed criteria."
+    },
+    {
+      "risk": "Installed copies differ from repository, no global install authorized.",
+      "handling": "Document drift and use explicit project copy; no global edits."
+    },
+    {
+      "risk": "Hidden source bugs or unsupported platforms cannot be universally excluded.",
+      "handling": "Bound audit evidence, disclose uncertain host/platform issues and never claim all bugs eliminated."
+    }
+  ]
+}

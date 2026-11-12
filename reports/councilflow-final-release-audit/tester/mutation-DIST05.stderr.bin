@@ -1,0 +1,14 @@
+test_existing_output_hardlinks_do_not_modify_outside_inodes (test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes) ... FAIL
+
+======================================================================
+FAIL: test_existing_output_hardlinks_do_not_modify_outside_inodes (test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\DIST05\tests\test_release.py", line 50, in test_existing_output_hardlinks_do_not_modify_outside_inodes
+    self.assertEqual((outside / name).read_bytes(), data, name)
+AssertionError: b'PK\x03\x04\x14\x00\x00\x00\x08\x00\x00\x0[2961 chars]\x00' != b'outside sentinel: council-flow.zip' : council-flow.zip
+
+----------------------------------------------------------------------
+Ran 1 test in 0.061s
+
+FAILED (failures=1)

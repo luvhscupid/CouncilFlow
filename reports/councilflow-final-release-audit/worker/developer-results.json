@@ -1,0 +1,133 @@
+[
+  {
+    "suite": "repository",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tail": "ation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 102 tests in 1.802s\r\n\r\nOK (skipped=2)\r\n"
+  },
+  {
+    "suite": "receipt",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tail": "_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\r\ntest_version (test_receipt_calculator.CommandLineTests.test_version) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.556s\r\n\r\nOK\r\n"
+  },
+  {
+    "suite": "csv",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tail": "ryTests.test_sample_and_reversed_order) ... ok\r\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 15 tests in 6.952s\r\n\r\nOK\r\n"
+  },
+  {
+    "suite": "structured",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tail": "lues (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok\r\ntest_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 1.105s\r\n\r\nOK\r\n"
+  },
+  {
+    "suite": "independent-receipt",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tail": "out_of_bounds_and_unsafe_api_values) ... ok\r\ntest_user_errors_and_help (test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 3.108s\r\n\r\nOK\r\n"
+  },
+  {
+    "suite": "independent-csv",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tail": "f8_bom_crlf_multiline_quotes_and_requested_order (test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 6 tests in 6.706s\r\n\r\nOK\r\n"
+  },
+  {
+    "suite": "CA01-06",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-final-release-audit/contract-audit/negative_controls.py"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "0bf05a1f44df269ebf4898e95da7a9ecdeffbc21453cb136627af43f55b7ac80",
+    "tail": ""
+  },
+  {
+    "suite": "CA07",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-final-release-audit/contract-audit/extra/challenge.py",
+      "--current"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "175936dad06606aef4feb907bc127ea78c3a9b75ec4e9bf80a09dec9973df5f4",
+    "tail": ""
+  },
+  {
+    "suite": "CA08",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-final-release-audit/contract-audit/extra/api_controls.py",
+      "--current"
+    ],
+    "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "81f64bb4ac58fa0c64d6ab38710c124898cd219c3f535618a8958b8b5836bd4c",
+    "tail": ""
+  }
+]

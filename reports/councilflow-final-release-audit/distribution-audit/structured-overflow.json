@@ -1,0 +1,12 @@
+{
+  "command_executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments_template": [
+    "demo/structured-flow/sum_values.py",
+    "9 repeated 4300 times",
+    "9 repeated 4300 times"
+  ],
+  "exit": 1,
+  "stdout_bytes": 0,
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\structured-flow\\sum_values.py\", line 24, in <module>\r\n    raise SystemExit(main())\r\n                     ^^^^^^\r\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-main\\demo\\structured-flow\\sum_values.py\", line 19, in main\r\n    print(sum(args.values))\r\nValueError: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit\r\n",
+  "inputs_each_within_default_python_int_limit": true
+}

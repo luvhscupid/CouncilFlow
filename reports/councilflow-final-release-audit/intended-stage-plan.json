@@ -1,0 +1,33 @@
+{
+  "normal_product_paths": [
+    ".agents/skills/council-flow/references/codebase-memory.md",
+    ".agents/skills/council-flow/references/communication.md",
+    ".agents/skills/council-flow/references/recovery.md",
+    ".agents/skills/council-flow/references/workflow.md",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "README.md",
+    "RELEASE.md",
+    "demo/structured-flow/README.md",
+    "demo/structured-flow/sum_values.py",
+    "demo/structured-flow/test_sum_values.py",
+    "dist/council-flow.manifest.json",
+    "dist/council-flow.zip",
+    "dist/council-flow.zip.sha256",
+    "tests/test_contracts.py",
+    "tests/test_release.py",
+    "tools/build_release.py"
+  ],
+  "verbatim_receipt_paths": [
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py"
+  ],
+  "verbatim_new_audit_directory": "reports/councilflow-final-release-audit/",
+  "forbidden_stage_paths": [
+    "reports/gate3-next/",
+    "reports/councilflow-finalization/",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md"
+  ],
+  "policy": "Preserve all initial staged/unstaged/untracked artifacts. Stage raw new evidence and stored-CRLF receipt files with temporary core.autocrlf=false; ordinary source with existing filters. Verify staged names, secrets, selected diff and raw evidence Git blob bytes before commit. No persistent config/push/history rewrite."
+}

@@ -1,0 +1,7 @@
+{
+  "files_scanned": 1911,
+  "credential_pattern_file_hits": [],
+  "tracked_cache_or_git_files": [],
+  "tracked_files_over_1MB": [],
+  "limits": "Pattern scan is bounded credential detection, not proof no secrets exist; no contents printed. Historical reports/binaries retained."
+}

@@ -1,0 +1,141 @@
+{
+  "reviewer": "/root/reviewer",
+  "scope": "Technical original-plan/candidate/Tester comparison, not release self-approval",
+  "original_criteria": "C01-C07 exact original completion text inspected in original plan; no external Gate3 fixture/approval inferred",
+  "windows_independently_recomputed_from_raw_logs": {
+    "checkout": {
+      "suites": [
+        {
+          "suite": "tests",
+          "run": 104,
+          "passed": 100,
+          "skipped": 4
+        },
+        {
+          "suite": "demo/receipt",
+          "run": 13,
+          "passed": 13,
+          "skipped": 0
+        },
+        {
+          "suite": "demo/csv-summary",
+          "run": 15,
+          "passed": 15,
+          "skipped": 0
+        },
+        {
+          "suite": "demo/structured-flow",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0
+        },
+        {
+          "suite": "reports/demo/verification",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0
+        },
+        {
+          "suite": "reports/csv-summary/verification",
+          "run": 6,
+          "passed": 6,
+          "skipped": 0
+        }
+      ],
+      "totals": {
+        "run": 148,
+        "passed": 144,
+        "skipped": 4
+      }
+    },
+    "extraction": {
+      "suites": [
+        {
+          "suite": "tests",
+          "run": 104,
+          "passed": 101,
+          "skipped": 3
+        },
+        {
+          "suite": "demo/receipt",
+          "run": 13,
+          "passed": 13,
+          "skipped": 0
+        },
+        {
+          "suite": "demo/csv-summary",
+          "run": 15,
+          "passed": 15,
+          "skipped": 0
+        },
+        {
+          "suite": "demo/structured-flow",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0
+        },
+        {
+          "suite": "reports/demo/verification",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0
+        },
+        {
+          "suite": "reports/csv-summary/verification",
+          "run": 6,
+          "passed": 6,
+          "skipped": 0
+        }
+      ],
+      "totals": {
+        "run": 148,
+        "passed": 145,
+        "skipped": 3
+      }
+    }
+  },
+  "candidate_and_package": {
+    "files": 117,
+    "entries": 117,
+    "archive_sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+    "crc_safe_unique_names_every_byte": "PASS",
+    "frozen_unchanged": {
+      "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md": true,
+      "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md": true,
+      "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md": true
+    }
+  },
+  "mutations": {
+    "valid_compiled_killed": 12,
+    "survived": 0,
+    "invalid": 0,
+    "skipped": 0,
+    "source_raw_hashes_bind_actual_candidate": true,
+    "evidence_corrections": "Original records retained; decoded-text versus raw-source hash and aggregate counts explicitly corrected without changing oracle/output."
+  },
+  "manager_supplemental_platform": {
+    "provenance": "Manager-thread execution after host approval; not Tester-thread or native sandbox proof",
+    "linux": {
+      "run": 148,
+      "passed": 148,
+      "skipped": 0,
+      "filesystem": "native Linux /tmp final archive extraction"
+    },
+    "symlink_controls": 3,
+    "windows_junction_controls": 3,
+    "status": "PASS for tested behavior only"
+  },
+  "fourteen_finding_comparison": "All CA01-08, DIST01-05 and DOC05 have tested code/documentation/coverage dispositions; DIST04 historical coverage label preserved. Ancillary /root/reviewer/bounded_review read current source and found no additional blocker.",
+  "governance": "Frozen sources unchanged; no new Gate3 experiment; historical E10 FAIL and E1/E2/E4 UNVERIFIED preserved. Other historical PASS is Owner-reported absent recovered raw host records.",
+  "pending_manager_planner_postconditions": [
+    "Local intended-file Git checkpoint",
+    "Original Planner final complete criteria map",
+    "Final Owner handoff"
+  ],
+  "limits": [
+    "Supplied JSON actor labels/bindings are consistency, not native authentication/effective TOML or model proof.",
+    "Initial untracked paths retained; no initial full-byte manifest for all untracked artifacts, so exact-byte preservation claim is limited to baseline-hashed tracked files.",
+    "No race-free access, OS isolation or universal all-bugs-eliminated claim.",
+    "MCP postWorker freshness unavailable, direct source fallback used."
+  ]
+}

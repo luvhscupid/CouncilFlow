@@ -1,0 +1,376 @@
+{
+  "source": "3879c3d97efb6dfb5256445bf21748a95d0d2eab",
+  "source_sha256": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+  "kind": "synthetic-standalone-controls",
+  "cases": 52,
+  "passed": 46,
+  "failed": 4,
+  "skipped": 2,
+  "results": [
+    {
+      "case": "exact_utf8_unicode_multiline_markdown",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "criteria_added_space",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_omitted_space",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_trailing_whitespace",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_case",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_markdown_removed",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_punctuation_removed",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_unicode_normalized",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_unicode_confusable",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_lf_to_crlf",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_newline_removed",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "acceptance_fidelity"
+    },
+    {
+      "case": "criteria_omitted",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "plan_artifact"
+    },
+    {
+      "case": "criteria_duplicated",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "plan_artifact"
+    },
+    {
+      "case": "criteria_reordered",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "plan_artifact"
+    },
+    {
+      "case": "criteria_added",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "plan_artifact"
+    },
+    {
+      "case": "criteria_source_id_mismatch",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "plan_artifact"
+    },
+    {
+      "case": "missing_mandatory_source",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "criteria_source"
+    },
+    {
+      "case": "ordinary_request_no_mandatory_sidecar",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "mandatory_without_root",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "criteria_source"
+    },
+    {
+      "case": "wrong_source_kind",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "criteria_source"
+    },
+    {
+      "case": "stale_source_digest",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_hash"
+    },
+    {
+      "case": "renamed_source_stale_reference",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_missing"
+    },
+    {
+      "case": "source_duplicate_json_key",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "duplicate_key"
+    },
+    {
+      "case": "plan_duplicate_json_key",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "duplicate_key"
+    },
+    {
+      "case": "json_duplicate_keys",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "duplicate_key"
+    },
+    {
+      "case": "json_invalid_utf8",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "json"
+    },
+    {
+      "case": "json_surrogate",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "utf8"
+    },
+    {
+      "case": "json_nonfinite",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "nonfinite"
+    },
+    {
+      "case": "json_overflow",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "nonfinite"
+    },
+    {
+      "case": "json_oversize",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "size"
+    },
+    {
+      "case": "json_overdepth",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "depth"
+    },
+    {
+      "case": "json_oversized_container",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "items"
+    },
+    {
+      "case": "json_oversized_string",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "string_size"
+    },
+    {
+      "case": "message_boolean_integer",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "integer"
+    },
+    {
+      "case": "message_unknown_field",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "unknown_field"
+    },
+    {
+      "case": "message_control_identity",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "control"
+    },
+    {
+      "case": "message_surrogate_identity",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "json"
+    },
+    {
+      "case": "criterion_control_nul",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "control"
+    },
+    {
+      "case": "criterion_control_tab",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "control"
+    },
+    {
+      "case": "criterion_control_lone_cr",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "control"
+    },
+    {
+      "case": "relative_artifact",
+      "expected_valid": true,
+      "actual_valid": true,
+      "satisfied": true,
+      "error": null
+    },
+    {
+      "case": "stale_target_digest",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_hash"
+    },
+    {
+      "case": "path_parent_traversal",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_path"
+    },
+    {
+      "case": "path_posix_absolute",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_path"
+    },
+    {
+      "case": "path_backslash",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_path"
+    },
+    {
+      "case": "path_windows_absolute_shape",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "path_windows_drive_relative_shape",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "path_windows_absolute_in_root",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "path_windows_drive_relative_in_root",
+      "expected_valid": false,
+      "actual_valid": true,
+      "satisfied": false,
+      "error": null
+    },
+    {
+      "case": "absolute_outside_rejected_before_open",
+      "expected_valid": false,
+      "actual_valid": false,
+      "satisfied": true,
+      "error": "artifact_path"
+    },
+    {
+      "case": "symlink_inside",
+      "status": "SKIPPED",
+      "reason": "OSError",
+      "winerror": 1314,
+      "satisfied": null
+    },
+    {
+      "case": "symlink_outside",
+      "status": "SKIPPED",
+      "reason": "OSError",
+      "winerror": 1314,
+      "satisfied": null
+    }
+  ],
+  "limits": "No Owner authentication, actor provenance, race freedom, live host activation, or OS isolation established."
+}

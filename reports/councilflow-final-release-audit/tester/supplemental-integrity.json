@@ -1,0 +1,33 @@
+{
+  "canonical_sequence": "PASS supplied observed handles and exact root artifacts; not authentication",
+  "untouched_baseline_tracked_files": "PASS except explicitly reported intended product modifications",
+  "unexpected_changed_baseline": [],
+  "secret_signature_hits": [],
+  "secret_limit": "Heuristic signatures only, not universal absence proof",
+  "retired_operational_paths_absent": [
+    ".agents/skills/cf-recall",
+    ".agents/skills/council-flow/scripts/recall.py",
+    ".agents/skills/council-flow/references/recall.md",
+    "tests/test_recall.py"
+  ],
+  "commands": [
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_sha256": "9f03a65923ff8d8b60eaf657ce3336e645f1ac9cf669f2f7454555ce047a5971"
+    }
+  ],
+  "model": "NOT_DISCLOSED",
+  "gate3": "NO new experiment; authentic separately approved fixture absent",
+  "postconditions": "Final Manager evidence acceptance, independent Reviewer rerun, original Planner check and local Git checkpoint remain assigned to parent workflow."
+}

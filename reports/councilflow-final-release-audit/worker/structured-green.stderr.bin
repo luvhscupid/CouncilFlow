@@ -1,0 +1,10 @@
+test_invalid_values_are_clear_without_traceback (test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback) ... ok
+test_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound) ... ok
+test_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok
+test_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok
+test_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.143s
+
+OK

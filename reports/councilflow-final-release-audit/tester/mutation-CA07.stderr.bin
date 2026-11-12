@@ -1,0 +1,42 @@
+test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) ... 
+  test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:/Users/cupid/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}/Temp/cf-independent-mutations-se23rg0h/CA07/drive-path-control-yyq3f9o5/evidence.txt', root=None) ... FAIL
+  test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:/Users/cupid/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}/Temp/cf-independent-mutations-se23rg0h/CA07/drive-path-control-yyq3f9o5/evidence.txt', root=WindowsPath('C:/Users/cupid/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}/Temp/cf-independent-mutations-se23rg0h/CA07')) ... FAIL
+  test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:evidence.txt', root=None) ... FAIL
+  test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:/evidence.txt', root=None) ... FAIL
+
+======================================================================
+FAIL: test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:/Users/cupid/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}/Temp/cf-independent-mutations-se23rg0h/CA07/drive-path-control-yyq3f9o5/evidence.txt', root=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA07\tests\test_contracts.py", line 1064, in test_windows_drive_paths_are_never_repository_relative
+    with self.subTest(path=path, root=root), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:/Users/cupid/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}/Temp/cf-independent-mutations-se23rg0h/CA07/drive-path-control-yyq3f9o5/evidence.txt', root=WindowsPath('C:/Users/cupid/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}/Temp/cf-independent-mutations-se23rg0h/CA07'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA07\tests\test_contracts.py", line 1064, in test_windows_drive_paths_are_never_repository_relative
+    with self.subTest(path=path, root=root), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:evidence.txt', root=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA07\tests\test_contracts.py", line 1064, in test_windows_drive_paths_are_never_repository_relative
+    with self.subTest(path=path, root=root), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) (path='C:/evidence.txt', root=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA07\tests\test_contracts.py", line 1064, in test_windows_drive_paths_are_never_repository_relative
+    with self.subTest(path=path, root=root), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (failures=4)

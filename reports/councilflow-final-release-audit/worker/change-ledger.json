@@ -1,0 +1,43 @@
+{
+  "worker": "/root/worker_a01",
+  "attempt": "FRA-A01",
+  "implemented": [
+    "CA01 failed Planner check cannot be bypassed in same task/attempt",
+    "CA02 failed Reviewer cannot be omitted from acceptance",
+    "CA03 independent Tester and Reviewer coverage each mandatory; Reviewer rerun criterion assigned",
+    "CA04 matching command permits truthful failed review for substantive discrepancy",
+    "CA05 original Planner/Manager actors final-check",
+    "CA06 immutable publication payload and actors",
+    "CA07 reject Windows drive artifact paths on all platforms",
+    "CA08 bounded strict Unicode validation for public artifact and authoritative-reference API",
+    "DIST-02 structured total output-bound error without partial stdout/traceback",
+    "DIST-03 internal receipt Decimal exponent/clamp independence without outer context mutation",
+    "DIST-05 unique exclusive atomic outputs preserve existing linked inode bytes and fixed .zip.tmp; linked output directories rejected best effort",
+    "DIST-01/DOC-05 current README and conditional required criteria sidecar docs, exact final fidelity check",
+    "DIST-04 historical coverage limit disclosed; six suites current/extracted now enumerated"
+  ],
+  "product_files": [
+    ".agents/skills/council-flow/references/codebase-memory.md",
+    ".agents/skills/council-flow/references/communication.md",
+    ".agents/skills/council-flow/references/recovery.md",
+    ".agents/skills/council-flow/references/workflow.md",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "README.md",
+    "RELEASE.md",
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py",
+    "demo/structured-flow/README.md",
+    "demo/structured-flow/sum_values.py",
+    "demo/structured-flow/test_sum_values.py",
+    "dist/council-flow.manifest.json",
+    "dist/council-flow.zip",
+    "dist/council-flow.zip.sha256",
+    "tests/test_contracts.py",
+    "tests/test_release.py",
+    "tools/build_release.py"
+  ],
+  "frozen_governance": "unchanged raw SHA256 values verified",
+  "product_and_archive_edits_stopped": true,
+  "independent_acceptance": "PENDING native Tester/Reviewer/original Planner; Worker does not self-approve",
+  "security_limits": "No identity authentication, OS sandbox, TOCTOU isolation, authentic Gate3 fixture or live MCP negative-branch proof claimed. No new Gate3 experiment."
+}

@@ -1,0 +1,24 @@
+test_tester_and_reviewer_must_each_cover_all_accepted_criteria (test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria) ... 
+  test_tester_and_reviewer_must_each_cover_all_accepted_criteria (test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria) (tester=['AC1'], reviewer=['AC1', 'AC2']) ... FAIL
+  test_tester_and_reviewer_must_each_cover_all_accepted_criteria (test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria) (tester=['AC1', 'AC2'], reviewer=['AC1']) ... FAIL
+
+======================================================================
+FAIL: test_tester_and_reviewer_must_each_cover_all_accepted_criteria (test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria) (tester=['AC1'], reviewer=['AC1', 'AC2'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA03\tests\test_contracts.py", line 1090, in test_tester_and_reviewer_must_each_cover_all_accepted_criteria
+    with self.subTest(tester=tester_ids, reviewer=reviewer_ids), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_tester_and_reviewer_must_each_cover_all_accepted_criteria (test_contracts.PolicyAndDiagnosticTests.test_tester_and_reviewer_must_each_cover_all_accepted_criteria) (tester=['AC1', 'AC2'], reviewer=['AC1'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\CA03\tests\test_contracts.py", line 1090, in test_tester_and_reviewer_must_each_cover_all_accepted_criteria
+    with self.subTest(tester=tester_ids, reviewer=reviewer_ids), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=2)

@@ -1,0 +1,218 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-T002",
+  "message_type": "job.report",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "FRA-T001",
+  "payload": {
+    "status": "passed",
+    "summary": "Independent Windows technical verification passed on the exact frozen candidate; this is not release self-approval or a claim that remaining Reviewer/Planner/Git/host-platform postconditions are complete.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "FRA-approved-oracle",
+      "path": "reports/councilflow-final-release-audit/manager-oracle.json",
+      "sha256": "630de811a3a1b5f21ba611372a49a394245caa8103f54583906ef2dfc229b6e8",
+      "kind": "test-strategy"
+    },
+    "findings": [
+      "Windows checkout148run144passed4skipped; fresh Windows C: extraction148run145passed3skipped. All six suite exits0 independently.",
+      "12compiled targeted production mutants killed by relevant regression behavior;0survived/invalid/skipped. Synthetic contract/E10/API controls65cases:63satisfied,2WinError1314skips.",
+      "Deterministic command exit0 and normalized stdout SHA2560d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc matched on two Tester executions; exact executable/args/cwd/candidate/inputs/raw logs retained.",
+      "Windows junction and WSL remain UNVERIFIED in Tester thread: sandbox Access denied; supported escalation request pending600.8s then aborted on parent interruption, no execution result/session handle. Manager supplemental execution, if later available, is separate provenance.",
+      "WinError1314/WinError5 skips are not security passes. OS isolation, TOCTOU safety, actor authentication, authentic Gate3 fixture and native activation/effective TOML identity remain unverified. No new Gate3 experiment.",
+      "Original deterministic-driver first-suite metadata and decoded-source mutation hash records are retained; final corrected metadata explicitly binds aggregate148counts and exact raw source hashes without changing command output/oracle.",
+      "Distinct Reviewer rerun, Manager evidence acceptance, original Planner final map and local Git checkpoint remain parent workflow duties."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "All six Windows checkout/extracted current suites executed successfully with exact separate counts and skips",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-windows-executions",
+          "path": "reports/councilflow-final-release-audit/tester/windows-executions-final.json",
+          "sha256": "687ddf0d5e97eb2f4035fadc285b77a49c426d3283c65297f89717bfa3351fd0",
+          "kind": "execution"
+        }
+      },
+      {
+        "name": "Final archive CRC,117safe unique names,every source/extracted byte,frozen hashes and unchanged candidate",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-package-checks",
+          "path": "reports/councilflow-final-release-audit/tester/package-checks.json",
+          "sha256": "b4c053b500d6ef6954ad9c9d55608357fb9ef709324276d6101dc8be65b94537",
+          "kind": "verification"
+        }
+      },
+      {
+        "name": "Twelve valid production mutants killed by designated regression behavior; none survived or invalid",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-mutations",
+          "path": "reports/councilflow-final-release-audit/tester/mutation-results-final.json",
+          "sha256": "0cf163477afccf39b0668ddca150945543a1bd808caeb0ea6f299f3edc13fd0b",
+          "kind": "mutation-controls"
+        }
+      },
+      {
+        "name": "Root-bound JSON examples2,policy,baseline preservation,secret-pattern scan and retired active paths",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-integrity",
+          "path": "reports/councilflow-final-release-audit/tester/supplemental-integrity.json",
+          "sha256": "bbb969c7566bb683d322a322559efddca9d1bd785194ad96583a437243a8832a",
+          "kind": "verification"
+        }
+      },
+      {
+        "name": "Synthetic E10/contract/API controls65cases:63satisfied,2platformskips,0failures; provenance limitations recorded",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-summary",
+          "path": "reports/councilflow-final-release-audit/tester/technical-summary.json",
+          "sha256": "3c7f9d67909eb6f7228da741d6dcb121f0b7a7be21024cb3e83152820a2ae898",
+          "kind": "verification"
+        }
+      },
+      {
+        "name": "Exact predeclared deterministic command repeated with matching exit/hash and148test status output",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-deterministic-execution",
+          "path": "reports/councilflow-final-release-audit/tester/deterministic-execution.json",
+          "sha256": "170ba4f68f7180ebe23dec466d410ed428ab66c86d18dbb5f9c9cd8b7b18b591",
+          "kind": "execution"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "FRA-T-DET01",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "reports/councilflow-final-release-audit/tester/deterministic.py"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "artifact_id": "FRA-A01-cumulative",
+          "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+          "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "FRA-T-deterministic-harness",
+            "path": "reports/councilflow-final-release-audit/tester/deterministic.py",
+            "sha256": "04a0beca1f025e4e1f129659ff84cb0ba8a790e7163f74b4803f728c6f8f6d97",
+            "kind": "test-harness"
+          },
+          {
+            "artifact_id": "FRA-A01-cumulative",
+            "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+            "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+            "kind": "candidate-manifest"
+          },
+          {
+            "artifact_id": "FRA-final-archive",
+            "path": "dist/council-flow.zip",
+            "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+            "kind": "release-archive"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+        "acceptance_id": "C02",
+        "evidence_ref": {
+          "artifact_id": "FRA-T-deterministic-execution",
+          "path": "reports/councilflow-final-release-audit/tester/deterministic-execution.json",
+          "sha256": "170ba4f68f7180ebe23dec466d410ed428ab66c86d18dbb5f9c9cd8b7b18b591",
+          "kind": "execution"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "FRA-T-deterministic-execution",
+      "path": "reports/councilflow-final-release-audit/tester/deterministic-execution.json",
+      "sha256": "170ba4f68f7180ebe23dec466d410ed428ab66c86d18dbb5f9c9cd8b7b18b591",
+      "kind": "execution"
+    },
+    {
+      "artifact_id": "FRA-T-summary",
+      "path": "reports/councilflow-final-release-audit/tester/technical-summary.json",
+      "sha256": "3c7f9d67909eb6f7228da741d6dcb121f0b7a7be21024cb3e83152820a2ae898",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-T-windows-executions",
+      "path": "reports/councilflow-final-release-audit/tester/windows-executions-final.json",
+      "sha256": "687ddf0d5e97eb2f4035fadc285b77a49c426d3283c65297f89717bfa3351fd0",
+      "kind": "execution"
+    },
+    {
+      "artifact_id": "FRA-T-package-checks",
+      "path": "reports/councilflow-final-release-audit/tester/package-checks.json",
+      "sha256": "b4c053b500d6ef6954ad9c9d55608357fb9ef709324276d6101dc8be65b94537",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-T-mutations",
+      "path": "reports/councilflow-final-release-audit/tester/mutation-results-final.json",
+      "sha256": "0cf163477afccf39b0668ddca150945543a1bd808caeb0ea6f299f3edc13fd0b",
+      "kind": "mutation-controls"
+    },
+    {
+      "artifact_id": "FRA-T-integrity",
+      "path": "reports/councilflow-final-release-audit/tester/supplemental-integrity.json",
+      "sha256": "bbb969c7566bb683d322a322559efddca9d1bd785194ad96583a437243a8832a",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-T-platform-sandbox",
+      "path": "reports/councilflow-final-release-audit/tester/platforms-sandbox.json",
+      "sha256": "318e342a1eaef9264f7e94d69ad091ec067feecacd02cd8659e85daaed2d2223",
+      "kind": "execution"
+    },
+    {
+      "artifact_id": "FRA-T-platform-escalation",
+      "path": "reports/councilflow-final-release-audit/tester/platform-escalation-status.json",
+      "sha256": "512042021c1e2856924f4094bbd584fd0078fdf4ce9ff2a24718d2e94489f73b",
+      "kind": "host-limit"
+    }
+  ]
+}

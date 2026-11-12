@@ -105,7 +105,8 @@ identity to externally observed actor, not an assertion copied from the packet.
 Optional owner_provenance is a set of externally confirmed human-provenance
 artifact identities. CLI --owner-provenance is for actual supplied Owner facts.
 
-Before any role dispatch, invoke sequence validation with
+When an invocation requires an authoritative frozen criteria artifact, before
+any role dispatch invoke sequence validation with
 `--require-criteria-fidelity --authoritative-criteria-ref <reference.json>` and
 `--root <authorized-root>`. The reference must point to the unchanged
 Owner-approved criteria JSON artifact, with kind `owner-approved-criteria` and
@@ -116,11 +117,19 @@ establishing Owner approval and supplying its trusted reference; a matching
 SHA-256 establishes file integrity only. Preserve rejected plan artifacts and
 history. A corrected plan must follow the existing authorized workflow. All
 roles should refer to criteria by stable ID and the immutable artifact rather
-than rewriting criterion text.
+than rewriting criterion text. Repeat the same fidelity validation with the
+original trusted reference at the final Planner check. This requirement is
+invocation-specific: ordinary Owner coding requests without a required external
+frozen artifact may generate a native plan under the existing policy and use
+normal sequence validation. Preserve the actual Owner request; never invent an
+Owner-approved external fixture to fill a missing required source.
 
 Ordered context rejects duplicate IDs, unknown predecessors, plan/task/revision
 drift, report/assignment origin or attempt mismatch, changed candidate/hash,
 unknown acceptance, omitted final mandatory criteria and mutated artifacts.
+Republication preserves the complete original payload and Planner/Manager actors;
+the original Planner performs the final check. These supplied-context actor
+bindings are consistency checks, not host identity authentication.
 Rework requires genuine preceding failure evidence; repair needs a fresh Worker
 and attempt. If a failed or blocked Planner check triggers rework, the Manager
 decision replies to that exact check and preserves its complete failed criterion
@@ -128,7 +137,8 @@ set. A completed Tester report reference is an immutable artifact outside the
 Tester message, avoiding a circular self-hash while remaining bound by message
 ID and (when available) exact file bytes.
 Acceptance needs passing distinct Tester and Reviewer reports for the same
-candidate/attempt with all required criteria; Worker assertion alone fails.
+candidate/attempt. Each role's reports must independently cover all required
+criteria; unioning coverage across roles is insufficient. Worker assertion alone fails.
 Planner checks the original plan. External origin bindings detect spoofed actor
 labels when actual origin metadata is available.
 
@@ -208,6 +218,11 @@ checks prevent a passed report. Manager cannot accept a supplied failed mandator
 verification. Rework failure IDs must belong to original assigned criteria.
 Artifact identity consistency includes nested checks and Planner result references.
 
-Known failed mandatory Tester reports for the same candidate/attempt cannot be
-hidden merely by omitting their IDs from an accept decision. A passing final
-Planner check follows the Manager evidence-accept decision in supplied context.
+Known failed mandatory Tester or Reviewer reports for the same candidate/attempt
+cannot be hidden merely by omitting their IDs from an accept decision. An unmet
+original Planner check prevents another acceptance or passing check in the same
+task/attempt; preserve the failure and use the authorized fresh-attempt rework
+path. A passing final Planner check follows the Manager evidence-accept decision
+in supplied context. A matching command rerun establishes repeatability only:
+Reviewer may still truthfully report failed comparison due to substantive
+discrepancies, which prevent acceptance.

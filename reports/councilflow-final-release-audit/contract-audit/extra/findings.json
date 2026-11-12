@@ -1,0 +1,93 @@
+{
+  "scope": "Remaining Owner 2A/2C/2D bounded baseline challenge",
+  "baseline": "3879c3d97efb6dfb5256445bf21748a95d0d2eab",
+  "source_sha256": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+  "commands": [
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "reports\\councilflow-final-release-audit\\contract-audit\\extra\\challenge.py"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 1,
+      "stdout_sha256": "956781f12b7fb924a9edd37ade32a22f035ec60dbf6dfc1a728b84f684f57838",
+      "source_identity": "3879c3d97efb6dfb5256445bf21748a95d0d2eab:.agents/skills/council-flow/scripts/contracts.py",
+      "reproduction_sha256": "83cef97cec312ae732d718322570cf58c568f9b897ed7a11d4e502fa63238c7a"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "reports\\councilflow-final-release-audit\\contract-audit\\extra\\api_controls.py"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 1,
+      "stdout_sha256": "0a42ace56e77380e2647aacddc288241a3bd198d3b48f79de3f3e16120c9714a",
+      "source_identity": "3879c3d97efb6dfb5256445bf21748a95d0d2eab:.agents/skills/council-flow/scripts/contracts.py",
+      "reproduction_sha256": "18022c9b2f511588bb8d7e66ac7e16865543307f13b13c4cb416cca11dd11c27"
+    }
+  ],
+  "totals": {
+    "cases": 58,
+    "passed": 51,
+    "failed": 5,
+    "skipped": 2,
+    "note": "Five failed controls represent two newly confirmed defects. Synthetic control totals are not unittest suite totals."
+  },
+  "findings": [
+    {
+      "id": "CA07",
+      "classification": "CONFIRMED DEFECT",
+      "priority": "P2",
+      "severity": "medium",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:artifact",
+      "mechanism": "PurePosixPath.is_absolute misses Windows drive-prefixed spellings. C:/.../authorized/evidence.txt and C:evidence.txt are accepted on Windows with matching bytes inside root; both shapes also pass without root. This contradicts portable repository-relative POSIX artifact contract.",
+      "affected_cases": [
+        "path_windows_absolute_shape",
+        "path_windows_drive_relative_shape",
+        "path_windows_absolute_in_root",
+        "path_windows_drive_relative_in_root"
+      ],
+      "minimal_patch": "Reject Windows drive prefixes portably before filesystem resolution while preserving allowed in-root symlinks.",
+      "acceptance": "All four controls reject drive-prefixed paths; ordinary relative paths continue passing; outside containment remains enforced.",
+      "boundary": "No outside-root escape observed."
+    },
+    {
+      "id": "CA08",
+      "classification": "CONFIRMED DEFECT",
+      "priority": "P2",
+      "severity": "low",
+      "path": ".agents/skills/council-flow/scripts/contracts.py:_authoritative_criteria",
+      "mechanism": "Python API supplied authoritative_criteria_ref is not passed through _tree/serialization; artifact_id with lone surrogate is accepted although it cannot encode as strict UTF-8. CLI read_json already rejects.",
+      "affected_cases": [
+        "authoritative_reference_surrogate_identity"
+      ],
+      "minimal_patch": "Validate supplied authoritative reference with _tree before artifact use, matching other supplied-context guards; or guard artifact string UTF-8 encodability.",
+      "acceptance": "Actual surrogate API input raises controlled ContractError; valid authoritative reference remains accepted.",
+      "boundary": "No Owner authentication or containment bypass demonstrated."
+    }
+  ],
+  "already_covered": [
+    "Ordered exact Unicode, NFC/NFD distinction, confusables, whitespace, Markdown, punctuation, case, LF versus CRLF, omitted/added/duplicated/reordered criteria and mismatched criterion IDs are rejected without normalization.",
+    "Mandatory missing source and missing root fail closed; stale digest, renamed stale source and wrong artifact kind reject.",
+    "Duplicate JSON keys in both source and plan reject even when hashes are freshly updated. Strict UTF-8, surrogates, NaN, numeric overflow, oversized byte/string/container/depth inputs reject.",
+    "Unknown top-level/payload/nested command fields, boolean plan revision/exit code and invalid control characters reject. Ordinary requests without a mandatory sidecar continue validating at helper level; operational documentation drift was separately assigned.",
+    "Relative evidence path with matching digest passes; stale digest, traversal, POSIX absolute paths, backslashes and actual outside-root target reject."
+  ],
+  "unverified": [
+    "Two Windows symlink controls skipped with WinError1314. They establish neither allowed-link behavior nor security containment. Root assigned Windows junction and WSL checks elsewhere.",
+    "No authentic separately Owner-approved criteria fixture established. Caller trust cannot be inferred from matching SHA256 or an agent-written reference.",
+    "No host identity/authentication, native activation, role configuration, race-free access or OS sandbox guarantees established.",
+    "This helper intentionally validates partial pre-dispatch contexts; valid prefixes/empty lists do not establish task termination. Caller must require final original Planner check."
+  ],
+  "artifacts": {
+    "api-baseline-execution.json": "8b7b91899e58805368e8b3f1755bddf824bd124b4b077af554ed7a5afb5566af",
+    "api-baseline.stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "api-baseline.stdout.bin": "405d349147c426925e4184e7177c5786d4191224624efa5e307377f72306e45f",
+    "api_controls.py": "18022c9b2f511588bb8d7e66ac7e16865543307f13b13c4cb416cca11dd11c27",
+    "baseline-execution.json": "71581e4822cc3a4ef310a476f2a8e6be3a2c19e50f61d380aee5d08735c3d271",
+    "baseline.stderr.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "baseline.stdout.bin": "7b75d930d06bec61e0df0b89942783645cdc0f9cc744c2189e5172239b33820f",
+    "challenge.py": "83cef97cec312ae732d718322570cf58c568f9b897ed7a11d4e502fa63238c7a"
+  },
+  "no_product_edits": true
+}

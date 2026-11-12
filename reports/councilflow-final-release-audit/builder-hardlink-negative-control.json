@@ -1,0 +1,8 @@
+{
+  "scope": "disposable hardlink fixed-temporary-output negative control",
+  "builder_sha256": "93dba7a0b328f722b40164a652af868e085f952bb6e96c9691190847ec674a40",
+  "link_created": true,
+  "build_accepted": true,
+  "entries": 118,
+  "outside_bytes_changed": true
+}

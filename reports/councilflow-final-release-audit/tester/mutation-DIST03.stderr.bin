@@ -1,0 +1,18 @@
+test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic (test_receipt_calculator.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic) ... ERROR
+
+======================================================================
+ERROR: test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic (test_receipt_calculator.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\DIST03\demo\receipt\test_receipt_calculator.py", line 57, in test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic
+    self.assertEqual(large.line_total, Decimal("999999999999999998000000000000000001"))
+                     ^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{d02fc689-5830-47fb-8637-b074b2ad8a01}\Temp\cf-independent-mutations-se23rg0h\DIST03\demo\receipt\receipt_calculator.py", line 74, in line_total
+    return self.quantity * self.unit_price
+           ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+decimal.Overflow: [<class 'decimal.Overflow'>, <class 'decimal.Inexact'>, <class 'decimal.Rounded'>]
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

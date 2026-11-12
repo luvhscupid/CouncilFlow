@@ -1,0 +1,12 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "reports\\councilflow-final-release-audit\\contract-audit\\negative_controls.py"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 1,
+  "stdout_sha256": "65a6230028c5d01c3b78677ff5ac078904a7693098ed80e1de1abdc15c89d8fc",
+  "production_sha256": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+  "fixture_sha256": "2fef58b03f8827f64f17ab365ceef5e6213d40d3ee26c08a08c8406ae039e3d2",
+  "reproduction_sha256": "39840746b73a90d8270004197295f0c71035284b993bddc2f18c0fe1e06158ae"
+}

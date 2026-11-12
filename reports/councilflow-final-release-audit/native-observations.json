@@ -1,0 +1,37 @@
+{
+  "native_tool": "collaboration.spawn_agent",
+  "observations": [
+    {
+      "returned_task_name": "/root/planner",
+      "requested_agent_type": "council-planner",
+      "duty": "Original plan publication; retained for final check"
+    },
+    {
+      "returned_task_name": "/root/contract_audit",
+      "requested_agent_type": "explorer",
+      "duty": "Ancillary read-only contract audit, not counted as required Tester/Reviewer"
+    },
+    {
+      "returned_task_name": "/root/distribution_audit",
+      "requested_agent_type": "explorer",
+      "duty": "Ancillary read-only distribution/demo audit"
+    },
+    {
+      "returned_task_name": "/root/worker_a01",
+      "requested_agent_type": "council-worker",
+      "duty": "Only product-mutating Worker for FRA-A01"
+    },
+    {
+      "returned_task_name": "/root/tester",
+      "requested_agent_type": "council-tester",
+      "duty": "Fresh independent frozen-candidate verification; canonical assignment T001 validated before dispatch"
+    }
+  ],
+  "limits": [
+    "Recorded tool return task names are observed native handles; requested agent_type does not prove effective TOML bytes or model identity.",
+    "Local JSON packets/bindings record role consistency; they do not independently authenticate host actors.",
+    "This is explicitly coordinated audit work; native skill activation/delegation causality is not inferred."
+  ],
+  "controlled_packet_note": "Native launch transport may include instructions pointing to canonical file packet. W001-planned-scope.json preserves pre-dispatch planned scope, canonical W001.json includes authorized receipt follow-up before receipt edits. Canonical actual-read packet digest must be recorded by Worker. No failed role result is manufactured for newly discovered authorized work.",
+  "baseline_inventory_note": "baseline.json includes an empty NUL-split sentinel as a missing entry; actual tracked inventory is 1911 files, verified independently in inventory-scan.json. Baseline bytes remain immutable."
+}

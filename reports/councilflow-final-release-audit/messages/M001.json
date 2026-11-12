@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-M001",
+  "message_type": "task.decision",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "FRA-R002",
+  "payload": {
+    "disposition": "accept",
+    "reason": "Accept the technically verified cumulative source candidate on distinct native Tester and Reviewer evidence with exact deterministic MATCH. This is not final mission completion: the actual local checkpoint, original Planner check and final handoff remain to be completed. Host/Gate3 limitations remain disclosed.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    },
+    "report_ids": [
+      "FRA-W002",
+      "FRA-T002",
+      "FRA-R002"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-W002",
+      "path": "reports/councilflow-final-release-audit/worker/job-report.json",
+      "sha256": "08544431b48c098cf9a5c4e34a6f2d72f1c92ad25c6e06b2f5ce66832c050d75",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-T002",
+      "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+      "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-R002",
+      "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+      "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-manager-platform-execution",
+      "path": "reports/councilflow-final-release-audit/manager-platform-execution.json",
+      "sha256": "49c10856a620bcacdf7f2ab229218957f6e4de9a934336477266f6b8179f52fc",
+      "kind": "execution"
+    }
+  ]
+}

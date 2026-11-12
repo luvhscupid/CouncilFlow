@@ -1,0 +1,216 @@
+{
+  "command": "C:\\Windows\\System32\\wsl.exe",
+  "arguments": [
+    "-d",
+    "Ubuntu",
+    "--",
+    "python3",
+    "-B",
+    "/mnt/e/Saint/PROJECTS/CouncilFlow-main/reports/councilflow-final-release-audit/tester/linux_checks.py"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_sha256": "2aa05df84a19df31debb64ec16277fc16bd4061993590295774a1799c21008e0",
+  "junction": {
+    "commands": [
+      {
+        "arguments": [
+          "cmd",
+          "/c",
+          "mklink",
+          "/J",
+          "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-junction-independent-wibrz24s\\authorized\\inside",
+          "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-junction-independent-wibrz24s\\authorized\\data"
+        ],
+        "exit_code": 0,
+        "stdout_base64": "SnVuY3Rpb24gY3JlYXRlZCBmb3IgQzpcVXNlcnNcY3VwaWRcQXBwRGF0YVxMb2NhbFxUZW1wXGNmLWp1bmN0aW9uLWluZGVwZW5kZW50LXdpYnJ6MjRzXGF1dGhvcml6ZWRcaW5zaWRlIDw8PT09Pj4gQzpcVXNlcnNcY3VwaWRcQXBwRGF0YVxMb2NhbFxUZW1wXGNmLWp1bmN0aW9uLWluZGVwZW5kZW50LXdpYnJ6MjRzXGF1dGhvcml6ZWRcZGF0YQ0K",
+        "stderr_base64": ""
+      },
+      {
+        "arguments": [
+          "cmd",
+          "/c",
+          "mklink",
+          "/J",
+          "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-junction-independent-wibrz24s\\authorized\\escape",
+          "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-junction-independent-wibrz24s\\outside"
+        ],
+        "exit_code": 0,
+        "stdout_base64": "SnVuY3Rpb24gY3JlYXRlZCBmb3IgQzpcVXNlcnNcY3VwaWRcQXBwRGF0YVxMb2NhbFxUZW1wXGNmLWp1bmN0aW9uLWluZGVwZW5kZW50LXdpYnJ6MjRzXGF1dGhvcml6ZWRcZXNjYXBlIDw8PT09Pj4gQzpcVXNlcnNcY3VwaWRcQXBwRGF0YVxMb2NhbFxUZW1wXGNmLWp1bmN0aW9uLWluZGVwZW5kZW50LXdpYnJ6MjRzXG91dHNpZGUNCg==",
+        "stderr_base64": ""
+      }
+    ],
+    "checks": [
+      {
+        "case": "inside-matching-hash",
+        "status": "PASS",
+        "actual_allowed": true,
+        "expected_allowed": true,
+        "error": null
+      },
+      {
+        "case": "inside-stale",
+        "status": "PASS",
+        "actual_allowed": false,
+        "expected_allowed": false,
+        "error": "artifact_hash"
+      },
+      {
+        "case": "escape-matching-hash",
+        "status": "PASS",
+        "actual_allowed": false,
+        "expected_allowed": false,
+        "error": "artifact_path"
+      }
+    ],
+    "limit": "Disposable Windows junction behavior only; not race-free or OS-enforced isolation."
+  },
+  "linux": {
+    "archive_sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+    "executable": "/usr/bin/python3",
+    "executions": [
+      {
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "command": "/usr/bin/python3",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "suite": "tests",
+        "workdir": "/tmp/cf-linux-final-3a_w3ero",
+        "run": 104,
+        "skipped": 0,
+        "passed": 104
+      },
+      {
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "command": "/usr/bin/python3",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "suite": "demo/receipt",
+        "workdir": "/tmp/cf-linux-final-3a_w3ero",
+        "run": 13,
+        "skipped": 0,
+        "passed": 13
+      },
+      {
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "command": "/usr/bin/python3",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "suite": "demo/csv-summary",
+        "workdir": "/tmp/cf-linux-final-3a_w3ero",
+        "run": 15,
+        "skipped": 0,
+        "passed": 15
+      },
+      {
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "command": "/usr/bin/python3",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "suite": "demo/structured-flow",
+        "workdir": "/tmp/cf-linux-final-3a_w3ero",
+        "run": 5,
+        "skipped": 0,
+        "passed": 5
+      },
+      {
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "command": "/usr/bin/python3",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "suite": "reports/demo/verification",
+        "workdir": "/tmp/cf-linux-final-3a_w3ero",
+        "run": 5,
+        "skipped": 0,
+        "passed": 5
+      },
+      {
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "command": "/usr/bin/python3",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "suite": "reports/csv-summary/verification",
+        "workdir": "/tmp/cf-linux-final-3a_w3ero",
+        "run": 6,
+        "skipped": 0,
+        "passed": 6
+      }
+    ],
+    "extracted_entries_verified": 117,
+    "limits": "Native Linux /tmp tests, not Windows junction/OS isolation proof.",
+    "native_filesystem_root": "/tmp/cf-linux-final-3a_w3ero",
+    "platform": "linux",
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+    "symlink_checks": [
+      {
+        "actual_allowed": true,
+        "case": "inside-symlink-correct-hash",
+        "error": null,
+        "expected_allowed": true,
+        "passed": true
+      },
+      {
+        "actual_allowed": false,
+        "case": "inside-symlink-stale-hash",
+        "error": "artifact_hash",
+        "expected_allowed": false,
+        "passed": true
+      },
+      {
+        "actual_allowed": false,
+        "case": "outside-symlink-correct-hash",
+        "error": "artifact_path",
+        "expected_allowed": false,
+        "passed": true
+      }
+    ]
+  }
+}

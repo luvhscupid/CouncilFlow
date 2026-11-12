@@ -1,0 +1,78 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-W001",
+  "message_type": "job.assign",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker_a01"
+  },
+  "in_reply_to": "FRA-P001",
+  "payload": {
+    "objective": "Deliver the best justified, stable, independently verified CouncilFlow release candidate by auditing the ENTIRE current project and repairing ALL confirmed, in-scope, technically repairable defects, not just E10. Eliminate repeated speculative loops. Preserve Owner authority and frozen governance.",
+    "scope": [
+      ".agents/skills/council-flow/",
+      "tests/",
+      "demo/structured-flow/",
+      "demo/receipt/",
+      "README.md",
+      "RELEASE.md",
+      "dist/",
+      "tools/ (release helper only if needed)",
+      "reports/councilflow-final-release-audit/worker/"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "instructions": [
+      "Read reports/councilflow-final-release-audit/worker-instructions.txt and referenced immutable plan/oracle/findings. Implement only confirmed bounded fixes; preserve all other work.",
+      "Manager authorizes confirmed DIST-03 receipt internal Decimal context repair and regression, as discovered by read-only auditor before receipt edits. The canonical file packet governs detailed bounded work; native dispatch text points to this packet."
+    ],
+    "candidate_ref": {
+      "artifact_id": "FRA-baseline",
+      "path": "reports/councilflow-final-release-audit/baseline.json",
+      "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+      "kind": "baseline"
+    },
+    "oracle_ref": {
+      "artifact_id": "FRA-approved-oracle",
+      "path": "reports/councilflow-final-release-audit/manager-oracle.json",
+      "sha256": "630de811a3a1b5f21ba611372a49a394245caa8103f54583906ef2dfc229b6e8",
+      "kind": "test-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-original-plan",
+      "path": "reports/councilflow-final-release-audit/planner/plan.json",
+      "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "FRA-approved-oracle",
+      "path": "reports/councilflow-final-release-audit/manager-oracle.json",
+      "sha256": "630de811a3a1b5f21ba611372a49a394245caa8103f54583906ef2dfc229b6e8",
+      "kind": "test-strategy"
+    },
+    {
+      "artifact_id": "FRA-contract-findings",
+      "path": "reports/councilflow-final-release-audit/contract-audit/findings.json",
+      "sha256": "847e8d7b93c6b37464a12e5949d818a87be64d5882a82c1fa8fa2c4dba18a1b0",
+      "kind": "audit"
+    }
+  ]
+}
