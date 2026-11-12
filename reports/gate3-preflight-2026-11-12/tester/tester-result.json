@@ -1,0 +1,1485 @@
+{
+  "record_type": "independent-native-tester-technical-result",
+  "format": "UTF-8 JSON",
+  "role": "tester",
+  "native_instance": "/root/tester",
+  "council_flow_envelope": "NOT EMITTED: Manager did not supply real plan/task/attempt/message IDs or an approved oracle_ref; none are invented here.",
+  "candidate": {
+    "path": "dist/council-flow.zip",
+    "sha256": "0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4",
+    "entry_count": 118
+  },
+  "environment": {
+    "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "platform": "win32",
+    "os": "nt"
+  },
+  "package_checks": {
+    "checksum_matches": true,
+    "crc": "PASS",
+    "safe_paths": "PASS",
+    "required_inventory": "PASS",
+    "excluded_inventory": "PASS",
+    "source_hash_and_size_map": "PASS",
+    "retired_component_audit": {
+      "path_hits_in_package": [],
+      "active_skill_path_hits": [],
+      "active_config_path_hits": [],
+      "active_skill_or_config_text_hits": [],
+      "test_only_negative_probe_literals": {
+        "path": "tests/test_codebase_memory_integration.py",
+        "probes": [
+          "recall.json",
+          "--label observed"
+        ]
+      },
+      "test_probe_literals_are_negative_assertions_only": true,
+      "no_active_component": true
+    },
+    "extraction_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0"
+  },
+  "suite_executions": {
+    "checkout": [
+      {
+        "name": "checkout-tests",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "fd4728699779843259b12879ff58baa2fa5d41602070f9cb1de8f7b555b01d83",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-tests.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-tests.stderr.bin",
+        "summary": "OK (skipped=2)",
+        "tests_run": 86,
+        "reported_skips": [
+          {
+            "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp5q8sn0h0\\\\\\\\evidence.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp5q8sn0h0\\\\\\\\alias.txt'"
+          },
+          {
+            "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmpnx29tu9y\\\\\\\\outside.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmpnx29tu9y\\\\\\\\authorized\\\\\\\\escape.txt'"
+          }
+        ],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "checkout-demo_receipt",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "7ddc8b45992020f3507b81bea0b5968ff13ee2699d45b511218e9e9f3cc89248",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_receipt.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_receipt.stderr.bin",
+        "summary": "OK",
+        "tests_run": 12,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "checkout-demo_csv_summary",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "c734ea0a03ed5832cebfbe89037c3fa4ef7e8ca04fd340fd3a101b3e986553a0",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_csv_summary.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_csv_summary.stderr.bin",
+        "summary": "OK",
+        "tests_run": 15,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "checkout-demo_structured_flow",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "e6f85ed4575f2b2b9a944653c85db24b15b171ea0335a385ca493851d967a55a",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_structured_flow.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_structured_flow.stderr.bin",
+        "summary": "OK",
+        "tests_run": 4,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "checkout-reports_demo_verification",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "18dcdef24b684041f6397e6e7e5a9a59b4bcd1246a54d83c0e484acc984e31c5",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_demo_verification.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_demo_verification.stderr.bin",
+        "summary": "OK",
+        "tests_run": 5,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "checkout-reports_csv_verification",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "bbd820ec1af8da02716f15556da7bbbe3cf9c46714675a2e2448e144ecad583d",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_csv_verification.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_csv_verification.stderr.bin",
+        "summary": "OK",
+        "tests_run": 6,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      }
+    ],
+    "extracted": [
+      {
+        "name": "extracted-tests",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "aed8841432361ec2b17107e7a4acc4aa6f16b700db2374fa641e1e91accd8cda",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-tests.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-tests.stderr.bin",
+        "summary": "OK (skipped=2)",
+        "tests_run": 86,
+        "reported_skips": [
+          {
+            "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp8c45ounn\\\\\\\\evidence.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp8c45ounn\\\\\\\\alias.txt'"
+          },
+          {
+            "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp_kipl1j2\\\\\\\\outside.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp_kipl1j2\\\\\\\\authorized\\\\\\\\escape.txt'"
+          }
+        ],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "extracted-demo_receipt",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "da931d0e2805ae046371c06caca38f8667e62ddc28bd011712db1454f7bd4744",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_receipt.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_receipt.stderr.bin",
+        "summary": "OK",
+        "tests_run": 12,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "extracted-demo_csv_summary",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "ea97a5505b4eb05c473841f1d0d65b0b62a1e461254c80758cd3f928f75dde85",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_csv_summary.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_csv_summary.stderr.bin",
+        "summary": "OK",
+        "tests_run": 15,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "extracted-demo_structured_flow",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "704203bf8f63aadb4d10ae201c41d4fd8fda93d0c1fcd49c4f50112079bc4fe0",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_structured_flow.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_structured_flow.stderr.bin",
+        "summary": "OK",
+        "tests_run": 4,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "extracted-reports_demo_verification",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/demo/verification",
+          "-v"
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "9e6d9942a517bb8ac4ab5901b094c3a611ccc67f726758d70bc2061c6bff53c9",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_demo_verification.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_demo_verification.stderr.bin",
+        "summary": "OK",
+        "tests_run": 5,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "extracted-reports_csv_verification",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "reports/csv-summary/verification",
+          "-v"
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "a4813565e4f252919a69adf5c74f344390a0cd3cedb2666cdad343698966cc34",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_csv_verification.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_csv_verification.stderr.bin",
+        "summary": "OK",
+        "tests_run": 6,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      }
+    ]
+  },
+  "attempt_and_evidence_controls": {
+    "name": "checkout-attempt-and-evidence-controls",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "tests.test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_must_match",
+      "tests.test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt",
+      "tests.test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "e3a923a9af3ba387df9235cde81558650134a1307863af64e138f08ee287c803",
+    "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-attempt-and-evidence-controls.stdout.bin",
+    "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-attempt-and-evidence-controls.stderr.bin",
+    "summary": "OK",
+    "tests_run": 3,
+    "reported_skips": [],
+    "passed_expected_exit": true
+  },
+  "source_integrity": {
+    "tree": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "examples": [
+      {
+        "name": "checkout-example-job",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+          "--root",
+          "."
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+        "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stderr.bin",
+        "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+        "tests_run": null,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "checkout-example-job",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+        "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stderr.bin",
+        "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+        "tests_run": null,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      }
+    ],
+    "stale_digest_negative": "REJECTED with artifact_hash",
+    "full_plan_checksums": {
+      "count": 20,
+      "all_match": true,
+      "entries": [
+        {
+          "path": "docs/CouncilFlow-Full-Plan/00-SCOPE-AND-STATUS.md",
+          "expected_sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+          "actual_sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/01-PRODUCT-AND-ROLES.md",
+          "expected_sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+          "actual_sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+          "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+          "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/03-DELIVERY-AND-ACCEPTANCE.md",
+          "expected_sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+          "actual_sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/04-SECURITY-AND-LIMITS.md",
+          "expected_sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+          "actual_sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/05-OPERATIONS-AND-HANDOFF.md",
+          "expected_sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+          "actual_sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/README.md",
+          "expected_sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+          "actual_sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/SOURCE-MANIFEST.md",
+          "expected_sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+          "actual_sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/events.jsonl",
+          "expected_sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+          "actual_sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+          "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+          "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+          "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/role-policy.yaml",
+          "expected_sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+          "actual_sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+          "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+          "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+          "expected_sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+          "actual_sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+          "expected_sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+          "actual_sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+          "expected_sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+          "actual_sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R4-Contract-v0.2.txt",
+          "expected_sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+          "actual_sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R6-Architecture-v0.3.txt",
+          "expected_sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+          "actual_sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+          "expected_sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+          "actual_sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+          "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+          "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+          "matches": true
+        }
+      ]
+    },
+    "frozen_hashes": [
+      {
+        "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+        "expected_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+        "actual_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+        "matches": true
+      },
+      {
+        "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+        "expected_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+        "actual_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+        "matches": true
+      },
+      {
+        "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+        "expected_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+        "actual_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+        "matches": true
+      }
+    ],
+    "criteria_fidelity": {
+      "source_plan": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "frozen_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "C3_source_for_E4": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "criteria": {
+        "E1": {
+          "matches": true,
+          "planned_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631",
+          "frozen_text_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631"
+        },
+        "E2": {
+          "matches": true,
+          "planned_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20",
+          "frozen_text_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20"
+        },
+        "E3": {
+          "matches": true,
+          "planned_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d",
+          "frozen_text_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d"
+        },
+        "E4": {
+          "matches": true,
+          "planned_sha256": "37a4f6a20e3213b2292cb3d77ca2b808b1c0478856aec7cf1da8126d3ac3c0ce",
+          "frozen_text_sha256": "37a4f6a20e3213b2292cb3d77ca2b808b1c0478856aec7cf1da8126d3ac3c0ce"
+        },
+        "E5": {
+          "matches": true,
+          "planned_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815",
+          "frozen_text_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815"
+        },
+        "E6": {
+          "matches": true,
+          "planned_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6",
+          "frozen_text_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6"
+        },
+        "E7": {
+          "matches": true,
+          "planned_sha256": "5931c2993ccecd51098bd693868a219ad2fb5e9c542faa29145f87407659d422",
+          "frozen_text_sha256": "5931c2993ccecd51098bd693868a219ad2fb5e9c542faa29145f87407659d422"
+        },
+        "E8": {
+          "matches": true,
+          "planned_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b",
+          "frozen_text_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b"
+        },
+        "E9": {
+          "matches": true,
+          "planned_sha256": "4a2dab52dc1adbdfcb35a2a7762378bf44202614bc0d752f5f66e98b8fdf84ab",
+          "frozen_text_sha256": "4a2dab52dc1adbdfcb35a2a7762378bf44202614bc0d752f5f66e98b8fdf84ab"
+        },
+        "E10": {
+          "matches": true,
+          "planned_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50",
+          "frozen_text_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50"
+        }
+      },
+      "all_exact": true,
+      "classification": "Static criterion text fidelity only; no Gate 3 observation."
+    },
+    "owner_task_draft": {
+      "not_owner_approved": true,
+      "exact_two_criteria": true,
+      "criteria": [
+        "1. Given a CSV containing a numeric `amount` column with values 2 and 3, selecting `amount` prints `5` and exits successfully.",
+        "2. A missing column or a nonnumeric value exits nonzero and reports a clear error without a traceback."
+      ],
+      "sha256": "229b6d26ca0e9e5f5e7d7b5a46a9bb0e304b904991c45bbd9abba86304fd3b72"
+    }
+  },
+  "extracted_integrity": {
+    "tree": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+    "examples": [
+      {
+        "name": "extracted-example-job",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+          "--root",
+          "."
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+        "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stderr.bin",
+        "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+        "tests_run": null,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      },
+      {
+        "name": "extracted-example-job",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+        "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stdout.bin",
+        "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stderr.bin",
+        "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+        "tests_run": null,
+        "reported_skips": [],
+        "passed_expected_exit": true
+      }
+    ],
+    "stale_digest_negative": "REJECTED with artifact_hash",
+    "full_plan_checksums": {
+      "count": 20,
+      "all_match": true,
+      "entries": [
+        {
+          "path": "docs/CouncilFlow-Full-Plan/00-SCOPE-AND-STATUS.md",
+          "expected_sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+          "actual_sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/01-PRODUCT-AND-ROLES.md",
+          "expected_sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+          "actual_sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+          "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+          "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/03-DELIVERY-AND-ACCEPTANCE.md",
+          "expected_sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+          "actual_sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/04-SECURITY-AND-LIMITS.md",
+          "expected_sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+          "actual_sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/05-OPERATIONS-AND-HANDOFF.md",
+          "expected_sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+          "actual_sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/README.md",
+          "expected_sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+          "actual_sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/SOURCE-MANIFEST.md",
+          "expected_sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+          "actual_sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/events.jsonl",
+          "expected_sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+          "actual_sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+          "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+          "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+          "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/role-policy.yaml",
+          "expected_sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+          "actual_sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+          "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+          "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+          "expected_sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+          "actual_sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+          "expected_sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+          "actual_sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+          "expected_sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+          "actual_sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R4-Contract-v0.2.txt",
+          "expected_sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+          "actual_sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R6-Architecture-v0.3.txt",
+          "expected_sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+          "actual_sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+          "expected_sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+          "actual_sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+          "matches": true
+        },
+        {
+          "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+          "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+          "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+          "matches": true
+        }
+      ]
+    },
+    "frozen_hashes": [
+      {
+        "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+        "expected_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+        "actual_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+        "matches": true
+      },
+      {
+        "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+        "expected_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+        "actual_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+        "matches": true
+      },
+      {
+        "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+        "expected_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+        "actual_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+        "matches": true
+      }
+    ],
+    "criteria_fidelity": {
+      "source_plan": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "frozen_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "C3_source_for_E4": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "criteria": {
+        "E1": {
+          "matches": true,
+          "planned_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631",
+          "frozen_text_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631"
+        },
+        "E2": {
+          "matches": true,
+          "planned_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20",
+          "frozen_text_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20"
+        },
+        "E3": {
+          "matches": true,
+          "planned_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d",
+          "frozen_text_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d"
+        },
+        "E4": {
+          "matches": true,
+          "planned_sha256": "37a4f6a20e3213b2292cb3d77ca2b808b1c0478856aec7cf1da8126d3ac3c0ce",
+          "frozen_text_sha256": "37a4f6a20e3213b2292cb3d77ca2b808b1c0478856aec7cf1da8126d3ac3c0ce"
+        },
+        "E5": {
+          "matches": true,
+          "planned_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815",
+          "frozen_text_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815"
+        },
+        "E6": {
+          "matches": true,
+          "planned_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6",
+          "frozen_text_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6"
+        },
+        "E7": {
+          "matches": true,
+          "planned_sha256": "5931c2993ccecd51098bd693868a219ad2fb5e9c542faa29145f87407659d422",
+          "frozen_text_sha256": "5931c2993ccecd51098bd693868a219ad2fb5e9c542faa29145f87407659d422"
+        },
+        "E8": {
+          "matches": true,
+          "planned_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b",
+          "frozen_text_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b"
+        },
+        "E9": {
+          "matches": true,
+          "planned_sha256": "4a2dab52dc1adbdfcb35a2a7762378bf44202614bc0d752f5f66e98b8fdf84ab",
+          "frozen_text_sha256": "4a2dab52dc1adbdfcb35a2a7762378bf44202614bc0d752f5f66e98b8fdf84ab"
+        },
+        "E10": {
+          "matches": true,
+          "planned_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50",
+          "frozen_text_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50"
+        }
+      },
+      "all_exact": true,
+      "classification": "Static criterion text fidelity only; no Gate 3 observation."
+    },
+    "owner_task_draft": null
+  },
+  "codebase_memory": {
+    "static_tests_in_six_suite": "executed in tests suite; exact-root, missing/stale fallback and graph-as-navigation instructions checked by source tests",
+    "live_unavailable_or_stale_mcp": "NOT EXECUTED; static mocked/source checks do not establish live MCP behavior",
+    "graph_navigation": "parent confirmed exact project root and indexed generation; this Tester result relies on direct file/package tests, not graph output as correctness evidence"
+  },
+  "owner_fixture": {
+    "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+    "sha256": "229b6d26ca0e9e5f5e7d7b5a46a9bb0e304b904991c45bbd9abba86304fd3b72",
+    "not_owner_approved": true,
+    "criteria": [
+      "1. Given a CSV containing a numeric `amount` column with values 2 and 3, selecting `amount` prints `5` and exits successfully.",
+      "2. A missing column or a nonnumeric value exits nonzero and reports a clear error without a traceback."
+    ],
+    "disposable_app": {
+      "path": "reports/gate3-next/disposable-workspace/demo/gate3-demo/app.py",
+      "sha256": "d6bddf04ea4b0236459ed4686341d0839ba926a9236630ba197ed9af0da8d632"
+    },
+    "disposable_test": {
+      "path": "reports/gate3-next/disposable-workspace/demo/gate3-demo/test_app.py",
+      "sha256": "855599b2c835500018ca06c57f0000d9dbf831077601e356eafae864d7362fc6"
+    }
+  },
+  "deterministic_command": {
+    "name": "deterministic-tester-command",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "--root",
+      "."
+    ],
+    "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+    "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stdout.bin",
+    "stderr_path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stderr.bin",
+    "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+    "tests_run": null,
+    "reported_skips": [],
+    "passed_expected_exit": true,
+    "candidate_ref": {
+      "path": "dist/council-flow.zip",
+      "sha256": "0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4"
+    },
+    "input_refs": [
+      {
+        "path": ".agents/skills/council-flow/scripts/contracts.py",
+        "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+        "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3"
+      }
+    ],
+    "acceptance_id": "independent-package-contract-validation",
+    "evidence_ref": {
+      "path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838"
+    },
+    "top_level_evidence_ref": {
+      "path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838"
+    }
+  },
+  "results": {
+    "all_six_checkout_suite_exits_zero": true,
+    "all_six_extracted_suite_exits_zero": true,
+    "root_bound_examples_pass_both_roots": true,
+    "stale_digest_rejected_both_roots": true,
+    "full_plan_20_hashes_match_both_roots": true,
+    "frozen_hashes_match_before_and_after_both_roots": true,
+    "E1_E10_text_fidelity_static_exact": true,
+    "gate3_run": false,
+    "windows_symlink_semantics": "UNVERIFIED: both symlink-specific tests report the exact Windows privilege skip; this is not a security pass",
+    "junction_reparse_and_toctou": "UNVERIFIED by Tester"
+  },
+  "command_count": 20,
+  "all_command_exits_as_expected": true,
+  "evidence_refs": [
+    {
+      "path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    {
+      "path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    }
+  ],
+  "commands": [
+    {
+      "name": "checkout-tests",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "fd4728699779843259b12879ff58baa2fa5d41602070f9cb1de8f7b555b01d83",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-tests.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-tests.stderr.bin",
+      "summary": "OK (skipped=2)",
+      "tests_run": 86,
+      "reported_skips": [
+        {
+          "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp5q8sn0h0\\\\\\\\evidence.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp5q8sn0h0\\\\\\\\alias.txt'"
+        },
+        {
+          "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmpnx29tu9y\\\\\\\\outside.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmpnx29tu9y\\\\\\\\authorized\\\\\\\\escape.txt'"
+        }
+      ],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-demo_receipt",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "7ddc8b45992020f3507b81bea0b5968ff13ee2699d45b511218e9e9f3cc89248",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_receipt.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_receipt.stderr.bin",
+      "summary": "OK",
+      "tests_run": 12,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-demo_csv_summary",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "c734ea0a03ed5832cebfbe89037c3fa4ef7e8ca04fd340fd3a101b3e986553a0",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_csv_summary.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_csv_summary.stderr.bin",
+      "summary": "OK",
+      "tests_run": 15,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-demo_structured_flow",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "e6f85ed4575f2b2b9a944653c85db24b15b171ea0335a385ca493851d967a55a",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_structured_flow.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-demo_structured_flow.stderr.bin",
+      "summary": "OK",
+      "tests_run": 4,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-reports_demo_verification",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "18dcdef24b684041f6397e6e7e5a9a59b4bcd1246a54d83c0e484acc984e31c5",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_demo_verification.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_demo_verification.stderr.bin",
+      "summary": "OK",
+      "tests_run": 5,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-reports_csv_verification",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "bbd820ec1af8da02716f15556da7bbbe3cf9c46714675a2e2448e144ecad583d",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_csv_verification.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-reports_csv_verification.stderr.bin",
+      "summary": "OK",
+      "tests_run": 6,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-tests",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "aed8841432361ec2b17107e7a4acc4aa6f16b700db2374fa641e1e91accd8cda",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-tests.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-tests.stderr.bin",
+      "summary": "OK (skipped=2)",
+      "tests_run": 86,
+      "reported_skips": [
+        {
+          "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp8c45ounn\\\\\\\\evidence.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp8c45ounn\\\\\\\\alias.txt'"
+        },
+        {
+          "reason": "symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp_kipl1j2\\\\\\\\outside.txt' -> 'C:\\\\\\\\Users\\\\\\\\cupid\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\tmp_kipl1j2\\\\\\\\authorized\\\\\\\\escape.txt'"
+        }
+      ],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-demo_receipt",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "da931d0e2805ae046371c06caca38f8667e62ddc28bd011712db1454f7bd4744",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_receipt.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_receipt.stderr.bin",
+      "summary": "OK",
+      "tests_run": 12,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-demo_csv_summary",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "ea97a5505b4eb05c473841f1d0d65b0b62a1e461254c80758cd3f928f75dde85",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_csv_summary.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_csv_summary.stderr.bin",
+      "summary": "OK",
+      "tests_run": 15,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-demo_structured_flow",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "704203bf8f63aadb4d10ae201c41d4fd8fda93d0c1fcd49c4f50112079bc4fe0",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_structured_flow.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-demo_structured_flow.stderr.bin",
+      "summary": "OK",
+      "tests_run": 4,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-reports_demo_verification",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "9e6d9942a517bb8ac4ab5901b094c3a611ccc67f726758d70bc2061c6bff53c9",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_demo_verification.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_demo_verification.stderr.bin",
+      "summary": "OK",
+      "tests_run": 5,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-reports_csv_verification",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "a4813565e4f252919a69adf5c74f344390a0cd3cedb2666cdad343698966cc34",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_csv_verification.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-reports_csv_verification.stderr.bin",
+      "summary": "OK",
+      "tests_run": 6,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-attempt-and-evidence-controls",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "tests.test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_must_match",
+        "tests.test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt",
+        "tests.test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "e3a923a9af3ba387df9235cde81558650134a1307863af64e138f08ee287c803",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-attempt-and-evidence-controls.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-attempt-and-evidence-controls.stderr.bin",
+      "summary": "OK",
+      "tests_run": 3,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-example-job",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-example-job",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-example-job.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "checkout-stale-digest-negative",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        ".tester-stale-7tm18spt/stale.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "663678fc28269ab2949d596830a93a40426e72f8f3b8f935779b7a585fd74941",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/checkout-stale-digest-negative.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/checkout-stale-digest-negative.stderr.bin",
+      "summary": "{\"valid\": false, \"error\": \"artifact_hash\", \"field\": \"payload.candidate_ref\", \"message\": \"artifact_hash at payload.candidate_ref: docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-example-job",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-example-job",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-example-job.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "extracted-stale-digest-negative",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        ".tester-stale-5zmplhi2/stale.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "663678fc28269ab2949d596830a93a40426e72f8f3b8f935779b7a585fd74941",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/extracted-stale-digest-negative.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/extracted-stale-digest-negative.stderr.bin",
+      "summary": "{\"valid\": false, \"error\": \"artifact_hash\", \"field\": \"payload.candidate_ref\", \"message\": \"artifact_hash at payload.candidate_ref: docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    },
+    {
+      "name": "deterministic-tester-command",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stdout.bin",
+      "stderr_path": "reports/gate3-preflight-2026-11-12/tester/deterministic-tester-command.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+      "tests_run": null,
+      "reported_skips": [],
+      "passed_expected_exit": true
+    }
+  ]
+}

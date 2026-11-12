@@ -1,0 +1,170 @@
+{
+  "frozen_sources": [
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "expected_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "actual_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "matches": true
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "expected_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "actual_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "matches": true
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "expected_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "actual_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "matches": true
+    }
+  ],
+  "frozen_all_match_checklist": true,
+  "full_plan_manifest": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+  "full_plan_checks": [
+    {
+      "path": "docs/CouncilFlow-Full-Plan/00-SCOPE-AND-STATUS.md",
+      "expected_sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "actual_sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/01-PRODUCT-AND-ROLES.md",
+      "expected_sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "actual_sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/03-DELIVERY-AND-ACCEPTANCE.md",
+      "expected_sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "actual_sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/04-SECURITY-AND-LIMITS.md",
+      "expected_sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "actual_sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/05-OPERATIONS-AND-HANDOFF.md",
+      "expected_sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "actual_sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/README.md",
+      "expected_sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "actual_sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SOURCE-MANIFEST.md",
+      "expected_sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "actual_sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/events.jsonl",
+      "expected_sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "actual_sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/role-policy.yaml",
+      "expected_sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "actual_sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+      "expected_sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "actual_sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+      "expected_sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "actual_sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+      "expected_sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "actual_sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R4-Contract-v0.2.txt",
+      "expected_sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "actual_sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R6-Architecture-v0.3.txt",
+      "expected_sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "actual_sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+      "expected_sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "actual_sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "matches": true
+    }
+  ],
+  "full_plan_count": 20,
+  "full_plan_all_match": true,
+  "owner_task_draft": {
+    "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+    "not_owner_approved": true,
+    "criterion_lines": [
+      "1. Given a CSV containing a numeric `amount` column with values 2 and 3, selecting `amount` prints `5` and exits successfully.",
+      "2. A missing column or a nonnumeric value exits nonzero and reports a clear error without a traceback."
+    ],
+    "exactly_two_criteria": true,
+    "sha256": "229b6d26ca0e9e5f5e7d7b5a46a9bb0e304b904991c45bbd9abba86304fd3b72"
+  },
+  "disposable_workspace": {
+    "path": "reports/gate3-next/disposable-workspace",
+    "app": {
+      "path": "reports/gate3-next/disposable-workspace/demo/gate3-demo/app.py",
+      "sha256": "d6bddf04ea4b0236459ed4686341d0839ba926a9236630ba197ed9af0da8d632"
+    },
+    "test": {
+      "path": "reports/gate3-next/disposable-workspace/demo/gate3-demo/test_app.py",
+      "sha256": "855599b2c835500018ca06c57f0000d9dbf831077601e356eafae864d7362fc6"
+    },
+    "app_and_test_present": true
+  }
+}

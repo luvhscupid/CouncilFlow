@@ -720,20 +720,41 @@ class JSONContractTests(unittest.TestCase):
         with self.assertRaises(c.ContractError):
             c.validate_sequence(data + [check])
 
-    def test_artifact_path_shape_and_actual_hash_sensitivity(self):
+    def test_artifact_path_shape(self):
         with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
             target = Path(directory) / "evidence.txt";target.write_text("actual evidence", encoding="utf-8")
             item = ref("real", target.relative_to(ROOT).as_posix(), hashlib.sha256(target.read_bytes()).hexdigest())
             c.artifact(item, ROOT)
-            item["sha256"] = "0" * 64
-            with self.assertRaises(c.ContractError):c.artifact(item, ROOT)
             item["path"] = "../outside"
             with self.assertRaises(c.ContractError):c.artifact(item, ROOT)
             item["path"] = "/etc/secret"
             with self.assertRaises(c.ContractError):c.artifact(item, ROOT)
 
-    def test_artifact_symlink_escape_is_rejected_when_supported(self):
+    def test_artifact_stale_digest_is_rejected(self):
         with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            target = Path(directory) / "evidence.txt"
+            target.write_text("actual evidence", encoding="utf-8")
+            item = ref("stale-digest", target.relative_to(ROOT).as_posix(), "0" * 64)
+            with self.assertRaises(c.ContractError) as raised:
+                c.artifact(item, ROOT)
+            self.assertEqual(raised.exception.code, "artifact_hash")
+
+    def test_artifact_in_root_symlink_is_allowed_when_supported(self):
+        with tempfile.TemporaryDirectory() as directory:
+            authorized = Path(directory)
+            target = authorized / "evidence.txt"
+            target.write_text("valid evidence", encoding="utf-8")
+            link = authorized / "alias.txt"
+            try:
+                link.symlink_to(target)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symlink creation unavailable: {exc}")
+            item = ref("in-root-symlink", "alias.txt",
+                       hashlib.sha256(target.read_bytes()).hexdigest())
+            self.assertIs(c.artifact(item, authorized), item)
+
+    def test_artifact_symlink_escape_is_rejected_when_supported(self):
+        with tempfile.TemporaryDirectory() as directory:
             parent = Path(directory)
             authorized = parent / "authorized"
             authorized.mkdir()
@@ -744,10 +765,11 @@ class JSONContractTests(unittest.TestCase):
                 link.symlink_to(outside)
             except (OSError, NotImplementedError) as exc:
                 self.skipTest(f"symlink creation unavailable: {exc}")
-            item = ref("symlink-escape", link.relative_to(ROOT).as_posix(),
+            item = ref("symlink-escape", link.relative_to(authorized).as_posix(),
                        hashlib.sha256(outside.read_bytes()).hexdigest())
-            with self.assertRaises(c.ContractError):
-                c.artifact(item, ROOT)
+            with self.assertRaises(c.ContractError) as raised:
+                c.artifact(item, authorized)
+            self.assertEqual(raised.exception.code, "artifact_path")
 
     def test_published_json_message_examples_match_current_contract(self):
         examples = ROOT / "docs" / "CouncilFlow-Full-Plan" / "examples"

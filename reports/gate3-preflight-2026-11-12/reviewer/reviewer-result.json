@@ -1,0 +1,102 @@
+{
+  "record_type": "independent-native-reviewer-technical-result",
+  "format": "UTF-8 JSON",
+  "role": "reviewer",
+  "native_instance": "/root/reviewer",
+  "council_flow_envelope": "NOT EMITTED: no real task/attempt/message IDs or approved oracle_ref were supplied; none invented.",
+  "tester_report": {
+    "path": "reports/gate3-preflight-2026-11-12/tester/tester-result.json",
+    "sha256": "2612f9c935093236048267708370463fe1c406643ad4af4bee7e6b8b23b16684"
+  },
+  "candidate": {
+    "path": "dist/council-flow.zip",
+    "expected_sha256": "0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4",
+    "actual_sha256": "0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4",
+    "matches": true
+  },
+  "independent_rerun": {
+    "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "--root",
+      "."
+    ],
+    "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\CouncilFlow-Gate3-preflight-9b637befef884d2b828aca5319de72c0",
+    "candidate_sha256": "0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4",
+    "input_refs": [
+      {
+        "path": ".agents/skills/council-flow/scripts/contracts.py",
+        "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+        "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3"
+      }
+    ],
+    "input_checks": [
+      {
+        "path": ".agents/skills/council-flow/scripts/contracts.py",
+        "expected_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "actual_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+        "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+        "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+        "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+        "matches": true
+      }
+    ],
+    "exit_code": 0,
+    "stdout_raw_path": "reports/gate3-preflight-2026-11-12/reviewer/reviewer-rerun.stdout.bin",
+    "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+    "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+    "stderr_raw_path": "reports/gate3-preflight-2026-11-12/reviewer/reviewer-rerun.stderr.bin",
+    "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tester_exit_code": 0,
+    "tester_stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+    "tester_stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+    "exit_matches": true,
+    "normalized_stdout_matches": true,
+    "command_evidence_ref": {
+      "path": "reports/gate3-preflight-2026-11-12/reviewer/reviewer-rerun.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    }
+  },
+  "tester_command_reference_checks": {
+    "nested_and_top_level_stdout_refs_equal": true,
+    "nested_stdout_ref_matches_bytes": true,
+    "nested_stderr_ref_matches_bytes": true,
+    "top_level_stdout_ref_matches_bytes": true
+  },
+  "comparison": {
+    "status": "MATCH",
+    "scope": "Repeatability for this single declared command and exact bindings only.",
+    "gate3_outcome": "NOT CLAIMED; this is not a Gate 3 observation."
+  },
+  "evidence_refs": [
+    {
+      "path": "reports/gate3-preflight-2026-11-12/reviewer/reviewer-rerun.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    {
+      "path": "reports/gate3-preflight-2026-11-12/reviewer/reviewer-rerun.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    }
+  ]
+}

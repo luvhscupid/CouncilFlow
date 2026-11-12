@@ -1,0 +1,98 @@
+{
+  "record_type": "councilflow-planner-final-technical-result",
+  "format": "UTF-8 JSON",
+  "role": "planner",
+  "path": "reports/gate3-preflight-2026-11-12/planner-final.json",
+  "council_flow_envelope": "NOT EMITTED: no real plan/task/attempt/message IDs were supplied; none are invented.",
+  "summary": {
+    "status": "PARTIAL_PENDING_LOCAL_CHECKPOINT",
+    "text": "The reviewed candidate satisfies the source repair, focused cross-platform path semantics, six-suite checkout/extraction, package integrity, frozen-source, and independent replay checks. At review time the checkout still has uncommitted source and release changes, so the requested local commit/checkpoint is not yet evidenced. Gate 3 is NOT RUN and remains NOT READY with the Owner and host prerequisites listed in readiness.md."
+  },
+  "checks": [
+    {
+      "id": "P0-FIXTURE",
+      "status": "PASS",
+      "evidence": ["tests/test_contracts.py", "reports/gate3-preflight-2026-11-12/integrity/original-fixture-control.json", "reports/gate3-preflight-2026-11-12/integrity/linux-symlink.json"],
+      "finding": "The test now passes root-relative escape.txt against an isolated authorized root, targets a sibling outside it, uses the target's correct digest, and asserts artifact_path. Linux control confirms the old geometry remained inside ROOT and was accepted."
+    },
+    {
+      "id": "P0-SYMLINK-SEMANTICS",
+      "status": "PASS_WITH_WINDOWS_SKIP",
+      "evidence": ["reports/gate3-preflight-2026-11-12/integrity/linux-symlink.json", "reports/gate3-preflight-2026-11-12/integrity/junction-negative.json", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "The four focused Linux path/digest tests passed with zero skips, including allowed in-root and rejected out-of-root symlinks. Windows junction negative control rejected the digest-correct outside target. Both symlink-specific tests skipped on Windows with WinError 1314; those skips are not security passes. TOCTOU and OS isolation remain unverified."
+    },
+    {
+      "id": "P0-NEGATIVE-CONTROLS",
+      "status": "PASS",
+      "evidence": ["tests/test_contracts.py", "reports/gate3-preflight-2026-11-12/integrity/linux-symlink.json", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "Traversal and stale-digest checks explicitly reject; stale digest command reports artifact_hash. No production validator change or blanket skip was made."
+    },
+    {
+      "id": "P1-CONTRACTS",
+      "status": "PASS",
+      "evidence": ["reports/gate3-preflight-2026-11-12/readiness.md", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "Review reports current multiline, root-bound, sender-binding, evidence-reference, attempt-ID, top-level command-evidence, and Planner E1-E10 fidelity checks; the three focused attempt/evidence regressions passed. No new production defect was identified."
+    },
+    {
+      "id": "P1-MCP",
+      "status": "STATIC_CHECKS_PASS_LIVE_UNVERIFIED",
+      "evidence": ["reports/gate3-preflight-2026-11-12/readiness.md", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "Exact-root selection, missing/stale fallback, and graph-as-navigation behavior are covered by static/source checks. Live unavailable or stale MCP behavior was not exercised; graph output was not treated as proof."
+    },
+    {
+      "id": "P1-READINESS",
+      "status": "PASS_WITH_FOLLOW_UP_RECORDED",
+      "evidence": ["reports/gate3-preflight-2026-11-12/readiness.md", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "A005/A006 and prior repeated Planner boundaries are retained as follow-up risks; the current Tester/Reviewer records align, and tests reject attempt mismatch and missing top-level command evidence. No protocol change was made."
+    },
+    {
+      "id": "P1-TESTS",
+      "status": "PASS_WITH_EXPLICIT_SKIPS",
+      "evidence": ["reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "All six checkout suites and all six fresh-extraction suites exited 0. Each root ran 128 tests: 126 passed and 2 symlink-specific cases skipped on Windows with WinError 1314. Thus 252 passed and 4 skipped across both roots. Linux separately ran the four focused path/digest tests: 4 passed, 0 skipped."
+    },
+    {
+      "id": "P1-INTEGRITY",
+      "status": "PASS",
+      "evidence": ["reports/gate3-preflight-2026-11-12/integrity/before_checks.json", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "Both operational examples validate in checkout and extraction; stale digest rejects. All 20 Full Plan checksums and three frozen SHA-256 values match. E1-E10 text fidelity is exact with C3 applied to E4 only; this is not an Owner fixture comparison or Gate 3 result."
+    },
+    {
+      "id": "P1-PACKAGE",
+      "status": "PASS",
+      "evidence": ["reports/gate3-preflight-2026-11-12/release/build-package.stdout.json", "reports/gate3-preflight-2026-11-12/tester/tester-result.json"],
+      "finding": "Explicit-allowlist archive has 118 entries and SHA-256 0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4. Tester reports checksum, CRC, safe paths, required/excluded inventory, and exact packaged source hashes all pass."
+    },
+    {
+      "id": "P1-INDEPENDENT",
+      "status": "PASS",
+      "evidence": ["reports/gate3-preflight-2026-11-12/tester/tester-result.json", "reports/gate3-preflight-2026-11-12/reviewer/reviewer-result.json"],
+      "finding": "Reviewer reran the declared command with identical executable, arguments, cwd, candidate and three input hashes. Both exits were 0; CRLF-to-LF-only normalized stdout SHA-256 matched at 9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd. Nested and top-level command evidence references matched captured bytes."
+    },
+    {
+      "id": "P2-HANDOFF",
+      "status": "PASS_GATE3_NOT_READY",
+      "evidence": ["reports/gate3-preflight-2026-11-12/readiness.md", "reports/gate3-next/E1-E10-CHECKLIST.md", "reports/gate3-next/OWNER-TASK-DRAFT.txt", "reports/gate3-next/OWNER-INVOCATION.txt"],
+      "finding": "Preparation matrix and invocation guidance preserve frozen classes/statuses. The draft retains its exact two criteria and remains NOT OWNER-APPROVED; no authentic Owner-saved fixture or required host-observed activation/config telemetry is present. Gate 3 is NOT RUN and NOT READY."
+    },
+    {
+      "id": "P2-CHECKPOINT",
+      "status": "PENDING_AT_REVIEW",
+      "evidence": ["git status at review: tests/test_contracts.py and dist/council-flow.zip plus checksum modified; HEAD remains 9ba41ec06fecb8c1f78d9934295a62826f31baa4"],
+      "finding": "No local commit/checkpoint existed at the time of this read-only Planner check. This technical review does not authorize or claim a commit."
+    }
+  ],
+  "gate3": {
+    "status": "NOT RUN",
+    "readiness": "NOT READY",
+    "e1_e10_outcomes": "NONE CLAIMED",
+    "owner_prerequisites": ["Owner personally reviews and saves the exact two-criterion fixture outside the installed skill.", "Owner starts a new authenticated local Codex session rooted at reports/gate3-next/disposable-workspace and submits only $council-flow followed by the verbatim saved fixture."],
+    "host_limitations": ["No effective loaded TOML identity or required Gate 3 telemetry was exposed.", "Repair role labels/task paths do not establish Gate 3 host-observed role evidence."]
+  },
+  "limitations": [
+    "Windows symlink creation unavailable with WinError 1314; Linux focused symlink checks supplied the supported-platform evidence.",
+    "Windows junction negative control is not proof of TOCTOU resistance or OS isolation.",
+    "Live unavailable/stale MCP fallback remains unverified.",
+    "Executing model identity was not disclosed."
+  ]
+}

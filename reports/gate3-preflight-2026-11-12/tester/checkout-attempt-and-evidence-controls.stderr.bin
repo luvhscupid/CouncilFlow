@@ -1,0 +1,8 @@
+test_tester_command_and_reviewer_rerun_must_match (tests.test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_must_match) ... ok
+test_rework_requires_failure_and_fresh_worker_attempt (tests.test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt) ... ok
+test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs (tests.test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.010s
+
+OK

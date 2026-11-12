@@ -1,0 +1,20 @@
+{
+  "method": "isolated Windows directory junction/reparse-point negative control",
+  "authorized_root": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-junction-dffzb8mz\\authorized",
+  "outside_target": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-junction-dffzb8mz\\outside\\evidence.txt",
+  "junction_path": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-junction-dffzb8mz\\authorized\\escape",
+  "creation_command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "New-Item -ItemType Junction -Path 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-junction-dffzb8mz\\authorized\\escape' -Target 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-junction-dffzb8mz\\outside' | Out-Null"
+  ],
+  "creation_exit_code": 0,
+  "creation_stdout_raw": "",
+  "creation_stderr_raw": "",
+  "target_sha256": "ac4f7696593fa11669b456133788db5d77930652c6fca55c8c4c3ebebbd929d1",
+  "toctou_or_os_sandbox_claim": false,
+  "validator_error_code": "artifact_path",
+  "validator_error": "artifact_path at evidence_ref: resolved path leaves authorized root",
+  "status": "PASS"
+}

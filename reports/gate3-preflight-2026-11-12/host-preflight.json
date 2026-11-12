@@ -1,0 +1,38 @@
+{
+  "kind": "read-only host capability preflight; not Gate 3 evidence",
+  "local_codex_cli": {
+    "command": "codex --version",
+    "result": "codex-cli 0.167.0-alpha.4.1"
+  },
+  "authentication": {
+    "command": "codex login status",
+    "result": "Logged in using ChatGPT",
+    "tokens_or_credentials_read": false
+  },
+  "native_skill_visibility": {
+    "local_skill_file": ".agents/skills/council-flow/SKILL.md",
+    "file_present": true,
+    "native_picker_or_discovery_readout": "Not exposed by the inspected CLI help or this host session; file presence does not prove native discovery or activation."
+  },
+  "native_role_activity_in_this_repair": {
+    "role_tasks": [
+      {"role": "planner", "canonical_task_name": "/root/planner"},
+      {"role": "worker", "canonical_task_name": "/root/worker"},
+      {"role": "tester", "canonical_task_name": "/root/tester"},
+      {"role": "reviewer", "canonical_task_name": "/root/reviewer"}
+    ],
+    "host_thread_or_session_ids": "Not separately exposed; canonical collaboration task names are reported as returned, not converted into IDs.",
+    "limitation": "These repair roles are separate from the future Gate 3 observation and do not establish E1-E3 or E5-E6."
+  },
+  "custom_agent_configuration": {
+    "repository_files": [
+      ".codex/agents/council-planner.toml",
+      ".codex/agents/council-worker.toml",
+      ".codex/agents/council-tester.toml",
+      ".codex/agents/council-reviewer.toml"
+    ],
+    "effective_loaded_identity_or_turn_settings": "Not exposed by this host session. File presence and role labels do not establish which TOML definitions were loaded."
+  },
+  "executing_model_identity": "Not disclosed by the host; the requested model label is not treated as execution evidence.",
+  "gate3": "NOT RUN"
+}

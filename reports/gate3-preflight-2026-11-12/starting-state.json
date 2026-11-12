@@ -1,0 +1,17 @@
+{
+  "repository_root": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "branch": "main",
+  "head": "9ba41ec06fecb8c1f78d9934295a62826f31baa4",
+  "parents_in_recent_log": ["87271db", "4b37907"],
+  "tracking_status": "main...origin/main [ahead 3]",
+  "staged_paths": [],
+  "modified_tracked_paths": [],
+  "preexisting_untracked_paths": [
+    "reports/councilflow-finalization/tester-final/extracted-candidate/",
+    "reports/councilflow-finalization/tester/extracted-candidate/",
+    "reports/councilflow-finalization/working-tree-checkpoint.zip",
+    "reports/gate3-next/disposable-demo/"
+  ],
+  "ignored_inventory": "Ignored Python cache directories were observed. A full git status --short --ignored -uall inventory was captured later in this run at initial-current-git-status.txt; no preexisting ignored path was removed or modified.",
+  "supplied_source_zip": "Not extracted over the checkout."
+}

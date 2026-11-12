@@ -1,0 +1,9 @@
+test_artifact_path_shape (tests.test_contracts.JSONContractTests.test_artifact_path_shape) ... ok
+test_artifact_stale_digest_is_rejected (tests.test_contracts.JSONContractTests.test_artifact_stale_digest_is_rejected) ... ok
+test_artifact_in_root_symlink_is_allowed_when_supported (tests.test_contracts.JSONContractTests.test_artifact_in_root_symlink_is_allowed_when_supported) ... ok
+test_artifact_symlink_escape_is_rejected_when_supported (tests.test_contracts.JSONContractTests.test_artifact_symlink_escape_is_rejected_when_supported) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK

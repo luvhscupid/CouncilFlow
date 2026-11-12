@@ -1,0 +1,603 @@
+{
+  "archive": "dist/council-flow.zip",
+  "sha256": "0eaa905e0a4c3d34468f6dcce85e83e280287e764133292cb9321ae762f9e9c4",
+  "checksum_matches": true,
+  "entries": 118,
+  "crc": "PASS",
+  "safe_paths": "PASS",
+  "required_entries": "PASS",
+  "forbidden_entries_absent": "PASS",
+  "all_entries_match_source": true,
+  "entry_manifest": [
+    {
+      "path": ".agents/skills/council-flow/SKILL.md",
+      "sha256": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7",
+      "size": 6904
+    },
+    {
+      "path": ".agents/skills/council-flow/agents/openai.yaml",
+      "sha256": "3a464c734167669588604d577aee29ff405f5ad20f709640fe5b954b3b6afff0",
+      "size": 262
+    },
+    {
+      "path": ".agents/skills/council-flow/policies/roles.yaml",
+      "sha256": "4a03e4af7458c27cbcd65fcfd67def03aa4bc9cd77208427a71ddf0da47dddbf",
+      "size": 3117
+    },
+    {
+      "path": ".agents/skills/council-flow/references/acceptance.md",
+      "sha256": "85956ef54ce63278f9cf467cf6dc22428eb8834ed028b710a639d849366e596d",
+      "size": 4808
+    },
+    {
+      "path": ".agents/skills/council-flow/references/codebase-memory.md",
+      "sha256": "866bcd43c63fcaa50415ee81f00b775c6f7988f3210886c7e9114a6cc1872a2c",
+      "size": 7438
+    },
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "size": 13040
+    },
+    {
+      "path": ".agents/skills/council-flow/references/message-contract.json",
+      "sha256": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783",
+      "size": 4771
+    },
+    {
+      "path": ".agents/skills/council-flow/references/recovery.md",
+      "sha256": "702b3829ec1d2ca6aaeb01f93dc62ce0597c9fc87ce051a113457b97154c5d8d",
+      "size": 2659
+    },
+    {
+      "path": ".agents/skills/council-flow/references/roles.md",
+      "sha256": "a0e6e870ff737302c331e00fe2c01ca9e99a0ca2b35aeed537edeab4780c9775",
+      "size": 3841
+    },
+    {
+      "path": ".agents/skills/council-flow/references/workflow.md",
+      "sha256": "1e3421fd1ad14fe19c30049d4eb118a7bb2a845f6d18e91e8112ba29050c4ea2",
+      "size": 4941
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "size": 55872
+    },
+    {
+      "path": ".codex/agents/council-planner.toml",
+      "sha256": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50",
+      "size": 1423
+    },
+    {
+      "path": ".codex/agents/council-reviewer.toml",
+      "sha256": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4",
+      "size": 1630
+    },
+    {
+      "path": ".codex/agents/council-tester.toml",
+      "sha256": "6c45b0033a8aa7dc0c160972500eb40d0e3a255743c817941ea5eea2c4b387e4",
+      "size": 1597
+    },
+    {
+      "path": ".codex/agents/council-worker.toml",
+      "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f",
+      "size": 1319
+    },
+    {
+      "path": "README.md",
+      "sha256": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+      "size": 9689
+    },
+    {
+      "path": "RELEASE.md",
+      "sha256": "d9de42af352578907b4b331df6bc1d8e40fbe84a8243337a72ce492de09c17b5",
+      "size": 9412
+    },
+    {
+      "path": "demo/README.md",
+      "sha256": "e007215a28cbcb9bd5d120b05a4d1fd8768c93082c6b5fd358316ce43249367f",
+      "size": 3319
+    },
+    {
+      "path": "demo/csv-summary/README.md",
+      "sha256": "903ce11db0bd248a73ffd16d006dc7017a1351399d910847d7f9f548551502cd",
+      "size": 2677
+    },
+    {
+      "path": "demo/csv-summary/csv_summarizer.py",
+      "sha256": "96b272e33e451709a1ae4f58102043671bbab38559e62ce62339693bd41f0cec",
+      "size": 6117
+    },
+    {
+      "path": "demo/csv-summary/sample.csv",
+      "sha256": "56b122059d93b26421b9b690ebd1f466010bc1a49e1bdcd6066f9d26b513e805",
+      "size": 64
+    },
+    {
+      "path": "demo/csv-summary/test_csv_summarizer.py",
+      "sha256": "f4cea35b304410920a3dfc4bd7b6c0a460b3a69a6cb8d4221a575805c0c54487",
+      "size": 8655
+    },
+    {
+      "path": "demo/receipt/receipt_calculator.py",
+      "sha256": "e1fed3858bba128aa43fba186e1f6b3dcff7f1e4fcb6e2ff36c64df15c4c351f",
+      "size": 5674
+    },
+    {
+      "path": "demo/receipt/test_receipt_calculator.py",
+      "sha256": "be1f2e14c188f34c0255687a4fa2d3ff14095ad9a9df4b903a42554666172b5c",
+      "size": 5324
+    },
+    {
+      "path": "demo/starter/receipt_calculator.py",
+      "sha256": "a3461d8d2910f6a235e590cef4fd624952cc7fd7c20c882b3d07593baf36e9ab",
+      "size": 1271
+    },
+    {
+      "path": "demo/starter/test_receipt_calculator.py",
+      "sha256": "4ac705d92aa070397222259fcef0d9838f7c9d173f0e54675d5686558ed183a8",
+      "size": 717
+    },
+    {
+      "path": "demo/structured-flow/README.md",
+      "sha256": "ae072fabdea2a5a3bc998a829393fd8db6d1957310546a10c869f979702625f7",
+      "size": 1245
+    },
+    {
+      "path": "demo/structured-flow/sum_values.py",
+      "sha256": "702061caf76c823607b459e3c27fa3081c1f0fdfdcd1a9695fa29db881c2e57a",
+      "size": 747
+    },
+    {
+      "path": "demo/structured-flow/test_sum_values.py",
+      "sha256": "c3c43c6eac2fcb77dfc4e93532f3f5223f029e9a7d5481320ad7545572ca5430",
+      "size": 1830
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/00-SCOPE-AND-STATUS.md",
+      "sha256": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "size": 3157
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/01-PRODUCT-AND-ROLES.md",
+      "sha256": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "size": 3961
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "size": 4125
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/03-DELIVERY-AND-ACCEPTANCE.md",
+      "sha256": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "size": 4866
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/04-SECURITY-AND-LIMITS.md",
+      "sha256": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "size": 2580
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/05-OPERATIONS-AND-HANDOFF.md",
+      "sha256": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "size": 2371
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/README.md",
+      "sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "size": 3227
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "size": 1981
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SOURCE-MANIFEST.md",
+      "sha256": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "size": 1861
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/events.jsonl",
+      "sha256": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "size": 224
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "size": 681
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "size": 1024
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/role-policy.yaml",
+      "sha256": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "size": 1390
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "size": 91
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "size": 13135
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+      "sha256": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "size": 18033
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+      "sha256": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "size": 13292
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+      "sha256": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "size": 16559
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R4-Contract-v0.2.txt",
+      "sha256": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "size": 13311
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Council-R6-Architecture-v0.3.txt",
+      "sha256": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "size": 13691
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+      "sha256": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "size": 6131
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "size": 2195
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "size": 8929
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/03-EXPERIMENT-RECORD.md",
+      "sha256": "1ae70e5a3f77767015b887d36e86bade702b4c61a5ff2d29e7e68b2086072ad1",
+      "size": 2857
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/04-TASK-FIXTURE-EXAMPLE.md",
+      "sha256": "1b315295ce7d48762fd3d5d88c4a10438a1d25dc1481121807588f484025f9a3",
+      "size": 1055
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/05-COUNCIL-RATIFICATION.md",
+      "sha256": "ba4fc7f9be4175573004fcf3a4df30b2bd1fcdc3742370673daefe7962ce6250",
+      "size": 2061
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "size": 1079
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/README.md",
+      "sha256": "432c9deeb8cb9416836ea438395996db2373ab37854678568de59f384f3d0cfb",
+      "size": 1671
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/SHA256SUMS.txt",
+      "sha256": "78dfce253e079072e5e4a1b82cf3222075d494dcacc4bcaa1d8e7b19a6c5c3c8",
+      "size": 528
+    },
+    {
+      "path": "docs/gate3/README.md",
+      "sha256": "ff64afb2ac6e7ad512f7392223a58d280177eae0706a12c68c1bbb604641ba05",
+      "size": 3342
+    },
+    {
+      "path": "reports/csv-summary/contract.json",
+      "sha256": "a21ae0c9b09a7c800d31f95fa82d75a414d0f034a7a949e692f2cdc266d977d1",
+      "size": 11370
+    },
+    {
+      "path": "reports/csv-summary/final.md",
+      "sha256": "55173865959728bec96d498bd3b2797fafdb427faf461e0e71d57dcbc0068040",
+      "size": 4375
+    },
+    {
+      "path": "reports/csv-summary/manager.md",
+      "sha256": "27870af2d8252169f11c72384ab96640bc15e085232b6cea26ad2c9ac2507a33",
+      "size": 7757
+    },
+    {
+      "path": "reports/csv-summary/planner-final.md",
+      "sha256": "f6e9d210f332fb7924ab181b9fb50527df2836466063b7bfaaf2e0bf647508bb",
+      "size": 6985
+    },
+    {
+      "path": "reports/csv-summary/review/commands.json",
+      "sha256": "7eec995c9d0c61ee6cd321347501f1082e0a2ecd504da7cb87faab4d4cde1be4",
+      "size": 4269
+    },
+    {
+      "path": "reports/csv-summary/reviewer.md",
+      "sha256": "c3b51fc17cca593a72187fe983ed75348179a75fe1a9c68102af957a704dfe45",
+      "size": 4263
+    },
+    {
+      "path": "reports/csv-summary/tester.md",
+      "sha256": "d61360b7e37a8dd3c6ec1e8452c0756e4c91bdad60bfb074bb190b4e42dbcc6d",
+      "size": 6423
+    },
+    {
+      "path": "reports/csv-summary/verification/application-tests.txt",
+      "sha256": "e125ce1749480a568b1ae1d575979b97b121e68904e2c9c98eae053860ad02e1",
+      "size": 1890
+    },
+    {
+      "path": "reports/csv-summary/verification/commands.json",
+      "sha256": "1cccc373c05cb592215b3053aa3bd531946c790785e5287b815fcc3ec5d1f6e0",
+      "size": 7566
+    },
+    {
+      "path": "reports/csv-summary/verification/independent-tests.txt",
+      "sha256": "b8a5f4442fce31f458711e4a13bfd1c1398ee3e10f7b75b7e4106a53226da44e",
+      "size": 1052
+    },
+    {
+      "path": "reports/csv-summary/verification/offline-sample.txt",
+      "sha256": "9ed08cdd98cb7f09ccee3e89a6a187c083276d14bee9009b08dbc435c6d0b41b",
+      "size": 43
+    },
+    {
+      "path": "reports/csv-summary/verification/preservation-and-dependencies.json",
+      "sha256": "49d1df634539f9d2c1289a00873900179d77aa3219c4627299a9e844f062bb79",
+      "size": 995
+    },
+    {
+      "path": "reports/csv-summary/verification/preserved-before.json",
+      "sha256": "7bf2f31978c768ddbc2033380c434d202b4f2783e718495fc4ea43f0ee21946a",
+      "size": 615
+    },
+    {
+      "path": "reports/csv-summary/verification/receipt-regression.txt",
+      "sha256": "327fdc4389ccee7e85ff635cf902d1dbf42f09360efceaf3874f2cde39de423f",
+      "size": 1240
+    },
+    {
+      "path": "reports/csv-summary/verification/skill-regression.txt",
+      "sha256": "dc35ae0666e369bf57fd254711a0d4961ee5d9e9c117c71fd6c5bbf3223a2d11",
+      "size": 1214
+    },
+    {
+      "path": "reports/csv-summary/verification/test_independent_csv.py",
+      "sha256": "d3fe84d1d728045dbbd2f043fb5c3de900759afa0b6243cb689ddf57960ab65e",
+      "size": 8526
+    },
+    {
+      "path": "reports/csv-summary/worker-checks.json",
+      "sha256": "8c4fcec68609a266cdd50f0723cb3027dece87d3111bea9e2f439903c98abd2c",
+      "size": 2880
+    },
+    {
+      "path": "reports/csv-summary/worker-receipt-regression.txt",
+      "sha256": "4b6fd5bd5640323708df90f3fa4a73d86db94106740c2ab458ed5febba434424",
+      "size": 1240
+    },
+    {
+      "path": "reports/csv-summary/worker-skill-regression.txt",
+      "sha256": "dc35ae0666e369bf57fd254711a0d4961ee5d9e9c117c71fd6c5bbf3223a2d11",
+      "size": 1214
+    },
+    {
+      "path": "reports/csv-summary/worker-tests.txt",
+      "sha256": "f3e32069c5e4e0468961d35aeae9693436c8c42de71709d5e7edc788e8e71f10",
+      "size": 1890
+    },
+    {
+      "path": "reports/csv-summary/worker.md",
+      "sha256": "b0756c3235cf9f08e29dd6e47a9eca38d4a2eb2cd3538ef9a8af53bbd8393d0f",
+      "size": 5672
+    },
+    {
+      "path": "reports/demo/planner-final.md",
+      "sha256": "9db8897298bd290add45bcfa1d8f46f4db32b03e17de62806bda45584ca7f29f",
+      "size": 5981
+    },
+    {
+      "path": "reports/demo/review/alternative.json",
+      "sha256": "cd1710a48e5a2818bee9f141d5227d1341eb1ee0ced0cb16568dc88f84487e1d",
+      "size": 481
+    },
+    {
+      "path": "reports/demo/review/empty.json",
+      "sha256": "fefda7ee3fbb9419f331ad529d54240f92ea283390ae6c8f2b10fb7459c9813c",
+      "size": 401
+    },
+    {
+      "path": "reports/demo/review/fraction.json",
+      "sha256": "756743eef3aa63104e84eeeaf2bdcda805d960121e45b115dc45be5ea2e7fb7d",
+      "size": 452
+    },
+    {
+      "path": "reports/demo/review/help.json",
+      "sha256": "ab3fbcada36f86a33324bb35c911237d5a5dac108bce6551b40ff0ecaf73074c",
+      "size": 918
+    },
+    {
+      "path": "reports/demo/review/invalid-price.json",
+      "sha256": "a94bef153c0a5cbc8b57bd6786baf58d931bfb19abc32cc4ff1185614d63ce81",
+      "size": 498
+    },
+    {
+      "path": "reports/demo/review/negative-quantity.json",
+      "sha256": "2adf9a2c59e430364bcc0e857d4f42dfd9fd28744cfb125502f111bf83234383",
+      "size": 456
+    },
+    {
+      "path": "reports/demo/review/owner-sample.json",
+      "sha256": "5af80b65829fe7b8e4154898f276a16467d9b15bf5c741e71c8e4b2d78c815f5",
+      "size": 468
+    },
+    {
+      "path": "reports/demo/reviewer.md",
+      "sha256": "6a566002996296480aeed9a239c6ebcf40d0ead00205558c791616926e00ff75",
+      "size": 4694
+    },
+    {
+      "path": "reports/demo/tester.md",
+      "sha256": "40d9c688f25f8bb65e2a5911066be0bfc5cbffc5ec560dd05967ab3ef69441c2",
+      "size": 6414
+    },
+    {
+      "path": "reports/demo/verification/application-tests.txt",
+      "sha256": "3a28e31420573d86fbbdedd5e3d9ce4506b7095b9210acf61887acd6fd24dbea",
+      "size": 1240
+    },
+    {
+      "path": "reports/demo/verification/dependency-inspection.json",
+      "sha256": "fc48db952ccbbcdb4da2ffa830d0784856cf679931531fa9e9695946465dfe16",
+      "size": 522
+    },
+    {
+      "path": "reports/demo/verification/independent-tests.txt",
+      "sha256": "82db47c8382ba3a486c7280e0631add9e4e2b784c957e0e7510e5eda99879ac8",
+      "size": 863
+    },
+    {
+      "path": "reports/demo/verification/offline-output.txt",
+      "sha256": "b5fac8f55712af263d411ff04dbb93d8696452a0f410c21d3a2d63ba91b28b89",
+      "size": 86
+    },
+    {
+      "path": "reports/demo/verification/preserved-hashes.txt",
+      "sha256": "f0072e1e2dae9caececbd58d75a839e4d1ed00be894cca370b67d1ec466302e7",
+      "size": 301
+    },
+    {
+      "path": "reports/demo/verification/preserved-starter.txt",
+      "sha256": "4d39649537a97e1b3425f6d4131217cc155bebb408357aec2f4780515d19874c",
+      "size": 867
+    },
+    {
+      "path": "reports/demo/verification/skill-regression.txt",
+      "sha256": "4b8aaa94daa5cc4affbd557731932068d5e201af4f2760785afb801bb48088c3",
+      "size": 1214
+    },
+    {
+      "path": "reports/demo/verification/test_independent_receipt.py",
+      "sha256": "14b8e763f5fe6c765f4c42cddeee56794b7e8e80c7fd8e73c6c623c7f8e8be5d",
+      "size": 4863
+    },
+    {
+      "path": "reports/demo/worker.md",
+      "sha256": "81e0d65b34a4e076e7a10eb5dc25e5ceae481b834b65e60737d8a45a7ff10a3c",
+      "size": 5458
+    },
+    {
+      "path": "reports/demo/worker/different.json",
+      "sha256": "b697e6351c1053a646f1e16a9e371cf32d1536ee5a8b13de22650f333fa1e31d",
+      "size": 340
+    },
+    {
+      "path": "reports/demo/worker/fraction-oracle.txt",
+      "sha256": "70b773fed2f7b078f32fedaad35047f6aafe95a234a0712963ef614571afd4e8",
+      "size": 183
+    },
+    {
+      "path": "reports/demo/worker/fraction.json",
+      "sha256": "1b2942dd4083e500a2ae32e10af77499e248ec529129ed8f3eec9238c2f8c991",
+      "size": 325
+    },
+    {
+      "path": "reports/demo/worker/help.json",
+      "sha256": "21df4e0e5e0a30f291f63b10604af1c922f9c083a6f05e6b5d58aec228309521",
+      "size": 789
+    },
+    {
+      "path": "reports/demo/worker/invalid-price.json",
+      "sha256": "b22ded32b55986e657cba3a3805a669deb5442d37fb472cddbefe6d98ccd59c2",
+      "size": 364
+    },
+    {
+      "path": "reports/demo/worker/negative.json",
+      "sha256": "9e8334964a1573dbb819a8e01d939f0d1144d43d1636b9c1dc16132f2ba1e327",
+      "size": 327
+    },
+    {
+      "path": "reports/demo/worker/offline.json",
+      "sha256": "41f4f623b8f9709868d25654f40632c0ffe89c369694b8e2ffecd2ed6ee01978",
+      "size": 463
+    },
+    {
+      "path": "reports/demo/worker/preserved-hashes.txt",
+      "sha256": "f0072e1e2dae9caececbd58d75a839e4d1ed00be894cca370b67d1ec466302e7",
+      "size": 301
+    },
+    {
+      "path": "reports/demo/worker/sample.json",
+      "sha256": "b0a26efc1f67d3ed31abbcf53e4211bd1a023d88446de9f29a01f8f45f2f7087",
+      "size": 339
+    },
+    {
+      "path": "reports/demo/worker/static-regression.txt",
+      "sha256": "4b8aaa94daa5cc4affbd557731932068d5e201af4f2760785afb801bb48088c3",
+      "size": 1214
+    },
+    {
+      "path": "reports/demo/worker/tests-first-run.txt",
+      "sha256": "ef65c6417c7e1fef1b1b9dde5d0f9792588a08c812a0ef5c020d15d14031568a",
+      "size": 1828
+    },
+    {
+      "path": "reports/demo/worker/tests.txt",
+      "sha256": "9d8c63e2c6ea9dcf79a5d5907f3cd14e0d98bc12d3e7b4a6109771482d4475d0",
+      "size": 1240
+    },
+    {
+      "path": "reports/final.md",
+      "sha256": "4871088bc0d673a179b0a82da970e449a5a6b8104dd8b2a3cac750aeca39c5b3",
+      "size": 6978
+    },
+    {
+      "path": "reports/gate3b-results.md",
+      "sha256": "72c33b3c2eb9d3dea0bb38324acec0a281eb474ce0c98985e82dc3ad4cf0b21c",
+      "size": 4042
+    },
+    {
+      "path": "reports/requirements-traceability.md",
+      "sha256": "cddae1fd4f6aab3d5c9644020c9d11a6422bac89076db8485a063a873432e598",
+      "size": 9112
+    },
+    {
+      "path": "tests/test_codebase_memory_integration.py",
+      "sha256": "fe7118e6438497c07740d3daaeaf304eb2e5b4e921b7de1699af5c0fc65730d6",
+      "size": 7849
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "efd0f31882cd84299fb5476db58d9a054afe32c0f344d6279ad8d4a678bfbd72",
+      "size": 51232
+    },
+    {
+      "path": "tests/test_skill_files.py",
+      "sha256": "09371df619b6a4d7006f803a46a11aadb86c37381fb93977fc6463263459b751",
+      "size": 8364
+    },
+    {
+      "path": "tests/validation_cases.json",
+      "sha256": "31d4c1c2f04fdf262cd8506dd15044c5fb7b79b2df4052b16ee1e3e478054005",
+      "size": 5694
+    }
+  ]
+}

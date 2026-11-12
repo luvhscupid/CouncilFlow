@@ -1,0 +1,12 @@
+{
+  "old_fixture_geometry_recreated": true,
+  "link_path": "tests/tmpx4h25qee/authorized/escape.txt",
+  "authorized_subdirectory": "/tmp/councilflow-original-fixture-lmy7gdfu/tests/tmpx4h25qee/authorized",
+  "target": "/tmp/councilflow-original-fixture-lmy7gdfu/tests/tmpx4h25qee/outside.txt",
+  "validator_root": "/tmp/councilflow-original-fixture-lmy7gdfu",
+  "target_within_validator_root": true,
+  "digest_matches_target": true,
+  "validator_result": "accepted",
+  "would_old_assertRaises_fail": true,
+  "interpretation": "The old fixture escaped its authorized subdirectory but not ROOT, so artifact() correctly accepted it and the old expected rejection would fail on a symlink-capable platform."
+}
