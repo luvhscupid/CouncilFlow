@@ -5,8 +5,8 @@
 ## Repository and source identity
 
 - Canonical repository: `E:\Saint\PROJECTS\CouncilFlow-main`.
-- Starting `HEAD`: `2d695a22a1bb596a527b0d118edc073d6d25553f`; branch `main`, in sync with `origin/main` before this preservation task.
-- At task start the verified finalization was uncommitted. This task is creating a local checkpoint commit; its hash will be recorded in a follow-up ordinary handoff commit. Pre-existing tracked edits and untracked files are preserved. No push, merge, reset, clean, or history rewrite occurred.
+- Baseline `HEAD`: `2d695a22a1bb596a527b0d118edc073d6d25553f`. The local checkpoint commit is `4b3790751de372e1e3633ca2512f095de0ca9779` on branch `main`, based directly on that baseline. This README is updated in the ordinary follow-up commit after the checkpoint; the final HEAD is the commit containing this update.
+- Before the preservation task, the verified finalization was uncommitted and `main` matched `origin/main`. Pre-existing tracked edits and untracked files were preserved. No push, merge, reset, clean, or history rewrite occurred.
 - Supplied source ZIP: `E:\Saint\PROJECTS\CouncilFlow-main.zip`, 5,823,806 bytes, SHA-256 `ab0fb7cf561d43d06c8e7222779e03040bde54a137d613aeed79ad646ef398f1`. Before editing, its non-Git contents were compared byte-for-byte with the checkout; it was not extracted over the checkout.
 - Initial non-destructive inventory: 9 modified tracked paths and 595 untracked paths; see `reports/councilflow-finalization/initial-manifest.json`.
 
@@ -74,6 +74,8 @@ No separately authorized protocol-policy change was needed. Snapshot Vault AC07/
 
 - Reviewable full-tree snapshot: `reports/councilflow-finalization/working-tree-checkpoint.zip`. Its exact SHA-256, file count, and exclusions are in `reports/councilflow-finalization/working-tree-checkpoint.manifest.json` and `reports/councilflow-finalization/working-tree-checkpoint.zip.sha256`.
 - CRC, path safety, and byte-for-byte mapping passed. The checkpoint includes the handoff and an embedded file inventory; `.git`, cache/runtime directories, symlinks, and credential-pattern files were excluded and are listed in the companion manifest.
-- The checkpoint archive and this handoff are preserved locally. Commit identity will be added to this handoff in the authorized follow-up commit after the checkpoint commit is independently verified. No remote push or merge occurred.
+- The first checkpoint commit contains 876 selected files: source, tests, release package, documentation, hardening history, finalization evidence, Gate 3 preparation, and this handoff. Commit message: `checkpoint: preserve verified CouncilFlow finalization`.
+- Intentionally excluded but preserved on disk: `reports/councilflow-finalization/working-tree-checkpoint.zip` (local snapshot archive); `reports/councilflow-finalization/tester/extracted-candidate/` and `tester-final/extracted-candidate/` (reproducible package test extractions); `reports/gate3-next/disposable-demo/` (superseded scaffold; current draft points to `disposable-workspace`). Ignored `__pycache__` directories remain ignored. The commit includes the checkpoint ZIP's manifest and checksum sidecars, not the ZIP itself.
+- The handoff update is committed separately after the first commit, as allowed for a post-checkpoint report update. No remote push or merge occurred.
 
 The final local checkpoint and this handoff are for Sol’s review. Do not report `COUNCILFLOW_FULLY_VERIFIED` until a separate authentic Gate 3 observation passes under its governing frozen criteria. No retired standalone recall component was reintroduced.
