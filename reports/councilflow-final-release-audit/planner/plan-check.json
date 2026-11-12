@@ -1,0 +1,282 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "FRA-P002",
+  "message_type": "plan.check",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "FRA-M002",
+  "payload": {
+    "status": "passed",
+    "summary": "Original C01-C07 and all 25 original audit/release requirements passed against the independently inspected, unchanged candidate of 117 files, actual source checkpoint, native Tester/Reviewer evidence and exact command MATCH. Fourteen scoped findings are addressed; frozen sources are unchanged. Host and Gate3 limits remain explicit; no new experiment or full native verification is claimed. Manager evidence-only closeout and final Owner delivery remain workflow postconditions.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "plan_ref": {
+      "artifact_id": "FRA-original-plan",
+      "path": "reports/councilflow-final-release-audit/planner/plan.json",
+      "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+      "kind": "plan"
+    },
+    "results": [
+      {
+        "acceptance_id": "C01",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-final-finding-disposition",
+            "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+            "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+            "kind": "audit"
+          },
+          {
+            "artifact_id": "FRA-planner-independent-checks",
+            "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+            "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+            "kind": "verification"
+          },
+          {
+            "artifact_id": "FRA-worker-change-ledger",
+            "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+            "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+            "kind": "changes"
+          },
+          {
+            "artifact_id": "FRA-final-handoff",
+            "path": "reports/councilflow-final-release-audit/README.md",
+            "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C02",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-T002",
+            "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+            "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "FRA-R002",
+            "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+            "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "FRA-T-mutations",
+            "path": "reports/councilflow-final-release-audit/tester/mutation-results-final.json",
+            "sha256": "0cf163477afccf39b0668ddca150945543a1bd808caeb0ea6f299f3edc13fd0b",
+            "kind": "mutation-controls"
+          },
+          {
+            "artifact_id": "FRA-planner-independent-checks",
+            "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+            "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+            "kind": "verification"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C03",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-T002",
+            "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+            "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "FRA-R002",
+            "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+            "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "FRA-planner-independent-checks",
+            "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+            "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+            "kind": "verification"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C04",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-verification-matrix",
+            "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+            "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+            "kind": "verification"
+          },
+          {
+            "artifact_id": "FRA-T002",
+            "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+            "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "FRA-manager-platform-execution",
+            "path": "reports/councilflow-final-release-audit/manager-platform-execution.json",
+            "sha256": "49c10856a620bcacdf7f2ab229218957f6e4de9a934336477266f6b8179f52fc",
+            "kind": "execution"
+          },
+          {
+            "artifact_id": "FRA-planner-independent-checks",
+            "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+            "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+            "kind": "verification"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C05",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-planner-independent-checks",
+            "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+            "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+            "kind": "verification"
+          },
+          {
+            "artifact_id": "FRA-security-limits",
+            "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+            "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+            "kind": "limits"
+          },
+          {
+            "artifact_id": "FRA-staging-review",
+            "path": "reports/councilflow-final-release-audit/git-staging-review.json",
+            "sha256": "535594211396623fd0dde900c608dbed92beb0ca28e3b4e4f39900210238c2ab",
+            "kind": "checkpoint"
+          },
+          {
+            "artifact_id": "FRA-Gate3-disposition",
+            "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+            "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+            "kind": "governance"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C06",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-source-checkpoint",
+            "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+            "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+            "kind": "checkpoint"
+          },
+          {
+            "artifact_id": "FRA-T-package-checks",
+            "path": "reports/councilflow-final-release-audit/tester/package-checks.json",
+            "sha256": "b4c053b500d6ef6954ad9c9d55608357fb9ef709324276d6101dc8be65b94537",
+            "kind": "verification"
+          },
+          {
+            "artifact_id": "FRA-planner-independent-checks",
+            "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+            "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+            "kind": "verification"
+          },
+          {
+            "artifact_id": "FRA-final-handoff",
+            "path": "reports/councilflow-final-release-audit/README.md",
+            "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C07",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "FRA-Gate3-disposition",
+            "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+            "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+            "kind": "governance"
+          },
+          {
+            "artifact_id": "FRA-security-limits",
+            "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+            "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+            "kind": "limits"
+          },
+          {
+            "artifact_id": "FRA-final-handoff",
+            "path": "reports/councilflow-final-release-audit/README.md",
+            "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+            "kind": "handoff"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-final-original-map",
+      "path": "reports/councilflow-final-release-audit/planner/final-acceptance-map.json",
+      "sha256": "373d17d267b993544782b7779f8e9a1dd4ad6057b7f0030c9e39f255a670e158",
+      "kind": "traceability"
+    },
+    {
+      "artifact_id": "FRA-planner-independent-checks",
+      "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+      "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-source-checkpoint",
+      "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+      "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+      "kind": "checkpoint"
+    },
+    {
+      "artifact_id": "FRA-final-finding-disposition",
+      "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+      "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+      "kind": "audit"
+    },
+    {
+      "artifact_id": "FRA-verification-matrix",
+      "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+      "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-R002",
+      "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+      "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-Gate3-disposition",
+      "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+      "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+      "kind": "governance"
+    }
+  ]
+}

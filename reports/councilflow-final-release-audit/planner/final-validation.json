@@ -1,0 +1,24 @@
+{
+  "planner": "/root/planner",
+  "exact_original_criteria": "PASS7of7 unchanged ordered text",
+  "original_map_rows": 25,
+  "final_map_rows": 25,
+  "confirmed_findings": 14,
+  "message_validation": "PASS with expected Planner canonical identity",
+  "full_root_bound_sequence": "PASS",
+  "sequence_ids": [
+    "FRA-P001",
+    "FRA-W001",
+    "FRA-W002",
+    "FRA-T001",
+    "FRA-T002",
+    "FRA-R001",
+    "FRA-R002",
+    "FRA-M001",
+    "FRA-M002",
+    "FRA-P002"
+  ],
+  "final_map_sha256": "373d17d267b993544782b7779f8e9a1dd4ad6057b7f0030c9e39f255a670e158",
+  "plan_check_sha256": "0f2a494fe0d9ba9af4e7dc2d330cef150e6b89fda131a1794c2f6148eae79ef9",
+  "limits": "Structural/root-bound consistency only, not native transport authentication; no separately Owner-approved frozen sidecar used for ordinary mission. Manager final evidence-only checkpoint/recheck/final communication remain postconditions."
+}

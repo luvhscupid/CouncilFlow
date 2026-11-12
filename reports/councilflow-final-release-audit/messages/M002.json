@@ -1,0 +1,99 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "task_id": "FRA-release",
+  "attempt_id": "FRA-A01",
+  "message_id": "FRA-M002",
+  "message_type": "plan.progress",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "FRA-M001",
+  "payload": {
+    "status": "verified_source_checkpoint_complete_pending_original_planner",
+    "objective": "Deliver the best justified, stable, independently verified CouncilFlow release candidate by auditing the ENTIRE current project and repairing ALL confirmed, in-scope, technically repairable defects, not just E10. Eliminate repeated speculative loops. Preserve Owner authority and frozen governance.",
+    "scope": [
+      ".agents/skills/council-flow/",
+      ".codex/agents/",
+      "tests/",
+      "demo/ (current completed demos only)",
+      "README.md",
+      "RELEASE.md",
+      "dist/",
+      "reports/councilflow-final-release-audit/",
+      "Other active in-repository docs/examples only when a confirmed minimal in-scope correction is necessary"
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ],
+    "verified_progress": [
+      "All14confirmed in-scope source/docs/coverage findings addressed with minimal changes; original failing controls/draft helper/historical chains preserved. finding-disposition-final.json.",
+      "Native Worker /root/worker_a01 stopped; distinct Tester /root/tester and Reviewer /root/reviewer technical reports passed. Full canonical ordered context validates.",
+      "Tester Windows six suites checkout148run144pass4skip and final C: extraction148run145pass3skip;12valid mutants killed;65synthetic controls63satisfied2skip. Current/historical outcomes separate.",
+      "Reviewer exact Tester command exit0 normalized stdout SHA0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc MATCH; no discrepancies.",
+      "Manager supplemental approved Windows junction3PASS, native Linux /tmp final archive extraction148pass0skip + symlink3PASS. Correct Manager-thread provenance, no Tester packet rewrite.",
+      "Final ZIP117entries SHA8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f, every CRC/name/source/extracted byte verified. All117candidate source hashes and frozen sources unchanged.",
+      "Actual local source/evidence checkpoint b92e0a18439f49e7939274a334e4b161c6ad96ba on main, parent3879c3d97efb6dfb5256445bf21748a95d0d2eab,343intended files, no push. Staged secret/forbidden/raw-byte/diff checks pass. Source working tree frozen; Owner edits retained.",
+      "Gate3 not run; historic E10FAIL retained, E1/E2/E4UNVERIFIED HOST_CAPABILITY_MISSING; other historical statuses explicitly Owner-reported where raw host record absent. No approved fixture invented.",
+      "MCP initial exact-root navigation observed; postWorker refresh Transport closed, direct source fallback. Effective TOML/model/OS isolation/authentication/TOCTOU and remaining live negative MCP branches not falsely claimed."
+    ],
+    "next_action": "Perform final original C01-C07 check and final25-requirement map, using original exact plan/map and evidence, not rewritten criteria. Actual source checkpoint already exists; root will commit only your resulting final evidence/handoff afterward under unchanged candidate. Save planner/plan-check.json and planner/final-acceptance-map.json, validate full root-bound sequence; return valid plan.check. No application changes, no prospective product PASS, no Gate3/self-approved gap label.",
+    "candidate_ref": {
+      "artifact_id": "FRA-A01-cumulative",
+      "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+      "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "FRA-original-plan",
+      "path": "reports/councilflow-final-release-audit/planner/plan.json",
+      "sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "FRA-source-checkpoint",
+      "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+      "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+      "kind": "checkpoint"
+    },
+    {
+      "artifact_id": "FRA-final-finding-disposition",
+      "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+      "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+      "kind": "audit"
+    },
+    {
+      "artifact_id": "FRA-verification-matrix",
+      "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+      "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+      "kind": "verification"
+    },
+    {
+      "artifact_id": "FRA-R002",
+      "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+      "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "FRA-Gate3-disposition",
+      "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+      "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+      "kind": "governance"
+    }
+  ]
+}

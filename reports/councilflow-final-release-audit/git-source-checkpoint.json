@@ -1,0 +1,15 @@
+{
+  "source_checkpoint_commit": "b92e0a18439f49e7939274a334e4b161c6ad96ba",
+  "parent": "3879c3d97efb6dfb5256445bf21748a95d0d2eab",
+  "branch": "main",
+  "tree": "4c8f7b1a2c90a07c072588a4fb9edeecd5c62fdf",
+  "pushed": false,
+  "staged_empty": true,
+  "post_source_commit_status": "1 .M N... 100644 100644 100644 eb274af919156350f469056276f915898a05f7ca eb274af919156350f469056276f915898a05f7ca reports/gate3-next/disposable-workspace/demo/gate3-demo/app.py\n1 .M N... 100644 100644 100644 3efa7b5ebcfba550dabcf8ee488531dca5fe0b85 3efa7b5ebcfba550dabcf8ee488531dca5fe0b85 reports/gate3-next/disposable-workspace/demo/gate3-demo/test_app.py\n? reports/councilflow-finalization/tester-final/extracted-candidate/\n? reports/councilflow-finalization/tester/extracted-candidate/\n? reports/councilflow-finalization/working-tree-checkpoint.zip\n? reports/gate3-next/disposable-demo/\n",
+  "candidate_117_worktree_hashes_match": true,
+  "archive_sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+  "frozen_unchanged": true,
+  "stage_review": "git-staging-review.json",
+  "remaining": "Original Planner final check and its evidence-only closeout commit; no product bytes will change.",
+  "limits": "Initial untracked paths retained but not universally byte-hashed; tracked Owner/frozen source protection verified. Raw audit/receipt/archive stored verbatim; ordinary existing Git text filters retained."
+}

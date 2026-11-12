@@ -1,0 +1,1868 @@
+{
+  "plan_id": "FRA-20261112",
+  "plan_revision": 1,
+  "planner": "/root/planner",
+  "source_checkpoint": "b92e0a18439f49e7939274a334e4b161c6ad96ba",
+  "original_plan_sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+  "original_map_sha256": "8eec87398a5e2eb20e419e70af786766409208aedc33b0fd19e281f765c4c254",
+  "original_completion_criteria": [
+    {
+      "id": "C01",
+      "criterion": "Full scoped audit performed with evidence, and no confirmed in-scope repairable defect knowingly left without disposition."
+    },
+    {
+      "id": "C02",
+      "criterion": "Source fixes independently tested with meaningful negative controls; E10 integrity intact."
+    },
+    {
+      "id": "C03",
+      "criterion": "Independent Tester and Reviewer command comparison accepted, with final Planner original-criteria map."
+    },
+    {
+      "id": "C04",
+      "criterion": "All applicable final checkout/extraction suites have accurate outcomes; no hidden mandatory failures."
+    },
+    {
+      "id": "C05",
+      "criterion": "Frozen governance unchanged; no unauthorized actions, false identity/OS sandbox claims or historical evidence rewriting."
+    },
+    {
+      "id": "C06",
+      "criterion": "Release package/checksum verified, installation instructions coherent, and local Git checkpoint finalized if changes were made."
+    },
+    {
+      "id": "C07",
+      "criterion": "Gate 3 separately and truthfully classified as verified/failed/blocked/unverified per its frozen evidence rules, rather than treated as a release-test checkbox."
+    }
+  ],
+  "completion_results": [
+    {
+      "acceptance_id": "C01",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        }
+      ]
+    },
+    {
+      "acceptance_id": "C02",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-T-mutations",
+          "path": "reports/councilflow-final-release-audit/tester/mutation-results-final.json",
+          "sha256": "0cf163477afccf39b0668ddca150945543a1bd808caeb0ea6f299f3edc13fd0b",
+          "kind": "mutation-controls"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "acceptance_id": "C03",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "acceptance_id": "C04",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-manager-platform-execution",
+          "path": "reports/councilflow-final-release-audit/manager-platform-execution.json",
+          "sha256": "49c10856a620bcacdf7f2ab229218957f6e4de9a934336477266f6b8179f52fc",
+          "kind": "execution"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "acceptance_id": "C05",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        },
+        {
+          "artifact_id": "FRA-staging-review",
+          "path": "reports/councilflow-final-release-audit/git-staging-review.json",
+          "sha256": "535594211396623fd0dde900c608dbed92beb0ca28e3b4e4f39900210238c2ab",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        }
+      ]
+    },
+    {
+      "acceptance_id": "C06",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-source-checkpoint",
+          "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+          "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-T-package-checks",
+          "path": "reports/councilflow-final-release-audit/tester/package-checks.json",
+          "sha256": "b4c053b500d6ef6954ad9c9d55608357fb9ef709324276d6101dc8be65b94537",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        }
+      ]
+    },
+    {
+      "acceptance_id": "C07",
+      "status": "passed",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        },
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        }
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "source": "0 authoritative state, authority order and fixed workflow",
+      "derived_checklist": [
+        "Verify claimed HEAD/parent/tree/remote tracking and past outcomes; distinguish normative documents from historical claims.",
+        "Use real native role sessions, JSON/YAML/TOML policy, Manager-only ordinary Owner interface; preserve Owner authority.",
+        "No invented models, identities, approvals, measured usage, host activation, containment or historical success.",
+        "Do not recreate cf-recall."
+      ],
+      "expected_evidence": [
+        "baseline.json",
+        "source/document inspection",
+        "native tool call records",
+        "final handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "Authority hierarchy and fixed roles are preserved; source evidence and historical claims are distinguished. Native handles are real Manager-observed task returns; effective TOML/model/activation metadata is not inferred.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-baseline",
+          "path": "reports/councilflow-final-release-audit/baseline.json",
+          "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+          "kind": "baseline"
+        },
+        {
+          "artifact_id": "FRA-native-observations",
+          "path": "reports/councilflow-final-release-audit/native-observations-final.json",
+          "sha256": "d90347c036ac0be1172d681e927cea28e02077b1af03c83e7c1d56635def9376",
+          "kind": "host-observations"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        },
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        }
+      ]
+    },
+    {
+      "source": "1A",
+      "derived_checklist": [
+        "Record root, branch, HEAD/parent/tree, staged/unstaged/untracked/ignored status and tracked inventory.",
+        "Hash protected frozen files, inspect installed/project skill copies, role TOMLs, ZIP, reports and instructions."
+      ],
+      "expected_evidence": [
+        "baseline.json",
+        "baseline.sha256",
+        "baseline-archive.json"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Immutable pre-edit Git/file/copy/ZIP baseline exists; frozen digests independently match. Original untracked inventory was preserved with explicit byte-manifest limitation.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-baseline",
+          "path": "reports/councilflow-final-release-audit/baseline.json",
+          "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+          "kind": "baseline"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "source": "1B",
+      "derived_checklist": [
+        "Read active skill and six references, policy YAML, four TOMLs, contracts and tests, README/RELEASE, recent mission evidence.",
+        "Discover actual native/MCP interfaces; direct inspection for unavailable capabilities."
+      ],
+      "expected_evidence": [
+        "inspection ledger",
+        "capability evidence"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Current normative skill/references/policy/TOMLs/helper/tests/docs and relevant mission evidence were inspected; source and inventory audits identify actual capability limits.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-initial-contract-audit",
+          "path": "reports/councilflow-final-release-audit/contract-audit/findings.json",
+          "sha256": "847e8d7b93c6b37464a12e5949d818a87be64d5882a82c1fa8fa2c4dba18a1b0",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-native-observations",
+          "path": "reports/councilflow-final-release-audit/native-observations-final.json",
+          "sha256": "d90347c036ac0be1172d681e927cea28e02077b1af03c83e7c1d56635def9376",
+          "kind": "host-observations"
+        },
+        {
+          "artifact_id": "FRA-MCP-lifecycle",
+          "path": "reports/councilflow-final-release-audit/mcp-lifecycle.md",
+          "sha256": "689dbd57e11fc249ce94777c14a65ed05ff22972875a7ca8cb46e3b3205f6d7d",
+          "kind": "context"
+        }
+      ]
+    },
+    {
+      "source": "1C",
+      "derived_checklist": [
+        "Freeze baseline manifest and original acceptance map before source edits; keep outside historical records.",
+        "Separate already fixed issues from open findings."
+      ],
+      "expected_evidence": [
+        "baseline.json",
+        "planner/plan.json",
+        "planner/acceptance-map.json",
+        "finding ledger"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Original baseline, plan and 25-row map remain byte-identical; finding ledger separates confirmed repairs, already-covered behavior and unverified host risks.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-baseline",
+          "path": "reports/councilflow-final-release-audit/baseline.json",
+          "sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+          "kind": "baseline"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        }
+      ]
+    },
+    {
+      "source": "1D",
+      "derived_checklist": [
+        "Bound implementation units and define risk-based verification.",
+        "Use genuine CouncilFlow role dispatch; record actual unavailable capabilities."
+      ],
+      "expected_evidence": [
+        "planner/plan.json",
+        "controlled assignments",
+        "native dispatch records"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "status": "PASS",
+      "conclusion": "Bounded plan and Manager-approved oracle preceded source repair; genuine required native roles ran with one Worker. Independent exact-candidate tests and Reviewer rerun executed.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-approved-oracle",
+          "path": "reports/councilflow-final-release-audit/manager-oracle.json",
+          "sha256": "630de811a3a1b5f21ba611372a49a394245caa8103f54583906ef2dfc229b6e8",
+          "kind": "verification-strategy"
+        },
+        {
+          "artifact_id": "FRA-native-observations",
+          "path": "reports/councilflow-final-release-audit/native-observations-final.json",
+          "sha256": "d90347c036ac0be1172d681e927cea28e02077b1af03c83e7c1d56635def9376",
+          "kind": "host-observations"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "source": "1E",
+      "derived_checklist": [
+        "Protect Charter, frozen Gate 3 and C3, historical failed records and external ACP/Execution Kernel projects."
+      ],
+      "expected_evidence": [
+        "before/after SHA256 comparison",
+        "final diff"
+      ],
+      "completion_ids": [
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Three protected frozen sources and all baseline-hashed historical/Owner bytes outside intended changes independently match. External/global projects were not in authorized edit scope.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-staging-review",
+          "path": "reports/councilflow-final-release-audit/git-staging-review.json",
+          "sha256": "535594211396623fd0dde900c608dbed92beb0ca28e3b4e4f39900210238c2ab",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        }
+      ]
+    },
+    {
+      "source": "1F",
+      "derived_checklist": [
+        "Keep exact original acceptance and authorization boundaries.",
+        "Classify newly discovered follow-up tasks separately from genuine failed mandatory rework; preserve causal records."
+      ],
+      "expected_evidence": [
+        "immutable plan",
+        "decision/sequence ledger"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Exact seven original completion criteria independently compared; A004-A009 truthful failure/follow-up analysis retained; no synthetic failed decision created for this mission.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-initial-contract-audit",
+          "path": "reports/councilflow-final-release-audit/contract-audit/findings.json",
+          "sha256": "847e8d7b93c6b37464a12e5949d818a87be64d5882a82c1fa8fa2c4dba18a1b0",
+          "kind": "audit"
+        }
+      ]
+    },
+    {
+      "source": "2A original acceptance and E10 fidelity",
+      "derived_checklist": [
+        "Challenge IDs/order, exact UTF-8/Unicode, whitespace, Markdown, punctuation, CRLF/LF, case, additions/omissions/duplication/reordering.",
+        "Challenge stale/altered references, renamed paths, duplicate JSON keys and mismatched source IDs.",
+        "Distinguish trusted Owner provenance from agent-written source or matching hash; fail closed when invocation requires a frozen source.",
+        "Preserve ordinary coding requests without fabricating Owner-approved sidecars.",
+        "Validate fidelity before Worker dispatch and final Planner check as applicable; preserve rejected artifacts and fresh valid corrections."
+      ],
+      "expected_evidence": [
+        "source inspection",
+        "adversarial negative controls",
+        "pre-dispatch sequence validation",
+        "final exact criterion comparison",
+        "provenance limitations"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "Ordered exact E10 source/ID/string cases, absent/stale required source and ordinary no-sidecar behavior exercised synthetically. No authentic Gate3 Owner fixture or real Gate3 E10 pass is claimed.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-T-mutations",
+          "path": "reports/councilflow-final-release-audit/tester/mutation-results-final.json",
+          "sha256": "0cf163477afccf39b0668ddca150945543a1bd808caeb0ea6f299f3edc13fd0b",
+          "kind": "mutation-controls"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        }
+      ]
+    },
+    {
+      "source": "2B orchestration and recovery",
+      "derived_checklist": [
+        "Inspect role boundaries, fresh attempts, dispatch, causal links, approval handling, concurrent writes and final original check.",
+        "Inspect A004-A009 churn; preserve passing verification; record real failures only and separate authorized follow-ups.",
+        "Exercise replay, ordering, stale/cross-attempt references, acceptance after mandatory failure, missing evidence, invalid oracle identities and role spoofing.",
+        "Inspect incomplete termination, interruption/recovery; stop identical unproductive retries and state instruction-only accounting."
+      ],
+      "expected_evidence": [
+        "source/policy inspection",
+        "sequence negative controls",
+        "historical chain assessment",
+        "native role reports"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Native role reports/assignments and causal sequence validate. Failed Planner/Reviewer bypass and split coverage repaired; original Planner/publication bindings repaired. Policy-only concurrency/retry accounting and incomplete transport authenticity remain explicitly limited, with no speculative scheduler.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-initial-contract-audit",
+          "path": "reports/councilflow-final-release-audit/contract-audit/findings.json",
+          "sha256": "847e8d7b93c6b37464a12e5949d818a87be64d5882a82c1fa8fa2c4dba18a1b0",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "source": "2C contract/evidence integrity",
+      "derived_checklist": [
+        "Exercise closed JSON/schema, duplicate keys, Unicode/control, multiline criteria, bool integers, overflow/bounds, unknown fields, hashes and paths.",
+        "Separate structural actor labels/bindings from host identity.",
+        "Bind exact executable, arguments, cwd, cumulative candidate, input bytes, actual exit/raw output and CRLF-to-LF-only hash; Reviewer reruns unchanged.",
+        "Exercise stale/swapped candidates and full cumulative manifest coverage."
+      ],
+      "expected_evidence": [
+        "contract tests",
+        "negative controls",
+        "candidate manifest",
+        "Tester and Reviewer raw execution files",
+        "host tool records"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Closed bounded JSON and context/hash/oracle/candidate cases exercised. Portable drive path and API reference Unicode defects repaired. Cumulative117file manifest and unchanged exact deterministic command/raw hash verified independently.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-A01-cumulative",
+          "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+          "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+          "kind": "candidate-manifest"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T-mutations",
+          "path": "reports/councilflow-final-release-audit/tester/mutation-results-final.json",
+          "sha256": "0cf163477afccf39b0668ddca150945543a1bd808caeb0ea6f299f3edc13fd0b",
+          "kind": "mutation-controls"
+        }
+      ]
+    },
+    {
+      "source": "2D filesystem boundary",
+      "derived_checklist": [
+        "Use disposable roots only for traversal, absolute paths, in-root symlink allow, out-of-root reject and stale digest reject.",
+        "Exercise junction/reparse cases and WSL/Linux actual outside-root fixture where genuinely available.",
+        "Record WinError1314 skips as skips; record TOCTOU/resolve/open and OS isolation limits accurately.",
+        "No global ACL, registry, OS or sandbox edits."
+      ],
+      "expected_evidence": [
+        "disposable boundary tests",
+        "platform availability/output",
+        "security limits"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C04",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Disposable Windows/Linux symlink, junction, stale hash and package hardlink controls exercised with platform-specific skips preserved. Manager supplemental Linux/junction provenance separate; TOCTOU and OS enforcement remain UNVERIFIED.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-manager-platform-execution",
+          "path": "reports/councilflow-final-release-audit/manager-platform-execution.json",
+          "sha256": "49c10856a620bcacdf7f2ab229218957f6e4de9a934336477266f6b8179f52fc",
+          "kind": "execution"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        }
+      ]
+    },
+    {
+      "source": "2E Codebase Memory",
+      "derived_checklist": [
+        "Inspect empty/install-only zero-call rule, exact root binding, readiness/freshness/generation and coverage.",
+        "Inspect post-Worker synchronization after edits stop, new-project transition and direct fallback.",
+        "Exercise controlled missing/offline/stale/pending/partial/wrong-root/identity mismatch only where safely available; label static vs live evidence.",
+        "Reject graph prompt authority, cross-project leakage, stale correctness and unbounded query loops.",
+        "No active retired cf-recall surfaces or extra memory engine/service/database."
+      ],
+      "expected_evidence": [
+        "live call records",
+        "static lifecycle tests",
+        "source fallback evidence",
+        "active artifact inventory"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C04",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Initial exact-root MCP navigation observed; post-edit refresh Transport closed and direct source/manifest fallback recorded. Other live negative branches remain UNVERIFIED with static instruction coverage only; graph is not authority. No retired recall operation restored.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-MCP-lifecycle",
+          "path": "reports/councilflow-final-release-audit/mcp-lifecycle.md",
+          "sha256": "689dbd57e11fc249ce94777c14a65ed05ff22972875a7ca8cb46e3b3205f6d7d",
+          "kind": "context"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-T-integrity",
+          "path": "reports/councilflow-final-release-audit/tester/supplemental-integrity.json",
+          "sha256": "bbb969c7566bb683d322a322559efddca9d1bd785194ad96583a437243a8832a",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        }
+      ]
+    },
+    {
+      "source": "2F tests portability distribution docs",
+      "derived_checklist": [
+        "Use targeted mutation controls on production behavior for confirmed high-impact findings and inspect logically wrong fixtures.",
+        "Run all current repository/demo suites, classify archived/intentional starter failures separately.",
+        "Run Windows and genuinely available focused WSL/Linux checks; disclose skips/platform gaps.",
+        "Inspect README/RELEASE/examples/install paths/TOMLs/recovery/dependencies and packaging manifest drift.",
+        "Scan tracked/packaged credentials, caches, git/runtime temps, duplicates and large historical artifacts without destructive cleanup.",
+        "Validate safe ZIP names, exclusions, full installable product/docs/tests, CRC, bytes/hash and fresh extraction tests; no recursive self-inclusion."
+      ],
+      "expected_evidence": [
+        "test matrix/raw outputs",
+        "mutation report",
+        "documentation diff",
+        "inventory/secret scan",
+        "package manifest/extraction evidence"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "status": "PASS",
+      "conclusion": "Six current suites executed in final checkout and FINAL archive extraction, meaningful12mutants killed, historical test errors separate, docs/install drift repaired, inventory scanned and all117ZIP bytes/CRC/names verified.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-inventory-scan",
+          "path": "reports/councilflow-final-release-audit/inventory-scan.json",
+          "sha256": "c8a00c7ab7baba86d098abfecc6ab7deb87bc57744326ce72c1b04a240632552",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-T-package-checks",
+          "path": "reports/councilflow-final-release-audit/tester/package-checks.json",
+          "sha256": "b4c053b500d6ef6954ad9c9d55608357fb9ef709324276d6101dc8be65b94537",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "source": "3 finding workflow and priorities",
+      "derived_checklist": [
+        "Classify every investigated concern; fix reproducible in-scope findings P0 then P1 then P2 then measured P3.",
+        "Capture failing controls and immutable input/candidate before minimal patch.",
+        "Fresh bounded Worker owns code; one mutating Worker; independent fresh Tester/Reviewer and final original Planner.",
+        "Preserve failures with actual causal decisions; change approach before retry.",
+        "Stop only consequential unapproved change, record precise approval need and continue other approved work."
+      ],
+      "expected_evidence": [
+        "finding/change ledger",
+        "Worker/Tester/Reviewer packets",
+        "candidate snapshots",
+        "decision ledger"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Fourteen confirmed scoped findings have minimal source/docs/coverage dispositions and original failed evidence. One mutating Worker performed bounded developer refinement before final independent verification; no fabricated rework acceptance chain.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-native-observations",
+          "path": "reports/councilflow-final-release-audit/native-observations-final.json",
+          "sha256": "d90347c036ac0be1172d681e927cea28e02077b1af03c83e7c1d56635def9376",
+          "kind": "host-observations"
+        }
+      ]
+    },
+    {
+      "source": "4 Gate 3",
+      "derived_checklist": [
+        "Do not launch new experiment without separate Owner approval and required fresh session/fixture.",
+        "Keep historical E10 FAIL and E1/E2/E4 UNVERIFIED; revalidate surviving evidence for historical E3/E5/E6/E7/E8/E9 only if available.",
+        "Once only inspect current E1/E2/E4 host capability; missing metadata becomes UNVERIFIED (HOST_CAPABILITY_MISSING); do not infer from requested agent type or static TOML.",
+        "Publish precise E1-E10 evidence/disposition matrix and residual host/Owner/native-observation needs.",
+        "Software readiness is separate; no fabricated full verification or self-authorized ACCEPTED_WITH_GAP."
+      ],
+      "expected_evidence": [
+        "one capability inspection",
+        "historical evidence references",
+        "Gate3 matrix",
+        "authorization statement"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "No new Gate3 experiment; unapproved draft remains unapproved. Historical E10 FAIL and E1/E2/E4 UNVERIFIED preserved, other historical PASS clearly Owner-reported absent recovered raw host evidence. Current host gaps classified once without repeated attempts.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        },
+        {
+          "artifact_id": "FRA-native-observations",
+          "path": "reports/councilflow-final-release-audit/native-observations-final.json",
+          "sha256": "d90347c036ac0be1172d681e927cea28e02077b1af03c83e7c1d56635def9376",
+          "kind": "host-observations"
+        }
+      ]
+    },
+    {
+      "source": "5A",
+      "derived_checklist": [
+        "Independently run every current applicable suite in final checkout and isolated FINAL archive extraction, capture command/count/exit/skip reasons.",
+        "Run genuine supported boundary/platform checks with accurate limits."
+      ],
+      "expected_evidence": [
+        "Tester checkout/extraction matrix",
+        "raw stdout/stderr and exits",
+        "platform record"
+      ],
+      "completion_ids": [
+        "C02",
+        "C04",
+        "C06"
+      ],
+      "status": "PASS",
+      "conclusion": "Raw Windows logs independently recomputed: checkout148/144pass/4skip, final extraction148/145pass/3skip; Manager Linux final extraction148/148pass/0skip labeled separately. Six commands exit0 each.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-manager-platform-execution",
+          "path": "reports/councilflow-final-release-audit/manager-platform-execution.json",
+          "sha256": "49c10856a620bcacdf7f2ab229218957f6e4de9a934336477266f6b8179f52fc",
+          "kind": "execution"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "source": "5B",
+      "derived_checklist": [
+        "Run adversarial E10 and task/sequence end-to-end validation with synthetic vs authentic Owner provenance clearly labeled."
+      ],
+      "expected_evidence": [
+        "negative controls",
+        "sequence validation",
+        "provenance disposition"
+      ],
+      "completion_ids": [
+        "C02",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "Synthetic E10 and task/sequence controls executed against production; actual canonical ordered context root-bound validation passes. Real Owner fixture provenance remains NOT_ESTABLISHED; no synthetic fixture promoted to approval.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-T-integrity",
+          "path": "reports/councilflow-final-release-audit/tester/supplemental-integrity.json",
+          "sha256": "bbb969c7566bb683d322a322559efddca9d1bd785194ad96583a437243a8832a",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        }
+      ]
+    },
+    {
+      "source": "5C",
+      "derived_checklist": [
+        "Compare frozen hashes to baseline; validate operational JSON examples, inventory, ZIP SHA256/CRC/extracted bytes.",
+        "Check current behavior/package for retired recall surfaces."
+      ],
+      "expected_evidence": [
+        "frozen comparison",
+        "examples validation",
+        "package manifest",
+        "extraction comparison"
+      ],
+      "completion_ids": [
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "status": "PASS",
+      "conclusion": "Frozen baseline hashes, operational examples/policy, full117entry ZIP inventory/CRC/source bytes and retired operational-path absence verified.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T-package-checks",
+          "path": "reports/councilflow-final-release-audit/tester/package-checks.json",
+          "sha256": "b4c053b500d6ef6954ad9c9d55608357fb9ef709324276d6101dc8be65b94537",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T-integrity",
+          "path": "reports/councilflow-final-release-audit/tester/supplemental-integrity.json",
+          "sha256": "bbb969c7566bb683d322a322559efddca9d1bd785194ad96583a437243a8832a",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-A01-cumulative",
+          "path": "reports/councilflow-final-release-audit/worker/final/candidate-manifest.json",
+          "sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+          "kind": "candidate-manifest"
+        }
+      ]
+    },
+    {
+      "source": "5D",
+      "derived_checklist": [
+        "Independently check Tester/Reviewer exact candidate, evidence and rerun.",
+        "Final Planner maps every original mission requirement and confirmed finding to PASS/FAIL/BLOCKED/UNVERIFIED."
+      ],
+      "expected_evidence": [
+        "Reviewer report and raw rerun",
+        "final Planner check",
+        "completed acceptance map"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "status": "PASS",
+      "conclusion": "Separate Tester and Reviewer exact command/conditions, exit0 and CRLF-to-LF-only stdout hash independently matched; final original Planner map is this immutable artifact, with exact original criteria maintained.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        }
+      ]
+    },
+    {
+      "source": "5E",
+      "derived_checklist": [
+        "Ledger every investigated issue with fixed/already covered/confirmed unresolved/unverified-host/out-of-scope disposition.",
+        "Claim all confirmed in-scope fixable findings dispositioned, never all bugs eliminated."
+      ],
+      "expected_evidence": [
+        "audit finding ledger",
+        "handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C05"
+      ],
+      "status": "PASS",
+      "conclusion": "Every investigated finding is dispositioned; all14confirmed fixable source/docs/coverage findings addressed. Host/MCP/TOCTOU/global-copy gaps remain explicit limitations; no claim all possible bugs eliminated.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        },
+        {
+          "artifact_id": "FRA-MCP-lifecycle",
+          "path": "reports/councilflow-final-release-audit/mcp-lifecycle.md",
+          "sha256": "689dbd57e11fc249ce94777c14a65ed05ff22972875a7ca8cb46e3b3205f6d7d",
+          "kind": "context"
+        }
+      ]
+    },
+    {
+      "source": "5F",
+      "derived_checklist": [
+        "Produce new baseline, changes, command/raw outputs, controls, test matrix, security, Gate3, package and independent/final reports."
+      ],
+      "expected_evidence": [
+        "reports/councilflow-final-release-audit/ inventory"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C04",
+        "C06",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "New audit directory contains baseline, changes, raw command/negative/mutant evidence, test/security/Gate3/package/independent review and concrete handoff; final Planner artifacts produced here without rewriting earlier records.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "source": "5G",
+      "derived_checklist": [
+        "Stage only intended files; inspect staged diff for secrets/protected/unrelated changes.",
+        "Create local checkpoint if changes; temporary author configuration only; no persistent git changes/push/history rewrite."
+      ],
+      "expected_evidence": [
+        "staged diff review",
+        "commit output"
+      ],
+      "completion_ids": [
+        "C05",
+        "C06"
+      ],
+      "status": "PASS",
+      "conclusion": "Actual intended-file source/evidence commit b92e0a18439f49e7939274a334e4b161c6ad96ba exists on main with original baseline parent. Staged inspection records no unexpected files, heuristic secret hits or raw blob mismatches; no push.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-source-checkpoint",
+          "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+          "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-staging-review",
+          "path": "reports/councilflow-final-release-audit/git-staging-review.json",
+          "sha256": "535594211396623fd0dde900c608dbed92beb0ca28e3b4e4f39900210238c2ab",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        }
+      ]
+    },
+    {
+      "source": "5H",
+      "derived_checklist": [
+        "Verify final HEAD/branch/staged/unstaged state, retained pre-existing files, ZIP hash and report locations after commit."
+      ],
+      "expected_evidence": [
+        "postcommit handoff/status"
+      ],
+      "completion_ids": [
+        "C05",
+        "C06"
+      ],
+      "status": "PASS",
+      "conclusion": "Post-source-checkpoint HEAD/branch/staged state, candidate/ZIP and frozen bytes independently verified. Pre-existing modified/untracked paths retained. Manager evidence-only closeout will recheck final HEAD/state; no product change is authorized by this map.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-source-checkpoint",
+          "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+          "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        }
+      ]
+    },
+    {
+      "source": "6 completion/stop",
+      "derived_checklist": [
+        "Evaluate C01-C07 below exactly; missing mandatory deliverable means PARTIAL/BLOCKED with precise reason.",
+        "Preserve useful verified work; no fabricated commit or indefinite attempts to relabel status.",
+        "At most one request for genuinely consequential Owner decision; routine authorized work continues."
+      ],
+      "expected_evidence": [
+        "final Planner check",
+        "final status/handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "All seven exact original COMPLETE bullets map to sufficient recorded audit/release evidence. Remaining host/Gate3 observability is truthfully dispositioned as required rather than manufactured into software failures or experiment PASS.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-planner-independent-checks",
+          "path": "reports/councilflow-final-release-audit/planner/independent-evidence-checks.json",
+          "sha256": "ea71a8ecc50d2bd813737aca0faadcd4ce14514982bcd6b94771f23581937c13",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        }
+      ]
+    },
+    {
+      "source": "7 final Owner format",
+      "derived_checklist": [
+        "Report actual host-disclosed model or NOT_DISCLOSED, mission status, full baseline/final commits, branch and no push.",
+        "Report fixes/evidence/paths, already covered, exact tests/skips, independent role/rerun records, security and MCP limits.",
+        "Report historical/current Gate3 disposition and no new experiment, exact ZIP count/hash/extraction, real open items and one minimal next action.",
+        "Concise final response; complete evidence in files; no promised later work or external-model fiction."
+      ],
+      "expected_evidence": [
+        "final Owner response",
+        "handoff"
+      ],
+      "completion_ids": [
+        "C01",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "status": "PASS",
+      "conclusion": "Concrete concise Owner handoff ingredients are prepared: model undisclosed, source/full commit and final-closeout resolution, fourteen findings, exact tests/rerun/security/MCP/Gate3/ZIP/open items and no action needed for controlled use. Final Owner delivery and evidence-only closeout remain Manager workflow postconditions, not claimed already sent.",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-handoff",
+          "path": "reports/councilflow-final-release-audit/README.md",
+          "sha256": "77e14d80b5feaae854ba5c61c2774eeccf723bf5d9ae79769b42459b8f538099",
+          "kind": "handoff"
+        },
+        {
+          "artifact_id": "FRA-source-checkpoint",
+          "path": "reports/councilflow-final-release-audit/git-source-checkpoint.json",
+          "sha256": "af0c924bbff2f2269f597e87c84c6bd157c4c8f64a8189d60c8c91c4534afee5",
+          "kind": "checkpoint"
+        },
+        {
+          "artifact_id": "FRA-verification-matrix",
+          "path": "reports/councilflow-final-release-audit/verification-matrix.json",
+          "sha256": "5a45fd7e6b78586a4ba22dff8a6f671fdd9304bd1e38de189ee9e1fbe287b415",
+          "kind": "verification"
+        },
+        {
+          "artifact_id": "FRA-Gate3-disposition",
+          "path": "reports/councilflow-final-release-audit/gate3-disposition.json",
+          "sha256": "aac5dbaed823743b8f4bed335c2f824d6057443310e48754af9c01558c755214",
+          "kind": "governance"
+        },
+        {
+          "artifact_id": "FRA-security-limits",
+          "path": "reports/councilflow-final-release-audit/security-and-host-limits.md",
+          "sha256": "e13e7b3814d7b744c2560597f657e9ee9747e44f0c8838d9791f12e3fafd932e",
+          "kind": "limits"
+        }
+      ]
+    }
+  ],
+  "discovered_confirmed_findings": [
+    {
+      "id": "CA01",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA02",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA03",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA04",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA05",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA06",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "DIST-01",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "DIST-02",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "DIST-03",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "DIST-04",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "DOC-05",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA07",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "CA08",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    },
+    {
+      "id": "DIST-05",
+      "status": "PASS",
+      "disposition": "ADDRESSED: minimal source/docs/coverage repair; original and failed evidence retained",
+      "evidence_refs": [
+        {
+          "artifact_id": "FRA-final-finding-disposition",
+          "path": "reports/councilflow-final-release-audit/finding-disposition-final.json",
+          "sha256": "1f14e50850eca4f624892e6088d88c486e6260ae203688fa6e28d2484a533510",
+          "kind": "audit"
+        },
+        {
+          "artifact_id": "FRA-worker-change-ledger",
+          "path": "reports/councilflow-final-release-audit/worker/change-ledger.json",
+          "sha256": "f1cdcfb0a019c84edb6ee4b456f3550c6718aa63294f83ca795ff587b41c4be1",
+          "kind": "changes"
+        },
+        {
+          "artifact_id": "FRA-T002",
+          "path": "reports/councilflow-final-release-audit/tester/job-report.json",
+          "sha256": "5bf70358cb9913edc458ebce921da4375fc2ccabe92e3fdb0cfe673aad4877b5",
+          "kind": "message"
+        },
+        {
+          "artifact_id": "FRA-R002",
+          "path": "reports/councilflow-final-release-audit/reviewer/job-report.json",
+          "sha256": "5065a12573ab2c2dc2546e7ff579f68f399c9d641f17cb9711f89504b47a7c3b",
+          "kind": "message"
+        }
+      ]
+    }
+  ],
+  "residuals": [
+    {
+      "area": "Gate3 E1/E2/E4 activation/causality/effective TOML and model identity",
+      "status": "UNVERIFIED",
+      "reason": "HOST_CAPABILITY_MISSING; model NOT_DISCLOSED; no new experiment or approved fixture."
+    },
+    {
+      "area": "Historical Gate3 E10",
+      "status": "FAIL",
+      "reason": "Historical WORKFLOW_BEHAVIOR paraphrase retained; source repair is not retroactive experiment PASS."
+    },
+    {
+      "area": "Other historical Gate3 PASS statuses",
+      "status": "UNVERIFIED",
+      "reason": "Owner-reported prior supported statuses preserved; raw historic host evidence not independently recovered in this checkout."
+    },
+    {
+      "area": "MCP postWorker freshness and other injected live negative states",
+      "status": "UNVERIFIED",
+      "reason": "Actual Transport closed fallback observed; other branches static instruction coverage only."
+    },
+    {
+      "area": "OS containment, concurrent path-swap race freedom and role authentication",
+      "status": "UNVERIFIED",
+      "reason": "Source/path consistency and native handles do not establish enforcement/authenticity."
+    },
+    {
+      "area": "User-wide installed skill drift",
+      "status": "BLOCKED",
+      "reason": "Outside authorized repository edit scope; preserved. Project release can be used without global changes."
+    }
+  ],
+  "interpretation": "Requirement PASS means requested audit/repair/disposition was performed with adequate evidence; it does not relabel each explicitly unverified host behavior as PASS. No new mandatory criterion is added or waived.",
+  "software_disposition": "Verified release candidate for controlled project use; all confirmed in-scope fixable findings dispositioned. No universal all-bugs-eliminated claim.",
+  "gate3_disposition": "Separate historical failure/unverified record; new experiment NO; no COUNCILFLOW_FULLY_VERIFIED or self-authorized ACCEPTED_WITH_GAP.",
+  "manager_postconditions": [
+    "Commit these new final Planner/handoff evidence files using intended-file staged review, with source/archive bytes unchanged.",
+    "After evidence-only closeout, verify final HEAD/branch/status/retained artifacts and give concise final Owner response; no further implementation or experiment is implied."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "sequence",
+    "reports/councilflow-final-release-audit/messages/P001.json",
+    "reports/councilflow-final-release-audit/messages/W001.json",
+    "reports/councilflow-final-release-audit/messages/W002.json",
+    "reports/councilflow-final-release-audit/messages/T001.json",
+    "reports/councilflow-final-release-audit/messages/T002.json",
+    "reports/councilflow-final-release-audit/messages/R001.json",
+    "reports/councilflow-final-release-audit/messages/R002.json",
+    "reports/councilflow-final-release-audit/messages/M001.json",
+    "reports/councilflow-final-release-audit/messages/M002.json",
+    "reports/councilflow-final-release-audit/messages/P002.json",
+    "--root",
+    ".",
+    "--bindings",
+    "reports/councilflow-final-release-audit/observed-bindings.json"
+  ],
+  "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_sha256": "f9dadfaccb05d9bbb67c80b8e9426ea5d3a3b21e4dbea73f9d3c3b0117a7437e",
+  "messages": 10,
+  "bindings_source": "Explicit mapping from host-returned canonical task handles and native FINAL_ANSWER Sender headers, not packet sender labels; still structural consistency, not authentication.",
+  "owner_criteria": "Original C01-C07 exact plan hash61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc; no separately mandatory Gate3 fixture claimed for ordinary audit invocation.",
+  "final_planner_status": "passed",
+  "closed_context_excludes": "Preserved W001-planned-scope.json draft is not an executed boundary."
+}

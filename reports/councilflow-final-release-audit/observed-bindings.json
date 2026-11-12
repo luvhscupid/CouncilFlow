@@ -1,0 +1,42 @@
+{
+  "FRA-P001": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "FRA-W001": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "FRA-W002": {
+    "role": "worker",
+    "instance_id": "/root/worker_a01"
+  },
+  "FRA-T001": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "FRA-T002": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "FRA-R001": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "FRA-R002": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer"
+  },
+  "FRA-M001": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "FRA-M002": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "FRA-P002": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  }
+}

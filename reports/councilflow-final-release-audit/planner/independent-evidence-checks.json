@@ -1,0 +1,180 @@
+{
+  "planner": "/root/planner",
+  "method": "Direct artifact bytes, exact original criteria, raw execution evidence and current git checkpoint independently inspected. No product repair or additional suite rerun by Planner.",
+  "baseline_manifest_sha256": "57285e1e709433b72a488d96cebfe113c7f751768854cfa131d93c2b34e6cfe0",
+  "original_plan_sha256": "61805c236485c7266df321e32737711631e1c92e9c761e2e848ced8b8a5d65cc",
+  "original_map_sha256": "8eec87398a5e2eb20e419e70af786766409208aedc33b0fd19e281f765c4c254",
+  "original_completion_criteria_exact": true,
+  "original_map_rows": 25,
+  "candidate_manifest_sha256": "9e5ae1a046221deb96a345815ef9ac72746f023ccd01bdaf34984ea224c4a113",
+  "all_candidate_files_unchanged": 117,
+  "archive": {
+    "path": "dist/council-flow.zip",
+    "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+    "entries": 117
+  },
+  "archive_crc_names_all_source_bytes": "PASS",
+  "frozen_hash_comparison": {
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md": true,
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md": true,
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md": true
+  },
+  "source_checkpoint": "b92e0a18439f49e7939274a334e4b161c6ad96ba",
+  "parent": "3879c3d97efb6dfb5256445bf21748a95d0d2eab",
+  "branch": "main",
+  "staged_empty": true,
+  "baseline_hashed_files_drift_only_intended": [
+    ".agents/skills/council-flow/references/codebase-memory.md",
+    ".agents/skills/council-flow/references/communication.md",
+    ".agents/skills/council-flow/references/recovery.md",
+    ".agents/skills/council-flow/references/workflow.md",
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "README.md",
+    "RELEASE.md",
+    "demo/receipt/receipt_calculator.py",
+    "demo/receipt/test_receipt_calculator.py",
+    "demo/structured-flow/README.md",
+    "demo/structured-flow/sum_values.py",
+    "demo/structured-flow/test_sum_values.py",
+    "dist/council-flow.zip",
+    "dist/council-flow.zip.sha256",
+    "tests/test_contracts.py"
+  ],
+  "canonical_prefix_sequence_messages": [
+    "P001",
+    "W001",
+    "W002",
+    "T001",
+    "T002",
+    "R001",
+    "R002",
+    "M001",
+    "M002"
+  ],
+  "canonical_prefix_sequence_validation": "PASS root-bound structural and causal validation; not host authentication",
+  "distinct_role_actor_labels": [
+    "/root/worker_a01",
+    "/root/tester",
+    "/root/reviewer"
+  ],
+  "role_provenance": "Manager native observations plus actual Planner context/parent messages; role labels, requested type and expected_senders do not prove loaded TOML or model.",
+  "tester_reviewer_exact_command_conditions": "MATCH",
+  "tester_reviewer_exit": 0,
+  "tester_reviewer_normalized_stdout_sha256": "0d073be2ae892a06e6f6ebf3761b410aae940e4a16bc832f1d8a14bc4fab1acc",
+  "meaningful_stdout_test_records": 148,
+  "raw_windows_counts_recomputed": {
+    "checkout": {
+      "suites": [
+        {
+          "suite": "tests",
+          "run": 104,
+          "passed": 100,
+          "skipped": 4,
+          "exit": 0
+        },
+        {
+          "suite": "demo/receipt",
+          "run": 13,
+          "passed": 13,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "demo/csv-summary",
+          "run": 15,
+          "passed": 15,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "demo/structured-flow",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "reports/demo/verification",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "reports/csv-summary/verification",
+          "run": 6,
+          "passed": 6,
+          "skipped": 0,
+          "exit": 0
+        }
+      ],
+      "run": 148,
+      "passed": 144,
+      "skipped": 4
+    },
+    "extraction": {
+      "suites": [
+        {
+          "suite": "tests",
+          "run": 104,
+          "passed": 101,
+          "skipped": 3,
+          "exit": 0
+        },
+        {
+          "suite": "demo/receipt",
+          "run": 13,
+          "passed": 13,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "demo/csv-summary",
+          "run": 15,
+          "passed": 15,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "demo/structured-flow",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "reports/demo/verification",
+          "run": 5,
+          "passed": 5,
+          "skipped": 0,
+          "exit": 0
+        },
+        {
+          "suite": "reports/csv-summary/verification",
+          "run": 6,
+          "passed": 6,
+          "skipped": 0,
+          "exit": 0
+        }
+      ],
+      "run": 148,
+      "passed": 145,
+      "skipped": 3
+    }
+  },
+  "manager_supplemental_linux": {
+    "passed": 148,
+    "skipped": 0,
+    "symlink_controls": 3,
+    "junction_controls": 3,
+    "provenance": "Manager thread; not Tester-thread WSL proof"
+  },
+  "limits": [
+    "No authentic separately approved Gate3 fixture or new Gate3 experiment.",
+    "MCP postWorker Transport closed: direct-source fallback, no current graph correctness claim.",
+    "No actor authentication, OS isolation, race-free containment or universal bug absence proof.",
+    "Initial untracked paths retained/inventoried but not universally initial-byte-hashed.",
+    "Source checkpoint already exists; final evidence-only closeout and final Owner communication remain Manager workflow postconditions."
+  ],
+  "status": "PASS for inspected evidence and unchanged candidate; full final plan.check follows"
+}
