@@ -68,6 +68,13 @@ Frozen sources and hashes are recorded in `reports/gate3-next/E1-E10-CHECKLIST.m
 | P1 | Dynamic unavailable-MCP/stale-index fallback, effective TOML loading, junction/reparse-point and TOCTOU safety lack direct evidence. | Remain explicitly unverified; do not infer guarantees. |
 | P1 | Historical A004/A005/A006/A008 failures and the two obsolete archived restoration suites remain recorded. | Not rebuilt or relabeled; they are not current passing suites. |
 
+## Preservation notes and Sol review recommendations
+
+- Staged `git diff --cached --check` identified 40 trailing-space lines across 16 preserved Markdown reports and frozen-document copies under the hardening evidence and disposable workspace. These include Markdown hard line breaks and archived source bytes; they were not normalized. The focused check on changed implementation, release guidance, tests, and this handoff passed.
+- Evidence-cycle inefficiency: the first Reviewer assignment used attempt `CF-A014` while the final Tester report used `CF-A013`. The Reviewer caught the mismatch; the final rerun and report were repeated under matching `CF-A013`, while the unmatched records remain preserved as superseded. Planner closeout was also repeated when the handoff/checkpoint hashes changed. For future work, bind Tester and Reviewer to one attempt ID before dispatch, freeze handoff bytes before the final Planner check, and stop regenerating checkpoint manifests after that check.
+- For an independent Sol audit, verify the first checkpoint commit and its one-file handoff follow-up with `git show --stat` and `git diff HEAD~2..HEAD`; recompute the three protected-source hashes and release/checkpoint checksums; validate the authoritative Tester, Reviewer, and Planner messages; then decide whether the local extracted workspaces should remain untracked or be archived elsewhere. Do not reinterpret the old Gate 3 reports in the disposable copy as current release evidence.
+- At final check, the only uncommitted paths are the two extracted-candidate runtime directories, the preserved checkpoint ZIP, and the superseded disposable-demo scaffold listed above. They remain local by design; ignored Python cache directories are unchanged.
+
 No separately authorized protocol-policy change was needed. Snapshot Vault AC07/AC12 were kept separate from Gate 3. No unrelated project or external service was changed.
 
 ## Local checkpoint
