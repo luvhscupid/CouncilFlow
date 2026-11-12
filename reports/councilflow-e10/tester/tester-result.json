@@ -1,0 +1,127 @@
+{
+  "frozen_spec_hashes": {
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md": {
+      "expected": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "matches": true
+    },
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md": {
+      "expected": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "matches": true
+    },
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md": {
+      "expected": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "matches": true
+    }
+  },
+  "preexisting_unrelated_changes": "Reports/gate3-next/disposable-workspace/demo/gate3-demo/{app.py,test_app.py}, preexisting extracted-candidate directories, checkpoint ZIP, and disposable-demo remain present and were not changed by Tester.",
+  "version": "1.0",
+  "runs": [
+    {
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-e10/tester/contracts.stdout.bin",
+      "name": "contracts",
+      "stderr_path": "reports/councilflow-e10/tester/contracts.stderr.bin",
+      "exit_code": 0,
+      "stderr_sha256": "ddcbdf09d0f7fc9c1576d52507fe71f8a6529c8f816132445005a431525ce5b4"
+    },
+    {
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-e10/tester/all-tests.stdout.bin",
+      "name": "all-tests",
+      "stderr_path": "reports/councilflow-e10/tester/all-tests.stderr.bin",
+      "exit_code": 0,
+      "stderr_sha256": "805edb78abc5dfdff2a7cbf7f70e2b478ef2dd985b877bca1057b01d04f4a79e"
+    },
+    {
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-e10/tester/receipt-app.stdout.bin",
+      "name": "receipt-app",
+      "stderr_path": "reports/councilflow-e10/tester/receipt-app.stderr.bin",
+      "exit_code": 0,
+      "stderr_sha256": "26fe85a4e48839e568399804b114a13788d29cfff2f571cdd2e5252ae75cad9f"
+    },
+    {
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-e10/tester/structured-app.stdout.bin",
+      "name": "structured-app",
+      "stderr_path": "reports/councilflow-e10/tester/structured-app.stderr.bin",
+      "exit_code": 0,
+      "stderr_sha256": "6d25b5500e188eccd38dfc3116af3cbe030399a45a6bd4b840f63206a297887a"
+    },
+    {
+      "stdout_sha256_crlf_to_lf_only": "70e68b0fa9304b17d6ec645d42dc152f3e9ab12221848e3fb29c17e873c65228",
+      "stdout_path": "reports/councilflow-e10/tester/deterministic-contracts.stdout.bin",
+      "name": "deterministic-contracts",
+      "stderr_path": "reports/councilflow-e10/tester/deterministic-contracts.stderr.bin",
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fixture_provenance": "Synthetic only; no authentic Owner-approved fixture bytes were available. Hash verifies integrity, not approval.",
+  "result": "PASS_WITH_SKIPS",
+  "adversarial_checks": [
+    "exact synthetic criteria pass",
+    "historical CSV mutations: Markdown backticks and article/punctuation changes detected",
+    "added/removed spaces detected",
+    "line break changes including LF/CRLF detected",
+    "case changes detected",
+    "Unicode substitution and normalization changes detected",
+    "missing, duplicated, reordered, modified, and added criteria rejected",
+    "missing and stale fixture rejected",
+    "multiline criteria supported",
+    "unsafe control characters rejected",
+    "corrected exact plan passes"
+  ],
+  "protocol": "council-flow",
+  "results": [
+    {
+      "skips": 2,
+      "suite": "focused contract suite",
+      "status": "PASS_WITH_SKIPS",
+      "evidence": "contracts.stderr.bin",
+      "tests": 72
+    },
+    {
+      "skips": 2,
+      "suite": "complete tests/ suite",
+      "status": "PASS_WITH_SKIPS",
+      "evidence": "all-tests.stderr.bin",
+      "tests": 93
+    },
+    {
+      "suite": "receipt application",
+      "status": "PASS",
+      "evidence": "receipt-app.stderr.bin",
+      "tests": 11
+    },
+    {
+      "suite": "structured-flow application",
+      "status": "PASS",
+      "evidence": "structured-app.stderr.bin",
+      "tests": 1
+    }
+  ],
+  "host_evidence": "E1/E2/E4 HOST_CAPABILITY_MISSING documented separately; no native skill activation, causality, or loaded-TOML records claimed.",
+  "task": "Final Gate 3 Remediation E10",
+  "role": "tester",
+  "deterministic_command": {
+    "candidate_sha256": {
+      "test_contracts_py": "54cebd5a881affe613bbd6bfd368956d262f5a01b86e1470dfebca8608a538a5",
+      "contracts_py": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173"
+    },
+    "normalized_stdout_sha256": "70e68b0fa9304b17d6ec645d42dc152f3e9ab12221848e3fb29c17e873c65228",
+    "exit_code": 0,
+    "arguments": [
+      "reports/councilflow-e10/tester/run_contracts.py"
+    ],
+    "stderr_path": "reports/councilflow-e10/tester/deterministic-contracts.stderr.bin",
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "stdout_path": "reports/councilflow-e10/tester/deterministic-contracts.stdout.bin",
+    "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+  },
+  "summary": "The E10 contract suite and complete tests/ suite pass on the current candidate. Two symlink tests skip on Windows because the host denies symlink creation. Non-CSV receipt and structured-flow application suites passed on the same implementation and test candidate.",
+  "experiment": "Gate 3 and CSV experiment NOT RUN"
+}

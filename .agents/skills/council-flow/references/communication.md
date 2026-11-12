@@ -105,6 +105,19 @@ identity to externally observed actor, not an assertion copied from the packet.
 Optional owner_provenance is a set of externally confirmed human-provenance
 artifact identities. CLI --owner-provenance is for actual supplied Owner facts.
 
+Before any role dispatch, invoke sequence validation with
+`--require-criteria-fidelity --authoritative-criteria-ref <reference.json>` and
+`--root <authorized-root>`. The reference must point to the unchanged
+Owner-approved criteria JSON artifact, with kind `owner-approved-criteria` and
+shape `{ "criteria": [{"id": "...", "criterion": "..."}] }`. The helper
+compares ordered IDs and exact strings without normalization and rejects a
+missing, stale, or mismatching fixture. The caller is responsible for
+establishing Owner approval and supplying its trusted reference; a matching
+SHA-256 establishes file integrity only. Preserve rejected plan artifacts and
+history. A corrected plan must follow the existing authorized workflow. All
+roles should refer to criteria by stable ID and the immutable artifact rather
+than rewriting criterion text.
+
 Ordered context rejects duplicate IDs, unknown predecessors, plan/task/revision
 drift, report/assignment origin or attempt mismatch, changed candidate/hash,
 unknown acceptance, omitted final mandatory criteria and mutated artifacts.

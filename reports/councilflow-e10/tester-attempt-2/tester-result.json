@@ -1,0 +1,199 @@
+{
+  "role": "tester",
+  "protocol": "council-flow",
+  "version": "1.0",
+  "task": "Gate 3 E10 remediation, rework attempt 2",
+  "candidate_sha256": {
+    ".agents/skills/council-flow/scripts/contracts.py": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+    "tests/test_contracts.py": "2fef58b03f8827f64f17ab365ceef5e6213d40d3ee26c08a08c8406ae039e3d2",
+    ".agents/skills/council-flow/references/workflow.md": "f9108589a7c3cdc62591eb41d5662ef6a16cf96caea30909e240d8789000ab34",
+    ".agents/skills/council-flow/references/communication.md": "55f75e76074a2cd23a2f7a0ed9f53b7b6e29d32e13eefc2fcaf9e6a71b51f7c3",
+    "reports/councilflow-e10/tester/run_contracts.py": "8ca3506e4f22b6944352fa51deaaee8c6c650b4c701809874c450424ed9695cf"
+  },
+  "frozen_spec_hashes": {
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md": {
+      "expected": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "matches": true
+    },
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md": {
+      "expected": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "matches": true
+    },
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md": {
+      "expected": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "matches": true
+    }
+  },
+  "commands": [
+    {
+      "name": "focused-contracts",
+      "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "tests.test_contracts",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_path": "reports/councilflow-e10/tester-attempt-2/focused-contracts.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/tester-attempt-2/focused-contracts.stderr.bin",
+      "stdout_length": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_length_crlf_to_lf_only": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "c842dbc7c366465cdfb5d353dd4ab39e94dd71744b2ef4c2380bfcf0dbc0b9dc"
+    },
+    {
+      "name": "complete-tests",
+      "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_path": "reports/councilflow-e10/tester-attempt-2/complete-tests.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/tester-attempt-2/complete-tests.stderr.bin",
+      "stdout_length": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_length_crlf_to_lf_only": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "b630e4685fc0fb49f686024a60a416da1514994b17aa407a4251755cf0f3019b"
+    },
+    {
+      "name": "receipt-app",
+      "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-p",
+        "test_receipt_calculator.py",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_path": "reports/councilflow-e10/tester-attempt-2/receipt-app.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/tester-attempt-2/receipt-app.stderr.bin",
+      "stdout_length": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_length_crlf_to_lf_only": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "16081c326332285eca8533ba370dca473ff8f59fe9b9c71b7d9273038f917b49"
+    },
+    {
+      "name": "structured-app",
+      "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-p",
+        "test_sum_values.py",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_path": "reports/councilflow-e10/tester-attempt-2/structured-app.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/tester-attempt-2/structured-app.stderr.bin",
+      "stdout_length": 0,
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_length_crlf_to_lf_only": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "372a7d7a95e0196777b7ca26154fd3dc3badf8ef8f3519964dc5fad8da6d0c36"
+    },
+    {
+      "name": "deterministic-contracts",
+      "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "reports/councilflow-e10/tester/run_contracts.py"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_path": "reports/councilflow-e10/tester-attempt-2/deterministic-contracts.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/tester-attempt-2/deterministic-contracts.stderr.bin",
+      "stdout_length": 61,
+      "stdout_sha256_raw": "70e68b0fa9304b17d6ec645d42dc152f3e9ab12221848e3fb29c17e873c65228",
+      "stdout_length_crlf_to_lf_only": 60,
+      "stdout_sha256_crlf_to_lf_only": "dca0c2f5dd970a80b4ff528bdf5e8a6c0d1fca49f0ea7e1eea1a3ac1f49cfd3e",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "all_commands_exit_zero": true,
+  "fixture_provenance": "Synthetic test input only; no authentic Owner-approved CSV fixture was available. SHA-256 records integrity only, not approval.",
+  "gate3": "NOT RUN",
+  "csv_experiment": "NOT RUN",
+  "notes": [
+    "No product/test files were changed by Tester.",
+    "The deterministic stdout hash uses raw_stdout.replace(b'\\r\\n', b'\\n') only.",
+    "No CSV application test suite was run; only receipt and structured-flow demo suites were run."
+  ],
+  "result": "PASS_WITH_SKIPS",
+  "suites": [
+    {
+      "name": "focused contract suite",
+      "tests": 72,
+      "passed": 70,
+      "skipped": 2,
+      "exit_code": 0,
+      "evidence": "focused-contracts.stderr.bin"
+    },
+    {
+      "name": "complete tests suite",
+      "tests": 93,
+      "passed": 91,
+      "skipped": 2,
+      "exit_code": 0,
+      "evidence": "complete-tests.stderr.bin"
+    },
+    {
+      "name": "receipt application suite",
+      "tests": 12,
+      "passed": 12,
+      "skipped": 0,
+      "exit_code": 0,
+      "evidence": "receipt-app.stderr.bin"
+    },
+    {
+      "name": "structured-flow application suite",
+      "tests": 4,
+      "passed": 4,
+      "skipped": 0,
+      "exit_code": 0,
+      "evidence": "structured-app.stderr.bin"
+    }
+  ],
+  "skips": "Two symlink-specific tests skipped on Windows because the host denied symlink creation (WinError 1314); not security passes.",
+  "adversarial_checks": [
+    "exact criteria and corrected plan after a deliberately rejected mutation pass",
+    "rejected plan artifact bytes remain unchanged",
+    "synthetic CSV backtick, article and punctuation changes fail",
+    "added and removed spaces fail",
+    "changed LF/CRLF line breaks fail",
+    "case changes fail",
+    "Unicode substitution and canonical normalization changes fail",
+    "missing, duplicated, reordered, modified, and added criteria fail",
+    "missing and stale authoritative source fail closed",
+    "multiline criteria remain supported; unsafe controls are rejected"
+  ],
+  "replay_summary": {
+    "tester_exit_code": 0,
+    "reviewer_command": "reports/councilflow-e10/tester/run_contracts.py",
+    "stdout_sha256_raw": "70e68b0fa9304b17d6ec645d42dc152f3e9ab12221848e3fb29c17e873c65228",
+    "stdout_sha256_crlf_to_lf_only": "dca0c2f5dd970a80b4ff528bdf5e8a6c0d1fca49f0ea7e1eea1a3ac1f49cfd3e",
+    "stdout_bytes_raw": 61,
+    "stdout_bytes_normalized": 60
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "reports/councilflow-e10/tester/run_contracts.py"
+  ],
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_sha256_crlf_to_lf_only": "dca0c2f5dd970a80b4ff528bdf5e8a6c0d1fca49f0ea7e1eea1a3ac1f49cfd3e",
+  "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "candidate_hashes_before": {
+    ".agents/skills/council-flow/scripts/contracts.py": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+    "tests/test_contracts.py": "54cebd5a881affe613bbd6bfd368956d262f5a01b86e1470dfebca8608a538a5",
+    "reports/councilflow-e10/tester/run_contracts.py": "8ca3506e4f22b6944352fa51deaaee8c6c650b4c701809874c450424ed9695cf"
+  },
+  "candidate_hashes_after": {
+    ".agents/skills/council-flow/scripts/contracts.py": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+    "tests/test_contracts.py": "54cebd5a881affe613bbd6bfd368956d262f5a01b86e1470dfebca8608a538a5",
+    "reports/councilflow-e10/tester/run_contracts.py": "8ca3506e4f22b6944352fa51deaaee8c6c650b4c701809874c450424ed9695cf"
+  },
+  "stdout_path": "reports/councilflow-e10/reviewer/deterministic-contracts.stdout.bin",
+  "stderr_path": "reports/councilflow-e10/reviewer/deterministic-contracts.stderr.bin"
+}\n

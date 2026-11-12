@@ -99,6 +99,52 @@ def read_json(path):
     return loads(raw)
 
 
+def _authoritative_criteria(reference, root):
+    """Load criteria from an explicitly trusted caller reference.
+
+    The artifact digest detects stale bytes; it does not authenticate who approved
+    them. The caller must obtain this reference from the Owner-approved source.
+    """
+    if root is None:
+        fail("criteria_source", "authoritative_criteria_ref", "a repository root is required")
+    artifact(reference, root, "authoritative_criteria_ref")
+    if reference["kind"] != "owner-approved-criteria":
+        fail("criteria_source", "authoritative_criteria_ref.kind", "expected owner-approved-criteria artifact")
+    source = read_json(Path(root) / reference["path"])
+    if type(source) is not dict or set(source) != {"criteria"}:
+        fail("criteria_source", "authoritative_criteria_ref", "expected exact criteria fixture object")
+    criteria = source["criteria"]
+    if type(criteria) is not list or not criteria or len(criteria) > MAX_ITEMS:
+        fail("criteria_source", "authoritative_criteria_ref.criteria", "expected bounded nonempty ordered criteria")
+    result = []
+    seen = set()
+    for entry in criteria:
+        if type(entry) is not dict or set(entry) != {"id", "criterion"}:
+            fail("criteria_source", "authoritative_criteria_ref.criteria", "each entry requires only id and criterion")
+        identity = _identity(entry["id"], "authoritative_criteria_ref.criteria.id")
+        criterion = _criterion(entry["criterion"], "authoritative_criteria_ref.criteria.criterion")
+        if identity in seen:
+            fail("criteria_source", "authoritative_criteria_ref.criteria", "criterion identities must be unique")
+        seen.add(identity)
+        result.append((identity, criterion))
+    return result
+
+
+def _compare_authoritative_criteria(plan, expected):
+    acceptance = plan.get("acceptance")
+    if type(acceptance) is not list or len(acceptance) != len(expected):
+        fail("acceptance_fidelity", "plan.acceptance", "criteria count differs from authoritative source")
+    actual = []
+    for entry in acceptance:
+        if type(entry) is not dict:
+            fail("acceptance_fidelity", "plan.acceptance", "criterion entry must be an object")
+        identity = _identity(entry.get("id"), "plan.acceptance.id")
+        criterion = _criterion(entry.get("criterion"), "plan.acceptance.criterion")
+        actual.append((identity, criterion))
+    if actual != expected:
+        fail("acceptance_fidelity", "plan.acceptance", "ordered criteria differ byte-for-byte from authoritative source")
+
+
 def _object(value, required, optional=(), field="$"):
     if type(value) is not dict:
         fail("type", field, "expected object")
@@ -441,7 +487,8 @@ def validate_message(message, *, root=None, expected_sender=None):
     return message
 
 
-def validate_sequence(messages, *, root=None, expected_senders=None, owner_provenance=()):
+def validate_sequence(messages, *, root=None, expected_senders=None, owner_provenance=(),
+                      authoritative_criteria_ref=None, require_criteria_fidelity=False):
     """Validate supplied ordered context, never authenticate opaque native transport."""
     if not isinstance(messages, (list, tuple)) or len(messages) > 1024:
         fail("context", "$", "supply at most 1024 ordered messages")
@@ -462,6 +509,13 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
         _tree(identity)
         _identity(identity, "owner_provenance")
     owner_provenance = set(owner_provenance)
+    if type(require_criteria_fidelity) is not bool:
+        fail("criteria_source", "require_criteria_fidelity", "expected boolean")
+    if require_criteria_fidelity and authoritative_criteria_ref is None:
+        fail("criteria_source", "authoritative_criteria_ref", "authoritative criteria source is required; failing closed")
+    expected_criteria = None
+    if authoritative_criteria_ref is not None:
+        expected_criteria = _authoritative_criteria(authoritative_criteria_ref, root)
     for m in messages:
         # Validate the object and identity before using either as a lookup key.
         validate_message(m, root=root)
@@ -520,6 +574,8 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                     fail("plan_artifact", "plan.acceptance", "criterion identities must be unique")
                 if ids != p["acceptance_ids"]:
                     fail("plan_artifact", "payload.acceptance_ids", "does not match original artifact")
+                if expected_criteria is not None:
+                    _compare_authoritative_criteria(plan, expected_criteria)
         elif kind != "plan.progress" and key not in plans:
             fail("plan_context", "plan_id", "published plan required")
         if key in plans and "acceptance_ids" in p:
@@ -839,8 +895,14 @@ def main(argv=None):
     parser.add_argument("--expected-instance")
     parser.add_argument("--bindings", type=Path, help="trusted JSON map message_id -> externally observed actor")
     parser.add_argument("--owner-provenance", action="append", default=[], help="externally confirmed Owner artifact identity")
+    parser.add_argument("--authoritative-criteria-ref", type=Path,
+                        help="trusted caller-supplied artifact reference to Owner-approved criteria JSON")
+    parser.add_argument("--require-criteria-fidelity", action="store_true",
+                        help="fail closed unless plan criteria exactly match --authoritative-criteria-ref")
     args = parser.parse_args(argv)
     try:
+        if args.mode != "sequence" and (args.require_criteria_fidelity or args.authoritative_criteria_ref):
+            fail("criteria_mode", "mode", "criteria fidelity options apply only to sequence validation")
         expected = None
         if args.expected_sender or args.expected_instance:
             if not args.expected_sender or not args.expected_instance:
@@ -851,8 +913,11 @@ def main(argv=None):
                 validate_message(read_json(path), root=args.root, expected_sender=expected)
         elif args.mode == "sequence":
             bindings = read_json(args.bindings) if args.bindings else {}
+            criteria_ref = read_json(args.authoritative_criteria_ref) if args.authoritative_criteria_ref else None
             validate_sequence([read_json(p) for p in args.files], root=args.root,
-                              expected_senders=bindings, owner_provenance=args.owner_provenance)
+                              expected_senders=bindings, owner_provenance=args.owner_provenance,
+                              authoritative_criteria_ref=criteria_ref,
+                              require_criteria_fidelity=args.require_criteria_fidelity)
         elif args.mode == "policy":
             for path in args.files:
                 validate_policy(parse_policy(Path(path).read_bytes()))

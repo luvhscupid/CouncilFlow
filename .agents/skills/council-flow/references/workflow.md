@@ -10,9 +10,20 @@ Planner final check → Owner. Preserve that responsibility order.
 2. Dedicated Planner returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
+   Before dispatch, Manager runs sequence validation with
+   `--require-criteria-fidelity` and `--authoritative-criteria-ref` pointing to
+   the unchanged Owner-approved criteria artifact. Its kind is
+   `owner-approved-criteria`, and its JSON shape is
+   `{ "criteria": [{"id": "...", "criterion": "..."}] }`. IDs and criterion
+   strings are compared in order, exactly, without normalization. The caller
+   establishes Owner approval; SHA-256 detects stale bytes but is not
+   authentication. Missing, stale, or mismatching sources block dispatch.
+   Preserve rejected plans and evidence; corrections require a new plan through
+   the existing authorized workflow. All roles use stable IDs and the immutable
+   artifact instead of rewriting criterion text.
 3. Manager constructs bounded job.assign JSON with objective, scope, original
    acceptance IDs, exact candidate reference and instructions. Validate the
-   controlled packet and file hashes before delegation. Supply known native
+   controlled packet, file hashes and criteria fidelity before delegation. Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not

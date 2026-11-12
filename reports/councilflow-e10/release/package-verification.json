@@ -1,0 +1,123 @@
+{
+  "archive": "dist/council-flow.zip",
+  "sha256": "d371923a69e12a3aab47211bba8ada591dea901a651b47cac82f319c169cae57",
+  "checksum_file": "dist/council-flow.zip.sha256",
+  "entry_count": 115,
+  "manifest_path": "reports/councilflow-e10/release/package-manifest.json",
+  "manifest_sha256": "39c7366aa3ccc6e3d382c2281536b842f181245aedc8ec9ea4b7ecdcdf8bc137",
+  "crc": "PASS",
+  "safe_paths_and_extraction_containment": "PASS",
+  "required_contents": "PASS",
+  "forbidden_paths_absent": "PASS",
+  "source_byte_mapping": "PASS",
+  "checksum_matches": true,
+  "independent_full_suites": "PASS_IN_EXTRACTED_PACKAGE",
+  "extracted_checks": [
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-package-znh3yq6f",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "780fc6637a3666b615dd7afdd7be0791c3636d6d72258e7a2d3f8a5718e78eb0",
+      "stdout_path": "reports/councilflow-e10/release/extracted-check-1.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/release/extracted-check-1.stderr.bin"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-p",
+        "test_receipt_calculator.py",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-package-znh3yq6f",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "d7e78c4a278934c02af848b7c4a2f5ca964bb3adf79b92756ccb2dcaa5c5e110",
+      "stdout_path": "reports/councilflow-e10/release/extracted-check-2.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/release/extracted-check-2.stderr.bin"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-p",
+        "test_sum_values.py",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-package-znh3yq6f",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "ee72ecbdf5f47fb544093fa2ddebfd90b3ea826329eaf7414d2c62e16efc12ef",
+      "stdout_path": "reports/councilflow-e10/release/extracted-check-3.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/release/extracted-check-3.stderr.bin"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_codebase_memory_integration.py",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-package-znh3yq6f",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "18d96d2416dbbc03dacd9db3a838360729f21a6f2dcf565d10a74496e53842df",
+      "stdout_path": "reports/councilflow-e10/release/extracted-check-4.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/release/extracted-check-4.stderr.bin"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-package-znh3yq6f",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-e10/release/extracted-check-5.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/release/extracted-check-5.stderr.bin"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-package-znh3yq6f",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-e10/release/extracted-check-6.stdout.bin",
+      "stderr_path": "reports/councilflow-e10/release/extracted-check-6.stderr.bin"
+    }
+  ]
+}

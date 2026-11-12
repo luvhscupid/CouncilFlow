@@ -19,7 +19,7 @@ runtime state, temporary files, the archive itself, and the current hardening
 evidence packet.
 
 Package verification for this run is recorded outside the archive in
-`reports/councilflow-hardening/worker-a008/`. The archive is checked for CRC
+`reports/councilflow-e10/release/`. The archive is checked for CRC
 integrity, safe relative paths, required and excluded entries, and exact file
 hashes against the worktree. It is extracted to a temporary directory for test
 execution. Use `python -m zipfile -t dist/council-flow.zip` to check its ZIP

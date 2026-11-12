@@ -1,0 +1,29 @@
+{
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "reports/councilflow-e10/tester/run_contracts.py"
+  ],
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_raw_bytes": 61,
+  "stdout_raw_sha256": "70e68b0fa9304b17d6ec645d42dc152f3e9ab12221848e3fb29c17e873c65228",
+  "stdout_normalized_bytes": 60,
+  "stdout_sha256_crlf_to_lf_only": "dca0c2f5dd970a80b4ff528bdf5e8a6c0d1fca49f0ea7e1eea1a3ac1f49cfd3e",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "candidate_sha256_before": {
+    ".agents/skills/council-flow/scripts/contracts.py": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+    "tests/test_contracts.py": "2fef58b03f8827f64f17ab365ceef5e6213d40d3ee26c08a08c8406ae039e3d2",
+    ".agents/skills/council-flow/references/workflow.md": "f9108589a7c3cdc62591eb41d5662ef6a16cf96caea30909e240d8789000ab34",
+    ".agents/skills/council-flow/references/communication.md": "55f75e76074a2cd23a2f7a0ed9f53b7b6e29d32e13eefc2fcaf9e6a71b51f7c3",
+    "reports/councilflow-e10/tester/run_contracts.py": "8ca3506e4f22b6944352fa51deaaee8c6c650b4c701809874c450424ed9695cf"
+  },
+  "candidate_sha256_after": {
+    ".agents/skills/council-flow/scripts/contracts.py": "cd183e6245cf1741353b7102d0b4eb0ca137bab77e381d381eabbb8ef6a13173",
+    "tests/test_contracts.py": "2fef58b03f8827f64f17ab365ceef5e6213d40d3ee26c08a08c8406ae039e3d2",
+    ".agents/skills/council-flow/references/workflow.md": "f9108589a7c3cdc62591eb41d5662ef6a16cf96caea30909e240d8789000ab34",
+    ".agents/skills/council-flow/references/communication.md": "55f75e76074a2cd23a2f7a0ed9f53b7b6e29d32e13eefc2fcaf9e6a71b51f7c3",
+    "reports/councilflow-e10/tester/run_contracts.py": "8ca3506e4f22b6944352fa51deaaee8c6c650b4c701809874c450424ed9695cf"
+  },
+  "candidate_unchanged": true
+}

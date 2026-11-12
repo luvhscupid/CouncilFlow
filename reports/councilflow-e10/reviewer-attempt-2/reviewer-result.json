@@ -1,0 +1,47 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "role": "reviewer",
+  "task": "Gate 3 E10 remediation, rework attempt 2",
+  "result": "ACCEPTED_WITH_LIMITATIONS",
+  "tester_reference": "reports/councilflow-e10/tester-attempt-2/tester-result.json",
+  "reviewer_rerun": {
+    "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "reports/councilflow-e10/tester/run_contracts.py"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_raw_bytes": 61,
+    "stdout_raw_sha256": "70e68b0fa9304b17d6ec645d42dc152f3e9ab12221848e3fb29c17e873c65228",
+    "stdout_crlf_to_lf_bytes": 60,
+    "stdout_sha256_crlf_to_lf_only": "dca0c2f5dd970a80b4ff528bdf5e8a6c0d1fca49f0ea7e1eea1a3ac1f49cfd3e",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_path": "reports/councilflow-e10/reviewer-attempt-2/reviewer-rerun.stdout.bin",
+    "stderr_path": "reports/councilflow-e10/reviewer-attempt-2/reviewer-rerun.stderr.bin",
+    "exit_path": "reports/councilflow-e10/reviewer-attempt-2/reviewer-rerun.exit.txt"
+  },
+  "comparison": {
+    "tester_exit_code": 0,
+    "tester_stdout_sha256_crlf_to_lf_only": "dca0c2f5dd970a80b4ff528bdf5e8a6c0d1fca49f0ea7e1eea1a3ac1f49cfd3e",
+    "exit_match": true,
+    "normalized_stdout_match": true,
+    "candidate_unchanged_during_replay": true,
+    "candidate_hashes_path": "reports/councilflow-e10/reviewer-attempt-2/replay.json"
+  },
+  "review_findings": [
+    "Authoritative criteria are loaded only from an explicit caller-supplied artifact reference; current artifact bytes and SHA-256 are checked, while the caller remains responsible for Owner provenance.",
+    "Ordered criterion IDs and Unicode strings are compared directly without normalization; missing, stale, reordered, duplicated, omitted, modified, or added criteria are rejected in fidelity mode.",
+    "Regression tests include the historical CSV wording mutations as synthetic input, whitespace, punctuation, case, line endings, Unicode substitution/normalization, multiline criteria, unsafe controls, and missing/stale source behavior.",
+    "The corrected-plan regression first rejects a mutated plan, preserves its artifact bytes, then accepts a separate synthetic plan with the original criteria; it explicitly does not claim Owner authorization.",
+    "Workflow and communication references require the fidelity check before dispatch and state that a matching hash is integrity only."
+  ],
+  "frozen_spec_hashes_match": true,
+  "limitations": [
+    "No authentic Owner-approved CSV fixture was available; tests use synthetic criteria.",
+    "E1, E2, and E4 remain UNVERIFIED (HOST_CAPABILITY_MISSING) as documented separately.",
+    "Gate 3 and the CSV experiment were not run; this review does not establish an E10 Gate 3 PASS or COUNCILFLOW_FULLY_VERIFIED."
+  ],
+  "prior_failed_review_preserved": "reports/councilflow-e10/reviewer/reviewer-result.json"
+}

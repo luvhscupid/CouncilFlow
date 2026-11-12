@@ -1,0 +1,6 @@
+warning: in the working copy of '.agents/skills/council-flow/scripts/contracts.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'RELEASE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'reports/gate3-next/OWNER-INVOCATION.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'reports/gate3-next/disposable-workspace/demo/gate3-demo/app.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'reports/gate3-next/disposable-workspace/demo/gate3-demo/test_app.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_contracts.py', LF will be replaced by CRLF the next time Git touches it

@@ -793,6 +793,159 @@ class JSONContractTests(unittest.TestCase):
             m["evidence_refs"] = [m["payload"]["plan_ref"]]
             with self.assertRaises(c.ContractError):c.validate_sequence([m], root=ROOT)
 
+    def _fidelity_context(self, directory, criteria, *, plan_criteria=None):
+        """Build synthetic files; these are test controls, never Owner approval."""
+        folder = Path(directory)
+        source = folder / "owner-criteria.json"
+        source.write_bytes(json.dumps({"criteria": criteria}, ensure_ascii=False).encode("utf-8"))
+        source_ref = ref("owner-criteria", source.relative_to(ROOT).as_posix(),
+                         hashlib.sha256(source.read_bytes()).hexdigest(),
+                         kind="owner-approved-criteria")
+        plan = folder / "plan.json"
+        plan_acceptance = criteria if plan_criteria is None else plan_criteria
+        plan.write_bytes(json.dumps({"plan_id": "P1", "plan_revision": 1,
+                                     "acceptance": plan_acceptance},
+                                    ensure_ascii=False).encode("utf-8"))
+        plan_ref = ref("plan", plan.relative_to(ROOT).as_posix(),
+                       hashlib.sha256(plan.read_bytes()).hexdigest(), kind="plan")
+        packet = publish()
+        packet["payload"]["acceptance_ids"] = [item["id"] for item in criteria]
+        packet["payload"]["plan_ref"] = plan_ref
+        packet["evidence_refs"] = [plan_ref]
+        return packet, source_ref, source, plan
+
+    def test_synthetic_corrected_plan_after_rejection_retains_authoritative_criteria(self):
+        fixture = [
+            {"id": "AC1", "criterion": "Print " + chr(96) + "5" + chr(96) + " for values in " + chr(96) + "amount" + chr(96) + "."},
+            {"id": "AC2", "criterion": "A missing column or a nonnumeric value exits nonzero." + chr(13) + chr(10) + "No traceback."},
+        ]
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            changed = copy.deepcopy(fixture)
+            changed[0]["criterion"] = "Print 5 for values in amount."
+            rejected, source_ref, _, rejected_plan = self._fidelity_context(
+                directory, fixture, plan_criteria=changed)
+            rejected_bytes = rejected_plan.read_bytes()
+            with self.assertRaises(c.ContractError) as failure:
+                c.validate_sequence([rejected], root=ROOT,
+                                    authoritative_criteria_ref=source_ref,
+                                    require_criteria_fidelity=True)
+            self.assertEqual(failure.exception.code, "acceptance_fidelity")
+            self.assertEqual(rejected_plan.read_bytes(), rejected_bytes)
+
+            # Synthetic fresh publication after rejection; this test does not
+            # establish or simulate Owner authorization for the new plan.
+            corrected_plan = rejected_plan.with_name("corrected-plan.json")
+            corrected_plan.write_bytes(json.dumps(
+                {"plan_id": "P2", "plan_revision": 1, "acceptance": fixture},
+                ensure_ascii=False).encode("utf-8"))
+            corrected_ref = ref(
+                "corrected-plan", corrected_plan.relative_to(ROOT).as_posix(),
+                hashlib.sha256(corrected_plan.read_bytes()).hexdigest(), kind="plan")
+            corrected = copy.deepcopy(rejected)
+            corrected["message_id"] = "M2"
+            corrected["plan_id"] = "P2"
+            corrected["payload"]["plan_ref"] = corrected_ref
+            corrected["evidence_refs"] = [corrected_ref]
+            c.validate_sequence([corrected], root=ROOT,
+                                authoritative_criteria_ref=source_ref,
+                                require_criteria_fidelity=True)
+
+    def test_historical_csv_criteria_mutations_fail_exact_fidelity(self):
+        # Synthetic reproduction of the reported CSV E10 edits, not an Owner fixture.
+        original = [
+            {"id": "AC1", "criterion": "Print " + chr(96) + "5" + chr(96) + " for the " + chr(96) + "amount" + chr(96) + " column."},
+            {"id": "AC2", "criterion": "A missing column or a nonnumeric value exits nonzero and reports a clear error."},
+        ]
+        mutations = [
+            [{"id": "AC1", "criterion": "Print 5 for the amount column."}, original[1]],
+            [original[0], {"id": "AC2", "criterion": "A missing column or nonnumeric value exits nonzero and reports a clear error."}],
+            [original[0], {"id": "AC2", "criterion": "A missing column or a nonnumeric value exits nonzero and reports a clear error"}],
+        ]
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            for index, changed in enumerate(mutations):
+                with self.subTest(mutation=index):
+                    packet, source_ref, _, _ = self._fidelity_context(
+                        directory, original, plan_criteria=changed)
+                    with self.assertRaises(c.ContractError) as raised:
+                        c.validate_sequence([packet], root=ROOT,
+                                            authoritative_criteria_ref=source_ref,
+                                            require_criteria_fidelity=True)
+                    self.assertEqual(raised.exception.code, "acceptance_fidelity")
+
+    def test_exact_fidelity_rejects_spacing_newlines_case_and_unicode_changes(self):
+        originals = [
+            {"id": "AC1", "criterion": "First line." + chr(10) + "Second line."},
+            {"id": "AC2", "criterion": "Use café exactly."},
+        ]
+        changes = [
+            [{"id": "AC1", "criterion": "First  line." + chr(10) + "Second line."}, originals[1]],
+            [{"id": "AC1", "criterion": "Firstline." + chr(10) + "Second line."}, originals[1]],
+            [{"id": "AC1", "criterion": "First line. " + chr(10) + "Second line."}, originals[1]],
+            [{"id": "AC1", "criterion": "First line. Second line."}, originals[1]],
+            [{"id": "AC1", "criterion": "first line." + chr(10) + "Second line."}, originals[1]],
+            [{"id": "AC1", "criterion": "First line." + chr(13) + chr(10) + "Second line."}, originals[1]],
+            [originals[0], {"id": "AC2", "criterion": "Use cafe" + chr(0x301) + " exactly."}],
+            [originals[0], {"id": "AC2", "criterion": "Use c" + chr(0x430) + "fé exactly."}],
+        ]
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            for index, changed in enumerate(changes):
+                with self.subTest(mutation=index):
+                    packet, source_ref, _, _ = self._fidelity_context(
+                        directory, originals, plan_criteria=changed)
+                    with self.assertRaises(c.ContractError) as raised:
+                        c.validate_sequence([packet], root=ROOT,
+                                            authoritative_criteria_ref=source_ref,
+                                            require_criteria_fidelity=True)
+                    self.assertEqual(raised.exception.code, "acceptance_fidelity")
+
+    def test_exact_fidelity_rejects_missing_duplicate_reordered_or_added_criteria(self):
+        originals = [{"id": "AC1", "criterion": "One."},
+                     {"id": "AC2", "criterion": "Two."}]
+        variants = [
+            [originals[0]],
+            [originals[0], originals[0]],
+            [originals[1], originals[0]],
+            [*originals, {"id": "AC3", "criterion": "Three."}],
+            [{"id": "AC1", "criterion": "Changed."}, originals[1]],
+        ]
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            for index, changed in enumerate(variants):
+                with self.subTest(mutation=index):
+                    packet, source_ref, _, _ = self._fidelity_context(
+                        directory, originals, plan_criteria=changed)
+                    with self.assertRaises(c.ContractError) as raised:
+                        c.validate_sequence([packet], root=ROOT,
+                                            authoritative_criteria_ref=source_ref,
+                                            require_criteria_fidelity=True)
+                    self.assertIn(raised.exception.code, {"acceptance_fidelity", "plan_artifact"})
+
+    def test_required_criteria_source_fails_closed_when_missing_or_stale(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            criteria = [{"id": "AC1", "criterion": "Keep exact wording."}]
+            packet, source_ref, source, _ = self._fidelity_context(directory, criteria)
+            with self.assertRaises(c.ContractError) as missing:
+                c.validate_sequence([packet], root=ROOT, require_criteria_fidelity=True)
+            self.assertEqual(missing.exception.code, "criteria_source")
+            source.write_bytes(b'{"criteria":[]}')
+            with self.assertRaises(c.ContractError) as stale:
+                c.validate_sequence([packet], root=ROOT, authoritative_criteria_ref=source_ref,
+                                    require_criteria_fidelity=True)
+            self.assertEqual(stale.exception.code, "artifact_hash")
+
+    def test_authoritative_criteria_fixture_rejects_unsafe_controls_and_accepts_multiline(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            multiline = [{"id": "AC1", "criterion": "Keep this line." + chr(10) + "And this line."}]
+            packet, source_ref, _, _ = self._fidelity_context(directory, multiline)
+            c.validate_sequence([packet], root=ROOT, authoritative_criteria_ref=source_ref,
+                                require_criteria_fidelity=True)
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            unsafe = [{"id": "AC1", "criterion": "Line one." + chr(10) + "Line two." + chr(0)}]
+            packet, source_ref, _, _ = self._fidelity_context(directory, unsafe)
+            with self.assertRaises(c.ContractError) as raised:
+                c.validate_sequence([packet], root=ROOT, authoritative_criteria_ref=source_ref,
+                                    require_criteria_fidelity=True)
+            self.assertEqual(raised.exception.code, "control")
+
     def test_unknown_role_specific_and_nested_check_fields(self):
         m = report("T", "tester", "M4")
         m["payload"]["checks"][0]["approved_by_self"] = True;self.rejects(m)
@@ -806,6 +959,18 @@ class JSONContractTests(unittest.TestCase):
                                  capture_output=True, text=True, cwd=ROOT)
             self.assertEqual(run.returncode, 1)
             self.assertFalse(json.loads(run.stderr)["valid"])
+            self.assertNotIn("Traceback", run.stderr)
+
+    def test_cli_pre_dispatch_fidelity_mode_fails_closed_without_fixture(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            packet_path = Path(directory) / "plan-message.json"
+            packet_path.write_text(json.dumps(publish()), encoding="utf-8")
+            run = subprocess.run(
+                [sys.executable, str(SKILL / "scripts/contracts.py"), "sequence",
+                 str(packet_path), "--root", str(ROOT), "--require-criteria-fidelity"],
+                capture_output=True, text=True, cwd=ROOT)
+            self.assertEqual(run.returncode, 1)
+            self.assertEqual(json.loads(run.stderr)["error"], "criteria_source")
             self.assertNotIn("Traceback", run.stderr)
 
 
