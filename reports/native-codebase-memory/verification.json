@@ -1,0 +1,430 @@
+{
+  "record_kind": "independent_engineering_execution_record",
+  "verification_stage": "final_after_exact_root_correction",
+  "tester_identity": "/root/native_memory_tester",
+  "base_revision": "1bed72b79b3e91c206b7274db064256797b76ec2",
+  "branch": "codex/cf-recall",
+  "candidate_hashes_before": {
+    ".agents/skills/council-flow/SKILL.md": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7",
+    ".agents/skills/council-flow/references/workflow.md": "1e3421fd1ad14fe19c30049d4eb118a7bb2a845f6d18e91e8112ba29050c4ea2",
+    ".agents/skills/council-flow/references/codebase-memory.md": "fca2c29cb259c391803292fa3c9ad5949bacda1c4234696c27f20d73cd5a1311",
+    "README.md": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+    "tests/test_codebase_memory_integration.py": "8e494a081a2d6f908570278ee659db33735b50296f72161da706bfe1969bd87d"
+  },
+  "candidate_hashes_after": {
+    ".agents/skills/council-flow/SKILL.md": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7",
+    ".agents/skills/council-flow/references/workflow.md": "1e3421fd1ad14fe19c30049d4eb118a7bb2a845f6d18e91e8112ba29050c4ea2",
+    ".agents/skills/council-flow/references/codebase-memory.md": "fca2c29cb259c391803292fa3c9ad5949bacda1c4234696c27f20d73cd5a1311",
+    "README.md": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+    "tests/test_codebase_memory_integration.py": "8e494a081a2d6f908570278ee659db33735b50296f72161da706bfe1969bd87d"
+  },
+  "candidate_unchanged_during_checks": true,
+  "custom_asset_absence": {
+    ".agents/skills/cf-recall": true,
+    ".agents/skills/council-flow/scripts/recall.py": true,
+    ".agents/skills/council-flow/references/recall.md": true,
+    "tests/test_recall.py": true
+  },
+  "checks": [
+    {
+      "name": "focused_native_integration_static_final",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_codebase_memory_integration.py",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok\r\ntest_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok\r\ntest_custom_recall_system_is_removed (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_custom_recall_system_is_removed) ... ok\r\ntest_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok\r\ntest_first_encounter_binds_observed_namespace_and_exact_project (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project) ... ok\r\ntest_fresh_agents_receive_bounded_context_and_coverage_gaps (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_fresh_agents_receive_bounded_context_and_coverage_gaps) ... ok\r\ntest_graph_capability_preserves_roles_verification_and_authority (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_graph_capability_preserves_roles_verification_and_authority) ... ok\r\ntest_installation_includes_reference_without_manual_initialization (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization) ... ok\r\ntest_missing_or_unreachable_mcp_continues_direct_inspection (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 0.001s\r\n\r\nOK\r\n",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": 9,
+      "skip_count": 0
+    },
+    {
+      "name": "full_councilflow_suite_final",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok\r\ntest_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok\r\ntest_custom_recall_system_is_removed (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_custom_recall_system_is_removed) ... ok\r\ntest_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok\r\ntest_first_encounter_binds_observed_namespace_and_exact_project (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project) ... ok\r\ntest_fresh_agents_receive_bounded_context_and_coverage_gaps (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_fresh_agents_receive_bounded_context_and_coverage_gaps) ... ok\r\ntest_graph_capability_preserves_roles_verification_and_authority (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_graph_capability_preserves_roles_verification_and_authority) ... ok\r\ntest_installation_includes_reference_without_manual_initialization (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization) ... ok\r\ntest_missing_or_unreachable_mcp_continues_direct_inspection (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection) ... ok\r\ntest_acceptance_cannot_hide_known_failed_candidate_report (test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report) ... ok\r\ntest_agent_messages_reject_model_written_created_at (test_contracts.JSONContractTests.test_agent_messages_reject_model_written_created_at) ... ok\r\ntest_all_purposes_and_synthetic_owner_provenance (test_contracts.JSONContractTests.test_all_purposes_and_synthetic_owner_provenance) ... ok\r\ntest_artifact_path_shape_and_actual_hash_sensitivity (test_contracts.JSONContractTests.test_artifact_path_shape_and_actual_hash_sensitivity) ... ok\r\ntest_changed_candidate_and_relevant_input_invalidate_rerun (test_contracts.JSONContractTests.test_changed_candidate_and_relevant_input_invalidate_rerun) ... ok\r\ntest_cli_invalid_json_fails_with_structured_error_no_traceback (test_contracts.JSONContractTests.test_cli_invalid_json_fails_with_structured_error_no_traceback) ... ok\r\ntest_cli_sequence_type_errors_are_json_without_traceback (test_contracts.JSONContractTests.test_cli_sequence_type_errors_are_json_without_traceback) ... ok\r\ntest_context_unknown_duplicate_and_changed_causal_identity (test_contracts.JSONContractTests.test_context_unknown_duplicate_and_changed_causal_identity) ... ok\r\ntest_decisions_cannot_accept_failures_or_name_unassigned_failures (test_contracts.JSONContractTests.test_decisions_cannot_accept_failures_or_name_unassigned_failures) ... ok\r\ntest_exact_tester_executable_path_is_bound_to_reviewer_rerun (test_contracts.JSONContractTests.test_exact_tester_executable_path_is_bound_to_reviewer_rerun) ... ok\r\ntest_exit_code_mismatch_fails_reviewer_acceptance (test_contracts.JSONContractTests.test_exit_code_mismatch_fails_reviewer_acceptance) ... ok\r\ntest_expected_origin_rejects_a_spoofed_manager_label (test_contracts.JSONContractTests.test_expected_origin_rejects_a_spoofed_manager_label) ... ok\r\ntest_invalid_roles_routes_and_self_approved_oracle (test_contracts.JSONContractTests.test_invalid_roles_routes_and_self_approved_oracle) ... ok\r\ntest_json_assertion_without_execution_artifacts_is_rejected (test_contracts.JSONContractTests.test_json_assertion_without_execution_artifacts_is_rejected) ... ok\r\ntest_malformed_duplicate_nonfinite_overflow_and_utf8 (test_contracts.JSONContractTests.test_malformed_duplicate_nonfinite_overflow_and_utf8) ... ok\r\ntest_missing_reviewer_comparison_evidence_cannot_pass_acceptance (test_contracts.JSONContractTests.test_missing_reviewer_comparison_evidence_cannot_pass_acceptance) ... ok\r\ntest_nested_artifact_identity_conflict_is_rejected (test_contracts.JSONContractTests.test_nested_artifact_identity_conflict_is_rejected) ... ok\r\ntest_normalization_is_crlf_to_lf_only (test_contracts.JSONContractTests.test_normalization_is_crlf_to_lf_only) ... ok\r\ntest_not_comparable_never_passes_e8 (test_contracts.JSONContractTests.test_not_comparable_never_passes_e8) ... ok\r\ntest_optional_changed_files_is_typed_for_every_report_role (test_contracts.JSONContractTests.test_optional_changed_files_is_typed_for_every_report_role) ... ok\r\ntest_original_plan_and_final_acceptance_cannot_be_weakened (test_contracts.JSONContractTests.test_original_plan_and_final_acceptance_cannot_be_weakened) ... ok\r\ntest_owner_provenance_context_types_are_controlled_errors (test_contracts.JSONContractTests.test_owner_provenance_context_types_are_controlled_errors) ... ok\r\ntest_passed_planner_criteria_need_explicit_citations (test_contracts.JSONContractTests.test_passed_planner_criteria_need_explicit_citations) ... ok\r\ntest_passed_tester_cannot_hide_failed_or_unverified_checks (test_contracts.JSONContractTests.test_passed_tester_cannot_hide_failed_or_unverified_checks) ... ok\r\ntest_passing_final_check_requires_manager_evidence_acceptance (test_contracts.JSONContractTests.test_passing_final_check_requires_manager_evidence_acceptance) ... ok\r\ntest_plan_artifact_acceptance_is_checked_not_only_packet (test_contracts.JSONContractTests.test_plan_artifact_acceptance_is_checked_not_only_packet) ... ok\r\ntest_planner_failure_rework_completes_through_fresh_independent_checks (test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks) ... ok\r\ntest_referenced_plan_context_types_and_preserved_metadata (test_contracts.JSONContractTests.test_referenced_plan_context_types_and_preserved_metadata) ... ok\r\ntest_reports_bound_to_assignment_actor_and_acceptance (test_contracts.JSONContractTests.test_reports_bound_to_assignment_actor_and_acceptance) ... ok\r\ntest_reviewer_compares_frozen_plan_candidate_and_tester_record (test_contracts.JSONContractTests.test_reviewer_compares_frozen_plan_candidate_and_tester_record) ... ok\r\ntest_reviewer_must_compare_original_plan_candidate_tester_and_rerun (test_contracts.JSONContractTests.test_reviewer_must_compare_original_plan_candidate_tester_and_rerun) ... ok\r\ntest_reviewer_report_cannot_edit_candidate_criteria_or_tester_evidence (test_contracts.JSONContractTests.test_reviewer_report_cannot_edit_candidate_criteria_or_tester_evidence) ... ok\r\ntest_reviewer_report_reference_is_exact_prior_tester_message (test_contracts.JSONContractTests.test_reviewer_report_reference_is_exact_prior_tester_message) ... ok\r\ntest_reviewer_requires_tester_declared_deterministic_execution (test_contracts.JSONContractTests.test_reviewer_requires_tester_declared_deterministic_execution) ... ok\r\ntest_reviewer_tester_message_reference_verifies_file_bytes_with_root (test_contracts.JSONContractTests.test_reviewer_tester_message_reference_verifies_file_bytes_with_root) ... ok\r\ntest_rework_after_planner_check_requires_actual_failed_criteria (test_contracts.JSONContractTests.test_rework_after_planner_check_requires_actual_failed_criteria) ... ok\r\ntest_rework_requires_failure_and_fresh_worker_attempt (test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt) ... ok\r\ntest_rework_unknown_failed_criterion_is_rejected (test_contracts.JSONContractTests.test_rework_unknown_failed_criterion_is_rejected) ... ok\r\ntest_sequence_nonobjects_and_bad_identity_are_controlled_errors (test_contracts.JSONContractTests.test_sequence_nonobjects_and_bad_identity_are_controlled_errors) ... ok\r\ntest_size_depth_array_and_surrogate_limits (test_contracts.JSONContractTests.test_size_depth_array_and_surrogate_limits) ... ok\r\ntest_stdout_hash_mismatch_fails_reviewer_acceptance (test_contracts.JSONContractTests.test_stdout_hash_mismatch_fails_reviewer_acceptance) ... ok\r\ntest_supplied_sender_bindings_are_strict_even_when_falsey (test_contracts.JSONContractTests.test_supplied_sender_bindings_are_strict_even_when_falsey) ... ok\r\ntest_tester_command_and_reviewer_rerun_must_match (test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_must_match) ... ok\r\ntest_tester_deterministic_record_has_command_cwd_inputs_hash_and_evidence (test_contracts.JSONContractTests.test_tester_deterministic_record_has_command_cwd_inputs_hash_and_evidence) ... ok\r\ntest_tester_strategy_is_assigned_not_self_approved (test_contracts.JSONContractTests.test_tester_strategy_is_assigned_not_self_approved) ... ok\r\ntest_types_versions_unknown_fields_and_identifiers (test_contracts.JSONContractTests.test_types_versions_unknown_fields_and_identifiers) ... ok\r\ntest_unknown_role_specific_and_nested_check_fields (test_contracts.JSONContractTests.test_unknown_role_specific_and_nested_check_fields) ... ok\r\ntest_unresolved_comparator_discrepancy_cannot_be_reported_as_passed (test_contracts.JSONContractTests.test_unresolved_comparator_discrepancy_cannot_be_reported_as_passed) ... ok\r\ntest_valid_all_five_ai_roles_and_full_ordered_sequence (test_contracts.JSONContractTests.test_valid_all_five_ai_roles_and_full_ordered_sequence) ... ok\r\ntest_worker_assertion_cannot_satisfy_independent_acceptance (test_contracts.JSONContractTests.test_worker_assertion_cannot_satisfy_independent_acceptance) ... ok\r\ntest_worker_can_create_and_change_candidate_but_verifier_cannot (test_contracts.JSONContractTests.test_worker_can_create_and_change_candidate_but_verifier_cannot) ... ok\r\ntest_contract_spec_tracks_exact_envelope_and_routes (test_contracts.PolicyAndDiagnosticTests.test_contract_spec_tracks_exact_envelope_and_routes) ... ok\r\ntest_diagnostic_clock_timestamp_is_syntax_only_not_provenance (test_contracts.PolicyAndDiagnosticTests.test_diagnostic_clock_timestamp_is_syntax_only_not_provenance) ... ok\r\ntest_examples_are_explicitly_synthetic (test_contracts.PolicyAndDiagnosticTests.test_examples_are_explicitly_synthetic) ... ok\r\ntest_integration_requires_formats_in_real_skill_and_native_roles (test_contracts.PolicyAndDiagnosticTests.test_integration_requires_formats_in_real_skill_and_native_roles) ... ok\r\ntest_jsonl_real_reference_checks_and_invalid_lines (test_contracts.PolicyAndDiagnosticTests.test_jsonl_real_reference_checks_and_invalid_lines) ... ok\r\ntest_real_restricted_policy_roles_and_native_mapping (test_contracts.PolicyAndDiagnosticTests.test_real_restricted_policy_roles_and_native_mapping) ... ok\r\ntest_yaml_authority_retry_and_boolean_mutations_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_authority_retry_and_boolean_mutations_fail) ... ok\r\ntest_yaml_duplicates_and_unsupported_features_really_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_duplicates_and_unsupported_features_really_fail) ... ok\r\ntest_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ok\r\ntest_gate3_e4_erratum_preserves_frozen_specification (test_skill_files.SkillFilesTests.test_gate3_e4_erratum_preserves_frozen_specification) ... ok\r\ntest_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ok\r\ntest_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... ok\r\ntest_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ok\r\ntest_planner_failure_requires_explicit_manager_rework (test_skill_files.SkillFilesTests.test_planner_failure_requires_explicit_manager_rework) ... ok\r\ntest_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... ok\r\ntest_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ok\r\ntest_review_binds_exact_executable_and_completed_tester_message (test_skill_files.SkillFilesTests.test_review_binds_exact_executable_and_completed_tester_message) ... ok\r\ntest_reviewer_is_comparator_not_ux_evaluator (test_skill_files.SkillFilesTests.test_reviewer_is_comparator_not_ux_evaluator) ... ok\r\ntest_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ok\r\ntest_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 80 tests in 1.543s\r\n\r\nOK\r\n",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": 80,
+      "skip_count": 0
+    },
+    {
+      "name": "diff_whitespace_final",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\native\\git\\cmd\\git.exe",
+      "arguments": [
+        "diff",
+        "--check"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": null,
+      "skip_count": null
+    },
+    {
+      "name": "protected_files_unchanged_final",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\native\\git\\cmd\\git.exe",
+      "arguments": [
+        "diff",
+        "--quiet",
+        "HEAD",
+        "--",
+        ".agents/skills/council-flow/references/message-contract.json",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        ".agents/skills/council-flow/policies/roles.yaml",
+        ".codex/agents",
+        "docs/gate3",
+        ".gitignore",
+        "RELEASE.md"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": null,
+      "skip_count": null
+    },
+    {
+      "name": "retained_demo_policy_inputs_unchanged",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\native\\git\\cmd\\git.exe",
+      "arguments": [
+        "diff",
+        "--quiet",
+        "HEAD",
+        "--",
+        "demo/receipt",
+        "demo/csv-summary",
+        "demo/structured-flow",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": null,
+      "skip_count": null
+    }
+  ],
+  "retained_unchanged_input_checks": [
+    {
+      "name": "receipt_application_suite",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_context_independence_and_large_sum (test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum) ... ok\r\ntest_different_receipt (test_receipt_calculator.ArithmeticTests.test_different_receipt) ... ok\r\ntest_exact_fraction_and_display (test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display) ... ok\r\ntest_owner_sample (test_receipt_calculator.ArithmeticTests.test_owner_sample) ... ok\r\ntest_reject_blank_and_control_labels (test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels) ... ok\r\ntest_reject_invalid_numbers (test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers) ... ok\r\ntest_zero_and_generator (test_receipt_calculator.ArithmeticTests.test_zero_and_generator) ... ok\r\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\r\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\r\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\r\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\r\ntest_version (test_receipt_calculator.CommandLineTests.test_version) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 12 tests in 1.745s\r\n\r\nOK\r\n",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": 12,
+      "skip_count": 0
+    },
+    {
+      "name": "csv_application_suite",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_api_read_only_on_success_and_failure (test_csv_summarizer.CSVSummaryTests.test_api_read_only_on_success_and_failure) ... ok\r\ntest_bad_headers_and_selections (test_csv_summarizer.CSVSummaryTests.test_bad_headers_and_selections) ... ok\r\ntest_bom_unicode_crlf_quoted_commas_quotes_and_multiline (test_csv_summarizer.CSVSummaryTests.test_bom_unicode_crlf_quoted_commas_quotes_and_multiline) ... ok\r\ntest_different_signed_fractional_data (test_csv_summarizer.CSVSummaryTests.test_different_signed_fractional_data) ... ok\r\ntest_exact_accumulation_beyond_input_limits_and_low_context (test_csv_summarizer.CSVSummaryTests.test_exact_accumulation_beyond_input_limits_and_low_context) ... ok\r\ntest_help_and_required_arguments (test_csv_summarizer.CSVSummaryTests.test_help_and_required_arguments) ... ok\r\ntest_invalid_utf8 (test_csv_summarizer.CSVSummaryTests.test_invalid_utf8) ... ok\r\ntest_malformed_quotes (test_csv_summarizer.CSVSummaryTests.test_malformed_quotes) ... ok\r\ntest_multiline_descriptors_do_not_change_logical_error_record (test_csv_summarizer.CSVSummaryTests.test_multiline_descriptors_do_not_change_logical_error_record) ... ok\r\ntest_normalized_headers_and_header_only (test_csv_summarizer.CSVSummaryTests.test_normalized_headers_and_header_only) ... ok\r\ntest_numeric_rejections (test_csv_summarizer.CSVSummaryTests.test_numeric_rejections) ... ok\r\ntest_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok\r\ntest_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok\r\ntest_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok\r\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 15 tests in 5.920s\r\n\r\nOK\r\n",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": 15,
+      "skip_count": 0
+    },
+    {
+      "name": "structured_flow_application_suite",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_invalid_values_are_clear_without_traceback (test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback) ... ok\r\ntest_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok\r\ntest_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok\r\ntest_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 4 tests in 2.278s\r\n\r\nOK\r\n",
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "test_count": 4,
+      "skip_count": 0
+    },
+    {
+      "name": "deterministic_policy_validation",
+      "evidence_kind": "recorded_execution",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+      "exit_code": 0,
+      "stdout": "{\"valid\": true, \"mode\": \"policy\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr": "",
+      "stdout_sha256_crlf_to_lf_only": "e00d2405ad16b1c98fe682dbb1308d86f9bb86c5a475c71371f9e969ccb018a7",
+      "test_count": null,
+      "skip_count": null
+    }
+  ],
+  "retained_check_basis": "The narrow repair changed only the lifecycle reference and its static integration identity test. Final git diff against HEAD confirms demo and policy inputs remain unchanged; their genuine earlier executions are retained, not represented as new reruns.",
+  "pre_correction": {
+    "record_kind": "independent_engineering_execution_record",
+    "tester_identity": "/root/native_memory_tester",
+    "base_revision": "1bed72b79b3e91c206b7274db064256797b76ec2",
+    "branch": "codex/cf-recall",
+    "candidate_hashes_before": {
+      ".agents/skills/council-flow/SKILL.md": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7",
+      ".agents/skills/council-flow/references/workflow.md": "1e3421fd1ad14fe19c30049d4eb118a7bb2a845f6d18e91e8112ba29050c4ea2",
+      ".agents/skills/council-flow/references/codebase-memory.md": "87636384af16d2136bb9156fe8c7f6b3a6371bc8e436cf4b93224ebb52506ffe",
+      "README.md": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+      "tests/test_codebase_memory_integration.py": "78156e9c64dd5a62eb8549f270542e8db809d227e83a73972514365423b60620"
+    },
+    "candidate_hashes_after": {
+      ".agents/skills/council-flow/SKILL.md": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7",
+      ".agents/skills/council-flow/references/workflow.md": "1e3421fd1ad14fe19c30049d4eb118a7bb2a845f6d18e91e8112ba29050c4ea2",
+      ".agents/skills/council-flow/references/codebase-memory.md": "87636384af16d2136bb9156fe8c7f6b3a6371bc8e436cf4b93224ebb52506ffe",
+      "README.md": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+      "tests/test_codebase_memory_integration.py": "78156e9c64dd5a62eb8549f270542e8db809d227e83a73972514365423b60620"
+    },
+    "candidate_unchanged_during_checks": true,
+    "custom_asset_absence": {
+      ".agents/skills/cf-recall": true,
+      ".agents/skills/council-flow/scripts/recall.py": true,
+      ".agents/skills/council-flow/references/recall.md": true,
+      "tests/test_recall.py": true
+    },
+    "checks": [
+      {
+        "name": "focused_native_integration_static",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_codebase_memory_integration.py",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok\r\ntest_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok\r\ntest_custom_recall_system_is_removed (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_custom_recall_system_is_removed) ... ok\r\ntest_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok\r\ntest_first_encounter_binds_observed_namespace_and_exact_project (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project) ... ok\r\ntest_fresh_agents_receive_bounded_context_and_coverage_gaps (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_fresh_agents_receive_bounded_context_and_coverage_gaps) ... ok\r\ntest_graph_capability_preserves_roles_verification_and_authority (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_graph_capability_preserves_roles_verification_and_authority) ... ok\r\ntest_installation_includes_reference_without_manual_initialization (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization) ... ok\r\ntest_missing_or_unreachable_mcp_continues_direct_inspection (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 0.001s\r\n\r\nOK\r\n",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": 9,
+        "skip_count": 0
+      },
+      {
+        "name": "full_councilflow_suite",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok\r\ntest_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok\r\ntest_custom_recall_system_is_removed (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_custom_recall_system_is_removed) ... ok\r\ntest_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok\r\ntest_first_encounter_binds_observed_namespace_and_exact_project (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project) ... ok\r\ntest_fresh_agents_receive_bounded_context_and_coverage_gaps (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_fresh_agents_receive_bounded_context_and_coverage_gaps) ... ok\r\ntest_graph_capability_preserves_roles_verification_and_authority (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_graph_capability_preserves_roles_verification_and_authority) ... ok\r\ntest_installation_includes_reference_without_manual_initialization (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization) ... ok\r\ntest_missing_or_unreachable_mcp_continues_direct_inspection (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection) ... ok\r\ntest_acceptance_cannot_hide_known_failed_candidate_report (test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report) ... ok\r\ntest_agent_messages_reject_model_written_created_at (test_contracts.JSONContractTests.test_agent_messages_reject_model_written_created_at) ... ok\r\ntest_all_purposes_and_synthetic_owner_provenance (test_contracts.JSONContractTests.test_all_purposes_and_synthetic_owner_provenance) ... ok\r\ntest_artifact_path_shape_and_actual_hash_sensitivity (test_contracts.JSONContractTests.test_artifact_path_shape_and_actual_hash_sensitivity) ... ok\r\ntest_changed_candidate_and_relevant_input_invalidate_rerun (test_contracts.JSONContractTests.test_changed_candidate_and_relevant_input_invalidate_rerun) ... ok\r\ntest_cli_invalid_json_fails_with_structured_error_no_traceback (test_contracts.JSONContractTests.test_cli_invalid_json_fails_with_structured_error_no_traceback) ... ok\r\ntest_cli_sequence_type_errors_are_json_without_traceback (test_contracts.JSONContractTests.test_cli_sequence_type_errors_are_json_without_traceback) ... ok\r\ntest_context_unknown_duplicate_and_changed_causal_identity (test_contracts.JSONContractTests.test_context_unknown_duplicate_and_changed_causal_identity) ... ok\r\ntest_decisions_cannot_accept_failures_or_name_unassigned_failures (test_contracts.JSONContractTests.test_decisions_cannot_accept_failures_or_name_unassigned_failures) ... ok\r\ntest_exact_tester_executable_path_is_bound_to_reviewer_rerun (test_contracts.JSONContractTests.test_exact_tester_executable_path_is_bound_to_reviewer_rerun) ... ok\r\ntest_exit_code_mismatch_fails_reviewer_acceptance (test_contracts.JSONContractTests.test_exit_code_mismatch_fails_reviewer_acceptance) ... ok\r\ntest_expected_origin_rejects_a_spoofed_manager_label (test_contracts.JSONContractTests.test_expected_origin_rejects_a_spoofed_manager_label) ... ok\r\ntest_invalid_roles_routes_and_self_approved_oracle (test_contracts.JSONContractTests.test_invalid_roles_routes_and_self_approved_oracle) ... ok\r\ntest_json_assertion_without_execution_artifacts_is_rejected (test_contracts.JSONContractTests.test_json_assertion_without_execution_artifacts_is_rejected) ... ok\r\ntest_malformed_duplicate_nonfinite_overflow_and_utf8 (test_contracts.JSONContractTests.test_malformed_duplicate_nonfinite_overflow_and_utf8) ... ok\r\ntest_missing_reviewer_comparison_evidence_cannot_pass_acceptance (test_contracts.JSONContractTests.test_missing_reviewer_comparison_evidence_cannot_pass_acceptance) ... ok\r\ntest_nested_artifact_identity_conflict_is_rejected (test_contracts.JSONContractTests.test_nested_artifact_identity_conflict_is_rejected) ... ok\r\ntest_normalization_is_crlf_to_lf_only (test_contracts.JSONContractTests.test_normalization_is_crlf_to_lf_only) ... ok\r\ntest_not_comparable_never_passes_e8 (test_contracts.JSONContractTests.test_not_comparable_never_passes_e8) ... ok\r\ntest_optional_changed_files_is_typed_for_every_report_role (test_contracts.JSONContractTests.test_optional_changed_files_is_typed_for_every_report_role) ... ok\r\ntest_original_plan_and_final_acceptance_cannot_be_weakened (test_contracts.JSONContractTests.test_original_plan_and_final_acceptance_cannot_be_weakened) ... ok\r\ntest_owner_provenance_context_types_are_controlled_errors (test_contracts.JSONContractTests.test_owner_provenance_context_types_are_controlled_errors) ... ok\r\ntest_passed_planner_criteria_need_explicit_citations (test_contracts.JSONContractTests.test_passed_planner_criteria_need_explicit_citations) ... ok\r\ntest_passed_tester_cannot_hide_failed_or_unverified_checks (test_contracts.JSONContractTests.test_passed_tester_cannot_hide_failed_or_unverified_checks) ... ok\r\ntest_passing_final_check_requires_manager_evidence_acceptance (test_contracts.JSONContractTests.test_passing_final_check_requires_manager_evidence_acceptance) ... ok\r\ntest_plan_artifact_acceptance_is_checked_not_only_packet (test_contracts.JSONContractTests.test_plan_artifact_acceptance_is_checked_not_only_packet) ... ok\r\ntest_planner_failure_rework_completes_through_fresh_independent_checks (test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks) ... ok\r\ntest_referenced_plan_context_types_and_preserved_metadata (test_contracts.JSONContractTests.test_referenced_plan_context_types_and_preserved_metadata) ... ok\r\ntest_reports_bound_to_assignment_actor_and_acceptance (test_contracts.JSONContractTests.test_reports_bound_to_assignment_actor_and_acceptance) ... ok\r\ntest_reviewer_compares_frozen_plan_candidate_and_tester_record (test_contracts.JSONContractTests.test_reviewer_compares_frozen_plan_candidate_and_tester_record) ... ok\r\ntest_reviewer_must_compare_original_plan_candidate_tester_and_rerun (test_contracts.JSONContractTests.test_reviewer_must_compare_original_plan_candidate_tester_and_rerun) ... ok\r\ntest_reviewer_report_cannot_edit_candidate_criteria_or_tester_evidence (test_contracts.JSONContractTests.test_reviewer_report_cannot_edit_candidate_criteria_or_tester_evidence) ... ok\r\ntest_reviewer_report_reference_is_exact_prior_tester_message (test_contracts.JSONContractTests.test_reviewer_report_reference_is_exact_prior_tester_message) ... ok\r\ntest_reviewer_requires_tester_declared_deterministic_execution (test_contracts.JSONContractTests.test_reviewer_requires_tester_declared_deterministic_execution) ... ok\r\ntest_reviewer_tester_message_reference_verifies_file_bytes_with_root (test_contracts.JSONContractTests.test_reviewer_tester_message_reference_verifies_file_bytes_with_root) ... ok\r\ntest_rework_after_planner_check_requires_actual_failed_criteria (test_contracts.JSONContractTests.test_rework_after_planner_check_requires_actual_failed_criteria) ... ok\r\ntest_rework_requires_failure_and_fresh_worker_attempt (test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt) ... ok\r\ntest_rework_unknown_failed_criterion_is_rejected (test_contracts.JSONContractTests.test_rework_unknown_failed_criterion_is_rejected) ... ok\r\ntest_sequence_nonobjects_and_bad_identity_are_controlled_errors (test_contracts.JSONContractTests.test_sequence_nonobjects_and_bad_identity_are_controlled_errors) ... ok\r\ntest_size_depth_array_and_surrogate_limits (test_contracts.JSONContractTests.test_size_depth_array_and_surrogate_limits) ... ok\r\ntest_stdout_hash_mismatch_fails_reviewer_acceptance (test_contracts.JSONContractTests.test_stdout_hash_mismatch_fails_reviewer_acceptance) ... ok\r\ntest_supplied_sender_bindings_are_strict_even_when_falsey (test_contracts.JSONContractTests.test_supplied_sender_bindings_are_strict_even_when_falsey) ... ok\r\ntest_tester_command_and_reviewer_rerun_must_match (test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_must_match) ... ok\r\ntest_tester_deterministic_record_has_command_cwd_inputs_hash_and_evidence (test_contracts.JSONContractTests.test_tester_deterministic_record_has_command_cwd_inputs_hash_and_evidence) ... ok\r\ntest_tester_strategy_is_assigned_not_self_approved (test_contracts.JSONContractTests.test_tester_strategy_is_assigned_not_self_approved) ... ok\r\ntest_types_versions_unknown_fields_and_identifiers (test_contracts.JSONContractTests.test_types_versions_unknown_fields_and_identifiers) ... ok\r\ntest_unknown_role_specific_and_nested_check_fields (test_contracts.JSONContractTests.test_unknown_role_specific_and_nested_check_fields) ... ok\r\ntest_unresolved_comparator_discrepancy_cannot_be_reported_as_passed (test_contracts.JSONContractTests.test_unresolved_comparator_discrepancy_cannot_be_reported_as_passed) ... ok\r\ntest_valid_all_five_ai_roles_and_full_ordered_sequence (test_contracts.JSONContractTests.test_valid_all_five_ai_roles_and_full_ordered_sequence) ... ok\r\ntest_worker_assertion_cannot_satisfy_independent_acceptance (test_contracts.JSONContractTests.test_worker_assertion_cannot_satisfy_independent_acceptance) ... ok\r\ntest_worker_can_create_and_change_candidate_but_verifier_cannot (test_contracts.JSONContractTests.test_worker_can_create_and_change_candidate_but_verifier_cannot) ... ok\r\ntest_contract_spec_tracks_exact_envelope_and_routes (test_contracts.PolicyAndDiagnosticTests.test_contract_spec_tracks_exact_envelope_and_routes) ... ok\r\ntest_diagnostic_clock_timestamp_is_syntax_only_not_provenance (test_contracts.PolicyAndDiagnosticTests.test_diagnostic_clock_timestamp_is_syntax_only_not_provenance) ... ok\r\ntest_examples_are_explicitly_synthetic (test_contracts.PolicyAndDiagnosticTests.test_examples_are_explicitly_synthetic) ... ok\r\ntest_integration_requires_formats_in_real_skill_and_native_roles (test_contracts.PolicyAndDiagnosticTests.test_integration_requires_formats_in_real_skill_and_native_roles) ... ok\r\ntest_jsonl_real_reference_checks_and_invalid_lines (test_contracts.PolicyAndDiagnosticTests.test_jsonl_real_reference_checks_and_invalid_lines) ... ok\r\ntest_real_restricted_policy_roles_and_native_mapping (test_contracts.PolicyAndDiagnosticTests.test_real_restricted_policy_roles_and_native_mapping) ... ok\r\ntest_yaml_authority_retry_and_boolean_mutations_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_authority_retry_and_boolean_mutations_fail) ... ok\r\ntest_yaml_duplicates_and_unsupported_features_really_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_duplicates_and_unsupported_features_really_fail) ... ok\r\ntest_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ok\r\ntest_gate3_e4_erratum_preserves_frozen_specification (test_skill_files.SkillFilesTests.test_gate3_e4_erratum_preserves_frozen_specification) ... ok\r\ntest_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ok\r\ntest_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... ok\r\ntest_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ok\r\ntest_planner_failure_requires_explicit_manager_rework (test_skill_files.SkillFilesTests.test_planner_failure_requires_explicit_manager_rework) ... ok\r\ntest_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... ok\r\ntest_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ok\r\ntest_review_binds_exact_executable_and_completed_tester_message (test_skill_files.SkillFilesTests.test_review_binds_exact_executable_and_completed_tester_message) ... ok\r\ntest_reviewer_is_comparator_not_ux_evaluator (test_skill_files.SkillFilesTests.test_reviewer_is_comparator_not_ux_evaluator) ... ok\r\ntest_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ok\r\ntest_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 80 tests in 1.605s\r\n\r\nOK\r\n",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": 80,
+        "skip_count": 0
+      },
+      {
+        "name": "receipt_application_suite",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/receipt",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_context_independence_and_large_sum (test_receipt_calculator.ArithmeticTests.test_context_independence_and_large_sum) ... ok\r\ntest_different_receipt (test_receipt_calculator.ArithmeticTests.test_different_receipt) ... ok\r\ntest_exact_fraction_and_display (test_receipt_calculator.ArithmeticTests.test_exact_fraction_and_display) ... ok\r\ntest_owner_sample (test_receipt_calculator.ArithmeticTests.test_owner_sample) ... ok\r\ntest_reject_blank_and_control_labels (test_receipt_calculator.ArithmeticTests.test_reject_blank_and_control_labels) ... ok\r\ntest_reject_invalid_numbers (test_receipt_calculator.ArithmeticTests.test_reject_invalid_numbers) ... ok\r\ntest_zero_and_generator (test_receipt_calculator.ArithmeticTests.test_zero_and_generator) ... ok\r\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\r\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\r\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\r\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\r\ntest_version (test_receipt_calculator.CommandLineTests.test_version) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 12 tests in 1.745s\r\n\r\nOK\r\n",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": 12,
+        "skip_count": 0
+      },
+      {
+        "name": "csv_application_suite",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/csv-summary",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_api_read_only_on_success_and_failure (test_csv_summarizer.CSVSummaryTests.test_api_read_only_on_success_and_failure) ... ok\r\ntest_bad_headers_and_selections (test_csv_summarizer.CSVSummaryTests.test_bad_headers_and_selections) ... ok\r\ntest_bom_unicode_crlf_quoted_commas_quotes_and_multiline (test_csv_summarizer.CSVSummaryTests.test_bom_unicode_crlf_quoted_commas_quotes_and_multiline) ... ok\r\ntest_different_signed_fractional_data (test_csv_summarizer.CSVSummaryTests.test_different_signed_fractional_data) ... ok\r\ntest_exact_accumulation_beyond_input_limits_and_low_context (test_csv_summarizer.CSVSummaryTests.test_exact_accumulation_beyond_input_limits_and_low_context) ... ok\r\ntest_help_and_required_arguments (test_csv_summarizer.CSVSummaryTests.test_help_and_required_arguments) ... ok\r\ntest_invalid_utf8 (test_csv_summarizer.CSVSummaryTests.test_invalid_utf8) ... ok\r\ntest_malformed_quotes (test_csv_summarizer.CSVSummaryTests.test_malformed_quotes) ... ok\r\ntest_multiline_descriptors_do_not_change_logical_error_record (test_csv_summarizer.CSVSummaryTests.test_multiline_descriptors_do_not_change_logical_error_record) ... ok\r\ntest_normalized_headers_and_header_only (test_csv_summarizer.CSVSummaryTests.test_normalized_headers_and_header_only) ... ok\r\ntest_numeric_rejections (test_csv_summarizer.CSVSummaryTests.test_numeric_rejections) ... ok\r\ntest_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok\r\ntest_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok\r\ntest_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok\r\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 15 tests in 5.920s\r\n\r\nOK\r\n",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": 15,
+        "skip_count": 0
+      },
+      {
+        "name": "structured_flow_application_suite",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "demo/structured-flow",
+          "-v"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "test_invalid_values_are_clear_without_traceback (test_sum_values.SumValuesTests.test_invalid_values_are_clear_without_traceback) ... ok\r\ntest_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok\r\ntest_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok\r\ntest_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 4 tests in 2.278s\r\n\r\nOK\r\n",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": 4,
+        "skip_count": 0
+      },
+      {
+        "name": "deterministic_policy_validation",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "policy",
+          ".agents/skills/council-flow/policies/roles.yaml"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "{\"valid\": true, \"mode\": \"policy\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+        "stderr": "",
+        "stdout_sha256_crlf_to_lf_only": "e00d2405ad16b1c98fe682dbb1308d86f9bb86c5a475c71371f9e969ccb018a7",
+        "test_count": null,
+        "skip_count": null
+      },
+      {
+        "name": "diff_whitespace",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\native\\git\\cmd\\git.exe",
+        "arguments": [
+          "diff",
+          "--check"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": null,
+        "skip_count": null
+      },
+      {
+        "name": "protected_files_unchanged",
+        "evidence_kind": "recorded_execution",
+        "command": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1110-973-0_26.1110.973.0_x64__3k8sg7r9htsxt\\dependencies\\native\\git\\cmd\\git.exe",
+        "arguments": [
+          "diff",
+          "--quiet",
+          "HEAD",
+          "--",
+          ".agents/skills/council-flow/references/message-contract.json",
+          ".agents/skills/council-flow/scripts/contracts.py",
+          ".agents/skills/council-flow/policies/roles.yaml",
+          ".codex/agents",
+          "docs/gate3",
+          ".gitignore",
+          "RELEASE.md"
+        ],
+        "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "test_count": null,
+        "skip_count": null
+      }
+    ],
+    "static_assessment": {
+      "meaningfulness": "Nine static tests protect removal, ordering, empty-installation gating, namespace/project binding, freshness, bounded handoff/coverage, fallback, authorization/roles, and installation documentation. They check instruction contracts and source removal; no fake MCP dispatcher or memory engine is tested.",
+      "scope": "These executions establish deterministic static integration and existing validator/application regressions only. Runtime automatic graph use, freshness behavior, indexing, and native skill activation are not demonstrated by text assertions.",
+      "starter_fixture": "Intentionally incomplete demo/starter was not executed as a passing requirement; the root suite includes its static syntax/fixture check."
+    },
+    "live_mcp_integration": {
+      "status": "UNVERIFIED",
+      "basis": "Parent-observed configured codebase-memory-mcp enabled=true, no exposed native Codebase Memory tools, and MCP initialization handshake closed during resources/list and resources/templates/list. This tester did not retry or alter setup.",
+      "actual_tester_mcp_calls": []
+    },
+    "verification_limit": "This record is not a controlled CouncilFlow runtime packet, native activation proof, or self-approval of acceptance.",
+    "verification_stage": "pre_correction",
+    "pending_correction": "Reviewer requested resolved Codebase Memory root_path equality with the authorized repository root; parent is assigning a narrow repair. These runs predate that repair."
+  },
+  "correction_observation": "Direct source read confirmed resolved root_path equality with the authorized repository root and rejection of broader parent-path indexes. The focused/full final reruns cover the changed static test.",
+  "static_assessment": {
+    "meaningfulness": "Nine static tests protect removal, ordering, empty-installation gating, namespace/project binding, freshness, bounded handoff/coverage, fallback, authorization/roles, and installation documentation. They check instruction contracts and source removal; no fake MCP dispatcher or memory engine is tested.",
+    "scope": "These executions establish deterministic static integration and existing validator/application regressions only. Runtime automatic graph use, freshness behavior, indexing, and native skill activation are not demonstrated by text assertions.",
+    "starter_fixture": "Intentionally incomplete demo/starter was not executed as a passing requirement; the root suite includes its static syntax/fixture check."
+  },
+  "live_mcp_integration": {
+    "status": "UNVERIFIED",
+    "basis": "Parent-observed configured codebase-memory-mcp enabled=true, no exposed native Codebase Memory tools, and MCP initialization handshake closed during resources/list and resources/templates/list. This tester did not retry or alter setup.",
+    "actual_tester_mcp_calls": []
+  },
+  "verification_limit": "This record is not a controlled CouncilFlow runtime packet, native activation proof, or self-approval of acceptance."
+}
