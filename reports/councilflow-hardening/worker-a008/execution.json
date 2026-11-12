@@ -1,0 +1,168 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "candidate_id": "CFH-CANDIDATE-A008",
+  "manifest_path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+  "manifest_sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+  "snapshot_path": "reports/councilflow-hardening/worker-a008/candidate-snapshot.zip",
+  "snapshot_sha256": "32f3861b359caf92041009829d04d46a934d9a4b3a20a664046b869bc40f1e10",
+  "archive_path": "dist/council-flow.zip",
+  "archive_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "archive_entry_count": 118,
+  "crc_valid": true,
+  "safe_paths": true,
+  "all_packaged_hashes_match_worktree": true,
+  "extracted_checks": [
+    {
+      "name": "extracted-command-1",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "dd325f578434dbc659d232e9fa4b6e31cafc11c61762ba653d1332067d70b72f",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-1.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-1.stderr.bin",
+      "summary": "OK (skipped=1)"
+    },
+    {
+      "name": "extracted-command-2",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "a837ca30b1b709f31d305fe234b874e627e9f8e3a77df6423b46a7eca6993057",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-2.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-2.stderr.bin",
+      "summary": "OK"
+    },
+    {
+      "name": "extracted-command-3",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "0ca81f6e5f7b9700678d030b3a14ec22f94b9ccf0425b773de8ad7a6fca728ce",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-3.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-3.stderr.bin",
+      "summary": "OK"
+    },
+    {
+      "name": "extracted-command-4",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "00d4df3d1c0c5e60b6ee7045a99963b6e887d5b36d7cad595da73a5a3f0e8fcf",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-4.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-4.stderr.bin",
+      "summary": "OK"
+    },
+    {
+      "name": "extracted-command-5",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "c43431f7c3f0a34a4ae752de5eb5c058a17dc340bacacae851b96c23f4bd95ec",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-5.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-5.stderr.bin",
+      "summary": "OK"
+    },
+    {
+      "name": "extracted-command-6",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "ffde34d90e3571b925d3067ac2d9858acccf8cbbdbf8d5c5efde64feb99e43a4",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-6.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-6.stderr.bin",
+      "summary": "OK"
+    },
+    {
+      "name": "extracted-command-7",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-7.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-7.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}"
+    },
+    {
+      "name": "extracted-command-8",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-a008-extract-zc0x5jwn",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-hardening/worker-a008/extracted-command-8.stdout.bin",
+      "stderr_path": "reports/councilflow-hardening/worker-a008/extracted-command-8.stderr.bin",
+      "summary": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}"
+    }
+  ],
+  "note": "Package verification evidence is outside the archive to avoid self-reference; this does not establish native activation."
+}

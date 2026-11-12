@@ -1,0 +1,75 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M047",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker_a009"
+  },
+  "in_reply_to": "CFH-M046",
+  "payload": {
+    "objective": "Create a clean A009 candidate evidence set binding the completed A008 release/package output for independent verification under unchanged P004 criteria.",
+    "scope": [
+      "reports/councilflow-hardening/worker-a009/"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Evidence-only fresh Worker A009; do not edit product source, RELEASE.md, distribution ZIP/checksum, frozen criteria, or prior reports.",
+      "Create a cumulative candidate manifest and bounded source snapshot from exact current source/archive bytes. Verify archive, CRC, safe relative paths, extracted hashes, and excluded metadata.",
+      "Create execution.json with manifest_sha256 matching exact final A009 manifest bytes and all identities/hashes consistent.",
+      "Echo the assigned A008 candidate input reference exactly in the root-valid Worker report; changed_files must be empty. Reference the A008 package verification evidence accurately, without claiming A008 chain sequence was valid.",
+      "Save accurate UTF-8 job.report.json under worker-a009 and stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M046",
+      "path": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json",
+      "sha256": "04b6228623413f1857c9925036cac923362dcf5246c6c26471414611cc17e7d8",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A008-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-hardening/worker-a008/package-verification.json",
+      "sha256": "d5af9214f9796c686465ca01bf2531dffe89e07ff52bda46122fcf7ac95bf57b",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-M041-INVALID-REWORK",
+      "path": "reports/councilflow-hardening/manager/rework-decision-a008.json",
+      "sha256": "b2be6869cdf44ef13c8278ede9d5eb7674ae14e5602aa2a4f376a222be2f6558",
+      "kind": "message"
+    }
+  ]
+}

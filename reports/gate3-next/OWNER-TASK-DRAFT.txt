@@ -1,0 +1,9 @@
+STATUS: NOT OWNER-APPROVED. This is a proposed fixture draft only. The Owner must personally review, accept, and save this exact task text before any separate Gate 3 observation. It is not the authentic Owner fixture.
+
+Designated disposable workspace root: `reports/gate3-next/disposable-workspace`. Work only in `demo/gate3-demo/app.py` and `demo/gate3-demo/test_app.py` during the separate observation.
+
+Build a small Python CSV column-sum command-line tool in the disposable demo workspace. Implement `sum_column(path, column)` and a CLI that prints the sum for numeric values in the selected column.
+
+Acceptance criteria:
+1. Given a CSV containing a numeric `amount` column with values 2 and 3, selecting `amount` prints `5` and exits successfully.
+2. A missing column or a nonnumeric value exits nonzero and reports a clear error without a traceback.

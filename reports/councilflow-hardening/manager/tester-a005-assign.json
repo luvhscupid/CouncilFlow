@@ -1,0 +1,83 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M025",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A005",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester_a005"
+  },
+  "in_reply_to": "CFH-M024",
+  "payload": {
+    "objective": "Independently verify exact A005 evidence candidate and P004 criteria with current applicable product suites.",
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh independent Tester; no source/doc/test repairs. Verify exact A005 candidate manifest, Worker report, execution record and snapshot actual hashes.",
+      "Run all six current product/contract/application suites listed in the Manager-approved oracle; preserve A004 historical restoration suite failures separately, do not include them as current candidate regression suites.",
+      "Run both operational examples root-bound, stale-digest negative, P004 sequence, exact E1-E10 text, all Full Plan checksums, snapshot safe-path/CRC/extracted-hash and exact execution manifest hash consistency.",
+      "Report symlink privilege limit, no junction/TOCTOU tests, and Gate3 live E1-E10 UNVERIFIED/NOT RUN because no authentic Owner fixture / applicable frozen experiment.",
+      "For suitable deterministic commands record executable path, args, cwd, candidate/input refs, exit and stdout SHA256 after CRLF-to-LF normalization only; select root-bound job.report validation for Reviewer exact rerun. Save raw output and truthful JSON report. Stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-WORKER-REPORT-A005",
+      "path": "reports/councilflow-hardening/worker-a005/job-report.json",
+      "sha256": "90bce839e1a11e6b20e5c7831b01fb55e1a75c3d86520f7a59b2f40f63a0d380",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-SNAPSHOT-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-snapshot.zip",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    }
+  ]
+}

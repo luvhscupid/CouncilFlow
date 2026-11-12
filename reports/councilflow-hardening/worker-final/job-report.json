@@ -1,0 +1,72 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M019",
+  "message_type": "job.report",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A004",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M018",
+  "payload": {
+    "status": "passed",
+    "summary": "Corrected the operational job.report example to reference a real synthetic fixture with its SHA-256, added root-bound success and stale-digest regression coverage, updated the bundle checksum, and built a CRC/hash-verified cumulative A004 source snapshot.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "changed_files": [
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "tests/test_contracts.py"
+    ],
+    "findings": [
+      "Root cause: job.report.json used an all-zero digest for a real source path, so root-bound artifact validation failed. The example now references the synthetic-candidate fixture whose actual SHA-256 is in the packet.",
+      "A001 source snapshot was not available as contemporaneous bytes. All seven entries in the A001 candidate manifest were verified against current bytes or retrospective reconstructions that match the recorded SHA-256 exactly; reconstructed files are labeled retrospective.",
+      "Assigned A002 candidate manifest bytes and digest were preserved exactly. This attempt changes three files from its listed input candidate (job.report.json, SHA256SUMS.txt, tests/test_contracts.py); cumulative A004 manifest records current hashes."
+    ],
+    "errors": [],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A004",
+      "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+      "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+      "kind": "candidate-manifest"
+    },
+    "input_candidate_ref": {
+      "path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+      "artifact_id": "CFH-CURRENT-BASE-A002",
+      "sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-A004-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-final/execution.json",
+      "sha256": "aad1fd45d78ded334f25d5077d688c23ada8851519698305e3f50b7af57fe463",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-A004-SOURCE-SNAPSHOT",
+      "path": "reports/councilflow-hardening/worker-final/candidate-snapshot.zip",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-A004-CANDIDATE",
+      "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+      "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+      "kind": "candidate-manifest"
+    }
+  ]
+}

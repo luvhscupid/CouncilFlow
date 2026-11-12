@@ -1,0 +1,2 @@
+{"event_type":"worker_dispatched","task_id":"T0001","attempt_id":"A0001","message_id":"M0001","simulation":true}
+{"event_type":"worker_reported","task_id":"T0001","attempt_id":"A0001","message_id":"M0002","simulation":true}

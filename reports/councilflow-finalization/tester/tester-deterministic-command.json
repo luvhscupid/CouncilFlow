@@ -1,0 +1,46 @@
+{
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "message",
+    "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+    "--root",
+    "."
+  ],
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-finalization\\tester\\extracted-candidate",
+  "candidate_ref": {
+    "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+    "path": "dist/council-flow.zip",
+    "sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482",
+    "kind": "candidate-archive"
+  },
+  "input_refs": [
+    {
+      "artifact_id": "CF-FINAL-CONTRACTS",
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "kind": "source"
+    },
+    {
+      "artifact_id": "CF-FINAL-REPORT-EXAMPLE",
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "kind": "input"
+    },
+    {
+      "artifact_id": "CF-FINAL-SYNTHETIC-CANDIDATE",
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "kind": "input"
+    }
+  ],
+  "exit_code": 0,
+  "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+  "stdout_sha256_raw": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+  "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_path": "reports/councilflow-finalization/tester/tester-deterministic-command.stdout.bin",
+  "stderr_path": "reports/councilflow-finalization/tester/tester-deterministic-command.stderr.bin",
+  "raw_stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+  "raw_stderr": "",
+  "note": "Tester-declared deterministic execution for a fresh Reviewer to rerun under these exact conditions; this record is not a Reviewer execution."
+}

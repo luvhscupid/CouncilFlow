@@ -1,0 +1,14 @@
+test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok
+test_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok
+test_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok
+test_first_encounter_binds_observed_namespace_and_exact_project (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project) ... ok
+test_fresh_agents_receive_bounded_context_and_coverage_gaps (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_fresh_agents_receive_bounded_context_and_coverage_gaps) ... ok
+test_graph_capability_preserves_roles_verification_and_authority (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_graph_capability_preserves_roles_verification_and_authority) ... ok
+test_installation_includes_reference_without_manual_initialization (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization) ... ok
+test_missing_or_unreachable_mcp_continues_direct_inspection (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection) ... ok
+test_retired_standalone_paths_are_absent (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_retired_standalone_paths_are_absent) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.003s
+
+OK

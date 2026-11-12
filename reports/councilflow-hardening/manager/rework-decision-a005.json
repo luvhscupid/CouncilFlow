@@ -1,0 +1,61 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M022",
+  "message_type": "task.decision",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A004",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "CFH-M021",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "disposition": "rework",
+    "reason": "Tester found a conflicting top-level manifest digest in A004 execution evidence. Preserve A004 records and perform a fresh evidence-only attempt with a new consistent manifest, execution record, and report; do not change frozen criteria.",
+    "failed_acceptance_ids": [
+      "HF-04"
+    ],
+    "report_ids": [
+      "CFH-M019",
+      "CFH-M021"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A004",
+      "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+      "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-A004-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-final/execution.json",
+      "sha256": "aad1fd45d78ded334f25d5077d688c23ada8851519698305e3f50b7af57fe463",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-REPORT-A004",
+      "path": "reports/councilflow-hardening/tester-verifier/job-report.json",
+      "sha256": "ccc6930f7b912c2d1e7db3715a18c77d8493ea6dd9629cce8d7a9f4fffc039c9",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    }
+  ]
+}

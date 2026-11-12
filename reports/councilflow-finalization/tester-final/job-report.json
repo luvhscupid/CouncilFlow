@@ -1,0 +1,206 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CF-M014",
+  "message_type": "job.report",
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "attempt_id": "CF-A013",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CF-M013",
+  "payload": {
+    "status": "passed",
+    "summary": "The exact final archive (SHA-256 903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f) passed all six suites on source and a fresh extraction (126 tests per root; one Windows symlink privilege skip each). Both root-bound examples, stale-hash rejection, 20 Full Plan checksums, protected-source equality to HEAD, E1-E10 text fidelity and package integrity passed. Current Gate 3 draft hash 229b6d26ca0e9e5f5e7d7b5a46a9bb0e304b904991c45bbd9abba86304fd3b72 has exactly two criteria, remains NOT OWNER-APPROVED, and resolves to the prepared demo workspace and files. Gate 3 remains unexecuted; all E1-E10 statuses are BLOCKED or UNVERIFIED.",
+    "acceptance_ids": [
+      "P3-A",
+      "P3-B",
+      "P4-A",
+      "P4-C",
+      "P4-D",
+      "P4-E"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+      "kind": "candidate-archive"
+    },
+    "oracle_ref": {
+      "artifact_id": "CF-FINAL-ORACLE-001",
+      "path": "reports/councilflow-finalization/manager/tester-oracle.json",
+      "sha256": "873f7428bb7798a7c7530b4fa18d8d5bb676f76fdfdfe552b0bc81f33b8287db",
+      "kind": "verification-strategy"
+    },
+    "findings": [
+      "The six suites executed on source and fresh extraction: tests 84 (83 passed, 1 skip), demo/receipt 12, demo/csv-summary 15, demo/structured-flow 4, reports/demo/verification 5, reports/csv-summary/verification 6. Each root totals 126 tests with 125 pass and 1 skip; all 12 command exits were 0. The skipped symlink creation reports WinError 1314.",
+      "Both advertised Full Plan JSON examples passed --root validation on source and extraction. The isolated real-fixture digest-tamper control exited nonzero with the expected artifact_hash rejection. All 20 Full Plan checksums pass in both roots; Charter, frozen Gate 3 and C3 bytes equal HEAD. E1-E10 text comparison is exact, using C3 for E4 only.",
+      "The final ZIP has 115 unique safe entries, CRC PASS, sibling SHA-256 match, required and forbidden entry checks pass, source-byte mapping matches, and its clean extraction completed. The package scan found no retired-alias path or content matches; generated report/workspace paths are excluded.",
+      "The current unapproved draft hash matches the Manager-specified hash, has exactly two numbered criteria, and points to the actual existing reports/gate3-next/disposable-workspace/demo/gate3-demo/app.py, test_app.py and README. This verifies preparation only.",
+      "Gate 3 was not run. The preparation checklist retains only BLOCKED/UNVERIFIED E1-E10 statuses and the BLOCKED_WITH_EXACT_PREREQUISITES readiness label; neither is a Gate 3 result."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "P3-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-EXECUTION",
+          "path": "reports/councilflow-finalization/tester-final/execution.json",
+          "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P3-B",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-EXECUTION",
+          "path": "reports/councilflow-finalization/tester-final/execution.json",
+          "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P4-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-DRAFT-WORKSPACE",
+          "path": "reports/councilflow-finalization/tester-final/draft-workspace-check.json",
+          "sha256": "d1bcc90795ba5a5bd0c6c11067f5ec3242a35a1c8e7a0a5f3c9833528ecb9d89",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P4-C",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-DRAFT-WORKSPACE",
+          "path": "reports/councilflow-finalization/tester-final/draft-workspace-check.json",
+          "sha256": "d1bcc90795ba5a5bd0c6c11067f5ec3242a35a1c8e7a0a5f3c9833528ecb9d89",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P4-D",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-CRITERIA-FIDELITY",
+          "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+          "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P4-E",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-DRAFT-WORKSPACE",
+          "path": "reports/councilflow-finalization/tester-final/draft-workspace-check.json",
+          "sha256": "d1bcc90795ba5a5bd0c6c11067f5ec3242a35a1c8e7a0a5f3c9833528ecb9d89",
+          "kind": "verification-record"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "T-A013-CMD-001",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-finalization\\tester-final\\extracted-candidate",
+        "candidate_ref": {
+          "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+          "path": "dist/council-flow.zip",
+          "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+          "kind": "candidate-archive"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "CF-FINAL-CONTRACTS",
+            "path": ".agents/skills/council-flow/scripts/contracts.py",
+            "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-REPORT-EXAMPLE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+            "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+            "kind": "input"
+          },
+          {
+            "artifact_id": "CF-FINAL-SYNTHETIC-CANDIDATE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+            "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+            "kind": "input"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "acceptance_id": "P3-B",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-DETERMINISTIC-EXECUTION",
+          "path": "reports/councilflow-finalization/tester-final/tester-deterministic-command.stdout.bin",
+          "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+          "kind": "execution-output"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CF-A013-EXECUTION",
+      "path": "reports/councilflow-finalization/tester-final/execution.json",
+      "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-A013-DRAFT-WORKSPACE",
+      "path": "reports/councilflow-finalization/tester-final/draft-workspace-check.json",
+      "sha256": "d1bcc90795ba5a5bd0c6c11067f5ec3242a35a1c8e7a0a5f3c9833528ecb9d89",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-A013-ARCHIVE-INTEGRITY",
+      "path": "reports/councilflow-finalization/tester-final/supplemental-integrity.json",
+      "sha256": "c01ec68477e2144821ae7d0046a09dd45338a18f863c47915323d87f9f067f31",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-A013-CRITERIA-FIDELITY",
+      "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+      "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-A013-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-A013-DETERMINISTIC-COMMAND",
+      "path": "reports/councilflow-finalization/tester-final/tester-deterministic-command.json",
+      "sha256": "dbffb14946697b4ce8ab1608d9be87ac44e742816e577059ac5d700777d22d1b",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-A013-DETERMINISTIC-EXECUTION",
+      "path": "reports/councilflow-finalization/tester-final/tester-deterministic-command.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    }
+  ]
+}

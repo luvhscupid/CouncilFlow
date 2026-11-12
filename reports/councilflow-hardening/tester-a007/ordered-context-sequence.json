@@ -1,0 +1,24 @@
+{
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "sequence",
+    "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+    "reports/councilflow-hardening/manager/worker-a007-assign.json",
+    "reports/councilflow-hardening/worker-a007/job-report.json",
+    "reports/councilflow-hardening/manager/tester-a007-assign.json",
+    "reports/councilflow-hardening/tester-a007/job-report.json",
+    "--root",
+    ".",
+    "--bindings",
+    "reports/councilflow-hardening/tester-a007/bindings.json"
+  ],
+  "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_sha256_crlf_to_lf_only": "76d1e6f19233120d2de855186cfb6bbe6011610e5e286e996eeafd565b6013c0",
+  "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_path": "reports/councilflow-hardening/tester-a007/ordered-context-sequence.stdout.bin",
+  "stderr_path": "reports/councilflow-hardening/tester-a007/ordered-context-sequence.stderr.bin",
+  "stdout_raw": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 5, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+  "stderr_raw": ""
+}

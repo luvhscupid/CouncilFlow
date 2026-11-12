@@ -1,0 +1,412 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CF-M010",
+  "message_type": "job.report",
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "attempt_id": "CF-A004",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/tester"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CF-M009",
+  "payload": {
+    "status": "in_progress",
+    "summary": "Independent verification passed all six current suites on both the source checkout and a fresh extraction (126 tests per run; one privilege-dependent skip each). Archive integrity, examples, stale-hash rejection, checksums, protected sources, E1-E10 text fidelity and the focused top-level evidence-reference regression passed. Reviewer/Planner final checks and durable handoff remain pending; dynamic unavailable-MCP/stale-index behavior and native TOML loading were not observed.",
+    "acceptance_ids": [
+      "P0-A",
+      "P0-B",
+      "P1-A",
+      "P1-B",
+      "P1-C",
+      "P2-A",
+      "P2-B",
+      "P2-C",
+      "P2-D",
+      "P2-E",
+      "P3-A",
+      "P3-B",
+      "P3-C",
+      "P3-D",
+      "P3-E",
+      "P4-A",
+      "P4-B",
+      "P4-C",
+      "P4-D",
+      "P4-E",
+      "P5-A",
+      "P5-B",
+      "P5-C"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482",
+      "kind": "candidate-archive"
+    },
+    "oracle_ref": {
+      "artifact_id": "CF-FINAL-ORACLE-001",
+      "path": "reports/councilflow-finalization/manager/tester-oracle.json",
+      "sha256": "501ea164edd682784f0ccb3e9f66fae552d38302eafc24a59c90fa9478a9fd38",
+      "kind": "verification-strategy"
+    },
+    "findings": [
+      "Six suites passed in source and extracted package: 126 tests per root, 125 pass and 1 skip per root; the skipped symlink test was blocked by Windows WinError 1314.",
+      "The focused Tester/Reviewer top-level evidence-reference regression passed 1/1; existing sender-binding, Path.resolve and E8 mismatch/forged-reference controls passed within the full suite.",
+      "The installable archive has 118 entries, matching SHA-256, safe unique paths, valid CRC and byte-identical source mapping; both root-bound examples and stale-hash rejection behaved as expected.",
+      "The independent active/package scan found zero alias or retired-entry matches. The preserved input source ZIP contains 15 text-matching historical/supporting entries; these are not included in the installable archive.",
+      "P2-E remains unverified dynamically: MCP stale/unavailable fallback behavior was not exercised by this Tester. This does not establish OS isolation, junction safety or TOCTOU safety.",
+      "P3-D, P3-E, P5-A and P5-B remain unverified pending fresh Reviewer/Planner evidence and final handoff/checkpoint. P4-B remains unverified for Gate 3 host telemetry. The checklist records the exact blocked readiness verdict; Gate 3 was not executed."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "P0-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-FINAL-INITIAL-MANIFEST",
+          "path": "reports/councilflow-finalization/initial-manifest.json",
+          "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+          "kind": "manifest"
+        }
+      },
+      {
+        "name": "P0-B",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-EXECUTION-001",
+          "path": "reports/councilflow-finalization/tester/execution.json",
+          "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P1-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-RETIREMENT-SCAN-001",
+          "path": "reports/councilflow-finalization/tester/independent-retirement-scan.json",
+          "sha256": "af4d026e45439460eae02b6447b5d75500847cbffbb01e438c62bbeccfb7bc03",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P1-B",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-CODEBASE-MEMORY-POLICY",
+          "path": ".agents/skills/council-flow/references/codebase-memory.md",
+          "sha256": "866bcd43c63fcaa50415ee81f00b775c6f7988f3210886c7e9114a6cc1872a2c",
+          "kind": "policy"
+        }
+      },
+      {
+        "name": "P1-C",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-RETIREMENT-SCAN-001",
+          "path": "reports/councilflow-finalization/tester/independent-retirement-scan.json",
+          "sha256": "af4d026e45439460eae02b6447b5d75500847cbffbb01e438c62bbeccfb7bc03",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P2-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-CRITERIA-FIDELITY",
+          "path": "reports/councilflow-finalization/tester/criteria-fidelity.json",
+          "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P2-B",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-EXECUTION-001",
+          "path": "reports/councilflow-finalization/tester/execution.json",
+          "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P2-C",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-TOP-LEVEL-REFS-001",
+          "path": "reports/councilflow-finalization/tester/top-level-evidence-regression.json",
+          "sha256": "af7d8301358e80c5fcc49671787667fe13abacbfabbeb6cf1eeb494a7429f56e",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P2-D",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-FINAL-INITIAL-MANIFEST",
+          "path": "reports/councilflow-finalization/initial-manifest.json",
+          "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+          "kind": "manifest"
+        }
+      },
+      {
+        "name": "P3-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-EXECUTION-001",
+          "path": "reports/councilflow-finalization/tester/execution.json",
+          "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P3-B",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-EXECUTION-001",
+          "path": "reports/councilflow-finalization/tester/execution.json",
+          "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P3-C",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-FINAL-PACKAGE-VERIFICATION",
+          "path": "reports/councilflow-finalization/worker/package-verification.json",
+          "sha256": "d90961d09a4a8907dfec92ec19149115d99dc8af50198de4cf860d65d8a5e189",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "P2-E",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "CF-CODEBASE-MEMORY-POLICY",
+          "path": ".agents/skills/council-flow/references/codebase-memory.md",
+          "sha256": "866bcd43c63fcaa50415ee81f00b775c6f7988f3210886c7e9114a6cc1872a2c",
+          "kind": "policy"
+        }
+      },
+      {
+        "name": "P3-D",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-EXECUTION-001",
+          "path": "reports/councilflow-finalization/tester/execution.json",
+          "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P3-E",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "CF-FINAL-INITIAL-MANIFEST",
+          "path": "reports/councilflow-finalization/initial-manifest.json",
+          "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+          "kind": "manifest"
+        }
+      },
+      {
+        "name": "P4-A",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+          "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+          "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+          "kind": "preparation-record"
+        }
+      },
+      {
+        "name": "P4-B",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+          "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+          "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+          "kind": "preparation-record"
+        }
+      },
+      {
+        "name": "P4-C",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-OWNER-TASK-DRAFT",
+          "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+          "sha256": "4dd146bdea498a3d31d085b18135b6121b1e19ee114657715524faa5ec69506e",
+          "kind": "unapproved-draft"
+        }
+      },
+      {
+        "name": "P4-D",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+          "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+          "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+          "kind": "preparation-record"
+        }
+      },
+      {
+        "name": "P4-E",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+          "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+          "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+          "kind": "preparation-record"
+        }
+      },
+      {
+        "name": "P5-A",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+          "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+          "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+          "kind": "preparation-record"
+        }
+      },
+      {
+        "name": "P5-B",
+        "status": "unverified",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-EXECUTION-001",
+          "path": "reports/councilflow-finalization/tester/execution.json",
+          "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P5-C",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+          "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+          "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+          "kind": "preparation-record"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-finalization\\tester\\extracted-candidate",
+        "candidate_ref": {
+          "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+          "path": "dist/council-flow.zip",
+          "sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482",
+          "kind": "candidate-archive"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "CF-FINAL-CONTRACTS",
+            "path": ".agents/skills/council-flow/scripts/contracts.py",
+            "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-REPORT-EXAMPLE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+            "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+            "kind": "input"
+          },
+          {
+            "artifact_id": "CF-FINAL-SYNTHETIC-CANDIDATE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+            "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+            "kind": "input"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "acceptance_id": "P3-B",
+        "evidence_ref": {
+          "artifact_id": "CF-TESTER-DETERMINISTIC-001",
+          "path": "reports/councilflow-finalization/tester/tester-deterministic-command.json",
+          "sha256": "46aaa48d40995d08201cf846bad5c1d7fb7f00cf368e3b18aaf7eb49f5581bf2",
+          "kind": "execution-record"
+        },
+        "command_id": "T-CMD-001"
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CF-TESTER-EXECUTION-001",
+      "path": "reports/councilflow-finalization/tester/execution.json",
+      "sha256": "025390ec580ec099fcca90a9eb0c9cc111110fe908e7ce172e028ecb4ef6fe48",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-TESTER-RETIREMENT-SCAN-001",
+      "path": "reports/councilflow-finalization/tester/independent-retirement-scan.json",
+      "sha256": "af4d026e45439460eae02b6447b5d75500847cbffbb01e438c62bbeccfb7bc03",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-TESTER-TOP-LEVEL-REFS-001",
+      "path": "reports/councilflow-finalization/tester/top-level-evidence-regression.json",
+      "sha256": "af7d8301358e80c5fcc49671787667fe13abacbfabbeb6cf1eeb494a7429f56e",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-TESTER-DETERMINISTIC-001",
+      "path": "reports/councilflow-finalization/tester/tester-deterministic-command.json",
+      "sha256": "46aaa48d40995d08201cf846bad5c1d7fb7f00cf368e3b18aaf7eb49f5581bf2",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "sha256": "d90961d09a4a8907dfec92ec19149115d99dc8af50198de4cf860d65d8a5e189",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-INITIAL-MANIFEST",
+      "path": "reports/councilflow-finalization/initial-manifest.json",
+      "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+      "kind": "manifest"
+    },
+    {
+      "artifact_id": "CF-CODEBASE-MEMORY-POLICY",
+      "path": ".agents/skills/council-flow/references/codebase-memory.md",
+      "sha256": "866bcd43c63fcaa50415ee81f00b775c6f7988f3210886c7e9114a6cc1872a2c",
+      "kind": "policy"
+    },
+    {
+      "artifact_id": "CF-CRITERIA-FIDELITY",
+      "path": "reports/councilflow-finalization/tester/criteria-fidelity.json",
+      "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-GATE3-PREPARATION-CHECKLIST",
+      "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+      "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+      "kind": "preparation-record"
+    },
+    {
+      "artifact_id": "CF-GATE3-OWNER-TASK-DRAFT",
+      "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+      "sha256": "4dd146bdea498a3d31d085b18135b6121b1e19ee114657715524faa5ec69506e",
+      "kind": "unapproved-draft"
+    }
+  ]
+}

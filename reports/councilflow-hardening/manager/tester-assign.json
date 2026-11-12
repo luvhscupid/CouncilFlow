@@ -1,0 +1,56 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M004",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/tester",
+    "role": "tester"
+  },
+  "in_reply_to": "CFH-M001",
+  "payload": {
+    "instructions": [
+      "Read the exact candidate manifest and the original plan/Owner criteria. Do not edit product or tests.",
+      "Independently run python -m unittest discover -s tests -v and record exact executable path, arguments, cwd, candidate/input hashes, exit code, raw stdout/stderr artifacts, and SHA-256 of stdout after CRLF-to-LF replacement only.",
+      "Run each corrected JSON example through the installed validator with --root . and record exact output/exit. Verify all Full Plan SHA256SUMS entries.",
+      "Inspect symlink traversal behavior from the regression and separately state that Windows junction and TOCTOU behavior are not proven by that test. Do not claim OS containment.",
+      "Save a valid UTF-8 JSON job.report and evidence under reports/councilflow-hardening/tester/. Stop after report validation."
+    ],
+    "scope": [
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "tests/test_contracts.py"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "oracle_ref": {
+      "sha256": "19eb11cd0e499395f7729aaeb10a251075079311e47d84a828e76aefcd16336e",
+      "artifact_id": "CFH-ORACLE-001",
+      "kind": "verification-strategy",
+      "path": "reports/councilflow-hardening/manager/oracle.json"
+    },
+    "objective": "Independently verify the exact Worker candidate and assigned acceptance criteria.",
+    "candidate_ref": {
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "artifact_id": "CFH-CANDIDATE-A001",
+      "kind": "candidate-manifest",
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json"
+    }
+  },
+  "evidence_refs": []
+}

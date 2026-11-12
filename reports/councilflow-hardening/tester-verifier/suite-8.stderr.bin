@@ -1,0 +1,44 @@
+test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria) ... ERROR
+test_actual_diagnostic_export_and_reference_sensitivity (test_final_independent_contracts.FinalIndependentChecks.test_actual_diagnostic_export_and_reference_sensitivity) ... ok
+test_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations) ... ERROR
+test_every_recognized_changed_files_field_has_correct_type (test_final_independent_contracts.FinalIndependentChecks.test_every_recognized_changed_files_field_has_correct_type) ... ok
+test_passed_final_map_requires_explicit_per_criterion_evidence (test_final_independent_contracts.FinalIndependentChecks.test_passed_final_map_requires_explicit_per_criterion_evidence) ... ok
+test_referenced_plan_context_has_typed_identity_and_acceptance (test_final_independent_contracts.FinalIndependentChecks.test_referenced_plan_context_has_typed_identity_and_acceptance) ... ok
+test_repaired_message_identity_and_falsey_context_types (test_final_independent_contracts.FinalIndependentChecks.test_repaired_message_identity_and_falsey_context_types) ... ok
+
+======================================================================
+ERROR: test_accept_decision_cannot_declare_current_failed_criteria (test_final_independent_contracts.FinalIndependentChecks.test_accept_decision_cannot_declare_current_failed_criteria)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Saint\PROJECTS\CouncilFlow-main\reports\restoration\verification\final\test_final_independent_contracts.py", line 86, in test_accept_decision_cannot_declare_current_failed_criteria
+    c.validate_sequence(synthetic_positive())
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 467, in validate_sequence
+    validate_message(m, root=root)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 218, in validate_message
+    _object(message, FIELDS)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 106, in _object
+    fail("unknown_field", field, ",".join(sorted(set(value) - set(required) - set(optional))))
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 42, in fail
+    raise ContractError(code, field, detail)
+contracts.ContractError: unknown_field at $: created_at
+
+======================================================================
+ERROR: test_actual_round_and_causal_candidate_authority_acceptance_mutations (test_final_independent_contracts.FinalIndependentChecks.test_actual_round_and_causal_candidate_authority_acceptance_mutations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Saint\PROJECTS\CouncilFlow-main\reports\restoration\verification\final\test_final_independent_contracts.py", line 36, in test_actual_round_and_causal_candidate_authority_acceptance_mutations
+    c.validate_sequence(messages, root=ROOT, expected_senders=bindings)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 467, in validate_sequence
+    validate_message(m, root=root)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 218, in validate_message
+    _object(message, FIELDS)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 106, in _object
+    fail("unknown_field", field, ",".join(sorted(set(value) - set(required) - set(optional))))
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 42, in fail
+    raise ContractError(code, field, detail)
+contracts.ContractError: unknown_field at $: created_at
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.061s
+
+FAILED (errors=2)

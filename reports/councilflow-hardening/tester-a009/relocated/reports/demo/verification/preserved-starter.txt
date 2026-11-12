@@ -1,0 +1,15 @@
+test_multiple_product_quantities (test_receipt_calculator.StarterReceiptTests.test_multiple_product_quantities) ... FAIL
+test_single_unit_format (test_receipt_calculator.StarterReceiptTests.test_single_unit_format) ... ok
+
+======================================================================
+FAIL: test_multiple_product_quantities (test_receipt_calculator.StarterReceiptTests.test_multiple_product_quantities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CouncilFlow/demo/starter/test_receipt_calculator.py", line 17, in test_multiple_product_quantities
+    self.assertEqual(grand_total(entries), Decimal("103000"))
+AssertionError: Decimal('73000') != Decimal('103000')
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (failures=1)

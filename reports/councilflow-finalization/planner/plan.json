@@ -1,0 +1,49 @@
+{
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "source": "Owner mission supplied in this Codex conversation on 2026-11-12",
+  "objective": "Consolidate the latest post-hardening CouncilFlow source in the canonical checkout, remove retired standalone recall capability from active/installable surfaces, verify bounded engineering and release criteria, prepare Gate 3 without executing it, and leave an evidence-backed Sol handoff.",
+  "acceptance": [
+    {"id":"P0-A","criterion":"Use E:\\Saint\\PROJECTS\\CouncilFlow-main only after verifying canonical root, HEAD, local changes, external ZIP identity and byte-level correspondence; preserve all preexisting user work."},
+    {"id":"P0-B","criterion":"Do not overwrite protected governance or sealed historical evidence, and do not change frozen acceptance criteria."},
+    {"id":"P1-A","criterion":"No standalone retired recall files, imports, commands, agents, skills, dependencies, or active architecture remain; do not restore or recreate them."},
+    {"id":"P1-B","criterion":"Keep Codebase Memory MCP integrated in the single council-flow skill, bound to the exact root and used only for navigation/context, never verification."},
+    {"id":"P1-C","criterion":"Run comprehensive hidden-path, content, Git, and package scans; save exact residual history/negative-test exceptions and hashes in an isolated audit."},
+    {"id":"P2-A","criterion":"Review current hardening against frozen Owner Charter, Gate 3 v0.2, approved C3 E4 erratum, current protocol and reported fixes; preserve normative criteria byte-for-byte."},
+    {"id":"P2-B","criterion":"Check multiline criterion fidelity/control rejection, root-bound operational examples and real synthetic hashes, tamper/unknown-field rejection, artifact chains and sender bindings."},
+    {"id":"P2-C","criterion":"Check Worker/Tester/Reviewer evidence linkage, top-level evidence references, mismatch/forged-reference negative controls, Windows link limitations and honest OS-boundary claims."},
+    {"id":"P2-D","criterion":"Keep failed historical A004/A005/A006/A008 evidence intact; do not relabel failed attempts or rebuild their chains."},
+    {"id":"P2-E","criterion":"Confirm exact-root Codebase Memory identity, freshness and navigation-only policy; exercise fallback only safely or state UNVERIFIED."},
+    {"id":"P3-A","criterion":"Independently run the six current suites: tests; demo/receipt; demo/csv-summary; demo/structured-flow; reports/demo/verification; reports/csv-summary/verification. Record exact commands, exits, counts and skips."},
+    {"id":"P3-B","criterion":"Validate advertised examples with --root, stale-hash rejection, Full Plan checksum entries and protected Owner Charter/Gate 3/C3 hashes."},
+    {"id":"P3-C","criterion":"Rebuild only from an explicit allowlist; verify SHA-256, CRC, safe paths, required/forbidden entries and byte mapping; extract cleanly and run relevant checks."},
+    {"id":"P3-D","criterion":"Obtain independent Tester evidence, a fresh Reviewer comparison and deterministic rerun, and the original Planner's final check. Preserve any persistent blocker as PARTIAL."},
+    {"id":"P3-E","criterion":"Create a safe local checkpoint only after reviewing which edits are preexisting; never push, merge, rewrite history, reset, or clean."},
+    {"id":"P4-A","criterion":"Do not execute or impersonate frozen Gate 3. E1-E10 remain NOT EXECUTED for this mission."},
+    {"id":"P4-B","criterion":"Check actual host exposure for skill invocation, separate agents, loaded TOML identity, Tester/Reviewer execution, local version and permissions; inaccessible telemetry is unverified."},
+    {"id":"P4-C","criterion":"Prepare a separate disposable demo workspace, exactly 2-3 proposed Owner criteria, an explicitly unapproved task draft, and a one-instruction new-session template."},
+    {"id":"P4-D","criterion":"Prepare a frozen-definition E1-E10 checklist with allowed statuses and primary non-pass classes, E3/E7/E8/E10 rules, and no fabricated observations."},
+    {"id":"P4-E","criterion":"Use READY_FOR_OWNER_GATE3_INVOCATION only if genuine prerequisites are verified; otherwise BLOCKED_WITH_EXACT_PREREQUISITES. This label is not a Gate 3 result."},
+    {"id":"P5-A","criterion":"Write a self-contained reports/sol-handoff/README.md with exact root, baseline/final Git state, ZIP identity, changes, scan/hash exceptions, suite and package evidence, security/MCP/native limits and Gate 3 next step."},
+    {"id":"P5-B","criterion":"Prioritize remaining defects with impact and minimal next authorized action; explain any PARTIAL outcome and whether remote push/merge occurred."},
+    {"id":"P5-C","criterion":"Never claim COUNCILFLOW_FULLY_VERIFIED unless the separate authentic Gate 3 experiment passes its governing criteria."}
+  ],
+  "scope": [
+    "Repository root E:\\Saint\\PROJECTS\\CouncilFlow-main and its existing authorized reports/distribution paths only.",
+    "Read-only source provenance, source and package audits, required in-scope documentation/evidence updates, and local package/checkpoint work.",
+    "Do not modify global Codex settings, credentials, permissions, ACL/UAC, unrelated repositories, frozen specifications, or external state.",
+    "Gate 3 preparation only; no frozen experiment execution."
+  ],
+  "verification_strategy": [
+    "Independent six-suite execution on exact candidate and extracted allowlisted package.",
+    "Root-bound example and stale-digest checks; Full Plan SHA256SUMS; protected governance hashes.",
+    "Archive path/CRC/entry/hash checks and exact deterministic Reviewer rerun with CRLF-to-LF-only stdout normalization.",
+    "Static and behavioral scan of current active/package surfaces with historical exceptions reported separately."
+  ],
+  "protected_sources": [
+    "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+    "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md"
+  ]
+}

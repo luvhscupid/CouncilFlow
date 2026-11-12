@@ -1,0 +1,66 @@
+{
+  "CFH-M016": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "CFH-M018": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "CFH-M019": {
+    "role": "worker",
+    "instance_id": "/root/worker_final"
+  },
+  "CFH-M020": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "CFH-M021": {
+    "role": "tester",
+    "instance_id": "/root/tester_verifier"
+  },
+  "CFH-M022": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M023": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M024": {
+    "role": "worker",
+    "instance_id": "/root/worker_a005"
+  },
+  "CFH-M025": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M026": {
+    "role": "tester",
+    "instance_id": "/root/tester_a005"
+  },
+  "CFH-M027": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M028": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer_a005"
+  },
+  "CFH-M029": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M030": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M031": {
+    "role": "worker",
+    "instance_id": "/root/worker_a006"
+  },
+  "CFH-M032": {
+    "role": "manager",
+    "instance_id": "/root"
+  }
+}

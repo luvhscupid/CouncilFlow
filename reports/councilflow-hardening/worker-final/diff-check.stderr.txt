@@ -1,0 +1,6 @@
+warning: in the working copy of '.agents/skills/council-flow/references/communication.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.agents/skills/council-flow/scripts/contracts.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/CouncilFlow-Full-Plan/examples/job.assign.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/test_contracts.py', LF will be replaced by CRLF the next time Git touches it

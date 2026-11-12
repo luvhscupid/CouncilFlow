@@ -1,0 +1,38 @@
+{
+  "candidate_id": "CFH-CANDIDATE-A001",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "baseline_commit": "2d695a22a1bb596a527b0d118edc073d6d25553f",
+  "files": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "sha256": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "sha256": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "a6776471d5010b15a88f86b9b2e96a635b2c718b2ef731b32d4e92c1f97fc333"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "CFH-M046": {
+    "role": "planner",
+    "instance_id": "/root/planner_a009"
+  },
+  "CFH-M047": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M048": {
+    "role": "worker",
+    "instance_id": "/root/worker_a009"
+  },
+  "CFH-M049": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M050": {
+    "role": "tester",
+    "instance_id": "/root/tester_a009"
+  },
+  "CFH-M051": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M052": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer_a009"
+  },
+  "CFH-M054": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M055": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  }
+}

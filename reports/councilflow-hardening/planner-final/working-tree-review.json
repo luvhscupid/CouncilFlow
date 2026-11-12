@@ -1,0 +1,60 @@
+{
+  "observation": "Planner final worktree review",
+  "repository_root": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "commands": {
+    "head": {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "2d695a22a1bb596a527b0d118edc073d6d25553f\n",
+      "stderr": ""
+    },
+    "branch": {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    "status": {
+      "argv": [
+        "git",
+        "status",
+        "--short",
+        "--branch"
+      ],
+      "exit_code": 0,
+      "stdout": "## main...origin/main\n M .agents/skills/council-flow/references/communication.md\n M .agents/skills/council-flow/scripts/contracts.py\n M RELEASE.md\n M docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md\n M docs/CouncilFlow-Full-Plan/SHA256SUMS.txt\n M docs/CouncilFlow-Full-Plan/examples/job.assign.json\n M docs/CouncilFlow-Full-Plan/examples/job.report.json\n M docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md\n M tests/test_contracts.py\n?? dist/\n?? docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt\n?? reports/councilflow-hardening/\n",
+      "stderr": ""
+    },
+    "diff_names": {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "2d695a22a1bb596a527b0d118edc073d6d25553f"
+      ],
+      "exit_code": 0,
+      "stdout": ".agents/skills/council-flow/references/communication.md\n.agents/skills/council-flow/scripts/contracts.py\nRELEASE.md\ndocs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md\ndocs/CouncilFlow-Full-Plan/SHA256SUMS.txt\ndocs/CouncilFlow-Full-Plan/examples/job.assign.json\ndocs/CouncilFlow-Full-Plan/examples/job.report.json\ndocs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md\ntests/test_contracts.py\n",
+      "stderr": "warning: in the working copy of '.agents/skills/council-flow/references/communication.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/skills/council-flow/scripts/contracts.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'RELEASE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/CouncilFlow-Full-Plan/examples/job.assign.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_contracts.py', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    "diff_stat": {
+      "argv": [
+        "git",
+        "diff",
+        "--stat",
+        "2d695a22a1bb596a527b0d118edc073d6d25553f"
+      ],
+      "exit_code": 0,
+      "stdout": " .../council-flow/references/communication.md       |  7 +++\n .agents/skills/council-flow/scripts/contracts.py   | 14 +++++-\n RELEASE.md                                         | 37 +++++++++++++--\n .../02-PROTOCOL-AND-POLICY.md                      |  3 +-\n docs/CouncilFlow-Full-Plan/SHA256SUMS.txt          |  9 ++--\n .../CouncilFlow-Full-Plan/examples/job.assign.json |  4 +-\n .../CouncilFlow-Full-Plan/examples/job.report.json | 24 ++++++----\n .../prompts/ONE-SHOT-CODEX-CLOUD.md                |  4 +-\n tests/test_contracts.py                            | 54 ++++++++++++++++++++++\n 9 files changed, 134 insertions(+), 22 deletions(-)\n",
+      "stderr": "warning: in the working copy of '.agents/skills/council-flow/references/communication.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '.agents/skills/council-flow/scripts/contracts.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'RELEASE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/CouncilFlow-Full-Plan/examples/job.assign.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/test_contracts.py', LF will be replaced by CRLF the next time Git touches it\n"
+    }
+  },
+  "interpretation": "Tracked edits are confined to the CouncilFlow contract helper/tests, protocol examples/docs, release guide, and Full Plan checksum; untracked reports and dist are mission evidence/package outputs. Diff was visually read; no external push or merge observed. This record does not assert OS containment or live Gate3 behavior."
+}

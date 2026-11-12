@@ -1,0 +1,53 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M005",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/tester_plan",
+    "role": "tester"
+  },
+  "in_reply_to": "CFH-M001",
+  "payload": {
+    "objective": "Independently verify exact frozen plan sequence validation on the first Worker candidate and execute the regression suite.",
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      "reports/councilflow-hardening/planner/plan.json",
+      "reports/councilflow-hardening/planner/plan-publish.json",
+      "reports/councilflow-hardening/manager/worker-assign.json",
+      "reports/councilflow-hardening/worker/job-report.json"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04"
+    ],
+    "candidate_ref": {
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "artifact_id": "CFH-CANDIDATE-A001",
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "path": "reports/councilflow-hardening/manager/oracle-plan-sequence.json",
+      "artifact_id": "CFH-ORACLE-PLAN-SEQ",
+      "sha256": "f70064ed8517331d8a8f36f8e1beb0c9713bfabe056761644774b7b0ea23dad8",
+      "kind": "verification-strategy"
+    },
+    "instructions": [
+      "Do not modify code, criteria, docs or reports except your assigned evidence/report path.",
+      "Independently run the exact plan-packet sequence command in the oracle against current files; preserve raw stdout/stderr and exit code. The plan contains multiline E1-E10 text that must remain unchanged.",
+      "Run python -m unittest discover -s tests -v against this candidate and record exact executable path, arguments, cwd, candidate and inputs, raw outputs, stdout CRLF-to-LF SHA-256 and exit.",
+      "Report failed result if plan sequence rejects an original multiline criterion. Do not treat the Worker suite alone as proof of complete acceptance. Save a valid JSON job.report and evidence under reports/councilflow-hardening/tester-plan/. Stop after report validation."
+    ]
+  },
+  "evidence_refs": []
+}

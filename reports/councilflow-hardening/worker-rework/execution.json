@@ -1,0 +1,75 @@
+{
+  "python": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "commands": [
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "sequence",
+        "reports/councilflow-hardening/planner/plan-publish.json",
+        "reports/councilflow-hardening/manager/worker-assign.json",
+        "reports/councilflow-hardening/worker/job-report.json",
+        "--root",
+        "."
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/worker-rework/command-1.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/worker-rework/command-1.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "b0fa398db2a5929f9124bcec550b2b2d9a5e02467c017bd045ea38ef40544375",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_preview": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 3, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_preview": ""
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_contracts.py",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/worker-rework/command-2.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/worker-rework/command-2.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c3bca3e829718acd169b42f79a3997d9e09c6c5d9fffd48d1ffccbd8221e3392",
+      "stdout_preview": "",
+      "stderr_preview": "test_acceptance_cannot_hide_known_failed_candidate_report (test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report) ... ok\r\ntest_agent_messages_reject_model_written_created_at (test_contracts.JSONContractTests.test_agent_messages_reject_model_written_created_at) ... ok\r\ntest_all_purposes_and_synthetic_owner_provenance (test_contracts.JSONContractTests.test_all_purposes_and_synthetic_owner_provenance) ... ok\r\ntest_artifact_path_shape_and_actual_hash_sensitivity (test_contracts.JSONContractTests.test_artifact_path_shape_and_actual_hash_sensitivity) ... ok\r\ntest_artifact_symlink_escape_is_rejected_when_supported (test_contracts.JSONContractTests.test_artifact_symlink_escape_is_rejected_when_supported) ... skipped \"symlink creation unavailable: [WinError 1314] A required privilege is not held by the client: 'E:\\\\\\\\Saint\\\\\\\\PROJECTS\\\\\\\\CouncilFlow-main\\\\\\\\tests\\\\\\\\tmp5d7ttiav\\\\\\\\outside.txt' -> 'E:\\\\\\\\Saint\\\\\\\\PROJECTS\\\\\\\\CouncilFlow-main\\\\\\\\tests\\\\\\\\tmp5d"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/worker-rework/command-3.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/worker-rework/command-3.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4ff33e61233b49bac41cdc06de5bd61e5e2141aaef12c56a14fe34cef75799a2",
+      "stdout_preview": "",
+      "stderr_preview": "test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok\r\ntest_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok\r\ntest_custom_recall_system_is_removed (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_custom_recall_system_is_removed) ... ok\r\ntest_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok\r\ntest_first_encounter_binds_observed_namespace_and_exact_project (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_first_encounter_binds_observed_namespace_and_exact_project) ... ok\r\ntest_fresh_agents_receive_bounded_context_and_coverage_gaps (te"
+    }
+  ],
+  "input_hashes": {
+    "reports/councilflow-hardening/planner/plan.json": "b2726bac9f42803653af7ba12d3d04ed90f033ac449ee24ae49af824f06dafce",
+    "reports/councilflow-hardening/planner/plan-publish.json": "f21f4d5319ab173c8a3d95d9ac35f5aa0377a516e0799c969296d6b51aaf11bd",
+    "reports/councilflow-hardening/manager/worker-assign.json": "006dfdcc2f892641c43b8b8239ea8f5b38ccfc63600dfb29d3a2ef3a58351897",
+    "reports/councilflow-hardening/worker/job-report.json": "614a78ff13598db47c85572adc658637bcb2ff873f4b9d14a2ebddbd4a1b981b",
+    "reports/councilflow-hardening/worker/candidate-manifest.json": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+    ".agents/skills/council-flow/scripts/contracts.py": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+    "tests/test_contracts.py": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864"
+  }
+}

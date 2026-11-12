@@ -48,8 +48,8 @@ Minimal CouncilFlow SKILL-level envelope (illustrative, not claim of byte-for-by
  "task_id":"T0001","attempt_id":"A0001",
  "sender":{"role":"manager","instance_id":"manager-main"},
  "recipient":{"role":"worker","instance_id":"worker-001"},
- "created_at":"2026-11-11T00:00:00Z","in_reply_to":null,
- "payload":{"objective":"Implement approved task","scope":["demo/"],"acceptance_ids":["AC1"]},
+ "in_reply_to":null,
+ "payload":{"objective":"Implement approved task","scope":["demo/"],"acceptance_ids":["AC1"],"instructions":["Implement the approved task within demo/."]},
  "evidence_refs":[]
 }
 ```

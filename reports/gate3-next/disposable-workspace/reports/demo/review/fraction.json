@@ -1,0 +1,22 @@
+{
+  "reviewer": "/root/demo_reviewer",
+  "interaction": "actual subprocess CLI execution",
+  "command": [
+    "python3",
+    "demo/receipt/receipt_calculator.py",
+    "--item",
+    "tiny",
+    "0.1",
+    "0.2",
+    "each",
+    "--item",
+    "free",
+    "1",
+    "0",
+    "each"
+  ],
+  "cwd": "/workspace/CouncilFlow",
+  "exit_code": 0,
+  "stdout": "0.1 each tiny \u00d7 Rp0.2 = Rp0.02\n1 each free \u00d7 Rp0 = Rp0\nTotal = Rp0.02\n",
+  "stderr": ""
+}

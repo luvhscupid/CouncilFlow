@@ -1,0 +1,39 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "M0002",
+  "message_type": "job.report",
+  "plan_id": "P0001",
+  "plan_revision": 1,
+  "task_id": "T0001",
+  "attempt_id": "A0001",
+  "sender": {
+    "role": "worker",
+    "instance_id": "worker-001"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "manager-main"
+  },
+  "in_reply_to": "M0001",
+  "payload": {
+    "status": "in_progress",
+    "summary": "Synthetic example only; no task was executed and no output is being claimed.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2"
+    ],
+    "candidate_ref": {
+      "artifact_id": "SYNTHETIC-CANDIDATE-001",
+      "path": "demo/receipt/receipt_calculator.py",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "kind": "synthetic-example"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "demo/receipt/receipt_calculator.py"
+    ]
+  },
+  "evidence_refs": []
+}

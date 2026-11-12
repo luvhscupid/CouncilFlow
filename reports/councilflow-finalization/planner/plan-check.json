@@ -1,0 +1,616 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CF-M019",
+  "message_type": "plan.check",
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "attempt_id": "CF-A013",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CF-M018",
+  "payload": {
+    "status": "passed",
+    "summary": "All 23 original CF-FINAL-001 mission acceptance criteria pass as phrased, based on the referenced final evidence. This check does not claim full native/Gate 3 verification: Gate 3 was not executed; its E1-E10 remain NOT EXECUTED for this mission with BLOCKED/UNVERIFIED preparation labels only. The handoff explicitly preserves unresolved observations (effective TOML identity, authentic Owner fixture, unavailable-MCP/stale-index fallback, and Windows junction/TOCTOU); those are reported limits, not inferred passes. The Windows symlink suite case was skipped with WinError 1314.",
+    "acceptance_ids": [
+      "P0-A",
+      "P0-B",
+      "P1-A",
+      "P1-B",
+      "P1-C",
+      "P2-A",
+      "P2-B",
+      "P2-C",
+      "P2-D",
+      "P2-E",
+      "P3-A",
+      "P3-B",
+      "P3-C",
+      "P3-D",
+      "P3-E",
+      "P4-A",
+      "P4-B",
+      "P4-C",
+      "P4-D",
+      "P4-E",
+      "P5-A",
+      "P5-B",
+      "P5-C"
+    ],
+    "plan_ref": {
+      "artifact_id": "CF-FINAL-001-PLAN",
+      "path": "reports/councilflow-finalization/planner/plan.json",
+      "sha256": "5eed4bcbdd1dd44b0e9788622497979242d8f68dd2cceba184a926dd96d929d4",
+      "kind": "plan"
+    },
+    "results": [
+      {
+        "acceptance_id": "P0-A",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-INITIAL",
+            "path": "reports/councilflow-finalization/initial-manifest.json",
+            "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+            "kind": "inventory"
+          },
+          {
+            "artifact_id": "CF-FINAL-CHECKPOINT",
+            "path": "reports/councilflow-finalization/working-tree-checkpoint.manifest.json",
+            "sha256": "9685bb2532bb136fee2472894695a9e449b605c6bb6f98082b118d98ef80e1ee",
+            "kind": "checkpoint"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P0-B",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CRITERIA",
+            "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+            "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P1-A",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-RETIREMENT",
+            "path": "reports/councilflow-finalization/retirement-audit.json",
+            "sha256": "7afbad25841cc74c55825cdd42651212b5c232c6ebb1f8d90a61f655e4db7758",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-PACKAGE",
+            "path": "reports/councilflow-finalization/worker/package-verification.json",
+            "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-ARCHIVE",
+            "path": "dist/council-flow.zip",
+            "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+            "kind": "candidate-archive"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P1-B",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CODEBASE-POLICY",
+            "path": ".agents/skills/council-flow/references/codebase-memory.md",
+            "sha256": "866bcd43c63fcaa50415ee81f00b775c6f7988f3210886c7e9114a6cc1872a2c",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-INTEGRATION-TEST",
+            "path": "tests/test_codebase_memory_integration.py",
+            "sha256": "fe7118e6438497c07740d3daaeaf304eb2e5b4e921b7de1699af5c0fc65730d6",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P1-C",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-RETIREMENT",
+            "path": "reports/councilflow-finalization/retirement-audit.json",
+            "sha256": "7afbad25841cc74c55825cdd42651212b5c232c6ebb1f8d90a61f655e4db7758",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-HISTORY",
+            "path": "reports/councilflow-finalization/git-history-audit.json",
+            "sha256": "b692bfb6e7c241c12c278011a39dc84982d90a007bafe3f41b54b80f620cf8b7",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P2-A",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CRITERIA",
+            "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+            "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-TESTER-EXEC",
+            "path": "reports/councilflow-finalization/tester-final/execution.json",
+            "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+            "kind": "execution-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P2-B",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CONTRACTS-TEST",
+            "path": "tests/test_contracts.py",
+            "sha256": "004753d642a9aa5a46f6c7126887c4ec2afa0f58e2545fd98a45fcfa29deec60",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-TESTER-EXEC",
+            "path": "reports/councilflow-finalization/tester-final/execution.json",
+            "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+            "kind": "execution-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-CRITERIA",
+            "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+            "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P2-C",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-TESTER",
+            "path": "reports/councilflow-finalization/tester-final/job-report.json",
+            "sha256": "d4b837b99fb5395ad6f6d663a56336075873156c9e904aabbf765d77f4c29c2b",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CF-FINAL-REVIEWER",
+            "path": "reports/councilflow-finalization/reviewer/job-report.json",
+            "sha256": "f816b2c2f6134412718d18fc02610fc5bc5df32fabc2674e37e90b44a6be9de5",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CF-FINAL-REVIEW-RERUN",
+            "path": "reports/councilflow-finalization/reviewer/reviewer-rerun-A013.json",
+            "sha256": "d63a5af56a124e8be7d1f72dc3e2b77bfc1f13b5c144cb56c2e122954c18ae83",
+            "kind": "execution-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P2-D",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-HARDENING-FINAL",
+            "path": "reports/councilflow-hardening/final.md",
+            "sha256": "483926fc7db2a5b15a2e0d0e549eb3daf239766a5bde0abe9d9a466bcab5d611",
+            "kind": "historical-report"
+          },
+          {
+            "artifact_id": "CF-FINAL-INITIAL",
+            "path": "reports/councilflow-finalization/initial-manifest.json",
+            "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+            "kind": "inventory"
+          },
+          {
+            "artifact_id": "CF-FINAL-CHECKPOINT",
+            "path": "reports/councilflow-finalization/working-tree-checkpoint.manifest.json",
+            "sha256": "9685bb2532bb136fee2472894695a9e449b605c6bb6f98082b118d98ef80e1ee",
+            "kind": "checkpoint"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P2-E",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CODEBASE-POLICY",
+            "path": ".agents/skills/council-flow/references/codebase-memory.md",
+            "sha256": "866bcd43c63fcaa50415ee81f00b775c6f7988f3210886c7e9114a6cc1872a2c",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-INTEGRATION-TEST",
+            "path": "tests/test_codebase_memory_integration.py",
+            "sha256": "fe7118e6438497c07740d3daaeaf304eb2e5b4e921b7de1699af5c0fc65730d6",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P3-A",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-TESTER-EXEC",
+            "path": "reports/councilflow-finalization/tester-final/execution.json",
+            "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+            "kind": "execution-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-TESTER",
+            "path": "reports/councilflow-finalization/tester-final/job-report.json",
+            "sha256": "d4b837b99fb5395ad6f6d663a56336075873156c9e904aabbf765d77f4c29c2b",
+            "kind": "message"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P3-B",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-TESTER-EXEC",
+            "path": "reports/councilflow-finalization/tester-final/execution.json",
+            "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+            "kind": "execution-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-CRITERIA",
+            "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+            "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P3-C",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-PACKAGE",
+            "path": "reports/councilflow-finalization/worker/package-verification.json",
+            "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-ARCHIVE",
+            "path": "dist/council-flow.zip",
+            "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+            "kind": "candidate-archive"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P3-D",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-TESTER",
+            "path": "reports/councilflow-finalization/tester-final/job-report.json",
+            "sha256": "d4b837b99fb5395ad6f6d663a56336075873156c9e904aabbf765d77f4c29c2b",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CF-FINAL-REVIEWER",
+            "path": "reports/councilflow-finalization/reviewer/job-report.json",
+            "sha256": "f816b2c2f6134412718d18fc02610fc5bc5df32fabc2674e37e90b44a6be9de5",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CF-FINAL-REVIEW-RERUN",
+            "path": "reports/councilflow-finalization/reviewer/reviewer-rerun-A013.json",
+            "sha256": "d63a5af56a124e8be7d1f72dc3e2b77bfc1f13b5c144cb56c2e122954c18ae83",
+            "kind": "execution-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P3-E",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CHECKPOINT",
+            "path": "reports/councilflow-finalization/working-tree-checkpoint.manifest.json",
+            "sha256": "9685bb2532bb136fee2472894695a9e449b605c6bb6f98082b118d98ef80e1ee",
+            "kind": "checkpoint"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P4-A",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CHECKLIST",
+            "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+            "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P4-B",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          },
+          {
+            "artifact_id": "CF-FINAL-CHECKLIST",
+            "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+            "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P4-C",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-DRAFT",
+            "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+            "sha256": "229b6d26ca0e9e5f5e7d7b5a46a9bb0e304b904991c45bbd9abba86304fd3b72",
+            "kind": "draft"
+          },
+          {
+            "artifact_id": "CF-FINAL-TEMPLATE",
+            "path": "reports/gate3-next/OWNER-INVOCATION.txt",
+            "sha256": "71c1ed977656f5fd50b85f6fb9a5949981c60fd4138825d8550265b45dda3824",
+            "kind": "template"
+          },
+          {
+            "artifact_id": "CF-FINAL-DRAFT-CHECK",
+            "path": "reports/councilflow-finalization/tester-final/draft-workspace-check.json",
+            "sha256": "d1bcc90795ba5a5bd0c6c11067f5ec3242a35a1c8e7a0a5f3c9833528ecb9d89",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-DEMO-README",
+            "path": "reports/gate3-next/disposable-workspace/README.md",
+            "sha256": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+            "kind": "workspace-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P4-D",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CHECKLIST",
+            "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+            "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-CRITERIA",
+            "path": "reports/councilflow-finalization/tester-final/criteria-fidelity.json",
+            "sha256": "a8f0af7b10f0169404a7c2225d7251c709f09c4ebc94448a92756219e4584833",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P4-E",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-CHECKLIST",
+            "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+            "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P5-A",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          },
+          {
+            "artifact_id": "CF-FINAL-INITIAL",
+            "path": "reports/councilflow-finalization/initial-manifest.json",
+            "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+            "kind": "inventory"
+          },
+          {
+            "artifact_id": "CF-FINAL-RETIREMENT",
+            "path": "reports/councilflow-finalization/retirement-audit.json",
+            "sha256": "7afbad25841cc74c55825cdd42651212b5c232c6ebb1f8d90a61f655e4db7758",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-HISTORY",
+            "path": "reports/councilflow-finalization/git-history-audit.json",
+            "sha256": "b692bfb6e7c241c12c278011a39dc84982d90a007bafe3f41b54b80f620cf8b7",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-TESTER-EXEC",
+            "path": "reports/councilflow-finalization/tester-final/execution.json",
+            "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+            "kind": "execution-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-PACKAGE",
+            "path": "reports/councilflow-finalization/worker/package-verification.json",
+            "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CF-FINAL-CHECKPOINT",
+            "path": "reports/councilflow-finalization/working-tree-checkpoint.manifest.json",
+            "sha256": "9685bb2532bb136fee2472894695a9e449b605c6bb6f98082b118d98ef80e1ee",
+            "kind": "checkpoint"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P5-B",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          },
+          {
+            "artifact_id": "CF-FINAL-CHECKLIST",
+            "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+            "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "P5-C",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CF-FINAL-HANDOFF",
+            "path": "reports/sol-handoff/README.md",
+            "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+            "kind": "handoff"
+          },
+          {
+            "artifact_id": "CF-FINAL-CHECKLIST",
+            "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+            "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+            "kind": "verification-record"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CF-FINAL-TESTER",
+      "path": "reports/councilflow-finalization/tester-final/job-report.json",
+      "sha256": "d4b837b99fb5395ad6f6d663a56336075873156c9e904aabbf765d77f4c29c2b",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CF-FINAL-REVIEWER",
+      "path": "reports/councilflow-finalization/reviewer/job-report.json",
+      "sha256": "f816b2c2f6134412718d18fc02610fc5bc5df32fabc2674e37e90b44a6be9de5",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CF-FINAL-TESTER-EXEC",
+      "path": "reports/councilflow-finalization/tester-final/execution.json",
+      "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-RETIREMENT",
+      "path": "reports/councilflow-finalization/retirement-audit.json",
+      "sha256": "7afbad25841cc74c55825cdd42651212b5c232c6ebb1f8d90a61f655e4db7758",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-HISTORY",
+      "path": "reports/councilflow-finalization/git-history-audit.json",
+      "sha256": "b692bfb6e7c241c12c278011a39dc84982d90a007bafe3f41b54b80f620cf8b7",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-PACKAGE",
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-CHECKLIST",
+      "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+      "sha256": "b98f72303545859447c59c7f7a370a77fb078e0ff0e886ef235545ba42a51f5e",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-HANDOFF",
+      "path": "reports/sol-handoff/README.md",
+      "sha256": "e71148902582a57f646b1ca62fbf6cc62def77a5b36bc4eaf815b6cb19251e7d",
+      "kind": "handoff"
+    },
+    {
+      "artifact_id": "CF-FINAL-CHECKPOINT",
+      "path": "reports/councilflow-finalization/working-tree-checkpoint.manifest.json",
+      "sha256": "9685bb2532bb136fee2472894695a9e449b605c6bb6f98082b118d98ef80e1ee",
+      "kind": "checkpoint"
+    }
+  ]
+}

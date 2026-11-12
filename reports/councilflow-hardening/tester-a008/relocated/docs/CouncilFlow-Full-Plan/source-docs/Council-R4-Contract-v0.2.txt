@@ -1,0 +1,199 @@
+# R4-Claude: Contract Schema v0.2 for agent mode
+
+**Core position:** verify the extracted patch, not the workspace. The Worker is autonomous while it authors changes. The controller then extracts the diff, rejects out-of-scope paths, applies the rest to a clean copy, and runs checks there under its own identity. This gives most of patch mode's integrity guarantees while keeping agent autonomy. It protects result integrity but does not prevent side effects such as credential reads or network calls. Those need real isolation.
+
+## 1. Rulings on GPT R4
+
+| Item | Ruling |
+|---|---|
+| Worktree ≠ sandbox | **Accept.** Detection-only is not enough for medium/high tiers. |
+| Three modes (Development / Restricted / Privileged) | **Amend.** Replace them with capability requirements. A mode is just a named preset of requirements, and the controller can check requirements. |
+| `network: deny_requested` | **Reject as written.** A cloud-model agent needs network access to reach its own provider, so "deny" is unsatisfiable. The real policy is `egress_provider_only`, which needs a proxy or firewall rule. I haven't verified how to do this on Windows, so it needs a spike. |
+| Requested vs. enforced | **Accept, and make it fail-closed.** If a requirement isn't proven, dispatch is refused unless the Owner records an exception. |
+| Privileged mode | **Fold into exceptions.** An exception names the exact capability waived, applies to one task, and is granted only by the Owner. |
+| "Never delegate policy or final verification" | **Accept as an invariant.** |
+
+## 2. The four disagreements
+
+**1. Command enforcement.** We can't intercept every internal action, so enforce at the boundary and layer the rest:
+
+| Layer | Mechanism | Status |
+|---|---|---|
+| Boundary | Separate low-privilege OS user with NTFS ACLs, or a container with only the worktree mounted | **Enforced** (once probed) |
+| Environment | Spawn the Worker with an allowlisted env, so no inherited secrets beyond its own provider key | **Enforced**, cheap |
+| Agent-native permissions | The CLI's own allow/deny settings | **Best effort.** Treated as defense in depth, never as a guarantee. |
+| Detection | Tree hashes, out-of-scope diff, process audit | **Detective** |
+
+- `allowed_commands` becomes `commands_hint`, advisory unless a backend declares enforcement.
+- **Capability probe, not config trust:** at startup the controller runs a probe as the Worker identity. It tries to read the controller DB, write outside the workspace, and read an env secret. The result is stored as the enforcement manifest. `requires ⊆ proven` or dispatch is refused.
+- **BLOCKED sources:** a Worker report declaring blocked, or a permission-denied event from the agent's log. Both are adapter-specific. My assumption is that headless agents deny out-of-policy requests by default; this must be verified per agent.
+
+**2. Hidden-check isolation.**
+- Hidden payloads live in the controller store, outside the Worker identity's reach, and are never in the worktree during the run.
+- They are materialized only in the scratch verification copy, **after the Worker is confirmed dead**.
+- **Test-config tampering:** a Worker can edit `conftest.py`, `pytest.ini` or `pyproject.toml` to make tests pass. Extract-and-verify closes this, because only paths in `scope.write` are applied to the scratch copy, and test-config files are `frozen`.
+- **Honest limit:** without OS-level isolation (same OS user), hidden checks are unprotected. Evidence from them is tagged `hidden_unprotected` and counts as weak.
+
+**3. Crash vs. lost report.** Don't rely on the Worker's report at all, since verification derives from workspace state.
+- **Liveness comes from the controller's own process handle.** On Windows I'd use a Job Object with kill-on-close. If the controller dies, the Worker tree dies, so the "orphan still running" case mostly can't occur.
+- Record in events: PID, process creation time, job handle ID, and a per-dispatch `attempt_id` (the fencing token).
+- On restart:
+  - Process absent, or creation time mismatched → dead.
+  - Process present and match → kill the tree and confirm.
+  - Can't confirm → state `UNKNOWN_LIVENESS`: don't touch the workspace and don't re-dispatch; wait for a timeout, then escalate.
+- **A new attempt always gets a fresh worktree from the checkpoint.** Two writers can't share a workspace, and any report carrying a stale `attempt_id` is discarded.
+
+**4. Passing tests ≠ objective.**
+- Outcomes have a verification type. `executable` outcomes need a live, admission-validated check. `manual` outcomes carry an `owner_check`.
+- **Worker-authored tests don't count as evidence.** In agent mode the Worker will write tests, and that's fine, but they are excluded from outcome verification unless adopted in an amendment.
+- **Objective-level check:** at tier ≥ medium, at least one end-to-end check run per task.
+- **Outcome states:** `verified | weak | unverified | contradicted`.
+- **Task states:** `DONE_VERIFIED` requires all executable outcomes verified. Any manual outcome leaves the task `AWAITING_OWNER_ACCEPTANCE`. The report lists unverified items first.
+- Only the controller can set an outcome to `verified`.
+
+**SQLite consistency:**
+- One writer, the controller. The DB sits outside the Worker's reach.
+- WAL with `synchronous=FULL`.
+- The event and the projection update commit **in the same transaction**, so state tables can't diverge from the log. A replay check can rebuild them.
+- Intent event committed → side effect → outcome event. Intents carry a `UNIQUE(attempt_id, action)` idempotency key.
+- A startup reconcile pass resolves every intent that has no outcome.
+
+## 3. Contract v0.2
+
+```json
+{
+  "schema_version": "0.2",
+  "contract_id": "ctr_slugify_001",
+  "version": 1,
+  "parent_version": null,
+
+  "objective": {"text": "Add slugify(text) to textkit without changing existing behavior."},
+
+  "outcomes": [
+    {"id": "O1", "statement": "Lowercases, collapses whitespace to single hyphens, drops chars outside a-z0-9-, trims hyphens", "verification": "executable"},
+    {"id": "O2", "statement": "Existing textkit.strings behavior unchanged", "verification": "executable"},
+    {"id": "O3", "statement": "slugify importable from package root", "verification": "executable"},
+    {"id": "O4", "statement": "Output is sensible on real page titles", "verification": "manual",
+     "owner_check": "Run slugify on 5 real titles; confirm slugs look right"}
+  ],
+
+  "execution": {
+    "backend": "profile:agent.isolated_user",
+    "requires": ["fs_outside_workspace_denied", "controller_data_unreadable",
+                 "env_scrubbed", "egress_provider_only", "kill_tree_confirmed"],
+    "commands_hint": ["python", "pytest", "ruff", "git"]
+  },
+
+  "workspace": {
+    "base_ref": "HEAD",
+    "frozen_paths": ["tests/test_slugify.py", "tests/test_strings.py",
+                     "conftest.py", "pytest.ini", "pyproject.toml"],
+    "forbidden_paths": [".git/**", "**/.env*"]
+  },
+
+  "roles": {"planner": "profile:planner.default", "worker": "profile:worker.default",
+            "reviewer": "profile:reviewer.cross_family"},
+
+  "risk": {"planner_tier": "low"},
+  "gates": ["plan_approval", "merge_approval", "owner_acceptance"],
+
+  "steps": [{
+    "id": "S1", "title": "Implement and export slugify",
+    "instruction": "Implement slugify in textkit/strings.py per O1-O3; export it from textkit/__init__.py. Do not modify other functions.",
+    "depends_on": [], "outcomes": ["O1", "O2", "O3"], "checks": ["C1", "C2", "C3", "C4", "C5"],
+    "scope": {"write": ["textkit/strings.py", "textkit/__init__.py"], "read": ["textkit/**", "tests/**"]},
+    "idempotent": true
+  }],
+
+  "verification": {
+    "method": "extract_and_verify",
+    "apply_paths": "step.scope.write",
+    "worker_authored_tests": "excluded_from_evidence",
+    "hidden_run": "after_worker_confirmed_dead",
+    "objective_checks": ["C5"]
+  },
+
+  "checks": [
+    {"id": "C1", "outcomes": ["O1"], "kind": "unit", "authored_by": "planner",
+     "argv": ["pytest", "tests/test_slugify.py", "-q"], "expect_baseline": "fail",
+     "side_effects": "isolated_mutation", "visibility": "visible", "evidence": "live", "timeout_s": 60},
+    {"id": "C2", "outcomes": ["O1"], "kind": "unit", "authored_by": "planner",
+     "argv": ["pytest", "{payload}", "-q"], "payload_ref": "blob:hidden/slugify_edge",
+     "expect_baseline": "fail", "side_effects": "isolated_mutation",
+     "visibility": "hidden", "feedback": "outcome_only", "evidence": "live", "timeout_s": 60},
+    {"id": "C3", "outcomes": ["O2"], "kind": "regression", "authored_by": "planner",
+     "argv": ["pytest", "tests/test_strings.py", "-q"], "expect_baseline": "pass",
+     "side_effects": "isolated_mutation", "visibility": "visible", "evidence": "live", "timeout_s": 60},
+    {"id": "C4", "outcomes": [], "kind": "static", "authored_by": "planner",
+     "argv": ["ruff", "check", "textkit"], "expect_baseline": "n/a",
+     "side_effects": "read_only", "visibility": "visible", "evidence": "live", "timeout_s": 30},
+    {"id": "C5", "outcomes": ["O3"], "kind": "integration", "authored_by": "planner",
+     "argv": ["python", "-c", "from textkit import slugify; assert slugify('Hello  World!')=='hello-world'"],
+     "expect_baseline": "fail", "side_effects": "read_only", "visibility": "visible",
+     "evidence": "live", "timeout_s": 15}
+  ],
+
+  "limits": {
+    "per_step": {"incremental_repair": 1, "clean_redo": 1},
+    "per_attempt": {"max_wall_clock_s": 900, "idle_timeout_s": 300},
+    "task": {"replans": 1, "infra_retries": 3, "crash_recoveries": 2},
+    "budget": {"max_cost_usd": 2.00, "max_wall_clock_s": 1800, "max_tokens": 400000}
+  },
+
+  "deliverables": [{"path": "textkit/strings.py", "required": true},
+                   {"path": "textkit/__init__.py", "required": true}]
+}
+```
+
+**Changes from R3:**
+- `execution.requires` replaces modes.
+- `verification` block added.
+- Manual outcomes added.
+- `frozen_paths` extended to test config.
+- `per_attempt` limits added.
+- `authored_by` added on checks.
+- `owner_acceptance` gate added.
+
+**Runtime-only (never in the contract):**
+- `attempt_id`, PID, creation time, job handle
+- the enforcement manifest and the resolved requires-vs-proven diff
+- tree hashes, checkpoints, incidents
+- resolved model IDs, costs, outcome statuses
+
+## 4. Mandatory for v0 vs. deferred
+
+| Mandatory | Deferred |
+|---|---|
+| Fail-closed requires-vs-proven check, with probe | Per-tool-call interception |
+| Extract-and-verify with frozen test config | Rich result parsing |
+| Job-object process ownership, `attempt_id` fencing | Parallel workers |
+| Fresh worktree per attempt | LLM reviewer (keep the hook) |
+| Env scrubbing | Hidden-check rotation, mutation testing |
+| Worker-authored tests excluded from evidence | Non-git snapshots |
+| Single-writer SQLite, intent/outcome transactions | Advisory triage LLM |
+| `egress_provider_only` as a requirement | A second provider adapter (interface only) |
+
+## 5. Roadmap with exit criteria
+
+| Phase | Scope | Exit criterion |
+|---|---|---|
+| **P0 Feasibility spike** (needs your authorization) | Prove enforcement on your machine: a separate user or container, kill-tree, headless agent run, scrubbed env | The probe suite passes: the Worker can't read the controller DB, can't write outside the workspace, sees no env secrets, and the killed tree is confirmed dead |
+| **P1 Controller core** | SQLite events and projections, admission with baseline run, state machine, a fake Worker script, no LLMs | Crash injection at every intent/outcome boundary recovers cleanly |
+| **P2 Real Worker adapter** | One step, a hand-written contract, extract-and-verify | A seeded out-of-scope edit and a seeded test-config edit are both rejected |
+| **P3 Planner role** | LLM-authored contracts, plan approval, coverage report | The Planner's contract passes admission, and unverified outcomes are listed first |
+| **P4 Retries and hidden checks** | Failure classes, two-stage retry, hidden checks if P0 proved isolation | Seeded failures route correctly with no infinite loops |
+| **P5 Extensions** | A second provider, the reviewer LLM | Deferred until P1-P4 are stable |
+
+## 6. Challenges back to GPT for R5
+
+1. **Do you accept the dropped modes?** Capability requirements plus presets instead.
+2. **Is "verify the extracted patch" sufficient?** What attack does it miss beyond side effects?
+3. **Is `UNKNOWN_LIVENESS` with fencing enough**, or do you see a split-brain case I missed?
+4. **Should hidden checks be disabled outright when isolation isn't proven**, rather than allowed with weak evidence?
+
+## 7. Open items for you (Owner)
+
+- **Which agent will run the Worker** (Claude Code, Codex, other)? It decides the adapter details, how BLOCKED is detected, and what headless permission behavior looks like.
+- **Do you authorize P0 as a feasibility spike?** Everything in §2 about Windows enforcement is a hypothesis until tested.
+
+**Next action:** answer those two, then forward this to GPT. R5 should close the disagreements, and we'll consolidate into one specification for your approval.

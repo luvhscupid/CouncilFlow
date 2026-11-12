@@ -1,0 +1,137 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CF-M008",
+  "message_type": "job.report",
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "attempt_id": "CF-A003",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CF-M006",
+  "payload": {
+    "status": "passed",
+    "summary": "Bounded finalization artifacts, minimal negative-test corrections, Gate 3 preparation, and an allowlisted release rebuild are complete. Independent six-suite verification, Reviewer rerun, and final Planner decision remain pending; this is not mission acceptance.",
+    "acceptance_ids": [
+      "P0-A",
+      "P0-B",
+      "P1-A",
+      "P1-B",
+      "P1-C",
+      "P2-A",
+      "P2-B",
+      "P2-C",
+      "P2-D",
+      "P2-E",
+      "P3-A",
+      "P3-B",
+      "P3-C",
+      "P3-D",
+      "P3-E",
+      "P4-A",
+      "P4-B",
+      "P4-C",
+      "P4-D",
+      "P4-E",
+      "P5-A",
+      "P5-B",
+      "P5-C"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482",
+      "kind": "candidate-archive"
+    },
+    "changed_files": [
+      "tests/test_codebase_memory_integration.py",
+      "tests/test_contracts.py",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "reports/councilflow-finalization/initial-manifest.json",
+      "reports/councilflow-finalization/retirement-audit.json",
+      "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+      "reports/gate3-next/OWNER-INVOCATION.txt",
+      "reports/gate3-next/E1-E10-CHECKLIST.md",
+      "reports/gate3-next/disposable-demo/app.py",
+      "reports/gate3-next/disposable-demo/test_app.py",
+      "reports/councilflow-finalization/worker/build_package.py",
+      "reports/councilflow-finalization/worker/build_initial_manifest.py",
+      "reports/councilflow-finalization/worker/build_retirement_audit.py",
+      "reports/councilflow-finalization/worker/run_targeted.py",
+      "reports/councilflow-finalization/worker/verify_hashes.py",
+      "reports/councilflow-finalization/worker/write_job_report.py",
+      "reports/councilflow-finalization/initial-manifest.json",
+      "reports/councilflow-finalization/worker/package-manifest.json",
+      "reports/councilflow-finalization/worker/package-verification.json",
+      "reports/councilflow-finalization/worker/hash-consistency.json",
+      "reports/councilflow-finalization/worker/targeted-execution.json",
+      "reports/councilflow-finalization/worker/targeted-1.stdout.bin",
+      "reports/councilflow-finalization/worker/targeted-1.stderr.bin",
+      "reports/councilflow-finalization/worker/targeted-2.stdout.bin",
+      "reports/councilflow-finalization/worker/targeted-2.stderr.bin",
+      "reports/councilflow-finalization/worker/extracted-check-1.stdout.bin",
+      "reports/councilflow-finalization/worker/extracted-check-1.stderr.bin",
+      "reports/councilflow-finalization/worker/extracted-check-2.stdout.bin",
+      "reports/councilflow-finalization/worker/extracted-check-2.stderr.bin",
+      "reports/councilflow-finalization/worker/extracted-check-3.stdout.bin",
+      "reports/councilflow-finalization/worker/extracted-check-3.stderr.bin",
+      "reports/councilflow-finalization/worker/candidate-manifest.json"
+    ],
+    "findings": [
+      "The current installable archive contains 118 safe unique entries and its exact allowlisted source-byte mapping, CRC, checksum, and extraction checks passed; archive SHA-256 is 9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482.",
+      "Case-insensitive static checks found zero active surface matches and zero installable archive path/text matches. Historical/supporting text remains in 14 checkout files with per-file SHA-256 in retirement-audit.json; the original source ZIP has 15 text matches including its prior test snapshot.",
+      "The integration regression preserves the absent-path/command assertions while constructing the retired tokens dynamically. The focused top-level evidence-reference regression separately removes Tester and Reviewer execution references and rejects each sequence.",
+      "The disposable demo and proposed Owner task are separate from product files and the release allowlist. The Owner task is explicitly unapproved. The frozen experiment was not executed; no E1-E10 status is claimed as a mission result.",
+      "All 156 final hash-consistency checks passed across historical scan exceptions, source ZIP identity, package manifest/source-byte mapping, current regression tests, checksum, and frozen governance files.",
+      "Initial inventory reconstructed 9 modified tracked paths and 595 untracked paths from initial status plus the supplied source ZIP; source ZIP SHA-256 is ab0fb7cf561d43d06c8e7222779e03040bde54a137d613aeed79ad646ef398f1. Two ignored/generated cache files changed after test execution and are called out in the inventory.",
+      "Dynamic unavailable-MCP/stale-index fallback behavior and Windows junction/reparse/TOCTOU behavior were not exercised by this Worker. The previously reported symlink test skip remains unverified for safety."
+    ],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CF-FINAL-INITIAL-MANIFEST",
+      "path": "reports/councilflow-finalization/initial-manifest.json",
+      "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974",
+      "kind": "inventory"
+    },
+    {
+      "artifact_id": "CF-FINAL-RETIREMENT-AUDIT",
+      "path": "reports/councilflow-finalization/retirement-audit.json",
+      "sha256": "b08d21976ebae62cfc4a9896d003b2fd7c251cc68dde90f8df2a515ba269f81a",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "sha256": "d90961d09a4a8907dfec92ec19149115d99dc8af50198de4cf860d65d8a5e189",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-HASH-CONSISTENCY",
+      "path": "reports/councilflow-finalization/worker/hash-consistency.json",
+      "sha256": "df388f55228e45c75586b3ef6286dff426a6f92f7f73ecb99a467239d0ecd3cd",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-TARGETED-EXECUTIONS",
+      "path": "reports/councilflow-finalization/worker/targeted-execution.json",
+      "sha256": "8109d468b748370663b245db7589e890479533233ffa384ab81eaab7950d8c25",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-CANDIDATE-MANIFEST",
+      "path": "reports/councilflow-finalization/worker/candidate-manifest.json",
+      "sha256": "8746f6d2576571049f7523808ea1563b912d3948167fefbcdf9f5b2e0ce02ee7",
+      "kind": "candidate-manifest"
+    }
+  ]
+}

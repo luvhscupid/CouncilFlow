@@ -1,0 +1,95 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M037",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A007",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester_a007"
+  },
+  "in_reply_to": "CFH-M036",
+  "payload": {
+    "objective": "Independently verify the A007 candidate in the fresh P004 boundary and original criteria.",
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh independent Tester; no source/doc/test repairs. Verify exact A007 candidate manifest, Worker report, execution record and snapshot actual hashes.",
+      "Run all six current product/contract/application suites listed in the Manager oracle. Do not incorporate earlier invalid A005/A006 packets in the A007 ordered sequence; start the clean sequence at plan.publish M034, then M035/M036/M037 and your report. Preserve all prior failures as historical.",
+      "Run both examples root-bound, stale-digest negative, exact P004 E1-E10 text comparison, all Full Plan checksums, A007 snapshot safe-path/CRC/extracted hashes and exact manifest hash consistency.",
+      "Report E1-E10 live Gate3 outcomes NOT RUN, Windows symlink permission limitation, and no junction/TOCTOU test.",
+      "For selected deterministic command record exact executable, args, cwd, candidate/input refs, exit and stdout SHA256 after CRLF-to-LF only. Ensure the nested evidence_ref is also present in top-level report evidence_refs. Save raw evidence and UTF-8 report. Stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A007",
+      "path": "reports/councilflow-hardening/manager/oracle-a007.json",
+      "sha256": "625e7c70e169e2010210433b0b20715c9b83debfc5ecf510535bb63b6f1af6ee",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M034",
+      "path": "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+      "sha256": "6b40c9bcc202d166c3ed6af6f3da2ff5a82f9edcc5154bcaea80511d7634e552",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-WORKER-REPORT-A007",
+      "path": "reports/councilflow-hardening/worker-a007/job-report.json",
+      "sha256": "438d6caf0425a64f5f9fd0ac0668ea031e9e98bdb99be6f0f61faa01bc073f10",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-SNAPSHOT-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-snapshot.zip",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A007",
+      "path": "reports/councilflow-hardening/manager/oracle-a007.json",
+      "sha256": "625e7c70e169e2010210433b0b20715c9b83debfc5ecf510535bb63b6f1af6ee",
+      "kind": "verification-strategy"
+    },
+    {
+      "artifact_id": "CFH-A006-SEQUENCE-FAILURE",
+      "path": "reports/councilflow-hardening/tester-a006/sequence-attempt.json",
+      "sha256": "3518d91c32494eee757db35afff9145d6acbc46b103e2647a6aa341f8c9a4edc",
+      "kind": "verification-record"
+    }
+  ]
+}

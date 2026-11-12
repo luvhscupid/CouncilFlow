@@ -1,0 +1,122 @@
+[
+  {
+    "name": "tests",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+    "exit_code": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "583bd1bcd9d980d892ae351a5484116232e476892a38c5fe325e62374d3596d5",
+    "summary": "Ran 83 tests in 2.490s",
+    "result_line": null,
+    "stdout_path": "reports/councilflow-hardening/tester-a009/suite-1.stdout.bin",
+    "stderr_path": "reports/councilflow-hardening/tester-a009/suite-1.stderr.bin"
+  },
+  {
+    "name": "demo-receipt",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+    "exit_code": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "498f8df21f210e77aec2f21c94a22d51b3f3877dea2eaf3a053acbcd0ffbb130",
+    "summary": "Ran 12 tests in 4.252s",
+    "result_line": "OK",
+    "stdout_path": "reports/councilflow-hardening/tester-a009/suite-2.stdout.bin",
+    "stderr_path": "reports/councilflow-hardening/tester-a009/suite-2.stderr.bin"
+  },
+  {
+    "name": "demo-csv-summary",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+    "exit_code": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "50ae5101bde97eac24503696ca590f11a786df17d2e93b9f47b8238d283d8000",
+    "summary": "Ran 15 tests in 9.359s",
+    "result_line": "OK",
+    "stdout_path": "reports/councilflow-hardening/tester-a009/suite-3.stdout.bin",
+    "stderr_path": "reports/councilflow-hardening/tester-a009/suite-3.stderr.bin"
+  },
+  {
+    "name": "demo-structured-flow",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+    "exit_code": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "60eaec3cb232d49ca3e6a5ba7dda3e7b136401c0693a5df7a5560a7e2ca4626a",
+    "summary": "Ran 4 tests in 3.087s",
+    "result_line": "OK",
+    "stdout_path": "reports/councilflow-hardening/tester-a009/suite-4.stdout.bin",
+    "stderr_path": "reports/councilflow-hardening/tester-a009/suite-4.stderr.bin"
+  },
+  {
+    "name": "reports-demo-verification",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+    "exit_code": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "8035de8682c125e71e0100f8b51554b69e0f9fab84e184ab9aed7af9e8c7a133",
+    "summary": "Ran 5 tests in 3.436s",
+    "result_line": "OK",
+    "stdout_path": "reports/councilflow-hardening/tester-a009/suite-5.stdout.bin",
+    "stderr_path": "reports/councilflow-hardening/tester-a009/suite-5.stderr.bin"
+  },
+  {
+    "name": "reports-csv-verification",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+    "exit_code": 0,
+    "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "65766fef5c411184791153de66ac3cb683215b70c3fb15920aae2a9563af5ae1",
+    "summary": "Ran 6 tests in 6.004s",
+    "result_line": "OK",
+    "stdout_path": "reports/councilflow-hardening/tester-a009/suite-6.stdout.bin",
+    "stderr_path": "reports/councilflow-hardening/tester-a009/suite-6.stderr.bin"
+  }
+]

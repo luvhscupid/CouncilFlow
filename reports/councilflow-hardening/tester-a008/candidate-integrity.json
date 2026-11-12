@@ -1,0 +1,149 @@
+{
+  "candidate_manifest_sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+  "execution_manifest_sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+  "manifest_execution_match": true,
+  "source_entries": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "expected_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "actual_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "expected_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "actual_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "matches": true
+    },
+    {
+      "path": "RELEASE.md",
+      "expected_sha256": "46843222d2067ecb5d1e8c2c6728e779d58583441f89448dca18842240fbe8a1",
+      "actual_sha256": "46843222d2067ecb5d1e8c2c6728e779d58583441f89448dca18842240fbe8a1",
+      "matches": true
+    },
+    {
+      "path": "dist/council-flow.zip",
+      "expected_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "actual_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "matches": true
+    },
+    {
+      "path": "dist/council-flow.zip.sha256",
+      "expected_sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "actual_sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "expected_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "actual_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "matches": true
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "expected_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "actual_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "matches": true
+    }
+  ],
+  "source_entries_match": true,
+  "distribution_archive_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "distribution_ref_matches": true,
+  "source_snapshot_sha256": "32f3861b359caf92041009829d04d46a934d9a4b3a20a664046b869bc40f1e10",
+  "snapshot_crc": "PASS",
+  "snapshot_safe_paths": "PASS",
+  "snapshot_entries": 12,
+  "snapshot_entries_detail": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "safe": true,
+      "sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "safe": true,
+      "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179"
+    },
+    {
+      "path": "RELEASE.md",
+      "safe": true,
+      "sha256": "46843222d2067ecb5d1e8c2c6728e779d58583441f89448dca18842240fbe8a1"
+    },
+    {
+      "path": "dist/council-flow.zip",
+      "safe": true,
+      "sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384"
+    },
+    {
+      "path": "dist/council-flow.zip.sha256",
+      "safe": true,
+      "sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "safe": true,
+      "sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "safe": true,
+      "sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "safe": true,
+      "sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "safe": true,
+      "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "safe": true,
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "safe": true,
+      "sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "safe": true,
+      "sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af"
+    }
+  ],
+  "worker_report_sha256": "2fecc8765d40b62373543584b58af51eb35c29cc646cfad30281246b1a0f396c"
+}

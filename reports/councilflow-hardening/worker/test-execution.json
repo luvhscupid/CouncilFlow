@@ -1,0 +1,17 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_file": "reports/councilflow-hardening/worker/tests.stdout.bin",
+  "stderr_file": "reports/councilflow-hardening/worker/tests.stderr.bin",
+  "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "180c00b5a39ad63cfaec826bb8afb19dbb91c07203079074c4a265097c4bc227"
+}

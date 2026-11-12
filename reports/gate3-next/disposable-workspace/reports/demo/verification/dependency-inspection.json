@@ -1,0 +1,15 @@
+{
+  "source": "demo/receipt/receipt_calculator.py",
+  "sha256": "f8a542dd410cf658a44e23220f17603508d04bdc04f037e079755c43a84cba3d",
+  "imports": [
+    "argparse",
+    "dataclasses",
+    "decimal",
+    "re",
+    "typing"
+  ],
+  "all_imports_standard_library": true,
+  "forbidden_predecessor_imports": [],
+  "kind": "static inspection, distinct from observed offline execution",
+  "runtime_ignore_check": "git check-ignore returned reports/runtime/codex-home/auth.json and reports/runtime/schema/v2/SkillsListParams.json"
+}

@@ -1,0 +1,80 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CF-M013",
+  "message_type": "job.report",
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "attempt_id": "CF-A012",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/release_archive_cleanup"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CF-M012",
+  "payload": {
+    "status": "passed",
+    "summary": "Removed the three stale historical release reports from the installable ZIP allowlist, updated current release wording to mark retained history as checkout-only, and rebuilt the archive. The fresh package verifier passed; full suites remain assigned to the independent Tester.",
+    "acceptance_ids": [
+      "P3-C"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+      "kind": "candidate-archive"
+    },
+    "changed_files": [
+      "reports/councilflow-finalization/worker/build_package.py",
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "reports/councilflow-finalization/worker/package-manifest.json",
+      "reports/councilflow-finalization/worker/package-verification.json",
+      "reports/councilflow-finalization/worker/extracted-check-1.stdout.bin",
+      "reports/councilflow-finalization/worker/extracted-check-1.stderr.bin",
+      "reports/councilflow-finalization/worker/extracted-check-2.stdout.bin",
+      "reports/councilflow-finalization/worker/extracted-check-2.stderr.bin",
+      "reports/councilflow-finalization/worker/extracted-check-3.stdout.bin",
+      "reports/councilflow-finalization/worker/extracted-check-3.stderr.bin",
+      "reports/councilflow-finalization/worker/release-archive-job-report.json"
+    ],
+    "findings": [
+      "The new archive has 115 entries and SHA-256 903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f; reports/final.md, reports/requirements-traceability.md, and reports/gate3b-results.md are absent as entries.",
+      "The archive passed CRC, safe-path and extraction containment, required/forbidden path, checksum, and source-byte mapping checks. The extracted Codebase Memory integration suite and both root-bound operational examples exited 0.",
+      "RELEASE.md distinguishes this current candidate from retained historical Round 6/restoration records. Some included guidance files still reference historical report paths as context; the three report files themselves are not packaged.",
+      "Full six-suite verification was not run by this Worker and must be performed by the fresh independent Tester against this exact archive SHA."
+    ],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CF-FINAL-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CF-FINAL-PACKAGE-MANIFEST",
+      "path": "reports/councilflow-finalization/worker/package-manifest.json",
+      "sha256": "c9d15957340137bd0bd3fb9890f6ccb18c4344d32aaf4db70523022d56957e82",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CF-FINAL-ARCHIVE-CHECKSUM",
+      "path": "dist/council-flow.zip.sha256",
+      "sha256": "0d6374b1022fe129f979a7cccda294cb62ae0f727c31f3eaa67e717093d4457b",
+      "kind": "checksum"
+    },
+    {
+      "artifact_id": "CF-FINAL-RELEASE-GUIDE",
+      "path": "RELEASE.md",
+      "sha256": "d9de42af352578907b4b331df6bc1d8e40fbe84a8243337a72ce492de09c17b5",
+      "kind": "source"
+    }
+  ]
+}

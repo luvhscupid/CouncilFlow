@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M035",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A007",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker_a007"
+  },
+  "in_reply_to": "CFH-M034",
+  "payload": {
+    "objective": "Prepare fresh evidence-only A007 candidate after earlier ordered sequence validation failed, using unchanged P004 criteria.",
+    "scope": [
+      "reports/councilflow-hardening/worker-a007/"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Evidence-only fresh Worker attempt A007. Do not edit product/source files, frozen criteria, P004, or any prior attempt evidence.",
+      "Create cumulative candidate manifest and bounded source snapshot from exact current source bytes. Verify safe relative paths, archive CRC, extracted hashes and exact source bytes.",
+      "Create execution.json with manifest_sha256 equal to SHA-256 of final A007 candidate-manifest.json; candidate and snapshot identities/digests must agree.",
+      "Create root-valid UTF-8 Worker report with candidate_ref, echo exact A006 input candidate_ref, changed_files empty, and consistent evidence refs.",
+      "Preserve retrospective reconstruction provenance. Stop after terminal Worker report."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A006",
+      "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+      "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M034",
+      "path": "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+      "sha256": "6b40c9bcc202d166c3ed6af6f3da2ff5a82f9edcc5154bcaea80511d7634e552",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-A006-SEQUENCE-FAILURE",
+      "path": "reports/councilflow-hardening/tester-a006/sequence-attempt.json",
+      "sha256": "3518d91c32494eee757db35afff9145d6acbc46b103e2647a6aa341f8c9a4edc",
+      "kind": "verification-record"
+    }
+  ]
+}

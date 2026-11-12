@@ -1,0 +1,79 @@
+{
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "plan_file_sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+  "criteria": [
+    {
+      "id": "E1",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "6fdc3b3bb5ee557a24acacbd66eeea01eb0521b65f0f2f05ea81cc192a5169fe",
+      "source_sha256": "6fdc3b3bb5ee557a24acacbd66eeea01eb0521b65f0f2f05ea81cc192a5169fe"
+    },
+    {
+      "id": "E2",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "ff4f98bbe44064977675d5f9817bf5b253d8d427451b4a00e66f42148a06c051",
+      "source_sha256": "ff4f98bbe44064977675d5f9817bf5b253d8d427451b4a00e66f42148a06c051"
+    },
+    {
+      "id": "E3",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "389b76e368d5b0eb4b2a1b8859c0ffe698d66a36a61b37b1f413773bba39a3ac",
+      "source_sha256": "389b76e368d5b0eb4b2a1b8859c0ffe698d66a36a61b37b1f413773bba39a3ac"
+    },
+    {
+      "id": "E4",
+      "source": "C3 approved erratum",
+      "exact": true,
+      "planned_sha256": "3e0026ade145f6c84cf9e18c7d9f90b91ef70d53e71dc8ebadfa02b34446a95f",
+      "source_sha256": "3e0026ade145f6c84cf9e18c7d9f90b91ef70d53e71dc8ebadfa02b34446a95f"
+    },
+    {
+      "id": "E5",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "44eee87cf0edd900d4872efe8741db0b99687ccd4f21d0af2183011f51ba1073",
+      "source_sha256": "44eee87cf0edd900d4872efe8741db0b99687ccd4f21d0af2183011f51ba1073"
+    },
+    {
+      "id": "E6",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "2412e013cb4cf167d5ff0468133b7e7f74d3ce9a51cbe547ab812869e99bd795",
+      "source_sha256": "2412e013cb4cf167d5ff0468133b7e7f74d3ce9a51cbe547ab812869e99bd795"
+    },
+    {
+      "id": "E7",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "1835f2218a9f7e7ea901d66525b7c0c2ba271de9b7ebeec95eab1a8495d05258",
+      "source_sha256": "1835f2218a9f7e7ea901d66525b7c0c2ba271de9b7ebeec95eab1a8495d05258"
+    },
+    {
+      "id": "E8",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "294c4d7deb289a2145fbed065fa5b0deb9efa25cda858bb3d9e0f82c7d658bac",
+      "source_sha256": "294c4d7deb289a2145fbed065fa5b0deb9efa25cda858bb3d9e0f82c7d658bac"
+    },
+    {
+      "id": "E9",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "69065cfcbca8f81edff925d4a0533842c864e6f5b1485346720b560518e5bf3a",
+      "source_sha256": "69065cfcbca8f81edff925d4a0533842c864e6f5b1485346720b560518e5bf3a"
+    },
+    {
+      "id": "E10",
+      "source": "frozen Gate3",
+      "exact": true,
+      "planned_sha256": "4c6bf7d1a5b0e9522a08228a4d88354f05e66ac4bb46bc623845086d61ed1c6e",
+      "source_sha256": "4c6bf7d1a5b0e9522a08228a4d88354f05e66ac4bb46bc623845086d61ed1c6e"
+    }
+  ],
+  "all_exact": true,
+  "caveat": "Text fidelity only; does not establish any live Gate3 outcome."
+}

@@ -1,0 +1,14 @@
+{
+  "candidate_archive_sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+  "expected_archive_sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+  "candidate_hash_matches": true,
+  "sibling_checksum": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f  council-flow.zip",
+  "sibling_checksum_matches": true,
+  "entry_count": 115,
+  "crc": null,
+  "unique_entries": true,
+  "retired_path_name_hits": [],
+  "retired_content_hits": [],
+  "generated_reports_absent": true,
+  "excluded_generated_paths_sample": []
+}

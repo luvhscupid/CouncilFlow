@@ -1,0 +1,16 @@
+{
+  "input_candidate_sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+  "candidate_manifest_sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+  "execution_manifest_sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+  "manifest_hash_consistent": true,
+  "snapshot_sha256": "55886bf887fc58d1ab948aee234d92d5e7dcf8be6a86cf4b651fa0a83de2fd16",
+  "snapshot_crc_valid": true,
+  "snapshot_safe_paths": true,
+  "snapshot_hashes_match": true,
+  "package_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "checksum_file_sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+  "sibling_checksum_matches": true,
+  "package_entry_count": 118,
+  "candidate_entries_match_worktree": true,
+  "changed_files": []
+}

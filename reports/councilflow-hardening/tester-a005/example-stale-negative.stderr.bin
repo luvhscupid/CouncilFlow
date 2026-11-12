@@ -1,0 +1,1 @@
+{"valid": false, "error": "artifact_hash", "field": "payload.candidate_ref", "message": "artifact_hash at payload.candidate_ref: docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt"}

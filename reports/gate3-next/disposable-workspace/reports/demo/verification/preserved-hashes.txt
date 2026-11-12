@@ -1,0 +1,3 @@
+88cb907ee1371763744fa7a14ad00830e1a383742baa2273b1c8814a1bd48891  reports/contracts/demo.json
+a3461d8d2910f6a235e590cef4fd624952cc7fd7c20c882b3d07593baf36e9ab  demo/starter/receipt_calculator.py
+4ac705d92aa070397222259fcef0d9838f7c9d173f0e54675d5686558ed183a8  demo/starter/test_receipt_calculator.py

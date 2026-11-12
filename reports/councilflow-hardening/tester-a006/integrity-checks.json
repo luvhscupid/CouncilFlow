@@ -1,0 +1,289 @@
+{
+  "candidate_manifest_sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+  "assigned_candidate_sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+  "worker_report_candidate_sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+  "manifest_digest_matches_assignment": true,
+  "execution_manifest_sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+  "execution_digest_matches_manifest": true,
+  "execution_candidate_id_matches": true,
+  "snapshot_expected_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+  "snapshot_actual_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+  "snapshot_digest_matches": true,
+  "snapshot_zip_crc_error": null,
+  "snapshot_paths_safe": true,
+  "snapshot_excluded_metadata_present": [],
+  "snapshot_entries_match_manifest_paths": true,
+  "snapshot_file_hashes_match": true,
+  "source_manifest_entries": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "expected_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "actual_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "expected_size": 13040,
+      "actual_size": 13040,
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "expected_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "actual_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "expected_size": 55872,
+      "actual_size": 55872,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "expected_size": 4125,
+      "actual_size": 4125,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "expected_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "actual_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "expected_size": 1981,
+      "actual_size": 1981,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "expected_size": 681,
+      "actual_size": 681,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "expected_size": 1024,
+      "actual_size": 1024,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "expected_size": 91,
+      "actual_size": 91,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "expected_size": 13135,
+      "actual_size": 13135,
+      "matches": true
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "expected_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "actual_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "expected_size": 49410,
+      "actual_size": 49410,
+      "matches": true
+    }
+  ],
+  "source_manifest_all_match": true,
+  "full_plan_checksums": [
+    {
+      "path": "00-SCOPE-AND-STATUS.md",
+      "expected": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "actual": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "matches": true
+    },
+    {
+      "path": "01-PRODUCT-AND-ROLES.md",
+      "expected": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "actual": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "matches": true
+    },
+    {
+      "path": "02-PROTOCOL-AND-POLICY.md",
+      "expected": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "matches": true
+    },
+    {
+      "path": "03-DELIVERY-AND-ACCEPTANCE.md",
+      "expected": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "actual": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "matches": true
+    },
+    {
+      "path": "04-SECURITY-AND-LIMITS.md",
+      "expected": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "actual": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "matches": true
+    },
+    {
+      "path": "05-OPERATIONS-AND-HANDOFF.md",
+      "expected": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "actual": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "expected": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "actual": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "matches": true
+    },
+    {
+      "path": "SOURCE-MANIFEST.md",
+      "expected": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "actual": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "matches": true
+    },
+    {
+      "path": "examples/events.jsonl",
+      "expected": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "actual": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "matches": true
+    },
+    {
+      "path": "examples/job.assign.json",
+      "expected": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "matches": true
+    },
+    {
+      "path": "examples/job.report.json",
+      "expected": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "matches": true
+    },
+    {
+      "path": "examples/role-policy.yaml",
+      "expected": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "actual": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "matches": true
+    },
+    {
+      "path": "prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "matches": true
+    },
+    {
+      "path": "source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+      "expected": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "actual": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "matches": true
+    },
+    {
+      "path": "source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+      "expected": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "actual": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+      "expected": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "actual": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Council-R4-Contract-v0.2.txt",
+      "expected": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "actual": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Council-R6-Architecture-v0.3.txt",
+      "expected": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "actual": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+      "expected": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "actual": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "matches": true
+    },
+    {
+      "path": "examples/synthetic-candidate.txt",
+      "expected": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "matches": true
+    }
+  ],
+  "full_plan_checksums_all_match": true,
+  "criteria": [
+    {
+      "id": "E1",
+      "source": "frozen Gate3",
+      "planned_sha256": "6fdc3b3bb5ee557a24acacbd66eeea01eb0521b65f0f2f05ea81cc192a5169fe",
+      "source_sha256": "6fdc3b3bb5ee557a24acacbd66eeea01eb0521b65f0f2f05ea81cc192a5169fe",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E2",
+      "source": "frozen Gate3",
+      "planned_sha256": "ff4f98bbe44064977675d5f9817bf5b253d8d427451b4a00e66f42148a06c051",
+      "source_sha256": "ff4f98bbe44064977675d5f9817bf5b253d8d427451b4a00e66f42148a06c051",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E3",
+      "source": "frozen Gate3",
+      "planned_sha256": "389b76e368d5b0eb4b2a1b8859c0ffe698d66a36a61b37b1f413773bba39a3ac",
+      "source_sha256": "389b76e368d5b0eb4b2a1b8859c0ffe698d66a36a61b37b1f413773bba39a3ac",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E4",
+      "source": "C3 erratum",
+      "planned_sha256": "3e0026ade145f6c84cf9e18c7d9f90b91ef70d53e71dc8ebadfa02b34446a95f",
+      "source_sha256": "3e0026ade145f6c84cf9e18c7d9f90b91ef70d53e71dc8ebadfa02b34446a95f",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E5",
+      "source": "frozen Gate3",
+      "planned_sha256": "44eee87cf0edd900d4872efe8741db0b99687ccd4f21d0af2183011f51ba1073",
+      "source_sha256": "44eee87cf0edd900d4872efe8741db0b99687ccd4f21d0af2183011f51ba1073",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E6",
+      "source": "frozen Gate3",
+      "planned_sha256": "2412e013cb4cf167d5ff0468133b7e7f74d3ce9a51cbe547ab812869e99bd795",
+      "source_sha256": "2412e013cb4cf167d5ff0468133b7e7f74d3ce9a51cbe547ab812869e99bd795",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E7",
+      "source": "frozen Gate3",
+      "planned_sha256": "1835f2218a9f7e7ea901d66525b7c0c2ba271de9b7ebeec95eab1a8495d05258",
+      "source_sha256": "1835f2218a9f7e7ea901d66525b7c0c2ba271de9b7ebeec95eab1a8495d05258",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E8",
+      "source": "frozen Gate3",
+      "planned_sha256": "294c4d7deb289a2145fbed065fa5b0deb9efa25cda858bb3d9e0f82c7d658bac",
+      "source_sha256": "294c4d7deb289a2145fbed065fa5b0deb9efa25cda858bb3d9e0f82c7d658bac",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E9",
+      "source": "frozen Gate3",
+      "planned_sha256": "69065cfcbca8f81edff925d4a0533842c864e6f5b1485346720b560518e5bf3a",
+      "source_sha256": "69065cfcbca8f81edff925d4a0533842c864e6f5b1485346720b560518e5bf3a",
+      "planned_matches_source": true
+    },
+    {
+      "id": "E10",
+      "source": "frozen Gate3",
+      "planned_sha256": "4c6bf7d1a5b0e9522a08228a4d88354f05e66ac4bb46bc623845086d61ed1c6e",
+      "source_sha256": "4c6bf7d1a5b0e9522a08228a4d88354f05e66ac4bb46bc623845086d61ed1c6e",
+      "planned_matches_source": true
+    }
+  ],
+  "criteria_all_exact": true,
+  "historical_restoration_note": "A004 recorded old restoration suite failures; A005 reviewer found a missing nested evidence reference in its Tester report. Neither record was modified."
+}

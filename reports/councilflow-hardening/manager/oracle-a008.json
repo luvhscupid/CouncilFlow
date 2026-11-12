@@ -1,0 +1,13 @@
+{
+  "strategy": "Independently verify exact A008 release candidate and current package. Check RELEASE.md clearly distinguishes current checkout from historical Round 6 claims. Verify candidate manifest binds RELEASE.md, dist archive and SHA file. For the 118-entry ZIP, verify SHA-256 matches sibling checksum, CRC, safe relative paths, exact bytes against worktree, required skill/all four agent TOMLs/README/RELEASE/demo/tests/frozen docs/Full Plan/selected historical reports, and excludes .git, caches, pyc, credentials, runtime/temp, archive itself, current hardening packets, unrelated projects. Extract into tester-a008/relocated and independently run six suites there (tests, demo/receipt, demo/csv-summary, demo/structured-flow, reports/demo/verification, reports/csv-summary/verification), plus both root-bound example commands and stale-digest negative. Verify A008 execution manifest hash, source snapshot CRC/safe paths/hashes. Validate ordered context M034-M045 with actual actor bindings; preserve A005/A006 failed chains as historical. Gate3 E1-E10 live remains NOT RUN. Record exact executable path/args/cwd/candidate/input refs/exit and stdout CRLF-to-LF-only hash for suitable deterministic command; include command evidence ref at top-level. No edits.",
+  "commands": [
+    "python -m unittest discover -s tests -v",
+    "python -m unittest discover -s demo/receipt -v",
+    "python -m unittest discover -s demo/csv-summary -v",
+    "python -m unittest discover -s demo/structured-flow -v",
+    "python -m unittest discover -s reports/demo/verification -v",
+    "python -m unittest discover -s reports/csv-summary/verification -v",
+    "python .agents/skills/council-flow/scripts/contracts.py message docs/CouncilFlow-Full-Plan/examples/job.assign.json --root .",
+    "python .agents/skills/council-flow/scripts/contracts.py message docs/CouncilFlow-Full-Plan/examples/job.report.json --root ."
+  ]
+}

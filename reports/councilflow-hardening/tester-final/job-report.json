@@ -1,0 +1,215 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M011",
+  "message_type": "job.report",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A002",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/tester_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M010",
+  "payload": {
+    "status": "failed",
+    "summary": "The 82-test suite and plan/rework sequence passed, but root-bound job.report example validation failed; the A001 input candidate’s changed test file is not preserved at its recorded hash; and the Planner omitted/altered portions of frozen E4/E7/E9 text. The Gate3 experiment was not run.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "candidate_ref": {
+      "sha256": "c38d3df65764ce41955f94909e88342eb6dcdcbe064871d3082d329423a9b43d",
+      "artifact_id": "CFH-CANDIDATE-A002",
+      "path": "reports/councilflow-hardening/worker-rework/candidate-manifest.json",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "sha256": "52e8e72a64ef65f725a1e210eaea764bffc445a5f5040581a923506ce64ca37d",
+      "artifact_id": "CFH-ORACLE-FINAL",
+      "path": "reports/councilflow-hardening/manager/oracle-final.json",
+      "kind": "verification-strategy"
+    },
+    "findings": [
+      "Command 3 (job.report example with --root .) exited 1: its candidate_ref uses a zero digest for the real receipt_calculator.py path.",
+      "Candidate A002’s own changed files match its manifest, but the A001 input manifest’s tests/test_contracts.py hash no longer matches the worktree after A002 edited that file; no immutable A001 source snapshot was found in assigned artifacts.",
+      "Criteria comparison against frozen Gate3 v0.2 plus approved C3 found E4 omits C3 final safeguards, E7 uses different AUTHORIZATION wording, and E9 omits the optional-inspection sentence. Exact matching rows and hashes are in criteria-check.json.",
+      "The Owner’s E10 frozen fixture for a qualifying Gate3 experiment was not supplied for this run; prior reports/gate3b/frozen-task.txt belongs to an earlier separate task and is not treated as this mission’s fixture.",
+      "Symlink regression was skipped on this Windows host (WinError 1314); junction and TOCTOU execution were not performed. This run does not establish OS containment or native Gate3 activation."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "Full repository regression suite",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "Plan, failed A001 report, rework decision, and A002 report sequence",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "job.assign example validates with root-bound hashes",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "job.report example validates with root-bound hashes",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "A001 input candidate source hashes remain available and exact",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "Planner E1-E10 criteria match frozen spec/C3 wording exactly",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-CRITERIA-CHECK",
+          "path": "reports/councilflow-hardening/tester-final/criteria-check.json",
+          "sha256": "8a3b77640be45555d6dc2d5a9f72ffc44331dc207708bd60409ea2999e870442",
+          "kind": "comparison-record"
+        }
+      },
+      {
+        "name": "Normative frozen Gate3 and C3 bytes unchanged from baseline",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "Full Plan bundle checksums",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "Policy validator",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "CFH-EXAMPLE-JOB-ASSIGN",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "sha256": "c38d3df65764ce41955f94909e88342eb6dcdcbe064871d3082d329423a9b43d",
+          "artifact_id": "CFH-CANDIDATE-A002",
+          "path": "reports/councilflow-hardening/worker-rework/candidate-manifest.json",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "CFH-CONTRACTS-PY",
+            "path": ".agents/skills/council-flow/scripts/contracts.py",
+            "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CFH-JOB-ASSIGN-EXAMPLE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+            "sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+            "kind": "json-example"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "acceptance_id": "HF-03",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-final/execution.json",
+          "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+          "kind": "execution-record"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-TESTER-FINAL-EXECUTION",
+      "path": "reports/councilflow-hardening/tester-final/execution.json",
+      "sha256": "2d24e07ff69aac6fb6814d54e36592257851f9af268ee21989557be035a4c7f6",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-CRITERIA-CHECK",
+      "path": "reports/councilflow-hardening/tester-final/criteria-check.json",
+      "sha256": "8a3b77640be45555d6dc2d5a9f72ffc44331dc207708bd60409ea2999e870442",
+      "kind": "comparison-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-PLAN-FAILURE",
+      "path": "reports/councilflow-hardening/tester-plan/execution.json",
+      "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-A001-CANDIDATE",
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A002-CANDIDATE",
+      "path": "reports/councilflow-hardening/worker-rework/candidate-manifest.json",
+      "sha256": "c38d3df65764ce41955f94909e88342eb6dcdcbe064871d3082d329423a9b43d",
+      "kind": "candidate-manifest"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "sequence",
+    "reports/councilflow-hardening/planner-correction-p004/plan-publish.json",
+    "reports/councilflow-hardening/manager/worker-final-assign.json",
+    "reports/councilflow-hardening/worker-final/job-report.json",
+    "reports/councilflow-hardening/manager/tester-final-assign.json",
+    "reports/councilflow-hardening/tester-verifier/job-report.json",
+    "reports/councilflow-hardening/manager/rework-decision-a005.json",
+    "reports/councilflow-hardening/manager/worker-a005-assign.json",
+    "reports/councilflow-hardening/worker-a005/job-report.json",
+    "reports/councilflow-hardening/manager/tester-a005-assign.json",
+    "reports/councilflow-hardening/tester-a005/job-report.json",
+    "reports/councilflow-hardening/manager/reviewer-a005-assign.json",
+    "reports/councilflow-hardening/reviewer-a005/job-report.json",
+    "--root",
+    "."
+  ],
+  "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "f54769dc86ec9f0953c6bad3e0bd8815747d766eb6c9cb42efa48be17c2c6cba",
+  "stdout_path": "reports/councilflow-hardening/reviewer-a005/ordered-sequence.stdout.bin",
+  "stderr_path": "reports/councilflow-hardening/reviewer-a005/ordered-sequence.stderr.bin",
+  "result": ""
+}

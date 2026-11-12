@@ -1,0 +1,159 @@
+# ACP v0.2.1 readiness assessment
+
+**Status: not ready to implement.** The specification sets strong authority and evidence principles, but leaves several interfaces and operational rules open. Slice 0 can be scoped without resolving real-provider or execution-isolation questions, provided it remains strictly simulated: fake agents produce data, and no untrusted code runs inside the Supervisor.
+
+## Key gaps and design decisions
+
+- **State and transitions:** Process, output, and disposition states are required but not enumerated. Define allowed transitions and make each transition compare-and-swap against a job’s state version and execution fence.
+- **Replay and retries:** Idempotency is required, but its scope and duplicate behavior are unspecified. Bind an idempotency key to a job, attempt, and operation; persist each accepted request and result. Replays should return the recorded result without repeating the operation. Count infrastructure retries and crash recoveries separately; enforce the approved limits of **3 infrastructure retries** and **2 crash recoveries per task**.
+- **Authorization:** Define a capability vocabulary and an allowlist per role and task. Validate every requested operation at dispatch and result intake. Denials should be recorded as evidence and must not mutate authoritative state.
+- **Evidence:** Specify required fields, artifact references, and provenance for `executed`, `observed`, `inspected`, `simulated`, and `asserted`. A claim from an agent must not be represented as Supervisor-observed execution. Slice 0 can simulate observations, labeled as simulated.
+- **Promotion:** Define candidate identity, accepted-base comparison, required gates, and atomic promotion behavior. Promotion should fail on a stale base, missing or hash-mismatched artifact, failed mandatory gate, or missing Owner decision for an `owner_decision` criterion.
+- **Five-role routing:** Slice 1 requires actual adapters, but none are identified. Adapter capability, identity, session restoration, request/response limits, and failure behavior need decisions before that slice.
+- **Security compatibility:** The Council Security Annex v1.0-A is unavailable. Compatibility remains **unverified**; this plan does not infer or replace its requirements. Crash-safe SQLite transitions do not establish process containment.
+
+## Minimum Slice 0 architecture
+
+Use a single Python 3.12 Supervisor process with SQLite as canonical state, a deterministic fake-agent interface, and a separate test harness. Keep dispatch, policy decisions, artifact handling, and verification behind explicit interfaces so Slice 1 can add adapters without changing the authority model.
+
+```text
+src/acp/
+  protocol/       JSON schemas, validation, versioning
+  supervisor/     dispatch, authorization, state transitions, recovery
+  store/          SQLite schema, transactions, migrations
+  evidence/       evidence records, provenance, gate evaluation
+  artifacts/      candidate sealing, hashing, promotion
+  skills/         catalog, approval and compatibility validation
+  agents/fake/    deterministic scripted agents for Slice 0
+  runner/         interface only; no untrusted execution in Slice 0
+tests/
+  protocol/
+  lifecycle/
+  security/
+  evidence/
+  artifacts/
+  recovery/
+```
+
+### Core database records
+
+- `jobs`: task ID, objective, approved scope, criteria, base candidate, state version, active fence, retry and recovery counts.
+- `attempts`: attempt ID, job ID, fence, idempotency key, role, skill manifest references, process state, output state, disposition, timestamps.
+- `messages`: validated JSON request/result, schema version, sender role, attempt/fence, idempotency key, based-on version, outcome.
+- `events`: append-only audit records for accepted transitions, dispatches, denials, evidence, recovery, and promotion.
+- `skills`: identity, version, content hash, source, approval status, capabilities, compatibility metadata.
+- `artifacts`: candidate ID, content hash, immutable location/reference, expected base, seal status.
+- `criteria` and `gates`: criterion policy (`required`, `advisory`, `owner_decision`), evidence requirements, result, and evidence references.
+- `evidence`: type, source, candidate/attempt IDs, claim or observed fact, artifact references, and verification status.
+- `owner_decisions`: decision, criterion/candidate binding, and recorded authority.
+
+Use transactions for state transitions and promotion. Record event and authoritative state update together. Events are an audit trail; do not assume they alone can reconstruct all state.
+
+### JSON message interface
+
+Every message should be versioned and bounded. Suggested common envelope:
+
+```json
+{
+  "protocol": "ACP",
+  "version": "0.2.1",
+  "message_id": "uuid",
+  "job_id": "uuid",
+  "attempt_id": "uuid",
+  "execution_fence": 7,
+  "idempotency_key": "string",
+  "sender_role": "Planner",
+  "message_type": "intent",
+  "based_on_version": 12,
+  "payload": {},
+  "evidence_refs": []
+}
+```
+
+Role payloads should be separately schema-validated:
+
+- **Planner intent:** proposed requirements, task breakdown, test anchors, completion criteria, and scope-change flags.
+- **Manager intent:** role assignment, selected approved skill versions, permitted operations, and verification schedule.
+- **Worker result:** structured output/artifact references and claims; no authoritative state mutation.
+- **Tester result:** declarative checks, evidence references, and pass/fail/inconclusive results.
+- **Reviewer result:** advisory rating, interaction trace references, and findings.
+- **Owner decision:** explicit approval bound to a candidate and criterion.
+
+Reject unknown protocol versions, malformed messages, unauthorized operations, stale `based_on_version` values, and fence mismatches. Treat all agent payloads as untrusted data.
+
+### Job lifecycle and evidence
+
+A job proceeds through **created → planned → authorized → dispatched → awaiting results → verifying → candidate sealed → promoted or rejected**. Retry, recovery, cancellation, and quarantine should be explicit transitions, not implicit state resets.
+
+Track each attempt’s process, output, and disposition independently. An unresolved process liveness state leads to quarantine; never adopt its output or reuse its workspace without a defined safe recovery outcome.
+
+Evidence records should capture provenance and whether the fact was executed, observed, inspected, simulated, or asserted. Acceptance applies the spec’s gate policies:
+
+- `required`: all mandatory checks or scenarios must pass.
+- `advisory`: informs the decision, but cannot block promotion alone.
+- `owner_decision`: requires an Owner decision bound to that candidate.
+- Any mandatory product-caused failure blocks promotion; an inconclusive result requires more evidence or an authorized Owner decision.
+
+Reviewer ratings remain advisory. Tester-authored exploratory checks do not replace required checks.
+
+### Skill-aware delegation
+
+Maintain a catalog of skills with identity, version, content hash, source, approval, capabilities, and compatibility. The Manager may select only approved, compatible entries. Before dispatch, the Supervisor resolves the exact pinned content and verifies its hash and approval status. The packet includes that manifest and the selected content. Record the skill set on each attempt.
+
+A skill’s declared capabilities are descriptive; they cannot grant permissions. The Supervisor independently enforces each task’s filesystem, network, command, and authorization allowlists. Slice 0 tests selection and validation with fixtures; Slice 1 tests instruction delivery. Neither establishes coding effectiveness.
+
+## Slice 0 objective acceptance tests
+
+1. **Message validation:** Accept valid versioned messages; reject malformed, unsupported-version, over-limit, or role-inappropriate messages.
+2. **Replay/idempotency:** Submit the same operation repeatedly; assert one state mutation and the same recorded result. Reject reuse of a key for a different payload.
+3. **Stale fencing:** Submit results from an older fence or `based_on_version`; assert rejection and unchanged accepted state.
+4. **Crash recovery:** Inject crashes at each defined transition boundary. Assert SQLite consistency, correct quarantine where liveness is unresolved, no duplicate promotion, and no more than two recoveries per task.
+5. **Infrastructure retry limits:** Inject retryable infrastructure failures; assert three retries are allowed and the next is refused and recorded.
+6. **Authorization:** Attempt unapproved filesystem, network, command, skill, and scope operations; assert refusal, audit record, and no state or artifact change.
+7. **Evidence gates:** Verify required failures block; advisory failures alone do not; `owner_decision` requires a candidate-bound Owner record; inconclusive mandatory evidence does not pass.
+8. **Evidence provenance:** Ensure simulated or asserted claims cannot be stored as Supervisor-observed execution.
+9. **Artifact integrity:** Alter, remove, or mismatch a sealed artifact; assert dependent verification and promotion are blocked.
+10. **Promotion conflict:** Race two candidates based on the same accepted base; assert serialized promotion and rejection of the stale candidate.
+11. **Skill validation:** Reject unapproved, incompatible, or hash-mismatched skills; accept and record only the approved pinned version.
+12. **Replay after restart:** Restart the Supervisor against the same database and replay a completed request; assert the recorded result is returned without repeating effects.
+
+These tests establish behavior of the deterministic protocol implementation. They do **not** prove real AI connectivity, autonomous coding quality, process containment, or user satisfaction.
+
+## Slice 1 transition
+
+After Slice 0 passes and adapter choices are approved, add restricted adapters for Planner, Manager, Worker, Tester, and Reviewer. Route all messages through the Supervisor; issue fresh, role-scoped packets and record session and attempt identifiers. The Worker remains **no-tool** and returns text or structured data only. The Tester may author declarative checks for a separate bounded interpreter; the Reviewer receives a restricted interface and returns traces and findings. Test delivery, restoration, induced failures, rework, skill-manifest delivery, and candidate-specific evidence. Report connectivity and protocol results separately from product quality.
+
+Do not introduce a tool-enabled coding Worker in Slice 1. Slice 2 and real execution require separate authorization and demonstrated isolation controls.
+
+## Prioritized implementation sequence
+
+1. **Protocol and policy baseline:** Freeze message schemas, state transitions, operation capabilities, and evidence fields.  
+   **Accept when:** schemas and transition tables are reviewable and internally consistent; no security requirement depends on an unspecified default.
+
+2. **Slice 0 state and scripted flow:** Implement SQLite persistence, fake agents, fencing, idempotency, retry accounting, and audit events.  
+   **Accept when:** lifecycle, replay, stale-fence, retry-limit, and recovery tests pass.
+
+3. **Evidence, skills, and promotion:** Add evidence provenance, gate evaluation, skill pinning, artifact sealing, and serialized promotion.  
+   **Accept when:** all evidence, authorization, integrity, and promotion tests pass.
+
+4. **Slice 0 readiness review:** Review failures, limitations, and claims before authorizing Slice 1.  
+   **Accept when:** every mandatory Slice 0 test passes and the report clearly labels simulated evidence and remaining security gaps.
+
+5. **Slice 1 adapter design and benchmark:** Select actual adapters and define supported capabilities and limits before connection work.  
+   **Accept when:** all five roles complete the specified communication flow through restricted adapters, including an induced failure and fresh Worker rework, with evidence and limitations reported.
+
+## Unresolved blockers
+
+- Implementation target environment and persistence/deployment assumptions.
+- Concrete model adapters and their actual session, tool, and data-handling capabilities.
+- Executable resource limits and how time/concurrency/usage will be measured.
+- Exact operation and capability allowlists, including artifact storage boundaries.
+- Independent verification-runner isolation design for later slices.
+- Council Security Annex v1.0-A and therefore exact compatibility criteria.
+- Owner approval of the implementation milestone and any later real AI connectivity or autonomous execution.
+
+## Proposed first implementation milestone
+
+**Slice 0 only:** implement the deterministic Python 3.12 + SQLite Supervisor core, JSON validation, scripted fake agents, skill-manifest validation, lifecycle/fencing/idempotency, evidence gates, artifact sealing and promotion, and the acceptance tests listed above. No real AI adapters, untrusted code execution, security probes, dependency installation, or benchmark claims are included in this milestone.
+
+**Please authorize this exact Slice 0 milestone before I make any changes.**

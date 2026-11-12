@@ -1,0 +1,82 @@
+[
+  {
+    "id": "E1",
+    "exact_text_match": true,
+    "actual_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631",
+    "expected_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631",
+    "actual": "E1 — Native discovery and invocation\nRecord separately (a) listing/picker visibility and (b) direct `$council-flow` selection. **PASS requires host-observed successful native invocation.** Missing picker entry alone does not invalidate working direct invocation.",
+    "expected": "E1 — Native discovery and invocation\nRecord separately (a) listing/picker visibility and (b) direct `$council-flow` selection. **PASS requires host-observed successful native invocation.** Missing picker entry alone does not invalidate working direct invocation."
+  },
+  {
+    "id": "E2",
+    "exact_text_match": true,
+    "actual_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20",
+    "expected_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20",
+    "actual": "E2 — Native delegation trigger\n**PASS requires host-observed delegation attributable to the activated skill** without an additional explicit spawning instruction. If invocation succeeds but host evidence positively shows non-delegation, **FAIL (WORKFLOW_BEHAVIOR)**. If causation is not observable, **UNVERIFIED**. Alternative invocation wording requires a subsequent Owner decision, not an instruction added during this experiment.",
+    "expected": "E2 — Native delegation trigger\n**PASS requires host-observed delegation attributable to the activated skill** without an additional explicit spawning instruction. If invocation succeeds but host evidence positively shows non-delegation, **FAIL (WORKFLOW_BEHAVIOR)**. If causation is not observable, **UNVERIFIED**. Alternative invocation wording requires a subsequent Owner decision, not an instruction added during this experiment."
+  },
+  {
+    "id": "E3",
+    "exact_text_match": true,
+    "actual_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d",
+    "expected_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d",
+    "actual": "E3 — Actual spawns\nRecord host-observed subagent count, role/agent_type, and thread labels/IDs, without inventing identifiers. The required distinct-role observation is assessed together with E6.",
+    "expected": "E3 — Actual spawns\nRecord host-observed subagent count, role/agent_type, and thread labels/IDs, without inventing identifiers. The required distinct-role observation is assessed together with E6."
+  },
+  {
+    "id": "E4",
+    "exact_text_match": false,
+    "actual_sha256": "050adba0ded6532a1dd4824213ca1fc713ce303951aff5058bcfc79003633954",
+    "expected_sha256": "5c916e2822c6a5f69db6266d4ab6e914234c89f2eae3698b877cd2a4f5787b1a",
+    "actual": "E4 — Custom-agent loading\n**PASS:** Host-observed configuration identity or agent type confirms that the intended `council-*` custom-agent definitions were loaded for their corresponding role sessions.\n\n**FAIL:** Host evidence affirmatively demonstrates that a different or default agent configuration was used instead.\n\n**UNVERIFIED:** The host exposes only cosmetic thread labels or insufficient information to identify the actual loaded custom-agent definition.\n\nThis check makes no claim about model or sandbox settings that the TOML files do not define. A displayed role name alone does not prove that the corresponding TOML file was loaded.",
+    "expected": "E4 — Custom-agent loading\n**PASS:** Host-observed configuration identity or agent type confirms that the\nintended `council-*` custom-agent definitions were loaded for their corresponding\nrole sessions.\n\n**FAIL:** Host evidence affirmatively demonstrates that a different or default\nagent configuration was used instead.\n\n**UNVERIFIED:** The host exposes only cosmetic thread labels or insufficient\ninformation to identify the actual loaded custom-agent definition.\n\nThis check makes no claim about model or sandbox settings that the TOML files do\nnot define. A displayed role name alone does not prove that the corresponding\nTOML file was loaded. Do not hardcode unsupported model or sandbox settings to\nmake E4 pass. Do not alter agent settings beyond the approved Reviewer and Tester\ninstruction corrections."
+  },
+  {
+    "id": "E5",
+    "exact_text_match": true,
+    "actual_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815",
+    "expected_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815",
+    "actual": "E5 — Independent Tester command\nHost evidence shows the Tester executed its commands **in its own Tester thread**, not merely a Worker report copied to Tester.",
+    "expected": "E5 — Independent Tester command\nHost evidence shows the Tester executed its commands **in its own Tester thread**, not merely a Worker report copied to Tester."
+  },
+  {
+    "id": "E6",
+    "exact_text_match": true,
+    "actual_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6",
+    "expected_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6",
+    "actual": "E6 — Distinct role threads\nHost evidence shows Worker, Tester and Reviewer as **three distinct threads**. A single model adopting three role names is insufficient.",
+    "expected": "E6 — Distinct role threads\nHost evidence shows Worker, Tester and Reviewer as **three distinct threads**. A single model adopting three role names is insufficient."
+  },
+  {
+    "id": "E7",
+    "exact_text_match": false,
+    "actual_sha256": "e84bef0b1b22a08bac2afd95d1295e4d69ecedfd3b7850cf9d563f2e51ba37be",
+    "expected_sha256": "5931c2993ccecd51098bd693868a219ad2fb5e9c542faa29145f87407659d422",
+    "actual": "E7 — Zero Owner courier work\nCount courier interventions after initial submission. **PASS requires exactly zero.** Courier work includes the Owner moving any message/output/file content from one agent to another, retyping instructions already available to agents, or being asked to carry data that another agent could hand over. Legitimate host permission approvals and explicit decisions requested by Planner or Manager are allowed and must be logged separately as AUTHORIZATION, not courier interventions. Evidence: OWNER-LOG and available interaction records.",
+    "expected": "E7 — Zero Owner courier work\nCount courier interventions after initial submission. **PASS requires exactly zero.** Courier work includes the Owner moving any message/output/file content from one agent to another, retyping instructions already available to agents, or being asked to carry data that another agent could hand over. Legitimate host permission prompts and explicit Planner/Manager Owner decisions are logged separately as **AUTHORIZATION**, not courier work. Evidence: OWNER-LOG and available interaction records."
+  },
+  {
+    "id": "E8",
+    "exact_text_match": true,
+    "actual_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b",
+    "expected_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b",
+    "actual": "E8 — Reviewer verification rerun\nThe Tester identifies which of its commands are deterministic. Reviewer independently re-executes **one** deterministic Tester command and compares its **exit code** and **SHA-256 of normalized stdout** to the Tester-recorded result. Normalization must be documented, identical on both sides, and must not erase meaningful differences. Evidence must contain recorded commands, exit codes, normalized output hashes and the rerun comparison. No comparable deterministic command = `NOT_COMPARABLE` and E8 does **not** PASS.",
+    "expected": "E8 — Reviewer verification rerun\nThe Tester identifies which of its commands are deterministic. Reviewer independently re-executes **one** deterministic Tester command and compares its **exit code** and **SHA-256 of normalized stdout** to the Tester-recorded result. Normalization must be documented, identical on both sides, and must not erase meaningful differences. Evidence must contain recorded commands, exit codes, normalized output hashes and the rerun comparison. No comparable deterministic command = `NOT_COMPARABLE` and E8 does **not** PASS."
+  },
+  {
+    "id": "E9",
+    "exact_text_match": false,
+    "actual_sha256": "833c0b57b982e50851790e4e64ad834a2e7f8dab093d939b2e630aaef0c01818",
+    "expected_sha256": "4a2dab52dc1adbdfcb35a2a7762378bf44202614bc0d752f5f66e98b8fdf84ab",
+    "actual": "E9 — Plain-English Owner interface\nRoutine **agent-generated** Owner-directed communication comes only from Planner or Manager and uses plain English. Owner is not required to read, interpret, copy or relay raw inter-agent messages. Host-generated permission dialogs and genuine explicit Owner decisions are separately permitted/logged.",
+    "expected": "E9 — Plain-English Owner interface\nRoutine **agent-generated** Owner-directed communication comes only from Planner or Manager and uses plain English. Owner is not required to read, interpret, copy or relay raw inter-agent messages. Optional inspection of agent records does not violate E9. Host-generated permission dialogs and genuine explicit Owner decisions are separately permitted/logged."
+  },
+  {
+    "id": "E10",
+    "exact_text_match": true,
+    "actual_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50",
+    "expected_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50",
+    "actual": "E10 — Frozen criteria fidelity\nPlanner reproduces the Owner's saved mandatory acceptance criteria **verbatim**. PASS requires a direct **DIFF** or equivalent byte-for-byte/line-preserving comparison against the saved fixture. Separately identifiable metadata such as IDs and traceability references may be added; criteria may not be paraphrased, omitted, weakened, or silently augmented.",
+    "expected": "E10 — Frozen criteria fidelity\nPlanner reproduces the Owner's saved mandatory acceptance criteria **verbatim**. PASS requires a direct **DIFF** or equivalent byte-for-byte/line-preserving comparison against the saved fixture. Separately identifiable metadata such as IDs and traceability references may be added; criteria may not be paraphrased, omitted, weakened, or silently augmented."
+  }
+]

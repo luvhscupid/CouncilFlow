@@ -1,0 +1,98 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M043",
+  "message_type": "job.report",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A008",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker_a008"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M042",
+  "payload": {
+    "status": "passed",
+    "summary": "Updated release guidance for the current checkout and built the canonical 118-entry dist/council-flow.zip with a sibling SHA-256 file. Archive CRC, safe paths, required/excluded contents and exact worktree byte hashes passed; extracted six suites (125 tests: 124 passed, 1 symlink privilege skip) and both root-bound examples exited 0.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "changed_files": [
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256"
+    ],
+    "findings": [
+      "RELEASE.md now identifies the current checkout package as dist/council-flow.zip and labels Round 6 material as historical without rewriting prior reports.",
+      "The explicit allowlist included the complete skill, four native TOMLs, README/release guide, demos/tests, frozen Gate3 docs, Full Plan docs, and selected historical reports.",
+      "The archive excludes .git, caches, bytecode, credentials, runtime state, temporary files, the archive itself, and current hardening evidence.",
+      "The checksum file matches the archive SHA-256; all 118 entries have safe relative paths and exact worktree bytes; ZIP CRC passed.",
+      "Extracted package tests: 83 tests in tests (82 pass, one Windows symlink privilege skip), 12 receipt, 15 CSV summary, 4 structured flow, 5 demo verification, 6 CSV verification; both root-bound operational example commands passed.",
+      "No product source code, frozen Gate3 criteria, prior release reports, or Owner fixture was modified. Package tests do not establish live native skill activation or Gate3 outcomes."
+    ],
+    "errors": [],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A008-SNAPSHOT",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-snapshot.zip",
+      "sha256": "32f3861b359caf92041009829d04d46a934d9a4b3a20a664046b869bc40f1e10",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-A008-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-a008/execution.json",
+      "sha256": "2e70d63dc23f2146912688f0fd3fdcc92e5c92f860b003f32788e52e3be6b8fb",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-A008-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-hardening/worker-a008/package-verification.json",
+      "sha256": "d5af9214f9796c686465ca01bf2531dffe89e07ff52bda46122fcf7ac95bf57b",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-A008-BUILD-SCRIPT",
+      "path": "reports/councilflow-hardening/worker-a008/package_build.py",
+      "sha256": "013ffba66d7c9ee88a678807cfc0c6da04937858391c318ab7d917eb74278a0a",
+      "kind": "source"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "kind": "distribution-archive"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-CHECKSUM",
+      "path": "dist/council-flow.zip.sha256",
+      "sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "kind": "checksum"
+    }
+  ]
+}

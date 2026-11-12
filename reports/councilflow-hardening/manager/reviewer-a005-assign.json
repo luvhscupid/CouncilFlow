@@ -1,0 +1,88 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M027",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A005",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer_a005"
+  },
+  "in_reply_to": "CFH-M026",
+  "payload": {
+    "objective": "Independently review exact A005 candidate, P004 criteria and Tester evidence; rerun one deterministic command exactly.",
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Review original P004 and A005 worker candidate/report/execution/snapshot; review exact Tester report CFH-M026 and approved oracle. No edits or criterion changes.",
+      "Check exact A005 manifest bytes/hash, execution manifest_sha256, snapshot SHA and source hashes; preserve A004 prior failure and A005 rework chain.",
+      "Independently rerun exactly CFH-TESTER-JOB-REPORT-ROOT-A005 command using its declared exact executable path, args, cwd, candidate and input references. No shell alias. Capture raw stdout/exit; normalize only CRLF to LF; hash and compare.",
+      "Do not classify Gate3 E1-E10 live outcome PASS; this audit did not run the frozen native experiment. Save truthful JSON Reviewer report plus raw evidence and discrepancies."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-WORKER-REPORT-A005",
+      "path": "reports/councilflow-hardening/worker-a005/job-report.json",
+      "sha256": "90bce839e1a11e6b20e5c7831b01fb55e1a75c3d86520f7a59b2f40f63a0d380",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-TESTER-REPORT-A005",
+      "path": "reports/councilflow-hardening/tester-a005/job-report.json",
+      "sha256": "47b53554b3e281e46761b26419b1942fa05fad7679ece2afcdd33792338d14c2",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    }
+  ]
+}

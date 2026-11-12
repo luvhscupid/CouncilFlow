@@ -1,0 +1,83 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M032",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A006",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester_a006"
+  },
+  "in_reply_to": "CFH-M031",
+  "payload": {
+    "objective": "Independently verify exact A006 candidate and P004 criteria with current applicable product suites.",
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh independent Tester; no source/doc/test repairs. Verify exact A006 candidate manifest, Worker report, execution record and snapshot actual hashes.",
+      "Run all six current product/contract/application suites listed in the Manager-approved oracle; preserve A004 and A005 prior failures separately.",
+      "Run both operational examples root-bound, stale-digest negative, ordered P004/A006 sequence, exact E1-E10 text, all Full Plan checksums, snapshot safe paths/CRC/extracted hashes and exact execution manifest hash consistency.",
+      "Report symlink privilege limitation, no junction/TOCTOU tests, and Gate3 live E1-E10 NOT RUN because no authentic Owner fixture or applicable frozen experiment.",
+      "For deterministic command record exact executable, args, cwd, candidate/input refs, exit and stdout SHA256 after CRLF-to-LF only. Crucially include each nested command evidence_ref in top-level report evidence_refs so ordered-context validation can accept it. Save raw output and truthful JSON report. Stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A006",
+      "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+      "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A006",
+      "path": "reports/councilflow-hardening/manager/oracle-a006.json",
+      "sha256": "064236aae0a063734f00f47399d6b7f7e42b1394264dfbfa158da53aa001d973",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-WORKER-REPORT-A006",
+      "path": "reports/councilflow-hardening/worker-a006/job-report.json",
+      "sha256": "324f4ce291236de0b6992590f1290b7efd2620e3903f1bd1c113503c358031c4",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-SNAPSHOT-A006",
+      "path": "reports/councilflow-hardening/worker-a006/candidate-snapshot.zip",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A006",
+      "path": "reports/councilflow-hardening/manager/oracle-a006.json",
+      "sha256": "064236aae0a063734f00f47399d6b7f7e42b1394264dfbfa158da53aa001d973",
+      "kind": "verification-strategy"
+    }
+  ]
+}

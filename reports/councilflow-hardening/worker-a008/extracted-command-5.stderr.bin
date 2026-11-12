@@ -1,0 +1,10 @@
+test_actual_sample_alternate_and_fractional_receipts (test_independent_receipt.IndependentReceiptChecks.test_actual_sample_alternate_and_fractional_receipts) ... ok
+test_deterministic_independent_receipt_oracle (test_independent_receipt.IndependentReceiptChecks.test_deterministic_independent_receipt_oracle) ... ok
+test_exact_boundary_products_and_sums_using_rational_oracle (test_independent_receipt.IndependentReceiptChecks.test_exact_boundary_products_and_sums_using_rational_oracle) ... ok
+test_rejected_out_of_bounds_and_unsafe_api_values (test_independent_receipt.IndependentReceiptChecks.test_rejected_out_of_bounds_and_unsafe_api_values) ... ok
+test_user_errors_and_help (test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 3.732s
+
+OK

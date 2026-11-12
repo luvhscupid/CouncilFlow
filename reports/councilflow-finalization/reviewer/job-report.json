@@ -1,0 +1,194 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CF-M017",
+  "message_type": "job.report",
+  "plan_id": "CF-FINAL-001",
+  "plan_revision": 1,
+  "task_id": "CF-FINAL-001",
+  "attempt_id": "CF-A013",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CF-M016",
+  "payload": {
+    "status": "passed",
+    "summary": "Independent review of the final candidate and Tester evidence is complete; the exact declared deterministic command reran with matching exit and normalized stdout hash. Gate 3 remains unexecuted.",
+    "acceptance_ids": [
+      "P3-A",
+      "P3-B",
+      "P3-C",
+      "P3-D",
+      "P3-E",
+      "P4-A",
+      "P4-B",
+      "P4-C",
+      "P4-D",
+      "P4-E",
+      "P5-A",
+      "P5-B",
+      "P5-C"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+      "kind": "candidate-archive"
+    },
+    "findings": [
+      "The assigned plan, Planner publication, Tester report, deterministic-command record and final candidate hashes match the assignment references. All seven Tester top-level evidence references exist and match their SHA-256 values; the referenced execution, criteria-fidelity, package and integrity records bind to the same archive.",
+      "The original plan lists the frozen Charter, Gate 3 v0.2 and C3 erratum as protected sources. The Tester criteria-fidelity record reports exact E1-E10 text equality using C3 for E4; the protected-source hashes match the recorded HEAD values. This is static fidelity evidence only.",
+      "Tester execution records report six required suites on source and clean extraction: each root has 126 tests, 125 passed and 1 symlink privilege skip (WinError 1314); all twelve exits are zero. Root-bound examples, stale-hash negative control, Full Plan checksum checks, archive integrity and source-byte mapping are reported with linked records.",
+      "The release archive has 115 entries, CRC test returned no bad entry, and independent scan found zero retired-alias path/content hits. The retirement audit records historical text-only exceptions outside active/installable surfaces; the archive excludes the three specified stale delivery/status reports.",
+      "The exact Tester-declared executable, arguments, working directory, candidate and three input references were rerun. Exit code and CRLF-to-LF-only normalized stdout SHA-256 match; this establishes repeatability for that command only.",
+      "Gate 3 was not executed. The observed evidence does not establish host skill activation, TOML loading, OS isolation, junction/TOCTOU safety, or dynamic unavailable-MCP fallback. The handoff and local checkpoint are not part of this command comparison and remain for Manager/Planner closeout."
+    ],
+    "errors": [],
+    "comparison": {
+      "plan_ref": {
+        "artifact_id": "CF-FINAL-001-PLAN",
+        "path": "reports/councilflow-finalization/planner/plan.json",
+        "sha256": "5eed4bcbdd1dd44b0e9788622497979242d8f68dd2cceba184a926dd96d929d4",
+        "kind": "plan"
+      },
+      "tester_report_ref": {
+        "artifact_id": "CF-M014",
+        "path": "reports/councilflow-finalization/tester-final/job-report.json",
+        "sha256": "d4b837b99fb5395ad6f6d663a56336075873156c9e904aabbf765d77f4c29c2b",
+        "kind": "message"
+      },
+      "candidate_ref": {
+        "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+        "path": "dist/council-flow.zip",
+        "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+        "kind": "candidate-archive"
+      },
+      "findings": [
+        "The assigned plan, Planner publication, Tester report, deterministic-command record and final candidate hashes match the assignment references. All seven Tester top-level evidence references exist and match their SHA-256 values; the referenced execution, criteria-fidelity, package and integrity records bind to the same archive.",
+        "The original plan lists the frozen Charter, Gate 3 v0.2 and C3 erratum as protected sources. The Tester criteria-fidelity record reports exact E1-E10 text equality using C3 for E4; the protected-source hashes match the recorded HEAD values. This is static fidelity evidence only.",
+        "Tester execution records report six required suites on source and clean extraction: each root has 126 tests, 125 passed and 1 symlink privilege skip (WinError 1314); all twelve exits are zero. Root-bound examples, stale-hash negative control, Full Plan checksum checks, archive integrity and source-byte mapping are reported with linked records.",
+        "The release archive has 115 entries, CRC test returned no bad entry, and independent scan found zero retired-alias path/content hits. The retirement audit records historical text-only exceptions outside active/installable surfaces; the archive excludes the three specified stale delivery/status reports.",
+        "The exact Tester-declared executable, arguments, working directory, candidate and three input references were rerun. Exit code and CRLF-to-LF-only normalized stdout SHA-256 match; this establishes repeatability for that command only.",
+        "Gate 3 was not executed. The observed evidence does not establish host skill activation, TOML loading, OS isolation, junction/TOCTOU safety, or dynamic unavailable-MCP fallback. The handoff and local checkpoint are not part of this command comparison and remain for Manager/Planner closeout."
+      ],
+      "discrepancies": [],
+      "independent_rerun": {
+        "status": "MATCH",
+        "command_id": "T-A013-CMD-001",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-finalization\\tester-final\\extracted-candidate",
+        "candidate_ref": {
+          "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+          "path": "dist/council-flow.zip",
+          "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+          "kind": "candidate-archive"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "CF-FINAL-CONTRACTS",
+            "path": ".agents/skills/council-flow/scripts/contracts.py",
+            "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "CF-FINAL-REPORT-EXAMPLE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+            "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+            "kind": "input"
+          },
+          {
+            "artifact_id": "CF-FINAL-SYNTHETIC-CANDIDATE",
+            "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+            "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+            "kind": "input"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "acceptance_id": "P3-B",
+        "evidence_ref": {
+          "artifact_id": "CF-A013-REVIEWER-RERUN",
+          "path": "reports/councilflow-finalization/reviewer/reviewer-rerun-A013.json",
+          "sha256": "d63a5af56a124e8be7d1f72dc3e2b77bfc1f13b5c144cb56c2e122954c18ae83",
+          "kind": "execution-record"
+        },
+        "tester_evidence_ref": {
+          "artifact_id": "CF-A013-DETERMINISTIC-EXECUTION",
+          "path": "reports/councilflow-finalization/tester-final/tester-deterministic-command.stdout.bin",
+          "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+          "kind": "execution-output"
+        },
+        "tester_exit_code": 0,
+        "tester_stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd"
+      }
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CF-A013-REVIEWER-RERUN",
+      "path": "reports/councilflow-finalization/reviewer/reviewer-rerun-A013.json",
+      "sha256": "d63a5af56a124e8be7d1f72dc3e2b77bfc1f13b5c144cb56c2e122954c18ae83",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-A013-REVIEWER-RAW-STDOUT",
+      "path": "reports/councilflow-finalization/reviewer/reviewer-rerun-A013.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    {
+      "artifact_id": "CF-A013-REVIEWER-RAW-STDERR",
+      "path": "reports/councilflow-finalization/reviewer/reviewer-rerun-A013.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    },
+    {
+      "artifact_id": "CF-M014",
+      "path": "reports/councilflow-finalization/tester-final/job-report.json",
+      "sha256": "d4b837b99fb5395ad6f6d663a56336075873156c9e904aabbf765d77f4c29c2b",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CF-A013-DETERMINISTIC-EXECUTION",
+      "path": "reports/councilflow-finalization/tester-final/tester-deterministic-command.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    {
+      "artifact_id": "CF-FINAL-001-PLAN",
+      "path": "reports/councilflow-finalization/planner/plan.json",
+      "sha256": "5eed4bcbdd1dd44b0e9788622497979242d8f68dd2cceba184a926dd96d929d4",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CF-M004",
+      "path": "reports/councilflow-finalization/planner/plan-publish-final.json",
+      "sha256": "5c30830d54701e9dad6f29feb8da68c7c45e1a2e3234c073fce1e068f2c5a575",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CF-A013-EXECUTION",
+      "path": "reports/councilflow-finalization/tester-final/execution.json",
+      "sha256": "cca43b360af822644be26964ea0f796d6cecdb01f15f1dcf4bb6e60dbb52a5aa",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CF-A013-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "sha256": "591ce3ddca90efb848de67d8b8f3dee4ab93ffc8a27440b9379a07609f4a23ca",
+      "kind": "verification-record"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_contracts.py",
+        "-k",
+        "tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "efe515b97d52ea920b3278467acdb384a7c1d4401d81f72b04befcd8634894b2",
+      "stdout_path": "reports/councilflow-finalization/worker/targeted-1.stdout.bin",
+      "stderr_path": "reports/councilflow-finalization/worker/targeted-1.stderr.bin"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_codebase_memory_integration.py",
+        "-v"
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "ae2110a180fce31e21df9bcf08e9e0c0b03d519b58d23db4b52a3e3204ddad5e",
+      "stdout_path": "reports/councilflow-finalization/worker/targeted-2.stdout.bin",
+      "stderr_path": "reports/councilflow-finalization/worker/targeted-2.stderr.bin"
+    }
+  ],
+  "all_passed": true
+}

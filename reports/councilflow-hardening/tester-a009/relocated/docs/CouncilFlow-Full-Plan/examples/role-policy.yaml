@@ -1,0 +1,40 @@
+# CouncilFlow policy illustration only; YAML does not grant OS permissions.
+policy_version: '1.0'
+product: council-flow
+roles:
+  planner:
+    purpose: 'author requirements, stable acceptance IDs, and final objective check'
+    implementation_allowed: false
+  manager:
+    purpose: 'coordinate real native agents, select approved skills and manage rework'
+    implementation_allowed: false
+  worker:
+    purpose: 'implement within authorized project workspace'
+    implementation_allowed: true
+    session: fresh_per_attempt
+  tester:
+    purpose: 'independently observe technical behavior; do not repair product'
+    implementation_allowed: false
+    session: fresh_per_check
+  reviewer:
+    purpose: 'inspect or interact as a user; label actual versus simulated'
+    implementation_allowed: false
+    session: fresh_per_scenario
+owner:
+  authorization_required_for:
+    - scope_expansion
+    - mandatory_criterion_weakening
+    - consequential_or_irreversible_actions
+    - unapproved_capability_expansion
+    - required_subjective_acceptance
+rework:
+  manager_owns_in_scope_repair: true
+  fixed_lifetime_attempt_limit: false
+  bounded_by_host_resources_and_authorization: true
+transport:
+  agent_message_format: json
+  diagnostic_export_format: jsonl
+  owner_reply_format: natural_language
+security:
+  native_codex_permissions_authoritative: true
+  policy_yaml_grants_capabilities: false

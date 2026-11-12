@@ -23,12 +23,19 @@ class CodebaseMemoryInstructionsTests(unittest.TestCase):
     def section(self, title):
         return self.reference.split("## " + title + "\n", 1)[1].split("\n## ", 1)[0]
 
-    def test_custom_recall_system_is_removed(self):
-        for path in (ROOT / ".agents/skills/cf-recall", SKILL / "scripts/recall.py",
-                     SKILL / "references/recall.md", ROOT / "tests/test_recall.py"):
+    def test_retired_standalone_paths_are_absent(self):
+        retired_skill = "-".join(("cf", "recall"))
+        script_path = "/".join(("scripts", "recall.py"))
+        reference_path = "/".join(("references", "recall.md"))
+        test_path = "/".join(("tests", "test_recall.py"))
+        for path in (ROOT / ".agents" / "skills" / retired_skill,
+                     SKILL.joinpath(*script_path.split("/")),
+                     SKILL.joinpath(*reference_path.split("/")),
+                     ROOT.joinpath(*test_path.split("/"))):
             self.assertFalse(path.exists(), str(path))
         for text in (self.skill, self.workflow, self.readme, self.reference):
-            for obsolete in ("$cf-recall", "scripts/recall.py", "references/recall.md",
+            obsolete_command = "$" + retired_skill
+            for obsolete in (obsolete_command, script_path, reference_path,
                              "recall.json", "--label observed"):
                 self.assertNotIn(obsolete, text)
 

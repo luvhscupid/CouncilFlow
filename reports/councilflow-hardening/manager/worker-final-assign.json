@@ -1,0 +1,61 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M018",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A004",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/worker_final",
+    "role": "worker"
+  },
+  "in_reply_to": "CFH-M016",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "You are the only source-mutating Worker for this attempt. Preserve P001-P004, historical reports, prior failure evidence, and all prior edits. Do not change Gate3 frozen source or C3.",
+      "Fix job.report example candidate_ref to a synthetic fixture file with actual SHA-256; ensure --root . passes. Add fixture path under the docs examples and update the checksum manifest for it.",
+      "Update regression to validate both published examples with root=ROOT; add a negative stale/incorrect digest assertion.",
+      "Preserve current assignment input candidate by exact hash. Build a cumulative output candidate manifest including all source files changed from baseline and their SHA-256. Create a bounded source snapshot ZIP that contains only those source files (no .git, caches, reports/runtime, credentials, or temp files), and verify CRC/extracted hashes.",
+      "If feasible, reconstruct the A001 tests/test_contracts.py snapshot by removing only the A002 test method from the current file and require an exact hash match to A001 manifest before labeling it reconstructed; do not claim it was captured contemporaneously.",
+      "Run developer checks and save an accurate UTF-8 JSON Worker report in reports/councilflow-hardening/worker-final/. Echo input_candidate_ref exactly. Stop source edits after terminal report."
+    ],
+    "candidate_ref": {
+      "path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+      "artifact_id": "CFH-CURRENT-BASE-A002",
+      "sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+      "kind": "candidate-manifest"
+    },
+    "objective": "Correct root-bound validator validity of operational job.report example and preserve exact candidate source integrity.",
+    "scope": [
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "tests/test_contracts.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "artifact_id": "CFH-PLAN-004",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "path": "reports/councilflow-hardening/manager/oracle-a003.json",
+      "artifact_id": "CFH-ORACLE-A003",
+      "sha256": "72944bb859303b6b2f6ef8782374fdac3a3ee25da5ced033bbdcad34f8b46721",
+      "kind": "verification-strategy"
+    }
+  ]
+}

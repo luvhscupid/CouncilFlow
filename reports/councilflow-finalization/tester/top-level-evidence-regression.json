@@ -1,0 +1,22 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_contracts.py",
+    "-k",
+    "top_level_refs",
+    "-v"
+  ],
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256_raw": "24592767b7d43f6c524e2060fa25da8fb70c31200d3e13c7fecc5df60cb114f0",
+  "stdout_path": "reports/councilflow-finalization/tester/top-level-evidence-regression.stdout.bin",
+  "stderr_path": "reports/councilflow-finalization/tester/top-level-evidence-regression.stderr.bin",
+  "stderr": "test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs (test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.004s\r\n\r\nOK\r\n"
+}

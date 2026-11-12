@@ -1,0 +1,200 @@
+[
+  {
+    "name": "suite-tests",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A006",
+        "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+        "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "92e25f96b7203dc6546756944b53dc7a0970a39659629cbc18bf753e8fcba077",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a007/suite-tests.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a007/suite-tests.stderr.bin",
+    "summary": "Ran 83 tests in 2.111s"
+  },
+  {
+    "name": "suite-receipt",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A006",
+        "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+        "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "b121630302197d371737a5f44b34b6c0acfc9d2171fd899f52dd80e8296375ad",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a007/suite-receipt.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a007/suite-receipt.stderr.bin",
+    "summary": "Ran 12 tests in 1.805s"
+  },
+  {
+    "name": "suite-csv-summary",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A006",
+        "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+        "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "085b9f35b0ebb117e44aa8a2a4ce591390f0294c46149a0f253d6c963cab8709",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a007/suite-csv-summary.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a007/suite-csv-summary.stderr.bin",
+    "summary": "Ran 15 tests in 9.766s"
+  },
+  {
+    "name": "suite-structured-flow",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A006",
+        "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+        "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "0a410d114eba8bf5891a7d2ce0764b14db44bb32cc19cd12142fffd90d1b35d6",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a007/suite-structured-flow.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a007/suite-structured-flow.stderr.bin",
+    "summary": "Ran 4 tests in 2.032s"
+  },
+  {
+    "name": "suite-demo-verification",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A006",
+        "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+        "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "68b26078b19767b24460ed48cc062b42f7b6e44d416d66e0e7385631bd0f08f8",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a007/suite-demo-verification.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a007/suite-demo-verification.stderr.bin",
+    "summary": "Ran 5 tests in 2.511s"
+  },
+  {
+    "name": "suite-csv-verification",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A006",
+        "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+        "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "f2ed617cb263c95e6dbe820465729d1b6ec3786f1fec233638f861a16541cf66",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a007/suite-csv-verification.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a007/suite-csv-verification.stderr.bin",
+    "summary": "Ran 6 tests in 5.242s"
+  }
+]

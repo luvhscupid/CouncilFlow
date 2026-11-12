@@ -1,0 +1,107 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M054",
+  "message_type": "plan.progress",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "CFH-M052",
+  "payload": {
+    "status": "in_progress",
+    "objective": "Corrected original CouncilFlow hardening plan preserving Owner mission requirements and exact frozen Gate 3 E1–E10 criterion text, with the separately approved C3 erratum controlling E4.",
+    "scope": [
+      "Verified CouncilFlow repository only: E:/Saint/PROJECTS/CouncilFlow-main",
+      "Read/audit installed skill, native agent definitions, contract validator/tests, Codebase Memory lifecycle/integration, demo/tests, release/package instructions and reports",
+      "Apply minimal fixes only for defects confirmed against frozen constraints; add feasible regression coverage; execute applicable validation and report evidence"
+    ],
+    "acceptance_ids": [
+      "HF-01",
+      "HF-02",
+      "HF-03",
+      "HF-04",
+      "HF-05",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10"
+    ],
+    "verified_progress": [
+      "HF-01: exact repository root E:/Saint/PROJECTS/CouncilFlow-main, branch main, starting commit 2d695a22a1bb596a527b0d118edc073d6d25553f; origin/main matched. Normative and historical docs were classified.",
+      "HF-02: frozen Gate3/C3 sources and role boundaries preserved; cf-recall not recreated; no external changes.",
+      "HF-03: corrected multiline plan criterion validation, current operational JSON examples, security limitation wording, and current release guidance/package. Candidate A009 and extracted package were independently tested/reviewed.",
+      "HF-04: six current extracted-package suites passed 124 tests; one Windows symlink test skipped (WinError 1314). Root-bound examples, stale digest negative, checksum, package and evidence checks passed. Gate3 live E1-E10 was not run due absent authentic Owner fixture and unavailable host activation/config identity.",
+      "HF-05: complete diff, frozen sources, package exclusions, and repository status are under final verification. No push/merge/external changes.",
+      "Exact P004 criteria fidelity: E1-E10 text matched frozen sources; E4 matched approved C3. This does not establish any live Gate3 outcome.",
+      "Codebase Memory exact-root index refreshed and ready; MCP available. Unavailable-MCP fallback and forced stale-context simulation not run.",
+      "Security: validator remains best-effort record validation; no OS containment, junction or TOCTOU assurance. Symlink test skipped for host privilege.",
+      "Historical A004 suite failures and A005/A006/A008 sequence failures were preserved; they are not presented as passing current evidence. The fresh A009 sequence passed."
+    ],
+    "next_action": "Return plan.check against the immutable P004 plan and all original HF-01..HF-05 and E1-E10 criteria. Mark unmet native Gate3 outcomes BLOCKED/UNVERIFIED or NOT RUN with exact reasons; do not alter the criteria or treat static fidelity/package results as live native proof.",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M046",
+      "path": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json",
+      "sha256": "04b6228623413f1857c9925036cac923362dcf5246c6c26471414611cc17e7d8",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-M048",
+      "path": "reports/councilflow-hardening/worker-a009/job-report.json",
+      "sha256": "7c26a1a3f36b92df377fb6ed87e4f78c9b6f298dbd673666220eaeb405d413c0",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M050",
+      "path": "reports/councilflow-hardening/tester-a009/job-report.json",
+      "sha256": "6271b9125267d9f71d171bc4a33f8a905666e7184c9615598effab747f599950",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M052",
+      "path": "reports/councilflow-hardening/reviewer-a009/job-report.json",
+      "sha256": "ba5878c3816e48d491950f276e8e89f53bb8bcb0f78ab0ab6aab056cf4c69f25",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-A009-NATIVE-BINDINGS",
+      "path": "reports/councilflow-hardening/manager/a009-native-bindings.json",
+      "sha256": "5875a093aab37f154208a625410fd496fb53b89f469eb41b92da65bec59052d0",
+      "kind": "verification-record"
+    }
+  ]
+}

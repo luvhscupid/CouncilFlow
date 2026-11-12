@@ -1,0 +1,412 @@
+{
+  "python": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "candidate_ref": {
+    "artifact_id": "CFH-CANDIDATE-A002",
+    "path": "reports/councilflow-hardening/worker-rework/candidate-manifest.json",
+    "sha256": "c38d3df65764ce41955f94909e88342eb6dcdcbe064871d3082d329423a9b43d"
+  },
+  "input_candidate_ref": {
+    "artifact_id": "CFH-CANDIDATE-A001",
+    "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+    "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb"
+  },
+  "commands": [
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/tester-final/command-1.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/tester-final/command-1.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "234a3055548ac172c88db78d4ef4c4a345fa49732e9f24d13be058a38909c9b6",
+      "stdout_preview": "",
+      "stderr_preview": "test_changed_source_requires_freshness_before_graph_reliance (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_changed_source_requires_freshness_before_graph_reliance) ... ok\r\ntest_council_flow_requires_context_before_planner_and_after_worker (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_council_flow_requires_context_before_planner_and_after_worker) ... ok\r\ntest_custom_recall_system_is_removed (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_custom_recall_system_is_removed) ... ok\r\ntest_empty_installation_gate_precedes_mcp_discovery (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_empty_installation_gate_precedes_mcp_discovery) ... ok\r\ntest_first_encounter_binds_observed_namespace_and_exact_project (t"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/tester-final/command-2.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/tester-final/command-2.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_preview": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_preview": ""
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 1,
+      "stdout_file": "reports/councilflow-hardening/tester-final/command-3.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/tester-final/command-3.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c796c8ad8cf9e42ad0b463979ea0b324ea7ef00340e9f71cbdf72651b0814412",
+      "stdout_preview": "",
+      "stderr_preview": "{\"valid\": false, \"error\": \"artifact_hash\", \"field\": \"payload.candidate_ref\", \"message\": \"artifact_hash at payload.candidate_ref: demo/receipt/receipt_calculator.py\"}\r\n"
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "sequence",
+        "reports/councilflow-hardening/planner/plan-publish.json",
+        "reports/councilflow-hardening/manager/worker-assign.json",
+        "reports/councilflow-hardening/worker/job-report.json",
+        "reports/councilflow-hardening/manager/tester-plan-assign.json",
+        "reports/councilflow-hardening/tester-plan/job-report.json",
+        "reports/councilflow-hardening/manager/rework-decision.json",
+        "reports/councilflow-hardening/manager/worker-rework-assign.json",
+        "reports/councilflow-hardening/worker-rework/job-report.json",
+        "--root",
+        "."
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/tester-final/command-4.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/tester-final/command-4.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "c7c64340bd50cb07b8726d40c5ec6bd76041c6bc5acb0b12249487bce9c782e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_preview": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 8, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_preview": ""
+    },
+    {
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "exit_code": 0,
+      "stdout_file": "reports/councilflow-hardening/tester-final/command-5.stdout.bin",
+      "stderr_file": "reports/councilflow-hardening/tester-final/command-5.stderr.bin",
+      "stdout_sha256_crlf_to_lf": "e00d2405ad16b1c98fe682dbb1308d86f9bb86c5a475c71371f9e969ccb018a7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_preview": "{\"valid\": true, \"mode\": \"policy\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_preview": ""
+    }
+  ],
+  "candidate_source_hash_checks": {
+    "A001": [
+      {
+        "path": ".agents/skills/council-flow/references/communication.md",
+        "expected": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "actual": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "match": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+        "expected": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "actual": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "match": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+        "expected": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+        "actual": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+        "match": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "expected": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "actual": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "match": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "expected": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+        "actual": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+        "match": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+        "expected": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "actual": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "match": true
+      },
+      {
+        "path": "tests/test_contracts.py",
+        "expected": "a6776471d5010b15a88f86b9b2e96a635b2c718b2ef731b32d4e92c1f97fc333",
+        "actual": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864",
+        "match": false
+      }
+    ],
+    "A002": [
+      {
+        "path": ".agents/skills/council-flow/scripts/contracts.py",
+        "expected": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "actual": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "match": true
+      },
+      {
+        "path": "tests/test_contracts.py",
+        "expected": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864",
+        "actual": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864",
+        "match": true
+      }
+    ]
+  },
+  "frozen_source_checks": [
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "head_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "current_sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523",
+      "unchanged": true
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "head_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "current_sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "head_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "current_sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/SHA256SUMS.txt",
+      "head_sha256": "78dfce253e079072e5e4a1b82cf3222075d494dcacc4bcaa1d8e7b19a6c5c3c8",
+      "current_sha256": "78dfce253e079072e5e4a1b82cf3222075d494dcacc4bcaa1d8e7b19a6c5c3c8",
+      "unchanged": true
+    }
+  ],
+  "planner_E1_E10_exact_comparison": [
+    {
+      "id": "E1",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631",
+      "expected_sha256": "ac42c60ff81d86cb73e490e0105e6ab73edb32d55bf5350ff12e503a7d5de631",
+      "actual_prefix": "E1 — Native discovery and invocation\nRecord separately (a) listing/picker visibi",
+      "expected_prefix": "E1 — Native discovery and invocation\nRecord separately (a) listing/picker visibi",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E2",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20",
+      "expected_sha256": "4091a511c0c8c2ab75cf0ca4fae0d1dc44ce59e4cb4e16e8f7a88ab00911cd20",
+      "actual_prefix": "E2 — Native delegation trigger\n**PASS requires host-observed delegation attribut",
+      "expected_prefix": "E2 — Native delegation trigger\n**PASS requires host-observed delegation attribut",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E3",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d",
+      "expected_sha256": "1684cec7c4f388250c559426bb84f404f7e4766d320653cc4a4d6712c86f788d",
+      "actual_prefix": "E3 — Actual spawns\nRecord host-observed subagent count, role/agent_type, and thr",
+      "expected_prefix": "E3 — Actual spawns\nRecord host-observed subagent count, role/agent_type, and thr",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E4",
+      "matches_frozen_or_erratum": false,
+      "actual_sha256": "050adba0ded6532a1dd4824213ca1fc713ce303951aff5058bcfc79003633954",
+      "expected_sha256": "5c916e2822c6a5f69db6266d4ab6e914234c89f2eae3698b877cd2a4f5787b1a",
+      "actual_prefix": "E4 — Custom-agent loading\n**PASS:** Host-observed configuration identity or agen",
+      "expected_prefix": "E4 — Custom-agent loading\n**PASS:** Host-observed configuration identity or agen",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E5",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815",
+      "expected_sha256": "f37df1b1a156bdafeb7f96afb946772be7a6fb0d6f950ed89a006536e1426815",
+      "actual_prefix": "E5 — Independent Tester command\nHost evidence shows the Tester executed its comm",
+      "expected_prefix": "E5 — Independent Tester command\nHost evidence shows the Tester executed its comm",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E6",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6",
+      "expected_sha256": "d2099752e3415d90dc3899cdac482a7f644262cb307237833062bd7ee4e9edf6",
+      "actual_prefix": "E6 — Distinct role threads\nHost evidence shows Worker, Tester and Reviewer as **",
+      "expected_prefix": "E6 — Distinct role threads\nHost evidence shows Worker, Tester and Reviewer as **",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E7",
+      "matches_frozen_or_erratum": false,
+      "actual_sha256": "e84bef0b1b22a08bac2afd95d1295e4d69ecedfd3b7850cf9d563f2e51ba37be",
+      "expected_sha256": "5931c2993ccecd51098bd693868a219ad2fb5e9c542faa29145f87407659d422",
+      "actual_prefix": "E7 — Zero Owner courier work\nCount courier interventions after initial submissio",
+      "expected_prefix": "E7 — Zero Owner courier work\nCount courier interventions after initial submissio",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E8",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b",
+      "expected_sha256": "9cbef680786ae743360f2b32c832c275f17fb886b7e7338e7697bb209ce0704b",
+      "actual_prefix": "E8 — Reviewer verification rerun\nThe Tester identifies which of its commands are",
+      "expected_prefix": "E8 — Reviewer verification rerun\nThe Tester identifies which of its commands are",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E9",
+      "matches_frozen_or_erratum": false,
+      "actual_sha256": "833c0b57b982e50851790e4e64ad834a2e7f8dab093d939b2e630aaef0c01818",
+      "expected_sha256": "4a2dab52dc1adbdfcb35a2a7762378bf44202614bc0d752f5f66e98b8fdf84ab",
+      "actual_prefix": "E9 — Plain-English Owner interface\nRoutine **agent-generated** Owner-directed co",
+      "expected_prefix": "E9 — Plain-English Owner interface\nRoutine **agent-generated** Owner-directed co",
+      "replacement_character_count": 0
+    },
+    {
+      "id": "E10",
+      "matches_frozen_or_erratum": true,
+      "actual_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50",
+      "expected_sha256": "b4d052f6dc466fb36dc172a6a607ce30b178c468833447b2cbed61ae71f33e50",
+      "actual_prefix": "E10 — Frozen criteria fidelity\nPlanner reproduces the Owner's saved mandatory ac",
+      "expected_prefix": "E10 — Frozen criteria fidelity\nPlanner reproduces the Owner's saved mandatory ac",
+      "replacement_character_count": 0
+    }
+  ],
+  "full_plan_bundle_checksum_checks": [
+    {
+      "path": "00-SCOPE-AND-STATUS.md",
+      "expected": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "actual": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "match": true
+    },
+    {
+      "path": "01-PRODUCT-AND-ROLES.md",
+      "expected": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "actual": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "match": true
+    },
+    {
+      "path": "02-PROTOCOL-AND-POLICY.md",
+      "expected": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "match": true
+    },
+    {
+      "path": "03-DELIVERY-AND-ACCEPTANCE.md",
+      "expected": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "actual": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "match": true
+    },
+    {
+      "path": "04-SECURITY-AND-LIMITS.md",
+      "expected": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "actual": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "match": true
+    },
+    {
+      "path": "05-OPERATIONS-AND-HANDOFF.md",
+      "expected": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "actual": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "match": true
+    },
+    {
+      "path": "README.md",
+      "expected": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "actual": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "match": true
+    },
+    {
+      "path": "SOURCE-MANIFEST.md",
+      "expected": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "actual": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "match": true
+    },
+    {
+      "path": "examples/events.jsonl",
+      "expected": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "actual": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "match": true
+    },
+    {
+      "path": "examples/job.assign.json",
+      "expected": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "match": true
+    },
+    {
+      "path": "examples/job.report.json",
+      "expected": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+      "actual": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+      "match": true
+    },
+    {
+      "path": "examples/role-policy.yaml",
+      "expected": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "actual": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "match": true
+    },
+    {
+      "path": "prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "match": true
+    },
+    {
+      "path": "source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+      "expected": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "actual": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "match": true
+    },
+    {
+      "path": "source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+      "expected": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "actual": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "match": true
+    },
+    {
+      "path": "source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+      "expected": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "actual": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "match": true
+    },
+    {
+      "path": "source-docs/Council-R4-Contract-v0.2.txt",
+      "expected": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "actual": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "match": true
+    },
+    {
+      "path": "source-docs/Council-R6-Architecture-v0.3.txt",
+      "expected": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "actual": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "match": true
+    },
+    {
+      "path": "source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+      "expected": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "actual": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "match": true
+    }
+  ],
+  "gate3_experiment_executed": false,
+  "filesystem_limits": {
+    "symlink": "unit test skipped on Windows WinError 1314",
+    "junction": "not executed",
+    "TOCTOU": "not experimentally tested; documented limitation"
+  }
+}

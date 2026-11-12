@@ -1,0 +1,1 @@
+Synthetic example only. This file is a test artifact, not output from a real Worker task.

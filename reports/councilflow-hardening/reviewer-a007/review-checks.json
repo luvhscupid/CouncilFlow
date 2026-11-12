@@ -1,0 +1,19 @@
+{
+  "reviewer_instance": "/root/reviewer_a007",
+  "attempt_id": "CFH-A007",
+  "plan_sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+  "plan_acceptance_ids_exact": true,
+  "e1_e10_text_comparison_reviewed": true,
+  "e4_source": "approved C3 erratum",
+  "candidate_sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+  "worker_candidate_ref_matches": true,
+  "tester_candidate_ref_matches": true,
+  "worker_input_candidate_ref_matches_a006": true,
+  "execution_manifest_sha256_matches_candidate": true,
+  "snapshot_crc_safe_paths_extracted_hashes": true,
+  "tester_nested_command_evidence_ref_in_top_level_refs": true,
+  "fresh_sequence_m034_m038_valid": true,
+  "independent_command_exit_matches": true,
+  "independent_command_normalized_stdout_hash_matches": true,
+  "gate3_e1_e10_live_outcomes": "NOT RUN"
+}

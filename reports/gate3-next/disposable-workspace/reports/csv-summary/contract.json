@@ -1,0 +1,89 @@
+{
+  "type": "PlannerResult",
+  "request_ref": "Parent PlannerRequest CF-CSV-001",
+  "task_id": "CF-CSV-001",
+  "revision": 1,
+  "role": "Planner",
+  "agent_id": "/root/csv_planner",
+  "plan_mode": "native",
+  "contract_ref": "reports/csv-summary/contract.json",
+  "objective": "Implement and independently verify a small offline CSV summarizer with input validation and automated tests.",
+  "scope": [
+    "demo/csv-summary/** (new program, sample CSV, usage instructions, developer tests)",
+    "README.md (short new CSV summarizer link/usage section only)",
+    "reports/csv-summary/** (this immutable contract and role/evidence records; isolated Tester checks permitted)"
+  ],
+  "requirements": [
+    "R1: Read a local comma-delimited header CSV without network or third-party dependencies.",
+    "R2: Count data records and calculate exact totals for explicitly selected numeric columns; permit other text columns.",
+    "R3: Validate CSV structure, selected columns, encoding and numeric cells with actionable failures.",
+    "R4: Supply useful usage instructions, sample input and executable automated tests.",
+    "R5: Preserve input files and existing CouncilFlow/receipt/release assets; use real distinct native roles for implementation, testing, review and final objective check."
+  ],
+  "interface": {
+    "program": "demo/csv-summary/csv_summarizer.py",
+    "syntax": "python3 demo/csv-summary/csv_summarizer.py INPUT --column NAME [--column NAME ...]",
+    "selection": "At least one --column is required. Each selects one numeric header by its normalized name. Repeated selection of the same column is an error. Output column order follows selection order.",
+    "format": "Comma delimiter, double-quote CSV quoting, UTF-8 with optional BOM; no dialect sniffing or alternate delimiters required.",
+    "header_policy": "Strip outer whitespace from header names; reject blank, duplicate-after-normalization and control-character-containing header names. Names remain case-sensitive.",
+    "numeric_policy": "Strip outer cell whitespace. Accept signed plain ASCII decimal notation such as -2, +3.5, .25 and 1.; require digits and a finite value. Up to 18 integer digits including leading zeros and 12 fractional digits including trailing zeros; reject unsupported bounds. Reject empty cells, exponent notation, grouping/currency symbols, underscores, malformed values, NaN and infinities. Negative values and zero are valid.",
+    "output_policy": "Print Rows: N, then Total NAME: VALUE for each selected column. VALUE is exact plain decimal notation without grouping or exponent, with redundant fractional zeros/dot removed and every zero normalized to 0. Print no successful summary until the entire input has validated.",
+    "record_policy": "Count logical data records, excluding the header. Every data record must match header width; blank records are invalid. A valid header-only CSV succeeds with Rows: 0 and every selected total 0. An empty/BOM-only file is invalid.",
+    "sample_file": "demo/csv-summary/sample.csv",
+    "sample_content": "item,amount,quantity\nrice,10.25,2\nonions,20.50,3\nrefund,-0.75,1\n",
+    "sample_command": "python3 demo/csv-summary/csv_summarizer.py demo/csv-summary/sample.csv --column amount --column quantity",
+    "sample_stdout": "Rows: 3\nTotal amount: 30\nTotal quantity: 6\n"
+  },
+  "acceptance": [
+    "A01: A runnable standard-library-only Python program exists at demo/csv-summary/csv_summarizer.py, with normal --help. It runs offline and needs no installation, service, API key or predecessor code.",
+    "A02: The documented INPUT plus repeatable required --column NAME interface and stable output follow interface above. The provided sample prints exactly Rows: 3, Total amount: 30 and Total quantity: 6. Different input values and reversed selection order produce actual calculated totals in requested order; text descriptor columns are permitted.",
+    "A03: Header and selection validation follows interface above: missing header, blank names, control characters, duplicate normalized names, unavailable selected names and duplicate requested selections fail. Missing required CLI arguments fail clearly. Valid header-only input returns count/totals zero; empty/BOM-only input fails.",
+    "A04: Every data record has exactly the header width, including descriptor cells. Too few/many fields and blank records fail. Selected numeric fields cannot be empty or invalid. Standard-library strict CSV quote parsing rejects malformed cases including unterminated quoted fields and invalid text following a closing quote; no requirement for a separate stricter CSV parser is introduced.",
+    "A05: Numeric acceptance, rejection, bounds and formatting follow interface above. Accepted signed, zero and fractional values are summed exactly without binary floating arithmetic, integer truncation or silent Decimal context rounding. Combining maximum-sized and tiny accepted values and accumulating totals beyond individual-cell magnitude remain exact; accepted fractions beyond two places remain visible. Unsupported precision/magnitude is explicitly rejected rather than rounded.",
+    "A06: Actual inputs with UTF-8 non-ASCII text, an optional UTF-8 BOM, CRLF records, quoted commas, escaped quotes and quoted embedded newlines in descriptor fields parse correctly and use logical record counts. Invalid UTF-8 fails cleanly. Descriptor text may be empty; header control characters remain invalid as specified.",
+    "A07: Invalid CSV, values, encoding, missing/unreadable files and directory input return nonzero with concise actionable stderr and no traceback or partial successful summary. Data-cell/shape errors identify the file and 1-based logical record number including the header as record 1; selected numeric-cell errors also name the column. Parser/encoding/file errors identify the file and available context, with physical-line context explicitly labeled if used.",
+    "A08: Summarization and failure paths do not modify the input file. Tests compare input bytes or a digest before/after. Actual network-disabled execution is attempted using the available native command sandbox; any unavailable offline-execution capability is reported honestly instead of simulated. The program itself contains no network or write behavior.",
+    "A09: Executable unittest tests cover normal and alternative multi-column totals, signed/zero/exact fractions and numeric bounds, header-only/empty input, header/selection failures, ragged/malformed-quote records, invalid/missing numeric values, UTF-8/BOM/quoted multiline data, clean CLI errors and input preservation. A separate real Tester independently reruns the suite and adds meaningful oracle or black-box checks without repairing implementation. Existing static skill checks and receipt application tests remain passing; the intentionally failing starter is not mixed into a passing suite.",
+    "A10: demo/csv-summary/README.md explains the exact CLI, comma/UTF-8 format, header normalization, required explicit numeric selection, signed decimal convention/bounds, empty/header-only/blank-record behavior, output and test command. A fresh separate Reviewer actually exercises help, documented sample and an invalid input, reporting observed versus inspected behavior. The Planner performs a final original-acceptance map; actual native role identifiers, commands/exits/output, findings and repair decisions are recorded without claiming previously unverified host registration/custom-role selection now passed."
+  ],
+  "constraints": [
+    "Work only inside /workspace/CouncilFlow; no other projects, existing external skill installations, global configuration, permissions changes, deployment or publication.",
+    "Preserve .agents/, .codex/, RELEASE.md, dist/, receipt/starter demos and historical reports. New CSV work must not rewrite the prior build's PARTIAL disposition or archive.",
+    "Manager coordinates and writes execution records, not application code. A fresh Worker alone implements the application and developer tests; only one Worker may mutate this workspace at a time.",
+    "Tester is a fresh distinct native session; no implementation or developer-test repairs. Isolated extra verification files may be placed only under reports/csv-summary/verification/.",
+    "Reviewer is a fresh distinct native session; no code/documentation repairs. Native role-instruction fallback is allowed because custom-role-file selection is not exposed.",
+    "The contract and A01-A10 are immutable. Findings trigger authorized fresh-Worker repair and affected independent rechecks, never silent weakening.",
+    "This user-requested task applies the repository skill directly; the empty executor skill catalog and previously rejected standalone CLI authentication do not become verified native registry invocation by assertion. Do not repeat credential/configuration work for this task.",
+    "Avoid unnecessary statistics, automatic type inference, schema engines, JSON output protocols, databases, orchestration runtimes or external dependencies. Row count and explicit-column totals satisfy the requested summarizer."
+  ],
+  "work_units": [
+    "W1: Fresh Worker implements the bounded CLI, sample, instructions and developer tests; records checks and stops edits.",
+    "T1: Fresh separate Tester independently verifies A01-A09, input preservation, actual output and relevant regressions; reports failures without repairs.",
+    "R1: Fresh separate Reviewer exercises the first-use CLI/documentation experience after technical verification, reporting A10 findings without edits.",
+    "F1: Parent Manager evaluates mandatory results and any needed repairs; original Planner maps every A01-A10 to evidence; Manager reports and commits authorized project changes."
+  ],
+  "dependencies": [
+    "Contract approval by the parent Manager before Worker implementation.",
+    "Python standard library and real native collaboration are available; inherited model/provider configuration is used without hardcoded model IDs.",
+    "Worker must finish and stop all edits before independent testing, followed by separate review and Planner final check."
+  ],
+  "risks": [
+    "Default Decimal precision can silently round mixed large/tiny totals; independent arithmetic oracle checks are required.",
+    "CSV physical lines differ from logical records when quoted descriptors contain newlines; error labels and counts must be explicit.",
+    "Native csv strict parsing is not a fully custom RFC validator; tests target its documented strict malformed-quote failures rather than inventing a parser requirement.",
+    "The old CouncilFlow release activation limitation remains separate from whether the new CSV application meets its functional criteria."
+  ],
+  "implementation_status": "PLANNED_NOT_IMPLEMENTED",
+  "evidence": [
+    "Owner explicit council-flow CSV request",
+    ".agents/skills/council-flow/SKILL.md",
+    ".agents/skills/council-flow/references/roles.md",
+    ".agents/skills/council-flow/references/workflow.md",
+    "Initial git status --short was empty; no existing CSV implementation was found."
+  ],
+  "open_findings": [
+    "Application, independent tests, Reviewer observations and final acceptance evidence do not yet exist."
+  ],
+  "repair_decisions": [],
+  "final_disposition": "PENDING_MANAGER_ACCEPTANCE_AND_IMPLEMENTATION"
+}

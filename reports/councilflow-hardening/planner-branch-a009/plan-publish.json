@@ -1,0 +1,70 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M046",
+  "message_type": "plan.publish",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/planner_a009"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": null,
+  "payload": {
+    "objective": "Corrected original CouncilFlow hardening plan preserving Owner mission requirements and exact frozen Gate 3 E1–E10 criterion text, with the separately approved C3 erratum controlling E4.",
+    "scope": [
+      "Verified CouncilFlow repository only: E:/Saint/PROJECTS/CouncilFlow-main",
+      "Read/audit installed skill, native agent definitions, contract validator/tests, Codebase Memory lifecycle/integration, demo/tests, release/package instructions and reports",
+      "Apply minimal fixes only for defects confirmed against frozen constraints; add feasible regression coverage; execute applicable validation and report evidence"
+    ],
+    "acceptance_ids": [
+      "HF-01",
+      "HF-02",
+      "HF-03",
+      "HF-04",
+      "HF-05",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10"
+    ],
+    "plan_ref": {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-A009-CRITERIA-COMPARISON",
+      "path": "reports/councilflow-hardening/planner-branch-a009/criteria-comparison.json",
+      "sha256": "4d1bb381e4e8c0809207f0e46ea0743320e0a75c705097a4ef20c20a4139c053",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-M040",
+      "path": "reports/councilflow-hardening/reviewer-a007/job-report.json",
+      "sha256": "4c352285d5a9a2fbdb73a6620c08efda37bd5db8dab364219a0fd8b131e9f1ac",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-A008-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-hardening/worker-a008/package-verification.json",
+      "sha256": "d5af9214f9796c686465ca01bf2531dffe89e07ff52bda46122fcf7ac95bf57b",
+      "kind": "verification-record"
+    }
+  ]
+}

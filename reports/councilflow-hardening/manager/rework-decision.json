@@ -1,0 +1,48 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M007",
+  "message_type": "task.decision",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "CFH-M006",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04"
+    ],
+    "disposition": "rework",
+    "reason": "Independent Tester reproduced rejection of the original multiline E1-E10 criteria in the exact plan sequence. Preserve the criteria and repair the validator to accept safe line breaks in plan acceptance text.",
+    "failed_acceptance_ids": [
+      "HF-03"
+    ],
+    "report_ids": [
+      "CFH-M003",
+      "CFH-M006"
+    ],
+    "candidate_ref": {
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "artifact_id": "CFH-CANDIDATE-A001",
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "path": "reports/councilflow-hardening/tester-plan/execution.json",
+      "artifact_id": "CFH-TESTER-PLAN-EXECUTION",
+      "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+      "kind": "execution-record"
+    }
+  ]
+}

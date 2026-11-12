@@ -1,0 +1,74 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M029",
+  "message_type": "task.decision",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A005",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "CFH-M028",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "disposition": "rework",
+    "reason": "Reviewer reproduced the declared command but ordered-context validation rejected the A005 Tester evidence because its deterministic command evidence_ref was absent from the Tester report top-level evidence_refs. Preserve A005 unchanged and create a fresh Worker/Tester/Reviewer evidence chain under unchanged P004 criteria.",
+    "failed_acceptance_ids": [
+      "HF-04"
+    ],
+    "report_ids": [
+      "CFH-M024",
+      "CFH-M026",
+      "CFH-M028"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-WORKER-REPORT-A005",
+      "path": "reports/councilflow-hardening/worker-a005/job-report.json",
+      "sha256": "90bce839e1a11e6b20e5c7831b01fb55e1a75c3d86520f7a59b2f40f63a0d380",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-TESTER-REPORT-A005",
+      "path": "reports/councilflow-hardening/tester-a005/job-report.json",
+      "sha256": "47b53554b3e281e46761b26419b1942fa05fad7679ece2afcdd33792338d14c2",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-REVIEWER-REPORT-A005",
+      "path": "reports/councilflow-hardening/reviewer-a005/job-report.json",
+      "sha256": "6f1cbd1307e07c12a9263e3de1685722f753e571ec5b6f9600021e6f455ab1de",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-A005-SEQUENCE-FAILURE",
+      "path": "reports/councilflow-hardening/reviewer-a005/ordered-sequence-check.json",
+      "sha256": "8bb9a60aabb09fc6f968aaf85273d87f8d9bc9b2833bee5d0ffd2937807a735b",
+      "kind": "verification-record"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "strategy": "Independently verify exact P004/A006 candidate. Verify manifest, Worker report, execution record exact manifest SHA-256, snapshot ZIP CRC/safe paths/extracted hashes and unchanged source hashes. Run six current product/contract/application suites: tests, demo/receipt, demo/csv-summary, demo/structured-flow, reports/demo/verification, reports/csv-summary/verification. Run both operational examples root-bound; stale digest negative; P004 rework context sequence and exact E1-E10 wording against frozen Gate3 and approved C3; all 20 Full Plan checksums. Do not run historical archived restoration suites as current candidate suites; preserve A004 failures and A005 failed-review finding as historical. Record Windows symlink permission limitation; no junction/TOCTOU claim. Frozen Gate3 live runtime E1-E10 NOT RUN because no authentic Owner fixture and no applicable authorized experiment. For suitable deterministic command record exact executable path, args, cwd, candidate/input hashes, exit, raw output and CRLF-to-LF-only stdout hash. Select job.report root validation for exact Reviewer rerun. Ensure every selected command evidence_ref is also present in top-level report evidence_refs. No edits.",
+  "commands": [
+    "python -m unittest discover -s tests -v",
+    "python -m unittest discover -s demo/receipt -v",
+    "python -m unittest discover -s demo/csv-summary -v",
+    "python -m unittest discover -s demo/structured-flow -v",
+    "python -m unittest discover -s reports/demo/verification -v",
+    "python -m unittest discover -s reports/csv-summary/verification -v"
+  ]
+}

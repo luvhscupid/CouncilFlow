@@ -1,0 +1,15 @@
+{
+  "archive": "dist/council-flow.zip",
+  "archive_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "sibling_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "checksum_matches": true,
+  "entries": 118,
+  "zip_crc": "pass",
+  "unsafe_paths": [],
+  "excluded_content_found": [],
+  "missing_worktree_files": [],
+  "worktree_hash_mismatches": [],
+  "missing_required": [],
+  "extracted_to": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+  "all_checks_pass": true
+}

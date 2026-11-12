@@ -1,0 +1,61 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M003",
+  "message_type": "job.report",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M002",
+  "payload": {
+    "changed_files": [
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "tests/test_contracts.py"
+    ],
+    "findings": [
+      "Root cause: historical planning examples were not updated when the skill-level envelope removed created_at, and the job.report example retained superseded field names. Updated examples, prompt snippets, checksum manifest and added direct validator regression.",
+      "Path validation uses resolve-then-open. The code rejects resolved symlink escapes but cannot provide OS-level containment and remains subject to concurrent path swaps. Windows junction creation was not attempted in this run; no runtime conclusion is claimed."
+    ],
+    "candidate_ref": {
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "artifact_id": "CFH-CANDIDATE-A001",
+      "kind": "candidate-manifest"
+    },
+    "status": "passed",
+    "summary": "Updated operational JSON examples to match the current closed message contract and added validator regression coverage. The Windows symlink regression is present but skipped because symlink creation returned WinError 1314; no filesystem containment claim is made.",
+    "errors": [],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-05"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "path": "reports/councilflow-hardening/worker/test-execution.json",
+      "sha256": "bbf27332a7fcf4339973adfc468b1673614c258c08cbb47e1f04f12b66480095",
+      "artifact_id": "CFH-WORKER-TESTS",
+      "kind": "execution-record"
+    },
+    {
+      "path": "reports/councilflow-hardening/worker/example-validation.json",
+      "sha256": "e76788e6eac0a7d9d78e384d41bcba6df03f9cc5f48fefb02c47cf6665afb7ba",
+      "artifact_id": "CFH-EXAMPLE-VALIDATION",
+      "kind": "execution-record"
+    }
+  ]
+}

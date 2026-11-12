@@ -1,0 +1,27 @@
+{
+  "candidate": "CF-DEMO-STARTER-A005",
+  "base_candidate": "CF-FINAL-DIST-ARCHIVE",
+  "base_head": "2d695a22a1bb596a527b0d118edc073d6d25553f",
+  "files": [
+    {
+      "path": "reports/gate3-next/disposable-demo/app.py",
+      "previous_sha256": "ba088a64917bf433bd2e11cdf1c8f8698aee70145148167c0c6af4f2072cd534",
+      "sha256": "d6bddf04ea4b0236459ed4686341d0839ba926a9236630ba197ed9af0da8d632"
+    },
+    {
+      "path": "reports/gate3-next/disposable-demo/test_app.py",
+      "previous_sha256": "ee780c837568bea728ed6d9f569bcbeffe810d16032c9dd2f4965519ce5a06b5",
+      "sha256": "855599b2c835500018ca06c57f0000d9dbf831077601e356eafae864d7362fc6"
+    },
+    {
+      "path": "reports/gate3-next/disposable-demo/README.md",
+      "sha256": "5522474006ddd582ec7dd7223c362e6dbc985278f12257051a92e6332b316889"
+    },
+    {
+      "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+      "sha256": "4dd146bdea498a3d31d085b18135b6121b1e19ee114657715524faa5ec69506e",
+      "unchanged": true,
+      "approval": "NOT OWNER-APPROVED"
+    }
+  ]
+}

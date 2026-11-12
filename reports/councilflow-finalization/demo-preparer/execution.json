@@ -1,0 +1,13 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-c",
+    "import ast,pathlib; ast.parse(pathlib.Path(r'reports/gate3-next/disposable-demo/app.py').read_text(encoding='utf-8')); ast.parse(pathlib.Path(r'reports/gate3-next/disposable-demo/test_app.py').read_text(encoding='utf-8')); assert 'def test_' not in pathlib.Path(r'reports/gate3-next/disposable-demo/test_app.py').read_text(encoding='utf-8')"
+  ],
+  "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "criterion_id": "P4-C",
+  "exit_code": 0,
+  "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "summary": "Both starter files parse; no prewritten acceptance test is present. No demo test suite was run."
+}

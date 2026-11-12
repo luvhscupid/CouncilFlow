@@ -1,0 +1,18 @@
+{
+  "CFH-M034": {
+    "role": "planner",
+    "instance_id": "/root/planner_branch"
+  },
+  "CFH-M035": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "CFH-M036": {
+    "role": "worker",
+    "instance_id": "/root/worker_a007"
+  },
+  "CFH-M037": {
+    "role": "manager",
+    "instance_id": "/root"
+  }
+}

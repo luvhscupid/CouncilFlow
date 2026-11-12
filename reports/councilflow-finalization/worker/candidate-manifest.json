@@ -1,0 +1,168 @@
+{
+  "candidate": "finalization-worker-output-CF-A003",
+  "base_head": "2d695a22a1bb596a527b0d118edc073d6d25553f",
+  "release_archive": "dist/council-flow.zip",
+  "release_archive_sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482",
+  "files": [
+    {
+      "path": "tests/test_codebase_memory_integration.py",
+      "size": 7849,
+      "sha256": "fe7118e6438497c07740d3daaeaf304eb2e5b4e921b7de1699af5c0fc65730d6"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "size": 50089,
+      "sha256": "004753d642a9aa5a46f6c7126887c4ec2afa0f58e2545fd98a45fcfa29deec60"
+    },
+    {
+      "path": "dist/council-flow.zip",
+      "size": 220020,
+      "sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482"
+    },
+    {
+      "path": "dist/council-flow.zip.sha256",
+      "size": 83,
+      "sha256": "27117e6a928b489ab66463290c956a1a588b792233307821bdf950e17d446b62"
+    },
+    {
+      "path": "reports/councilflow-finalization/initial-manifest.json",
+      "size": 607129,
+      "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974"
+    },
+    {
+      "path": "reports/councilflow-finalization/retirement-audit.json",
+      "size": 14446,
+      "sha256": "b08d21976ebae62cfc4a9896d003b2fd7c251cc68dde90f8df2a515ba269f81a"
+    },
+    {
+      "path": "reports/gate3-next/OWNER-TASK-DRAFT.txt",
+      "size": 669,
+      "sha256": "4dd146bdea498a3d31d085b18135b6121b1e19ee114657715524faa5ec69506e"
+    },
+    {
+      "path": "reports/gate3-next/OWNER-INVOCATION.txt",
+      "size": 267,
+      "sha256": "317534ce222b6e2388b175e51735069102accb4e702bef3c83e01588f45a99f0"
+    },
+    {
+      "path": "reports/gate3-next/E1-E10-CHECKLIST.md",
+      "size": 3332,
+      "sha256": "49a09a1e6a2615f00c4b0da90b7209021bda68415c75858dc6f2eb8bd2177015"
+    },
+    {
+      "path": "reports/gate3-next/disposable-demo/app.py",
+      "size": 1010,
+      "sha256": "ba088a64917bf433bd2e11cdf1c8f8698aee70145148167c0c6af4f2072cd534"
+    },
+    {
+      "path": "reports/gate3-next/disposable-demo/test_app.py",
+      "size": 1024,
+      "sha256": "ee780c837568bea728ed6d9f569bcbeffe810d16032c9dd2f4965519ce5a06b5"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/build_package.py",
+      "size": 8207,
+      "sha256": "44c53aa1abd391f65cd1f71bda93a71750555fbb5804b8dec008a6a43b41d524"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/build_initial_manifest.py",
+      "size": 5556,
+      "sha256": "14f2dfa0ef2910b19bdc1f1a0caaf3d56961b7f628de2e890ee936e7791af62c"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/build_retirement_audit.py",
+      "size": 8215,
+      "sha256": "90338b24330b5db7d12ac04e5f709ed6e0bcba6c318e4460fad6587a2af5de1d"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/run_targeted.py",
+      "size": 1658,
+      "sha256": "17163117e25995c6cb049abcbbc6a0bc9c1042691e7c9365aed3f95303e4ff13"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/verify_hashes.py",
+      "size": 4819,
+      "sha256": "d851a21dfff14cac134a299a2feb392bbd80b9af20b2ff3d9050a23ddbe1b2b4"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/write_job_report.py",
+      "size": 8179,
+      "sha256": "80821eab38f6d8c18da397371bbb332338f7c78dd71139d06bddb252e73b69c3"
+    },
+    {
+      "path": "reports/councilflow-finalization/initial-manifest.json",
+      "size": 607129,
+      "sha256": "bce7bc9b0afbe933bb2fd67841e715bedd9a4718ed5bbc83a65a7ee172453974"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/package-manifest.json",
+      "size": 20210,
+      "sha256": "6834a9995928afa058c12c5aee1da2dcdbc25afbf15f69e6076bdfc6b4c82992"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/package-verification.json",
+      "size": 3191,
+      "sha256": "d90961d09a4a8907dfec92ec19149115d99dc8af50198de4cf860d65d8a5e189"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/hash-consistency.json",
+      "size": 50043,
+      "sha256": "df388f55228e45c75586b3ef6286dff426a6f92f7f73ecb99a467239d0ecd3cd"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/targeted-execution.json",
+      "size": 1681,
+      "sha256": "8109d468b748370663b245db7589e890479533233ffa384ab81eaab7950d8c25"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/targeted-1.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/targeted-1.stderr.bin",
+      "size": 289,
+      "sha256": "efe515b97d52ea920b3278467acdb384a7c1d4401d81f72b04befcd8634894b2"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/targeted-2.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/targeted-2.stderr.bin",
+      "size": 1852,
+      "sha256": "ae2110a180fce31e21df9bcf08e9e0c0b03d519b58d23db4b52a3e3204ddad5e"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/extracted-check-1.stdout.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/extracted-check-1.stderr.bin",
+      "size": 1852,
+      "sha256": "e459deb28ac4f0f1cfd6050a09b87d59d7ad7044864d8f3cc1fb6a65e5943c45"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/extracted-check-2.stdout.bin",
+      "size": 195,
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/extracted-check-2.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/extracted-check-3.stdout.bin",
+      "size": 195,
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838"
+    },
+    {
+      "path": "reports/councilflow-finalization/worker/extracted-check-3.stderr.bin",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -31,6 +31,13 @@ Worker output is a new candidate; Tester/Reviewer receive that exact output. Wit
 referenced file must exist within that root and match its digest. Traversal and
 resolved symlink escapes are rejected before opening a target.
 
+This path check is best-effort validation of a record, not OS containment. The
+resolve-then-open sequence can race with concurrent filesystem changes, and
+Windows junction/reparse-point behavior depends on the host filesystem APIs.
+Do not use this helper to authorize access to attacker-controlled paths or to
+claim protection from a concurrent path swap; native permissions and an
+enforceable filesystem boundary must provide that protection.
+
 | Purpose | Route | Required payload |
 |---|---|---|
 | plan.publish | Planner → Manager | objective, scope, acceptance_ids, plan_ref |

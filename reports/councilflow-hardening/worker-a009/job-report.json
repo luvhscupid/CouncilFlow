@@ -1,0 +1,93 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M048",
+  "message_type": "job.report",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker_a009"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M047",
+  "payload": {
+    "status": "passed",
+    "summary": "Created fresh A009 evidence binding the exact A008 release/package bytes for independent verification. Manifest/execution digest, sibling archive checksum, snapshot CRC, safe paths and extracted hashes agree; no product or archive bytes changed.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "changed_files": [],
+    "findings": [
+      "A009 is evidence-only; current source and distribution archive bytes match the assigned A008 candidate exactly.",
+      "The canonical dist/council-flow.zip SHA-256 matches its sibling checksum file and the A008 manifest.",
+      "The cumulative A009 candidate manifest hash equals execution.json manifest_sha256.",
+      "The 12 cumulative snapshot entries have relative safe paths, valid CRC and hashes/sizes matching the manifest.",
+      "A008 package verification is referenced as evidence; this report does not claim the prior A008 ordered message chain was valid."
+    ],
+    "errors": [],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-A009-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-a009/execution.json",
+      "sha256": "164cc61434f9284b21eafa29777a30fa15b8272e150884e2dfab4106148da219",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-A009-SOURCE-SNAPSHOT",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-snapshot.zip",
+      "sha256": "55886bf887fc58d1ab948aee234d92d5e7dcf8be6a86cf4b651fa0a83de2fd16",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A009-INTEGRITY",
+      "path": "reports/councilflow-hardening/worker-a009/integrity-checks.json",
+      "sha256": "70566599c4cc96c1e9724d3b21025394f62bc3448d3ad3c118f97401a28bf547",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-A008-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-hardening/worker-a008/package-verification.json",
+      "sha256": "d5af9214f9796c686465ca01bf2531dffe89e07ff52bda46122fcf7ac95bf57b",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "kind": "distribution-archive"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-CHECKSUM",
+      "path": "dist/council-flow.zip.sha256",
+      "sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "kind": "checksum"
+    }
+  ]
+}

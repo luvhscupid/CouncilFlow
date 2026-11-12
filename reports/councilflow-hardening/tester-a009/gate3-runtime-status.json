@@ -1,0 +1,57 @@
+{
+  "experiment": "Frozen Gate 3 v0.2 procedure",
+  "attempted": false,
+  "reason": "This A009 package verification is not a Gate3 run; no authentic Owner-saved fixture or experiment setup was supplied. No live native outcome is inferred from the package tests, source comparison, or other CouncilFlow roles.",
+  "criteria": [
+    {
+      "id": "E1",
+      "status": "NOT RUN",
+      "reason": "NOT RUN — no host-observed native $council-flow invocation under the frozen experiment setup."
+    },
+    {
+      "id": "E2",
+      "status": "NOT RUN",
+      "reason": "NOT RUN — no activated-skill delegation-trigger trial; this separate mission explicitly requested native subagents."
+    },
+    {
+      "id": "E3",
+      "status": "NOT RUN",
+      "reason": "NOT RUN as the frozen observation — native roles ran for this mission, outside the Gate3 procedure."
+    },
+    {
+      "id": "E4",
+      "status": "NOT RUN",
+      "reason": "NOT RUN — the host evidence available here does not identify loaded custom-agent TOML configuration."
+    },
+    {
+      "id": "E5",
+      "status": "NOT RUN",
+      "reason": "NOT RUN in the frozen experiment — Tester commands ran in this separate package-verification role."
+    },
+    {
+      "id": "E6",
+      "status": "NOT RUN",
+      "reason": "NOT RUN in the frozen experiment — distinct role agents were used here, not in a Gate3 run."
+    },
+    {
+      "id": "E7",
+      "status": "NOT RUN",
+      "reason": "NOT RUN — no Gate3 Owner courier log/session was created for the frozen procedure."
+    },
+    {
+      "id": "E8",
+      "status": "NOT RUN",
+      "reason": "NOT RUN as a Gate3 outcome — separate A007 Reviewer rerun evidence is not a Gate3 experiment."
+    },
+    {
+      "id": "E9",
+      "status": "NOT RUN",
+      "reason": "NOT RUN — no Owner-facing interaction observations from the frozen experiment."
+    },
+    {
+      "id": "E10",
+      "status": "NOT RUN",
+      "reason": "NOT RUN — no authentic Owner-saved criteria fixture was supplied; P004 text comparison is only against frozen sources/C3."
+    }
+  ]
+}

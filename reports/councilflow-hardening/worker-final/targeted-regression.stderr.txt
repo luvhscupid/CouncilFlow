@@ -1,0 +1,6 @@
+test_published_json_message_examples_match_current_contract (tests.test_contracts.JSONContractTests.test_published_json_message_examples_match_current_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+OK

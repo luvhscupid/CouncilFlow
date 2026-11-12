@@ -1,0 +1,67 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M024",
+  "message_type": "job.report",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A005",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker_a005"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M023",
+  "payload": {
+    "status": "passed",
+    "summary": "Rebuilt the A005 cumulative candidate manifest and source snapshot without source edits; the new execution record manifest digest matches the exact candidate manifest bytes and every snapshot entry hash.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "changed_files": [],
+    "findings": [
+      "A004 top-level execution manifest_sha256 did not match the A004 candidate-manifest bytes. A005 execution.json now records the exact SHA-256 of A005 candidate-manifest.json.",
+      "A005 candidate source entries match the existing worktree bytes; all nine snapshot paths are relative and traversal-free, ZIP CRC passed, and extracted hashes match the candidate manifest.",
+      "No product source was changed in this evidence-only attempt. Prior A004 failures and retrospective reconstruction notes remain preserved."
+    ],
+    "errors": [],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A004",
+      "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+      "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-A005-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-a005/execution.json",
+      "sha256": "c820810c6e738241fc13738d495d008796df52794c0d9535e73d2aaf36dfc03b",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-A005-SOURCE-SNAPSHOT",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-snapshot.zip",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-A005-CANDIDATE",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    }
+  ]
+}

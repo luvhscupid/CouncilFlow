@@ -1,0 +1,229 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M026",
+  "message_type": "job.report",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A005",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/tester_a005"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M025",
+  "payload": {
+    "status": "passed",
+    "summary": "The A005 manifest/execution evidence is consistent. All six current applicable suites passed (124 pass, one Windows symlink test skipped); operational JSON examples, stale-digest rejection, P004-to-A005 sequence, exact E1-E10 text, all 20 checksums, and snapshot integrity checks passed. Frozen Gate3 live outcomes were not run and remain individually unverified/not run.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    },
+    "findings": [
+      "Current suites ran 125 tests: 124 passed and 1 was skipped because Windows denied symlink creation (WinError 1314); this is not evidence that symlink escape behavior is safe.",
+      "All 20 Full Plan checksum entries match. P004 E1-E10 criterion texts match their frozen source bodies (E4 uses approved C3 erratum); this is text fidelity only, not live Gate3 outcome evidence.",
+      "Historical A004 restoration/verification/initial and /final suite failures remain recorded in tester-verifier; they were not rerun as current A005 suites because those archived fixtures contain obsolete created_at fields.",
+      "No Windows junction or TOCTOU experiment was run. Path validation is best-effort and does not establish OS containment.",
+      "Frozen Gate3 live experiment not run; authentic Owner-saved fixture absent and host does not expose skill picker/config identity needed to make the experiment attributable. E1: NOT RUN (native invocation evidence unavailable); E2: NOT RUN (no activated-skill trigger test); E3: NOT RUN as frozen Gate3 observation (native subagents were used in this separate mission); E4: NOT RUN (loaded TOML identity unavailable); E5: NOT RUN as frozen experiment; E6: NOT RUN as frozen experiment; E7: NOT RUN as frozen experiment; E8: NOT RUN as frozen experiment; E9: NOT RUN as frozen experiment; E10: NOT RUN (authentic Owner fixture unavailable)."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "Current product/contract/application suites (six suites; 125 tests, 124 passed, 1 skipped)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-SUITES-A005",
+          "path": "reports/councilflow-hardening/tester-a005/suite-executions.json",
+          "sha256": "25b405959f6dd04f9cbae28c59c2536eb63f8eb002a9140e664890aa816cbf0d",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "A005 candidate, execution record, and source snapshot manifest hash consistency",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-INTEGRITY-A005",
+          "path": "reports/councilflow-hardening/tester-a005/integrity-checks.json",
+          "sha256": "bb50d1abd3a7054b208edaf21a8b7fa194cf5bf2c1312a466a10f912514e49ac",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "Both operational examples root-bound contract validation",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-COMMANDS-A005",
+          "path": "reports/councilflow-hardening/tester-a005/commands.json",
+          "sha256": "568a34dd6b698bb11be79b248e077790caae2b45e726adec94fdc3d48d7f7fbd",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "Stale candidate digest negative control rejects invalid reference",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-COMMANDS-A005",
+          "path": "reports/councilflow-hardening/tester-a005/commands.json",
+          "sha256": "568a34dd6b698bb11be79b248e077790caae2b45e726adec94fdc3d48d7f7fbd",
+          "kind": "execution-record"
+        }
+      },
+      {
+        "name": "P004 to A005 ordered message sequence",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-A005-SEQUENCE-STDOUT",
+          "path": "reports/councilflow-hardening/tester-a005/p004-a005-context-sequence.stdout.bin",
+          "sha256": "302563d8f82e19f9feef07ab617ebba608b5c6bb776108888cc369c7ba68f215",
+          "kind": "execution-output"
+        }
+      },
+      {
+        "name": "P004 E1-E10 criterion text exact comparison against frozen sources and approved C3",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-INTEGRITY-A005",
+          "path": "reports/councilflow-hardening/tester-a005/integrity-checks.json",
+          "sha256": "bb50d1abd3a7054b208edaf21a8b7fa194cf5bf2c1312a466a10f912514e49ac",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "Full Plan SHA256SUMS manifest (20 entries)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-INTEGRITY-A005",
+          "path": "reports/councilflow-hardening/tester-a005/integrity-checks.json",
+          "sha256": "bb50d1abd3a7054b208edaf21a8b7fa194cf5bf2c1312a466a10f912514e49ac",
+          "kind": "verification-record"
+        }
+      },
+      {
+        "name": "A005 bounded snapshot CRC, safe paths, exclusions and extracted hashes",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-INTEGRITY-A005",
+          "path": "reports/councilflow-hardening/tester-a005/integrity-checks.json",
+          "sha256": "bb50d1abd3a7054b208edaf21a8b7fa194cf5bf2c1312a466a10f912514e49ac",
+          "kind": "verification-record"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "CFH-TESTER-JOB-REPORT-ROOT-A005",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "artifact_id": "CFH-CANDIDATE-A005",
+          "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+          "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "CFH-CANDIDATE-A004",
+            "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+            "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+            "kind": "candidate-manifest"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "acceptance_id": "HF-04",
+        "evidence_ref": {
+          "artifact_id": "CFH-A005-JOB-REPORT-STDOUT",
+          "path": "reports/councilflow-hardening/tester-a005/example-job-report.stdout.bin",
+          "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+          "kind": "execution-output"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M025-TESTER-ASSIGNMENT",
+      "path": "reports/councilflow-hardening/manager/tester-a005-assign.json",
+      "sha256": "1e53f3d16dd92fda54b2742e7523ed688aa4c4e9db474caa02bcdb952fe79b03",
+      "kind": "assignment"
+    },
+    {
+      "artifact_id": "CFH-WORKER-REPORT-A005",
+      "path": "reports/councilflow-hardening/worker-a005/job-report.json",
+      "sha256": "90bce839e1a11e6b20e5c7831b01fb55e1a75c3d86520f7a59b2f40f63a0d380",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-SNAPSHOT-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-snapshot.zip",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-A005-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-a005/execution.json",
+      "sha256": "c820810c6e738241fc13738d495d008796df52794c0d9535e73d2aaf36dfc03b",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    },
+    {
+      "artifact_id": "CFH-TESTER-INTEGRITY-A005",
+      "path": "reports/councilflow-hardening/tester-a005/integrity-checks.json",
+      "sha256": "bb50d1abd3a7054b208edaf21a8b7fa194cf5bf2c1312a466a10f912514e49ac",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-SUITES-A005",
+      "path": "reports/councilflow-hardening/tester-a005/suite-executions.json",
+      "sha256": "25b405959f6dd04f9cbae28c59c2536eb63f8eb002a9140e664890aa816cbf0d",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-COMMANDS-A005",
+      "path": "reports/councilflow-hardening/tester-a005/commands.json",
+      "sha256": "568a34dd6b698bb11be79b248e077790caae2b45e726adec94fdc3d48d7f7fbd",
+      "kind": "execution-record"
+    }
+  ]
+}

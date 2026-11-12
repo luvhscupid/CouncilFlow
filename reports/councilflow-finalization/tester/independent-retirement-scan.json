@@ -1,0 +1,311 @@
+{
+  "scan": "independent UTF-8 case-insensitive source/package scan; hidden paths included; .git and cache directories excluded; archives scanned separately",
+  "source_file_count": 1541,
+  "binary_files_skipped": 7,
+  "working_tree_path_name_matches": [],
+  "active_surface_paths_scanned": 53,
+  "active_surface_matches": [],
+  "tracked_git_grep_occurrence_count": 38,
+  "tracked_git_grep_matches": [
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/final.md:5:`E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall`, branch `codex/cf-recall`."
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/final.md:28:Removed the prior untracked custom assets: `.agents/skills/cf-recall/`,"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/final.md:98:`cf-recall-review.patch` is regenerated against HEAD with all final tracked and"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/mcp-restoration.md:20:- Native list_projects resolved E-Saint-PROJECTS-CouncilFlow-cf-recall to"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/mcp-restoration.md:21:  E:/Saint/PROJECTS/CouncilFlow-cf-recall; index_status reported ready."
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-regression.json:20:  \"export_excluded\": \"cf-recall-review.patch\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-regression.json:33:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-regression.json:50:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-regression.json:67:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-regression.json:84:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-regression.json:98:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-validation.md:3:Authorized target: `main`, from `codex/cf-recall` in"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-validation.md:4:`E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall`."
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/merge-validation.md:34:`cf-recall-review.patch`, credentials, runtime caches, global MCP configuration,"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/review.json:4:  \"branch\": \"codex/cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/review.json:90:    \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/review.json:134:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\""
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:6:  \"branch\": \"codex/cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:23:    \".agents/skills/cf-recall\": true,"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:43:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:63:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:79:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:104:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:127:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:149:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:169:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:189:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:206:      \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:220:    \"branch\": \"codex/cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:237:      \".agents/skills/cf-recall\": true,"
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:257:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:277:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:297:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:317:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:337:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:354:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:370:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    },
+    {
+      "pattern": "cf-recall",
+      "line": "reports/native-codebase-memory/verification.json:395:        \"working_directory\": \"E:\\\\Saint\\\\PROJECTS\\\\CouncilFlow-cf-recall\","
+    }
+  ],
+  "historical_text_match_files": [
+    {
+      "path": "reports/councilflow-hardening/final.md",
+      "sha256": "483926fc7db2a5b15a2e0d0e549eb3daf239766a5bde0abe9d9a466bcab5d611",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/native-codebase-memory/final.md",
+      "sha256": "85329889bc4442b3efca7dd9c6a1651c9df3cc56553a63cba07ad4ebee9badae",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/native-codebase-memory/mcp-restoration.md",
+      "sha256": "b0c68ec386c0d3b3eff7b3079cdd02eb6e41a5ebc0da2e282e77414fe9d79813",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/native-codebase-memory/merge-regression.json",
+      "sha256": "78ad27127d3526dc41f165ac7e3217f1c6d6a5959bde9917285c6a39fd794a78",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/native-codebase-memory/merge-validation.md",
+      "sha256": "e511975f318246da751ee757185d5917aef1e0e899a99ebeca738dc5ea038b67",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/native-codebase-memory/review.json",
+      "sha256": "5e2f0cc0ffed247b012399c3daaff939167109714fc7ee5b80d4bd293d8f4f97",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/native-codebase-memory/verification.json",
+      "sha256": "cb176a3e6d09ec2d3a48191510a70f23e8207657f44b9fe9afde981df042908a",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/manager/planner-final-progress.json",
+      "sha256": "1ae1ad4ece3dd8134cb53462ad3f181a010cb268c14fa89e4718b208b9dd2392",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/planner/plan.json",
+      "sha256": "b2726bac9f42803653af7ba12d3d04ed90f033ac449ee24ae49af824f06dafce",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/planner-correction/plan.json",
+      "sha256": "df542d9cf504e1499f0a3243a957692ca85225035df9a19fc471d607aab6f2f1",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/planner-correction-final/plan.json",
+      "sha256": "d075adb6ba877816d12352706b191541b0f901a69e77cfc4447633f55f277f63",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/tester-a008/relocated/tests/test_codebase_memory_integration.py",
+      "sha256": "af3621fa614410cf9df6bfbad32936500d8829a161817cb0631b7f6a200d4265",
+      "classification": "historical/supporting report or preserved source snapshot"
+    },
+    {
+      "path": "reports/councilflow-hardening/tester-a009/relocated/tests/test_codebase_memory_integration.py",
+      "sha256": "af3621fa614410cf9df6bfbad32936500d8829a161817cb0631b7f6a200d4265",
+      "classification": "historical/supporting report or preserved source snapshot"
+    }
+  ],
+  "release_archive": {
+    "path": "dist/council-flow.zip",
+    "zip_sha256": "9e569fd99e23f334927a3771fcf145172b116f93a0912008f49d0e62db13a482",
+    "entry_count": 118,
+    "entry_name_matches": [],
+    "content_matches": []
+  },
+  "source_archive": {
+    "path": "../CouncilFlow-main.zip",
+    "zip_sha256": "ab0fb7cf561d43d06c8e7222779e03040bde54a137d613aeed79ad646ef398f1",
+    "entry_count": 1872,
+    "entry_name_matches": [],
+    "content_matches": [
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/final.md",
+        "sha256": "483926fc7db2a5b15a2e0d0e549eb3daf239766a5bde0abe9d9a466bcab5d611"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/manager/planner-final-progress.json",
+        "sha256": "1ae1ad4ece3dd8134cb53462ad3f181a010cb268c14fa89e4718b208b9dd2392"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/planner/plan.json",
+        "sha256": "b2726bac9f42803653af7ba12d3d04ed90f033ac449ee24ae49af824f06dafce"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/planner-correction/plan.json",
+        "sha256": "df542d9cf504e1499f0a3243a957692ca85225035df9a19fc471d607aab6f2f1"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/planner-correction-final/plan.json",
+        "sha256": "d075adb6ba877816d12352706b191541b0f901a69e77cfc4447633f55f277f63"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/planner-correction-p004/plan.json",
+        "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/tester-a008/relocated/tests/test_codebase_memory_integration.py",
+        "sha256": "af3621fa614410cf9df6bfbad32936500d8829a161817cb0631b7f6a200d4265"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/councilflow-hardening/tester-a009/relocated/tests/test_codebase_memory_integration.py",
+        "sha256": "af3621fa614410cf9df6bfbad32936500d8829a161817cb0631b7f6a200d4265"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/native-codebase-memory/final.md",
+        "sha256": "85329889bc4442b3efca7dd9c6a1651c9df3cc56553a63cba07ad4ebee9badae"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/native-codebase-memory/mcp-restoration.md",
+        "sha256": "b0c68ec386c0d3b3eff7b3079cdd02eb6e41a5ebc0da2e282e77414fe9d79813"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/native-codebase-memory/merge-regression.json",
+        "sha256": "78ad27127d3526dc41f165ac7e3217f1c6d6a5959bde9917285c6a39fd794a78"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/native-codebase-memory/merge-validation.md",
+        "sha256": "e511975f318246da751ee757185d5917aef1e0e899a99ebeca738dc5ea038b67"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/native-codebase-memory/review.json",
+        "sha256": "5e2f0cc0ffed247b012399c3daaff939167109714fc7ee5b80d4bd293d8f4f97"
+      },
+      {
+        "entry": "CouncilFlow-main/reports/native-codebase-memory/verification.json",
+        "sha256": "cb176a3e6d09ec2d3a48191510a70f23e8207657f44b9fe9afde981df042908a"
+      },
+      {
+        "entry": "CouncilFlow-main/tests/test_codebase_memory_integration.py",
+        "sha256": "af3621fa614410cf9df6bfbad32936500d8829a161817cb0631b7f6a200d4265"
+      }
+    ]
+  },
+  "all_active_and_release_matches_zero": true
+}

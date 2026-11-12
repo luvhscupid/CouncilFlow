@@ -1,0 +1,68 @@
+{
+  "candidate_id": "CFH-CANDIDATE-A007",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A007",
+  "baseline_commit": "2d695a22a1bb596a527b0d118edc073d6d25553f",
+  "input_candidate_ref": {
+    "artifact_id": "CFH-CANDIDATE-A006",
+    "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+    "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+    "kind": "candidate-manifest"
+  },
+  "files": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "size": 13040
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "size": 55872
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "size": 4125
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "size": 1981
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "size": 681
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "size": 1024
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "size": 91
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "size": 13135
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "size": 49410
+    }
+  ],
+  "snapshot_ref": {
+    "artifact_id": "CFH-A007-SOURCE-SNAPSHOT",
+    "path": "reports/councilflow-hardening/worker-a007/candidate-snapshot.zip",
+    "kind": "source-snapshot",
+    "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d"
+  },
+  "provenance_note": "Fresh A007 cumulative snapshot built from current bytes matching the exact assigned A006 input candidate; prior retrospective A001 reconstruction remains retrospective."
+}

@@ -1,0 +1,6 @@
+test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs (test_contracts.JSONContractTests.test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+OK

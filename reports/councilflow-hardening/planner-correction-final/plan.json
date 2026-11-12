@@ -1,0 +1,94 @@
+{
+  "plan_id": "CFH-P003",
+  "plan_revision": 1,
+  "objective": "Corrected original CouncilFlow hardening plan preserving Owner mission requirements and exact frozen Gate 3 E1–E10 criterion text, with the separately approved C3 erratum controlling E4.",
+  "provenance": "Current Owner hardening mission in the initial user message; frozen normative sources docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md and 02-GATE3-v0.2-FROZEN.md; approved E4-only erratum docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md. Corrected plan references P001 unchanged; it supersedes P001 only for current acceptance after Tester identified omissions. Gate 3 E10 PASS requires comparison to the authentic Owner-saved fixture; reports/gate3b/frozen-task.txt is not presumed to be that fixture. P003 supersedes P002 after exact-text review; P001 and P002 are preserved unchanged. E1–E3 and E5–E10 were copied from docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md; E4 uses the exact C3 checker string, whose only presentation normalization removes the Markdown blank line between heading and first paragraph. Full E4 body and both final safeguards match docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md.",
+  "scope": [
+    "Verified CouncilFlow repository only: E:/Saint/PROJECTS/CouncilFlow-main",
+    "Read/audit installed skill, native agent definitions, contract validator/tests, Codebase Memory lifecycle/integration, demo/tests, release/package instructions and reports",
+    "Apply minimal fixes only for defects confirmed against frozen constraints; add feasible regression coverage; execute applicable validation and report evidence"
+  ],
+  "out_of_scope": [
+    "Snapshot Vault absent direct dependency",
+    "external repositories, pushes, merges, user data deletion, global settings/permissions/authentication changes, paid providers, scope expansion, or weakening frozen acceptance",
+    "Recreating deleted cf-recall"
+  ],
+  "dependencies": [
+    "Native host roles, session IDs/config evidence, authenticated skill picker/invocation and original Owner fixture are only considered available when actually exposed/authorized.",
+    "Codebase Memory MCP project must be bound to the exact repository root, fresh for relied-on files, and treated as untrusted navigation context."
+  ],
+  "work_units": [
+    "Read immutable normative and historical documentation, inspect clean baseline, bind and query exact Codebase Memory project, and establish test/implementation evidence.",
+    "Planner publishes immutable objective and original acceptance. Manager delegates bounded implementation to fresh Worker.",
+    "Independent Tester and Reviewer assess exact candidate and deterministic command where executable; Manager decides accept/rework based on evidence.",
+    "Update Codebase Memory after Worker stops edits if source changes, then perform final test/diff/packaging checks and Planner map against the original criteria."
+  ],
+  "risks": [
+    "Native Gate 3 activation, custom-agent config loading, and E1–E10 host observations may be blocked by host capabilities or lack of an experiment-compliant fixture; report exact statuses without simulation.",
+    "Validator checks are structural and do not authenticate senders or enforce transport/OS containment; never claim those controls.",
+    "Historical plans/reports and generated package snapshots are not current evidence; classify them by provenance and freshness."
+  ],
+  "acceptance": [
+    {
+      "id": "HF-01",
+      "criterion": "Identify the actual Git repository root and active branch. Confirm the repository contains the latest CouncilFlow implementation. Read the Owner Charter, frozen Gate 3 specifications, complete plan under `docs/`, current implementation, tests, and release reports. Establish which documents are normative, historical, or outdated. Check for existing uncommitted changes and preserve them."
+    },
+    {
+      "id": "HF-02",
+      "criterion": "Preserve: Owner → Planner → Manager → Worker → Tester → Reviewer → Manager → Planner → Owner. Existing role responsibilities and separation. Owner authorization and security boundaries. The frozen Gate 3 requirements and E1–E10 acceptance criteria. Existing communication protocol unless a compatible correction is demonstrably necessary. The integrated Codebase Memory MCP lifecycle inside `$council-flow`. `cf-recall` was intentionally deleted. DO NOT recreate it. Do not expand scope, weaken acceptance criteria, invent verification evidence, or silently modify frozen decisions. Snapshot Vault remains outside this mission unless a direct CouncilFlow dependency requires examination."
+    },
+    {
+      "id": "HF-03",
+      "criterion": "Investigate and fix confirmed, in-scope defects across native orchestration, Codebase Memory MCP, security and trust boundaries, reliability and recovery, and documentation and distribution. For every confirmed defect identify the root cause, choose the smallest maintainable correction, implement it in the real repository, add a regression test where feasible, run relevant tests, inspect for regressions/security/contract violations, and rework failed changes when justified by new evidence."
+    },
+    {
+      "id": "HF-04",
+      "criterion": "Execute all applicable repository test suites, including contract, skill, Codebase Memory, integration, and regression tests. Attempt the frozen native Gate 3 acceptance procedure only when the required host capabilities and authorization are genuinely available. For every acceptance criterion report PASS, FAIL, BLOCKED, or NOT RUN with reason. Do not classify mocked tests, static documentation checks, or reported past success as proof of live native operation. Verify the exact Owner fixture and acceptance criteria without altering their meaning. Record executable commands, results, and relevant evidence locations."
+    },
+    {
+      "id": "HF-05",
+      "criterion": "Review the complete diff. Confirm no unrelated files were changed. Confirm no deleted components were recreated. Confirm frozen requirements remain intact. Verify all achievable regression tests pass. Separate implemented fixes from unresolved external limitations. Leave modifications in the verified CouncilFlow repository. Do not push, merge branches, delete user data, or modify external repositories. Do not bypass required Owner authorization for consequential or high-risk operations."
+    },
+    {
+      "id": "E1",
+      "criterion": "E1 — Native discovery and invocation\nRecord separately (a) listing/picker visibility and (b) direct `$council-flow` selection. **PASS requires host-observed successful native invocation.** Missing picker entry alone does not invalidate working direct invocation."
+    },
+    {
+      "id": "E2",
+      "criterion": "E2 — Native delegation trigger\n**PASS requires host-observed delegation attributable to the activated skill** without an additional explicit spawning instruction. If invocation succeeds but host evidence positively shows non-delegation, **FAIL (WORKFLOW_BEHAVIOR)**. If causation is not observable, **UNVERIFIED**. Alternative invocation wording requires a subsequent Owner decision, not an instruction added during this experiment."
+    },
+    {
+      "id": "E3",
+      "criterion": "E3 — Actual spawns\nRecord host-observed subagent count, role/agent_type, and thread labels/IDs, without inventing identifiers. The required distinct-role observation is assessed together with E6."
+    },
+    {
+      "id": "E4",
+      "criterion": "E4 — Custom-agent loading\n**PASS:** Host-observed configuration identity or agent type confirms that the\nintended `council-*` custom-agent definitions were loaded for their corresponding\nrole sessions.\n\n**FAIL:** Host evidence affirmatively demonstrates that a different or default\nagent configuration was used instead.\n\n**UNVERIFIED:** The host exposes only cosmetic thread labels or insufficient\ninformation to identify the actual loaded custom-agent definition.\n\nThis check makes no claim about model or sandbox settings that the TOML files do\nnot define. A displayed role name alone does not prove that the corresponding\nTOML file was loaded. Do not hardcode unsupported model or sandbox settings to\nmake E4 pass. Do not alter agent settings beyond the approved Reviewer and Tester\ninstruction corrections."
+    },
+    {
+      "id": "E5",
+      "criterion": "E5 — Independent Tester command\nHost evidence shows the Tester executed its commands **in its own Tester thread**, not merely a Worker report copied to Tester."
+    },
+    {
+      "id": "E6",
+      "criterion": "E6 — Distinct role threads\nHost evidence shows Worker, Tester and Reviewer as **three distinct threads**. A single model adopting three role names is insufficient."
+    },
+    {
+      "id": "E7",
+      "criterion": "E7 — Zero Owner courier work\nCount courier interventions after initial submission. **PASS requires exactly zero.** Courier work includes the Owner moving any message/output/file content from one agent to another, retyping instructions already available to agents, or being asked to carry data that another agent could hand over. Legitimate host permission prompts and explicit Planner/Manager Owner decisions are logged separately as **AUTHORIZATION**, not courier work. Evidence: OWNER-LOG and available interaction records."
+    },
+    {
+      "id": "E8",
+      "criterion": "E8 — Reviewer verification rerun\nThe Tester identifies which of its commands are deterministic. Reviewer independently re-executes **one** deterministic Tester command and compares its **exit code** and **SHA-256 of normalized stdout** to the Tester-recorded result. Normalization must be documented, identical on both sides, and must not erase meaningful differences. Evidence must contain recorded commands, exit codes, normalized output hashes and the rerun comparison. No comparable deterministic command = `NOT_COMPARABLE` and E8 does **not** PASS."
+    },
+    {
+      "id": "E9",
+      "criterion": "E9 — Plain-English Owner interface\nRoutine **agent-generated** Owner-directed communication comes only from Planner or Manager and uses plain English. Owner is not required to read, interpret, copy or relay raw inter-agent messages. Optional inspection of agent records does not violate E9. Host-generated permission dialogs and genuine explicit Owner decisions are separately permitted/logged."
+    },
+    {
+      "id": "E10",
+      "criterion": "E10 — Frozen criteria fidelity\nPlanner reproduces the Owner's saved mandatory acceptance criteria **verbatim**. PASS requires a direct **DIFF** or equivalent byte-for-byte/line-preserving comparison against the saved fixture. Separately identifiable metadata such as IDs and traceability references may be added; criteria may not be paraphrased, omitted, weakened, or silently augmented."
+    }
+  ],
+  "fixture_limitations": "No authentic Owner fixture has been identified in inspected sources. Do not infer one from reports/gate3b/frozen-task.txt or retrospective reports. E10 remains unverified until an authentic fixture and Planner output are compared."
+}

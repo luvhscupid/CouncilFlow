@@ -1,0 +1,114 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M049",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester_a009"
+  },
+  "in_reply_to": "CFH-M048",
+  "payload": {
+    "objective": "Independently verify A009 current release and package candidate in the clean P004 boundary.",
+    "scope": [
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "tests",
+      "demo",
+      ".agents/skills/council-flow/",
+      ".codex/agents/",
+      "docs/gate3/",
+      "docs/CouncilFlow-Full-Plan/"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh independent Tester; do not edit source/package or alter prior evidence. Verify exact A009 candidate, Worker report, execution, snapshot and A008 release archive/hash.",
+      "Inspect every package entry/hash and required/excluded list; independently extract to `reports/councilflow-hardening/tester-a009/relocated/` and leave it there for Reviewer rerun.",
+      "Run all six suites on exact extracted package, both root-bound operational examples, stale digest negative, 20 bundle checksums, and exact P004 E1-E10 text comparison using approved C3 for E4.",
+      "Validate the clean ordered context beginning M046→M047→M048→M049→your report. Keep all prior failed sequences outside the context while preserving them in evidence refs/history.",
+      "Report exact archive SHA/checksum and Gate3 E1-E10 live NOT RUN; no junction/TOCTOU or OS-containment claims.",
+      "For a deterministic command, record exact executable path/args/cwd/candidate/input refs/exit and CRLF-to-LF-only stdout SHA. Include nested command evidence_ref also in top-level evidence_refs. Save raw evidence and valid report; stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A009",
+      "path": "reports/councilflow-hardening/manager/oracle-a009.json",
+      "sha256": "dadcb9aec4cd8283a9a9e670172495b21348407333e709d2f425640e633b97da",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M046",
+      "path": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json",
+      "sha256": "04b6228623413f1857c9925036cac923362dcf5246c6c26471414611cc17e7d8",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M048",
+      "path": "reports/councilflow-hardening/worker-a009/job-report.json",
+      "sha256": "7c26a1a3f36b92df377fb6ed87e4f78c9b6f298dbd673666220eaeb405d413c0",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A009-SOURCE-SNAPSHOT",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-snapshot.zip",
+      "sha256": "55886bf887fc58d1ab948aee234d92d5e7dcf8be6a86cf4b651fa0a83de2fd16",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "kind": "distribution-archive"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-CHECKSUM",
+      "path": "dist/council-flow.zip.sha256",
+      "sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "kind": "checksum"
+    },
+    {
+      "artifact_id": "CFH-A008-PACKAGE-VERIFICATION",
+      "path": "reports/councilflow-hardening/worker-a008/package-verification.json",
+      "sha256": "d5af9214f9796c686465ca01bf2531dffe89e07ff52bda46122fcf7ac95bf57b",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A009",
+      "path": "reports/councilflow-hardening/manager/oracle-a009.json",
+      "sha256": "dadcb9aec4cd8283a9a9e670172495b21348407333e709d2f425640e633b97da",
+      "kind": "verification-strategy"
+    }
+  ]
+}

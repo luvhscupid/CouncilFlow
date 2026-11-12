@@ -1,0 +1,179 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M028",
+  "message_type": "job.report",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A005",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer_a005"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M027",
+  "payload": {
+    "status": "failed",
+    "summary": "The exact A005 candidate and P004 criteria were reviewed; the selected deterministic Tester command independently matched exit 0 and normalized stdout SHA-256 9c0e58ec…b82b8bd. Review fails because the Tester command output evidence reference is nested in its deterministic command but omitted from the Tester message top-level evidence_refs, violating validate_sequence evidence binding.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    "findings": [
+      "P004 E1-E10 criterion text exactly matches frozen Gate3, with approved C3 erratum for E4; this is text fidelity only, not live Gate3 evidence.",
+      "A005 Worker candidate refs, execution manifest digest, current source file hashes, snapshot SHA/CRC/safe paths and extracted source hashes are consistent.",
+      "Independent exact command rerun matched the Tester exit code and CRLF-to-LF-only normalized stdout digest.",
+      "The Tester command output file exists and its file digest matches the nested command reference, but that artifact reference is absent from the Tester report top-level evidence_refs; the current contracts.py sequence validator requires it to be present there."
+    ],
+    "errors": [],
+    "comparison": {
+      "plan_ref": {
+        "artifact_id": "CFH-PLAN-004",
+        "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+        "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+        "kind": "plan"
+      },
+      "tester_report_ref": {
+        "artifact_id": "CFH-M026",
+        "path": "reports/councilflow-hardening/tester-a005/job-report.json",
+        "sha256": "47b53554b3e281e46761b26419b1942fa05fad7679ece2afcdd33792338d14c2",
+        "kind": "message"
+      },
+      "candidate_ref": {
+        "artifact_id": "CFH-CANDIDATE-A005",
+        "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+        "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+        "kind": "candidate-manifest"
+      },
+      "findings": [
+        "Compared the original P004 plan, A005 candidate/Worker report, exact Tester report, and reran the Tester-declared deterministic command."
+      ],
+      "discrepancies": [
+        "Tester report CFH-M026 omits its selected deterministic command evidence_ref CFH-A005-JOB-REPORT-STDOUT from the message top-level evidence_refs. contracts.py validate_sequence requires the selected tester_evidence_ref to also appear among those top-level refs; the actual output file exists and its hash matches, but the controlled causal comparison cannot be validated."
+      ],
+      "independent_rerun": {
+        "status": "MATCH",
+        "command_id": "CFH-TESTER-JOB-REPORT-ROOT-A005",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "message",
+          "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "artifact_id": "CFH-CANDIDATE-A005",
+          "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+          "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "CFH-CANDIDATE-A004",
+            "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+            "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+            "kind": "candidate-manifest"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+        "acceptance_id": "HF-04",
+        "evidence_ref": {
+          "artifact_id": "CFH-REVIEWER-RERUN-A005",
+          "path": "reports/councilflow-hardening/reviewer-a005/rerun.json",
+          "sha256": "fe61be6e491678634d22030f561de1c636bfb09f9bad42463db3a5c3f78cd602",
+          "kind": "execution-record"
+        },
+        "tester_evidence_ref": {
+          "artifact_id": "CFH-A005-JOB-REPORT-STDOUT",
+          "path": "reports/councilflow-hardening/tester-a005/example-job-report.stdout.bin",
+          "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+          "kind": "execution-output"
+        },
+        "tester_exit_code": 0,
+        "tester_stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd"
+      }
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-M027-REVIEWER-ASSIGNMENT",
+      "path": "reports/councilflow-hardening/manager/reviewer-a005-assign.json",
+      "sha256": "128001461fd84db5984d2e30511e714298bd8f0dd623b2c4c4112d6cbd389575",
+      "kind": "assignment"
+    },
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M024",
+      "path": "reports/councilflow-hardening/worker-a005/job-report.json",
+      "sha256": "90bce839e1a11e6b20e5c7831b01fb55e1a75c3d86520f7a59b2f40f63a0d380",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M026",
+      "path": "reports/councilflow-hardening/tester-a005/job-report.json",
+      "sha256": "47b53554b3e281e46761b26419b1942fa05fad7679ece2afcdd33792338d14c2",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A005",
+      "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+      "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A005",
+      "path": "reports/councilflow-hardening/manager/oracle-a005.json",
+      "sha256": "e25d9759f9d44fa7612550845f80f2362812a6ac05762c2a6fd70eb9cc603da4",
+      "kind": "verification-strategy"
+    },
+    {
+      "artifact_id": "CFH-REVIEW-CHECKS-A005",
+      "path": "reports/councilflow-hardening/reviewer-a005/review-checks.json",
+      "sha256": "6b5aa89ca4c526408eb18a50b474fcbda5e900bb85991891a1f7a0f47b206d62",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-REVIEWER-RERUN-A005",
+      "path": "reports/councilflow-hardening/reviewer-a005/rerun.json",
+      "sha256": "fe61be6e491678634d22030f561de1c636bfb09f9bad42463db3a5c3f78cd602",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-REVIEWER-STDOUT-A005",
+      "path": "reports/councilflow-hardening/reviewer-a005/command-1.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    {
+      "artifact_id": "CFH-REVIEWER-STDERR-A005",
+      "path": "reports/councilflow-hardening/reviewer-a005/command-1.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    },
+    {
+      "artifact_id": "CFH-REVIEW-SEQUENCE-A005",
+      "path": "reports/councilflow-hardening/reviewer-a005/ordered-sequence-check.json",
+      "sha256": "8bb9a60aabb09fc6f968aaf85273d87f8d9bc9b2833bee5d0ffd2937807a735b",
+      "kind": "execution-record"
+    }
+  ]
+}

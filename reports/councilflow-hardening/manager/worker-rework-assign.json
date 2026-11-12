@@ -1,0 +1,50 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M008",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A002",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker_rework"
+  },
+  "in_reply_to": "CFH-M007",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03"
+    ],
+    "instructions": [
+      "Fresh Worker repair after independently recorded Tester failure CFH-M006. Use a fresh native Worker instance and attempt A002.",
+      "Preserve the original plan and all frozen acceptance text byte-for-byte. Do not flatten or otherwise normalize multiline E1-E10 criterion values.",
+      "Implement the smallest change so plan acceptance criterion strings accept LF and valid CRLF line breaks while rejecting other control characters. Do not relax generic string validation.",
+      "Add regression tests proving the exact original plan with multiline criteria validates, and controls containing forbidden characters still reject.",
+      "Run the relevant tests and full test suite. Update index only after you stop edits is Manager responsibility. Save a new candidate manifest and valid UTF-8 JSON worker job.report with input_candidate_ref echoing the assigned candidate. Stop edits after terminal report."
+    ],
+    "objective": "Repair the confirmed validator defect that rejects multiline frozen acceptance criterion text; preserve all criterion characters and allow only safe line breaks.",
+    "candidate_ref": {
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "kind": "candidate-manifest",
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "artifact_id": "CFH-CANDIDATE-A001"
+    },
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+      "kind": "execution-record",
+      "path": "reports/councilflow-hardening/tester-plan/execution.json",
+      "artifact_id": "CFH-TESTER-PLAN-EXECUTION"
+    }
+  ]
+}

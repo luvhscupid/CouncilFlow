@@ -15,17 +15,25 @@
     "role": "manager",
     "instance_id": "manager-main"
   },
-  "created_at": "2026-11-11T00:00:01Z",
   "in_reply_to": "M0001",
   "payload": {
-    "outcome": "completed",
-    "artifact_refs": [
-      "demo/receipt_calculator.py"
+    "status": "in_progress",
+    "summary": "Synthetic example only; no task was executed and no output is being claimed.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2"
     ],
-    "self_check_claims": [
-      "basic smoke run passed"
-    ],
-    "independently_verified": false
+    "candidate_ref": {
+      "artifact_id": "SYNTHETIC-CANDIDATE-001",
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "kind": "synthetic-example"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "demo/receipt/receipt_calculator.py"
+    ]
   },
   "evidence_refs": []
 }

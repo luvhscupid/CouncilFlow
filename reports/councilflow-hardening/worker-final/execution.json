@@ -1,0 +1,403 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "candidate_id": "CFH-CANDIDATE-A004",
+  "manifest_path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+  "manifest_sha256": "307c08ff8e44dfb2ab132a43294c52f33f730c9b4ccb990a828c392debfd5586",
+  "snapshot_path": "reports/councilflow-hardening/worker-final/candidate-snapshot.zip",
+  "snapshot_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+  "snapshot_file_count": 9,
+  "zip_crc_valid": true,
+  "extracted_hashes_match": true,
+  "zip_checks": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "expected": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "actual": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "expected": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "actual": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "expected": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "expected": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "actual": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "expected": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "expected": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "expected": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "matches": true
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "expected": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "actual": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "matches": true
+    }
+  ],
+  "input_candidate_manifest_sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+  "input_candidate_source_hash_checks": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "expected": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "actual": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "expected": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "actual": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "expected": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "expected": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+      "actual": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "matches": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "expected": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "expected": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+      "actual": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "matches": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "matches": true
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "expected": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864",
+      "actual": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "matches": false
+    }
+  ],
+  "a001_reconstruction": [
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "expected_sha256": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+      "reconstructed_sha256": null,
+      "matches": false,
+      "status": "not_reconstructed"
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "expected_sha256": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+      "reconstructed_sha256": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+      "matches": true,
+      "status": "reconstructed_exact_hash"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "expected_sha256": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864",
+      "reconstructed_sha256": "a6776471d5010b15a88f86b9b2e96a635b2c718b2ef731b32d4e92c1f97fc333",
+      "matches": false,
+      "status": "not_reconstructed"
+    }
+  ],
+  "commands": [
+    {
+      "name": "root-job-assign",
+      "command": [
+        "python",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-hardening/worker-final/root-job-assign.stdout.txt",
+      "stderr_path": "reports/councilflow-hardening/worker-final/root-job-assign.stderr.txt"
+    },
+    {
+      "name": "root-job-report",
+      "command": [
+        "python",
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "reports/councilflow-hardening/worker-final/root-job-report.stdout.txt",
+      "stderr_path": "reports/councilflow-hardening/worker-final/root-job-report.stderr.txt"
+    },
+    {
+      "name": "targeted-regression",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_contracts.JSONContractTests.test_published_json_message_examples_match_current_contract",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "59d6c6204934f7cdcf379277409e6892ce47bd41ce6a55eefeff83e4646eb61f",
+      "stdout_path": "reports/councilflow-hardening/worker-final/targeted-regression.stdout.txt",
+      "stderr_path": "reports/councilflow-hardening/worker-final/targeted-regression.stderr.txt"
+    },
+    {
+      "name": "full-unit-suite",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a6d099ac502e420cc5d5b40e96fb57ccbcd10731f7b27527d224717d9f1d691f",
+      "stdout_path": "reports/councilflow-hardening/worker-final/full-unit-suite.stdout.txt",
+      "stderr_path": "reports/councilflow-hardening/worker-final/full-unit-suite.stderr.txt"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1de2722f4e51143e7002ed7a1b9510edc568e43418bb96263fbf45612c8f852c",
+      "stdout_path": "reports/councilflow-hardening/worker-final/diff-check.stdout.txt",
+      "stderr_path": "reports/councilflow-hardening/worker-final/diff-check.stderr.txt"
+    },
+    {
+      "name": "bundle-checksums",
+      "entry_count": 20,
+      "mismatches": [],
+      "exit_code": 0
+    }
+  ],
+  "candidate_manifest_sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+  "source_snapshot_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+  "a001_manifest_verification": {
+    "manifest_path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+    "manifest_sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+    "all_entries_match": true,
+    "entries": [
+      {
+        "path": ".agents/skills/council-flow/references/communication.md",
+        "expected_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "actual_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "matches": true,
+        "source": "worktree"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+        "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "matches": true,
+        "source": "worktree"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+        "expected_sha256": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+        "actual_sha256": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+        "matches": true,
+        "source": "reconstructed"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "matches": true,
+        "source": "worktree"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "expected_sha256": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+        "actual_sha256": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+        "matches": true,
+        "source": "reconstructed"
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+        "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "matches": true,
+        "source": "worktree"
+      },
+      {
+        "path": "tests/test_contracts.py",
+        "expected_sha256": "a6776471d5010b15a88f86b9b2e96a635b2c718b2ef731b32d4e92c1f97fc333",
+        "actual_sha256": "a6776471d5010b15a88f86b9b2e96a635b2c718b2ef731b32d4e92c1f97fc333",
+        "matches": true,
+        "source": "reconstructed"
+      }
+    ],
+    "note": "Retrospective exact-hash reconstruction where the worktree no longer held the A001 bytes; this is not a contemporaneous capture."
+  },
+  "input_candidate_verification": {
+    "manifest_path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+    "manifest_sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+    "all_entries_match_current_worktree": false,
+    "entries": [
+      {
+        "path": ".agents/skills/council-flow/references/communication.md",
+        "expected_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "actual_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "matches": true
+      },
+      {
+        "path": ".agents/skills/council-flow/scripts/contracts.py",
+        "expected_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "actual_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+        "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+        "expected_sha256": "769866090c81a20da1e9315d83c4296f1959a82fff36c6d122ce24f6b326249b",
+        "actual_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+        "matches": false
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "expected_sha256": "a27221ac7bc08519af93acb9681e10223c7d9ff4d7ba69897238c11b9d695596",
+        "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+        "matches": false
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+        "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "matches": true
+      },
+      {
+        "path": "tests/test_contracts.py",
+        "expected_sha256": "383a843873f485f4571fd5a8b8f189e7ee9e3aacf3941308ed91f58bee0fa864",
+        "actual_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+        "matches": false
+      }
+    ],
+    "note": "Assigned input manifest hash and bytes are preserved; its listed source files were subsequently updated in this authorized attempt and the cumulative A004 candidate carries their current hashes."
+  },
+  "snapshot_verification": {
+    "zip_crc_valid": true,
+    "all_extracted_hashes_match_manifest": true,
+    "entry_count": 9,
+    "entries": [
+      {
+        "path": ".agents/skills/council-flow/references/communication.md",
+        "expected_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "actual_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+        "matches": true
+      },
+      {
+        "path": ".agents/skills/council-flow/scripts/contracts.py",
+        "expected_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "actual_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+        "expected_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+        "expected_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+        "actual_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "expected_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "expected_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+        "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+        "expected_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+        "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+        "matches": true
+      },
+      {
+        "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+        "expected_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+        "matches": true
+      },
+      {
+        "path": "tests/test_contracts.py",
+        "expected_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+        "actual_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+        "matches": true
+      }
+    ]
+  }
+}

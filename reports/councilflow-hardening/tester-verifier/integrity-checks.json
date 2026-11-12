@@ -1,0 +1,505 @@
+{
+  "commands": [
+    {
+      "name": "example-job-assign",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "candidate_ref": {
+        "artifact_id": "CFH-CANDIDATE-A004",
+        "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+        "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+        "kind": "candidate-manifest"
+      },
+      "input_refs": [
+        {
+          "artifact_id": "CFH-CURRENT-BASE-A002",
+          "path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+          "sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+          "kind": "candidate-manifest"
+        }
+      ],
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_evidence": "reports/councilflow-hardening/tester-verifier/example-job-assign.stdout.bin",
+      "stderr_evidence": "reports/councilflow-hardening/tester-verifier/example-job-assign.stderr.bin",
+      "stdout_raw": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_raw": ""
+    },
+    {
+      "name": "example-job-report",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "candidate_ref": {
+        "artifact_id": "CFH-CANDIDATE-A004",
+        "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+        "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+        "kind": "candidate-manifest"
+      },
+      "input_refs": [
+        {
+          "artifact_id": "CFH-CURRENT-BASE-A002",
+          "path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+          "sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+          "kind": "candidate-manifest"
+        }
+      ],
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_evidence": "reports/councilflow-hardening/tester-verifier/example-job-report.stdout.bin",
+      "stderr_evidence": "reports/councilflow-hardening/tester-verifier/example-job-report.stderr.bin",
+      "stdout_raw": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_raw": ""
+    },
+    {
+      "name": "example-stale-negative",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "reports\\councilflow-hardening\\tester-verifier\\stale-job-report.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "candidate_ref": {
+        "artifact_id": "CFH-CANDIDATE-A004",
+        "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+        "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+        "kind": "candidate-manifest"
+      },
+      "input_refs": [
+        {
+          "artifact_id": "CFH-CURRENT-BASE-A002",
+          "path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+          "sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+          "kind": "candidate-manifest"
+        }
+      ],
+      "exit_code": 1,
+      "stdout_sha256_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "663678fc28269ab2949d596830a93a40426e72f8f3b8f935779b7a585fd74941",
+      "stdout_evidence": "reports/councilflow-hardening/tester-verifier/example-stale-negative.stdout.bin",
+      "stderr_evidence": "reports/councilflow-hardening/tester-verifier/example-stale-negative.stderr.bin",
+      "stdout_raw": "",
+      "stderr_raw": "{\"valid\": false, \"error\": \"artifact_hash\", \"field\": \"payload.candidate_ref\", \"message\": \"artifact_hash at payload.candidate_ref: docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt\"}\r\n"
+    },
+    {
+      "name": "p004-context-sequence",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "sequence",
+        "reports/councilflow-hardening/planner-correction-p004/plan-publish.json",
+        "reports/councilflow-hardening/manager/worker-final-assign.json",
+        "reports/councilflow-hardening/worker-final/job-report.json",
+        "reports/councilflow-hardening/manager/tester-final-assign.json",
+        "--root",
+        "."
+      ],
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+      "candidate_ref": {
+        "artifact_id": "CFH-CANDIDATE-A004",
+        "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json",
+        "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+        "kind": "candidate-manifest"
+      },
+      "input_refs": [
+        {
+          "artifact_id": "CFH-CURRENT-BASE-A002",
+          "path": "reports/councilflow-hardening/manager/base-candidate-a002.json",
+          "sha256": "47be359f19b823be3ac4097a6e5007698412e1b2993a204003ae50fc5b08a311",
+          "kind": "candidate-manifest"
+        }
+      ],
+      "exit_code": 0,
+      "stdout_sha256_crlf_to_lf_only": "664a6976e8343d550cba4e2c0b1ce5c6e14ac09c697f84ede64e945d79d01195",
+      "stderr_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_evidence": "reports/councilflow-hardening/tester-verifier/p004-context-sequence.stdout.bin",
+      "stderr_evidence": "reports/councilflow-hardening/tester-verifier/p004-context-sequence.stderr.bin",
+      "stdout_raw": "{\"valid\": true, \"mode\": \"sequence\", \"files\": 4, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}\r\n",
+      "stderr_raw": ""
+    }
+  ],
+  "manifest_sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+  "manifest_file_checks": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "manifest_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "actual_sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "size_expected": 13040,
+      "size_actual": 13040,
+      "matches": true
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "manifest_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "actual_sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "size_expected": 55872,
+      "size_actual": 55872,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "manifest_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual_sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "size_expected": 4125,
+      "size_actual": 4125,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "manifest_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "actual_sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "size_expected": 1981,
+      "size_actual": 1981,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "manifest_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual_sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "size_expected": 681,
+      "size_actual": 681,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "manifest_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual_sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "size_expected": 1024,
+      "size_actual": 1024,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "manifest_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual_sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "size_expected": 91,
+      "size_actual": 91,
+      "matches": true
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "manifest_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual_sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "size_expected": 13135,
+      "size_actual": 13135,
+      "matches": true
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "manifest_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "actual_sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "size_expected": 49410,
+      "size_actual": 49410,
+      "matches": true
+    }
+  ],
+  "manifest_all_match": true,
+  "snapshot_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+  "snapshot_matches_manifest": true,
+  "snapshot_zip_crc_error": null,
+  "snapshot_paths": [
+    {
+      "path": ".agents/skills/council-flow/references/communication.md",
+      "size": 13040,
+      "sha256": "ab07afc1d8d7df6e88ead75d926707013a21f0a847fbdaf8242d28e3a594125e",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "size": 55872,
+      "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "size": 4125,
+      "sha256": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "size": 1981,
+      "sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "size": 681,
+      "sha256": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "size": 1024,
+      "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "size": 91,
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "size": 13135,
+      "sha256": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "safe": true,
+      "excluded": false
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "size": 49410,
+      "sha256": "9d65789dc8b7ee93248318d8223e7558f5babc54cd6975e6d829e36da90a53af",
+      "safe": true,
+      "excluded": false
+    }
+  ],
+  "snapshot_paths_safe": true,
+  "snapshot_excluded_metadata_present": [],
+  "snapshot_entries_equal_manifest_paths": true,
+  "full_plan_checksums": [
+    {
+      "path": "00-SCOPE-AND-STATUS.md",
+      "expected": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "actual": "ec7e13d02b24ffa794148d8096fcb2b15f410a3d79a144185875e82cf42ebf8b",
+      "matches": true
+    },
+    {
+      "path": "01-PRODUCT-AND-ROLES.md",
+      "expected": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "actual": "ff8947d7e1f4a6abb05f6c919bf98047a911694a09e413e61039a6385ea6ca29",
+      "matches": true
+    },
+    {
+      "path": "02-PROTOCOL-AND-POLICY.md",
+      "expected": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "actual": "febaa25b904d62473ee419026b55c9a3b0309c8b8ff861ef100b4050332ff8fe",
+      "matches": true
+    },
+    {
+      "path": "03-DELIVERY-AND-ACCEPTANCE.md",
+      "expected": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "actual": "0d4bc999d941ccaee42b51cfd048c3a3bc8c50622e98611ab32fdcefd7757967",
+      "matches": true
+    },
+    {
+      "path": "04-SECURITY-AND-LIMITS.md",
+      "expected": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "actual": "826a5dfd5170328b64788ba0f9d14a2980a14930fb865ec192222f347920e538",
+      "matches": true
+    },
+    {
+      "path": "05-OPERATIONS-AND-HANDOFF.md",
+      "expected": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "actual": "34874afe279346d1404c2f543f580c102e7393961961076d79abb0f652134100",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "expected": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "actual": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384",
+      "matches": true
+    },
+    {
+      "path": "SOURCE-MANIFEST.md",
+      "expected": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "actual": "a213f587a833285df7bfcc60913cebd8bb18f6829e482f3dfab04a5e96157c14",
+      "matches": true
+    },
+    {
+      "path": "examples/events.jsonl",
+      "expected": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "actual": "9b78620c1a0bd986727b36ac2eedaa07e4d22fc34ecb6575b0f56654300e8894",
+      "matches": true
+    },
+    {
+      "path": "examples/job.assign.json",
+      "expected": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "actual": "ea36c752ffaba47c87cac0cbe703f97583cb1b07f0ef3b5dbbbdc75e15a0c03b",
+      "matches": true
+    },
+    {
+      "path": "examples/job.report.json",
+      "expected": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "actual": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "matches": true
+    },
+    {
+      "path": "examples/role-policy.yaml",
+      "expected": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "actual": "c106c232686ceec1e478483f5dee4fb8ed3d25fb5774860a1fd694aa7bc39aa2",
+      "matches": true
+    },
+    {
+      "path": "prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "expected": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "actual": "c20a7452cd9ee7dedd19f38eff8e3f658f7656f525ef692b7c21aa3f77646fbb",
+      "matches": true
+    },
+    {
+      "path": "source-docs/ACP-SPEC-v0.1-PROPOSED.md",
+      "expected": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "actual": "29e1c9d90e7f0ce7920f099aad17e139fd2038f4cfaf0522f912750455dfa618",
+      "matches": true
+    },
+    {
+      "path": "source-docs/ACP-v0.2.1-Readiness-Assessment-Nov09.txt",
+      "expected": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "actual": "0e23ea58c1f29c1cda69007f399fc8c967fbdd225184d65feaa3938e656c146a",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Council-001-Architecture-v1.0-Original-Source.txt",
+      "expected": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "actual": "26efb51304ea30351a319265b5ee136e11faacb5b806aac2990d094081d4635e",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Council-R4-Contract-v0.2.txt",
+      "expected": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "actual": "9d34b5e9ccb25208d68ab1c5f606594c5dca445d322b1cc73d5c8a46f7a621ac",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Council-R6-Architecture-v0.3.txt",
+      "expected": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "actual": "8f75b778cf6364e66b894b249f29b9c6498b1e6ea280a2900e563fb9ed0d6655",
+      "matches": true
+    },
+    {
+      "path": "source-docs/Security-Annex-v1.0-A-RECOVERY-NOTE.md",
+      "expected": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "actual": "5abd0dcee07d91a6609879acc837800e26571eebbb3645f09120921477063929",
+      "matches": true
+    },
+    {
+      "path": "examples/synthetic-candidate.txt",
+      "expected": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "actual": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "matches": true
+    }
+  ],
+  "full_plan_checksums_all_match": true,
+  "criteria": [
+    {
+      "id": "E1",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "6fdc3b3bb5ee557a24acacbd66eeea01eb0521b65f0f2f05ea81cc192a5169fe",
+      "canonical_sha256": "6fdc3b3bb5ee557a24acacbd66eeea01eb0521b65f0f2f05ea81cc192a5169fe",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E2",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "ff4f98bbe44064977675d5f9817bf5b253d8d427451b4a00e66f42148a06c051",
+      "canonical_sha256": "ff4f98bbe44064977675d5f9817bf5b253d8d427451b4a00e66f42148a06c051",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E3",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "389b76e368d5b0eb4b2a1b8859c0ffe698d66a36a61b37b1f413773bba39a3ac",
+      "canonical_sha256": "389b76e368d5b0eb4b2a1b8859c0ffe698d66a36a61b37b1f413773bba39a3ac",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E4",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "3e0026ade145f6c84cf9e18c7d9f90b91ef70d53e71dc8ebadfa02b34446a95f",
+      "canonical_sha256": "3e0026ade145f6c84cf9e18c7d9f90b91ef70d53e71dc8ebadfa02b34446a95f",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "has_source": true
+    },
+    {
+      "id": "E5",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "44eee87cf0edd900d4872efe8741db0b99687ccd4f21d0af2183011f51ba1073",
+      "canonical_sha256": "44eee87cf0edd900d4872efe8741db0b99687ccd4f21d0af2183011f51ba1073",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E6",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "2412e013cb4cf167d5ff0468133b7e7f74d3ce9a51cbe547ab812869e99bd795",
+      "canonical_sha256": "2412e013cb4cf167d5ff0468133b7e7f74d3ce9a51cbe547ab812869e99bd795",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E7",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "1835f2218a9f7e7ea901d66525b7c0c2ba271de9b7ebeec95eab1a8495d05258",
+      "canonical_sha256": "1835f2218a9f7e7ea901d66525b7c0c2ba271de9b7ebeec95eab1a8495d05258",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E8",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "294c4d7deb289a2145fbed065fa5b0deb9efa25cda858bb3d9e0f82c7d658bac",
+      "canonical_sha256": "294c4d7deb289a2145fbed065fa5b0deb9efa25cda858bb3d9e0f82c7d658bac",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E9",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "69065cfcbca8f81edff925d4a0533842c864e6f5b1485346720b560518e5bf3a",
+      "canonical_sha256": "69065cfcbca8f81edff925d4a0533842c864e6f5b1485346720b560518e5bf3a",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    },
+    {
+      "id": "E10",
+      "planned_matches_canonical_body_exact": true,
+      "planned_sha256": "4c6bf7d1a5b0e9522a08228a4d88354f05e66ac4bb46bc623845086d61ed1c6e",
+      "canonical_sha256": "4c6bf7d1a5b0e9522a08228a4d88354f05e66ac4bb46bc623845086d61ed1c6e",
+      "canonical_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "has_source": true
+    }
+  ],
+  "criteria_all_exact": true,
+  "worker_execution_hash_audit": {
+    "execution_top_manifest_sha256": "307c08ff8e44dfb2ab132a43294c52f33f730c9b4ccb990a828c392debfd5586",
+    "execution_candidate_manifest_sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+    "recomputed_manifest_sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+    "assignment_expected_manifest_sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+    "execution_top_matches_recomputed": false,
+    "execution_candidate_field_matches_recomputed": true,
+    "snapshot_expected_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+    "snapshot_actual_sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+    "snapshot_matches": true,
+    "worker_execution_zip_crc_valid_field": true,
+    "worker_execution_extracted_hashes_match_field": true
+  }
+}

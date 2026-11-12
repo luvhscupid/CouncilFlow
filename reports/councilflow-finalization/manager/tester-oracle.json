@@ -1,0 +1,77 @@
+{
+  "oracle_id": "CF-FINAL-ORACLE-001",
+  "plan_id": "CF-FINAL-001",
+  "candidate_archive": {
+    "path": "dist/council-flow.zip",
+    "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f"
+  },
+  "commands": [
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ]
+  ],
+  "run_sets": [
+    "canonical working tree",
+    "freshly extracted dist/council-flow.zip"
+  ],
+  "additional_checks": [
+    "Validate both advertised Full Plan JSON examples via contracts.py message <file> --root . from each applicable root.",
+    "In a disposable temporary root only, mutate a real synthetic artifact digest and confirm root-bound validation rejects it with a nonzero exit; do not use or report invented zero digests as real data.",
+    "Recompute every docs/CouncilFlow-Full-Plan/SHA256SUMS.txt entry and compare all 20 files.",
+    "Verify Owner Charter, frozen Gate 3 v0.2, and approved C3 erratum bytes against HEAD; compare the previous hardening plan's E1-E10 criterion text exactly against the controlling frozen source, using C3 only for E4.",
+    "Check ZIP CRC, unique and safe relative paths, required and forbidden entries, sibling SHA-256, exact package-manifest to source bytes, and clean extraction containment.",
+    "Exercise the added top-level Tester/Reviewer evidence-reference regression; retain existing sender-binding, path-resolution, E8 mismatch/forged-reference, and symlink tests without duplication. Report privilege-dependent skips precisely.",
+    "Scan current active/installable surface and release archive for retired standalone files, imports, commands, aliases, and content. Preserve hash-listed historical exceptions and keep all historical records outside the release.",
+    "Declare one deterministic Reviewer command: the root-bound job.report example validation in the freshly extracted package. Record executable path, exact arguments, extracted cwd, candidate and input hashes, exit, raw output paths, and CRLF-to-LF-only stdout hash."
+  ],
+  "not_in_scope": [
+    "Do not edit application/source or repair failed checks.",
+    "Do not run the frozen Gate 3 experiment or claim its E1-E10 results.",
+    "Do not claim native TOML loading, host isolation, unavailable-MCP fallback, stale-index behavior, junction/reparse safety, or TOCTOU safety without direct evidence."
+  ]
+}

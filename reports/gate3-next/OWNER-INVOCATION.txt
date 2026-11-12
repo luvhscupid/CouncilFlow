@@ -1,0 +1,5 @@
+For the separate observation, open a NEW authenticated local Codex session with `reports/gate3-next/disposable-workspace` as its workspace root. After personally accepting the task draft and saving that exact text as the Owner fixture outside the installed skill, submit the following as the only initial instruction (replace the bracketed placeholder with the saved fixture text):
+
+`$council-flow [paste the exact Owner-saved fixture text here]`
+
+Do not paste the skill or add an explicit spawn instruction.

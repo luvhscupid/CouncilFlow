@@ -1,0 +1,102 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M051",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/reviewer_a009"
+  },
+  "in_reply_to": "CFH-M050",
+  "payload": {
+    "objective": "Independently review A009 release candidate and exact Tester evidence, then rerun one deterministic command.",
+    "scope": [
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "reports/councilflow-hardening/worker-a009/",
+      "reports/councilflow-hardening/tester-a009/relocated/"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh Reviewer; no source/evidence edits. Compare immutable P004 and exact E1-E10 text; validate clean sequence M046-M050. Prior failed A005/A006 chains and invalid A008 manager sequence stay outside this boundary.",
+      "Review A009 Worker candidate/report/execution/snapshot, A009 Tester report M050 and oracle; verify artifact identities. Inspect package/current RELEASE status and verify archive SHA and sibling, CRC, safe paths, content and exact worktree hashes.",
+      "Independently rerun exactly CFH-TESTER-JOB-REPORT-ROOT-A009 with exact declared Python 3.12 executable, args, cwd `reports/councilflow-hardening/tester-a009/relocated`, candidate/input refs; no shell alias. Capture raw stdout/exit, normalize CRLF to LF only, hash, compare. Keep extracted package intact.",
+      "Do not claim E1-E10 live Gate3 PASS; this mission did not run frozen experiment. Save truthful UTF-8 Reviewer report and raw evidence. Stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A009",
+      "path": "reports/councilflow-hardening/manager/oracle-a009.json",
+      "sha256": "dadcb9aec4cd8283a9a9e670172495b21348407333e709d2f425640e633b97da",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M046",
+      "path": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json",
+      "sha256": "04b6228623413f1857c9925036cac923362dcf5246c6c26471414611cc17e7d8",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M048",
+      "path": "reports/councilflow-hardening/worker-a009/job-report.json",
+      "sha256": "7c26a1a3f36b92df377fb6ed87e4f78c9b6f298dbd673666220eaeb405d413c0",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M050",
+      "path": "reports/councilflow-hardening/tester-a009/job-report.json",
+      "sha256": "6271b9125267d9f71d171bc4a33f8a905666e7184c9615598effab747f599950",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "kind": "distribution-archive"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-CHECKSUM",
+      "path": "dist/council-flow.zip.sha256",
+      "sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "kind": "checksum"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A009",
+      "path": "reports/councilflow-hardening/manager/oracle-a009.json",
+      "sha256": "dadcb9aec4cd8283a9a9e670172495b21348407333e709d2f425640e633b97da",
+      "kind": "verification-strategy"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "CouncilFlow"
+  short_description: "Coordinate coding with five distinct native agent roles"
+  default_prompt: "Use $council-flow to complete this coding goal with independent verification: "
+policy:
+  allow_implicit_invocation: false

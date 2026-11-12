@@ -1,0 +1,91 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M042",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A008",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker_a008"
+  },
+  "in_reply_to": "CFH-M041",
+  "payload": {
+    "objective": "Resolve the confirmed current release-document/package gap without rewriting historical evidence or frozen specifications.",
+    "scope": [
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "reports/councilflow-hardening/worker-a008/"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Make a minimal current-checkout update to RELEASE.md that identifies the canonical dist/council-flow.zip, notes that the Round 6 statements/reports below are historical, and describes current bundle contents/checks using the actual implementation. Do not rewrite historical evidence files.",
+      "Build dist/council-flow.zip from an explicit repository-root allowlist: complete .agents/skills/council-flow, four .codex/agents/council-*.toml files, README and RELEASE, demos, tests, docs relevant to frozen requirements/full plan, and selected clearly historical reports. Preserve repository-relative POSIX paths.",
+      "Exclude .git, Python caches/pyc, credentials, runtime state, temp files, the archive itself, the entire current hardening packet directory, unrelated projects, and generated caches. Generate sibling SHA256 file.",
+      "Verify CRC, every archive path safe/relative, required contents present, forbidden contents absent, and every packaged file matches current worktree bytes. Extract in an isolated temporary directory and run the relevant product/contract/application suites plus root-bound operational JSON example commands. Record exact results and archive hash.",
+      "Create cumulative candidate manifest and bounded snapshot whose digests bind exact final RELEASE.md and distribution archive/hash bytes; ensure manifest_sha256 in execution record binds final manifest bytes. Be explicit that distribution archive is an output artifact and does not contain current hardening evidence.",
+      "Preserve all earlier reports and frozen Gate3 docs unchanged; no product-code changes. Save accurate UTF-8 Worker report and stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M034",
+      "path": "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+      "sha256": "6b40c9bcc202d166c3ed6af6f3da2ff5a82f9edcc5154bcaea80511d7634e552",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A007",
+      "path": "reports/councilflow-hardening/worker-a007/candidate-manifest.json",
+      "sha256": "198e935c5b022b210c110935bdcc91d7fa8ae97ea98a90ee5e82ac8f605c1db5",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-M036",
+      "path": "reports/councilflow-hardening/worker-a007/job-report.json",
+      "sha256": "438d6caf0425a64f5f9fd0ac0668ea031e9e98bdb99be6f0f61faa01bc073f10",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M038",
+      "path": "reports/councilflow-hardening/tester-a007/job-report.json",
+      "sha256": "7fa08619e1d1bddaeb6f3751b63ae890d42d13c6ec685e2c0ddf45ce114dc5ab",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M040",
+      "path": "reports/councilflow-hardening/reviewer-a007/job-report.json",
+      "sha256": "4c352285d5a9a2fbdb73a6620c08efda37bd5db8dab364219a0fd8b131e9f1ac",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-DIST-GAP-AUDIT",
+      "path": "reports/councilflow-hardening/manager/prepackage-audit.json",
+      "sha256": "d6057c5e330f37e1889b153f4133155ae3ef00b9d31b9c03da1248707ed774b9",
+      "kind": "verification-record"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M016",
+  "message_type": "plan.publish",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A004",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": null,
+  "payload": {
+    "objective": "Corrected original CouncilFlow hardening plan preserving Owner mission requirements and exact frozen Gate 3 E1–E10 criterion text, with the separately approved C3 erratum controlling E4.",
+    "scope": [
+      "Verified CouncilFlow repository only: E:/Saint/PROJECTS/CouncilFlow-main",
+      "Read/audit installed skill, native agent definitions, contract validator/tests, Codebase Memory lifecycle/integration, demo/tests, release/package instructions and reports",
+      "Apply minimal fixes only for defects confirmed against frozen constraints; add feasible regression coverage; execute applicable validation and report evidence"
+    ],
+    "acceptance_ids": [
+      "HF-01",
+      "HF-02",
+      "HF-03",
+      "HF-04",
+      "HF-05",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10"
+    ],
+    "plan_ref": {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    }
+  },
+  "evidence_refs": []
+}

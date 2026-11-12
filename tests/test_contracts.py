@@ -351,6 +351,31 @@ class JSONContractTests(unittest.TestCase):
             self.assertEqual(run.returncode, 1)
             self.assertIs(json.loads(run.stderr)["valid"], False)
             self.assertNotIn("Traceback", run.stderr)
+
+    def test_plan_criteria_preserve_multiline_text_but_reject_other_controls(self):
+        for line_break in ("\n", "\r\n"):
+            with self.subTest(line_break=repr(line_break)), tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+                criterion = "E10 — Frozen criteria fidelity" + line_break + "PASS requires exact preservation."
+                plan = {"plan_id": "P1", "plan_revision": 1,
+                        "acceptance": [{"id": "AC1", "criterion": criterion}]}
+                path = Path(directory) / "plan.json"
+                path.write_text(json.dumps(plan), encoding="utf-8")
+                packet = publish()
+                packet["payload"]["acceptance_ids"] = ["AC1"]
+                packet["payload"]["plan_ref"] = ref(
+                    "actual-plan", path.relative_to(ROOT).as_posix(),
+                    hashlib.sha256(path.read_bytes()).hexdigest())
+                packet["evidence_refs"] = [packet["payload"]["plan_ref"]]
+                c.validate_sequence([packet], root=ROOT)
+                self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["acceptance"][0]["criterion"], criterion)
+
+                for forbidden in ("\t", "\x00", "\rX"):
+                    invalid = copy.deepcopy(plan)
+                    invalid["acceptance"][0]["criterion"] += forbidden
+                    path.write_text(json.dumps(invalid), encoding="utf-8")
+                    packet["payload"]["plan_ref"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+                    with self.subTest(forbidden=repr(forbidden)), self.assertRaises(c.ContractError):
+                        c.validate_sequence([packet], root=ROOT)
     def test_original_plan_and_final_acceptance_cannot_be_weakened(self):
         data = sequence();data[7]["payload"]["acceptance_ids"] = ["AC1"]
         with self.assertRaises(c.ContractError):c.validate_sequence(data)
@@ -464,6 +489,19 @@ class JSONContractTests(unittest.TestCase):
         self.assertEqual(set(tester), {"command_id", "command", "arguments", "workdir", "candidate_ref",
                          "input_refs", "exit_code", "stdout_sha256", "acceptance_id", "evidence_ref"})
         self.assertEqual(tester["stdout_sha256"], "a" * 64)
+
+    def test_tester_command_and_reviewer_rerun_artifacts_must_be_top_level_refs(self):
+        data = sequence()
+        tester_evidence = data[4]["payload"]["deterministic_commands"][0]["evidence_ref"]
+        data[4]["evidence_refs"].remove(tester_evidence)
+        with self.subTest(role="tester"), self.assertRaises(c.ContractError):
+            c.validate_sequence(data)
+
+        data = sequence()
+        reviewer_evidence = data[6]["payload"]["comparison"]["independent_rerun"]["evidence_ref"]
+        data[6]["evidence_refs"].remove(reviewer_evidence)
+        with self.subTest(role="reviewer"), self.assertRaises(c.ContractError):
+            c.validate_sequence(data)
 
     def test_exit_code_mismatch_fails_reviewer_acceptance(self):
         data = sequence();rerun = data[6]["payload"]["comparison"]["independent_rerun"]
@@ -693,6 +731,35 @@ class JSONContractTests(unittest.TestCase):
             with self.assertRaises(c.ContractError):c.artifact(item, ROOT)
             item["path"] = "/etc/secret"
             with self.assertRaises(c.ContractError):c.artifact(item, ROOT)
+
+    def test_artifact_symlink_escape_is_rejected_when_supported(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
+            parent = Path(directory)
+            authorized = parent / "authorized"
+            authorized.mkdir()
+            outside = parent / "outside.txt"
+            outside.write_text("outside root", encoding="utf-8")
+            link = authorized / "escape.txt"
+            try:
+                link.symlink_to(outside)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symlink creation unavailable: {exc}")
+            item = ref("symlink-escape", link.relative_to(ROOT).as_posix(),
+                       hashlib.sha256(outside.read_bytes()).hexdigest())
+            with self.assertRaises(c.ContractError):
+                c.artifact(item, ROOT)
+
+    def test_published_json_message_examples_match_current_contract(self):
+        examples = ROOT / "docs" / "CouncilFlow-Full-Plan" / "examples"
+        for name in ("job.assign.json", "job.report.json"):
+            with self.subTest(name=name):
+                packet = c.loads((examples / name).read_bytes())
+                c.validate_message(packet, root=ROOT)
+
+        report = c.loads((examples / "job.report.json").read_bytes())
+        report["payload"]["candidate_ref"]["sha256"] = "0" * 64
+        with self.assertRaises(c.ContractError):
+            c.validate_message(report, root=ROOT)
 
     def test_plan_artifact_acceptance_is_checked_not_only_packet(self):
         with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:

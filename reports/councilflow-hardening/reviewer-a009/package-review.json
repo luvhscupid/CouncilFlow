@@ -1,0 +1,13 @@
+{
+  "archive_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "sibling_sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+  "hash_matches": true,
+  "entries": 118,
+  "duplicate_paths": false,
+  "crc_error": null,
+  "unsafe_paths": [],
+  "worktree_byte_mismatches": [],
+  "missing_required": [],
+  "excluded_content_found": [],
+  "all_checks_pass": true
+}

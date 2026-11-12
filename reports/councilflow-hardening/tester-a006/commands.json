@@ -1,0 +1,131 @@
+[
+  {
+    "command_id": "CFH-A006-JOB-ASSIGN",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "--root",
+      "."
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A006",
+      "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+      "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A005",
+        "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+        "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+    "acceptance_id": "HF-04",
+    "expected_result": "success",
+    "expectation_met": true,
+    "evidence_ref": {
+      "artifact_id": "CFH-A006-JOB-ASSIGN-STDOUT",
+      "path": "reports/councilflow-hardening/tester-a006/job-assign.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    "stderr_ref": {
+      "artifact_id": "CFH-A006-JOB-ASSIGN-STDERR",
+      "path": "reports/councilflow-hardening/tester-a006/job-assign.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    }
+  },
+  {
+    "command_id": "CFH-A006-JOB-REPORT",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "--root",
+      "."
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A006",
+      "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+      "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A005",
+        "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+        "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+    "acceptance_id": "HF-04",
+    "expected_result": "success",
+    "expectation_met": true,
+    "evidence_ref": {
+      "artifact_id": "CFH-A006-JOB-REPORT-STDOUT",
+      "path": "reports/councilflow-hardening/tester-a006/job-report.stdout.bin",
+      "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+      "kind": "execution-output"
+    },
+    "stderr_ref": {
+      "artifact_id": "CFH-A006-JOB-REPORT-STDERR",
+      "path": "reports/councilflow-hardening/tester-a006/job-report.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    }
+  },
+  {
+    "command_id": "CFH-A006-STALE-NEGATIVE",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "reports/councilflow-hardening/tester-a006/stale-job-report.json",
+      "--root",
+      "."
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A006",
+      "path": "reports/councilflow-hardening/worker-a006/candidate-manifest.json",
+      "sha256": "cdd4d79d0cbe73655ddccbd6caf5ae5e0d8b83f7d33d710d194b98a3f3c55aa2",
+      "kind": "candidate-manifest"
+    },
+    "input_refs": [
+      {
+        "artifact_id": "CFH-CANDIDATE-A005",
+        "path": "reports/councilflow-hardening/worker-a005/candidate-manifest.json",
+        "sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+        "kind": "candidate-manifest"
+      }
+    ],
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "acceptance_id": "HF-04",
+    "expected_result": "failure",
+    "expectation_met": true,
+    "evidence_ref": {
+      "artifact_id": "CFH-A006-STALE-NEGATIVE-STDOUT",
+      "path": "reports/councilflow-hardening/tester-a006/stale-negative.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "execution-output"
+    },
+    "stderr_ref": {
+      "artifact_id": "CFH-A006-STALE-NEGATIVE-STDERR",
+      "path": "reports/councilflow-hardening/tester-a006/stale-negative.stderr.bin",
+      "sha256": "663678fc28269ab2949d596830a93a40426e72f8f3b8f935779b7a585fd74941",
+      "kind": "execution-output"
+    }
+  }
+]

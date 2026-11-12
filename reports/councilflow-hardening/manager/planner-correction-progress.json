@@ -1,0 +1,64 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M014",
+  "message_type": "plan.progress",
+  "plan_id": "CFH-P002",
+  "plan_revision": 1,
+  "task_id": "CFH-T002",
+  "attempt_id": "CFH-A002",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/planner",
+    "role": "planner"
+  },
+  "in_reply_to": "CFH-M013",
+  "payload": {
+    "next_action": "Publish a new immutable P003 plan, copying exact E1-E10 criterion text from frozen Gate3 v0.2 with approved C3 exact E4; preserve all current Owner mission criteria and explicitly record E10 fixture limitation. Verify character-for-character against normative source before publication.",
+    "status": "rework_required",
+    "scope": [
+      "Verified CouncilFlow repository only: E:/Saint/PROJECTS/CouncilFlow-main"
+    ],
+    "candidate_ref": {
+      "path": "reports/councilflow-hardening/worker-rework/candidate-manifest.json",
+      "sha256": "c38d3df65764ce41955f94909e88342eb6dcdcbe064871d3082d329423a9b43d",
+      "artifact_id": "CFH-CANDIDATE-A002",
+      "kind": "candidate-manifest"
+    },
+    "acceptance_ids": [
+      "HF-01",
+      "HF-02",
+      "HF-03",
+      "HF-04",
+      "HF-05",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10"
+    ],
+    "verified_progress": [
+      "P002 still fails exact comparison against C3 for E4: it omits “Do not hardcode unsupported model or sandbox settings to make E4 pass. Do not alter agent settings beyond the approved Reviewer and Tester instruction corrections.” and lacks source line breaks.",
+      "P002 E7 wording differs from frozen text: exact source uses “Legitimate host permission prompts and explicit Planner/Manager Owner decisions are logged separately as **AUTHORIZATION**, not courier work.”",
+      "P002 E9 must preserve “Optional inspection of agent records does not violate E9.” before the host-generated permission sentence.",
+      "Independent evidence is reports/councilflow-hardening/tester-final/criteria-check.json; preserve P001 and P002 unchanged."
+    ],
+    "objective": "Complete Owner hardening mission with immutable exact Gate3 criteria and evidence-grounded verification."
+  },
+  "evidence_refs": [
+    {
+      "path": "reports/councilflow-hardening/tester-final/criteria-check.json",
+      "sha256": "8a3b77640be45555d6dc2d5a9f72ffc44331dc207708bd60409ea2999e870442",
+      "artifact_id": "CFH-TESTER-CRITERIA-CHECK",
+      "kind": "comparison-record"
+    }
+  ]
+}

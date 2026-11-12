@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "demo/receipt/receipt_calculator.py",
+    "--item",
+    "tiny",
+    "0.123456789012",
+    "0.234567890123",
+    "each"
+  ],
+  "exit": 0,
+  "stdout": "0.123456789012 each tiny \u00d7 Rp0.234567890123 = Rp0.028958998519905209728476\nTotal = Rp0.028958998519905209728476\n",
+  "stderr": ""
+}

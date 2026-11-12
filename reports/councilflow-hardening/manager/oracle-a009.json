@@ -1,0 +1,13 @@
+{
+  "strategy": "Independently verify exact A009 candidate/current distribution. Check current/historical separation in RELEASE.md. Verify A009 manifest/execution/snapshot and package archive hash against sibling checksum and manifest. Independently inspect all ZIP entries for CRC, safe relative paths, exact worktree bytes, required full skill/four custom agents/README/release/demos/tests/frozen docs/Full Plan/selected historical reports, and absence of .git/caches/pyc/credentials/runtime/temp/self/archive/current hardening evidence/unrelated projects. Extract to tester-a009/relocated and run six suites plus both root-bound examples and stale-digest negative. Verify exact P004 E1-E10 criteria and all 20 Full Plan checksums. Validate clean M046-M050 ordered sequence using observed bindings only. Preserve all failed A005/A006 sequences and invalid A008 manager chain outside this sequence; do not call them passed. Gate3 live E1-E10 NOT RUN. Record exact deterministic command conditions/output hash, include nested evidence ref in top-level refs. No edits.",
+  "commands": [
+    "python -m unittest discover -s tests -v",
+    "python -m unittest discover -s demo/receipt -v",
+    "python -m unittest discover -s demo/csv-summary -v",
+    "python -m unittest discover -s demo/structured-flow -v",
+    "python -m unittest discover -s reports/demo/verification -v",
+    "python -m unittest discover -s reports/csv-summary/verification -v",
+    "python .agents/skills/council-flow/scripts/contracts.py message docs/CouncilFlow-Full-Plan/examples/job.assign.json --root .",
+    "python .agents/skills/council-flow/scripts/contracts.py message docs/CouncilFlow-Full-Plan/examples/job.report.json --root ."
+  ]
+}

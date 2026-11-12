@@ -1,0 +1,29 @@
+{
+  "scope": "Read-only scan of every commit reachable from local refs and reflogs; no Git history or ref was changed.",
+  "repository": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "scanned_unique_commits": 11,
+  "scanned_refs": [
+    "refs/heads/main",
+    "refs/remotes/origin/main",
+    "refs/remotes/origin/HEAD",
+    "refs/remotes/origin/integration/councilflow-corrections-2026-11-11",
+    "refs/codex/turn-diffs/captures/1794485393001/8bd757fc-ee58-4244-ac6a-4d3c15095865/base",
+    "refs/codex/turn-diffs/checkpoints/321f5ff3cb555f97d0988b1bfa027d27/348c83a7987d8377b2456a7d84497a40/1794485333960/b0417eb5-b261-434f-9288-27a0398345cb",
+    "refs/codex/turn-diffs/checkpoints/4ef3465437719bdd217f6afcd484002d/aa485aef7c85197f80bd483eda01e2b5/1794479046556/5432cd28-6849-4ec9-84f6-1084209b48dc"
+  ],
+  "commits_with_text_matches": [
+    "2d695a22a1bb596a527b0d118edc073d6d25553f",
+    "7420665da6a571c5e4dddba6d6cf4f42803e67d5"
+  ],
+  "historical_text_blobs": [
+    {"path":"reports/native-codebase-memory/final.md","git_blob_sha1":"d1e18cd2f427c22bcd9341d93347361fe4b6b9a9","content_sha256":"ea5249c4404d049ad4edce09e014ae439e3d3a024f9f5edc992e0950d23373ce"},
+    {"path":"reports/native-codebase-memory/mcp-restoration.md","git_blob_sha1":"a47c12722406ec7e2b689f2dba3232e506a5d032","content_sha256":"2b195ec76ca41080a7b32720eddc1753e6f7706d7ad4d6c574894e3490835476"},
+    {"path":"reports/native-codebase-memory/merge-regression.json","git_blob_sha1":"6e69397a6413294b9348dc80e3892e36ce183b5e","content_sha256":"4c374d3da96408776201f4c8028df88fe677d199edd165b158cdc80a65fb8495"},
+    {"path":"reports/native-codebase-memory/merge-validation.md","git_blob_sha1":"6546e043fc209f1ac933c663beab455fa1328204","content_sha256":"0b6ad026282e0c4958f8ffe2b1948c9ef155578cb4e2b563eea09f7df019dbcc"},
+    {"path":"reports/native-codebase-memory/review.json","git_blob_sha1":"700cf8cff3a0b27ce7572301998916d73f5e7dea","content_sha256":"6deac7a6256afeb9d63a44e10097641bed92df71edfec07b2475a8cc54df872f"},
+    {"path":"reports/native-codebase-memory/verification.json","git_blob_sha1":"85318b74af372c214f48f28c5ed350fd7685ad76","content_sha256":"9e48d7894ffbe83d2a5ac6f52c8c979e0598c2c944f2b5d1aa438d1cc6ee8388"},
+    {"path":"tests/test_codebase_memory_integration.py","git_blob_sha1":"35d1c7dbd7ae2782adf2fbcda96cfaee91636d49","content_sha256":"8e494a081a2d6f908570278ee659db33735b50296f72161da706bfe1969bd87d"}
+  ],
+  "standalone_component_paths_in_reachable_git_trees": [],
+  "disposition": "Historical text-only records and their Git blobs are preserved unchanged. They are not active capability, and the current installable package contains no matching path names or text."
+}

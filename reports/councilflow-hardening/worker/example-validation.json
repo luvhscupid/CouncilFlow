@@ -1,0 +1,33 @@
+[
+  {
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+    "exit_code": 0
+  },
+  {
+    "arguments": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "message",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "stdout": "{\"valid\": true, \"mode\": \"message\", \"files\": 1, \"limits\": {\"message_bytes\": 65536, \"container_depth\": 16}, \"boundary\": \"controlled records only; not authentication/native transport enforcement\"}",
+    "exit_code": 0
+  },
+  {
+    "arguments": [
+      "verify every docs/CouncilFlow-Full-Plan/SHA256SUMS.txt entry"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "command": "PowerShell Get-FileHash",
+    "stdout": "All listed bundle hashes match.",
+    "exit_code": 0
+  }
+]

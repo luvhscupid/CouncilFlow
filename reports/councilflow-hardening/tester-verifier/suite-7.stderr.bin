@@ -1,0 +1,55 @@
+test_actual_packets_and_mutated_role_task_origin (test_independent_contracts.IndependentContractChecks.test_actual_packets_and_mutated_role_task_origin) ... ERROR
+test_artifact_contents_and_authorized_root_boundaries (test_independent_contracts.IndependentContractChecks.test_artifact_contents_and_authorized_root_boundaries) ... ERROR
+test_cli_bad_context_never_accepted_or_traceback (test_independent_contracts.IndependentContractChecks.test_cli_bad_context_never_accepted_or_traceback) ... ok
+test_independence_oracle_candidate_and_acceptance_negatives (test_independent_contracts.IndependentContractChecks.test_independence_oracle_candidate_and_acceptance_negatives) ... ERROR
+test_nonobject_sequence_items_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_nonobject_sequence_items_are_controlled_errors) ... ok
+test_restricted_yaml_and_jsonl_controls (test_independent_contracts.IndependentContractChecks.test_restricted_yaml_and_jsonl_controls) ... ok
+test_strict_json_mutations_and_bounds (test_independent_contracts.IndependentContractChecks.test_strict_json_mutations_and_bounds) ... ok
+test_wrong_bindings_types_are_controlled_errors (test_independent_contracts.IndependentContractChecks.test_wrong_bindings_types_are_controlled_errors) ... ok
+
+======================================================================
+ERROR: test_actual_packets_and_mutated_role_task_origin (test_independent_contracts.IndependentContractChecks.test_actual_packets_and_mutated_role_task_origin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Saint\PROJECTS\CouncilFlow-main\reports\restoration\verification\initial\test_independent_contracts.py", line 72, in test_actual_packets_and_mutated_role_task_origin
+    c.validate_sequence(real, root=ROOT, expected_senders=bindings)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 467, in validate_sequence
+    validate_message(m, root=root)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 218, in validate_message
+    _object(message, FIELDS)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 106, in _object
+    fail("unknown_field", field, ",".join(sorted(set(value) - set(required) - set(optional))))
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 42, in fail
+    raise ContractError(code, field, detail)
+contracts.ContractError: unknown_field at $: created_at
+
+======================================================================
+ERROR: test_artifact_contents_and_authorized_root_boundaries (test_independent_contracts.IndependentContractChecks.test_artifact_contents_and_authorized_root_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Saint\PROJECTS\CouncilFlow-main\reports\restoration\verification\initial\test_independent_contracts.py", line 184, in test_artifact_contents_and_authorized_root_boundaries
+    (allowed / "link").symlink_to(outside)
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1386, in symlink_to
+    os.symlink(target, self, target_is_directory)
+OSError: [WinError 1314] A required privilege is not held by the client: 'E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\restoration\\verification\\initial\\artifacts-e6tyca_z\\outside.txt' -> 'E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\restoration\\verification\\initial\\artifacts-e6tyca_z\\allowed\\link'
+
+======================================================================
+ERROR: test_independence_oracle_candidate_and_acceptance_negatives (test_independent_contracts.IndependentContractChecks.test_independence_oracle_candidate_and_acceptance_negatives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Saint\PROJECTS\CouncilFlow-main\reports\restoration\verification\initial\test_independent_contracts.py", line 102, in test_independence_oracle_candidate_and_acceptance_negatives
+    c.validate_sequence(synthetic_sequence())
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 467, in validate_sequence
+    validate_message(m, root=root)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 218, in validate_message
+    _object(message, FIELDS)
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 106, in _object
+    fail("unknown_field", field, ",".join(sorted(set(value) - set(required) - set(optional))))
+  File "E:\Saint\PROJECTS\CouncilFlow-main\.agents\skills\council-flow\scripts\contracts.py", line 42, in fail
+    raise ContractError(code, field, detail)
+contracts.ContractError: unknown_field at $: created_at
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.262s
+
+FAILED (errors=3)

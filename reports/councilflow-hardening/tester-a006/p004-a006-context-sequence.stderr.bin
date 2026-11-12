@@ -1,0 +1,1 @@
+{"valid": false, "error": "comparison_evidence", "field": "payload.comparison.independent_rerun.tester_evidence_ref", "message": "comparison_evidence at payload.comparison.independent_rerun.tester_evidence_ref: Tester execution record must be cited by Tester report"}

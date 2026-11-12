@@ -1,0 +1,47 @@
+{
+  "command_id": "T-A013-CMD-001",
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "message",
+    "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+    "--root",
+    "."
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-finalization\\tester-final\\extracted-candidate",
+  "candidate_ref": {
+    "artifact_id": "CF-FINAL-DIST-ARCHIVE",
+    "path": "dist/council-flow.zip",
+    "sha256": "903baa09e45485c393fee77a12b5520ce7045531363b519d418a683730a95f3f",
+    "kind": "candidate-archive"
+  },
+  "input_refs": [
+    {
+      "artifact_id": "CF-FINAL-CONTRACTS",
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "67bff1e91930f3161e2069078022f41d3ab187c70e492fb1edeaa3a7d8b9d179",
+      "kind": "source"
+    },
+    {
+      "artifact_id": "CF-FINAL-REPORT-EXAMPLE",
+      "path": "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "sha256": "07d7a4652d5b6a7e5ded547dd22633918cd324fe46871108a1f7b73b8a632fc8",
+      "kind": "input"
+    },
+    {
+      "artifact_id": "CF-FINAL-SYNTHETIC-CANDIDATE",
+      "path": "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "sha256": "d39b3ec711b443679eaaa8b859f0da7d3b4ccf5f05059986d2cf2a1edb57fca3",
+      "kind": "input"
+    }
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+  "acceptance_id": "P3-B",
+  "evidence_ref": {
+    "artifact_id": "CF-A013-DETERMINISTIC-EXECUTION",
+    "path": "reports/councilflow-finalization/tester-final/tester-deterministic-command.stdout.bin",
+    "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+    "kind": "execution-output"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M020",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A004",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/tester_verifier",
+    "role": "tester"
+  },
+  "in_reply_to": "CFH-M019",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh independent Tester; no code/doc/test repairs. Read A004 manifest, input baseline, Worker report and snapshot. Verify manifest and snapshot actual bytes, CRC, safe paths, and excluded metadata. Investigate any inconsistent Worker execution-record fields by recomputing hashes and preserve discrepancies.",
+      "Run all suites in the oracle with exact absolute executable path, arguments, cwd, candidate and input identities/hashes. Capture raw stdout/stderr, exit, and normalized stdout hash (CRLF-to-LF only). Report the Windows symlink skip and do not claim junction/TOCTOU proof.",
+      "Run both example validator commands with --root .; verify stale hash rejects. Verify exact P004 plan criteria text for E1-E10 against frozen Gate3 and approved C3. Verify Full Plan checksums.",
+      "Record `job.report` example root validation as one deterministic command for exact Reviewer rerun. Include exact command, args, cwd, candidate/input refs, exit, stdout hash and evidence artifact.",
+      "Gate3 experiment is not assigned; do not claim its E statuses PASS. E10 fixture absent. Report factual external limits. Save valid JSON job.report and evidence under reports/councilflow-hardening/tester-verifier/. Stop."
+    ],
+    "candidate_ref": {
+      "kind": "candidate-manifest",
+      "artifact_id": "CFH-CANDIDATE-A004",
+      "sha256": "6a0f0fad405da97cee6fc76f17afbfc78814a8f8e6ddcc2267ffa84834affcf9",
+      "path": "reports/councilflow-hardening/worker-final/candidate-manifest.json"
+    },
+    "objective": "Independently verify the exact cumulative A004 candidate against the approved strategy and assigned original criteria.",
+    "scope": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py",
+      ".agents/skills/council-flow/references/communication.md",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md"
+    ],
+    "oracle_ref": {
+      "sha256": "f1d02a307ebf010d127471ff6a6c46ecbd44c497822076423948c7e846ff784a",
+      "artifact_id": "CFH-ORACLE-A004",
+      "path": "reports/councilflow-hardening/manager/oracle-a004-final.json",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "kind": "plan",
+      "artifact_id": "CFH-PLAN-004",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json"
+    },
+    {
+      "kind": "source-snapshot",
+      "artifact_id": "CFH-SNAPSHOT-A004",
+      "sha256": "8988dbb471618705c4acab392aaaba65c87b13f6df05ea18d7595b879b409a2d",
+      "path": "reports/councilflow-hardening/worker-final/candidate-snapshot.zip"
+    },
+    {
+      "kind": "verification-strategy",
+      "artifact_id": "CFH-ORACLE-A004",
+      "sha256": "f1d02a307ebf010d127471ff6a6c46ecbd44c497822076423948c7e846ff784a",
+      "path": "reports/councilflow-hardening/manager/oracle-a004-final.json"
+    }
+  ]
+}

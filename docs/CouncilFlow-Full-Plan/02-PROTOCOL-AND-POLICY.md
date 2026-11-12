@@ -29,9 +29,8 @@ See `examples/job.assign.json`, `examples/job.report.json`, and `examples/role-p
   "attempt_id": "A0001",
   "sender": {"role":"manager", "instance_id":"manager-main"},
   "recipient": {"role":"worker", "instance_id":"worker-001"},
-  "created_at": "2026-11-11T00:00:00Z",
   "in_reply_to": null,
-  "payload": {"objective":"Implement task T0001", "scope":["demo/"], "acceptance_ids":["AC1"]},
+  "payload": {"objective":"Implement task T0001", "scope":["demo/"], "acceptance_ids":["AC1"], "instructions":["Synthetic example only"]},
   "evidence_refs": []
 }
 ```

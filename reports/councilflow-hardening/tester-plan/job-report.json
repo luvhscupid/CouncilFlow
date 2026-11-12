@@ -1,0 +1,131 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M006",
+  "message_type": "job.report",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "sender": {
+    "instance_id": "/root/tester_plan",
+    "role": "tester"
+  },
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "in_reply_to": "CFH-M005",
+  "payload": {
+    "errors": [],
+    "status": "failed",
+    "deterministic_commands": [
+      {
+        "command_id": "CFH-CHECK-PLAN-SEQUENCE",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          ".agents/skills/council-flow/scripts/contracts.py",
+          "sequence",
+          "reports/councilflow-hardening/planner/plan-publish.json",
+          "reports/councilflow-hardening/manager/worker-assign.json",
+          "reports/councilflow-hardening/worker/job-report.json",
+          "--root",
+          "."
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "artifact_id": "CFH-CANDIDATE-A001",
+          "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+          "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "path": "reports/councilflow-hardening/planner/plan.json",
+            "artifact_id": "CFH-PLAN-001",
+            "kind": "plan",
+            "sha256": "b2726bac9f42803653af7ba12d3d04ed90f033ac449ee24ae49af824f06dafce"
+          },
+          {
+            "path": "reports/councilflow-hardening/planner/plan-publish.json",
+            "artifact_id": "CFH-M001",
+            "kind": "message",
+            "sha256": "f21f4d5319ab173c8a3d95d9ac35f5aa0377a516e0799c969296d6b51aaf11bd"
+          },
+          {
+            "path": "reports/councilflow-hardening/manager/worker-assign.json",
+            "artifact_id": "CFH-M002",
+            "kind": "message",
+            "sha256": "006dfdcc2f892641c43b8b8239ea8f5b38ccfc63600dfb29d3a2ef3a58351897"
+          },
+          {
+            "path": "reports/councilflow-hardening/worker/job-report.json",
+            "artifact_id": "CFH-M003",
+            "kind": "message",
+            "sha256": "614a78ff13598db47c85572adc658637bcb2ff873f4b9d14a2ebddbd4a1b981b"
+          }
+        ],
+        "exit_code": 1,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "HF-03",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-PLAN-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-plan/execution.json",
+          "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+          "kind": "execution-record"
+        }
+      }
+    ],
+    "summary": "The exact frozen plan sequence is rejected because multiline acceptance criterion text contains LF characters that the plan validator treats as forbidden control characters. The independent 82-test suite passed with one symlink test skipped by Windows WinError 1314.",
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-PLAN-SEQ",
+      "path": "reports/councilflow-hardening/manager/oracle-plan-sequence.json",
+      "sha256": "f70064ed8517331d8a8f36f8e1beb0c9713bfabe056761644774b7b0ea23dad8",
+      "kind": "verification-strategy"
+    },
+    "findings": [
+      "Reproduced: contracts.py sequence exits 1 with control at plan.acceptance.criterion: control characters are not allowed; the original E1-E10 criterion text contains required newlines and must not be flattened.",
+      "Full repository suite exited 0: 82 tests run, one symlink test skipped because the host denied symlink creation."
+    ],
+    "checks": [
+      {
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-PLAN-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-plan/execution.json",
+          "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+          "kind": "execution-record"
+        },
+        "name": "Frozen plan, Worker assignment and report validate as an exact ordered sequence"
+      },
+      {
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "CFH-TESTER-PLAN-EXECUTION",
+          "path": "reports/councilflow-hardening/tester-plan/execution.json",
+          "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+          "kind": "execution-record"
+        },
+        "name": "Independent repository regression suite"
+      }
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A001",
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-TESTER-PLAN-EXECUTION",
+      "path": "reports/councilflow-hardening/tester-plan/execution.json",
+      "sha256": "034c282cb64b683c0189fc2286612e0de47eced2dd164565db57c3c68ea47202",
+      "kind": "execution-record"
+    }
+  ]
+}

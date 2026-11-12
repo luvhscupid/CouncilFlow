@@ -1,0 +1,54 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M009",
+  "message_type": "job.report",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A002",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/worker_rework"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M008",
+  "payload": {
+    "status": "passed",
+    "summary": "Validator accepts unchanged LF and CRLF plan criteria while continuing to reject other control characters.",
+    "acceptance_ids": [
+      "HF-03"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A002",
+      "path": "reports/councilflow-hardening/worker-rework/candidate-manifest.json",
+      "sha256": "c38d3df65764ce41955f94909e88342eb6dcdcbe064871d3082d329423a9b43d",
+      "kind": "candidate-manifest"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A001",
+      "path": "reports/councilflow-hardening/worker/candidate-manifest.json",
+      "sha256": "28330002e29be82166dc74cf9cd1376ac3778d10eda2b0f17ec7e9a8f2880ebb",
+      "kind": "candidate-manifest"
+    },
+    "changed_files": [
+      ".agents/skills/council-flow/scripts/contracts.py",
+      "tests/test_contracts.py"
+    ],
+    "findings": [
+      "Root cause: plan artifact criterion validation used generic single-line _string validation, rejecting LF/CRLF that frozen acceptance requires. Added a targeted multiline criterion validator and regression coverage; generic string validation is unchanged."
+    ],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-WORKER-REWORK-EXECUTION",
+      "path": "reports/councilflow-hardening/worker-rework/execution.json",
+      "sha256": "664627732bfea775efc044b614afadc6de1e75863eb4b0805068d9f68680536b",
+      "kind": "execution-record"
+    }
+  ]
+}

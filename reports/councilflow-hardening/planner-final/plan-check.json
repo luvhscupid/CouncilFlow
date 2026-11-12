@@ -1,0 +1,446 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M055",
+  "message_type": "plan.check",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "CFH-M054",
+  "payload": {
+    "status": "blocked",
+    "summary": "The original P004 criteria are checked once each. HF-01, HF-02 and HF-05 are supported by current repository and A009 evidence. HF-03 remains blocked because requested stale-context and unavailable-MCP fallback behaviors were not exercised, and Windows symlink/junction/TOCTOU containment was not established. HF-04 and E10 are blocked because no authentic Owner fixture was supplied; the frozen Gate3 procedure was not run. E1, E2 and E4 prerequisites/evidence are unavailable. E3, E5-E9 are NOT RUN as frozen experiment statuses; separate mission role activity does not count as Gate3 evidence. Exact E1-E10 text match is static fidelity only.",
+    "acceptance_ids": [
+      "HF-01",
+      "HF-02",
+      "HF-03",
+      "HF-04",
+      "HF-05",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "E8",
+      "E9",
+      "E10"
+    ],
+    "plan_ref": {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    "results": [
+      {
+        "acceptance_id": "HF-01",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-M054",
+            "path": "reports/councilflow-hardening/manager/planner-final-progress.json",
+            "sha256": "1ae1ad4ece3dd8134cb53462ad3f181a010cb268c14fa89e4718b208b9dd2392",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-PLANNER-FINAL-WORKTREE",
+            "path": "reports/councilflow-hardening/planner-final/working-tree-review.json",
+            "sha256": "54de8953d7120b2e6e9b4c53accb367318e7568f11044c8439e0d49050f88415",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "HF-02",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-PLAN-004",
+            "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+            "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+            "kind": "plan"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-PLANNER-FINAL-WORKTREE",
+            "path": "reports/councilflow-hardening/planner-final/working-tree-review.json",
+            "sha256": "54de8953d7120b2e6e9b4c53accb367318e7568f11044c8439e0d49050f88415",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "HF-03",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-M054",
+            "path": "reports/councilflow-hardening/manager/planner-final-progress.json",
+            "sha256": "1ae1ad4ece3dd8134cb53462ad3f181a010cb268c14fa89e4718b208b9dd2392",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-M048",
+            "path": "reports/councilflow-hardening/worker-a009/job-report.json",
+            "sha256": "7c26a1a3f36b92df377fb6ed87e4f78c9b6f298dbd673666220eaeb405d413c0",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-M050",
+            "path": "reports/councilflow-hardening/tester-a009/job-report.json",
+            "sha256": "6271b9125267d9f71d171bc4a33f8a905666e7184c9615598effab747f599950",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-SUITES",
+            "path": "reports/councilflow-hardening/tester-a009/suite-executions.json",
+            "sha256": "8ded182e2f364eeabd77cf15480181e24878af480c91f4d3ee9645479cef937a",
+            "kind": "execution-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "HF-04",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-M054",
+            "path": "reports/councilflow-hardening/manager/planner-final-progress.json",
+            "sha256": "1ae1ad4ece3dd8134cb53462ad3f181a010cb268c14fa89e4718b208b9dd2392",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-M050",
+            "path": "reports/councilflow-hardening/tester-a009/job-report.json",
+            "sha256": "6271b9125267d9f71d171bc4a33f8a905666e7184c9615598effab747f599950",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-SUITES",
+            "path": "reports/councilflow-hardening/tester-a009/suite-executions.json",
+            "sha256": "8ded182e2f364eeabd77cf15480181e24878af480c91f4d3ee9645479cef937a",
+            "kind": "execution-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "HF-05",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-PLANNER-FINAL-WORKTREE",
+            "path": "reports/councilflow-hardening/planner-final/working-tree-review.json",
+            "sha256": "54de8953d7120b2e6e9b4c53accb367318e7568f11044c8439e0d49050f88415",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-M052",
+            "path": "reports/councilflow-hardening/reviewer-a009/job-report.json",
+            "sha256": "ba5878c3816e48d491950f276e8e89f53bb8bcb0f78ab0ab6aab056cf4c69f25",
+            "kind": "message"
+          },
+          {
+            "artifact_id": "CFH-REVIEWER-A009-PACKAGE",
+            "path": "reports/councilflow-hardening/reviewer-a009/package-review.json",
+            "sha256": "8b1a99ec366905746620550bb3fe4af1e1a75fbd8586f7b0e7ee4c89f1fbc6eb",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-PACKAGE",
+            "path": "reports/councilflow-hardening/tester-a009/package-inspection.json",
+            "sha256": "70f9eb80ff75ad42d288ce2304f89eda244f9a69e487e0e5d520a83c862082b3",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-SUITES",
+            "path": "reports/councilflow-hardening/tester-a009/suite-executions.json",
+            "sha256": "8ded182e2f364eeabd77cf15480181e24878af480c91f4d3ee9645479cef937a",
+            "kind": "execution-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E1",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E2",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E3",
+        "status": "unverified",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E4",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E5",
+        "status": "unverified",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E6",
+        "status": "unverified",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E7",
+        "status": "unverified",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E8",
+        "status": "unverified",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E9",
+        "status": "unverified",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "E10",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "CFH-TESTER-A009-GATE3",
+            "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+            "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+            "kind": "verification-record"
+          },
+          {
+            "artifact_id": "CFH-TESTER-A009-CRITERIA",
+            "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+            "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+            "kind": "verification-record"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M054",
+      "path": "reports/councilflow-hardening/manager/planner-final-progress.json",
+      "sha256": "1ae1ad4ece3dd8134cb53462ad3f181a010cb268c14fa89e4718b208b9dd2392",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-M048",
+      "path": "reports/councilflow-hardening/worker-a009/job-report.json",
+      "sha256": "7c26a1a3f36b92df377fb6ed87e4f78c9b6f298dbd673666220eaeb405d413c0",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M050",
+      "path": "reports/councilflow-hardening/tester-a009/job-report.json",
+      "sha256": "6271b9125267d9f71d171bc4a33f8a905666e7184c9615598effab747f599950",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M052",
+      "path": "reports/councilflow-hardening/reviewer-a009/job-report.json",
+      "sha256": "ba5878c3816e48d491950f276e8e89f53bb8bcb0f78ab0ab6aab056cf4c69f25",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-TESTER-A009-GATE3",
+      "path": "reports/councilflow-hardening/tester-a009/gate3-runtime-status.json",
+      "sha256": "7e610e9f4d5e91a389f5ee182401aacda62bf6f3ff779b53a9db6c390228a21e",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-A009-CRITERIA",
+      "path": "reports/councilflow-hardening/tester-a009/criteria-checks.json",
+      "sha256": "6cc76481e43640c807a2b51ab650e012601cc2eb873c00a015875e7b2e756f0d",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-A009-SUITES",
+      "path": "reports/councilflow-hardening/tester-a009/suite-executions.json",
+      "sha256": "8ded182e2f364eeabd77cf15480181e24878af480c91f4d3ee9645479cef937a",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "CFH-TESTER-A009-PACKAGE",
+      "path": "reports/councilflow-hardening/tester-a009/package-inspection.json",
+      "sha256": "70f9eb80ff75ad42d288ce2304f89eda244f9a69e487e0e5d520a83c862082b3",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-REVIEWER-A009-PACKAGE",
+      "path": "reports/councilflow-hardening/reviewer-a009/package-review.json",
+      "sha256": "8b1a99ec366905746620550bb3fe4af1e1a75fbd8586f7b0e7ee4c89f1fbc6eb",
+      "kind": "verification-record"
+    },
+    {
+      "artifact_id": "CFH-PLANNER-FINAL-WORKTREE",
+      "path": "reports/councilflow-hardening/planner-final/working-tree-review.json",
+      "sha256": "54de8953d7120b2e6e9b4c53accb367318e7568f11044c8439e0d49050f88415",
+      "kind": "verification-record"
+    }
+  ]
+}

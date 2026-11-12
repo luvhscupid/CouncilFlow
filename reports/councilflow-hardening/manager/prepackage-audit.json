@@ -1,0 +1,36 @@
+{
+  "finding_id": "HF-DIST-01",
+  "scope": "Current checkout release instructions and distribution artifact availability",
+  "observations": [
+    {
+      "command": "Test-Path dist",
+      "workdir": "E:/Saint/PROJECTS/CouncilFlow-main",
+      "result": false,
+      "interpretation": "No current dist directory is present in the verified checkout."
+    },
+    {
+      "command": "Test-Path dist/council-flow-round6.zip",
+      "workdir": "E:/Saint/PROJECTS/CouncilFlow-main",
+      "result": false,
+      "interpretation": "The release guide names the historical Round 6 archive, but it is absent from this checkout."
+    },
+    {
+      "command": "Test-Path dist/council-flow.zip",
+      "workdir": "E:/Saint/PROJECTS/CouncilFlow-main",
+      "result": false,
+      "interpretation": "The Full Plan names the current canonical archive path, but no package is present."
+    }
+  ],
+  "release_guide_ref": {
+    "path": "RELEASE.md",
+    "sha256": "49efb429ca4e7fdadd57561da6b000d914ee6b33736d6f55c4680ab7ee06ad2e"
+  },
+  "references": [
+    "RELEASE.md:20",
+    "RELEASE.md:51",
+    "RELEASE.md:65-68",
+    "docs/CouncilFlow-Full-Plan/05-OPERATIONS-AND-HANDOFF.md:23"
+  ],
+  "status": "confirmed local distribution gap",
+  "limits": "This is a current-worktree observation; old package-verification reports remain historical and were not modified."
+}

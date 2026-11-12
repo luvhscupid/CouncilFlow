@@ -116,6 +116,18 @@ def _string(value, field, limit=MAX_STRING):
     return value
 
 
+def _criterion(value, field):
+    """Validate plan text while preserving ordinary LF or CRLF line breaks."""
+    if type(value) is not str or not value.strip() or len(value) > MAX_STRING:
+        fail("string", field, f"expected nonempty string, at most {MAX_STRING} characters")
+    if any((ord(char) < 32 and char not in "\r\n") or ord(char) == 127
+           for char in value):
+        fail("control", field, "control characters other than line breaks are not allowed")
+    if "\r" in value.replace("\r\n", ""):
+        fail("control", field, "carriage returns must be part of CRLF line breaks")
+    return value
+
+
 def _identity(value, field):
     return _string(value, field, 128)
 
@@ -502,7 +514,7 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                         fail("plan_artifact", "plan.acceptance", "criterion entry must be an object")
                     _identity(entry.get("id"), "plan.acceptance.id")
                     if "criterion" in entry:
-                        _string(entry["criterion"], "plan.acceptance.criterion")
+                        _criterion(entry["criterion"], "plan.acceptance.criterion")
                     ids.append(entry["id"])
                 if len(set(ids)) != len(ids):
                     fail("plan_artifact", "plan.acceptance", "criterion identities must be unique")

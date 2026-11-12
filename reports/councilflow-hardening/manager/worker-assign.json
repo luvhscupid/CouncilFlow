@@ -1,0 +1,57 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M002",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P001",
+  "plan_revision": 1,
+  "task_id": "CFH-T001",
+  "attempt_id": "CFH-A001",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/worker"
+  },
+  "in_reply_to": "CFH-M001",
+  "payload": {
+    "instructions": [
+      "You are the only mutating Worker; work only in the listed paths and do not revert others.",
+      "The two JSON examples currently fail contracts.py: message job.assign rejects created_at; job.report also uses obsolete payload names. Make both examples accepted by the current validator, remove created_at from agent-authored messages, use exact current fields, and keep explicitly synthetic wording. Update full-plan operational examples/prompt similarly.",
+      "Update SHA256SUMS entries only for changed files if those exact paths are covered by its current manifest; preserve all historical evidence and frozen docs/gate3 files.",
+      "Add a regression test that loads and validates both examples with contracts.py. Add a symlink-to-outside root regression where supported, skipping only when OS permissions/filesystem do not support creating the test symlink. Do not add new security enforcement claims.",
+      "Inspect and report junction and TOCTOU implications. Do not attempt a security architecture rewrite. If documenting TOCTOU, explain the helper is protocol validation, not OS-level containment.",
+      "Run developer checks requested by the plan and report exact changed files. Do not self-approve."
+    ],
+    "scope": [
+      "docs/CouncilFlow-Full-Plan/examples/job.assign.json",
+      "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+      "docs/CouncilFlow-Full-Plan/02-PROTOCOL-AND-POLICY.md",
+      "docs/CouncilFlow-Full-Plan/prompts/ONE-SHOT-CODEX-CLOUD.md",
+      "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
+      "tests/test_contracts.py",
+      ".agents/skills/council-flow/references/communication.md"
+    ],
+    "objective": "Correct confirmed operational JSON example drift and add regression tests; clarify any unresolved filesystem boundary only if needed.",
+    "acceptance_ids": [
+      "HF-03",
+      "HF-05"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "sha256": "19eb11cd0e499395f7729aaeb10a251075079311e47d84a828e76aefcd16336e",
+      "kind": "verification-strategy",
+      "artifact_id": "CFH-ORACLE-001",
+      "path": "reports/councilflow-hardening/manager/oracle.json"
+    },
+    {
+      "path": "reports/councilflow-hardening/planner/plan.json",
+      "kind": "plan",
+      "sha256": "b2726bac9f42803653af7ba12d3d04ed90f033ac449ee24ae49af824f06dafce",
+      "artifact_id": "CFH-PLAN-001"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M044",
+  "message_type": "job.assign",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A008",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/tester_a008"
+  },
+  "in_reply_to": "CFH-M043",
+  "payload": {
+    "objective": "Independently verify A008 current release guidance and bounded distribution archive against P004.",
+    "scope": [
+      "RELEASE.md",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "reports/councilflow-hardening/worker-a008/"
+    ],
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "instructions": [
+      "Fresh independent Tester; no source/package repairs. Preserve all prior evidence and do not rewrite historical reports.",
+      "Validate A008 candidate manifest/Worker report/execution/snapshot; verify package archive and checksum comprehensively per oracle.",
+      "Extract package into `reports/councilflow-hardening/tester-a008/relocated/` and independently run all six suites there, both root-bound examples and stale digest negative. Keep relocated package available for Reviewer exact rerun.",
+      "Validate clean ordered context beginning at M034, including A008 rework decision M041 and assignments M042/M044; do not treat earlier malformed A005/A006 chain as accepted. Preserve its prior findings outside the fresh boundary.",
+      "Ensure RELEASE.md current/historical distinction is accurate; report archive hash and exact package entries/exclusions. Gate3 E1-E10 live remains NOT RUN.",
+      "For a deterministic command to be reviewed, record exact executable, args, cwd, candidate/input refs, exit, raw output and CRLF-to-LF-only stdout SHA. Include each selected command evidence_ref in top-level evidence_refs. Save raw evidence and valid UTF-8 report. Stop."
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "CFH-ORACLE-A008",
+      "path": "reports/councilflow-hardening/manager/oracle-a008.json",
+      "sha256": "4c98d92064cd3d0d9f65805d08c23255b82ace1451493abbccfb450e67982659",
+      "kind": "verification-strategy"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M034",
+      "path": "reports/councilflow-hardening/planner-branch-a007/plan-publish.json",
+      "sha256": "6b40c9bcc202d166c3ed6af6f3da2ff5a82f9edcc5154bcaea80511d7634e552",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M043",
+      "path": "reports/councilflow-hardening/worker-a008/job-report.json",
+      "sha256": "2fecc8765d40b62373543584b58af51eb35c29cc646cfad30281246b1a0f396c",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A008",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-manifest.json",
+      "sha256": "4ff5b44a6ef3671c6d9fe90fc3085b26930a06cdd275ae3d8f573ec3b2c0da78",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-ARCHIVE",
+      "path": "dist/council-flow.zip",
+      "sha256": "7f3a22fa27a374f2805f019d62488c98a7b68bf225dd535ad313ace077ec5384",
+      "kind": "distribution-archive"
+    },
+    {
+      "artifact_id": "CFH-A008-DIST-CHECKSUM",
+      "path": "dist/council-flow.zip.sha256",
+      "sha256": "b3fb4d9e0bc5a805927a97848ebabd9602493ae4a40a01e1160f85c7492b9141",
+      "kind": "checksum"
+    },
+    {
+      "artifact_id": "CFH-A008-SNAPSHOT",
+      "path": "reports/councilflow-hardening/worker-a008/candidate-snapshot.zip",
+      "sha256": "32f3861b359caf92041009829d04d46a934d9a4b3a20a664046b869bc40f1e10",
+      "kind": "source-snapshot"
+    },
+    {
+      "artifact_id": "CFH-ORACLE-A008",
+      "path": "reports/councilflow-hardening/manager/oracle-a008.json",
+      "sha256": "4c98d92064cd3d0d9f65805d08c23255b82ace1451493abbccfb450e67982659",
+      "kind": "verification-strategy"
+    }
+  ]
+}

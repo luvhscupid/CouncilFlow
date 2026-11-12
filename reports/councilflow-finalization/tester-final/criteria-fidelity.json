@@ -1,0 +1,19 @@
+{
+  "source_plan": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+  "frozen_source": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+  "C3_source_for_E4": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+  "criteria": {
+    "E1": true,
+    "E2": true,
+    "E3": true,
+    "E4": true,
+    "E5": true,
+    "E6": true,
+    "E7": true,
+    "E8": true,
+    "E9": true,
+    "E10": true
+  },
+  "all_exact": true,
+  "classification": "Static byte/text fidelity only; no Gate 3 observation."
+}

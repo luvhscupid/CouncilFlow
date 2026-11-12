@@ -1,0 +1,18 @@
+{
+  "command": "CFH-TESTER-JOB-REPORT-ROOT-A009",
+  "executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    ".agents/skills/council-flow/scripts/contracts.py",
+    "message",
+    "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+    "--root",
+    "."
+  ],
+  "cwd": "E:\\Saint\\PROJECTS\\CouncilFlow-main\\reports\\councilflow-hardening\\tester-a009\\relocated",
+  "exit_code": 0,
+  "raw_stdout_sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838",
+  "normalized_stdout_sha256_crlf_to_lf_only": "9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd",
+  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_path": "reports/councilflow-hardening/reviewer-a009/rerun-stdout.bin",
+  "stderr_path": "reports/councilflow-hardening/reviewer-a009/rerun-stderr.bin"
+}

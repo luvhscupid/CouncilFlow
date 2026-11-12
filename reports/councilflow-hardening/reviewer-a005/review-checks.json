@@ -1,0 +1,26 @@
+{
+  "reviewer_instance": "/root/reviewer_a005",
+  "attempt_id": "CFH-A005",
+  "checks": {
+    "candidate_sha256": "7234d1ec092e238c33e561916572b30282fc89137b907bde79a054562ad3a857",
+    "candidate_ref_matches_worker_report": true,
+    "candidate_ref_matches_tester_report": true,
+    "worker_input_ref_matches_A004": true,
+    "execution_manifest_sha_matches_candidate": true,
+    "execution_candidate_identity_matches_manifest": true,
+    "candidate_source_files_match_worktree": true,
+    "snapshot_crc_valid": true,
+    "snapshot_paths_safe": true,
+    "snapshot_path_set_matches_manifest": true,
+    "snapshot_excludes_git_cache_runtime": true,
+    "independent_rerun_exit_matches_tester": true,
+    "independent_rerun_normalized_hash_matches_tester": true,
+    "tester_nested_evidence_ref_in_top_level_refs": false,
+    "tester_nested_evidence_ref_actual_file_hash_matches": true,
+    "p004_E1_E10_exact_text": true,
+    "tester_exact_candidate_and_oracle": true
+  },
+  "all_candidate_identity_and_snapshot_checks_pass": true,
+  "confirmed_discrepancy": "Tester nested deterministic-command evidence_ref is absent from the Tester report top-level evidence_refs. The actual stdout file exists and hash matches, but contracts.py validate_sequence requires the selected tester_evidence_ref to be among that message’s top-level evidence_refs. Reviewer rerun matches; this omission blocks validating the Reviewer packet in ordered context and requires a fresh Tester evidence attempt.",
+  "source_changes_by_reviewer": []
+}

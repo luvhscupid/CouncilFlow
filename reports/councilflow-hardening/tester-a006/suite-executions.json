@@ -1,0 +1,116 @@
+[
+  {
+    "name": "suite-tests",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "fd1a40efcc1368ff7309b27c6cf9d2c5cc513b1a4faac989c3dededb27807e5c",
+    "summary": "83",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a006/suite-tests.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a006/suite-tests.stderr.bin"
+  },
+  {
+    "name": "suite-receipt",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "f72c2fa9cda07a298d57567ee25826d9849743fbca1e210d59bf7bbe7f57e941",
+    "summary": "12",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a006/suite-receipt.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a006/suite-receipt.stderr.bin"
+  },
+  {
+    "name": "suite-csv-summary",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "7c2cd182e160cbb17c9f1b53bf9da2db9ee5b45f9f28e60914fb63ef0571491d",
+    "summary": "15",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a006/suite-csv-summary.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a006/suite-csv-summary.stderr.bin"
+  },
+  {
+    "name": "suite-structured-flow",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "1d04959981e77c53eca3ab873343e7ca15bdaaf4c38e86fba672e45955aae354",
+    "summary": "4",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a006/suite-structured-flow.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a006/suite-structured-flow.stderr.bin"
+  },
+  {
+    "name": "suite-demo-verification",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "430935c6d19d9e35f02e3302af487843e0fc51e2be06f96a60df74499bce3630",
+    "summary": "5",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a006/suite-demo-verification.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a006/suite-demo-verification.stderr.bin"
+  },
+  {
+    "name": "suite-csv-verification",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256_raw": "7349cb8e881d8b540ccf23b7a4bcac931e77bc155f348157349746499ecd463b",
+    "summary": "6",
+    "stdout_evidence": "reports/councilflow-hardening/tester-a006/suite-csv-verification.stdout.bin",
+    "stderr_evidence": "reports/councilflow-hardening/tester-a006/suite-csv-verification.stderr.bin"
+  }
+]

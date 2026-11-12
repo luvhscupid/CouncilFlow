@@ -1,0 +1,83 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "CFH-M053",
+  "message_type": "task.decision",
+  "plan_id": "CFH-P004",
+  "plan_revision": 1,
+  "task_id": "CFH-T004",
+  "attempt_id": "CFH-A009",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/planner"
+  },
+  "in_reply_to": "CFH-M052",
+  "payload": {
+    "acceptance_ids": [
+      "HF-03",
+      "HF-04",
+      "HF-05"
+    ],
+    "disposition": "accept",
+    "reason": "The clean A009 candidate passed independent Tester and Reviewer checks for confirmed fixes, current package and all currently applicable suites. Frozen Gate3 live outcomes remain NOT RUN under the documented host/fixture limitations; the original Planner final check must preserve those statuses and all original criteria.",
+    "report_ids": [
+      "CFH-M048",
+      "CFH-M050",
+      "CFH-M052"
+    ],
+    "candidate_ref": {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "CFH-PLAN-004",
+      "path": "reports/councilflow-hardening/planner-correction-p004/plan.json",
+      "sha256": "ff5c41add56eedd3af1b7937bcdede3632b8b6498a01c218d98a6dd32384ae50",
+      "kind": "plan"
+    },
+    {
+      "artifact_id": "CFH-M046",
+      "path": "reports/councilflow-hardening/planner-branch-a009/plan-publish.json",
+      "sha256": "04b6228623413f1857c9925036cac923362dcf5246c6c26471414611cc17e7d8",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-CANDIDATE-A009",
+      "path": "reports/councilflow-hardening/worker-a009/candidate-manifest.json",
+      "sha256": "4086edf588ea73cbe47dba842037955d17d27c33db40ad0ee8c28c2ca0175320",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "CFH-M048",
+      "path": "reports/councilflow-hardening/worker-a009/job-report.json",
+      "sha256": "7c26a1a3f36b92df377fb6ed87e4f78c9b6f298dbd673666220eaeb405d413c0",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M050",
+      "path": "reports/councilflow-hardening/tester-a009/job-report.json",
+      "sha256": "6271b9125267d9f71d171bc4a33f8a905666e7184c9615598effab747f599950",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-M052",
+      "path": "reports/councilflow-hardening/reviewer-a009/job-report.json",
+      "sha256": "ba5878c3816e48d491950f276e8e89f53bb8bcb0f78ab0ab6aab056cf4c69f25",
+      "kind": "message"
+    },
+    {
+      "artifact_id": "CFH-A009-NATIVE-BINDINGS",
+      "path": "reports/councilflow-hardening/manager/a009-native-bindings.json",
+      "sha256": "5875a093aab37f154208a625410fd496fb53b89f469eb41b92da65bec59052d0",
+      "kind": "verification-record"
+    }
+  ]
+}

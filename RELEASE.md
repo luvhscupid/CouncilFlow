@@ -1,6 +1,36 @@
 # CouncilFlow release
 
-## Council Round 6 correction package
+## Current-checkout package (2026-11-12)
+
+This section describes the package built from the current verified repository
+worktree for this hardening run. The Round 6 statements and reports below are
+historical evidence from earlier snapshots; they do not describe the current
+checkout or prove that its archive is present.
+
+Archive: `dist/council-flow.zip`. Its sibling SHA-256 file is
+`dist/council-flow.zip.sha256`. The package preserves repository-relative paths
+and is built from an explicit allowlist in this checkout. It includes the
+complete `.agents/skills/council-flow/` skill and the four native TOML files
+under `.codex/agents/`, README, this release guide, demos, tests, the frozen
+Gate 3 requirements, the Full Plan supporting documents, and demo verification
+reports. Older mission and release reports remain in the checkout but are not
+packaged as current verification evidence. It excludes `.git`, caches, bytecode, credentials, native
+runtime state, temporary files, the archive itself, and the current hardening
+evidence packet.
+
+Package verification for this run is recorded outside the archive in
+`reports/councilflow-hardening/worker-a008/`. The archive is checked for CRC
+integrity, safe relative paths, required and excluded entries, and exact file
+hashes against the worktree. It is extracted to a temporary directory for test
+execution. Use `python -m zipfile -t dist/council-flow.zip` to check its ZIP
+container and verify the sibling digest with SHA-256 before distribution.
+
+This package is an installable source bundle; it does not establish successful
+native `$council-flow` activation, custom-agent TOML loading, or Gate 3 E1-E10
+live outcomes. Those remain subject to host-observed evidence and the authentic
+Owner fixture.
+
+## Historical Round 6 correction package (retained)
 
 The corrected release is built from the isolated copy at
 `E:\Saint\PROJECTS\CouncilFlow-round6`. C1 changes the Reviewer to compare the
@@ -14,8 +44,9 @@ Engineering regression checks passed: 64 CouncilFlow tests plus 12 receipt
 calculator application tests. The tests use synthetic contract fixtures and do
 not demonstrate live native role behavior. Gate 3b is blocked because no
 authentic clean pre-test revision/fixture can be recovered from this no-Git
-workspace; the available receipt-calculator already has `--version`. See
-`reports/gate3b-results.md` for E1–E10 status.
+workspace; the available receipt-calculator already has `--version`. The
+historical E1–E10 record is retained in the checkout and excluded from this
+installable archive.
 
 The corrected distributable is `dist/council-flow-round6.zip`, with a sibling
 SHA-256 file. This work did not install the skill into the
@@ -26,7 +57,7 @@ custom agents in `.codex/agents/`. Both are ordinary text files; no rebuild or
 package installation is required. Current format references and runtime
 observations live under `reports/environment/`.
 
-## This build's verification limit
+### Historical verification limit
 
 The communication restoration passed 103 independently executed tests,
 separate experiential review and the original Planner's final check.
@@ -38,15 +69,15 @@ Real native agents executed the corrected JSON-boundary workflow, including
 independent failures and fresh-Worker repairs. This does not prove successful
 end-to-end `$council-flow` activation. Live custom-role-file selection also remains
 unverified; native subagents received the documented role-instruction fallback.
-See `reports/restoration/activation/`, `reports/restoration/manager.md`, and
-`reports/final.md`. Earlier release reports are historical evidence.
+Earlier restoration evidence, including `reports/final.md`, remains in the
+checkout as historical context and is excluded from the installable archive.
 
 The truthful release classification is
 **CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED**. This build does not alter
 authentication or require a new key, provider or subscription. It cannot claim
 COUNCILFLOW_FULLY_VERIFIED while the actual activation result is blocked.
 
-## Archive and installation
+### Historical archive and installation
 
 Archive: `dist/council-flow-round6.zip`. It preserves repository-relative `.agents/`
 and `.codex/` paths. Source-controlled product, demonstration, tests, and selected
@@ -93,7 +124,7 @@ passes role instructions to native subagents and reports custom-role loading as
 unverified. If native delegation or real activation cannot be observed, report
 PARTIAL with the exact missing capability; never a simulated success.
 
-## Communication-contract restoration
+### Historical communication-contract restoration
 
 The Owner-authorized correction preserves the product and adds a small
 standard-library validator inside the complete skill folder. Include:
@@ -124,7 +155,8 @@ and inspect corrected ZIP bytes plus relocated installation. Native activation
 failure must not be hidden by unit-test totals. Final classification:
 CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED if correction passes while native
 activation remains unverified; COUNCILFLOW_FULLY_VERIFIED only after genuine
-invocation and required real role sessions. Current results belong in final.md
-and requirements-traceability.md. Current archive verification is recorded in
+invocation and required real role sessions. The historical restoration results
+remain in the checkout and are excluded from this archive; they do not describe
+this candidate. Current archive verification is recorded in
 `reports/restoration/package-verification.json`; the earlier numbered archive
 snapshot and its extracted 103-test run remain immutable historical evidence.
