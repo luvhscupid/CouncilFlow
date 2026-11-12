@@ -22,6 +22,12 @@ YAML is role/workflow policy; native custom-agent configuration remains TOML.
 JSONL diagnostics are optional. Owner-facing communication stays concise natural
 language; do not expose internal envelopes or long logs by default.
 
+## Automatic project context
+
+Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md) automatically; no separate Owner command is required.
+Inspect local project content first: empty or installation-only projects make zero MCP calls. For existing source, discover the actual MCP capability, bind the exact project, check freshness, and retrieve bounded context; unavailable MCP means direct inspection.
+After Worker stops edits, repeat the lifecycle to update the index for meaningful source, including new projects and rework. Graph findings inform navigation; independent verification remains mandatory.
+
 ## Execute the goal
 
 1. **Establish scope.** Inspect repository instructions/status and real native

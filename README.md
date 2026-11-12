@@ -105,6 +105,32 @@ python3 -m unittest discover -s demo/csv-summary -v
 
 It uses only the Python standard library, preserves its input, and works offline.
 
+## Automatic Codebase Memory context
+
+Invoke `$council-flow <coding request>` as usual. Before Planner, Manager
+automatically uses the existing DeusData Codebase Memory MCP for relevant
+existing-project navigation when its tools are available. It first inspects local
+content: an empty directory or one containing only CouncilFlow installation
+files makes zero MCP calls. Once meaningful source exists, Manager identifies
+the exact project, initializes a useful missing index, checks freshness, and
+retrieves task-relevant symbols, files, and dependencies. After implementation
+and rework, it updates the index after Worker stops edits. Source reads cover
+critical code, uncertain freshness, and index gaps.
+
+Codebase Memory is an optional, separately configured capability. CouncilFlow
+does not install or reconfigure it and adds no memory engine, manifest, database,
+API key, or manual initialization command. Missing tools or an unreachable
+configured server fall back to ordinary repository inspection, with live MCP
+use reported as UNVERIFIED. Graph findings support navigation; the existing
+independent Tester, Reviewer, and final Planner checks still decide acceptance.
+
+The [lifecycle reference](.agents/skills/council-flow/references/codebase-memory.md)
+ships inside the complete skill folder copied during installation. No additional
+skill or registration is needed. Focused static instruction checks run with
+`python -m unittest discover -s tests -p test_codebase_memory_integration.py -v`;
+run the complete suite with `python -m unittest discover -s tests -v`. These
+checks do not establish native invocation or live MCP behavior.
+
 ## Structured internal communication
 
 CouncilFlow 1.0 now defines **UTF-8 JSON** task packets for Planner, Manager,

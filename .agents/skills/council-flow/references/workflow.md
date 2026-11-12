@@ -5,7 +5,8 @@ Planner final check → Owner. Preserve that responsibility order.
 
 1. Inspect authorized repository, original goal, instructions, status and actual
    tools. Read policies/roles.yaml and communication.md. The native sandbox and
-   actual Owner authorization remain authoritative.
+   actual Owner authorization remain authoritative. Manager performs the
+   [Codebase Memory lifecycle](codebase-memory.md) before Planner automatically.
 2. Dedicated Planner returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
@@ -16,6 +17,9 @@ Planner final check → Owner. Preserve that responsibility order.
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not
    implement application code. Only one Worker mutates this workspace.
+   Manager then synchronizes the available Codebase Memory index with the
+   resulting source before passing context to independent agents; repeat after
+   rework. Failed or unavailable indexing uses the documented source fallback.
 5. Fresh independent Tester receives the approved verification strategy and exact
    candidate hash in its own job.assign. It executes original acceptance and
    meaningful negative controls, returns technical job.report, and never repairs.

@@ -1,0 +1,145 @@
+{
+  "record_kind": "independent_engineering_review",
+  "reviewer_identity": "/root/native_memory_review_plan",
+  "branch": "codex/cf-recall",
+  "base_revision": "1bed72b79b3e91c206b7274db064256797b76ec2",
+  "status": "passed",
+  "disposition": "Instruction integration and regression evidence accepted within inspected scope; live MCP integration remains UNVERIFIED.",
+  "scope": "Independent comparison of the authoritative pasted request, original checklist, current source/diff, corrected candidate, and separate Tester evidence. No product edits, setup changes, or Git mutations were made by this Reviewer.",
+  "tester_evidence": {
+    "path": "reports/native-codebase-memory/verification.json",
+    "sha256": "cb176a3e6d09ec2d3a48191510a70f23e8207657f44b9fe9afde981df042908a"
+  },
+  "candidate_binding": {
+    "actual_candidate_hashes": {
+      ".agents/skills/council-flow/SKILL.md": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7",
+      ".agents/skills/council-flow/references/codebase-memory.md": "fca2c29cb259c391803292fa3c9ad5949bacda1c4234696c27f20d73cd5a1311",
+      ".agents/skills/council-flow/references/workflow.md": "1e3421fd1ad14fe19c30049d4eb118a7bb2a845f6d18e91e8112ba29050c4ea2",
+      "README.md": "6a3c7ec046f0ee49b2e1dbe4e631741a19a6e8ef8eb718da91ab84b0ff11a53e",
+      "tests/test_codebase_memory_integration.py": "8e494a081a2d6f908570278ee659db33735b50296f72161da706bfe1969bd87d"
+    },
+    "matches_tester_candidate": true,
+    "tester_candidate_stable": true,
+    "tester_report_sha256": "cb176a3e6d09ec2d3a48191510a70f23e8207657f44b9fe9afde981df042908a"
+  },
+  "resolved_findings": [
+    {
+      "id": "N4",
+      "status": "resolved",
+      "finding": "A conditional parent-path warning could have allowed an unambiguous wider parent index.",
+      "correction": "The corrected reference unconditionally requires resolved root_path equality with the authorized repository root, rejects parent containment alone, handles subdirectory/nested-root identity, and falls back when exact identity cannot be established.",
+      "evidence": [
+        ".agents/skills/council-flow/references/codebase-memory.md",
+        "tests/test_codebase_memory_integration.py"
+      ]
+    }
+  ],
+  "open_findings": [],
+  "acceptance_review": [
+    {
+      "scenario": "Empty or installation-only project skips MCP",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "Local content inspection explicitly precedes every MCP call, including listing/status; ordinary creation continues and indexing starts only after meaningful source exists."
+    },
+    {
+      "scenario": "Existing project without index initializes appropriately",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "Observed server namespace/schema and exact root identity are required; useful supported indexing must return usable status, otherwise direct inspection."
+    },
+    {
+      "scenario": "Indexed project retrieves relevant context automatically",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "Mandatory pre-Planner pointer leads to targeted symbols/files/dependencies/architecture with bounded pagination and source checks."
+    },
+    {
+      "scenario": "Changed source checks freshness and updates index",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "Freshness checks cover current/untracked changes; supported refresh precedes reliance and repeats after stopped Worker/new-project/rework source changes, with coverage/fallback."
+    },
+    {
+      "scenario": "Missing or unreachable MCP falls back safely",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "No tools, failed handshake, unknown freshness, unsupported operation, or incomplete coverage trigger local source inspection and truthful limitations. Parent observed enabled configuration but failed initialization; this is not proof of a live activated CouncilFlow fallback."
+    },
+    {
+      "scenario": "Fresh agents receive bounded context",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "Existing instructions/evidence_refs carry root, source state, generation, symbols, scope, pagination, coverage, source fallback, and uncertainty; child MCP access is not assumed."
+    },
+    {
+      "scenario": "Roles and verification requirements preserved",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "Independent protected diff returned zero; schema, policy, TOMLs, validator, frozen sources and original tests are unchanged. Tester/Reviewer/final Planner obligations remain explicit."
+    },
+    {
+      "scenario": "Implementation and installation docs accurately describe behavior",
+      "static_status": "PASS",
+      "runtime_status": "UNVERIFIED",
+      "basis": "One installed lifecycle reference ships with the whole skill; Owner only invokes council-flow. Docs expressly classify static checks and live MCP separately."
+    }
+  ],
+  "independent_preservation_check": {
+    "command": "git diff --exit-code HEAD -- .codex/agents .agents/skills/council-flow/policies .agents/skills/council-flow/references/message-contract.json .agents/skills/council-flow/scripts/contracts.py docs/gate3 docs/CouncilFlow-Full-Plan RELEASE.md tests/test_contracts.py tests/validation_cases.json",
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall",
+    "exit_code": 0,
+    "removal_observations": "Only council-flow remains under installed skill directories; only contracts.py remains under scripts; recall manifest is absent; no custom recall references were found in current README/.agents/.codex excluding ignored bytecode."
+  },
+  "tester_results_reviewed": {
+    "final_focused_static": {
+      "tests": 9,
+      "skips": 0,
+      "exit_code": 0
+    },
+    "final_full_councilflow": {
+      "tests": 80,
+      "skips": 0,
+      "exit_code": 0
+    },
+    "retained_unchanged_input_runs": {
+      "receipt": 12,
+      "csv": 15,
+      "structured_flow": 4,
+      "skips": 0,
+      "exit_code": 0
+    },
+    "basis": "Focused9 is a subset of full80. Genuine earlier demo/policy runs are retained on unchanged inputs and are not represented as new corrected-candidate reruns. Pre-correction records remain distinct.",
+    "whitespace_and_protected_checks": "passed"
+  },
+  "deterministic_comparison": {
+    "tester_exit_code": 0,
+    "tester_normalized_stdout_sha256": "e00d2405ad16b1c98fe682dbb1308d86f9bb86c5a475c71371f9e969ccb018a7",
+    "independent_reviewer_execution": {
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "exit_code": 0,
+      "inputs": {
+        ".agents/skills/council-flow/policies/roles.yaml": "9e1786931a972e41da19d33255c21080ef765b607936c6337d129dfaabbc12ad",
+        ".agents/skills/council-flow/scripts/contracts.py": "23ecc0a84a61f6a94afd9440b279ba1bf5951db4861deda7251afbc0159e948b"
+      },
+      "normalization": "CRLF-to-LF only",
+      "normalized_stdout_sha256": "e00d2405ad16b1c98fe682dbb1308d86f9bb86c5a475c71371f9e969ccb018a7",
+      "stderr_base64": "",
+      "stdout_base64": "eyJ2YWxpZCI6IHRydWUsICJtb2RlIjogInBvbGljeSIsICJmaWxlcyI6IDEsICJsaW1pdHMiOiB7Im1lc3NhZ2VfYnl0ZXMiOiA2NTUzNiwgImNvbnRhaW5lcl9kZXB0aCI6IDE2fSwgImJvdW5kYXJ5IjogImNvbnRyb2xsZWQgcmVjb3JkcyBvbmx5OyBub3QgYXV0aGVudGljYXRpb24vbmF0aXZlIHRyYW5zcG9ydCBlbmZvcmNlbWVudCJ9DQo=",
+      "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-cf-recall"
+    },
+    "exit_code_match": true,
+    "normalized_stdout_hash_match": true,
+    "meaning": "Matches establish repeatability of this exact policy command and its unchanged recorded inputs only."
+  },
+  "limitations": [
+    "Codebase Memory server is configured enabled but the parent observed no exposed graph tools and startup handshake closed during initialization. Live graph calls/indexing/freshness/automatic invocation remain UNVERIFIED.",
+    "New tests validate instruction contracts and removal only; no mock dispatcher, memory engine, or native workflow behavior is claimed.",
+    "This engineering review is not a controlled five-role CouncilFlow runtime packet, native skill activation proof, authentication result, or OS isolation claim."
+  ]
+}
