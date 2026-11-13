@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "8a37c6c6b8727cd78070635c86451ff8f6516caa3b584553afb8d2b9e294dc5f",
+  "sha256": "9ddf350b1afed240594157f2db594f9be396107acb87343cbbd24eba99769122",
   "entries": 117,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 6904,
-      "sha256": "377e3a08a51a0807ae7af0918bda6f181b42c4e53d8e0ae04af51cb4741c9fe7"
+      "size": 6803,
+      "sha256": "54c5ad6bf277730711e95378d19ace8a27955a260fac90b658a708e65c59b7a7"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -25,8 +25,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/codebase-memory.md",
-      "size": 7680,
-      "sha256": "5953ab977e0c6b693f3ff31901428822bb29fa1031c1ba3199b731599d077e93"
+      "size": 7560,
+      "sha256": "f47b5c594bb4116c49d25b045e0e0980e1aef789986645778934c6a148d215bf"
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 6175,
-      "sha256": "bfcd7ce0bd6f5657a45ffbfa02f7126c3a63c0817ab403598ae100a069f3cc4b"
+      "size": 6083,
+      "sha256": "7432e2aecefb85110d148a7ed14c63424b502b709d2b473add34badf093e0e65"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
@@ -80,8 +80,8 @@
     },
     {
       "path": "README.md",
-      "size": 10228,
-      "sha256": "2e02aeb0f7e63afd0887a0e5c594215c5af3210f79f15d02a69960c2a39e567d"
+      "size": 10046,
+      "sha256": "ac361e7b8968c9a33113dbdc82378c89300ec644965a1ed2866bdcfe8c767b69"
     },
     {
       "path": "RELEASE.md",
@@ -185,8 +185,8 @@
     },
     {
       "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
-      "size": 1981,
-      "sha256": "56340b90d4f779c45938b948ea791f91fe03103fc0a32e11d9d553fb8ecd20a0"
+      "size": 1961,
+      "sha256": "5dad148251cb18412f10e157569bd669c1ac0e0be6c9c3fa26fe0066ded27a2f"
     },
     {
       "path": "docs/CouncilFlow-Full-Plan/SOURCE-MANIFEST.md",
@@ -560,8 +560,8 @@
     },
     {
       "path": "tests/test_codebase_memory_integration.py",
-      "size": 7849,
-      "sha256": "fe7118e6438497c07740d3daaeaf304eb2e5b4e921b7de1699af5c0fc65730d6"
+      "size": 7723,
+      "sha256": "031fa02d1d09446f193fd5416a8aca136e6e7e176ffdeee0868e96c90cad661e"
     },
     {
       "path": "tests/test_contracts.py",

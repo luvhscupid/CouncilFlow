@@ -1,0 +1,5 @@
+# Use LF as the canonical byte format for repository text and release inputs.
+* text=auto eol=lf
+# These Full Plan examples are checksum-bound historical artifacts; preserve CRLF bytes.
+/docs/CouncilFlow-Full-Plan/examples/job.report.json -text
+/docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt -text
