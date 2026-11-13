@@ -1,4 +1,4 @@
-# CouncilFlow skill policy 1.0. Restricted block YAML; not Codex permissions.
+# CouncilFlow skill policy 1.0. Restricted block YAML; not Claude Code permissions.
 protocol: "council-flow-policy"
 version: "1.0"
 communication:
@@ -57,11 +57,11 @@ resources:
   crash_recoveries: 2
   retry_accounting: "instruction_only"
 security:
-  permissions: "inherit_native_codex"
+  permissions: "inherit_claude_code"
   grants_os_permissions: false
   authenticates_senders: false
   native_transport_enforced: false
 native:
-  format: "toml"
-  fields: ["name", "description", "developer_instructions"]
-  mapping: "policy responsibilities become developer_instructions; no invented keys"
+  format: "markdown"
+  fields: ["name", "description", "frontmatter", "instructions"]
+  mapping: "policy responsibilities become agent frontmatter and instructions; no invented keys"

@@ -44,7 +44,7 @@ Use an actual separate native session for each required role; reuse Planner for
 final check. Rework Worker is fresh. Report only actual exposed session/task-path
 IDs and inherited supported model selection. Separate contexts do not establish
 separate model providers or OS-enforced boundaries. Custom-agent files remain
-.codex/agents/*.toml (the native directory is .codex/agents/); use their compatible
+.claude/agents/council-*.md (the native directory is .claude/agents/); use their compatible
 developer_instructions mapping from policy, or pass role instructions through
 native delegation if custom-role selection is not exposed.
 

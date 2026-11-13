@@ -6,7 +6,7 @@ Supervisor. Historical unversioned reports remain historical, never fabricated
 migrated messages.
 
 Agent task packets/results are **UTF-8 JSON**, not Markdown prose. Policy is
-[roles.yaml](../policies/roles.yaml); native Codex configuration remains TOML.
+[roles.yaml](../policies/roles.yaml); native Claude Code configuration remains TOML.
 Optional bounded JSONL is diagnostics, not an authoritative/crash-safe ledger.
 Only Manager routinely talks to Owner, using concise natural language:
 requested, implemented, tested, review findings, remaining gaps, genuine decisions.
@@ -78,10 +78,10 @@ never actual approvals.
 From the installed repository:
 
 ~~~sh
-python3 .agents/skills/council-flow/scripts/contracts.py message packet.json --root . --expected-sender worker --expected-instance /root/actual-worker
-python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
-python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
-python3 .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
+python3 .claude/skills/council-flow/scripts/contracts.py message packet.json --root . --expected-sender worker --expected-instance /root/actual-worker
+python3 .claude/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
+python3 .claude/skills/council-flow/scripts/contracts.py policy .claude/skills/council-flow/policies/roles.yaml
+python3 .claude/skills/council-flow/scripts/contracts.py events events.jsonl --root .
 ~~~
 
 The sequence begins with a plan.publish envelope, not the larger plan artifact.
@@ -147,7 +147,7 @@ labels when actual origin metadata is available.
 This **does not authenticate senders**, prove evidence semantics, enforce opaque
 native transport, verify model reasoning, or grant permissions. Without ordered
 context only structure is checked. Without root, hash shape is checked, not file
-existence/content. Codex native transport is outside this helper's control.
+existence/content. Claude Code native transport is outside this helper's control.
 Validate controlled packet/report files before dispatch/after receipt while
 respecting actual native sandbox and approval mechanisms.
 
@@ -165,8 +165,8 @@ Comments occupy separate lines. Duplicate keys, tabs, implicit strings,
 floats/null, tags, anchors, aliases, merges, multiline scalars and block sequences
 are unsupported and rejected. This is deliberately not a general YAML parser.
 Semantic validation freezes required authority/workflow invariants. No parser
-dependency is installed. YAML responsibilities map into native TOML
-developer_instructions; no unsupported Codex keys are introduced.
+dependency is installed. YAML responsibilities map into Claude Code Markdown
+developer_instructions; no unsupported Claude Code keys are introduced.
 
 ## Optional JSONL
 

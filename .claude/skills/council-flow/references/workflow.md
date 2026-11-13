@@ -62,7 +62,7 @@ attempt/candidate identities, published acceptance and known actor bindings.
 Refer to communication.md for exact schemas, CLI and limitations. This is not a
 database, message broker, Supervisor, agent simulator or transport adapter.
 
-Native Codex transport may wrap these messages in an opaque protocol. CouncilFlow
+Native Claude Code transport may wrap these messages in an opaque protocol. CouncilFlow
 only controls the task packet/report files and instructions passed through
 supported native tools; never claim the helper enforces the underlying transport.
 Structure is not authentication; YAML cannot grant OS permissions.
@@ -74,7 +74,7 @@ JSONL during ordinary work.
 
 ## Native compatibility and truthful gaps
 
-Keep .codex/agents/*.toml in native format. YAML policy responsibilities map to
+Keep .claude/agents/council-*.md in native format. YAML policy responsibilities map to
 developer_instructions; do not invent native keys or unsupported models.
 If custom-role selection is missing but real native agents work, pass role
 instructions to separate native sessions and disclose unverified file selection.
@@ -86,5 +86,5 @@ or validating example JSON is not activation proof. Preserve historical bootstra
 packets with their limits, then start actual fully validated exchanges after the
 contract exists. No fake migrated history or manufactured approvals.
 
-Example ordinary invocation: $council-flow Implement an offline receipt calculator
+Example ordinary invocation: /council-flow Implement an offline receipt calculator
 inside this repository with tests. The Owner need not author internal packets.

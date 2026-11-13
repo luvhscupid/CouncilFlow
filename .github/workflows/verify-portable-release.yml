@@ -3,8 +3,10 @@ name: Verify portable release on Windows
 on:
   push:
     branches:
-      - codex/portable-release-repair
-      - codex/councilflow-e10-recovery
+      - main
+      - claude/**
+      - feature/**
+      - fix/**
   pull_request:
     branches:
       - main
@@ -53,6 +55,29 @@ jobs:
               assert archive.testzip() is None
               for name in protected:
                   assert archive.read(name) == pathlib.Path(name).read_bytes()
+
+      - name: Verify Claude Code layout and reject active Codex artifacts
+        shell: python
+        run: |
+          import pathlib
+          root = pathlib.Path('.')
+          required = [
+              root / '.claude/skills/council-flow/SKILL.md',
+              root / '.claude/agents/council-planner.md',
+              root / '.claude/agents/council-worker.md',
+              root / '.claude/agents/council-tester.md',
+              root / '.claude/agents/council-reviewer.md',
+          ]
+          for path in required:
+              assert path.is_file(), path
+          forbidden = ('.' + 'codex', '.' + 'codex-runtime', 'openai' + '.yaml', '$' + 'council-flow')
+          active = [root / 'README.md', root / 'RELEASE.md', root / 'tools', root / 'tests', root / '.github', root / '.claude']
+          for base in active:
+              paths = [base] if base.is_file() else base.rglob('*')
+              for path in paths:
+                  if path.is_file() and path.suffix in {'.md', '.py', '.json', '.yaml', '.yml'}:
+                      text = path.read_text(encoding='utf-8')
+                      assert not any(marker in text for marker in forbidden), path
 
       - name: Verify six test suites in clean Windows checkout
         shell: pwsh

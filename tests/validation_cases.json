@@ -4,8 +4,8 @@
   "runtime_results": "Recorded separately by the Manager in reports/ with actual evidence references.",
   "scenarios": [
     {"id": "V01", "name": "Skill metadata", "evidence_kind": "static", "required_observation": "Parse actual required frontmatter name and description."},
-    {"id": "V02", "name": "Discovery", "evidence_kind": "runtime", "required_observation": "Codex host lists the installed skill in an approved repository discovery location."},
-    {"id": "V03", "name": "Explicit invocation", "evidence_kind": "runtime", "required_observation": "Codex activates the skill through literal $council-flow; copied prompt reading is insufficient."},
+    {"id": "V02", "name": "Discovery", "evidence_kind": "runtime", "required_observation": "Claude Code host lists the installed skill in an approved repository discovery location."},
+    {"id": "V03", "name": "Explicit invocation", "evidence_kind": "runtime", "required_observation": "Claude Code activates the skill through literal /council-flow; copied prompt reading is insufficient."},
     {"id": "V04", "name": "Role boundaries", "evidence_kind": "runtime", "required_observation": "Manager delegation and edit attribution demonstrate no Manager application-code edits."},
     {"id": "V05", "name": "Worker implementation", "evidence_kind": "runtime", "required_observation": "Actual native Worker identity implements the program."},
     {"id": "V06", "name": "Independent testing", "evidence_kind": "runtime", "required_observation": "Distinct native Tester identity independently checks contract and executes behavior."},

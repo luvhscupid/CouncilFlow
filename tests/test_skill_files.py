@@ -10,12 +10,11 @@ import json
 from pathlib import Path
 import re
 import sys
-import tomllib
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / ".agents" / "skills" / "council-flow"
+SKILL = ROOT / ".claude" / "skills" / "council-flow"
 
 
 class SkillFilesTests(unittest.TestCase):
@@ -28,8 +27,8 @@ class SkillFilesTests(unittest.TestCase):
         description = json.loads(fields["description"].strip())
         self.assertIsInstance(description, str)
         self.assertGreater(len(description), 30)
-        self.assertIn("$council-flow", body)
-        self.assertLess(len(body.splitlines()), 100, "Keep the operational skill concise")
+        self.assertIn("/council-flow", body)
+        self.assertLess(len(body.splitlines()), 110, "Keep the operational skill concise")
 
     def test_local_reference_targets_exist_and_are_useful(self) -> None:
         source = (SKILL / "SKILL.md").read_text()
@@ -40,29 +39,22 @@ class SkillFilesTests(unittest.TestCase):
         for name in ("roles", "workflow", "acceptance", "recovery"):
             self.assertTrue((SKILL / "references" / f"{name}.md").is_file())
 
-    def test_optional_metadata_small_yaml_subset(self) -> None:
-        source = (SKILL / "agents" / "openai.yaml").read_text()
-        self.assertIn("interface:\n", source)
-        for field in ("display_name", "short_description", "default_prompt"):
-            line = next(line for line in source.splitlines()
-                        if line.strip().startswith(field + ":"))
-            self.assertIsInstance(json.loads(line.split(":", 1)[1].strip()), str)
-        self.assertIn("$council-flow", source)
-        self.assertIn("policy:\n  allow_implicit_invocation: false", source)
-
-    def test_native_agent_toml_format_without_model_pinning(self) -> None:
-        paths = sorted((ROOT / ".codex" / "agents").glob("*.toml"))
+    def test_claude_agent_markdown_format_without_codex_metadata(self) -> None:
+        paths = sorted((ROOT / ".claude" / "agents").glob("council-*.md"))
         self.assertEqual({p.stem for p in paths}, {
             "council-planner", "council-worker", "council-tester", "council-reviewer"})
         for path in paths:
             with self.subTest(path=path.name):
-                data = tomllib.loads(path.read_text())
-                self.assertEqual(data["name"], path.stem)
-                for key in ("description", "developer_instructions"):
-                    self.assertIsInstance(data[key], str)
-                    self.assertTrue(data[key].strip())
-                self.assertEqual(set(data), {"name", "description", "developer_instructions"})
-        # This validates TOML and documented fields, not loading by the host.
+                source = path.read_text()
+                self.assertTrue(source.startswith("---\n"))
+                self.assertIn(f"name: {path.stem}\n", source)
+                self.assertIn("description:", source)
+                self.assertIn("CouncilFlow", source)
+                self.assertNotIn(".codex", source)
+        self.assertFalse((SKILL / "agents" / "openai.yaml").exists())
+        self.assertFalse((ROOT / ".codex").exists())
+        self.assertFalse((ROOT / ".agents").exists())
+        # This validates repository metadata, not live host loading.
 
     def test_separate_contract_types_are_documented(self) -> None:
         source = (SKILL / "references" / "roles.md").read_text()
@@ -86,7 +78,7 @@ class SkillFilesTests(unittest.TestCase):
                          [f"T{n:02}" for n in range(1, 25)])
 
     def test_reviewer_is_comparator_not_ux_evaluator(self) -> None:
-        role = (ROOT / ".codex" / "agents" / "council-reviewer.toml").read_text()
+        role = (ROOT / ".claude" / "agents" / "council-reviewer.md").read_text()
         policy = (SKILL / "policies" / "roles.yaml").read_text()
         self.assertIn("frozen original plan/criteria", role)
         self.assertIn("Tester execution evidence", role)
@@ -95,8 +87,8 @@ class SkillFilesTests(unittest.TestCase):
             self.assertNotIn(forbidden, role + policy)
 
     def test_review_binds_exact_executable_and_completed_tester_message(self) -> None:
-        reviewer = (ROOT / ".codex" / "agents" / "council-reviewer.toml").read_text()
-        tester = (ROOT / ".codex" / "agents" / "council-tester.toml").read_text()
+        reviewer = (ROOT / ".claude" / "agents" / "council-reviewer.md").read_text()
+        tester = (ROOT / ".claude" / "agents" / "council-tester.md").read_text()
         communication = (SKILL / "references" / "communication.md").read_text()
         for phrase in ("exact `command` executable path", "never substitute a shell alias",
                        "working directory", "candidate", "relevant input references"):
