@@ -1,9 +1,6 @@
 name: Verify portable release on Windows
 
 on:
-  push:
-    branches:
-      - codex/portable-release-repair
   pull_request:
     branches:
       - main
