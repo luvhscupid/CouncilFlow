@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "9ddf350b1afed240594157f2db594f9be396107acb87343cbbd24eba99769122",
+  "sha256": "3a5520b4ad9b6b8ea00f4316ea6d0008d3aaba21fffd66a989360146b5681f75",
   "entries": 117,
   "files": [
     {
@@ -585,8 +585,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 6580,
-      "sha256": "658fca83695ab7f0334348997c7ec6f760d496ada547f18bc0d246663680ea9a"
+      "size": 6672,
+      "sha256": "a7a17da9b1c70ee92ef54fd1b605ffd9718d87c028f0bfcddaa0a84446298948"
     }
   ],
   "crc": "PASS",
