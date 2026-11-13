@@ -119,6 +119,7 @@ def build(root: Path = ROOT) -> dict:
         for name, data in sources.items():
             info = zipfile.ZipInfo(name, date_time=(2020, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3  # Stable Unix-origin ZIP metadata on Windows and POSIX.
             info.external_attr = 0o100644 << 16
             archive.writestr(info, data)
     buffer.seek(0)
