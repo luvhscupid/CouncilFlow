@@ -1,0 +1,45 @@
+{
+  "kind": "direct-engineering-maintenance; not CouncilFlow protocol or Gate 3",
+  "request_path": "C:\\Users\\cupid\\.codex\\attachments\\f5228555-e1be-4b6d-8717-99484b7993d6\\Pasted text.txt",
+  "request_sha256": "6b47df73124e37cdaf58d5ede3c27328a5efe30cf472e128d938cebec756ced4",
+  "baseline": "ba1aee06ce0c97add1029b7c3ef323b6de1cb9ce",
+  "baseline_tree": "18656bf43e2e448c8e014a6eda729f04e087228d",
+  "branch": "codex/councilflow-e10-recovery",
+  "sequence": [
+    "reproduce authoritative-source substitution against actual saved fixture",
+    "correct original-source binding and confirmed recovery dispatch bypass",
+    "independently exercise behavior/oracle and reviewer comparison negative controls",
+    "run all six suites and scoped mutations on frozen candidate",
+    "review exact diff and independently rerun declared deterministic command",
+    "rebuild/verify deterministic distribution; fresh Windows Git checkout and extraction",
+    "preserve all original work and frozen/history bytes; commit; authorized push; inspect existing Windows CI"
+  ],
+  "verification": [
+    "original saved fixture exact bytes/hash",
+    "negative controls reject altered/reordered/missing/substituted criteria",
+    "pristine test oracle catches defective app despite candidate tests passing",
+    "real command output/exit comparison detects mismatch",
+    "fresh rework and all failed original IDs preserved",
+    "frozen source hashes and protected CRLF bytes unchanged",
+    "six Windows suites in current candidate, fresh checkout and release extraction",
+    "Git/ZIP source parity, deterministic rebuild, manifest+sidecar",
+    "independent test/review outcomes and remote commit identity"
+  ],
+  "agents_observed": [
+    "/root/source_fidelity_analysis",
+    "/root/adversarial_analysis",
+    "/root/implementation",
+    "/root/independent_testing",
+    "/root/independent_review"
+  ],
+  "limits": [
+    "actual underlying model variant not disclosed by host",
+    "distinct maintenance sessions do not prove heterogeneous models",
+    "no CouncilFlow self-invocation or formal Gate 3 certification",
+    "auth and effective custom-role configuration not inferred from packets",
+    "historical original Security Annex unavailable; preserved recovery note does not recreate it"
+  ],
+  "initial_tags": [
+    "3f8e94bd9f22a3c1bcd7f22bb3669550d43d9f89 refs/tags/beta"
+  ]
+}

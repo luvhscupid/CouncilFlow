@@ -99,11 +99,66 @@ def read_json(path):
     return loads(raw)
 
 
-def _authoritative_criteria(reference, root):
-    """Load criteria from an explicitly trusted caller reference.
+def capture_criteria(reference, root, *, owner_provenance=()):
+    """Derive criteria from caller-pinned original bytes, never from a rewrite.
+
+    The caller establishes original-input provenance outside agent packets. An
+    artifact ID in owner_provenance is an explicit caller assertion, not evidence
+    that this helper authenticated a person or sealed a file.
+    """
+    if root is None:
+        fail("criteria_source", "original_source_ref", "a repository root is required")
+    if type(owner_provenance) not in {list, tuple, set, frozenset} or len(owner_provenance) > 1024:
+        fail("context_owner", "owner_provenance", "expected bounded externally observed source identities")
+    for identity in owner_provenance:
+        _tree(identity)
+        _identity(identity, "owner_provenance")
+    artifact(reference, root, "original_source_ref")
+    if reference["kind"] != "owner-original-source":
+        fail("criteria_source", "original_source_ref.kind", "expected owner-original-source")
+    if reference["artifact_id"] not in owner_provenance:
+        fail("owner_provenance", "original_source_ref", "caller-observed original-input provenance is required")
+    with (Path(root) / reference["path"]).open("rb") as stream:
+        raw = stream.read(MAX_BYTES + 1)
+    if len(raw) > MAX_BYTES:
+        fail("criteria_source", "original_source_ref", "original input exceeds bounded capture size")
+    if hashlib.sha256(raw).hexdigest() != reference["sha256"]:
+        fail("artifact_hash", "original_source_ref", "original input changed during capture")
+    try:
+        raw.decode("utf-8", "strict")
+    except UnicodeError:
+        fail("utf8", "original_source_ref", "original input must be UTF-8")
+    # The supported text format has column-zero 'ACn: ' labels. Enumerate every
+    # label rather than trust agent-selected spans, which could omit a criterion.
+    labels = list(re.finditer(rb"(?m)^AC([1-9][0-9]*): ", raw))
+    candidates = list(re.finditer(rb"(?m)^[^\w\r\n]*AC[0-9]+[ \t]*[:*]", raw))
+    if not labels or len(labels) > MAX_ITEMS or len(candidates) != len(labels):
+        fail("criteria_source", "original_source_ref", "use unambiguous column-zero ACn: labels; unsupported source fails closed")
+    criteria, seen = [], set()
+    for index, label in enumerate(labels):
+        identity = "AC" + label.group(1).decode("ascii")
+        _identity(identity, "original_source_ref.criteria.id")
+        if identity in seen:
+            fail("criteria_source", "original_source_ref", "duplicate original criterion identity")
+        seen.add(identity)
+        end = labels[index + 1].start() if index + 1 < len(labels) else len(raw)
+        body = raw[label.end():end]
+        # One separator line ending belongs to the AC record, not its text.
+        # Any additional blank lines, indentation, tabs and line endings remain.
+        if body.endswith(b"\r\n"):
+            body = body[:-2]
+        elif body.endswith(b"\n"):
+            body = body[:-1]
+        criterion = _criterion(body.decode("utf-8"), "original_source_ref.criteria.criterion")
+        criteria.append({"id": identity, "criterion": criterion})
+    return {"source_ref": reference, "criteria": criteria}
+
+
+def _authoritative_criteria(reference, root, original_source_ref=None):
+    """Load a criteria derivative; original-source trust is checked separately.
 
     The artifact digest detects stale bytes; it does not authenticate who approved
-    them. The caller must obtain this reference from the Owner-approved source.
+    them. Required fidelity additionally compares the separately pinned raw input.
     """
     if root is None:
         fail("criteria_source", "authoritative_criteria_ref", "a repository root is required")
@@ -111,8 +166,12 @@ def _authoritative_criteria(reference, root):
     if reference["kind"] != "owner-approved-criteria":
         fail("criteria_source", "authoritative_criteria_ref.kind", "expected owner-approved-criteria artifact")
     source = read_json(Path(root) / reference["path"])
-    if type(source) is not dict or set(source) != {"criteria"}:
+    if type(source) is not dict or set(source) not in ({"criteria"}, {"source_ref", "criteria"}):
         fail("criteria_source", "authoritative_criteria_ref", "expected exact criteria fixture object")
+    if "source_ref" in source:
+        artifact(source["source_ref"], root, "authoritative_criteria_ref.source_ref")
+        if original_source_ref is not None and source["source_ref"] != original_source_ref:
+            fail("criteria_source", "authoritative_criteria_ref.source_ref", "derivative source differs from caller-pinned original input")
     criteria = source["criteria"]
     if type(criteria) is not list or not criteria or len(criteria) > MAX_ITEMS:
         fail("criteria_source", "authoritative_criteria_ref.criteria", "expected bounded nonempty ordered criteria")
@@ -163,12 +222,12 @@ def _string(value, field, limit=MAX_STRING):
 
 
 def _criterion(value, field):
-    """Validate plan text while preserving ordinary LF or CRLF line breaks."""
+    """Validate plan text while preserving tabs and LF or CRLF line breaks."""
     if type(value) is not str or not value.strip() or len(value) > MAX_STRING:
         fail("string", field, f"expected nonempty string, at most {MAX_STRING} characters")
-    if any((ord(char) < 32 and char not in "\r\n") or ord(char) == 127
+    if any((ord(char) < 32 and char not in "\t\r\n") or ord(char) == 127
            for char in value):
-        fail("control", field, "control characters other than line breaks are not allowed")
+        fail("control", field, "control characters other than tabs and line breaks are not allowed")
     if "\r" in value.replace("\r\n", ""):
         fail("control", field, "carriage returns must be part of CRLF line breaks")
     return value
@@ -489,7 +548,8 @@ def validate_message(message, *, root=None, expected_sender=None):
 
 
 def validate_sequence(messages, *, root=None, expected_senders=None, owner_provenance=(),
-                      authoritative_criteria_ref=None, require_criteria_fidelity=False):
+                      authoritative_criteria_ref=None, original_source_ref=None,
+                      require_criteria_fidelity=False):
     """Validate supplied ordered context, never authenticate opaque native transport."""
     if not isinstance(messages, (list, tuple)) or len(messages) > 1024:
         fail("context", "$", "supply at most 1024 ordered messages")
@@ -512,11 +572,23 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
     owner_provenance = set(owner_provenance)
     if type(require_criteria_fidelity) is not bool:
         fail("criteria_source", "require_criteria_fidelity", "expected boolean")
-    if require_criteria_fidelity and authoritative_criteria_ref is None:
-        fail("criteria_source", "authoritative_criteria_ref", "authoritative criteria source is required; failing closed")
+    if require_criteria_fidelity and original_source_ref is None:
+        fail("criteria_source", "original_source_ref", "pinned original Owner input is required; a generated derivative is insufficient")
     expected_criteria = None
+    if original_source_ref is not None:
+        captured = capture_criteria(original_source_ref, root, owner_provenance=owner_provenance)
+        expected_criteria = [(entry["id"], entry["criterion"]) for entry in captured["criteria"]]
+        artifact_ids[original_source_ref["artifact_id"]] = original_source_ref
     if authoritative_criteria_ref is not None:
-        expected_criteria = _authoritative_criteria(authoritative_criteria_ref, root)
+        derivative = _authoritative_criteria(authoritative_criteria_ref, root, original_source_ref)
+        if expected_criteria is not None and derivative != expected_criteria:
+            fail("acceptance_fidelity", "authoritative_criteria_ref", "generated criteria differ from pinned original input")
+        if expected_criteria is None:
+            expected_criteria = derivative  # Legacy comparison only; not required-fidelity evidence.
+        previous = artifact_ids.get(authoritative_criteria_ref["artifact_id"])
+        if previous is not None and previous != authoritative_criteria_ref:
+            fail("artifact_identity", "authoritative_criteria_ref", "original and derivative cannot share a changed artifact identity")
+        artifact_ids[authoritative_criteria_ref["artifact_id"]] = authoritative_criteria_ref
     for m in messages:
         # Validate the object and identity before using either as a lookup key.
         validate_message(m, root=root)
@@ -578,6 +650,8 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                     fail("plan_artifact", "payload.acceptance_ids", "does not match original artifact")
                 if expected_criteria is not None:
                     _compare_authoritative_criteria(plan, expected_criteria)
+                if original_source_ref is not None and plan.get("original_source_ref") != original_source_ref:
+                    fail("criteria_source", "plan.original_source_ref", "plan must preserve the caller-pinned original source reference")
         elif kind != "plan.progress" and key not in plans:
             fail("plan_context", "plan_id", "published plan required")
         if key in plans and "acceptance_ids" in p:
@@ -656,16 +730,24 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                     fail("comparison", "payload.comparison.findings", "record comparison findings against plan, candidate and Tester evidence")
             if p["acceptance_ids"] != predecessor["payload"]["acceptance_ids"]:
                 fail("acceptance", "payload.acceptance_ids", "report changed assigned criteria")
+        if kind == "job.assign" and m["recipient"]["role"] == "worker":
+            earlier_workers = [x for x in seen.values() if x["message_type"] == "job.assign"
+                               and x["recipient"]["role"] == "worker"
+                               and all(x[field] == m[field] for field in ("plan_id", "plan_revision", "task_id"))]
+            if earlier_workers and (not predecessor or predecessor["message_type"] != "task.decision"
+                                    or predecessor["payload"]["disposition"] != "rework"):
+                fail("rework_evidence", "in_reply_to", "another implementation attempt requires an explicit preserved Manager rework decision")
         if kind == "job.assign" and predecessor:
             if predecessor["message_type"] == "task.decision" and predecessor["payload"]["disposition"] == "rework":
                 if m["recipient"]["role"] == "worker":
                     if m["attempt_id"] == predecessor["attempt_id"]:
                         fail("fresh_attempt", "attempt_id", "repair requires fresh attempt")
                     old_workers = {x["recipient"]["instance_id"] for x in seen.values()
-                                   if x["message_type"] == "job.assign" and x["attempt_id"] == predecessor["attempt_id"]
-                                   and x["recipient"]["role"] == "worker"}
+                                   if x["message_type"] == "job.assign" and x["recipient"]["role"] == "worker"}
                     if m["recipient"]["instance_id"] in old_workers:
                         fail("fresh_worker", "recipient.instance_id", "repair requires fresh native Worker")
+                    if any(x["attempt_id"] == m["attempt_id"] for x in earlier_workers):
+                        fail("fresh_attempt", "attempt_id", "repair cannot reuse any earlier implementation attempt")
             elif m["attempt_id"] != predecessor["attempt_id"]:
                 fail("attempt", "attempt_id", "unexpected attempt change")
         if kind == "task.decision":
@@ -902,7 +984,7 @@ def validate_jsonl(source, *, messages=None, root=None):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["message", "sequence", "policy", "events"])
+    parser.add_argument("mode", choices=["message", "sequence", "capture", "policy", "events"])
     parser.add_argument("files", nargs="+")
     parser.add_argument("--root", type=Path, help="verify referenced artifact existence/hash inside this root")
     parser.add_argument("--expected-sender", choices=sorted(ROLES))
@@ -910,12 +992,14 @@ def main(argv=None):
     parser.add_argument("--bindings", type=Path, help="trusted JSON map message_id -> externally observed actor")
     parser.add_argument("--owner-provenance", action="append", default=[], help="externally confirmed Owner artifact identity")
     parser.add_argument("--authoritative-criteria-ref", type=Path,
-                        help="trusted caller-supplied artifact reference to Owner-approved criteria JSON")
+                        help="optional generated criteria JSON reference; never replaces original input")
+    parser.add_argument("--original-source-ref", type=Path,
+                        help="caller-pinned reference to original Owner UTF-8 ACn text, captured before Planner")
     parser.add_argument("--require-criteria-fidelity", action="store_true",
-                        help="fail closed unless plan criteria exactly match --authoritative-criteria-ref")
+                        help="fail closed unless plan criteria exactly match provenanced --original-source-ref")
     args = parser.parse_args(argv)
     try:
-        if args.mode != "sequence" and (args.require_criteria_fidelity or args.authoritative_criteria_ref):
+        if args.mode != "sequence" and (args.require_criteria_fidelity or args.authoritative_criteria_ref or args.original_source_ref):
             fail("criteria_mode", "mode", "criteria fidelity options apply only to sequence validation")
         expected = None
         if args.expected_sender or args.expected_instance:
@@ -928,10 +1012,19 @@ def main(argv=None):
         elif args.mode == "sequence":
             bindings = read_json(args.bindings) if args.bindings else {}
             criteria_ref = read_json(args.authoritative_criteria_ref) if args.authoritative_criteria_ref else None
+            original_ref = read_json(args.original_source_ref) if args.original_source_ref else None
             validate_sequence([read_json(p) for p in args.files], root=args.root,
                               expected_senders=bindings, owner_provenance=args.owner_provenance,
                               authoritative_criteria_ref=criteria_ref,
+                              original_source_ref=original_ref,
                               require_criteria_fidelity=args.require_criteria_fidelity)
+        elif args.mode == "capture":
+            if len(args.files) != 1:
+                fail("criteria_source", "files", "capture requires exactly one original-source reference")
+            captured = capture_criteria(read_json(args.files[0]), args.root,
+                                        owner_provenance=args.owner_provenance)
+            print(json.dumps(captured, ensure_ascii=False))
+            return 0
         elif args.mode == "policy":
             for path in args.files:
                 validate_policy(parse_policy(Path(path).read_bytes()))

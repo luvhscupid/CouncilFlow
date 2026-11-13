@@ -1,0 +1,29 @@
+test_context_independence_and_large_sum (test_preserved.ArithmeticTests.test_context_independence_and_large_sum) ... ok
+test_different_receipt (test_preserved.ArithmeticTests.test_different_receipt) ... ok
+test_exact_fraction_and_display (test_preserved.ArithmeticTests.test_exact_fraction_and_display) ... ok
+test_owner_sample (test_preserved.ArithmeticTests.test_owner_sample) ... ok
+test_reject_blank_and_control_labels (test_preserved.ArithmeticTests.test_reject_blank_and_control_labels) ... ok
+test_reject_invalid_numbers (test_preserved.ArithmeticTests.test_reject_invalid_numbers) ... ok
+test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic (test_preserved.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic) ... ok
+test_zero_and_generator (test_preserved.ArithmeticTests.test_zero_and_generator) ... ok
+test_errors_are_concise_without_traceback (test_preserved.CommandLineTests.test_errors_are_concise_without_traceback) ... ok
+test_fractional_and_zero_cli (test_preserved.CommandLineTests.test_fractional_and_zero_cli) ... ok
+test_help (test_preserved.CommandLineTests.test_help) ... ok
+test_sample_cli (test_preserved.CommandLineTests.test_sample_cli) ... ok
+test_version (test_preserved.CommandLineTests.test_version) ... FAIL
+
+======================================================================
+FAIL: test_version (test_preserved.CommandLineTests.test_version)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-version\test_preserved.py", line 89, in test_version
+    self.assertEqual(result.stdout, "1.0.0\n")
+AssertionError: '9.9.9\n' != '1.0.0\n'
+- 9.9.9
++ 1.0.0
+
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.173s
+
+FAILED (failures=1)

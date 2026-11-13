@@ -1,0 +1,23 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "-m",
+    "unittest",
+    "test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt",
+    "test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks",
+    "test_contracts.JSONContractTests.test_passed_tester_cannot_hide_failed_or_unverified_checks",
+    "test_contracts.JSONContractTests.test_tester_strategy_is_assigned_not_self_approved",
+    "test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report",
+    "test_contracts.JSONContractTests.test_passing_final_check_requires_manager_evidence_acceptance",
+    "test_contracts.PolicyAndDiagnosticTests.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt",
+    "test_contracts.PolicyAndDiagnosticTests.test_known_failed_reviewer_cannot_be_hidden_from_acceptance",
+    "test_contracts.JSONContractTests.test_stdout_hash_mismatch_fails_reviewer_acceptance",
+    "test_contracts.JSONContractTests.test_exit_code_mismatch_fails_reviewer_acceptance"
+  ],
+  "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main\\tests",
+  "exit_code": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "b09ad4fec6ba627f1a722d7adfe3fd2b4251bb1603f478484719cf8ff92043f9",
+  "corrects": "Initial probe incorrectly addressed two tests to JSONContractTests; original setup failure remains preserved."
+}

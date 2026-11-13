@@ -1,0 +1,3 @@
+# Hash-bound maintenance records and raw streams retain their original bytes.
+* -text whitespace=cr-at-eol
+*.bin -diff

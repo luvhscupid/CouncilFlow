@@ -1,0 +1,12 @@
+{
+  "probe": "stale derivative source_ref metadata",
+  "current_helper_sha256": "472231c30f1a2f571dba5067f3b191ee047409a7a9c1e017299f79e73071d3e4",
+  "original_sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d",
+  "result": {
+    "accepted": false,
+    "code": "artifact_missing",
+    "field": "authoritative_criteria_ref.source_ref",
+    "detail": "missing.txt"
+  },
+  "limitation": "Current partial implementation; not final candidate review"
+}

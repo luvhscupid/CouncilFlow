@@ -1,0 +1,5 @@
+{
+  "control": "original-and-derivative-identity-collision",
+  "accepted": true,
+  "gap": "same artifact ID silently used for different raw source and derivative"
+}

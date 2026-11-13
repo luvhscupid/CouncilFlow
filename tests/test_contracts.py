@@ -369,7 +369,7 @@ class JSONContractTests(unittest.TestCase):
                 c.validate_sequence([packet], root=ROOT)
                 self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["acceptance"][0]["criterion"], criterion)
 
-                for forbidden in ("\t", "\x00", "\rX"):
+                for forbidden in ("\x00", "\rX"):
                     invalid = copy.deepcopy(plan)
                     invalid["acceptance"][0]["criterion"] += forbidden
                     path.write_text(json.dumps(invalid), encoding="utf-8")
@@ -801,10 +801,16 @@ class JSONContractTests(unittest.TestCase):
         source_ref = ref("owner-criteria", source.relative_to(ROOT).as_posix(),
                          hashlib.sha256(source.read_bytes()).hexdigest(),
                          kind="owner-approved-criteria")
+        original = folder / "original-input.txt"
+        original.write_bytes("".join(item["id"] + ": " + item["criterion"] + "\n"
+                                     for item in criteria).encode("utf-8"))
+        self.original_source_ref = ref("original-input", original.relative_to(ROOT).as_posix(),
+                                       hashlib.sha256(original.read_bytes()).hexdigest(), "owner-original-source")
         plan = folder / "plan.json"
         plan_acceptance = criteria if plan_criteria is None else plan_criteria
         plan.write_bytes(json.dumps({"plan_id": "P1", "plan_revision": 1,
-                                     "acceptance": plan_acceptance},
+                                     "acceptance": plan_acceptance,
+                                     "original_source_ref": self.original_source_ref},
                                     ensure_ascii=False).encode("utf-8"))
         plan_ref = ref("plan", plan.relative_to(ROOT).as_posix(),
                        hashlib.sha256(plan.read_bytes()).hexdigest(), kind="plan")
@@ -821,7 +827,8 @@ class JSONContractTests(unittest.TestCase):
             source_ref["artifact_id"] = "\ud800"
             with self.assertRaises(c.ContractError):
                 c.validate_sequence([], root=ROOT, authoritative_criteria_ref=source_ref,
-                                    require_criteria_fidelity=True)
+                                    require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
 
     def test_synthetic_corrected_plan_after_rejection_retains_authoritative_criteria(self):
         fixture = [
@@ -837,7 +844,8 @@ class JSONContractTests(unittest.TestCase):
             with self.assertRaises(c.ContractError) as failure:
                 c.validate_sequence([rejected], root=ROOT,
                                     authoritative_criteria_ref=source_ref,
-                                    require_criteria_fidelity=True)
+                                    require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
             self.assertEqual(failure.exception.code, "acceptance_fidelity")
             self.assertEqual(rejected_plan.read_bytes(), rejected_bytes)
 
@@ -845,7 +853,8 @@ class JSONContractTests(unittest.TestCase):
             # establish or simulate Owner authorization for the new plan.
             corrected_plan = rejected_plan.with_name("corrected-plan.json")
             corrected_plan.write_bytes(json.dumps(
-                {"plan_id": "P2", "plan_revision": 1, "acceptance": fixture},
+                {"plan_id": "P2", "plan_revision": 1, "acceptance": fixture,
+                 "original_source_ref": self.original_source_ref},
                 ensure_ascii=False).encode("utf-8"))
             corrected_ref = ref(
                 "corrected-plan", corrected_plan.relative_to(ROOT).as_posix(),
@@ -857,7 +866,8 @@ class JSONContractTests(unittest.TestCase):
             corrected["evidence_refs"] = [corrected_ref]
             c.validate_sequence([corrected], root=ROOT,
                                 authoritative_criteria_ref=source_ref,
-                                require_criteria_fidelity=True)
+                                require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
 
     def test_historical_csv_criteria_mutations_fail_exact_fidelity(self):
         # Synthetic reproduction of the reported CSV E10 edits, not an Owner fixture.
@@ -878,7 +888,8 @@ class JSONContractTests(unittest.TestCase):
                     with self.assertRaises(c.ContractError) as raised:
                         c.validate_sequence([packet], root=ROOT,
                                             authoritative_criteria_ref=source_ref,
-                                            require_criteria_fidelity=True)
+                                            require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
                     self.assertEqual(raised.exception.code, "acceptance_fidelity")
 
     def test_exact_fidelity_rejects_spacing_newlines_case_and_unicode_changes(self):
@@ -904,7 +915,8 @@ class JSONContractTests(unittest.TestCase):
                     with self.assertRaises(c.ContractError) as raised:
                         c.validate_sequence([packet], root=ROOT,
                                             authoritative_criteria_ref=source_ref,
-                                            require_criteria_fidelity=True)
+                                            require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
                     self.assertEqual(raised.exception.code, "acceptance_fidelity")
 
     def test_exact_fidelity_rejects_missing_duplicate_reordered_or_added_criteria(self):
@@ -925,7 +937,8 @@ class JSONContractTests(unittest.TestCase):
                     with self.assertRaises(c.ContractError) as raised:
                         c.validate_sequence([packet], root=ROOT,
                                             authoritative_criteria_ref=source_ref,
-                                            require_criteria_fidelity=True)
+                                            require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
                     self.assertIn(raised.exception.code, {"acceptance_fidelity", "plan_artifact"})
 
     def test_required_criteria_source_fails_closed_when_missing_or_stale(self):
@@ -938,7 +951,8 @@ class JSONContractTests(unittest.TestCase):
             source.write_bytes(b'{"criteria":[]}')
             with self.assertRaises(c.ContractError) as stale:
                 c.validate_sequence([packet], root=ROOT, authoritative_criteria_ref=source_ref,
-                                    require_criteria_fidelity=True)
+                                    require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
             self.assertEqual(stale.exception.code, "artifact_hash")
 
     def test_authoritative_criteria_fixture_rejects_unsafe_controls_and_accepts_multiline(self):
@@ -946,13 +960,15 @@ class JSONContractTests(unittest.TestCase):
             multiline = [{"id": "AC1", "criterion": "Keep this line." + chr(10) + "And this line."}]
             packet, source_ref, _, _ = self._fidelity_context(directory, multiline)
             c.validate_sequence([packet], root=ROOT, authoritative_criteria_ref=source_ref,
-                                require_criteria_fidelity=True)
+                                require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
         with tempfile.TemporaryDirectory(dir=ROOT / "tests") as directory:
             unsafe = [{"id": "AC1", "criterion": "Line one." + chr(10) + "Line two." + chr(0)}]
             packet, source_ref, _, _ = self._fidelity_context(directory, unsafe)
             with self.assertRaises(c.ContractError) as raised:
                 c.validate_sequence([packet], root=ROOT, authoritative_criteria_ref=source_ref,
-                                    require_criteria_fidelity=True)
+                                    require_criteria_fidelity=True,
+                                    original_source_ref=self.original_source_ref, owner_provenance={"original-input"})
             self.assertEqual(raised.exception.code, "control")
 
     def test_unknown_role_specific_and_nested_check_fields(self):

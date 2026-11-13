@@ -1,0 +1,154 @@
+{
+  "kind": "Independent maintenance behavioral mutation controls, not Gate 3 or host-role proof",
+  "baseline": "ba1aee06ce0c97add1029b7c3ef323b6de1cb9ce",
+  "source_sha256": "26ad35aae5d439e88a7db91ea653967a9c99cb8cc7be41381a193157a2f9360a",
+  "preserved_oracle_sha256": "30f350441fd8d44212db9459de3c0aa45c8188f7b8e4873b1bd357ecb6050a3d",
+  "controls": [
+    {
+      "name": "wrong-version",
+      "mutation_before": "sys.stdout.buffer.write(b\"1.0.0\\n\")",
+      "mutation_after": "sys.stdout.buffer.write(b\"9.9.9\\n\")",
+      "candidate_source_sha256": "af921dc49ade9bc14604ba675cefeb52fd5d881a13df2e34f3ebcdc01be729fb",
+      "preserved_oracle_sha256": "30f350441fd8d44212db9459de3c0aa45c8188f7b8e4873b1bd357ecb6050a3d",
+      "weakened_tests": {
+        "name": "wrong-version-weak-tests",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          ".",
+          "-p",
+          "test_candidate.py",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\wrong-version",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "7142f256f26b319fde88b7fe3e821be7fc04e4a7360d5e66195f7d83904d6a07"
+      },
+      "independent_tests": {
+        "name": "wrong-version-preserved-oracle",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          ".",
+          "-p",
+          "test_preserved.py",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\wrong-version",
+        "exit_code": 1,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "789c862e1e61d0c103d931ae16ab7e9fe6121849ff12053a3706d40603dd591e"
+      },
+      "assertion_signature": "FAIL: test_version",
+      "verdict": "BEHAVIORAL_DEFECT_CAUGHT"
+    },
+    {
+      "name": "wrong-arithmetic",
+      "mutation_before": "return self.quantity * self.unit_price",
+      "mutation_after": "return self.quantity + self.unit_price",
+      "candidate_source_sha256": "6a98b87d69ee567863231801113bf29c73b83a98810c2cb31c6e85b44f5285e8",
+      "preserved_oracle_sha256": "30f350441fd8d44212db9459de3c0aa45c8188f7b8e4873b1bd357ecb6050a3d",
+      "weakened_tests": {
+        "name": "wrong-arithmetic-weak-tests",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          ".",
+          "-p",
+          "test_candidate.py",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\wrong-arithmetic",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "7142f256f26b319fde88b7fe3e821be7fc04e4a7360d5e66195f7d83904d6a07"
+      },
+      "independent_tests": {
+        "name": "wrong-arithmetic-preserved-oracle",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          ".",
+          "-p",
+          "test_preserved.py",
+          "-v"
+        ],
+        "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\wrong-arithmetic",
+        "exit_code": 1,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "089f1e5cb7d1d6b95bddb0c14475159857b191c787eafa28efd090f02df1846d"
+      },
+      "assertion_signature": "FAIL: test_owner_sample",
+      "verdict": "BEHAVIORAL_DEFECT_CAUGHT"
+    }
+  ],
+  "deterministic_rerun": {
+    "candidate_source_sha256": "26ad35aae5d439e88a7db91ea653967a9c99cb8cc7be41381a193157a2f9360a",
+    "tester": {
+      "name": "deterministic-tester",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "receipt_calculator.py",
+        "--version"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\rerun",
+      "exit_code": 0,
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "normalized_stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reviewer": {
+      "name": "deterministic-reviewer",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "receipt_calculator.py",
+        "--version"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\rerun",
+      "exit_code": 0,
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "normalized_stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unchanged_candidate_match": true,
+    "synthetic_tampered_record": {
+      "name": "deterministic-tester",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "receipt_calculator.py",
+        "--version"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-oracle-_19hmrva\\rerun",
+      "exit_code": 0,
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "normalized_stdout_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tampered_record_detected": true,
+    "normalization": "raw_stdout.replace(b'\\r\\n', b'\\n') only; no trimming"
+  }
+}

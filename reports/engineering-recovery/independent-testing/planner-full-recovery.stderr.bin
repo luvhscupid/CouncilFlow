@@ -1,0 +1,6 @@
+test_planner_failure_rework_completes_through_fresh_independent_checks (test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+OK

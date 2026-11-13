@@ -1,0 +1,15 @@
+......EE..
+======================================================================
+ERROR: test_unmet_planner_check_cannot_be_bypassed_in_same_attempt (unittest.loader._FailedTest.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt)
+----------------------------------------------------------------------
+AttributeError: type object 'JSONContractTests' has no attribute 'test_unmet_planner_check_cannot_be_bypassed_in_same_attempt'
+
+======================================================================
+ERROR: test_known_failed_reviewer_cannot_be_hidden_from_acceptance (unittest.loader._FailedTest.test_known_failed_reviewer_cannot_be_hidden_from_acceptance)
+----------------------------------------------------------------------
+AttributeError: type object 'JSONContractTests' has no attribute 'test_known_failed_reviewer_cannot_be_hidden_from_acceptance'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.035s
+
+FAILED (errors=2)

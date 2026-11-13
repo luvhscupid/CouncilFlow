@@ -1,0 +1,28 @@
+{
+  "kind": "Independent maintenance deterministic command, not formal E8/Gate 3 evidence",
+  "command_id": "INDEPENDENT-ORIGINAL-SOURCE",
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "-c",
+    "import hashlib, pathlib, sys\nroot = pathlib.Path.cwd()\nsys.path.insert(0, str(root / \".agents/skills/council-flow/scripts\"))\nimport contracts\nrelative = \"tests/fixtures/owner-version-original.txt\"\nraw = (root / relative).read_bytes()\nexpected_hash = \"e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d\"\nassert hashlib.sha256(raw).hexdigest() == expected_hash\nreference = {\"artifact_id\": \"read-only-original-fixture\", \"path\": relative, \"sha256\": expected_hash, \"kind\": \"owner-original-source\"}\ncaptured = contracts.capture_criteria(reference, root, owner_provenance={\"read-only-original-fixture\"})\nexpected = [\n    {\"id\": \"AC1\", \"criterion\": \"When invoked with `--version`, print exactly `1.0.0` followed by a newline.\"},\n    {\"id\": \"AC2\", \"criterion\": \"The `--version` invocation exits with status code 0.\"},\n    {\"id\": \"AC3\", \"criterion\": \"All existing receipt-calculator tests continue to pass.\"},\n]\nassert captured[\"criteria\"] == expected\nassert captured[\"source_ref\"] == reference\nsys.stdout.buffer.write(b\"ORIGINAL_CRITERIA_FIDELITY_OK\\n\")\n"
+  ],
+  "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main",
+  "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+  "input_refs": [
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057"
+    },
+    {
+      "path": "tests/fixtures/owner-version-original.txt",
+      "sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d"
+    }
+  ],
+  "executable_sha256": "15b41a488c356c0e331facdea6c836a6cec021f12d5fde9844e7ca4a1aa0361a",
+  "exit_code": 0,
+  "stdout_sha256": "66efbe32da24299975ba2520b4d912958564888120a5e61c7992d33f7998d515",
+  "normalization": "raw_stdout.replace(b'\\r\\n', b'\\n') only",
+  "stdout_artifact": "reports/engineering-recovery/independent-testing/readonly-command.stdout.bin",
+  "stderr_artifact": "reports/engineering-recovery/independent-testing/readonly-command.stderr.bin"
+}
