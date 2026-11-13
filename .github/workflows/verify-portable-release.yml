@@ -81,7 +81,22 @@ jobs:
           original_sha = hashlib.sha256(original).hexdigest()
           subprocess.run([sys.executable, "tools/build_release.py"], check=True)
           rebuilt = pathlib.Path("dist/council-flow.zip").read_bytes()
-          assert rebuilt == original, "Windows release rebuild differs from committed ZIP"
+          if rebuilt != original:
+              import io
+              import zipfile
+
+              with zipfile.ZipFile(io.BytesIO(original)) as expected, zipfile.ZipFile(io.BytesIO(rebuilt)) as actual:
+                  for name in expected.namelist():
+                      before = expected.read(name)
+                      after = actual.read(name)
+                      if before != after:
+                          checkout = pathlib.Path(name).read_bytes()
+                          tracked = subprocess.check_output(["git", "show", f"HEAD:{name}"])
+                          print(f"MISMATCH: {name}")
+                          print(f"  original={hashlib.sha256(before).hexdigest()} rebuild={hashlib.sha256(after).hexdigest()}")
+                          print(f"  checkout={hashlib.sha256(checkout).hexdigest()} git={hashlib.sha256(tracked).hexdigest()}")
+                          print(f"  CRLF original={before.count(bytes([13,10]))} rebuilt={after.count(bytes([13,10]))}")
+              raise AssertionError("Windows release rebuild differs from committed ZIP")
           assert pathlib.Path("dist/council-flow.zip.sha256").read_text("ascii").split()[0] == original_sha
 
       - name: Verify six suites in fresh Windows release extraction
