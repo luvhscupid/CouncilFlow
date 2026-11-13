@@ -6,24 +6,22 @@ Planner final check → Owner. Preserve that responsibility order.
 1. Inspect authorized repository, original goal, instructions, status and actual
    tools. Read policies/roles.yaml and communication.md. The native sandbox and
    actual Owner authorization remain authoritative. Manager performs the
-   [Codebase Memory lifecycle](codebase-memory.md) before Planner automatically.
+   [Codebase Memory lifecycle](codebase-memory.md) and
+   [original-input/oracle capture](source-fidelity.md) before Planner automatically.
 2. Dedicated Planner returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
-   For an invocation requiring an authoritative frozen criteria artifact,
-   before dispatch Manager runs sequence validation with
-   `--require-criteria-fidelity` and `--authoritative-criteria-ref` pointing to
-   the unchanged Owner-approved criteria artifact. Its kind is
-   `owner-approved-criteria`, and its JSON shape is
-   `{ "criteria": [{"id": "...", "criterion": "..."}] }`. IDs and criterion
-   strings are compared in order, exactly, without normalization. The caller
-   establishes Owner approval; SHA-256 detects stale bytes but is not
-   authentication. Missing, stale, or mismatching required sources block dispatch.
+   Supplied frozen criteria always require the pre-Planner original-input
+   reference, not another agent's derivative. Before dispatch Manager runs
+   sequence validation with `--require-criteria-fidelity --original-source-ref`
+   and actual caller-observed `--owner-provenance`, as specified in source-fidelity.md.
+   The plan preserves `original_source_ref`; exact ordered text is derived from
+   the raw source bytes. Missing, stale, substituted or mismatching sources block dispatch.
    Preserve rejected plans and evidence; corrections require a new plan through
    the existing authorized workflow. All roles use stable IDs and the immutable
-   artifact instead of rewriting criterion text. Ordinary Owner requests without
-   a required external frozen artifact may generate a native plan under existing
-   policy and use normal sequence validation, preserving the actual request.
+   artifact instead of rewriting criterion text. Ordinary requests without
+   supplied frozen criteria may generate a native plan, preserving the actual
+   request and distinguishing generated acceptance.
 3. Manager constructs bounded job.assign JSON with objective, scope, original
    acceptance IDs, exact candidate reference and instructions. Validate the
    controlled packet, file hashes and any required criteria fidelity before delegation. Supply known native

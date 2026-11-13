@@ -1,0 +1,61 @@
+{
+  "kind": "Independent maintenance protection mutations; no live source edits or formal Gate 3",
+  "input_refs": {
+    ".agents/skills/council-flow/scripts/contracts.py": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057",
+    "tests/test_contracts.py": "db7245b333765b03c999f453550227383e9cc8af0f4b04b213269d11cb6140b4",
+    "tests/test_original_source.py": "b25fe47e5776d4498773b4e16ee87e2c73da438eaf120a32ecaf41ef29b7fe16",
+    "tests/fixtures/owner-version-original.txt": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d"
+  },
+  "results": [
+    {
+      "name": "source-comparison-removed",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_original_source.py",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-guard-mutations-c8y1a19h\\source-comparison-removed",
+      "base_helper_sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057",
+      "mutated_helper_sha256": "ec81cd9bc3dbd67769f665c38237b420d581812b42e058741d6aa24d57bae95f",
+      "mutation_before": "                    _compare_authoritative_criteria(plan, expected_criteria)",
+      "mutation_after": "                    pass  # isolated independent mutation",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1ce385dd70cef9cb44718751ac14c725f80f0cf283d135c144934c6fc529cedb",
+      "assertion_signature": "FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan",
+      "verdict": "REGRESSION_CAUGHT_REMOVED_GUARD"
+    },
+    {
+      "name": "rework-guard-disabled",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_original_source.py",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-guard-mutations-c8y1a19h\\rework-guard-disabled",
+      "base_helper_sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057",
+      "mutated_helper_sha256": "b4a2128d0a7b9f86e883974856cfd8237d55bd06fb4ced04798b1553d07b217b",
+      "mutation_before": "            if earlier_workers and (not predecessor",
+      "mutation_after": "            if False and earlier_workers and (not predecessor",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d8b7602ed38155e338b629a5f8a94c1b2256d13281f67e2a4fbdedadd60685e5",
+      "assertion_signature": "FAIL: test_direct_failure_repair_requires_rework",
+      "verdict": "REGRESSION_CAUGHT_REMOVED_GUARD"
+    }
+  ]
+}

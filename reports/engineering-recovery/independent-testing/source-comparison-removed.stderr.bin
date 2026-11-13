@@ -1,0 +1,108 @@
+test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) ... 
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=0) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=1) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=2) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=3) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=4) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=5) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=6) ... FAIL
+  test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=8) ... FAIL
+test_actual_saved_fixture_survives_capture_publish_and_dispatch (test_original_source.OriginalSourceTests.test_actual_saved_fixture_survives_capture_publish_and_dispatch) ... ok
+test_ambiguous_missing_duplicate_or_unsupported_labels_fail_closed (test_original_source.OriginalSourceTests.test_ambiguous_missing_duplicate_or_unsupported_labels_fail_closed) ... ok
+test_cli_capture_and_dispatch_use_original_reference (test_original_source.OriginalSourceTests.test_cli_capture_and_dispatch_use_original_reference) ... ok
+test_derivative_and_plan_source_lineage_cannot_drift (test_original_source.OriginalSourceTests.test_derivative_and_plan_source_lineage_cannot_drift) ... ok
+test_derivative_only_is_rejected_in_required_mode (test_original_source.OriginalSourceTests.test_derivative_only_is_rejected_in_required_mode) ... ok
+test_direct_failure_repair_requires_rework (test_original_source.OriginalSourceTests.test_direct_failure_repair_requires_rework) ... ok
+test_frozen_whitespace_unicode_and_line_endings_are_not_normalized (test_original_source.OriginalSourceTests.test_frozen_whitespace_unicode_and_line_endings_are_not_normalized) ... 
+  test_frozen_whitespace_unicode_and_line_endings_are_not_normalized (test_original_source.OriginalSourceTests.test_frozen_whitespace_unicode_and_line_endings_are_not_normalized) (ending=b'\n') ... FAIL
+  test_frozen_whitespace_unicode_and_line_endings_are_not_normalized (test_original_source.OriginalSourceTests.test_frozen_whitespace_unicode_and_line_endings_are_not_normalized) (ending=b'\r\n') ... FAIL
+test_generated_json_is_not_an_original_input_capture (test_original_source.OriginalSourceTests.test_generated_json_is_not_an_original_input_capture) ... ok
+test_missing_stale_and_replaced_original_fail_closed (test_original_source.OriginalSourceTests.test_missing_stale_and_replaced_original_fail_closed) ... ok
+test_original_and_derivative_cannot_rebind_one_artifact_identity (test_original_source.OriginalSourceTests.test_original_and_derivative_cannot_rebind_one_artifact_identity) ... ok
+test_self_consistent_derivative_and_plan_cannot_replace_original (test_original_source.OriginalSourceTests.test_self_consistent_derivative_and_plan_cannot_replace_original) ... ok
+test_source_provenance_is_required_separately_from_hash (test_original_source.OriginalSourceTests.test_source_provenance_is_required_separately_from_hash) ... ok
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=4)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=6)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan (test_original_source.OriginalSourceTests.test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan) (mutation=8)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 104, in test_actual_fixture_plan_mutations_rejected_despite_rehashed_plan
+    with self.subTest(mutation=index), self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_frozen_whitespace_unicode_and_line_endings_are_not_normalized (test_original_source.OriginalSourceTests.test_frozen_whitespace_unicode_and_line_endings_are_not_normalized) (ending=b'\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 190, in test_frozen_whitespace_unicode_and_line_endings_are_not_normalized
+    with self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_frozen_whitespace_unicode_and_line_endings_are_not_normalized (test_original_source.OriginalSourceTests.test_frozen_whitespace_unicode_and_line_endings_are_not_normalized) (ending=b'\r\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-guard-mutations-c8y1a19h\source-comparison-removed\tests\test_original_source.py", line 190, in test_frozen_whitespace_unicode_and_line_endings_are_not_normalized
+    with self.assertRaises(c.ContractError):
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.305s
+
+FAILED (failures=10)

@@ -1,0 +1,132 @@
+{
+  "kind": "Independent maintenance recovery controls; process failures actual, role transitions synthetic",
+  "helper_sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057",
+  "contract_controls": [
+    {
+      "name": "failed-tester-cannot-direct-dispatch-same-worker",
+      "verdict": "REJECTED",
+      "code": "rework_evidence",
+      "field": "in_reply_to"
+    },
+    {
+      "name": "failed-tester-explicit-rework-fresh-worker-and-attempt",
+      "verdict": "ACCEPTED_UNCHANGED_CRITERIA"
+    },
+    {
+      "name": "rework-cannot-reuse-worker",
+      "verdict": "REJECTED",
+      "code": "fresh_worker",
+      "field": "recipient.instance_id"
+    },
+    {
+      "name": "rework-cannot-reuse-attempt",
+      "verdict": "REJECTED",
+      "code": "fresh_attempt",
+      "field": "attempt_id"
+    },
+    {
+      "name": "reviewer-mismatch-cannot-reach-acceptance",
+      "verdict": "REJECTED",
+      "code": "failed_verification",
+      "field": "payload.report_ids"
+    },
+    {
+      "name": "mandatory-final-criterion-cannot-be-unmet-and-passed",
+      "verdict": "REJECTED",
+      "code": "acceptance",
+      "field": "payload.status"
+    },
+    {
+      "name": "failed-planner-full-rework-retains-all-failed-criteria-and-evidence",
+      "verdict": "PASSED_SYNTHETIC_TRANSITION_REGRESSION",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main\\tests",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e6a1c803da0b4bad9692ec4b032ee00e9f3d005ad2fb8df8b72b46fae01a150c"
+    }
+  ],
+  "process_controls": [
+    {
+      "name": "actual-child-process-timeout",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-c",
+        "import time; print('STARTED', flush=True); time.sleep(5)"
+      ],
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main",
+      "timeout_seconds": 0.3,
+      "exit_code": null,
+      "status": "blocked",
+      "error": "TimeoutExpired",
+      "stdout_sha256": "fceb25123c6b2189dbf66867f3b501d913ead3e6234fb6b52e56adc0da8aeb0f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "success_claimed": false
+    },
+    {
+      "name": "actual-repeated-process-failure",
+      "attempt": 1,
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-c",
+        "import sys; sys.stdout.buffer.write(b'INFRA_FAILURE\\n'); raise SystemExit(73)"
+      ],
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main",
+      "exit_code": 73,
+      "stdout_sha256": "b8d06387b0be2705f4836a4fa7a87e550947740b025c2610967049bd5ec4ce8a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "failed",
+      "success_claimed": false
+    },
+    {
+      "name": "actual-repeated-process-failure",
+      "attempt": 2,
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-c",
+        "import sys; sys.stdout.buffer.write(b'INFRA_FAILURE\\n'); raise SystemExit(73)"
+      ],
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main",
+      "exit_code": 73,
+      "stdout_sha256": "b8d06387b0be2705f4836a4fa7a87e550947740b025c2610967049bd5ec4ce8a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "failed",
+      "success_claimed": false
+    },
+    {
+      "name": "actual-repeated-process-failure",
+      "attempt": 3,
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-c",
+        "import sys; sys.stdout.buffer.write(b'INFRA_FAILURE\\n'); raise SystemExit(73)"
+      ],
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main",
+      "exit_code": 73,
+      "stdout_sha256": "b8d06387b0be2705f4836a4fa7a87e550947740b025c2610967049bd5ec4ce8a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "failed",
+      "success_claimed": false
+    }
+  ],
+  "repeated_failure_final": {
+    "status": "blocked",
+    "reason": "identical unproductive failure reached declared test bound",
+    "attempts": 3
+  },
+  "limitations": [
+    "Bound is enforced by this test harness, not a CouncilFlow supervisor.",
+    "Actual native-agent crash recovery and effective host retry accounting were not exercised."
+  ]
+}

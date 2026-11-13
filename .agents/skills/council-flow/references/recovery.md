@@ -13,6 +13,10 @@
 3. Delegate job.assign JSON to a fresh native Worker and new attempt. Prior
    Worker must stop. One mutating Worker per workspace; parallel implementation
    requires independently authorized isolation. Preserve original plan/hash.
+   A later Worker assignment for this task must reply to the preserved rework
+   decision; replying directly to a failed report or a progress packet cannot
+   bypass fresh Worker/attempt checks. Retain the original source reference and
+   repeat source-fidelity validation before dispatch and final acceptance.
 4. Independently recheck changed candidate, then the approved Reviewer comparison;
    finish with original Planner plan.check. Keep old failures and actual repair
    decisions instead of overwriting inconvenient history.
@@ -23,6 +27,11 @@
    instructions only**. CouncilFlow has no corresponding persistent accounting
    runtime; do not confuse these numbers with normal Worker repair attempts or
    claim enforcement/crash safety.
+   Manager records consumed infrastructure/crash attempts in its run evidence,
+   restores the same source/candidate/oracle references after interruption, and
+   stops at those policy limits with an explicit blocker. Repeating an identical
+   unproductive engineering failure requires new evidence or an alternative;
+   record the blocker rather than report success or churn indefinitely.
 7. Only genuinely consequential new scope/authorization or required subjective
    acceptance needs Owner action. Prepare a concrete reviewable result before
    approval.request. approval.decision must reference actual Owner input, never

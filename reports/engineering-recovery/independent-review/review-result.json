@@ -1,0 +1,106 @@
+{
+  "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+  "candidate_unchanged": true,
+  "comparison": "MATCH",
+  "executable_sha256": "15b41a488c356c0e331facdea6c836a6cec021f12d5fde9844e7ca4a1aa0361a",
+  "independent_rerun": {
+    "arguments": [
+      "-B",
+      "-c",
+      "import hashlib, pathlib, sys\nroot = pathlib.Path.cwd()\nsys.path.insert(0, str(root / \".agents/skills/council-flow/scripts\"))\nimport contracts\nrelative = \"tests/fixtures/owner-version-original.txt\"\nraw = (root / relative).read_bytes()\nexpected_hash = \"e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d\"\nassert hashlib.sha256(raw).hexdigest() == expected_hash\nreference = {\"artifact_id\": \"read-only-original-fixture\", \"path\": relative, \"sha256\": expected_hash, \"kind\": \"owner-original-source\"}\ncaptured = contracts.capture_criteria(reference, root, owner_provenance={\"read-only-original-fixture\"})\nexpected = [\n    {\"id\": \"AC1\", \"criterion\": \"When invoked with `--version`, print exactly `1.0.0` followed by a newline.\"},\n    {\"id\": \"AC2\", \"criterion\": \"The `--version` invocation exits with status code 0.\"},\n    {\"id\": \"AC3\", \"criterion\": \"All existing receipt-calculator tests continue to pass.\"},\n]\nassert captured[\"criteria\"] == expected\nassert captured[\"source_ref\"] == reference\nsys.stdout.buffer.write(b\"ORIGINAL_CRITERIA_FIDELITY_OK\\n\")\n"
+    ],
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "exit_code": 0,
+    "normalized_stdout_sha256": "66efbe32da24299975ba2520b4d912958564888120a5e61c7992d33f7998d515",
+    "stderr_artifact": "reports/engineering-recovery/independent-review/readonly-rerun.stderr.bin",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_artifact": "reports/engineering-recovery/independent-review/readonly-rerun.stdout.bin",
+    "stdout_sha256": "66efbe32da24299975ba2520b4d912958564888120a5e61c7992d33f7998d515",
+    "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+  },
+  "kind": "Independent direct engineering review; not formal Gate 3/E8 certification",
+  "limitations": [
+    "Caller supplies observed original-input provenance; hashes do not authenticate the Owner or seal storage.",
+    "Source parsing deliberately supports unambiguous ACn text only; unsupported inputs fail closed.",
+    "Oracle preservation, handoff completeness and retry accounting remain instruction policies rather than an OS-enforced runtime.",
+    "Distinct maintenance sessions do not establish formal Gate 3 E1/E2/E4, effective custom-agent TOML loading, model diversity or independent model weights."
+  ],
+  "normalization": "raw_stdout.replace(b'\\r\\n', b'\\n') only",
+  "open_findings": [],
+  "source_controls": {
+    "controls": 8,
+    "details": [
+      {
+        "name": "unchanged original accepted",
+        "passed": true,
+        "rejection_code": null
+      },
+      {
+        "name": "matching rewritten plan and derivative rejected",
+        "passed": true,
+        "rejection_code": "acceptance_fidelity"
+      },
+      {
+        "name": "derivative same bytes but substituted source identity rejected",
+        "passed": true,
+        "rejection_code": "criteria_source"
+      },
+      {
+        "name": "plan substituted source identity rejected",
+        "passed": true,
+        "rejection_code": "criteria_source"
+      },
+      {
+        "name": "matching hash without caller provenance rejected",
+        "passed": true,
+        "rejection_code": "owner_provenance"
+      },
+      {
+        "name": "JSON derivative relabelled as original rejected",
+        "passed": true,
+        "rejection_code": "criteria_source"
+      },
+      {
+        "name": "original and derivative artifact-ID collision rejected",
+        "passed": true,
+        "rejection_code": "artifact_identity"
+      },
+      {
+        "name": "stale original pinned digest rejected",
+        "passed": true,
+        "rejection_code": "artifact_hash"
+      }
+    ],
+    "fixture_sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d",
+    "passed": 8
+  },
+  "source_controls_execution": {
+    "arguments": [
+      "-B",
+      "reports/engineering-recovery/independent-review/review_source_controls.py"
+    ],
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "exit_code": 0,
+    "normalized_stdout_sha256": "98737aa65f7351d4943b33e525005927efcb8676634485dc9629f33444a8601a",
+    "stderr_artifact": "reports/engineering-recovery/independent-review/source-controls.stderr.bin",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_artifact": "reports/engineering-recovery/independent-review/source-controls.stdout.bin",
+    "stdout_sha256": "dd565e0d2e7a804a9b8d672884e57f290558102957619c20d5987435bd34834e",
+    "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+  },
+  "status": "passed",
+  "tester_declaration_path": "reports/engineering-recovery/independent-testing/readonly-command-declaration.json",
+  "tester_declaration_sha256": "9dfaddb2ca67aa2c8851ef0c5c703d07f212280d3ec7ac1cd042e79dcd80af24",
+  "tester_exit_code": 0,
+  "tester_input_refs": [
+    {
+      "path": ".agents/skills/council-flow/scripts/contracts.py",
+      "sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057"
+    },
+    {
+      "path": "tests/fixtures/owner-version-original.txt",
+      "sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d"
+    }
+  ],
+  "tester_stdout_sha256": "66efbe32da24299975ba2520b4d912958564888120a5e61c7992d33f7998d515"
+}

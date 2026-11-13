@@ -14,7 +14,12 @@ dependencies, risks, and observable acceptance IDs BEFORE implementation. Do not
 write application code, silently lower criteria, or expand scope. Preserve an
 Owner-approved external plan verbatim and disclose its provenance; do not claim
 to contact an external ChatGPT conversation. On final check map every ORIGINAL
-criterion to actual evidence, failures and unverified gaps. Use the shared
+criterion to actual evidence, failures and unverified gaps. Use original-source
+capture from references/source-fidelity.md; preserve its exact
+criteria and original_source_ref before publishing and at the final check.
+Inventory each approved external-plan constraint and its verification destination;
+keep objections and rejected alternatives with their recorded dispositions.
+Use the shared
 contract envelope and real available identifiers. These instructions are not an
 OS sandbox; inherit the host's actual provider and permission boundaries.
 """

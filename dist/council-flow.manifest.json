@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "3a5520b4ad9b6b8ea00f4316ea6d0008d3aaba21fffd66a989360146b5681f75",
-  "entries": 117,
+  "sha256": "6773399b1c1a0ced9564cac7ef77c05d8b6a34eafc64b9fea9b71a4f258267f7",
+  "entries": 122,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 6803,
-      "sha256": "54c5ad6bf277730711e95378d19ace8a27955a260fac90b658a708e65c59b7a7"
+      "size": 6939,
+      "sha256": "6f49729dde06175576c20536580281df5de82bb775847e5c3efe39ac7db4231a"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -30,8 +30,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
-      "size": 15049,
-      "sha256": "f939e7d8e28cffeb3e393f842f2df655c979e6c9964182de35e4a07f3741b7d5"
+      "size": 15281,
+      "sha256": "003986581c239be98859090c7ee82b0c98c892f17b8433ee3d6d4e3d1dd46d21"
     },
     {
       "path": ".agents/skills/council-flow/references/message-contract.json",
@@ -40,8 +40,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/recovery.md",
-      "size": 3132,
-      "sha256": "0ee48ac99f92877d20fd010540173e9d4b8ef61366d14079f5feba74e0062111"
+      "size": 3832,
+      "sha256": "d14125b64519747390c8c801da31e2a6beb8a11413fa371a25e7c12c9504e3ec"
     },
     {
       "path": ".agents/skills/council-flow/references/roles.md",
@@ -49,19 +49,24 @@
       "sha256": "a0e6e870ff737302c331e00fe2c01ca9e99a0ca2b35aeed537edeab4780c9775"
     },
     {
+      "path": ".agents/skills/council-flow/references/source-fidelity.md",
+      "size": 5643,
+      "sha256": "d03f93bc8554d1e4d823b4f1dbdcc850e205a9220032610e66124ece9fbf020f"
+    },
+    {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 6083,
-      "sha256": "7432e2aecefb85110d148a7ed14c63424b502b709d2b473add34badf093e0e65"
+      "size": 5965,
+      "sha256": "4395d9423ef64c1e0c5456e9b1d970b667c82f7a9dd97cf7dc387533db4998ed"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 61222,
-      "sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c"
+      "size": 67835,
+      "sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057"
     },
     {
       "path": ".codex/agents/council-planner.toml",
-      "size": 1423,
-      "sha256": "58109ae4d5a8020ea0cf12e763f2d61fd9524480195b821f011b5c8d283c9e50"
+      "size": 1740,
+      "sha256": "929fc12286ab0c09449d4e4e7388cf8f2f9da57a17540e452f493376c66c43e9"
     },
     {
       "path": ".codex/agents/council-reviewer.toml",
@@ -70,8 +75,8 @@
     },
     {
       "path": ".codex/agents/council-tester.toml",
-      "size": 1597,
-      "sha256": "6c45b0033a8aa7dc0c160972500eb40d0e3a255743c817941ea5eea2c4b387e4"
+      "size": 1904,
+      "sha256": "a9a55444b82bdf115fd40d46e8ea5feb377a1d2f132c9e1f77db2c5869da0712"
     },
     {
       "path": ".codex/agents/council-worker.toml",
@@ -80,8 +85,8 @@
     },
     {
       "path": "README.md",
-      "size": 10046,
-      "sha256": "ac361e7b8968c9a33113dbdc82378c89300ec644965a1ed2866bdcfe8c767b69"
+      "size": 10393,
+      "sha256": "d77996972796a5df4dc6ef0b4eaa0618adfe0063ec2efc9df9304f3da85f4f48"
     },
     {
       "path": "RELEASE.md",
@@ -559,14 +564,29 @@
       "sha256": "9d8c63e2c6ea9dcf79a5d5907f3cd14e0d98bc12d3e7b4a6109771482d4475d0"
     },
     {
+      "path": "tests/fixtures/README.md",
+      "size": 478,
+      "sha256": "c886dae34d23a01be6bac39d81e7de0c199265ae6ec9a7ffc77c7f32474615c6"
+    },
+    {
+      "path": "tests/fixtures/owner-version-original.txt",
+      "size": 260,
+      "sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d"
+    },
+    {
       "path": "tests/test_codebase_memory_integration.py",
       "size": 7723,
       "sha256": "031fa02d1d09446f193fd5416a8aca136e6e7e176ffdeee0868e96c90cad661e"
     },
     {
       "path": "tests/test_contracts.py",
-      "size": 66795,
-      "sha256": "1dcd172933352b3b5619405d020c2172b095d97740c59307f7fa29000e7ac5e6"
+      "size": 68430,
+      "sha256": "db7245b333765b03c999f453550227383e9cc8af0f4b04b213269d11cb6140b4"
+    },
+    {
+      "path": "tests/test_original_source.py",
+      "size": 13627,
+      "sha256": "b25fe47e5776d4498773b4e16ee87e2c73da438eaf120a32ecaf41ef29b7fe16"
     },
     {
       "path": "tests/test_release.py",
@@ -577,6 +597,11 @@
       "path": "tests/test_skill_files.py",
       "size": 8364,
       "sha256": "09371df619b6a4d7006f803a46a11aadb86c37381fb93977fc6463263459b751"
+    },
+    {
+      "path": "tests/test_workflow_recovery.py",
+      "size": 10315,
+      "sha256": "697752c6ced4a89ce5a22f7e8cf47b42330204d727c58e6487c8ad55ed40ad24"
     },
     {
       "path": "tests/validation_cases.json",

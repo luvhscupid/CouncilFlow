@@ -1,0 +1,50 @@
+{
+  "baseline": "ba1aee06ce0c97add1029b7c3ef323b6de1cb9ce",
+  "contracts_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+  "original_source": "E:\\Saint\\PROJECTS\\CouncilFlow-gate3-owner-fixture.txt",
+  "original_source_sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d",
+  "original_source_size": 260,
+  "criteria_source": "E:\\Saint\\PROJECTS\\CouncilFlow-gate3\\reports\\councilflow-version\\owner-criteria.json",
+  "criteria_sha256": "455fc5b5121e89eeee29f6d14383004ad2961d4203e61b780fe53c84cef25bda",
+  "normal_sequence_valid": true,
+  "self_consistent_derivative_fidelity_valid": true,
+  "original": [
+    {
+      "id": "AC1",
+      "criterion": "When invoked with `--version`, print exactly `1.0.0` followed by a newline.",
+      "start": 65,
+      "end": 140
+    },
+    {
+      "id": "AC2",
+      "criterion": "The `--version` invocation exits with status code 0.",
+      "start": 146,
+      "end": 198
+    },
+    {
+      "id": "AC3",
+      "criterion": "All existing receipt-calculator tests continue to pass.",
+      "start": 204,
+      "end": 259
+    }
+  ],
+  "derived": [
+    {
+      "id": "AC1",
+      "criterion": "When invoked with --version, print exactly 1.0.0 followed by a newline."
+    },
+    {
+      "id": "AC2",
+      "criterion": "The --version invocation exits with status code 0."
+    },
+    {
+      "id": "AC3",
+      "criterion": "All existing receipt-calculator tests continue to pass."
+    }
+  ],
+  "mismatches": [
+    "AC1",
+    "AC2"
+  ],
+  "meaning": "Baseline accepts actual historical plan and mutually consistent derivative despite disagreement with the original saved Owner fixture. This is reproduction, not Gate 3 certification or proof of approval."
+}

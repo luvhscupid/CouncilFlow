@@ -1,0 +1,73 @@
+{
+  "kind": "direct-maintenance-baseline-probes",
+  "not_gate3": true,
+  "contracts_sha256": "24b034aa5d07f2efd53a6d330aef9ded3176b4c4deb3476fc88711171d8a956c",
+  "recovery_bypass": {
+    "result": "ACCEPTED",
+    "defect": "Failed Tester can route repair directly to same Worker/same attempt without rework decision"
+  },
+  "oracle_inputs": {
+    "original_app_sha256": "26ad35aae5d439e88a7db91ea653967a9c99cb8cc7be41381a193157a2f9360a",
+    "mutated_app_sha256": "6a98b87d69ee567863231801113bf29c73b83a98810c2cb31c6e85b44f5285e8",
+    "weakened_test_sha256": "51560792e1c3ce3a22a632dd563d7e7c6f6451af6833d9c7c2c847cd040416ab",
+    "original_tests_sha256": "30f350441fd8d44212db9459de3c0aa45c8188f7b8e4873b1bd357ecb6050a3d"
+  },
+  "worker_weakened_suite": {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "."
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-oracle-probe-edfafnvw",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "1a52ff93b2b7c8bc576900f70c9062f5baedb573cf55507ec33070c999cd9b12",
+    "stdout_file": "worker-weakened-suite.stdout.bin",
+    "stderr_file": "worker-weakened-suite.stderr.bin"
+  },
+  "independent_pristine_suite": {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "."
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-oracle-probe-edfafnvw",
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "78f134b5a0b6370645be54deb0a5bf97f60125bf6f4cb35a2456a037513f2260",
+    "stdout_file": "independent-pristine-suite.stdout.bin",
+    "stderr_file": "independent-pristine-suite.stderr.bin"
+  },
+  "existing_controls": {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "test_contracts.JSONContractTests.test_rework_requires_failure_and_fresh_worker_attempt",
+      "test_contracts.JSONContractTests.test_planner_failure_rework_completes_through_fresh_independent_checks",
+      "test_contracts.JSONContractTests.test_passed_tester_cannot_hide_failed_or_unverified_checks",
+      "test_contracts.JSONContractTests.test_tester_strategy_is_assigned_not_self_approved",
+      "test_contracts.JSONContractTests.test_acceptance_cannot_hide_known_failed_candidate_report",
+      "test_contracts.JSONContractTests.test_passing_final_check_requires_manager_evidence_acceptance",
+      "test_contracts.JSONContractTests.test_unmet_planner_check_cannot_be_bypassed_in_same_attempt",
+      "test_contracts.JSONContractTests.test_known_failed_reviewer_cannot_be_hidden_from_acceptance",
+      "test_contracts.JSONContractTests.test_stdout_hash_mismatch_fails_reviewer_acceptance",
+      "test_contracts.JSONContractTests.test_exit_code_mismatch_fails_reviewer_acceptance"
+    ],
+    "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main\\tests",
+    "exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "b3677da3d5198fed56cd7a8880b4e517c96b840e5afa382abc3c6f2e7e49df92",
+    "stdout_file": "existing-controls.stdout.bin",
+    "stderr_file": "existing-controls.stderr.bin"
+  }
+}

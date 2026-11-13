@@ -36,8 +36,12 @@ compact internal contracts. Native Planner mode is the default. To supply an
 external plan, explicitly identify it as Owner-approved and include the original
 plan; the Manager preserves it and does not claim to call external ChatGPT.
 
-An invocation that requires an authoritative frozen criteria artifact fails closed
-when that approved source is missing, stale, or differs from the plan. Ordinary
+Supplied frozen criteria are captured from the original Owner input before
+Planner, with a separately retained identity/hash and observed provenance. The
+normal workflow compares plan and final acceptance directly to those original
+bytes; generated criteria JSON cannot replace them. Missing, stale, substituted
+or altered input fails closed. See [source fidelity](.agents/skills/council-flow/references/source-fidelity.md)
+for the supported ACn source format, exact comparisons and host limitations. Ordinary
 coding requests without that requirement may generate their native plan without
 inventing an external approval fixture. A matching digest proves integrity, not
 Owner approval; the original request and any actual approval remain authoritative.

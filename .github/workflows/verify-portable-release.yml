@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - codex/portable-release-repair
+      - codex/councilflow-e10-recovery
   pull_request:
     branches:
       - main

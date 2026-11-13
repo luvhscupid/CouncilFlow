@@ -1,0 +1,155 @@
+{
+  "kind": "Independent maintenance source/API/CLI controls, synthetic packets only",
+  "helper_sha256": "125b4b0d8064e1e03c4e2c163a00cb38db281733e729c52076f2483cb7a10057",
+  "original_source": "E:\\Saint\\PROJECTS\\CouncilFlow-gate3-owner-fixture.txt",
+  "original_source_sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d",
+  "results": [
+    {
+      "name": "unchanged-original",
+      "verdict": "ACCEPTED_UNCHANGED"
+    },
+    {
+      "name": "deleted-backticks",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "punctuation",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "capitalization",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "meaningful-space",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "meaningful-tab",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "meaningful-newline",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "changed-meaning",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "missing-criterion",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "reordered-criteria",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "duplicate-criterion",
+      "verdict": "REJECTED",
+      "code": "duplicate_item",
+      "field": "payload.acceptance_ids"
+    },
+    {
+      "name": "added-mandatory-criterion",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "missing-original-reference",
+      "verdict": "REJECTED",
+      "code": "criteria_source",
+      "field": "original_source_ref"
+    },
+    {
+      "name": "hash-is-not-owner-authorization",
+      "verdict": "REJECTED",
+      "code": "owner_provenance",
+      "field": "original_source_ref"
+    },
+    {
+      "name": "missing-original-file",
+      "verdict": "REJECTED",
+      "code": "artifact_missing",
+      "field": "original_source_ref"
+    },
+    {
+      "name": "stale-replaced-original",
+      "verdict": "REJECTED",
+      "code": "artifact_hash",
+      "field": "original_source_ref"
+    },
+    {
+      "name": "consistent-plan-and-derivative-contradict-original",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "authoritative_criteria_ref"
+    },
+    {
+      "name": "generated-json-masquerades-as-original",
+      "verdict": "REJECTED",
+      "code": "criteria_source",
+      "field": "original_source_ref"
+    },
+    {
+      "name": "internal-original-reference-substitution",
+      "verdict": "REJECTED",
+      "code": "acceptance_fidelity",
+      "field": "plan.acceptance"
+    },
+    {
+      "name": "derivative-source-reference-substitution",
+      "verdict": "REJECTED",
+      "code": "criteria_source",
+      "field": "authoritative_criteria_ref.source_ref"
+    },
+    {
+      "name": "original-derivative-artifact-identity-collision",
+      "verdict": "REJECTED",
+      "code": "artifact_identity",
+      "field": "authoritative_criteria_ref"
+    },
+    {
+      "name": "exact-tabs-and-CRLF-multiline",
+      "verdict": "ACCEPTED_UNCHANGED"
+    }
+  ],
+  "valid_cli": {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main\\.agents\\skills\\council-flow\\scripts\\contracts.py",
+      "sequence",
+      "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-source-cl6thqah\\packet.json",
+      "--root",
+      "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-source-cl6thqah",
+      "--original-source-ref",
+      "C:\\Users\\cupid\\AppData\\Local\\Temp\\cf-independent-source-cl6thqah\\source-ref.json",
+      "--owner-provenance",
+      "observed-original",
+      "--require-criteria-fidelity"
+    ],
+    "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main",
+    "exit_code": 0,
+    "normalized_stdout_sha256": "24422a668327505a23c3c3986f1bca950fa705598ea2eae182deacd50fffbd14"
+  }
+}

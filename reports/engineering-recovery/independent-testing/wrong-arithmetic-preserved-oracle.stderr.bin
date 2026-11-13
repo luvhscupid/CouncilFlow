@@ -1,0 +1,106 @@
+test_context_independence_and_large_sum (test_preserved.ArithmeticTests.test_context_independence_and_large_sum) ... FAIL
+test_different_receipt (test_preserved.ArithmeticTests.test_different_receipt) ... FAIL
+test_exact_fraction_and_display (test_preserved.ArithmeticTests.test_exact_fraction_and_display) ... FAIL
+test_owner_sample (test_preserved.ArithmeticTests.test_owner_sample) ... FAIL
+test_reject_blank_and_control_labels (test_preserved.ArithmeticTests.test_reject_blank_and_control_labels) ... ok
+test_reject_invalid_numbers (test_preserved.ArithmeticTests.test_reject_invalid_numbers) ... ok
+test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic (test_preserved.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic) ... FAIL
+test_zero_and_generator (test_preserved.ArithmeticTests.test_zero_and_generator) ... FAIL
+test_errors_are_concise_without_traceback (test_preserved.CommandLineTests.test_errors_are_concise_without_traceback) ... ok
+test_fractional_and_zero_cli (test_preserved.CommandLineTests.test_fractional_and_zero_cli) ... FAIL
+test_help (test_preserved.CommandLineTests.test_help) ... ok
+test_sample_cli (test_preserved.CommandLineTests.test_sample_cli) ... FAIL
+test_version (test_preserved.CommandLineTests.test_version) ... ok
+
+======================================================================
+FAIL: test_context_independence_and_large_sum (test_preserved.ArithmeticTests.test_context_independence_and_large_sum)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 38, in test_context_independence_and_large_sum
+    self.assertEqual(grand_total(entries), Decimal("10999999999999999978000000000000000011"))
+AssertionError: Decimal('21999999999999999978') != Decimal('10999999999999999978000000000000000011')
+
+======================================================================
+FAIL: test_different_receipt (test_preserved.ArithmeticTests.test_different_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 25, in test_different_receipt
+    self.assertEqual(grand_total(entries), Decimal("58500"))
+AssertionError: Decimal('26504.5') != Decimal('58500')
+
+======================================================================
+FAIL: test_exact_fraction_and_display (test_preserved.ArithmeticTests.test_exact_fraction_and_display)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 28, in test_exact_fraction_and_display
+    self.assertEqual(ProductEntry("fraction", "0.1", "0.2").line_total, Decimal("0.02"))
+AssertionError: Decimal('0.3') != Decimal('0.02')
+
+======================================================================
+FAIL: test_owner_sample (test_preserved.ArithmeticTests.test_owner_sample)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 19, in test_owner_sample
+    self.assertEqual([entry.line_total for entry in entries], [Decimal("60000"), Decimal("43000")])
+AssertionError: Lists differ: [Decimal('30002'), Decimal('43001')] != [Decimal('60000'), Decimal('43000')]
+
+First differing element 0:
+Decimal('30002')
+Decimal('60000')
+
+- [Decimal('30002'), Decimal('43001')]
+?           ^   ^                 ^
+
++ [Decimal('60000'), Decimal('43000')]
+?           ^   ^                 ^
+
+
+======================================================================
+FAIL: test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic (test_preserved.ArithmeticTests.test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 57, in test_restrictive_ambient_exponent_context_does_not_change_exact_arithmetic
+    self.assertEqual(large.line_total, Decimal("999999999999999998000000000000000001"))
+AssertionError: Decimal('1999999999999999998') != Decimal('999999999999999998000000000000000001')
+
+======================================================================
+FAIL: test_zero_and_generator (test_preserved.ArithmeticTests.test_zero_and_generator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 42, in test_zero_and_generator
+    self.assertEqual(grand_total(entries), Decimal(0))
+AssertionError: Decimal('100') != Decimal('0')
+
+======================================================================
+FAIL: test_fractional_and_zero_cli (test_preserved.CommandLineTests.test_fractional_and_zero_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 99, in test_fractional_and_zero_cli
+    self.assertIn("Total = Rp0.02", result.stdout)
+AssertionError: 'Total = Rp0.02' not found in '0.1 each tiny × Rp0.2 = Rp0.3\n2 each free × Rp0 = Rp2\nTotal = Rp2.3\n'
+
+======================================================================
+FAIL: test_sample_cli (test_preserved.CommandLineTests.test_sample_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\cf-independent-oracle-_19hmrva\wrong-arithmetic\test_preserved.py", line 94, in test_sample_cli
+    self.assertEqual(result.stdout, "2 kg rice × Rp30,000 = Rp60,000\n1 kg onions × Rp43,000 = Rp43,000\nTotal = Rp103,000\n")
+AssertionError: '2 kg[16 chars] = Rp30,002\n1 kg onions × Rp43,000 = Rp43,001[16 chars]03\n' != '2 kg[16 chars] = Rp60,000\n1 kg onions × Rp43,000 = Rp43,000[17 chars]00\n'
+- 2 kg rice × Rp30,000 = Rp30,002
+?                          ^    ^
++ 2 kg rice × Rp30,000 = Rp60,000
+?                          ^    ^
+- 1 kg onions × Rp43,000 = Rp43,001
+?                                 ^
++ 1 kg onions × Rp43,000 = Rp43,000
+?                                 ^
+- Total = Rp73,003
+?           ^    ^
++ Total = Rp103,000
+?           ^^    ^
+
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.138s
+
+FAILED (failures=8)

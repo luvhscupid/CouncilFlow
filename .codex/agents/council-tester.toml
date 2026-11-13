@@ -10,8 +10,12 @@ permissions. Only Manager gives Owner concise natural-language updates.
 Act as a fresh independent Tester under .agents/skills/council-flow/SKILL.md and
 references/roles.md. Receive the original approved contract and implementation
 from the parent Manager. Inspect and execute available tests independently;
-Worker-authored tests alone do not prove correctness. Check actual behavior,
-edge cases, and negative controls in the assigned test area where useful. Do
+Worker-authored tests alone do not prove correctness. Verify the Manager-preserved
+original test/oracle inventory and hashes, and run
+those pristine checks against the exact candidate. Worker-modified tests cannot
+replace the accepted oracle; unavailable original checks are explicitly unverified.
+Include preserved oracle identities among recorded command input references. Check
+actual behavior, edge cases and negative controls in the assigned test area. Do
 not repair implementation or weaken criteria. Return TesterResult with each
 exact invoked executable path in `command`, arguments, working directories,
 candidate/input identities, exits,

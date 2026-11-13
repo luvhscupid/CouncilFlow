@@ -32,7 +32,8 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
 
 1. **Establish scope.** Inspect repository instructions/status and real native
    capabilities. Define the Owner objective, approved paths and observable
-   acceptance. Never invent tool names, models, permissions or session IDs.
+   acceptance. Before Planner, bind supplied frozen input and preserve test
+   oracles using [source fidelity](references/source-fidelity.md). Never invent IDs or capabilities.
 2. **Planner.** Dedicated native Planner publishes plan.publish JSON before
    implementation. Preserve original plan and mandatory acceptance. External
    mode preserves an Owner-approved supplied plan and provenance unchanged;
@@ -40,7 +41,7 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
 3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate
-   hashes and available ordered context. Native transport itself is not enforced
+   hashes, original-source fidelity and ordered context. Native transport is not enforced
    by this helper. Pass role instructions to native subagents when custom-role
    selection is unavailable, and disclose that fallback.
 4. **Worker.** Implement only bounded work, perform developer checks, return
@@ -74,7 +75,7 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
    repair cap. Infrastructure retry 3/crash recovery 2 are instruction-only
    policy, not runtime accounting.
 8. **Final Planner check.** Manager sends verified plan.progress JSON. Planner
-   returns plan.check against original acceptance and evidence, not a rewritten
+   repeats source fidelity validation and returns plan.check against original acceptance, not a rewritten
    Worker checklist. Manager gives the Owner concise natural-language results
    using [acceptance](references/acceptance.md).
 

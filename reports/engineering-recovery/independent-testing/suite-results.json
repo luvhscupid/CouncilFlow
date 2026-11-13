@@ -1,0 +1,190 @@
+{
+  "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+  "candidate_unchanged": true,
+  "kind": "Independent Windows engineering execution, not formal Gate 3",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "python_version": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "records": [
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 120,
+        "ran": 122,
+        "skipped": 2
+      },
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_artifact": "suite-0.stderr.bin",
+      "stderr_sha256": "3a8203144a2749b65a1734eaaefdf1fe23ee75a408574f3edf3ef050e16a55e2",
+      "stdout_artifact": "suite-0.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suite": "tests",
+      "summary": "OK (skipped=2)",
+      "timed_out": false,
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+    },
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 13,
+        "ran": 13,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_artifact": "suite-1.stderr.bin",
+      "stderr_sha256": "0dc109370047ad7f84bc2512c030514247093e94b22b3e40ec0ddc8d63fbd13f",
+      "stdout_artifact": "suite-1.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suite": "demo/receipt",
+      "summary": "OK",
+      "timed_out": false,
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+    },
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 15,
+        "ran": 15,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_artifact": "suite-2.stderr.bin",
+      "stderr_sha256": "5fad1ca5609b3fa2fc2d6c94bbd61dccab067b3400495987eeb201cd3dadbdda",
+      "stdout_artifact": "suite-2.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suite": "demo/csv-summary",
+      "summary": "OK",
+      "timed_out": false,
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+    },
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 5,
+        "ran": 5,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_artifact": "suite-3.stderr.bin",
+      "stderr_sha256": "a3e642716de7ed51d0eff092d7229c355f79217b1d8efe824e5125368bec2a1f",
+      "stdout_artifact": "suite-3.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suite": "demo/structured-flow",
+      "summary": "OK",
+      "timed_out": false,
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+    },
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 5,
+        "ran": 5,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_artifact": "suite-4.stderr.bin",
+      "stderr_sha256": "8c31726d99a04e894fe2012b0ebed24d62f2c90c519406acb468b757d276308a",
+      "stdout_artifact": "suite-4.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suite": "reports/demo/verification",
+      "summary": "OK",
+      "timed_out": false,
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+    },
+    {
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 6,
+        "ran": 6,
+        "skipped": 0
+      },
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_artifact": "suite-5.stderr.bin",
+      "stderr_sha256": "37534b75615dbde7809a7c61661008e33ca46ff00d84e6890180b12f8ad3e4c5",
+      "stdout_artifact": "suite-5.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suite": "reports/csv-summary/verification",
+      "summary": "OK",
+      "timed_out": false,
+      "workdir": "C:\\Users\\cupid\\.codex\\worktrees\\councilflow-e10-recovery\\CouncilFlow-main"
+    }
+  ]
+}

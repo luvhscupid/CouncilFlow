@@ -1,0 +1,5 @@
+Add a `--version` flag to the existing receipt calculator.
+
+AC1: When invoked with `--version`, print exactly `1.0.0` followed by a newline.
+AC2: The `--version` invocation exits with status code 0.
+AC3: All existing receipt-calculator tests continue to pass.

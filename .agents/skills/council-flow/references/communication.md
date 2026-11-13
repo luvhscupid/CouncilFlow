@@ -98,31 +98,33 @@ boundary may begin with an actual plan.publish having in_reply_to=null. Preserve
 pre-schema bootstrap packets unchanged and label their limitations; do not
 rewrite them to manufacture successful history.
 
-Importable API: loads, read_json, validate_message, validate_sequence,
+Importable API: loads, read_json, capture_criteria, validate_message, validate_sequence,
 parse_policy, validate_policy, validate_jsonl. Expected sender is an externally
 observed {role,instance_id}. Sequence expected_senders is a mapping from message
 identity to externally observed actor, not an assertion copied from the packet.
 Optional owner_provenance is a set of externally confirmed human-provenance
 artifact identities. CLI --owner-provenance is for actual supplied Owner facts.
 
-When an invocation requires an authoritative frozen criteria artifact, before
-any role dispatch invoke sequence validation with
-`--require-criteria-fidelity --authoritative-criteria-ref <reference.json>` and
-`--root <authorized-root>`. The reference must point to the unchanged
-Owner-approved criteria JSON artifact, with kind `owner-approved-criteria` and
-shape `{ "criteria": [{"id": "...", "criterion": "..."}] }`. The helper
-compares ordered IDs and exact strings without normalization and rejects a
-missing, stale, or mismatching fixture. The caller is responsible for
-establishing Owner approval and supplying its trusted reference; a matching
-SHA-256 establishes file integrity only. Preserve rejected plan artifacts and
-history. A corrected plan must follow the existing authorized workflow. All
-roles should refer to criteria by stable ID and the immutable artifact rather
-than rewriting criterion text. Repeat the same fidelity validation with the
-original trusted reference at the final Planner check. This requirement is
-invocation-specific: ordinary Owner coding requests without a required external
-frozen artifact may generate a native plan under the existing policy and use
-normal sequence validation. Preserve the actual Owner request; never invent an
-Owner-approved external fixture to fill a missing required source.
+Supplied frozen criteria require [original-input capture](source-fidelity.md)
+before Planner, and sequence validation at every controlled boundary with
+`--require-criteria-fidelity --original-source-ref <original-ref.json>` and
+`--root <authorized-root>`. The raw input reference has kind
+`owner-original-source`; caller-observed input provenance must separately appear
+in `--owner-provenance`. The plan preserves `original_source_ref`. The helper
+mechanically enumerates all supported ACn text records and compares their exact
+ordered UTF-8 content; it applies no whitespace, Unicode or newline normalization.
+The optional `--authoritative-criteria-ref` checks a generated criteria JSON
+derivative of kind `owner-approved-criteria`, never an authoritative substitute.
+Missing/stale/substituted originals, contradictory derivative lineage or altered
+criteria fail closed. Preserve rejected plans/history and use the same retained
+original reference for the final Planner check and every rework attempt.
+Caller provenance is an explicit external assertion, not authentication provided
+by a digest, filename or the helper. Without host-exposed original input, report
+BLOCKED/UNVERIFIED rather than promote an agent-created fixture. Ordinary coding
+requests without supplied frozen criteria may retain native planning, preserving
+the actual request and distinguishing generated acceptance from Owner text.
+Legacy derivative-only comparison remains a structural/comparison check; it
+cannot satisfy required frozen fidelity or establish Owner acceptance.
 
 Ordered context rejects duplicate IDs, unknown predecessors, plan/task/revision
 drift, report/assignment origin or attempt mismatch, changed candidate/hash,

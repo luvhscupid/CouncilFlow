@@ -1,0 +1,120 @@
+{
+  "kind": "Windows baseline Git archive execution; not fresh checkout",
+  "baseline": "ba1aee06ce0c97add1029b7c3ef323b6de1cb9ce",
+  "results": [
+    {
+      "suite": "tests",
+      "command": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-baseline-onr1bach",
+      "exit_code": 0,
+      "count": 104,
+      "result": "OK (skipped=2)",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4d2b68112fa5cc304522b227244ee54475252696da0e7c10e2bb1545b387c67c"
+    },
+    {
+      "suite": "demo/receipt",
+      "command": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/receipt",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-baseline-onr1bach",
+      "exit_code": 0,
+      "count": 13,
+      "result": "OK",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "54e7ae4764668e2b6ddb8b6268efc5c6c8c8e4b442863bddaf76834192347eeb"
+    },
+    {
+      "suite": "demo/csv-summary",
+      "command": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/csv-summary",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-baseline-onr1bach",
+      "exit_code": 0,
+      "count": 15,
+      "result": "OK",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1b0e60b0f72966c39d9094d3a3441f24f8d717483bbd8518f44e4b3413b8e3d2"
+    },
+    {
+      "suite": "demo/structured-flow",
+      "command": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "demo/structured-flow",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-baseline-onr1bach",
+      "exit_code": 0,
+      "count": 5,
+      "result": "OK",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "11429075d2c5152635eeb68303aa5622729b05dc130cb74aa82b780d54c2d864"
+    },
+    {
+      "suite": "reports/demo/verification",
+      "command": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/demo/verification",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-baseline-onr1bach",
+      "exit_code": 0,
+      "count": 5,
+      "result": "OK",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "57c4f31f2dbddc9e4d6c6b70cb3302e4cc9371294a51a1fb43405efee7727d8c"
+    },
+    {
+      "suite": "reports/csv-summary/verification",
+      "command": [
+        "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reports/csv-summary/verification",
+        "-v"
+      ],
+      "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-baseline-onr1bach",
+      "exit_code": 0,
+      "count": 6,
+      "result": "OK",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "674736b56d3fa97bd1e4d86c20eb9a1eade4c77405df1f26ca84d0759c4885db"
+    }
+  ]
+}
