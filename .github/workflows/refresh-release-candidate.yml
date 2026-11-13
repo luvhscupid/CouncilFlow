@@ -1,0 +1,51 @@
+name: Refresh release candidate artifacts (temporary)
+
+on:
+  push:
+    branches:
+      - codex/portable-release-repair
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-and-commit:
+    if: github.repository == 'luvhscupid/CouncilFlow'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repair branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate contract tests before rebuilding
+        run: python -m unittest discover -s tests -q
+
+      - name: Rebuild release archive and sidecars
+        run: python tools/build_release.py
+
+      - name: Commit ONLY regenerated dist artifacts to repair branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "codex/portable-release-repair"
+          git add -- dist/council-flow.zip dist/council-flow.manifest.json dist/council-flow.zip.sha256
+          if git diff --cached --quiet; then
+            echo "Release artifacts already current"
+            exit 0
+          fi
+          actual="$(git diff --cached --name-only)"
+          while IFS= read -r path; do
+            case "$path" in
+              dist/council-flow.zip|dist/council-flow.manifest.json|dist/council-flow.zip.sha256) ;;
+              *) echo "Unexpected staged path: $path"; exit 1 ;;
+            esac
+          done <<< "$actual"
+          git -c user.name="CouncilFlow CI" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "build: refresh portable CouncilFlow candidate after ZIP metadata fix"
+          git push origin HEAD:refs/heads/codex/portable-release-repair
