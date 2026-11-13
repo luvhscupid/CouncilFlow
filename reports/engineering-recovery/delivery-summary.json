@@ -1,0 +1,48 @@
+{
+  "kind": "direct maintenance; not CouncilFlow self-execution or formal Gate 3",
+  "model": "NOT DISCLOSED BY HOST",
+  "baseline": "ba1aee06ce0c97add1029b7c3ef323b6de1cb9ce",
+  "product_commit": "e592cc75726c546ad4352031c934bdcd5eb347bc",
+  "branch": "codex/councilflow-e10-recovery",
+  "source_candidate_sha256": "77702c763e5eb0067fdad3dab3a91f66183d8075d5fdad8a95a29f38651a2a1a",
+  "archive_sha256": "6773399b1c1a0ced9564cac7ef77c05d8b6a34eafc64b9fea9b71a4f258267f7",
+  "archive_entries": 122,
+  "local_verification": "PASS",
+  "fresh_checkout": {
+    "ran": 166,
+    "passed": 164,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "extracted_archive": {
+    "ran": 166,
+    "passed": 164,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "frozen_checksum_entries": 26,
+  "preservation": {
+    "status": "PASS",
+    "checked_original_files": {
+      "owner_checkout": 2491,
+      "gate3_checkout": 2294
+    },
+    "protected_baseline_files": 2214,
+    "external_fixture_sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d",
+    "main_unchanged": true,
+    "tags_unchanged": true,
+    "failures": []
+  },
+  "independent_source_controls": {
+    "unchanged": 2,
+    "attacks_rejected": 20
+  },
+  "guard_mutations_detected": 2,
+  "behavioral_mutants_detected": 2,
+  "reviewer_source_controls": 8,
+  "reviewer_findings": "No open actionable findings",
+  "deterministic_review": "MATCH; exact executable/arguments/workdir, exit0, CRLF-to-LF-only stdout SHA66efbe32da24299975ba2520b4d912958564888120a5e61c7992d33f7998d515",
+  "remote_delivery": "Final branch push, verified remote SHA, and Actions result reported in final Owner response; not asserted by local test evidence."
+}
