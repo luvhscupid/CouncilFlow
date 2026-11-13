@@ -1,0 +1,129 @@
+name: Verify portable release on Windows
+
+on:
+  push:
+    branches:
+      - codex/portable-release-repair
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-checkout-and-release:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify protected blob bytes and committed release
+        shell: python
+        run: |
+          import hashlib
+          import pathlib
+          import subprocess
+          import zipfile
+
+          protected = (
+              "docs/CouncilFlow-Full-Plan/examples/job.report.json",
+              "docs/CouncilFlow-Full-Plan/examples/synthetic-candidate.txt",
+          )
+          for name in protected:
+              committed = subprocess.check_output(["git", "show", f"HEAD:{name}"])
+              checked_out = pathlib.Path(name).read_bytes()
+              assert committed == checked_out, f"Git transformed protected bytes: {name}"
+              assert b"\r\n" in checked_out, f"Protected CRLF bytes absent: {name}"
+
+          archive_path = pathlib.Path("dist/council-flow.zip")
+          declared = pathlib.Path("dist/council-flow.zip.sha256").read_text("ascii").split()[0]
+          assert hashlib.sha256(archive_path.read_bytes()).hexdigest() == declared
+          with zipfile.ZipFile(archive_path) as archive:
+              assert archive.testzip() is None
+              for name in protected:
+                  assert archive.read(name) == pathlib.Path(name).read_bytes()
+
+      - name: Verify six test suites in clean Windows checkout
+        shell: pwsh
+        run: |
+          python -m unittest discover -s tests -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s demo/receipt -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s demo/csv-summary -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s demo/structured-flow -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s reports/demo/verification -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s reports/csv-summary/verification -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Verify deterministic rebuild matches committed archive
+        shell: python
+        run: |
+          import hashlib
+          import pathlib
+          import subprocess
+          import sys
+
+          original = pathlib.Path("dist/council-flow.zip").read_bytes()
+          original_sha = hashlib.sha256(original).hexdigest()
+          subprocess.run([sys.executable, "tools/build_release.py"], check=True)
+          rebuilt = pathlib.Path("dist/council-flow.zip").read_bytes()
+          if rebuilt != original:
+              import io
+              import zipfile
+
+              with zipfile.ZipFile(io.BytesIO(original)) as expected, zipfile.ZipFile(io.BytesIO(rebuilt)) as actual:
+                  for name in expected.namelist():
+                      before = expected.read(name)
+                      after = actual.read(name)
+                      if before != after:
+                          checkout = pathlib.Path(name).read_bytes()
+                          tracked = subprocess.check_output(["git", "show", f"HEAD:{name}"])
+                          print(f"MISMATCH: {name}")
+                          print(f"  original={hashlib.sha256(before).hexdigest()} rebuild={hashlib.sha256(after).hexdigest()}")
+                          print(f"  checkout={hashlib.sha256(checkout).hexdigest()} git={hashlib.sha256(tracked).hexdigest()}")
+                          print(f"  CRLF original={before.count(bytes([13,10]))} rebuilt={after.count(bytes([13,10]))}")
+              raise AssertionError("Windows release rebuild differs from committed ZIP")
+          assert pathlib.Path("dist/council-flow.zip.sha256").read_text("ascii").split()[0] == original_sha
+
+      - name: Verify six suites in fresh Windows release extraction
+        shell: python
+        run: |
+          import pathlib
+          import subprocess
+          import sys
+          import tempfile
+          import zipfile
+
+          suites = (
+              "tests",
+              "demo/receipt",
+              "demo/csv-summary",
+              "demo/structured-flow",
+              "reports/demo/verification",
+              "reports/csv-summary/verification",
+          )
+          with tempfile.TemporaryDirectory() as temp:
+              root = pathlib.Path(temp)
+              with zipfile.ZipFile("dist/council-flow.zip") as archive:
+                  archive.extractall(root)
+              for suite in suites:
+                  subprocess.run(
+                      [sys.executable, "-m", "unittest", "discover", "-s", suite, "-v"],
+                      cwd=root,
+                      check=True,
+                      timeout=240,
+                  )
