@@ -1,6 +1,6 @@
 # CouncilFlow
 
-CouncilFlow is an installable, instruction-based Claude Code skill. A dedicated
+CouncilFlow is an installable, instruction-based Codex coding skill. A dedicated
 Planner defines acceptance; the parent Manager delegates implementation to a
 fresh Worker, requests separate Tester and Reviewer assessments, coordinates
 repairs, and asks the Planner for a final objective check. Only the Manager gives
@@ -15,18 +15,18 @@ Historical Round 6/Gate 3b reports describe earlier workspaces and remain
 unchanged; they do not establish this checkout's activation or configuration.
 No new separately approved Gate 3 experiment is included in this release audit.
 
-It uses Claude Code subagent delegation and inherited account/provider permissions. It
+It uses native Codex delegation and inherited account/provider permissions. It
 needs no API key, subscription, database, server, or custom agent runtime. Role
 instructions are expected behavior, not independent OS-enforced isolation.
 
 ## Use in this repository
 
-Open Claude Code at this repository root. The discoverable skill is
-`.claude/skills/council-flow/SKILL.md`; custom agent definitions are under
-`.claude/agents/`. In Claude Code, invoke:
+Open Codex at this repository root. The discoverable skill is
+`.agents/skills/council-flow/SKILL.md`; custom agent definitions are under
+`.codex/agents/`. In a host supporting skills and native subagents, invoke:
 
 ```text
-/council-flow Implement a small offline CSV summarizer in this repository.
+$council-flow Implement a small offline CSV summarizer in this repository.
 Accept a local input file, validate its columns, print totals, and add tests.
 Stay within demo/csv-summary/ and preserve existing files.
 ```
@@ -54,20 +54,21 @@ simulating role sessions. See `reports/` for this build's observed verification.
 
 ## Install in another repository
 
-Copy the whole `.claude/skills/council-flow/` folder and the four
-`.claude/agents/council-*.md` files to the destination repository. Check for
-name collisions before copying and do not overwrite an existing installation silently. Preserve existing files and
+Copy the whole `.agents/skills/council-flow/` folder to the destination
+repository's `.agents/skills/council-flow/`. Copy the four
+`.codex/agents/council-*.toml` files to that repository's `.codex/agents/` if its
+Codex version supports standalone custom agents. Preserve existing files and
 resolve naming collisions before copying; do not overwrite another installation
 silently. No global configuration registration is needed for the current
 standalone agent format.
 
-Restart Claude Code if needed and invoke `/council-flow <your coding goal>`. Where the
+Restart Codex if needed and invoke `$council-flow <your coding goal>`. Where the
 host supports native delegation but cannot select custom agent files, the skill
 passes role instructions to separate native subagents and reports that limitation.
 
 For an optional later user-wide installation using ordinary user permissions,
-copy the skill folder to the user-level Claude Code skill location and the four
-agent Markdown files to the user-level Claude Code agents location, after checking for conflicts. This build does not perform
+copy the skill folder to `~/.agents/skills/council-flow/` and agent TOMLs to
+`~/.codex/agents/`, after checking for conflicts. This build does not perform
 that installation or modify global settings. Repository installation is enough.
 
 ## Demonstration and validation
@@ -118,7 +119,7 @@ It uses only the Python standard library, preserves its input, and works offline
 
 ## Automatic Codebase Memory context
 
-Invoke `/council-flow <coding request>` as usual. Before Planner, Manager
+Invoke `$council-flow <coding request>` as usual. Before Planner, Manager
 automatically uses the existing DeusData Codebase Memory MCP for relevant
 existing-project navigation when its tools are available. It first inspects local
 content: an empty directory or one containing only CouncilFlow installation
@@ -135,7 +136,7 @@ configured server fall back to ordinary repository inspection, with live MCP
 use reported as UNVERIFIED. Graph findings support navigation; the existing
 independent Tester, Reviewer, and final Planner checks still decide acceptance.
 
-The [lifecycle reference](.claude/skills/council-flow/references/codebase-memory.md)
+The [lifecycle reference](.agents/skills/council-flow/references/codebase-memory.md)
 ships inside the complete skill folder copied during installation. No additional
 skill or registration is needed. Focused static instruction checks run with
 `python -m unittest discover -s tests -p test_codebase_memory_integration.py -v`;
@@ -146,19 +147,19 @@ checks do not establish native invocation or live MCP behavior.
 
 CouncilFlow 1.0 now defines **UTF-8 JSON** task packets for Planner, Manager,
 Worker, Tester and Reviewer. The role/workflow source is
-[versioned YAML policy](.claude/skills/council-flow/policies/roles.yaml);
-Claude Code subagents use Markdown frontmatter and instructions. Optional bounded JSONL is diagnostics.
+[versioned YAML policy](.agents/skills/council-flow/policies/roles.yaml);
+Codex-native agents remain TOML. Optional bounded JSONL is diagnostics.
 Owner progress and results remain concise natural language.
 
-Read the [communication contract](.claude/skills/council-flow/references/communication.md)
+Read the [communication contract](.agents/skills/council-flow/references/communication.md)
 for closed payloads, causal/candidate/origin checks, limits and exact examples.
 The small installed Python helper is standard-library-only:
 
 ~~~sh
-python3 .claude/skills/council-flow/scripts/contracts.py message packet.json --root .
-python3 .claude/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
-python3 .claude/skills/council-flow/scripts/contracts.py policy .claude/skills/council-flow/policies/roles.yaml
-python3 .claude/skills/council-flow/scripts/contracts.py events events.jsonl --root .
+python3 .agents/skills/council-flow/scripts/contracts.py message packet.json --root .
+python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
+python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
+python3 .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
 python3 -m unittest discover -s tests -v
 ~~~
 

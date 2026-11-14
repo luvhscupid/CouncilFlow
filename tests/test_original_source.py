@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / ".claude/skills/council-flow/scripts"))
+sys.path.insert(0, str(ROOT / ".agents/skills/council-flow/scripts"))
 import contracts as c
 from test_contracts import assignment, publish, ref, sequence
 
@@ -209,7 +209,7 @@ class OriginalSourceTests(unittest.TestCase):
             original_path.write_bytes(json.dumps(original).encode())
             packet_path = root / "publish.json"
             packet_path.write_bytes(json.dumps(packet).encode())
-            command = [sys.executable, str(ROOT / ".claude/skills/council-flow/scripts/contracts.py")]
+            command = [sys.executable, str(ROOT / ".agents/skills/council-flow/scripts/contracts.py")]
             capture = subprocess.run(command + ["capture", str(original_path), "--root", str(root),
                                                "--owner-provenance", "owner-original"], capture_output=True, timeout=15)
             self.assertEqual(capture.returncode, 0, capture.stderr)

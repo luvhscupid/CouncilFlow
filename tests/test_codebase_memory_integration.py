@@ -9,7 +9,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / ".claude" / "skills" / "council-flow"
+SKILL = ROOT / ".agents" / "skills" / "council-flow"
 
 
 class CodebaseMemoryInstructionsTests(unittest.TestCase):
@@ -54,8 +54,8 @@ class CodebaseMemoryInstructionsTests(unittest.TestCase):
         local = self.section("1. Inspect local content before MCP discovery")
         self.assertIn("only CouncilFlow installation files", local)
         self.assertIn("**zero MCP calls**, including project listing and index status", local)
-        self.assertIn(".claude/skills/council-flow/", local)
-        self.assertIn(".claude/agents/council-*.md", local)
+        self.assertIn(".agents/skills/council-flow/", local)
+        self.assertIn(".codex/agents/council-*.toml", local)
         self.assertIn("Continue normal project creation", local)
         self.assertIn("After meaningful source exists", local)
         self.assertLess(self.reference.index("1. Inspect local content"),
@@ -64,7 +64,7 @@ class CodebaseMemoryInstructionsTests(unittest.TestCase):
     def test_first_encounter_binds_observed_namespace_and_exact_project(self):
         discovery = self.section("2. Discover the actual capability and bind the project")
         for text in ("supported input/output schemas", "Codebase Memory MCP namespace",
-                     "an unrelated\nproject-listing MCP tool", "not this capability",
+                     "mcp__codex_app__list_projects", "not this capability",
                      "observed project `name`", "`root_path`", "nested repository",
                      "resolved `root_path` equals the authorized repository root exactly",
                      "A parent path alone never establishes project identity",
@@ -114,8 +114,8 @@ class CodebaseMemoryInstructionsTests(unittest.TestCase):
             self.assertIn(text, update)
 
     def test_installation_includes_reference_without_manual_initialization(self):
-        self.assertIn("Copy the whole `.claude/skills/council-flow/` folder", self.readme)
-        self.assertIn(".claude/skills/council-flow/references/codebase-memory.md", self.readme)
+        self.assertIn("Copy the whole `.agents/skills/council-flow/` folder", self.readme)
+        self.assertIn(".agents/skills/council-flow/references/codebase-memory.md", self.readme)
         self.assertIn("ships inside the complete skill folder copied during installation", self.readme)
         self.assertIn("No additional\nskill or registration is needed", self.readme)
         self.assertIn("manual initialization command", self.readme)

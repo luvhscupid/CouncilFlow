@@ -10,7 +10,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / ".claude/skills/council-flow"
+SKILL = ROOT / ".agents/skills/council-flow"
 sys.path.insert(0, str(SKILL / "scripts"))
 import contracts as c
 
@@ -1141,10 +1141,10 @@ class PolicyAndDiagnosticTests(unittest.TestCase):
         self.assertIn("MUST be UTF-8 JSON", text)
         self.assertIn("policies/roles.yaml", text)
         self.assertIn("JSONL", text)
-        for path in (ROOT / ".claude/agents").glob("council-*.md"):
+        for path in (ROOT / ".codex/agents").glob("council-*.toml"):
             text = path.read_text()
             self.assertIn("MUST be UTF-8 JSON", text)
-            self.assertIn(".claude/skills/council-flow", text)
+            self.assertIn("policies/roles.yaml", text)
         self.assertNotIn("JSON or equivalent", (SKILL / "references/roles.md").read_text())
 
     def test_examples_are_explicitly_synthetic(self):

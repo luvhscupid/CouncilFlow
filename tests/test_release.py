@@ -21,10 +21,10 @@ def fixture(root):
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(b"disposable standalone source")
-    roles = root / ".claude/agents"
-    roles.mkdir(parents=True, exist_ok=True)
+    roles = root / ".codex/agents"
+    roles.mkdir(parents=True)
     for role in builder.ROLES:
-        (roles / (role + ".md")).write_bytes(b"disposable role")
+        (roles / (role + ".toml")).write_bytes(b"disposable role")
 
 
 class ReleaseOutputTests(unittest.TestCase):

@@ -11,8 +11,8 @@ evidence. A model claim without supporting observation is not proof.
 | ID | Scenario | Evidence needed |
 | --- | --- | --- |
 | V01 | Skill metadata | Static parse of required name and description in actual SKILL.md |
-| V02 | Discovery | Claude Code host identifies installed skill in approved discovery location |
-| V03 | Explicit invocation | Host activates literal `/council-flow`; path placement or copied prompt alone is insufficient |
+| V02 | Discovery | Codex host identifies installed skill in approved discovery location |
+| V03 | Explicit invocation | Host activates literal `$council-flow`; path placement or copied prompt alone is insufficient |
 | V04 | Manager boundary | Delegation/edit attribution shows Manager coordinated without application-code edits |
 | V05 | Worker implementation | Real native Worker identity and changed application files |
 | V06 | Independent testing | Distinct real Tester identity, contract, actual tests and findings |
@@ -53,7 +53,7 @@ costs, usage, session IDs, or execution results.
 ## Restored communication acceptance
 
 The Owner's explicit contract restoration distinguishes task JSON, role/workflow
-YAML, Claude Code Markdown, optional JSONL and concise Owner prose. Use communication.md,
+YAML, native TOML, optional JSONL and concise Owner prose. Use communication.md,
 policies/roles.yaml and scripts/contracts.py at actual controlled boundaries.
 C01–C12 tests cover real invalid mutations, not merely reading valid examples.
 Five-role examples are synthetic unless tied to actual native assignments/results.

@@ -17,7 +17,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORIES = (
-    ".claude/skills/council-flow", ".claude/agents", "demo", "tests",
+    ".agents/skills/council-flow", "demo", "tests",
     "docs/gate3/CouncilFlow-Gate3-v0.2", "docs/CouncilFlow-Full-Plan",
     "reports/demo", "reports/csv-summary",
 )
@@ -67,9 +67,9 @@ def source_bytes(root: Path) -> dict[str, bytes]:
                 elif is_link(path):
                     raise ValueError(f"linked directory in allowlist: {path.relative_to(root)}")
             names.update((Path(current) / name).relative_to(root).as_posix() for name in files)
-    roles = sorted((root / ".claude/agents").glob("council-*.md"))
+    roles = sorted((root / ".codex/agents").glob("council-*.toml"))
     if {path.stem for path in roles} != ROLES:
-        raise ValueError("the four Claude Code CouncilFlow roles are required")
+        raise ValueError("the four native CouncilFlow roles are required")
     names.update(path.relative_to(root).as_posix() for path in roles)
     result = {}
     for name in sorted(names):

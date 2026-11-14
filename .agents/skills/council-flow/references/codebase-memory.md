@@ -1,6 +1,6 @@
 # Automatic Codebase Memory lifecycle
 
-Manager performs this lifecycle before Planner for every `/council-flow` request,
+Manager performs this lifecycle before Planner for every `$council-flow` request,
 and again after implementation or rework once Worker has stopped edits. The Owner
 supplies the coding goal only. Codebase Memory is a native tool capability within
 the existing workflow; it adds no role, helper, manifest, or memory database.
@@ -12,8 +12,8 @@ listing/search and relevant source reads. Use the actual project tree rather
 than a file-extension guess: documentation or assets can be meaningful source.
 An empty directory or one containing only CouncilFlow installation files makes
 **zero MCP calls**, including project listing and index status. CouncilFlow
-installation files are `.claude/skills/council-flow/` and the four
-`.claude/agents/council-*.md` definitions; VCS metadata and generated caches do
+installation files are `.agents/skills/council-flow/` and the four
+`.codex/agents/council-*.toml` definitions; VCS metadata and generated caches do
 not by themselves constitute a project. Continue normal project creation.
 After meaningful source exists, apply the remaining steps when indexing is
 useful. Do not create an index merely for an empty installation.
@@ -21,14 +21,13 @@ useful. Do not create an index merely for an empty installation.
 ## 2. Discover the actual capability and bind the project
 
 For relevant existing-project work, Manager automatically inspects the MCP tools
-actually exposed by Claude Code. A configured server is not proof of availability:
+actually exposed by Codex. A configured server is not proof of availability:
 absent tools, failed startup/handshake, and unreachable servers take the direct
 inspection fallback below. Read the supported input/output schemas before calls;
 use observed names and interfaces rather than guessing arguments.
 
-Only the Codebase Memory MCP namespace qualifies. For example, an unrelated
-project-listing MCP tool is not this capability; use only the observed
-Codebase Memory namespace and schemas.
+Only the Codebase Memory MCP namespace qualifies. For example, Codex app's
+`mcp__codex_app__list_projects` lists app projects and is not this capability.
 When the actual server exposes `list_projects`, use its observed project `name`
 only when the resolved `root_path` equals the authorized repository root exactly.
 A parent path alone never establishes project identity. For a task within a

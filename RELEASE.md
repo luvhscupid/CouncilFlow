@@ -11,8 +11,8 @@ Archive: `dist/council-flow.zip`. Its sibling SHA-256 file is
 `dist/council-flow.zip.sha256`; `dist/council-flow.manifest.json` records every
 entry's size and SHA-256. The package preserves repository-relative paths
 and is built by `python tools/build_release.py` from an explicit allowlist. It includes the
-complete `.claude/skills/council-flow/` skill and the four Claude Code agent Markdown files
-under `.claude/agents/`, README, this release guide, demos, tests, the frozen
+complete `.agents/skills/council-flow/` skill and the four native TOML files
+under `.codex/agents/`, README, this release guide, demos, tests, the frozen
 Gate 3 requirements, the Full Plan supporting documents, and demo verification
 reports. Older mission and release reports remain in the checkout but are not
 packaged as current verification evidence. It excludes `.git`, caches, bytecode, credentials, native
@@ -46,7 +46,7 @@ Current exact counts, platform skips, raw execution records, independent Reviewe
 comparison, frozen-source hashes and final package digest live in the audit report.
 
 This package is an installable source bundle; it does not establish successful
-native `/council-flow` activation, custom-agent Markdown loading, or Gate 3 E1-E10
+native `$council-flow` activation, custom-agent TOML loading, or Gate 3 E1-E10
 live outcomes. Those remain subject to host-observed evidence and the authentic
 Owner fixture.
 
@@ -72,8 +72,8 @@ The corrected distributable is `dist/council-flow-round6.zip`, with a sibling
 SHA-256 file. This work did not install the skill into the
 Owner's active repository.
 
-The primary installable product is `.claude/skills/council-flow/`, with native
-custom agents in `.claude/agents/`. Both are ordinary text files; no rebuild or
+The primary installable product is `.agents/skills/council-flow/`, with native
+custom agents in `.codex/agents/`. Both are ordinary text files; no rebuild or
 package installation is required. Current format references and runtime
 observations live under `reports/environment/`.
 
@@ -87,7 +87,7 @@ authentication rejection. Successful invocation remains **UNVERIFIED**.
 
 Real native agents executed the corrected JSON-boundary workflow, including
 independent failures and fresh-Worker repairs. This does not prove successful
-end-to-end `/council-flow` activation. Live custom-role-file selection also remains
+end-to-end `$council-flow` activation. Live custom-role-file selection also remains
 unverified; native subagents received the documented role-instruction fallback.
 Earlier restoration evidence, including `reports/final.md`, remains in the
 checkout as historical context and is excluded from the installable archive.
@@ -106,38 +106,38 @@ credential paths, bundled system assets, schema dumps, caches, `.git`, and the
 archive itself are excluded. Repository reports written after packaging may
 contain later release verification; the repository is the final evidence source.
 
-Extract to an empty staging directory, then copy `.claude/skills/council-flow/`
-and `.claude/agents/council-*.toml` into an authorized target repository after
+Extract to an empty staging directory, then copy `.agents/skills/council-flow/`
+and `.codex/agents/council-*.toml` into an authorized target repository after
 checking for name collisions. Do not overwrite existing installations. Start
-Claude Code at that target root and invoke `/council-flow <ordinary coding goal>`.
+Codex at that target root and invoke `$council-flow <ordinary coding goal>`.
 Neither the demo nor reports are runtime dependencies of the installed skill.
 
-The distributable ZIP must include the complete skill and four agent Markdown files,
+The distributable ZIP must include the complete skill and four agent TOMLs,
 README, this release guide, the demonstration, validation tests, and evidence
 reports. Do not package `.git`, Python caches, credentials, runtime state, or
 unrelated projects. Use the standard `zip` tool or Python `zipfile`; this product
 does not need a package manager merely to archive files.
 
 Before labeling a release verified, run the static checks, actual discovery and
-explicit `/council-flow` activation, the native role workflow, independent demo
+explicit `$council-flow` activation, the native role workflow, independent demo
 tests and user interaction, final Planner check, and ZIP integrity check. Keep
 failed baseline output and truthful UNVERIFIED results. Record the resulting
 archive path and Git commit in the final Manager report. A correct ZIP alone does
 not establish functional activation.
 
 Install by extracting into another authorized repository, preserving any existing
-files, or copy only `.claude/skills/council-flow/` and the four
-`.claude/agents/council-*.toml` files. Run Claude Code from that repository and invoke:
+files, or copy only `.agents/skills/council-flow/` and the four
+`.codex/agents/council-*.toml` files. Run Codex from that repository and invoke:
 
 ```text
-/council-flow Build the approved feature described below, with tests.
+$council-flow Build the approved feature described below, with tests.
 ```
 
 No global settings, sandbox policies, or credentials need to change. Optional
 user-wide installation is documented in README for later use with ordinary
 permissions. This build performs no global installation or external publication.
 
-Host compatibility is evidence-specific: standalone `.claude/agents/*.toml`
+Host compatibility is evidence-specific: standalone `.codex/agents/*.toml`
 syntax is based on current official documentation. An older/managed host may
 support native delegation without loading custom-role files. The skill then
 passes role instructions to native subagents and reports custom-role loading as

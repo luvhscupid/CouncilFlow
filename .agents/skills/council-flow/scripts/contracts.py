@@ -923,10 +923,10 @@ def validate_policy(policy):
         "resources": {"engineering_rework": "no_fixed_lifetime_limit",
                       "stop_identical_unproductive_retries": True, "infrastructure_retries": 3,
                       "crash_recoveries": 2, "retry_accounting": "instruction_only"},
-        "security": {"permissions": "inherit_claude_code", "grants_os_permissions": False,
+        "security": {"permissions": "inherit_native_codex", "grants_os_permissions": False,
                      "authenticates_senders": False, "native_transport_enforced": False},
-        "native": {"format": "markdown", "fields": ["name", "description", "frontmatter", "instructions"],
-                   "mapping": "policy responsibilities become agent frontmatter and instructions; no invented keys"},
+        "native": {"format": "toml", "fields": ["name", "description", "developer_instructions"],
+                   "mapping": "policy responsibilities become developer_instructions; no invented keys"},
     }
     for key, value in expected.items():
         # Python True == 1 is intentionally insufficient here.

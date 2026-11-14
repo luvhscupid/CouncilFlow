@@ -1,12 +1,12 @@
 ---
 name: council-flow
-description: "Coordinate an ordinary coding goal through a Planner, parent Manager, fresh Worker, independent Tester, and independent Reviewer using Claude Code subagents. Invoke explicitly with /council-flow or by naming CouncilFlow for implementation, repair, or refactoring that needs this five-role workflow. Do not use for general questions or pretend unavailable delegation works."
+description: "Coordinate an ordinary coding goal through a Planner, parent Manager, fresh Worker, independent Tester, and independent Reviewer using native Codex subagents. Invoke explicitly with $council-flow for implementation, repair, or refactoring that needs this five-role workflow. Do not use for general questions or pretend unavailable delegation works."
 ---
 
 # CouncilFlow
 
-Invoke explicitly with /council-flow followed by an ordinary coding goal, or ask Claude Code to use CouncilFlow for the task.
-Use Claude Code's native tools and subagents, inherited provider/model configuration, actual workspace
+Invoke explicitly with $council-flow followed by an ordinary coding goal.
+Use native Codex tools, inherited provider/model configuration, actual workspace
 permissions and budget. This is an instruction skill, not a security sandbox.
 It needs no new key, subscription, database, service or custom supervisor.
 Only parent **Manager** gives ordinary progress/results to the Owner.
@@ -18,7 +18,7 @@ and the versioned [YAML policy](policies/roles.yaml).
 Agent task assignments, plans, reports and decisions **MUST be UTF-8 JSON**
 under council-flow 1.0. Markdown/prose cannot replace those controlled packets.
 Keep large evidence in immutable files referenced by identity/path/SHA-256.
-YAML is role/workflow policy; Claude Code custom-agent configuration is Markdown under .claude/agents/.
+YAML is role/workflow policy; native custom-agent configuration remains TOML.
 JSONL diagnostics are optional. Owner-facing communication stays concise natural
 language; do not expose internal envelopes or long logs by default.
 
@@ -32,19 +32,18 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
 
 1. **Establish scope.** Inspect repository instructions/status and real native
    capabilities. Define the Owner objective, approved paths and observable
-   acceptance. Never invent tool names, models, permissions or session IDs.
+   acceptance. Before Planner, bind supplied frozen input and preserve test
+   oracles using [source fidelity](references/source-fidelity.md). Never invent IDs or capabilities.
 2. **Planner.** Dedicated native Planner publishes plan.publish JSON before
    implementation. Preserve original plan and mandatory acceptance. External
    mode preserves an Owner-approved supplied plan and provenance unchanged;
    never claim to contact the external ChatGPT conversation.
-3. **Manager.** The parent Claude Code session accepts the plan and delegates
-   `job.assign` JSON to a fresh Claude Code subagent using the `Agent` tool and
-   the role definitions in `.claude/agents/`. Validate controlled packets before
-   dispatch and results on receipt using the installed contracts.py helper, known
-   actor bindings, candidate hashes and available ordered context. The Agent tool
-   and subagent runtime are not enforced by this helper. If a role definition
-   cannot be selected, pass its instructions directly to a separate subagent and
-   disclose that fallback.
+3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
+   Worker. Validate controlled packets before dispatch and results on receipt
+   using the installed contracts.py helper, known actor bindings, candidate
+   hashes, original-source fidelity and ordered context. Native transport is not enforced
+   by this helper. Pass role instructions to native subagents when custom-role
+   selection is unavailable, and disclose that fallback.
 4. **Worker.** Implement only bounded work, perform developer checks, return
    job.report JSON with actual candidate/evidence and changed files, then stop
    edits. Worker cannot approve itself. Manager writes no application code.
@@ -76,7 +75,7 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
    repair cap. Infrastructure retry 3/crash recovery 2 are instruction-only
    policy, not runtime accounting.
 8. **Final Planner check.** Manager sends verified plan.progress JSON. Planner
-   returns plan.check against original acceptance and evidence, not a rewritten
+   repeats source fidelity validation and returns plan.check against original acceptance, not a rewritten
    Worker checklist. Manager gives the Owner concise natural-language results
    using [acceptance](references/acceptance.md).
 
@@ -96,7 +95,7 @@ Use approval.request only for a concrete necessary decision; record
 approval.decision only from actual Owner input/provenance, never AI invention.
 Refuse unauthorized external changes without attempting permission bypass.
 
-If Claude Code discovery, invocation, a role, test or actual interaction is unavailable,
+If native discovery, invocation, a role, test or actual interaction is unavailable,
 record UNVERIFIED/BLOCKED. Never simulate agents or upgrade static checks into
 live proof. Preserve useful work and report the exact gap. Contract restoration
 with blocked activation is CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED;
