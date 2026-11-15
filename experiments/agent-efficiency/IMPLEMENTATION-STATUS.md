@@ -1,5 +1,100 @@
 # Agent Efficiency Toolkit — Implementation Status and Agent Handoff
 
+## Package C2 — local verification, 2026-11-15
+
+This section supersedes earlier C2 behavior/next-action claims, which remain
+below as historical records. Branch `feature/agent-efficiency`; starting commit
+`d0606155020f62d16a7fcdfb452f5693834d9f41`. Executing harness: Codex desktop app
+with PowerShell; GPT-6-based Codex identity, exact model ID and route UNKNOWN.
+
+### Observed without a model request
+
+- `Get-Command claude -All`: `C:\Users\cupid\.local\bin\claude.exe`.
+- `claude --version`: `2.1.325 (Claude Code)`.
+- `claude --help`: text/JSON/stream-JSON output in print mode, partial messages,
+  hook-event output, no-session-persistence, permission modes and a budget flag
+  are available. Help is capability evidence, not native enforcement proof.
+- Selective user settings inspection classified the existing endpoint as xKiro.
+  The settings' model and `ANTHROPIC_MODEL` are
+  `anthropic/claude-sonnet-5.5` (**CONFIGURED**, not VERIFIED_EFFECTIVE).
+  No process endpoint override was present. An auth-token setting exists;
+  its value and the endpoint value were never displayed, copied into artifacts,
+  transmitted or committed. Hook event names only were inspected: SessionStart
+  and UserPromptSubmit. No hooks, auth, model, endpoint or permission settings
+  were changed. Configuration hashes match before/after implementation.
+- Existing configuration cannot demonstrate a hard subscription-only spending
+  boundary. **LIVE_UNVERIFIED: zero Claude/xKiro model requests initiated**.
+  No account-balance/qualification probes, routing changes or alternate access
+  attempts were made. Configured route/model are not verified effective identity.
+
+### Implemented and offline tested
+
+The adapter ingests selected JSON/JSONL or stdin without invoking a model or
+reading settings. Configured, reported and effective model identities are
+separate; effective upstream stays null. The gateway defaults to unknown,
+and explicit xKiro/configured provenance remains caller metadata, not a verified
+runtime route. The existing base record preserves these distinctions in notes.
+The only Package A compatibility change permits the exact unknown-Claude route
+when gateway is null; other routes are not newly enabled. This fixes a reproduced
+validator rejection and has direct recorder/adapter regression tests.
+
+Latest result turn usage is separate from deduplicated per-message input/cache
+snapshots and cumulative per-model snapshots. Step output is withheld as a
+potential placeholder; partial deltas are never summed. No whole-session totals
+are invented. Main-loop counters exclude forwarded subagent messages. Missing
+cache data stays null, not zero. Client pricing estimates and gateway extensions
+are not promoted to upstream usage or billing. Retry notices and latest optional
+gateway retry snapshots remain distinct and unverified as provider accounting.
+
+Sanitized metadata replaces the inherited raw-transcript artifact capture.
+Messages, prompts, reasoning, tool content, private IDs and raw error payloads
+are omitted. The raw input is fingerprinted but never copied. Existing Package B
+digest/expand is reused; C1 JSON/label validation helpers are reused unchanged.
+Error results, cancellation/aborted messages, partial/truncated streams, invalid
+numbers/objects, duplicate keys, conflicting snapshots, unsupported versions and
+mixed sessions have explicit incomplete/failed outcomes. Actual process exit
+and cancellation are not inferred from successful parsing.
+
+| Data | Supported interpretation | Live observation |
+| --- | --- | --- |
+| Input/output/cache-read/cache-creation | Claude Code result turn counters | UNKNOWN |
+| Per-message input/cache | Deduplicated, separate snapshots | UNKNOWN |
+| Per-model cumulative counters | Separate snapshots; no summation | UNKNOWN |
+| Configured model/route | Safely observed configuration; labeled CONFIGURED | Not VERIFIED_EFFECTIVE |
+| Reported model/version | Explicit safe event labels only | UNKNOWN |
+| Gateway/upstream usage, actual billing/quota | Null; no price inference | UNKNOWN |
+
+Observed verification, Windows / Python 3.12.3, repository-root commands:
+
+| Command | Result |
+| --- | --- |
+| `python -m unittest discover -s experiments/agent-efficiency -p test_claude_adapter.py -v` | 25 passed, no failures/skips |
+| `python -m unittest discover -s experiments/agent-efficiency -p 'test_*.py' -q` | 76 run; 73 passed, 3 existing platform skips |
+| `python -m unittest discover -s tests -q` | 122 run; 120 passed, 2 existing symlink skips |
+| `git diff --check` | Passed |
+
+The platform skips are two real symlink tests and one POSIX signal test in the
+efficiency suite, plus two symlink tests in the repository suite. Before fixes,
+focused probes reproduced error results being marked complete, private payloads
+copied into artifacts, and the recorder rejecting an explicitly unknown gateway.
+The inherited four tests passed but did not catch those defects.
+
+Sources checked: [CLI reference](https://code.claude.com/docs/en/cli-reference),
+[SDK event types](https://code.claude.com/docs/en/agent-sdk/typescript),
+[streaming output](https://code.claude.com/docs/en/agent-sdk/streaming-output),
+and [usage accounting](https://code.claude.com/docs/en/agent-sdk/cost-tracking).
+They define the parser target, not an observed 2.1.325 live trace. Unknown event
+variants intentionally fail closed; fixtures remain synthetic. Metadata labels
+are caller-controlled, hashes are not provenance authentication, and existing
+digest memory/filesystem limitations remain. Actual xKiro fields, cancellation,
+upstream identity, usage/quota and billing are unverified.
+
+Ready for **separately authorized evaluation planning**, with live data and
+spending-boundary gaps carried forward. No Package D work or Phase 6 integration
+was performed. Live skill, native agents, frozen specifications, research,
+global hooks and C1/digest source remain unchanged. This implementation does not
+establish an installed Claude-native CouncilFlow workflow.
+
 ## Package C1 — local verification, 2026-11-15
 
 This section supersedes C1 status and next-action claims below. Branch:

@@ -109,25 +109,60 @@ passing synthetic fixtures is not live compatibility proof.
 
 ## Phase 4 Claude Code and compatible gateways
 
-`claude_adapter.py` consumes an explicitly supplied Claude Code `--output-format stream-json` JSONL capture or stdin, emits a Phase 1 record, and stores/hashes the complete input through the Phase 2 digest. It never starts Claude, reads environment variables/config files, or handles credentials:
+`claude_adapter.py` consumes an explicitly supplied Claude Code JSONL capture,
+a single JSON result (including pretty-printed JSON), or stdin. It emits a
+Package A record and passes **sanitized metadata only** to the Package B digest.
+It never invokes Claude/xKiro, reads configuration/authentication, installs hooks
+or changes native permissions. Offline synthetic example:
 
 ```sh
-python experiments/agent-efficiency/claude_adapter.py experiments/agent-efficiency/fixtures/claude-stream-sanitized.jsonl --artifacts /tmp/claude-run --gateway xkiro --model fixture-upstream-a --records /tmp/claude-runs.jsonl
+python experiments/agent-efficiency/claude_adapter.py experiments/agent-efficiency/fixtures/claude-stream-sanitized.jsonl --artifacts experiments/agent-efficiency/.local-runs/c2-fixture --gateway xkiro --gateway-source synthetic-fixture --configured-model fixture-model --source synthetic-fixture --records experiments/agent-efficiency/.local-runs/c2-records.jsonl
 ```
 
 | Telemetry | Adapter behavior |
 | --- | --- |
 | Harness | `claude-code` |
-| Gateway | Explicit label (`xkiro` default); label only, not verified gateway identity |
-| Upstream model | Explicit CLI value or unambiguous event model; changes across events remain unknown and are noted |
-| Route | Separate route field, defaults to `claude-code/<gateway>/stream-json` |
-| Input/output/cache read/cache creation | Read from the final recognized usage snapshot when present; otherwise null with reason |
-| Cost/prices | Always unknown; no Anthropic price inference and no gateway billing inference |
-| Retries | Reported only if a gateway event explicitly supplies `gateway.retry_count`; otherwise unknown |
+| Gateway | Unknown by default; explicit `--gateway xkiro` plus caller-supplied provenance |
+| Configured model | `--configured-model` (`--model` alias); CONFIGURED, never effective identity |
+| Reported model | Safe labels in main-loop init/assistant messages; changes retained separately |
+| Effective upstream model | UNKNOWN/null, including behind xKiro |
+| Route | `claude-code/xkiro/stream-json` for explicit xKiro, otherwise `claude-code/unknown/stream-json` |
+| Input/output/cache read/cache creation | Latest result turn counters; missing values remain null with reasons |
+| Cumulative model counters | Separate snapshots, never added to result turn usage |
+| Cost/prices | Unknown; client-side estimates are not stored as authoritative billing |
+| Retries | Observed harness notice count and latest unverified gateway-extension snapshot stay separate |
 | Acceptance | Always unknown; usage output does not prove task acceptance |
 | Timing | Optional caller-supplied elapsed milliseconds; not inferred from timestamps |
 
-Recognized event types are `system`, `assistant`, `user`, `result`, and `stream_event`; unsupported or malformed lines make the stream incomplete. The adapter uses the final observed usage snapshot and does not add potentially cumulative snapshots. It accepts no claim that xKiro emits this optional metadata unless it is actually present in the supplied capture. `fixtures/claude-stream-sanitized.jsonl` is synthetic; live Claude/xKiro integration is UNVERIFIED.
+Use fresh artifact directories/run IDs. Quoted Windows paths with spaces and
+stdin are supported. `--cli-version`, `--process-exit-code`, `--cancelled`,
+`--elapsed-ms` and `--revision` accept caller-observed metadata; they do not
+authenticate it. `--gateway-source configured` labels an explicit, safely
+observed configuration assertion without loading that configuration. The legacy
+Python `upstream_model` argument is treated only as a configured hint.
+
+The parser keeps message snapshots deduplicated by message ID, excludes subagent
+usage from main-loop accounting and omits placeholder step output counts. It
+never sums incremental deltas, message usage and cumulative `modelUsage` values.
+Session totals remain unknown. A later partial turn cannot reuse previous
+completed usage. Failures, explicit abort/cancellation, malformed/truncated data,
+mixed sessions, conflicting duplicates and unsupported event versions prevent
+an all-clear. Exit 0 denotes a parsed completed result; exit 2 denotes incomplete
+or unsuccessful input, not the original Claude process code. The original exit
+is unknown unless separately supplied.
+
+Payloads, thinking, conversations, prompts, tool contents, IDs and raw errors
+are not copied to artifacts. Only allowlisted event/usage/identity metadata is
+retained, plus an input fingerprint. Expansion returns sanitized metadata, not
+the original transcript. Caller-selected labels should contain no private data.
+Gateway/upstream usage, subscription consumption and billing remain unknown.
+No claim is made that xKiro emits the optional retry extension in a real run.
+
+The target shapes follow the [official SDK reference](https://code.claude.com/docs/en/agent-sdk/typescript)
+and [usage guidance](https://code.claude.com/docs/en/agent-sdk/cost-tracking).
+Local CLI inspection and offline results are recorded in
+[IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md); live compatibility remains
+**LIVE_UNVERIFIED**. No live request is launched by this interface.
 
 ## Phase 5 offline evaluation and protocol draft
 

@@ -26,7 +26,7 @@ def validate(item):
     if item["schema_version"] != "1.0" or not item["run_id"]: raise ValueError("invalid version or run_id")
     if item["harness"] not in ("codex","claude-code","unknown"): raise ValueError("invalid harness")
     if item["harness"] == "codex" and item["route"] != "codex/native-or-configured": raise ValueError("invalid Codex route")
-    if item["harness"] == "claude-code" and not item["route"].startswith("claude-code/xkiro/"): raise ValueError("invalid Claude/xKiro route")
+    if item["harness"] == "claude-code" and not (item["route"].startswith("claude-code/xkiro/") or (item["gateway"] is None and item["route"] == "claude-code/unknown/stream-json")): raise ValueError("invalid Claude/xKiro route")
     u=item["usage"]
     if set(u) != set(USAGE_FIELDS) | {"availability"} or set(u["availability"]) != set(USAGE_FIELDS): raise ValueError("usage fields/reasons required")
     for key in USAGE_FIELDS:

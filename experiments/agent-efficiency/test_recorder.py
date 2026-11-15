@@ -4,6 +4,13 @@ from pathlib import Path
 from recorder import record, validate, parse_codex_event, parse_claude_json, append_jsonl
 
 class RecorderTests(unittest.TestCase):
+    def test_unknown_claude_gateway_route_is_explicit_and_narrow(self):
+        item=record(run_id="unknown",harness="claude-code",route="claude-code/unknown/stream-json")
+        validate(item)
+        self.assertIsNone(item["gateway"])
+        with self.assertRaises(ValueError): validate({**item,"gateway":"xkiro"})
+        with self.assertRaises(ValueError): validate({**item,"route":"claude-code/unapproved/stream-json"})
+
     def test_codex_partial_and_unknown_are_null(self):
         item=parse_codex_event({"type":"task_complete","model":"fixture-model","usage":{"input_tokens":12,"output_tokens":3}},run_id="fixture-codex")
         validate(item)
