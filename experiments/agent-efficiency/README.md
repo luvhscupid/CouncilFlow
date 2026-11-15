@@ -59,13 +59,53 @@ isolation. No measured token savings or live integration is established here.
 
 ## Phase 3 Codex adapter
 
-`codex_adapter.py` is an offline adapter: it consumes an explicitly supplied `codex exec --json` JSONL file (or stdin), emits a Phase 1 record, and uses the Phase 2 digest to retain/hash the exact input stream. It does not invoke Codex or make API calls. For example:
+`codex_adapter.py` parses an explicitly supplied `codex exec --json` JSONL file
+or stdin. It emits a Package A record and uses Package B to digest **allowlisted
+metadata only**. It never invokes Codex, intercepts chats, reads authentication
+or changes native permissions. Example using the synthetic fixture:
 
 ```sh
-python experiments/agent-efficiency/codex_adapter.py experiments/agent-efficiency/fixtures/codex-exec-sanitized.jsonl --artifacts /tmp/codex-run --records /tmp/codex-runs.jsonl
+python experiments/agent-efficiency/codex_adapter.py experiments/agent-efficiency/fixtures/codex-exec-sanitized.jsonl --source synthetic-fixture --artifacts experiments/agent-efficiency/.local-runs/c1-fixture --records experiments/agent-efficiency/.local-runs/c1-records.jsonl
 ```
 
-Only completed turn aggregate usage is counted; missing fields stay null, unsupported/malformed events make the result incomplete, and acceptance remains unknown. The route defaults to `codex/native-or-configured`; pass an explicit route label only when its source is known. The fixture is synthetic. Codex CLI availability/version may be checked locally, but a live `codex exec` request requires separate user selection and is not part of offline parsing.
+Use a fresh artifact directory/run ID on each invocation. Quoted Windows paths
+with spaces are supported. Omit the filename to read stdin. Exit 0 means a
+supported completed-turn stream was parsed; exit 2 means failed, cancelled,
+partial or unsupported input. This is the **parser's** status, not the original
+Codex process status. Supply `--process-exit-code N`, `--cancelled`,
+`--cli-version VERSION`, `--revision SHA`, or `--elapsed-ms N` only with observed
+values. These are caller-supplied metadata, not independently authenticated.
+
+The primary record describes the latest turn (`usage_scope=turn`). `turn_usage`
+keeps separate completed-turn counters; `session_usage` stays null, including
+resumed sessions. Item deltas and repeated terminal events are never summed.
+Ambiguous `total_token_usage` / `last_token_usage` wrappers are rejected with
+unknown scope, rather than reinterpreted as documented turn counters. Mixed
+thread streams are flagged and their usage is withheld.
+
+Recognized counters are `input_tokens`, `cached_input_tokens`, `output_tokens`
+and optional `cache_write_input_tokens`; reasoning output, when explicitly
+present, is reported separately and is never added to output totals. Missing
+fields stay null with reasons. Standard documented events do not establish
+model/provider identity: an optional safe event `model` label is retained when
+unambiguous, otherwise null. `codex/native-or-configured` is the existing schema's
+nominal route label; effective provider route, billing and task acceptance stay
+unknown. The local CLI/version and billing checks are recorded in
+[IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md).
+
+Only recognized event names, safe model labels and numeric counters enter the
+sanitized metadata JSON artifact. Thread IDs, prompts, messages, reasoning,
+commands, tool outputs, raw errors and unknown fields are omitted. The source
+input gets a byte count/SHA-256 fingerprint but is never copied to artifacts.
+Expansion therefore returns sanitized metadata, **not the original transcript**.
+Caller-selected IDs/revision/version labels should contain no private data.
+An unavailable original process exit code leaves the digest incomplete even if
+the JSONL parser sees a completed turn. Hashes do not authenticate the capture.
+
+Event references: [official non-interactive guide](https://learn.chatgpt.com/docs/non-interactive-mode)
+and [OpenAI exec event definitions](https://github.com/openai/codex/blob/main/codex-rs/exec/src/exec_events.rs).
+Explicit event versions not covered by these unversioned shapes fail closed;
+passing synthetic fixtures is not live compatibility proof.
 
 ## Phase 4 Claude Code and compatible gateways
 

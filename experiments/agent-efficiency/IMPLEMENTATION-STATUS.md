@@ -1,5 +1,87 @@
 # Agent Efficiency Toolkit — Implementation Status and Agent Handoff
 
+## Package C1 — local verification, 2026-11-15
+
+This section supersedes C1 status and next-action claims below. Branch:
+`feature/agent-efficiency`; starting commit `7491587`. Model identity available
+to this run: GPT-6-based Codex; exact model ID/backend route UNKNOWN. Harness:
+Codex desktop app, Windows PowerShell. The separate CLI was inspected directly;
+desktop capabilities are not assumed to match CLI capabilities.
+
+### Observed local capabilities (no model call)
+
+- `python --version`: Python 3.12.3.
+- `Get-Command codex -All`: executable at
+  `C:\Program Files\WindowsApps\OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0\app\resources\codex.exe`.
+- `codex --version`: `codex-cli 0.169.0-alpha.11.1`.
+- `codex exec --help`: `--json`, `--ephemeral`, `--sandbox read-only`,
+  `--skip-git-repo-check`, `--cd` and last-message/schema output options exist.
+  These help observations do not prove sandbox enforcement or cancellation.
+- `codex login status` (captured and classified without exposing credentials):
+  exit 0, CHATGPT. Selective configuration inspection found the default OpenAI
+  provider with no provider overrides; no API-key/base-URL environment override
+  names were present. No auth files or tokens were directly inspected or exposed. Subscription-only
+  spending conditions, purchased credits/fallback billing and effective runtime
+  model/route could not be established. **LIVE_UNVERIFIED: no model call made.**
+- Local argument-error probe in an isolated temporary directory:
+  `codex exec --json --sandbox INVALID --skip-git-repo-check --ephemeral "Reply exactly OK"`
+  exited 2 with empty stdout and an invalid-sandbox argument error. This stopped
+  before model execution. No sandbox/routing/global setting was changed.
+
+### Implemented and offline tested
+
+The adapter recognizes documented `item.updated` and `error` events in addition
+to thread/turn/item starts and completions. It keeps per-turn counters separate,
+does not sum item deltas or duplicate terminal events, rejects ambiguous nested
+cumulative/incremental wrappers, and withholds mixed-thread usage. Its main
+Package A record describes the latest turn; session totals remain unknown.
+Malformed JSON/UTF-8, duplicate keys, nonfinite numbers, invalid counters,
+unsupported versions, incomplete turns, terminal failures and caller-observed
+process exits/cancellation have explicit outcomes. Later partial/failed turns
+do not inherit earlier completed usage. Task acceptance remains unknown.
+
+Privacy correction: Package B receives only sanitized metadata JSON, not the
+source event transcript. Payload text, reasoning, thread IDs, tool commands,
+outputs and raw error text are omitted. A hash/byte count fingerprints the input;
+digests expand sanitized metadata only. No Codex subprocess is started by the
+adapter; tests check this. Source labels distinguish supplied captures from
+synthetic fixtures, and caller-observed version/exit metadata is labeled as such.
+No original process exit or executed command is invented from successful parsing.
+
+| Field | Offline support | Actual model-run observation |
+| --- | --- | --- |
+| Input / cached input / output | Explicit turn counters | UNKNOWN |
+| Cache-write input | Optional explicit counter | UNKNOWN |
+| Reasoning output | Separate optional counter; not added | UNKNOWN |
+| Model | Optional safe event label; null if absent/ambiguous | UNKNOWN |
+| Route | Nominal schema label; effective route null | UNKNOWN |
+| Session totals / provider billing | Null; never inferred | UNKNOWN |
+| Cancellation | Caller-observed flag; no text inference | LIVE_UNVERIFIED |
+
+References checked: [official non-interactive documentation](https://learn.chatgpt.com/docs/non-interactive-mode),
+[CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli),
+and [OpenAI event definitions](https://github.com/openai/codex/blob/main/codex-rs/exec/src/exec_events.rs).
+The definitions were read from upstream `main`, not asserted to be the installed
+alpha binary's exact source. Its documented flat `turn.completed.usage` shape
+replaces the inherited fixture's unverified nested wrapper. All fixtures remain
+synthetic. These sources establish the parser target, not live compatibility.
+
+Verification commands from the repository root (Windows):
+
+| Command | Outcome |
+| --- | --- |
+| `python -m unittest discover -s experiments/agent-efficiency -p test_codex_adapter.py -v` | 21 passed; 0 failures/skips |
+| `python -m unittest discover -s experiments/agent-efficiency -p 'test_*.py' -q` | 54 run; 51 passed, 3 existing platform skips |
+| `python -m unittest discover -s tests -q` | 122 run; 120 passed, 2 existing symlink skips |
+
+File/stdin ingestion, Windows paths containing spaces, schema-compatible JSONL
+records and payload-leakage controls were exercised. Actual CLI stream output,
+native sandbox enforcement, live cancellation and billing remain unverified.
+Unsupported schemas are intentionally not guessed. This is an offline-tested
+C1 implementation; its live gate remains open. C2 can be separately authorized
+using these boundaries, but was not developed here. Packages A/B source, Claude
+adapter/evaluator, live skill, agent TOMLs and frozen records remain unchanged.
+
 ## Current Windows checkpoint — 2026-11-15
 
 This section supersedes the workspace/next-action claims in the historical
