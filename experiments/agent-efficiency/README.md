@@ -25,13 +25,37 @@ Run an explicitly selected safe local command and save a digest plus complete st
 python experiments/agent-efficiency/digest.py run --artifacts /tmp/agent-run --digest-output /tmp/agent-run/digest.json --timeout 30 -- python -m unittest
 ```
 
-The process exit code is returned by the wrapper (timeout returns 124 and is marked `TIMED_OUT`). Inspect either original stream only by explicit expansion; expansion checks its recorded hash first:
+The process exit code is returned by the wrapper. On timeout, the wrapper returns
+124 with `TIMED_OUT` and `DIGEST_INCOMPLETE`; the digest retains the observed
+termination code after killing/draining the direct child. Inspect either original
+stream only by explicit expansion; expansion checks its recorded hash first and
+writes the original bytes, including malformed UTF-8, ANSI sequences and CRLF:
 
 ```sh
 python experiments/agent-efficiency/digest.py expand /tmp/agent-run/digest.json stderr
 ```
 
-Artifacts may contain sensitive command output. Choose a permitted local artifact directory and do not commit run artifacts. Summaries are intentionally not proof of success: important lines are sampled, not a complete classification; truncation, malformed UTF-8/JSON, timeout, and nonzero exit receive flags. Always expand when details matter.
+Use a fresh digest-output filename for every run; existing digest and artifact
+files are refused rather than overwritten. The Python API `expand_bytes` returns
+the hash-checked original bytes; `expand` remains a decoded compatibility view.
+
+`--limit` bounds each stream's excerpt, the total important-line text and the
+total failure-ID text separately, in characters. Recognized unittest/pytest
+failure identifiers are advisory; other formats remain available in the original
+artifact. Truncation, malformed UTF-8/JSON, timeout and unknown exit status mark
+`DIGEST_INCOMPLETE`; nonzero exits also mark `COMMAND_FAILED`. The same input and
+limit produce the same stream summaries and hashes. Capture records command
+arguments, actual working directory, an explicitly supplied absolute executable
+when available, and an environment source label without environment values.
+
+Artifacts may contain sensitive command output. Use a permitted local directory
+(for example this folder's ignored `.local-runs/`) and do not commit real outputs.
+Summaries remain heuristic views, not proof of success. Expand when details
+matter, including failures outside the initial excerpt. Capture buffers complete
+output in memory and timeout manages the direct child only; descendants holding
+inherited pipes can delay draining. Path checks reject traversal and observed
+symlink/junction paths but do not provide race-free containment or sandbox
+isolation. No measured token savings or live integration is established here.
 
 ## Phase 3 Codex adapter
 

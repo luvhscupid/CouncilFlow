@@ -1,5 +1,74 @@
 # Agent Efficiency Toolkit — Implementation Status and Agent Handoff
 
+## Current Windows checkpoint — 2026-11-15
+
+This section supersedes the workspace/next-action claims in the historical
+handoff below. Current branch: `feature/agent-efficiency`, based on remote `main`
+at `9035da6cd19c9f38f4e45101478f02969c34744b`. Local checkpoints:
+`b6fa12b` (identity documentation) and `6548259` (existing offline prototype,
+explicitly WIP). No push or merge. The final Package B commit follows these
+checkpoints; use `git log` for its exact identity.
+
+The 17 inherited files comprise six source/schema files, five test modules,
+four synthetic fixtures and two documentation files. They contain no observed
+credentials or private runtime captures. `.gitignore` excludes `.local-runs/`,
+caches, binary captures, logs, environment files and credential/secret filenames;
+commits use reviewed explicit paths. No concurrent edits were detected at the
+checkpoint. Existing later-phase adapters/evaluator were preserved, not developed
+or promoted under this Package B task.
+
+**Package A:** Offline baseline recorder, nullable usage with reasons, evidence
+provenance checks, schema and sanitized fixture are implemented. Its four tests
+passed in the full efficiency run. The Python validator still implements a
+subset of the schema; live host telemetry, billing and provenance authenticity
+remain unverified. Recorder/adapter/evaluator source is unchanged in this task.
+
+**Package B:** Implemented and verified for the bounded local Windows checks
+below. Confirmed defects were repaired without replacing the existing design:
+byte-exact CLI expansion and `expand_bytes`, strict summary budgets, explicit
+incomplete flags, bounded unittest/pytest failure identifiers, non-overwriting
+artifacts, and pre-resolution link/junction checks. Capture records its actual
+working directory, supplied absolute executable when available, environment
+source class (no values), command arguments and observed child return code.
+Timeout kills/drains the direct child, retains captured bytes and its observed
+termination code, and returns wrapper status 124. Ordinary exits are propagated.
+
+Observed verification on Windows / Python 3.12 (repository-root commands):
+
+| Command | Outcome |
+| --- | --- |
+| `python -m unittest discover -s experiments/agent-efficiency -p 'test_*.py' -q` | 37 run; 34 passed, 3 skipped |
+| `python -m unittest discover -s tests -q` | 122 run; 120 passed, 2 skipped |
+| `python -m unittest discover -s demo/receipt -p 'test_*.py' -q` | 13 passed |
+| `git diff --check` | Passed for Package B edits |
+
+The efficiency run includes 22 digest checks: nonzero CLI exit 7, hashes for
+both streams, malformed bytes and JSON, ANSI/CRLF preservation, oversized output,
+determinism, failure details outside stdout/stderr excerpts, corruption/missing
+artifacts, traversal, timeout partial output, invalid options before execution,
+overwrite protection and Windows junction escapes on write/expand. Two real
+symlink checks were skipped because Windows lacks the required privilege; the
+POSIX signal test was skipped on Windows. The regression suite's two skips also
+require symlink privileges. Initial inherited run: 20 tests, one timeout/startup
+failure and one symlink privilege error; these were reported, not counted as a
+pass. The expanded regression checks reproduced implementation gaps before fixes.
+
+**Limits:** Summaries remain heuristic views; no flag or hash proves semantic
+completeness, safe output contents or authenticated provenance. Each stream's
+excerpt, important-line text and failure-ID text has its own character budget;
+raw artifacts are complete. Capture currently buffers full output in memory.
+Timeout handles the direct child, not an arbitrary descendant process tree;
+descendants holding inherited pipes can delay draining. Filesystem checks are
+best effort, not race-free containment or sandbox isolation. Real symlink and
+POSIX behavior remain unverified here. No paid call, global hook, live skill
+change, frozen-specification edit or savings experiment was performed.
+
+**Next package:** C1, verify the existing Codex adapter against the actual local
+CLI/event surface before any separately authorized bounded live smoke test.
+Package C/D development and live expenditure were not performed here.
+
+## Historical handoff (retained for provenance)
+
 > **Read this first before continuing this toolkit.**  
 > **Last recorded:** 2026-11-15  
 > **Repository:** [luvhscupid/CouncilFlow](https://github.com/luvhscupid/CouncilFlow)  
