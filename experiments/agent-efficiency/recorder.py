@@ -6,14 +6,14 @@ from pathlib import Path
 USAGE_FIELDS = ("input", "cached_input", "cache_creation", "output", "reported_cost")
 
 def record(*, run_id, harness, route, task_class=None, upstream_model=None, repository_revision=None,
-           elapsed_ms=None, usage_scope="unknown", usage=None, attempt=1, acceptance=None,
+           elapsed_ms=None, usage_scope="unknown", usage=None, attempt=1, acceptance=None, gateway=None,
            source_kind="manual", notes=None):
     usage = usage or {}
     reasons = {key: usage.get("availability", {}).get(key, "not reported by source") for key in USAGE_FIELDS}
     metrics = {key: usage.get(key) for key in USAGE_FIELDS}
     metrics["availability"] = reasons
     return {"schema_version":"1.0", "run_id":run_id, "task_class":task_class,
-        "harness":harness, "route":route, "upstream_model":upstream_model,
+        "harness":harness, "gateway":gateway, "route":route, "upstream_model":upstream_model,
         "repository_revision":repository_revision, "elapsed_ms":elapsed_ms,
         "usage_scope":usage_scope, "usage":metrics, "attempt":attempt,
         "acceptance":acceptance or {"status":"unknown","evidence_ref":None,"provenance":"unknown"},
@@ -21,7 +21,7 @@ def record(*, run_id, harness, route, task_class=None, upstream_model=None, repo
 
 def validate(item):
     """Validate core contract without third-party JSON Schema packages."""
-    required = {"schema_version","run_id","task_class","harness","route","upstream_model","repository_revision","elapsed_ms","usage_scope","usage","attempt","acceptance","source_kind","notes"}
+    required = {"schema_version","run_id","task_class","harness","gateway","route","upstream_model","repository_revision","elapsed_ms","usage_scope","usage","attempt","acceptance","source_kind","notes"}
     if set(item) != required: raise ValueError("record fields do not match schema")
     if item["schema_version"] != "1.0" or not item["run_id"]: raise ValueError("invalid version or run_id")
     if item["harness"] not in ("codex","claude-code","unknown"): raise ValueError("invalid harness")
