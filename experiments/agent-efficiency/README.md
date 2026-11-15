@@ -30,3 +30,13 @@ python experiments/agent-efficiency/digest.py expand /tmp/agent-run/digest.json 
 ```
 
 Artifacts may contain sensitive command output. Choose a permitted local artifact directory and do not commit run artifacts. Summaries are intentionally not proof of success: important lines are sampled, not a complete classification; truncation, malformed UTF-8/JSON, timeout, and nonzero exit receive flags. Always expand when details matter.
+
+## Phase 3 Codex adapter
+
+`codex_adapter.py` is an offline adapter: it consumes an explicitly supplied `codex exec --json` JSONL file (or stdin), emits a Phase 1 record, and uses the Phase 2 digest to retain/hash the exact input stream. It does not invoke Codex or make API calls. For example:
+
+```sh
+python experiments/agent-efficiency/codex_adapter.py experiments/agent-efficiency/fixtures/codex-exec-sanitized.jsonl --artifacts /tmp/codex-run --records /tmp/codex-runs.jsonl
+```
+
+Only completed turn aggregate usage is counted; missing fields stay null, unsupported/malformed events make the result incomplete, and acceptance remains unknown. The route defaults to `codex/native-or-configured`; pass an explicit route label only when its source is known. The fixture is synthetic. Codex CLI availability/version may be checked locally, but a live `codex exec` request requires separate user selection and is not part of offline parsing.

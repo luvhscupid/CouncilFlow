@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"synthetic-thread-001"}
+{"type":"turn.started","turn_id":"synthetic-turn-001"}
+{"type":"item.completed","item":{"type":"agent_message","text":"[sanitized synthetic fixture]"}}
+{"type":"turn.completed","turn_id":"synthetic-turn-001","model":"fixture-model","usage":{"total_token_usage":{"input_tokens":120,"cached_input_tokens":30,"output_tokens":18}}}
