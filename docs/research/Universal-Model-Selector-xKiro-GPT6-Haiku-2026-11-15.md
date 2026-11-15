@@ -5,13 +5,14 @@
 > **Date:** 2026-11-15 (Asia/Pontianak)  
 > **Participants:** Owner (Jace), GPT-6 (OpenAI), Claude Haiku 5.5 (Anthropic, Medium); exchanged via the Owner.  
 > **Target project:** CouncilFlow (`luvhscupid/CouncilFlow`).  
-> **Purpose:** Preserve the proposed universal model-selector design so it can be recalled without reconstructing the discussion.
+> **Purpose:** Preserve the proposed universal model-selector design so it can be recalled without reconstructing the discussion.  
+> **Live xKiro/account verification as of 2026-11-15:** NOT YET PERFORMED.
 >
 > **Authority boundary:** This is a synthesis of a design discussion, **not** a new frozen requirement, implementation authorization, repository audit, model certification, account entitlement verification, or amendment to CouncilFlow's Architecture Specification, Security Annex, approved development plan, role definitions, or Owner-control rules. Those authoritative sources prevail where there is disagreement.
 
 ## Quick recall
 
-Design a **universal selector** for OpenAI and Anthropic models, potentially through **xKiro** as one optional gateway, with future support for additional Owner-approved models and routes. Model families discussed included **Luna, Terra, Sol, Astra, Haiku, Sonnet, Opus, and Fable** as illustrative UI choices; **do not assume those names, exact IDs, versions, prices, entitlements, or harness compatibility are available** without current verification.
+Design a **universal selector** for OpenAI and Anthropic models, potentially through **xKiro** as one optional gateway, with future support for additional Owner-approved models and routes. The Council used **Luna, Haiku, Sol, Sonnet, Astra, and Opus** as illustrative model choices, **not** as an approved or validated model list. **Terra and Fable appeared in GPT-6's earlier pre-Council UI sketch, not as models evaluated or agreed by the Council.** Do not assume any exact IDs, versions, prices, entitlements, or harness compatibility without current verification.
 
 **Agreed v1:** An Owner-approved, hashed policy and per-role pools; an exact-model-and-route registry with verification status; independent compatibility evidence; Manager selects within an eligible set; trusted Supervisor authorizes each dispatch; clear distinction among enforced, estimated, and reported spending. Maintain existing CouncilFlow responsibility boundaries, without a parallel agent or adaptive selection service.
 
