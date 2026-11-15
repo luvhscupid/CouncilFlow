@@ -174,6 +174,48 @@ There are **no unresolved blocking defects in this paper design**, but xKiro liv
 
 **No code, implementation, installation, test expenditure, authorization change, frozen-plan update, or ongoing task was approved by this exchange.** Treat this record as a non-normative reference for a future Owner-directed decision.
 
+
+## 10. Post-review routing addendum (closed, planning only)
+
+After the initial Council closure, the Owner relayed independent critiques from **DeepSeek and Grok**. Both recognized the security/authorization framework but highlighted a gap: the note explains **which models may run** more completely than **how the Manager should choose among them**. DeepSeek characterized it as permissioning rather than an operationally validated selector; Grok highlighted certification overhead, the growing model × route × harness × reasoning-effort matrix, and weakly specified model suitability. These are critiques, not empirical proof.
+
+GPT-6 and Claude Haiku 5.5 held a focused follow-up and **closed it as a research candidate**, with no remaining blocking paper-design flaw. The outcome **does not authorize implementation**.
+
+### Agreed minimal model-selection procedure
+
+1. Start with the active Owner-approved **role/task-class pool**. Re-check eligibility at **each dispatch**, not only when a session begins.
+2. Exclude identities without current **QUALIFIED** evidence for that task class, or with expired qualification; **COMPATIBLE** pairs remain eligible only for explicitly Owner-authorized low-risk experiments.
+3. Exclude model/route/harness/effort combinations lacking required tested capabilities, approved reasoning-effort settings, or adequate authorized resource scope. Keep *enforced*, *estimated*, and *reported* spending distinct.
+4. Prefer the eligible **Owner-defined fixed default per task class**. With sufficient predeclared evidence, Supervisor-recorded cost per accepted task may inform a tiebreak. If the sample is insufficient, **do not invent a ranking**.
+5. Permit the Manager to **override** the default within the authorized eligible set for a recorded task-specific reason. Record both rationale and observed outcome so overrides can be evaluated; Manager discretion does not permit policy changes.
+6. The trusted Supervisor validates active policy hash, eligible model, exact provider route, status, validity, scope, budget and effort before dispatch. Block or use an **already authorized** eligible fallback if the default has become ineligible.
+
+**No universal fixed retry count**, automatic cheap-to-flagship escalation, unauthorised provider change, or silent pay-as-you-go fallback was accepted.
+
+### Minimal certification
+
+- **Compatibility gate:** Authenticate and exercise tool calls, structured outputs, and one isolated edit-and-verify workflow for each *exact tested* model + provider route + harness + relevant configuration/effort.
+- **Representative task-class gate:** Use a small fixed, Owner-approved set of real tasks and independent acceptance checks for **only** the classes/settings intended for use.
+- **Truthful evidence:** Record exact combinations tested, suite version, result, run identity, sample counts and expiry. Untested combinations stay untested. The same display model accessed through xKiro and a native route requires **separate evidence**.
+- Experiments can generate valid evidence but **cannot self-promote** models to QUALIFIED. Avoid claiming that sparse data establishes general reliability.
+
+### Baselines and accountable overrides
+
+The follow-up corrected an earlier counting error: compare **three strategies**, not four.
+
+1. Owner-pinned single model.
+2. Fixed model per task class.
+3. Manager-selected within an approved eligible pool (initially default + logged override).
+
+Predefine per-task-class and per-strategy **minimum sample sizes**, minimum worthwhile effect, evaluation budget and decision rule **with Owner approval before the experiment**. None were set in this discussion. Measure cost per accepted task, acceptance rate (including repeated attempts), latency, and Owner interventions; compare the adaptive strategy against fixed-per-class using sufficient repeats and uncertainty estimates.
+
+Override records must include model/route/effort, rationale, outcomes and relevant verification evidence. Overrides **must be reviewed** for realized benefit, not allowed to accumulate as unexplained discretion. If the more complex approach cannot show a worthwhile improvement over fixed-per-class without reducing quality or increasing Owner burden, do not adopt it.
+
+### Closure and remaining dependencies
+
+**Status: CLOSED, NON-NORMATIVE; IMPLEMENTATION NOT AUTHORIZED.** Selection logic and qualification remain hypotheses until evaluated. Before any development: verify live xKiro catalog, usage and account entitlements; inventory CouncilFlow/Claude Code/Codex support; determine approved qualification thresholds, representative tasks and revalidation budget; preserve all frozen Owner and Supervisor constraints.
+
+
 ---
 
 *This is a synthesized record of the Owner-relayed model exchange, not a verbatim transcript, verified implementation, live xKiro integration test, or signed policy authorization. Reconfirm external facts when revisiting.*
