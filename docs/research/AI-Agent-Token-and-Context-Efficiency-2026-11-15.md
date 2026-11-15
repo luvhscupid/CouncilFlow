@@ -82,7 +82,7 @@ Exchange task status, *actual changes*, evidence IDs, and unresolved questions r
 
 - **Owner authority**: Owner-approved scope, protected actions, and mandatory approvals remain in force; no implicit authorization.
 - **Trusted Supervisor**: Enforce machine-checkable permissions, budgets, authorization, scope boundaries, isolation, and evidence integrity outside the LLM. The prompt explains policy but is **not** an enforcement boundary.
-- **Verification**: Tester checks technical behavior, Reviewer checks user experience, Manager orchestrates within authority; do not silently merge roles. Neither an agent's confidence nor a model agreement substitutes for required verification.
+- **Verification**: Tester, Reviewer, Manager, and any other verification participants retain their distinct responsibilities as defined by the currently approved CouncilFlow role specification; this research note neither redefines nor merges those roles. Neither an agent's confidence nor model agreement substitutes for required verification.
 - **Unknown is not none**: For high-risk, security-adjacent changes, unresolved dependency/impact information cannot be treated as proof of no impact. If required evidence remains unknown, block promotion or escalate appropriately.
 - **Integrity is not sufficiency**: A harness-authenticated test result proves provenance and what ran, not that tests were complete or architectural intent was fulfilled.
 - **Semantic claims remain advisory** unless independently substantiated by appropriate evidence. Machine-checkable authorization can be enforced; arbitrary architectural intent is not fully machine-decidable.
@@ -131,7 +131,7 @@ A **build-system approach to memory** remains an interesting long-term idea: per
 3. **Experiment A, if justified:** compare deterministic digests/expand handles plus cache hygiene against unchanged baseline, with paired tasks and repeated runs.
 4. **Risk-bounded impact-check pilot** against seeded defects as a correctness evaluation; do not confuse this with a pure cost optimization.
 5. **Experiment B, only if needed:** add evidence handles if A reveals enough repeated reading or verification to justify them.
-6. **Measure reviewer miss correlation** when a credible seeded-defect benchmark exists; Claude preferred doing this earlier, and GPT-6 accepted that as a non-blocking sequencing choice.
+6. **Measure reviewer miss correlation** when a credible seeded-defect benchmark exists; Claude preferred doing this earlier. This preference was not contested, but was not formally agreed by GPT-6.
 
 Include an **oracle-minimal vs retrieved vs full-context** comparison if exploring aggressive retrieval. It tests the potential of retrieval minimization, not the value of every other optimization.
 
