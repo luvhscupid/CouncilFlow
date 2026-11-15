@@ -1,4 +1,6 @@
-# Agent efficiency recorder (Phase 1)
+# Agent efficiency toolkit (offline prototype)
+
+**For AI agents continuing this work:** read [IMPLEMENTATION-STATUS.md](IMPLEMENTATION-STATUS.md) first. It records the Phase 1–5 commits, actual component boundaries, tests reported versus verified, important contract gaps, and the next safe steps. No live integration or demonstrated token savings yet.
 
 Offline, opt-in prototype. It reads no host configuration, credentials, prompts, or session logs and makes no network/API calls.
 
