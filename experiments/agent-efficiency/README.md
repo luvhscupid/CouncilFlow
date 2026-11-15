@@ -62,3 +62,21 @@ python experiments/agent-efficiency/claude_adapter.py experiments/agent-efficien
 | Timing | Optional caller-supplied elapsed milliseconds; not inferred from timestamps |
 
 Recognized event types are `system`, `assistant`, `user`, `result`, and `stream_event`; unsupported or malformed lines make the stream incomplete. The adapter uses the final observed usage snapshot and does not add potentially cumulative snapshots. It accepts no claim that xKiro emits this optional metadata unless it is actually present in the supplied capture. `fixtures/claude-stream-sanitized.jsonl` is synthetic; live Claude/xKiro integration is UNVERIFIED.
+
+## Phase 5 offline evaluation and protocol draft
+
+`evaluate.py` compares paired JSON observations with matching `task_id`. Each pair has `baseline` and `optimized` Phase 1 records; optionally add `digest_review` to the optimized side with `failure_present`, `summary_detected`, and an evidence reference. The evaluator only counts explicitly reported accepted-task cost, known acceptance outcomes, attempts, elapsed time, and cache counters. Missing usage makes total spend unknown; it is never treated as zero. Sample counts, means, standard deviations, and approximate 95% normal intervals are reported where there are enough measurements. Cache fraction means `cached_input/input`, not verified gateway cache effectiveness.
+
+Offline synthetic evaluation:
+
+```sh
+python experiments/agent-efficiency/evaluate.py evaluate experiments/agent-efficiency/fixtures/paired-evaluation.json --minimum-improvement 0.10 --minimum-reliability 0.95 --budget 5
+```
+
+Prepare a protocol for Owner review (draft only):
+
+```sh
+python experiments/agent-efficiency/evaluate.py draft --task-set 'Owner selected task IDs' --minimum-improvement 0.10 --minimum-reliability 0.95 --budget 5 --max-runs 30 --max-minutes 60 --output proposed-protocol.json
+```
+
+Before any future live run, the Owner must review and explicitly approve the task set, paired procedure, thresholds, budgets, stop rule, and terminal outcomes. After approval, freeze the exact protocol bytes and SHA-256 before collecting observations. No live experiment is authorized or activated by this toolkit. Cost comparisons require comparable authoritative reported costs on both sides; xKiro cost may remain unavailable.
