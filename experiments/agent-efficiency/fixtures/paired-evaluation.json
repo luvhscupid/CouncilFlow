@@ -1,0 +1,5 @@
+[
+ {"baseline":{"task_id":"task-1","attempt":1,"elapsed_ms":12000,"acceptance":{"status":"accepted"},"usage":{"reported_cost":0.20,"input":1000,"cached_input":200}},"optimized":{"task_id":"task-1","attempt":1,"elapsed_ms":9000,"acceptance":{"status":"accepted"},"usage":{"reported_cost":0.15,"input":800,"cached_input":160},"digest_review":{"failure_present":false,"summary_detected":false}}},
+ {"baseline":{"task_id":"task-2","attempt":2,"elapsed_ms":15000,"acceptance":{"status":"accepted"},"usage":{"reported_cost":0.30,"input":1400,"cached_input":null}},"optimized":{"task_id":"task-2","attempt":1,"elapsed_ms":11000,"acceptance":{"status":"accepted"},"usage":{"reported_cost":0.20,"input":1000,"cached_input":null},"digest_review":{"failure_present":true,"summary_detected":false,"evidence_ref":"fixture-full-log#failure"}}},
+ {"baseline":{"task_id":"task-3","attempt":1,"elapsed_ms":8000,"acceptance":{"status":"unknown"},"usage":{"reported_cost":null,"input":null,"cached_input":null}},"optimized":{"task_id":"task-3","attempt":1,"elapsed_ms":7000,"acceptance":{"status":"accepted"},"usage":{"reported_cost":null,"input":null,"cached_input":null}}}
+]
