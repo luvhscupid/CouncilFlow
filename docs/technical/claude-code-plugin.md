@@ -1,8 +1,13 @@
 # Claude Code plugin
 
-The Claude Code plugin packages CouncilFlow as a `/councilflow:run` command. Its
-live native subagent execution is **UNVERIFIED**: the plugin has been checked offline
-only. See [Host packages](host-packages.md) for status.
+The Claude Code plugin packages CouncilFlow as a `/councilflow:run` command. One real calc-001
+smoke test completed **VERIFIED_ACCEPT**. Actual native Planner, Worker, Tester and
+Reviewer sessions were observed; the full 11-message sequence validated.
+See the [sanitized evidence summary](../../reports/documentation-release-sync/claude-calc-001.md).
+This establishes one successful run, not universal host compatibility. Upstream model
+identity, effective route, cost and quota remain unknown. Agent Efficiency helpers
+are offline-tested and opt-in; live adapter and billing compatibility remain
+unverified. Package D remains **DRAFT_NOT_AUTHORIZED**.
 
 ## Load it locally
 

@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "7b6aff64d398fc6d7042bf1fad84e35967f49fa8f9e6766a357a8fd359a99c82",
-  "entries": 146,
+  "sha256": "f367c365c84baa61e6c21af9d7183ee91a7aa80d3b260a2ab9b186a718a31393",
+  "entries": 161,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -119,24 +119,29 @@
       "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
     },
     {
+      "path": "AGENTS.md",
+      "size": 2307,
+      "sha256": "fea3456b991b66804d20e35c252f858595a8975cedc2fe929264266503d1139d"
+    },
+    {
       "path": "README.md",
-      "size": 15674,
-      "sha256": "ed3a8241962d3584c04d29d164ee625b760934e136a0939a94a3f13e8ef6b483"
+      "size": 10064,
+      "sha256": "615097c5575e9051ecc2ed54dff6fb288c64431ef8b33b63837c02957aa8afda"
     },
     {
       "path": "RELEASE.md",
-      "size": 12451,
-      "sha256": "b7b32c40a19cd1c99f92680d56fae109b3cc78a8f5ea8a356191aa6c08106d42"
+      "size": 13500,
+      "sha256": "462f94ad755674e250ceea2e8d64a87bbd1f191fb0f5e5c8b88e847da94063aa"
     },
     {
       "path": "demo/README.md",
-      "size": 3319,
-      "sha256": "e007215a28cbcb9bd5d120b05a4d1fd8768c93082c6b5fd358316ce43249367f"
+      "size": 5266,
+      "sha256": "2f4e47c4bfe4b89b85dc1e91ac3e2f26bcb672ef9809df2ad6e7fcac5b38572e"
     },
     {
       "path": "demo/csv-summary/README.md",
-      "size": 2677,
-      "sha256": "903ce11db0bd248a73ffd16d006dc7017a1351399d910847d7f9f548551502cd"
+      "size": 4113,
+      "sha256": "95ca0c56eed4dfcdac12cc842e812660924561a63afb2f2b66706a0f3ac6393f"
     },
     {
       "path": "demo/csv-summary/csv_summarizer.py",
@@ -155,8 +160,8 @@
     },
     {
       "path": "demo/gate3-demo/README.md",
-      "size": 1278,
-      "sha256": "331bd1e0b3c68e81efca9d79c7bc1c09a42e390eb52bdce43f20916135832932"
+      "size": 3262,
+      "sha256": "0265b6d95a02940b95abd8f51b180c7ce902f614aafc220ac0fec5307f9c9c4e"
     },
     {
       "path": "demo/gate3-demo/app.py",
@@ -210,8 +215,8 @@
     },
     {
       "path": "demo/structured-flow/README.md",
-      "size": 1511,
-      "sha256": "85b024bba5adc06dc400c332564a97759a8af76f93b8bb09f9f1802e8164364f"
+      "size": 3169,
+      "sha256": "5b3506d01b7d207ca218b718e6ccaaf5ff7bf542ac668bdca872a0d74e6c915d"
     },
     {
       "path": "demo/structured-flow/sum_values.py",
@@ -255,8 +260,8 @@
     },
     {
       "path": "docs/CouncilFlow-Full-Plan/README.md",
-      "size": 3227,
-      "sha256": "983b7447d565e09d2b850f75dc16f2211986ec9e144cceef9d4a0ad49faac384"
+      "size": 4933,
+      "sha256": "5e49462c890f683fbc7561705f264f3ca6a113b976911a107ea47d1916d0a479"
     },
     {
       "path": "docs/CouncilFlow-Full-Plan/SHA256SUMS.txt",
@@ -370,8 +375,68 @@
     },
     {
       "path": "docs/gate3/README.md",
-      "size": 3342,
-      "sha256": "ff64afb2ac6e7ad512f7392223a58d280177eae0706a12c68c1bbb604641ba05"
+      "size": 5039,
+      "sha256": "63247417bcda4ab547a8c1c70fc23edaa3d9dc880353743003c20b3ad6508e4d"
+    },
+    {
+      "path": "docs/gate3/current-implementation-gaps.md",
+      "size": 10020,
+      "sha256": "40aea1183672b225e7b5e60dbd1147e868230b1891d711855bb8802878342bb9"
+    },
+    {
+      "path": "docs/gate3/import-record.json",
+      "size": 3693,
+      "sha256": "71de1bfad9b84e088863044d6ceb032f969b4e94a8b1115b3a78368d595f6cb0"
+    },
+    {
+      "path": "docs/research/AI-Agent-Token-and-Context-Efficiency-2026-11-15.md",
+      "size": 17933,
+      "sha256": "5dc0748e2336acd23eb6e749f5c2a7780894c4760d3c13e2920c055776d0ff86"
+    },
+    {
+      "path": "docs/research/Agent-Efficiency-Implementation-Phases-DRAFT-2026-11-15.md",
+      "size": 18688,
+      "sha256": "e981e00d0383939f09321c6d9d34f8c34b5fed527b454ca3d4eb95985227cb37"
+    },
+    {
+      "path": "docs/research/README.md",
+      "size": 3362,
+      "sha256": "48a43c9b6a064e97c995d3fd79f782fbc48fbd8c6482b4c022cc216a79c82ab7"
+    },
+    {
+      "path": "docs/research/Universal-Model-Selector-xKiro-GPT6-Haiku-2026-11-15.md",
+      "size": 20862,
+      "sha256": "f5a619d4288f5e30c15ff661ee8ff7dc11ca7d4490908e5b5d632e2873c77e2a"
+    },
+    {
+      "path": "docs/technical/README.md",
+      "size": 2256,
+      "sha256": "7a44d5d6da05f4061d298e2b0208f589b26c07068b04839a7f62edcee7d16cc6"
+    },
+    {
+      "path": "docs/technical/claude-code-plugin.md",
+      "size": 1968,
+      "sha256": "c03c51c5f311ba8908d7d5549c23a95efd1035d27d9199b24a90a27fe495d4b1"
+    },
+    {
+      "path": "docs/technical/codebase-memory.md",
+      "size": 1752,
+      "sha256": "331d70d55130b898515d0e9d1dec09d0855e4d73d86cbf2674a277780435c1a3"
+    },
+    {
+      "path": "docs/technical/efficiency-helpers.md",
+      "size": 2040,
+      "sha256": "7081ec98098332a29191ea8949ea9cc9631469029d586b0f7ecb52c41140c972"
+    },
+    {
+      "path": "docs/technical/host-packages.md",
+      "size": 2773,
+      "sha256": "5ff685bfda013cdae8338683a0256275e6375dcbc573a11b79d8a19ab40a4d3b"
+    },
+    {
+      "path": "docs/technical/structured-communication.md",
+      "size": 2392,
+      "sha256": "93848e781b790c538d389a113a8dfd3a0400234df69d5ad07c910721c5d76581"
     },
     {
       "path": "reports/csv-summary/contract.json",
@@ -634,6 +699,16 @@
       "sha256": "9d8c63e2c6ea9dcf79a5d5907f3cd14e0d98bc12d3e7b4a6109771482d4475d0"
     },
     {
+      "path": "reports/documentation-release-sync/claude-calc-001.md",
+      "size": 1813,
+      "sha256": "a55ae59a4ec07e3afe789eaa73dbe3ec92793debb2e2d8b812b9e1309a276c92"
+    },
+    {
+      "path": "reports/documentation-release-sync/gate3-run-01.md",
+      "size": 998,
+      "sha256": "8ab1fe949600e999dc70bf5d3eba5d57814494778aaf0278fc2e4f50343b39c6"
+    },
+    {
       "path": "tests/efficiency-fixtures/claude-stream-sanitized.jsonl",
       "size": 422,
       "sha256": "a84bc70654806fa7d45238a865a853ed04e20704ad814a978e20d2692c44871a"
@@ -650,8 +725,8 @@
     },
     {
       "path": "tests/fixtures/README.md",
-      "size": 478,
-      "sha256": "c886dae34d23a01be6bac39d81e7de0c199265ae6ec9a7ffc77c7f32474615c6"
+      "size": 3044,
+      "sha256": "1160380ed32d2d2a64e7ebf790b725836d7c1cad358ef04d9f66f875271dd5e3"
     },
     {
       "path": "tests/fixtures/owner-version-original.txt",
@@ -670,8 +745,8 @@
     },
     {
       "path": "tests/test_dispatch_lifecycle.py",
-      "size": 6297,
-      "sha256": "25f5c8028f3f017171cda7fb1084b908ff80b718f7a35d1f2dc3c74391cd2a72"
+      "size": 6849,
+      "sha256": "3be6d5337151db15c45d553d330e83172eb1537f97bc4141e0e12ca7fe1b85d1"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -690,8 +765,8 @@
     },
     {
       "path": "tests/test_efficiency_install.py",
-      "size": 5948,
-      "sha256": "4ad80838506ea05c22787d61cc87c93aa9592bf47149f30aecabc2f99ea38eb0"
+      "size": 6321,
+      "sha256": "c00854320eb57411b34a15f2103fe09c6d5c2c0ad07d7a7b959e4641af61859c"
     },
     {
       "path": "tests/test_efficiency_recorder.py",
@@ -730,8 +805,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 7685,
-      "sha256": "2d702a469f824476003fe0bf6ca83e3e4f96b01393e28eb6c2872a2e9d2e27d5"
+      "size": 7934,
+      "sha256": "233493ea1e3b0ab31b7b31c2a95bb606b59871d49d2152a239dfa69a02aa1eec"
     }
   ],
   "crc": "PASS",

@@ -18,6 +18,7 @@ import test_contracts as fixtures
 c = fixtures.c
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN_CONTRACTS = ROOT / "plugins/councilflow/skills/run/scripts/contracts.py"
+CODEX_CONTRACTS = ROOT / ".agents/skills/council-flow/scripts/contracts.py"
 
 
 def by_id(messages, mid):
@@ -51,7 +52,7 @@ class DispatchLifecycleTests(unittest.TestCase):
         self.assertRejected(data, field="in_reply_to")
 
     def test_reviewer_report_replying_to_tester_report_is_rejected_cli(self):
-        """Same defect through the plugin's own CLI, as the Manager would run it."""
+        """Same defect through the installed host CLIs, as the Manager would run it."""
         import tempfile
         data = fixtures.sequence()
         del data[5]
@@ -61,13 +62,20 @@ class DispatchLifecycleTests(unittest.TestCase):
                 path = Path(tmp) / f"M{index}.json"
                 path.write_text(json.dumps(message), encoding="utf-8")
                 paths.append(str(path))
-            proc = subprocess.run(
-                [sys.executable, "-I", str(PLUGIN_CONTRACTS), "sequence", *paths],
-                capture_output=True, text=True, timeout=60,
-            )
-        self.assertNotEqual(proc.returncode, 0)
-        self.assertIn('"valid": false', proc.stderr)
-        self.assertIn("in_reply_to", proc.stderr)
+            # The Codex source bundle intentionally excludes the Claude plugin.
+            # Always exercise its installed CLI; also exercise the plugin in a checkout.
+            scripts = [CODEX_CONTRACTS]
+            if PLUGIN_CONTRACTS.is_file():
+                scripts.append(PLUGIN_CONTRACTS)
+            for script in scripts:
+                with self.subTest(script=script.relative_to(ROOT).as_posix()):
+                    proc = subprocess.run(
+                        [sys.executable, "-I", str(script), "sequence", *paths],
+                        capture_output=True, text=True, timeout=60,
+                    )
+                    self.assertNotEqual(proc.returncode, 0)
+                    self.assertIn('"valid": false', proc.stderr)
+                    self.assertIn("in_reply_to", proc.stderr)
 
     def test_wrong_in_reply_to_is_rejected(self):
         data = fixtures.sequence()

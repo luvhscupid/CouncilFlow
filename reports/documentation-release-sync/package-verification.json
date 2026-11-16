@@ -1,0 +1,116 @@
+{
+  "platform": "Windows-local; offline only; no experiments/model calls",
+  "archive_sha256": "f367c365c84baa61e6c21af9d7183ee91a7aa80d3b260a2ab9b186a718a31393",
+  "entries": 161,
+  "crc": "PASS",
+  "source_bytes": "PASS",
+  "repeated_zip_checksum_manifest_bytes": "IDENTICAL",
+  "extracted_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-doc-release-00nzj21w",
+  "documentation_references_checked": 76,
+  "missing_references": [],
+  "historical_report_links": "Pinned GitHub links; historical reports remain excluded from package",
+  "extracted_suites": [
+    {
+      "suite": "tests",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 221 tests in 55.045s",
+        "",
+        "OK (skipped=5)"
+      ]
+    },
+    {
+      "suite": "demo/receipt",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 13 tests in 25.465s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "suite": "demo/csv-summary",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 15 tests in 38.523s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "suite": "demo/structured-flow",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 5 tests in 22.920s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "suite": "demo/gate3-demo",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 9 tests in 5.736s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "suite": "reports/demo/verification",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 5 tests in 8.669s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "suite": "reports/csv-summary/verification",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 6 tests in 20.368s",
+        "",
+        "OK"
+      ]
+    }
+  ],
+  "checkout_regression": "239 tests, OK (skipped=5); after host CLI test correction, focused dispatch regression: 13 tests OK",
+  "initial_extraction_issue": "Plugin-specific CLI assumed in Codex bundle; corrected test to always exercise Codex CLI and additionally plugin CLI when present. Final extraction rerun below.",
+  "frozen_and_historical_preservation": "Git diff against published 9c59bc3 empty for frozen Gate 3, Full Plan and plugin source/archive",
+  "suite_archive_sha256": "8bcc975f3d1759bd5fcff1a70a7dd30e84f2d610065bbe683cf55606c3bfc7d4",
+  "final_extracted_directory": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-final-byte-check-xxqk0u0v",
+  "final_documentation_adjustment": {
+    "changed_since_suite_extraction": [
+      "docs/gate3/README.md"
+    ],
+    "reason": "Label import-era implementation-gap assessment and unchanged-source statement as historical; add current release link. All other extracted bytes identical.",
+    "final_extraction_install_tests": {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_efficiency_install.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 3 tests in 8.342s",
+        "",
+        "OK"
+      ]
+    }
+  }
+}

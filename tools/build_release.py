@@ -19,10 +19,13 @@ ROOT = Path(__file__).resolve().parents[1]
 DIRECTORIES = (
     ".agents/skills/council-flow", "demo", "tests",
     "docs/gate3/CouncilFlow-Gate3-v0.2", "docs/CouncilFlow-Full-Plan",
-    "reports/demo", "reports/csv-summary",
+    "reports/demo", "reports/csv-summary", "docs/technical", "docs/research",
 )
 FILES = (
     "README.md", "RELEASE.md", "docs/gate3/README.md", "tools/build_release.py",
+    "AGENTS.md", "docs/gate3/current-implementation-gaps.md", "docs/gate3/import-record.json",
+    "reports/documentation-release-sync/gate3-run-01.md",
+    "reports/documentation-release-sync/claude-calc-001.md",
     ".agents/skills/council-flow/scripts/efficiency.py",
     ".agents/skills/council-flow/scripts/efficiency/recorder.py",
     ".agents/skills/council-flow/scripts/efficiency/digest.py",

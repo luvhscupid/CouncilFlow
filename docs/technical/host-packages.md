@@ -1,13 +1,18 @@
 # Host packages
 
-CouncilFlow ships two host packages built from one canonical runtime. Both are
-offline-verified. Live native delegation has not been observed for the Claude Code
-package.
+CouncilFlow ships two host packages built from one canonical runtime. Both have offline checks. One real Claude Code smoke run completed
+**VERIFIED_ACCEPT**; this does not establish universal host compatibility.
+Upstream model identity, effective route, cost and quota remain unknown.
 
 | Host | Package | Invocation | Status |
 | --- | --- | --- | --- |
-| Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Existing release, unchanged |
-| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Implemented, offline-verified. Native subagent execution is **UNVERIFIED** (no live run performed) |
+| Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Supported native skill and role workflow. Run 01: **NATIVE_ROLE_WORKFLOW_PARTIAL**; E1/E2/E4 UNVERIFIED, other seven checks PASS |
+| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Installable plugin; one real smoke run **VERIFIED_ACCEPT**, with native Planner, Worker, Tester and Reviewer sessions and an 11-message validated sequence |
+
+Evidence: [Gate 3 Run 01](../../reports/documentation-release-sync/gate3-run-01.md) and
+[Claude calc-001](../../reports/documentation-release-sync/claude-calc-001.md).
+Agent Efficiency helpers are offline-tested and opt-in; live adapter and billing compatibility
+remain unverified. Package D remains **DRAFT_NOT_AUTHORIZED**.
 
 ## Shared runtime
 

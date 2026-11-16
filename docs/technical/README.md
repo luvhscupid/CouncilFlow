@@ -32,5 +32,5 @@ These technical pages explain the workflow. They do not replace the controlling 
 ## Release and evidence
 
 - [RELEASE.md](../../RELEASE.md): package contents, portability and release checks.
-- [Requirements traceability](../../reports/requirements-traceability.md) and
-  [final report](../../reports/final.md): what has been observed and what remains unverified.
+- [Requirements traceability](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/requirements-traceability.md) and
+  [final report](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/final.md): what has been observed and what remains unverified.

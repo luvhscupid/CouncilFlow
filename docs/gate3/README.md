@@ -4,10 +4,11 @@ This directory holds the Owner-supplied CouncilFlow Gate 3 v0.2 package, importe
 
 ## Status at a glance
 
-- **Gate 3 has not been run by this integration.** The experiment record in the package is blank. All ten checks (E1 to E10) are UNVERIFIED, and no run-level outcome is assigned.
+- **The original frozen experiment record is blank.** Its ten checks have no recorded run-level outcome in that imported template; the frozen material remains unchanged.
+- **Separate Gate 3 Run 01:** **NATIVE_ROLE_WORKFLOW_PARTIAL**. E1, E2 and E4 remain UNVERIFIED; E3, E5, E6, E7, E8, E9 and E10 passed. See the [sanitized Run 01 summary](../../reports/documentation-release-sync/gate3-run-01.md). This result does not fill in or rewrite the original blank record.
 - Archive integrity checks and source inspection are documentation work. They are not evidence of skill activation, delegation, role effectiveness or Gate 3 success.
 - Earlier demonstrations and authentication reports are not a fresh Gate 3 run.
-- The installed skill, native agent configurations, policy, code, tests and release archive are unchanged for evaluation. Read the [current implementation gap assessment](current-implementation-gaps.md) before relying on older role definitions or release claims.
+- The original import left the installed skill, native configurations, policy, code and tests unchanged for evaluation. The separate Run 01 result above and current [release packaging](../../RELEASE.md) do not amend the frozen package. Read the [implementation gap assessment](current-implementation-gaps.md) as import-era context, rather than as a current host-support verdict.
 
 ## Import provenance
 

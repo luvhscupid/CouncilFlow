@@ -95,7 +95,11 @@ class InstalledEfficiencyTests(unittest.TestCase):
                     self.assertFalse(name.startswith(("experiments/", "reports/integration-", "owner-fixtures/")))
                 for required in (ENTRY, SKILL / "references/efficiency.md",
                                  SKILL / "scripts/efficiency/recorder.py",
-                                 "demo/gate3-demo/app.py", "tests/test_efficiency_recorder.py"):
+                                 "demo/gate3-demo/app.py", "tests/test_efficiency_recorder.py",
+                                 "docs/technical/README.md", "docs/technical/host-packages.md",
+                                 "docs/technical/claude-code-plugin.md", "docs/research/README.md",
+                                 "reports/documentation-release-sync/gate3-run-01.md",
+                                 "reports/documentation-release-sync/claude-calc-001.md"):
                     self.assertIn(str(required).replace("\\", "/"), bundle.namelist())
                 bundle.extractall(extracted)
             self.exercise(extracted)

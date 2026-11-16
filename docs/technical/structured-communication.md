@@ -43,5 +43,5 @@ all subfolders of the skill together.
 
 ## Related
 
-- [Requirements traceability](../../reports/requirements-traceability.md)
+- [Requirements traceability](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/requirements-traceability.md)
 - [Documentation index](README.md)

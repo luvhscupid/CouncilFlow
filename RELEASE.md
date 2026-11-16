@@ -2,6 +2,14 @@
 
 ## Current-checkout release candidate
 
+The documentation-maintenance rebuild is verified in
+`reports/documentation-release-sync/package-verification.json` (outside the ZIP).
+Codex supports the native skill and role workflow. Recorded Gate 3 Run 01 is
+**NATIVE_ROLE_WORKFLOW_PARTIAL**: E1/E2/E4 UNVERIFIED, the other seven checks PASS.
+See the [Run 01 summary](reports/documentation-release-sync/gate3-run-01.md).
+Agent Efficiency helpers are offline-tested and opt-in. Live adapter and billing
+compatibility remain unverified; Package D remains **DRAFT_NOT_AUTHORIZED**.
+
 This section describes the current Gate 3 + Agent Efficiency integration source
 bundle. Verification records are kept outside the ZIP in
 `reports/integration-gate3-efficiency/`. The Round 6 statements and reports below are
@@ -12,7 +20,9 @@ Archive: `dist/council-flow.zip`. Its sibling SHA-256 file is
 `dist/council-flow.zip.sha256`; `dist/council-flow.manifest.json` records every
 entry's size and SHA-256. The package preserves repository-relative paths
 and is built by `python tools/build_release.py` from an explicit allowlist. It includes the
-complete `.agents/skills/council-flow/` skill and the four native TOML files
+complete `.agents/skills/council-flow/` skill, current technical and research
+documentation (research remains non-normative), two sanitized live-evidence summaries,
+the root project contract and Gate 3 import/gap context, and the four native TOML files
 under `.codex/agents/`, README, this release guide, demos, tests, the frozen
 Gate 3 requirements, the Full Plan supporting documents, and demo verification
 reports. It also includes the maintained `demo/gate3-demo/`, optional
@@ -68,15 +78,20 @@ trial is claimed. See the packaged efficiency reference for explicit CLI use.
 
 ## Claude Code plugin package (feature/claude-code-plugin)
 
-Separate from the Codex release above, which is unchanged. Package:
+Separate from the Codex release above. The plugin source and ZIP are unchanged by
+this documentation maintenance. Package:
 `dist/councilflow-claude-plugin.zip` with sibling `.sha256`, built
 deterministically by `python tools/build_claude_plugin.py build` from
 `plugins/councilflow/`. Verified offline: `claude plugin validate`, plugin
 component discovery via `claude --plugin-dir plugins/councilflow plugin details
 councilflow` (1 skill `run`, 4 agents, 0 hooks), `tests/test_claude_plugin.py`,
-and the full existing suite. **Not verified:** a live `/councilflow:run` session
-and real native subagent delegation (UNVERIFIED; no model request was made).
-Upstream model identity, cost and quota are unknown.
+and the full existing suite. A later real `/councilflow:run` smoke test, calc-001,
+completed **VERIFIED_ACCEPT** with actual native Planner, Worker, Tester and
+Reviewer sessions and a validated full 11-message sequence. See the
+[sanitized summary](reports/documentation-release-sync/claude-calc-001.md).
+This is one successful run, not universal host compatibility. Upstream model
+identity, effective route, cost and quota remain unknown. No new model request
+was made for this maintenance task.
 
 ## Historical Round 6 correction package (retained)
 

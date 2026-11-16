@@ -58,10 +58,16 @@ separate from the frozen Gate 3 experiment, and no new Gate 3 experiment is incl
 
 | Host | Package | How to invoke | Status |
 | --- | --- | --- | --- |
-| Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Existing release, unchanged |
-| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Implemented and verified offline. Live native subagent execution is **UNVERIFIED** (no live run performed) |
+| Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Supported native skill and role workflow. Run 01: **NATIVE_ROLE_WORKFLOW_PARTIAL**; E1/E2/E4 UNVERIFIED, other seven checks PASS |
+| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Installable plugin; one real smoke run **VERIFIED_ACCEPT**, with native Planner, Worker, Tester and Reviewer sessions and an 11-message validated sequence |
 
 Details for each host are in [docs/technical/host-packages.md](docs/technical/host-packages.md).
+The Claude result is limited to calc-001; it does not establish universal host compatibility.
+Upstream model identity, effective route, cost and quota remain unknown. See the sanitized
+[Gate 3 summary](reports/documentation-release-sync/gate3-run-01.md) and
+[Claude smoke summary](reports/documentation-release-sync/claude-calc-001.md).
+Agent Efficiency helpers are offline-tested and opt-in; live adapter and billing compatibility
+remain unverified. Package D remains **DRAFT_NOT_AUTHORIZED**.
 
 ## Use in this repository (Codex)
 
@@ -175,4 +181,4 @@ Release packaging and portability checks are described in [RELEASE.md](RELEASE.m
 ## Where to go next
 
 - [Documentation index](docs/technical/README.md): every technical document, with its purpose.
-- [Requirements traceability](reports/requirements-traceability.md) and [final report](reports/final.md).
+- [Requirements traceability](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/requirements-traceability.md) and [final report](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/final.md).
