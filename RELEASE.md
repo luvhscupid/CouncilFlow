@@ -66,6 +66,18 @@ with seven E-checks PASS and E1/E2/E4 UNVERIFIED. Live Codex and Claude
 Code/xKiro adapter compatibility remains LIVE_UNVERIFIED. No new hook or live
 trial is claimed. See the packaged efficiency reference for explicit CLI use.
 
+## Claude Code plugin package (feature/claude-code-plugin)
+
+Separate from the Codex release above, which is unchanged. Package:
+`dist/councilflow-claude-plugin.zip` with sibling `.sha256`, built
+deterministically by `python tools/build_claude_plugin.py build` from
+`plugins/councilflow/`. Verified offline: `claude plugin validate`, plugin
+component discovery via `claude --plugin-dir plugins/councilflow plugin details
+councilflow` (1 skill `run`, 4 agents, 0 hooks), `tests/test_claude_plugin.py`,
+and the full existing suite. **Not verified:** a live `/councilflow:run` session
+and real native subagent delegation (UNVERIFIED; no model request was made).
+Upstream model identity, cost and quota are unknown.
+
 ## Historical Round 6 correction package (retained)
 
 The corrected release is built from the isolated copy at

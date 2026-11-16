@@ -1,0 +1,9 @@
+{
+  "name": "councilflow",
+  "version": "0.1.0",
+  "description": "Multi-agent Planner/Manager/Worker/Tester/Reviewer coding workflow using Claude Code's native subagents. Instruction-based; not a sandbox or standalone service.",
+  "author": {"name": "luvhscupid"},
+  "repository": "https://github.com/luvhscupid/CouncilFlow",
+  "license": "UNLICENSED",
+  "keywords": ["workflow", "multi-agent", "subagents", "review", "testing"]
+}

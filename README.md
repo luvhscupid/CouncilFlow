@@ -1,8 +1,8 @@
 # CouncilFlow
 
 CouncilFlow is an installable multi-agent workflow **skill** for existing AI
-coding environments. The current implementation is Codex-native; Claude Code
-support is a possible extension, not a verified existing feature. It uses the
+coding environments. The primary implementation is Codex-native; a Claude Code plugin
+package also exists (offline-verified only; see Host packages). It uses the
 host's existing models, tools, permissions and native agent delegation. A dedicated
 Planner defines acceptance; the parent Manager delegates implementation to a
 fresh Worker, requests separate Tester and Reviewer assessments, coordinates
@@ -35,6 +35,37 @@ No new separately approved Gate 3 experiment is included in this release audit.
 It uses native Codex delegation and inherited account/provider permissions. It
 needs no API key, subscription, database, server, or custom agent runtime. Role
 instructions are expected behavior, not independent OS-enforced isolation.
+
+## Host packages
+
+| Host | Package | Invocation | Status |
+| --- | --- | --- | --- |
+| Codex | `.agents/skills/council-flow/` + `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Existing release, unchanged |
+| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Implemented; offline-verified only. Native subagent execution is **UNVERIFIED** (no live run performed) |
+
+The Claude Code plugin reuses the canonical runtime (`references/`, `policies/`,
+`scripts/` including `contracts.py` and the opt-in efficiency helpers) copied
+byte-for-byte from the Codex skill by `tools/build_claude_plugin.py`; a test
+fails on drift. Claude Code subagents cannot spawn subagents, so the main
+session acts as the **Manager** and directly launches the four plugin agents
+(`councilflow:council-planner|worker|tester|reviewer`). Agent files and JSON
+packets are instructions, not a sandbox; Claude Code's permission system is the
+only enforcement.
+
+Load locally (no global config is modified):
+
+```sh
+claude --plugin-dir plugins/councilflow          # from this checkout, current session only
+claude plugin validate plugins/councilflow       # manifest/skill/agent validation
+python tools/build_claude_plugin.py sync         # refresh shared runtime after editing the Codex skill
+python tools/build_claude_plugin.py build        # dist/councilflow-claude-plugin.zip (+ .sha256)
+```
+
+For use in another repository, extract the ZIP to a directory and run
+`claude --plugin-dir <that directory>` from the target repository, then
+`/councilflow:run <coding goal>`. Run artifacts belong in the target repository
+under `.councilflow/runs/`. Efficiency helpers stay opt-in; the Phase 5
+evaluation protocol remains DRAFT_NOT_AUTHORIZED.
 
 ## Use in this repository
 
