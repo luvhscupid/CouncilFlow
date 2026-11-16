@@ -53,6 +53,10 @@ the table.
   comparison requires the Worker's own `job.report` bound to the candidate
   (`candidate_ref` equal to the verified candidate), so a Worker that returned
   `candidate_ref: null` must be reported as BLOCKED, not backfilled.
+- **Reviewer comparison references the Tester message exactly.** The Reviewer's
+  `comparison.tester_report_ref.artifact_id` must equal the Tester `job.report`'s
+  `message_id` (kind `message`), with `path` and `sha256` of that exact file.
+  A reference using any other artifact id is a defect, not a valid comparison.
 - **Reviewer after Tester is a separate dispatch.** The Tester's validated report
   is the input to a new Manager `job.assign` for the Reviewer (`in_reply_to` =
   Tester report `message_id`, exact `candidate_ref`, Tester report referenced by

@@ -97,6 +97,14 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
    reports to you. Mismatch fails review; no command = NOT_COMPARABLE and
    cannot pass. No subjective UX scoring.
 
+   **Tester dispatch requires a persisted Worker report.** Before the Tester is
+   launched, the Manager must have a validated Worker `job.report` in `messages/`
+   whose `in_reply_to` is the Worker assignment and whose `candidate_ref` is
+   non-null and equal to the candidate being verified. A Worker report that
+   exists only as chat text, or that has `candidate_ref: null`, stops dispatch
+   and is reported as BLOCKED. The Manager must not write or edit the Worker's
+   report on its behalf.
+
    **Reviewer dispatch requires its own assignment.** After the Tester's
    `job.report` validates, the Manager first writes a new Reviewer `job.assign`
    with `in_reply_to` set to that Tester report's `message_id`. It carries the
