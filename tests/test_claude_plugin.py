@@ -231,5 +231,39 @@ class PackageTests(unittest.TestCase):
         self.assertFalse(any(n.startswith("plugins/") for n in codex.source_bytes(ROOT)))
 
 
+class HostAdapterTests(unittest.TestCase):
+    def test_adapter_maps_every_shared_codex_reference(self):
+        adapter = " ".join((RUN / "host-claude.md").read_text(encoding="utf-8").split())
+        for token in ("$council-flow", ".agents/skills/council-flow/", ".codex/agents",
+                      "inherit_native_codex", "/councilflow:run", "councilflow:council-planner", "`-reviewer`",
+                      "skill directory", "not the plugin root"):
+            self.assertIn(token, adapter)
+        # Every host-specific token that remains in shared files is covered by the mapping.
+        shared = "".join(p.read_text(encoding="utf-8") for sub in ("references", "policies")
+                         for p in (RUN / sub).rglob("*") if p.is_file())
+        if "inherit_native_codex" in shared:
+            self.assertIn("inherit_native_codex", adapter)
+        if ".codex/agents" in shared:
+            self.assertIn(".codex/agents", adapter)
+
+    def test_adapter_is_plugin_only_and_not_shared_runtime(self):
+        self.assertFalse((ROOT / ".agents/skills/council-flow/host-claude.md").exists())
+        self.assertEqual(builder.drift(), [])  # adapter does not count as shared-runtime drift
+        with zipfile.ZipFile(builder.build() and ROOT / "dist/councilflow-claude-plugin.zip") as z:
+            self.assertIn("skills/run/host-claude.md", z.namelist())
+
+    def test_entrypoints_direct_to_adapter(self):
+        self.assertIn("CF/host-claude.md", (RUN / "SKILL.md").read_text(encoding="utf-8"))
+        for role in ROLES:
+            self.assertIn("host-claude.md", (PLUGIN / "agents" / f"council-{role}.md").read_text(encoding="utf-8"))
+
+    def test_codex_skill_and_roles_keep_codex_syntax(self):
+        codex = (ROOT / ".agents/skills/council-flow/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("$council-flow", codex)
+        self.assertNotIn("councilflow:run", codex)
+        self.assertEqual(sorted(p.name for p in (ROOT / ".codex/agents").glob("*.toml")),
+                         [f"council-{r}.toml" for r in sorted(ROLES)])
+
+
 if __name__ == "__main__":
     unittest.main()

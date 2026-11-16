@@ -15,17 +15,14 @@ and budget. It is not a security sandbox, a service, or a new provider route.
 
 ## Host mapping (Claude Code)
 
-The shared CouncilFlow references and scripts are copied byte-identically from
-the canonical Codex skill. Apply this mapping when they say otherwise:
+`CF` = `${CLAUDE_SKILL_DIR}`, the directory of this skill (`skills/run`, not the
+plugin root). It is a read-only install cache: execute from it, never write there.
+Read `CF/host-claude.md` first: it maps the shared references' Codex wording
+(`$council-flow`, `.agents/skills/council-flow/`, `.codex/agents/*.toml`,
+`inherit_native_codex`) to this host and wins over shared text on host
+mechanics. Shared contract rules are never overridden.
 
-| Shared text says | In this package |
-| --- | --- |
-| `$council-flow` | `/councilflow:run` |
-| `.agents/skills/council-flow/` | `${CLAUDE_SKILL_DIR}` = `CF` below (read-only install cache; do not write there) |
-| `.codex/agents/council-*.toml` | plugin agents `councilflow:council-planner`, `-worker`, `-tester`, `-reviewer` |
-| `inherit_native_codex` | inherit Claude Code's actual permissions |
-
-`CF` = `${CLAUDE_SKILL_DIR}`. Contract helper: `python "${CLAUDE_SKILL_DIR}/scripts/contracts.py"`.
+Contract helper: `python "${CLAUDE_SKILL_DIR}/scripts/contracts.py"`.
 Efficiency helper (opt-in only): `python "${CLAUDE_SKILL_DIR}/scripts/efficiency.py"`.
 Run helpers from the target repository (Python 3.11+, standard library only).
 Run artifacts (plans, packets, evidence) go in the target repository under
@@ -54,7 +51,7 @@ Only the Manager reports progress to the Owner, in concise natural language.
 
 ## Required reading, then execute
 
-Read `CF/references/communication.md`, `roles.md`, `workflow.md`,
+Read `CF/host-claude.md`, `CF/references/communication.md`, `roles.md`, `workflow.md`,
 `source-fidelity.md`, `acceptance.md`, `recovery.md`, and `CF/policies/roles.yaml`.
 All plans, assignments, reports and decisions MUST be UTF-8 JSON under
 council-flow 1.0 and validated with `contracts.py` at controlled boundaries.
