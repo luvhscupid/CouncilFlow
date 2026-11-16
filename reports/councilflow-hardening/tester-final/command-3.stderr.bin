@@ -1,1 +1,0 @@
-{"valid": false, "error": "artifact_hash", "field": "payload.candidate_ref", "message": "artifact_hash at payload.candidate_ref: demo/receipt/receipt_calculator.py"}

@@ -1,0 +1,287 @@
+{
+  "platform": "Windows-local only; no Cloud checks, live experiments or model requests",
+  "original_head": "390dbd261283996b675c187cfecfc0d167e58faf",
+  "original_main": "9c59bc3d0f98a818b01ad14d0165d92b236105b0",
+  "recovery": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a",
+  "archive": "E:\\Saint\\BACKUPS\\CouncilFlow-Archive",
+  "before": {
+    "working_tree_bytes": 15487028,
+    "git_bytes": 6614990,
+    "tracked_files": 2501,
+    "tracked_bytes": 14173236,
+    "report_files": 2520,
+    "reports_bytes": 13357324,
+    "working_tree_files": 2709,
+    "working_tree_directories": 348,
+    "release_bytes": 395737,
+    "codex_zip_bytes": 325736,
+    "claude_zip_bytes": 70001
+  },
+  "classification_overrides": [
+    {
+      "path": "experiments/agent-efficiency/__pycache__/claude_adapter.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/codex_adapter.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/digest.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/recorder.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/test_claude_adapter.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/test_codex_adapter.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/test_digest.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    },
+    {
+      "path": "experiments/agent-efficiency/__pycache__/test_recorder.cpython-312.pyc",
+      "classification": "UNRESOLVED_KEEP",
+      "reason": "Legacy cache has no source at its original location; retained conservatively."
+    }
+  ],
+  "documentation_main": {
+    "checked": 240,
+    "missing": [],
+    "external_web_urls": "Syntax/pinned-source provenance only; no web availability claim",
+    "anchors": "File targets checked; heading anchors not separately validated"
+  },
+  "archive_sha256_files": 2520,
+  "backup_non_git_recheck": "ALL_MATCH",
+  "protected_source_and_frozen_files": 85,
+  "main_git_fsck": "PASS",
+  "archive_git_fsck": "PASS",
+  "archive_remote": "NONE",
+  "claude_zip_sha256": "ba43a58e7ed25ca63767f6582bfec9353aaaf68e3be243dfbc9f79e2c87e8434",
+  "package": {
+    "sha256": "7c56ac117b8f260df8880b2ec90c5a014394225d84f2c33e0e9a07b1cda2533c",
+    "entries": 173,
+    "crc": "PASS",
+    "manifest_and_sidecar": "PASS",
+    "source_bytes": "PASS",
+    "repeated_zip_manifest_sidecar_bytes": "IDENTICAL",
+    "extraction": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-cleanup-extracted-_2ogxz6u"
+  },
+  "documentation_extracted": {
+    "checked": 189,
+    "missing": [],
+    "external_web_urls": "Syntax/pinned-source provenance only; no web availability claim",
+    "anchors": "File targets checked; heading anchors not separately validated"
+  },
+  "tests": [
+    {
+      "context": "checkout",
+      "suite": "tests",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 239 tests in 37.488s",
+        "",
+        "OK (skipped=5)"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-tests.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "tests",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 221 tests in 29.577s",
+        "",
+        "OK (skipped=5)"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-tests.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "demo/receipt",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 13 tests in 16.359s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-demo-receipt.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "demo/csv-summary",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 15 tests in 24.491s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-demo-csv-summary.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "demo/structured-flow",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 5 tests in 14.777s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-demo-structured-flow.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "demo/gate3-demo",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 9 tests in 15.127s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-demo-gate3-demo.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "reports/demo/verification",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 5 tests in 5.822s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-reports-demo-verification.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "reports/csv-summary/verification",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 6 tests in 12.618s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-reports-csv-summary-verification.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "demo/receipt",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 13 tests in 3.014s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-demo-receipt.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "demo/csv-summary",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 15 tests in 11.602s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-demo-csv-summary.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "demo/structured-flow",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 5 tests in 2.055s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-demo-structured-flow.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "demo/gate3-demo",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 9 tests in 2.205s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-demo-gate3-demo.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "reports/demo/verification",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 5 tests in 5.543s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-reports-demo-verification.log"
+    },
+    {
+      "context": "extracted",
+      "suite": "reports/csv-summary/verification",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 6 tests in 8.874s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\extracted-reports-csv-summary-verification.log"
+    },
+    {
+      "context": "checkout",
+      "suite": "experiments/agent-efficiency",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 3 tests in 0.002s",
+        "",
+        "OK"
+      ],
+      "log": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification-final\\checkout-experiments-agent-efficiency.log"
+    }
+  ],
+  "historical_removed_files": 2338,
+  "generated_removed_files": 32,
+  "status": "PASS",
+  "initial_packaging_failure": {
+    "cause": "Legacy test rejected the exact integration archive-pointer README. Assertion now allows only that README and still rejects historical integration payloads.",
+    "preserved_failed_logs": "E:\\Saint\\BACKUPS\\CouncilFlow-recovery-20261116T130658Z-6ba8676a\\cleanup-verification",
+    "final_regression": "All 15 suite runs PASS"
+  },
+  "preservation_archive_commit": "eb76a59f5f0ea913e7cd5337c5d0e2a7eca04055",
+  "tracked_deletions_verified_historical": 2167,
+  "remaining_unresolved": "Eight legacy efficiency caches with missing source at original locations, plus small out-of-scope report collections retained under UNRESOLVED_KEEP.",
+  "source_changes": "No skill, host agents, plugin, execution architecture, frozen specification or active experiment source changes. Only release allowlist, packaging regression expectations, documentation navigation and ignore rules changed.",
+  "regenerated_caches_removed": [
+    "tools/__pycache__/build_release.cpython-312.pyc"
+  ]
+}

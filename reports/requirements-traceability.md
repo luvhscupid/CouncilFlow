@@ -14,7 +14,7 @@ Skill-relative paths below begin at `.agents/skills/council-flow/`.
 
 | Requirement / explicit source | Implementation | Actual verification and layer/status | Remaining limitation |
 |---|---|---|---|
-| C01 / §§3A,7,8: versioned JSON for all five AI roles and eight purposes | `references/message-contract.json`, `references/communication.md`, `scripts/contracts.py`; SKILL/all role instructions | S/I/SV PASS; D valid/invalid fixtures; N actual Planner/Manager/Worker/Tester/Reviewer JSON packets in `reports/restoration/messages/`, accepted order in `live-order.json` | Approval vocabulary is tested with labeled synthetic fixtures; no unnecessary actual Owner approval invented |
+| C01 / §§3A,7,8: versioned JSON for all five AI roles and eight purposes | `references/message-contract.json`, `references/communication.md`, `scripts/contracts.py`; SKILL/all role instructions | S/I/SV PASS; D valid/invalid fixtures; N actual Planner/Manager/Worker/Tester/Reviewer JSON packets in [reports/restoration/messages/](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/messages), accepted order in `live-order.json` | Approval vocabulary is tested with labeled synthetic fixtures; no unnecessary actual Owner approval invented |
 | C02 / §3B.1–5,11: strict protocol/version, fields/types, no duplicates/nonfinite/unknowns/bool integers | `loads`, `_object`, `validate_message`, referenced-plan guards | D PASS in 39 focused contract methods and independent suites; malformed sequence/bindings/optional fields/plan contexts B01–B07 fixed; final Tester rerun103 PASS | Controlled file/API boundaries, not opaque native transport |
 | C03 / §3A–B.6–7,12: role/type/origin and Owner authority | `ROUTES`, closed payloads, expected sender/bindings, Owner provenance and oracle checks; YAML authority | SV/D PASS; actual externally observed native role bindings validate; spoofed role/Manager/Owner decisions and oracle substitution reject | Structural checks do not authenticate sender; actual origin and Owner facts are external inputs |
 | C04 / §3A–B.8–9: IDs, causal refs, immutable plan/task/attempt/candidate/evidence | `validate_sequence`, `artifact`; original plan and actual packet files | D/N PASS for accepted actual causal round with root hashes; mutated predecessor/candidate/attempt/criteria/origin reject; original plan hash retained | Bootstrap and rejected interim packet are preserved separately, not migrated into successful history |
@@ -29,14 +29,14 @@ Skill-relative paths below begin at `.agents/skills/council-flow/`.
 | C11 / §§2,8,11: original functionality | unchanged receipt/CSV/starter and prior tests | D PASS: all45 previously passing checks retained; actual receipt Rp103,000; current sum4; final full run103 methods,0 unexpected failed suites,0 skips | Old two-test starter has one deliberate baseline failure and is excluded from passing counts |
 | C12 / §8: genuine negative-control sensitivity | `tests/test_contracts.py`; two independent test modules; actual packet mutations | D PASS after B01–B07 repairs; 9 final mutations of actual context/events reject; actual partial Planner map rejected for omitted original criteria | Artificial mutations are not counted as new AI sessions; rejected packet remains preserved |
 | Diagnostics / §5 | `validate_jsonl`, `events-prefix-001.jsonl`, `events.jsonl` | D/N PASS: twelve actual events validate against known role messages plus actual activation report; event-reference negatives reject | Optional bounded export ≤1MiB/1024 lines; not authoritative/crash-safe ledger; operators must keep secrets/private reasoning out |
-| Fresh activation / §§9,12 | `reports/restoration/activation/REST-ACT-REPORT-001.json` and underlying attempt | N fresh corrected skill discovery PASS; real structured explicit input accepted, then native thread systemError/HTTP401; actual returned IDs saved | B/U: no completed invoked inference; custom-role selection unverified; no bypass or repeated identical attempt |
+| Fresh activation / §§9,12 | [reports/restoration/activation/REST-ACT-REPORT-001.json](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/activation/REST-ACT-REPORT-001.json) and underlying attempt | N fresh corrected skill discovery PASS; real structured explicit input accepted, then native thread systemError/HTTP401; actual returned IDs saved | B/U: no completed invoked inference; custom-role selection unverified; no bypass or repeated identical attempt |
 | Permanent traceability/release / §§10–12 | this map, current final.md, corrected dist ZIP/checksum, `restoration/package-verification.json` | I/SV/D/N PASS within correction scope: complete archive/source/safe-path checks, extracted103-test relocation, original Planner map, implementation commit3e23bd8 and final evidence commit at HEAD; all29 tested product files unchanged | Extracted tests used the immutable numbered release snapshot; final archive adds evidence/copy only. Cannot claim COUNCILFLOW_FULLY_VERIFIED from test counts |
 
 ## Evidence index and execution limits
 
-- Original baseline: `reports/restoration/baseline/results.json` (45 passing;
+- Original baseline: [reports/restoration/baseline/results.json](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/baseline/results.json) (45 passing;
   intentional starter separately2 tests/1 expected failure).
-- Final independent execution: `reports/restoration/verification/release/suite-results.json`
+- Final independent execution: [reports/restoration/verification/release/suite-results.json](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/verification/release/suite-results.json)
   and `report.md` (103 tests, zero unexpected failures/skips). The native turn
   hit a usage limit after its complete controlled report was saved; Manager
   validated that genuine report and unchanged candidate on resume. See
@@ -44,14 +44,18 @@ Skill-relative paths below begin at `.agents/skills/council-flow/`.
 - Role/evidence control: `live-order.json`, `live-bindings.json`, native task paths
   in messages; original plan SHA256
   `4ee180ac24876633d62198fc71488ea82df291dcb25e83a657f900329e87f64b`.
-- Usability: `reports/restoration/review/report.md` and `commands.json`, eight real
+- Usability: [reports/restoration/review/report.md](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/review/report.md) and `commands.json`, eight real
   interactions; artificial unauthorized packet is labeled as a negative control.
 - A rejected actual interim Planner packet is retained with
   `planner-interim-rejection.json`; it is not in the accepted live order.
-- Original Planner final map: `reports/restoration/planner-final/report.md` and
+- Original Planner final map: [reports/restoration/planner-final/report.md](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/planner-final/report.md) and
   `messages/REST-PLAN-FINAL-001.json`; all16 unchanged criteria have evidence.
   The final supplied sequence contains21 messages. Immutable inspected snapshots
   preserve hashes while current release copy reflects completed closeout.
 - Communication-correction classification:
   **CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED**, not a new claim that the
   earlier native authentication failure has been repaired.
+
+
+Historical artifact links now resolve to the verified local archive. Original
+report bytes are preserved at the same path inside that archive.

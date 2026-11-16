@@ -11,8 +11,8 @@ Agent Efficiency helpers are offline-tested and opt-in. Live adapter and billing
 compatibility remain unverified; Package D remains **DRAFT_NOT_AUTHORIZED**.
 
 This section describes the current Gate 3 + Agent Efficiency integration source
-bundle. Verification records are kept outside the ZIP in
-`reports/integration-gate3-efficiency/`. The Round 6 statements and reports below are
+bundle. Current verification and historical archive navigation are indexed outside the ZIP in
+`reports/README.md`; original integration records are in the verified local archive. The Round 6 statements and reports below are
 historical evidence from earlier snapshots; they do not describe the current
 checkout or prove that its archive is present.
 
@@ -36,8 +36,9 @@ runtime state, temporary files, the archive itself, and the current hardening
 evidence packet. The reproducible builder itself is included; it writes package
 inventory and checksum records outside the archive to avoid self-inclusion.
 
-Current package verification is recorded outside the archive in
-`reports/integration-gate3-efficiency/`; final-release-audit records are historical. The archive is checked for CRC
+Current cleanup/package verification is recorded outside the ZIP in
+`reports/repository-cleanup/verification.json`; integration and final-release-audit
+records are historical and recoverable through `reports/README.md`. The archive is checked for CRC
 integrity, safe relative paths, required and excluded entries, and exact file
 hashes against the worktree. It is extracted to a temporary directory for test
 execution. Use `python -m zipfile -t dist/council-flow.zip` to check its ZIP
@@ -221,5 +222,6 @@ activation remains unverified; COUNCILFLOW_FULLY_VERIFIED only after genuine
 invocation and required real role sessions. The historical restoration results
 remain in the checkout and are excluded from this archive; they do not describe
 this candidate. Current archive verification is recorded in
-`reports/restoration/package-verification.json`; the earlier numbered archive
+the local archive at `reports/restoration/package-verification.json` (see
+`reports/restoration/README.md`); the earlier numbered archive
 snapshot and its extracted 103-test run remain immutable historical evidence.

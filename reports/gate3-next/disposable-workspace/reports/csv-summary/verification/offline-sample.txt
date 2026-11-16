@@ -1,3 +1,0 @@
-Rows: 3
-Total amount: 30
-Total quantity: 6

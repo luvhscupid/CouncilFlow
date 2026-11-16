@@ -1,1 +1,0 @@
-{"valid": true, "mode": "sequence", "files": 8, "limits": {"message_bytes": 65536, "container_depth": 16}, "boundary": "controlled records only; not authentication/native transport enforcement"}

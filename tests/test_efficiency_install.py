@@ -92,11 +92,14 @@ class InstalledEfficiencyTests(unittest.TestCase):
                 for name in bundle.namelist():
                     self.assertTrue(builder.safe_name(name))
                     self.assertEqual(bundle.read(name), sources[name])
-                    self.assertFalse(name.startswith(("experiments/", "reports/integration-", "owner-fixtures/")))
+                    self.assertFalse(name.startswith(("experiments/", "owner-fixtures/")))
+                    if name.startswith("reports/integration-"):
+                        self.assertEqual(name, "reports/integration-gate3-efficiency/README.md")
                 for required in (ENTRY, SKILL / "references/efficiency.md",
                                  SKILL / "scripts/efficiency/recorder.py",
                                  "demo/gate3-demo/app.py", "tests/test_efficiency_recorder.py",
                                  "docs/technical/README.md", "docs/technical/host-packages.md",
+                                 "reports/README.md", "reports/restoration/README.md",
                                  "docs/technical/claude-code-plugin.md", "docs/research/README.md",
                                  "reports/documentation-release-sync/gate3-run-01.md",
                                  "reports/documentation-release-sync/claude-calc-001.md"):

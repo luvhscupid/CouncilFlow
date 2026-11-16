@@ -35,7 +35,7 @@ installation, API key, database, server, external provider or custom supervisor.
 
 Final independent Tester: **103 methods PASS, 0 unexpected failed suites,
 0 skips**. Exact commands/counts/exits are in
-`reports/restoration/verification/release/suite-results.json`:
+[reports/restoration/verification/release/suite-results.json](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/verification/release/suite-results.json):
 
 | Suite command (`python3 -m unittest discover -s … -v`) | Tests |
 |---|---:|
@@ -45,8 +45,8 @@ Final independent Tester: **103 methods PASS, 0 unexpected failed suites,
 | `demo/csv-summary` | 15 |
 | `reports/csv-summary/verification` | 6 |
 | `demo/structured-flow` | 4 |
-| `reports/restoration/verification/initial` | 8 |
-| `reports/restoration/verification/final` | 7 |
+| [reports/restoration/verification/initial](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/verification/initial) | 8 |
+| [reports/restoration/verification/final](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/verification/final) | 7 |
 
 All45 previously passing checks remain passing. The old starter was separately
 executed at baseline: 2 tests, 1 intentional failure, excluded from passing
@@ -60,12 +60,12 @@ The final Tester executed and saved its complete structured report before its
 native delivery turn hit a usage limit. On resume, Parent validated the genuine
 saved report, all hashes and supplied context; it did not relabel its own work as
 Tester or claim successful native final-response delivery. See
-`reports/restoration/resume-verification.json`.
+[reports/restoration/resume-verification.json](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/resume-verification.json).
 
 Independent Reviewer: eight actual CLI interactions PASS, no blocking usability
 finding. Two low-severity release-copy notes are addressed in current README and
 RELEASE: current status, static versus dynamic evidence and mandatory Tester
-oracle reference. Full review/evidence: `reports/restoration/review/`.
+oracle reference. Full review/evidence: [reports/restoration/review/](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/review).
 
 ## Live workflow and limits
 
@@ -73,7 +73,7 @@ Actual five AI roles were observed: parent Manager, dedicated Planner, fresh
 Workers, independent Testers, and separate Reviewer. Nine workflow sessions
 participated (Manager1, Planner1, Workers3, Testers3, Reviewer1), plus a separate
 native-activation capability Tester. Real IDs and packets are in
-`reports/restoration/messages/`, with accepted causal order and Parent-observed
+[reports/restoration/messages/](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/messages), with accepted causal order and Parent-observed
 origin bindings in `live-order.json`/`live-bindings.json`.
 
 Bootstrap packets remain explicitly pre-schema. A real interim Planner subset
@@ -85,7 +85,7 @@ Fresh native corrected discovery passed. Explicit literal `$council-flow` plus
 structured skill input was accepted, then the actual native thread entered
 systemError with HTTP401 authentication rejection. No completed invoked answer
 occurred. Actual IDs, safe outputs and unchanged SKILL hash are in
-`reports/restoration/activation/`. Live custom-role-file selection remains
+[reports/restoration/activation/](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/activation). Live custom-role-file selection remains
 UNVERIFIED; genuine native subagents received the documented role-instruction
 fallback. No auth extraction/bypass, new provider/key or repeated identical attempt.
 
@@ -94,13 +94,13 @@ fallback. No auth extraction/bypass, new provider/key or repeated identical atte
 - Skill: `/workspace/CouncilFlow/.agents/skills/council-flow/SKILL.md`.
 - Archive: `dist/council-flow.zip`, checksum beside it; current integrity,
   complete-file/source-byte and exclusion checks are recorded in
-  `reports/restoration/package-verification.json`. The immutable numbered
+  [reports/restoration/package-verification.json](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/package-verification.json). The immutable numbered
   archive verification and extracted installation rerun of all103 tests are
   preserved separately; final closeout changes only evidence and release copy,
   with all29 tested product files byte-identical.
 - Permanent map: `reports/requirements-traceability.md` separates specified,
   implemented, static, dynamic, native and blocked evidence.
-- Original Planner final check: `reports/restoration/planner-final/report.md`
+- Original Planner final check: [reports/restoration/planner-final/report.md](../../../BACKUPS/CouncilFlow-Archive/reports/restoration/planner-final/report.md)
   and `messages/REST-PLAN-FINAL-001.json`, all16 original criteria mapped to
   explicit evidence. The21-message supplied causal sequence and12 optional
   actual events validate with Parent-observed role context; these checks are
@@ -124,3 +124,7 @@ $council-flow Implement the approved coding goal in this repository with indepen
 No construction prompt or Owner-authored JSON is needed. Native activation must
 remain unverified until a genuine invoked turn and required workflow succeed;
 a passing unit count cannot justify COUNCILFLOW_FULLY_VERIFIED.
+
+
+Historical artifact links now resolve to the verified local archive. Original
+report bytes are preserved at the same path inside that archive.

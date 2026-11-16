@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "f367c365c84baa61e6c21af9d7183ee91a7aa80d3b260a2ab9b186a718a31393",
-  "entries": 161,
+  "sha256": "7c56ac117b8f260df8880b2ec90c5a014394225d84f2c33e0e9a07b1cda2533c",
+  "entries": 173,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -125,18 +125,18 @@
     },
     {
       "path": "README.md",
-      "size": 10064,
-      "sha256": "615097c5575e9051ecc2ed54dff6fb288c64431ef8b33b63837c02957aa8afda"
+      "size": 10145,
+      "sha256": "46ee0cbc9a87028f2b432e907200f8e032aa8b5a1f55d21a75cc409d82049deb"
     },
     {
       "path": "RELEASE.md",
-      "size": 13500,
-      "sha256": "462f94ad755674e250ceea2e8d64a87bbd1f191fb0f5e5c8b88e847da94063aa"
+      "size": 13711,
+      "sha256": "5367be97e6ac6c1b8fb01803f61e541d17f01c8389317391729f0eea456c5614"
     },
     {
       "path": "demo/README.md",
-      "size": 5266,
-      "sha256": "2f4e47c4bfe4b89b85dc1e91ac3e2f26bcb672ef9809df2ad6e7fcac5b38572e"
+      "size": 5355,
+      "sha256": "814317bfee2ffe4b195aa2e4427d6258b8d42ff64ecfeae029a7dab8fdda893b"
     },
     {
       "path": "demo/csv-summary/README.md",
@@ -215,8 +215,8 @@
     },
     {
       "path": "demo/structured-flow/README.md",
-      "size": 3169,
-      "sha256": "5b3506d01b7d207ca218b718e6ccaaf5ff7bf542ac668bdca872a0d74e6c915d"
+      "size": 3405,
+      "sha256": "aec022e89442b43e4630213f39793e473f571d67fc8a1abae559b11a1b795e4b"
     },
     {
       "path": "demo/structured-flow/sum_values.py",
@@ -437,6 +437,31 @@
       "path": "docs/technical/structured-communication.md",
       "size": 2392,
       "sha256": "93848e781b790c538d389a113a8dfd3a0400234df69d5ad07c910721c5d76581"
+    },
+    {
+      "path": "reports/README.md",
+      "size": 3318,
+      "sha256": "da59b9dd8028dcf2c3f300038318e84d37b6279b92d05f0244e12f3b925ea731"
+    },
+    {
+      "path": "reports/councilflow-e10/README.md",
+      "size": 743,
+      "sha256": "0d1923fc9552b96279cac84ea9b3803e854bc96f599b7aa763fe0cc0bdd5d049"
+    },
+    {
+      "path": "reports/councilflow-final-release-audit/README.md",
+      "size": 778,
+      "sha256": "e1293e4f557169279cbb31f0eff871d479ff72b341d47983abfe8cd02220f3dc"
+    },
+    {
+      "path": "reports/councilflow-finalization/README.md",
+      "size": 812,
+      "sha256": "7f9dee83693b5ef1c8bdcd1bf869863759e392d191e4874e4290ca8165edfbeb"
+    },
+    {
+      "path": "reports/councilflow-hardening/README.md",
+      "size": 700,
+      "sha256": "88b3ed9dff0c3af952bb7454c6923a3c46b04c8e5013e2e2bfdac9fb76633702"
     },
     {
       "path": "reports/csv-summary/contract.json",
@@ -709,6 +734,41 @@
       "sha256": "8ab1fe949600e999dc70bf5d3eba5d57814494778aaf0278fc2e4f50343b39c6"
     },
     {
+      "path": "reports/engineering-recovery/README.md",
+      "size": 756,
+      "sha256": "1d8870ee1cc5c3d60960d2c0df43987762442eb383e5adad77e539f77b826d3b"
+    },
+    {
+      "path": "reports/gate3-next/README.md",
+      "size": 735,
+      "sha256": "9efaade032953c66ad19eaeca76ca13ee18930d42594ed9827fc366949eb8682"
+    },
+    {
+      "path": "reports/gate3-preflight-2026-11-12/README.md",
+      "size": 759,
+      "sha256": "8b10e457a28a047a6a9372b0594a70696241eefdd2c7f90409756b2ac2759e5f"
+    },
+    {
+      "path": "reports/integration-gate3-efficiency/README.md",
+      "size": 787,
+      "sha256": "4b96a4125db91afce6691734b5ccd0a15e559e0807869a5897ac6f6f54f2034b"
+    },
+    {
+      "path": "reports/package-check-verified/README.md",
+      "size": 745,
+      "sha256": "f1a29cc00fe9f309c41ac0978f4e1e6db5c3665f5a1032cf166e7f6320a2855b"
+    },
+    {
+      "path": "reports/reliability-repair/README.md",
+      "size": 749,
+      "sha256": "54d10341a82293466c0d3714869d4ccd7f566269aa0270d4fd2e2ac8d10de5c3"
+    },
+    {
+      "path": "reports/restoration/README.md",
+      "size": 728,
+      "sha256": "4128489ff4843345804e54b0beca3095e945ca4fe85708b0c5114b1e21b82cee"
+    },
+    {
       "path": "tests/efficiency-fixtures/claude-stream-sanitized.jsonl",
       "size": 422,
       "sha256": "a84bc70654806fa7d45238a865a853ed04e20704ad814a978e20d2692c44871a"
@@ -725,8 +785,8 @@
     },
     {
       "path": "tests/fixtures/README.md",
-      "size": 3044,
-      "sha256": "1160380ed32d2d2a64e7ebf790b725836d7c1cad358ef04d9f66f875271dd5e3"
+      "size": 3143,
+      "sha256": "ba733dca7905d7356807437608a2931fc57f6947ed693b7de95e19eb3e163090"
     },
     {
       "path": "tests/fixtures/owner-version-original.txt",
@@ -765,8 +825,8 @@
     },
     {
       "path": "tests/test_efficiency_install.py",
-      "size": 6321,
-      "sha256": "c00854320eb57411b34a15f2103fe09c6d5c2c0ad07d7a7b959e4641af61859c"
+      "size": 6545,
+      "sha256": "4f42e3ee80077ccfc8b4f0580d6eefe10eb537bcebd05127dc328a8767b8db2f"
     },
     {
       "path": "tests/test_efficiency_recorder.py",
@@ -805,8 +865,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 7934,
-      "sha256": "233493ea1e3b0ab31b7b31c2a95bb606b59871d49d2152a239dfa69a02aa1eec"
+      "size": 8471,
+      "sha256": "8abc1693f302d031ad38004b96fc49a1869299195fbf96f3e7dd515cc5a891c1"
     }
   ],
   "crc": "PASS",

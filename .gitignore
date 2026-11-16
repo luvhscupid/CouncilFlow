@@ -4,3 +4,15 @@ __pycache__/
 .coverage
 .codex-runtime/
 reports/runtime/
+
+# Local development and reproducible tool output (not source or evidence).
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+htmlcov/
+*.tmp
+.DS_Store
+Thumbs.db
+# Local per-task host state; explicit fixtures and canonical reports stay tracked.
+.councilflow/runs/

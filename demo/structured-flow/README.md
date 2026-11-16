@@ -83,19 +83,21 @@ incomplete. It returned only the first operand, so `2 3 -1` printed `2` instead 
 that candidate and assigned a fresh Worker to repair it, with the acceptance
 criteria unchanged. The current `sum_values.py` contains that repair.
 
-The evidence is recorded under `reports/restoration/`:
+Original evidence is preserved in the local archive; see the
+[restoration archive pointer](../../reports/restoration/README.md). The artifact
+paths below resolve against that archive:
 
 - `reports/restoration/worker/` holds the initial source of the incomplete attempt.
 - `reports/restoration/verification/initial/` holds the failed output and the
   verification records.
 
 Actual JSON task packets, independent observations, rework records, and final
-outcomes belong in `reports/restoration/`. The unit tests in this folder are
+outcomes remain in the archived `reports/restoration/` collection. The unit tests in this folder are
 synthetic fixtures. They do not count as agent evidence.
 
 This is a new execution. It is not the older receipt demonstration in
 `demo/receipt/`. The independent final verification is recorded separately, in
-[../../reports/final.md](../../reports/final.md).
+[historical final report](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/final.md).
 
 ## Related
 

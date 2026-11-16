@@ -75,4 +75,4 @@ rather than regenerating the hash.
 - Related test data (sanitized parser fixtures, separate from this directory):
   [`tests/efficiency-fixtures/`](../efficiency-fixtures/)
 - Experiment fixtures (synthetic, labeled as experiment data):
-  [`experiments/agent-efficiency/fixtures/`](../../experiments/agent-efficiency/fixtures/)
+  [`experiments/agent-efficiency/fixtures/` (repository only)](https://github.com/luvhscupid/CouncilFlow/tree/9c59bc3d0f98a818b01ad14d0165d92b236105b0/experiments/agent-efficiency/fixtures)

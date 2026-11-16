@@ -48,8 +48,9 @@ architecture. [Research proposals](docs/research/README.md) are non-normative an
 authorize implementation or experiments on their own.
 
 This Git repository contains the current source, regression tests, and the installable
-`dist/council-flow.zip` release candidate. Current integration evidence is in
-`reports/integration-gate3-efficiency/`. Earlier audit evidence stays historical.
+`dist/council-flow.zip` release candidate. Current host evidence and historical archive navigation are indexed in
+[reports/README.md](reports/README.md). Earlier integration and audit records
+remain historical in the verified local archive.
 Round 6 and Gate 3b reports describe earlier workspaces and are kept unchanged, so they
 do not show how this checkout is activated or configured. Software release verification is
 separate from the frozen Gate 3 experiment, and no new Gate 3 experiment is included.

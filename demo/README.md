@@ -145,4 +145,4 @@ application.
 
 - Repository overview and how the CouncilFlow skill is used: [../README.md](../README.md)
 - Release contents and checks: [../RELEASE.md](../RELEASE.md)
-- Final reports: [../reports/final.md](../reports/final.md)
+- Final reports: [historical final report](https://github.com/luvhscupid/CouncilFlow/blob/9c59bc3d0f98a818b01ad14d0165d92b236105b0/reports/final.md)

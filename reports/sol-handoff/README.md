@@ -8,7 +8,7 @@
 - Baseline `HEAD`: `2d695a22a1bb596a527b0d118edc073d6d25553f`. The local checkpoint commit is `4b3790751de372e1e3633ca2512f095de0ca9779` on branch `main`, based directly on that baseline. This README is updated in the ordinary follow-up commit after the checkpoint; the final HEAD is the commit containing this update.
 - Before the preservation task, the verified finalization was uncommitted and `main` matched `origin/main`. Pre-existing tracked edits and untracked files were preserved. No push, merge, reset, clean, or history rewrite occurred.
 - Supplied source ZIP: `E:\Saint\PROJECTS\CouncilFlow-main.zip`, 5,823,806 bytes, SHA-256 `ab0fb7cf561d43d06c8e7222779e03040bde54a137d613aeed79ad646ef398f1`. Before editing, its non-Git contents were compared byte-for-byte with the checkout; it was not extracted over the checkout.
-- Initial non-destructive inventory: 9 modified tracked paths and 595 untracked paths; see `reports/councilflow-finalization/initial-manifest.json`.
+- Initial non-destructive inventory: 9 modified tracked paths and 595 untracked paths; see [reports/councilflow-finalization/initial-manifest.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/initial-manifest.json).
 
 ## Completed work and release
 
@@ -26,19 +26,19 @@
 | `-m unittest discover -s reports/demo/verification -v` | 5 | exit 0 |
 | `-m unittest discover -s reports/csv-summary/verification -v` | 6 | exit 0 |
 
-Executable recorded by the Tester: `C:\Users\cupid\AppData\Local\Programs\Python\Python312\python.exe`. The source and extraction runs, raw output hashes, and counts are in `reports/councilflow-finalization/tester-final/execution.json`.
+Executable recorded by the Tester: `C:\Users\cupid\AppData\Local\Programs\Python\Python312\python.exe`. The source and extraction runs, raw output hashes, and counts are in [reports/councilflow-finalization/tester-final/execution.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/tester-final/execution.json).
 
 Additional final checks passed: both advertised JSON examples validated with `--root` in source and extraction; the stale-digest negative control was rejected; all 20 Full Plan checksums passed; protected Charter, frozen Gate 3 v0.2, and C3 source bytes matched `HEAD`; exact E1–E10 criterion text fidelity was checked with C3 applied only to E4. Archive integrity and byte mapping passed.
 
-The independent Reviewer report is `reports/councilflow-finalization/reviewer/job-report.json` (SHA-256 `f816b2c2f6134412718d18fc02610fc5bc5df32fabc2674e37e90b44a6be9de5`). It used the same task attempt as Tester (`CF-A013`) and reran the Tester-declared command from the exact extracted-candidate directory with identical executable, arguments, candidate, and input hashes. Exit was 0. Raw stdout SHA-256 was `92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838`; CRLF-to-LF-only normalized SHA-256 was `9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd`, matching the Tester. The earlier unmatched Reviewer assignment is supplemental and not part of this validated sequence.
+The independent Reviewer report is [reports/councilflow-finalization/reviewer/job-report.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/reviewer/job-report.json) (SHA-256 `f816b2c2f6134412718d18fc02610fc5bc5df32fabc2674e37e90b44a6be9de5`). It used the same task attempt as Tester (`CF-A013`) and reran the Tester-declared command from the exact extracted-candidate directory with identical executable, arguments, candidate, and input hashes. Exit was 0. Raw stdout SHA-256 was `92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838`; CRLF-to-LF-only normalized SHA-256 was `9c0e58ec75ef29742d82a29008db9dc6016e44ad3e316963d23533e5bb82b8bd`, matching the Tester. The earlier unmatched Reviewer assignment is supplemental and not part of this validated sequence.
 
-The original Planner's authoritative final check is `reports/councilflow-finalization/planner/plan-check-authoritative.json`; it maps all 23 original acceptance IDs to hash-bound evidence. Earlier plan-check files are superseded. The authoritative check preserves the mission outcome and does not treat Gate 3 as executed.
+The original Planner's authoritative final check is [reports/councilflow-finalization/planner/plan-check-authoritative.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/planner/plan-check-authoritative.json); it maps all 23 original acceptance IDs to hash-bound evidence. Earlier plan-check files are superseded. The authoritative check preserves the mission outcome and does not treat Gate 3 as executed.
 
 ## Retired-surface audit
 
 The current checkout has zero active-surface matches and zero active path-name matches. The final installable archive has zero matching paths or text and no standalone component entries. The integrated Codebase Memory policy remains inside the single CouncilFlow skill and describes exact-root navigation/context only, never verification evidence.
 
-Historical text was not rewritten. `reports/councilflow-finalization/retirement-audit.json` records hash-bound historical/supporting matches and 15 text matches in the original source ZIP. The read-only Git audit scanned 11 unique commits and found historical text blobs in seven files across two commits, with no standalone component paths in reachable Git trees. These are retained records, not active capability; no literal historical-erasure claim is made. See `reports/councilflow-finalization/git-history-audit.json` for blob and content hashes.
+Historical text was not rewritten. [reports/councilflow-finalization/retirement-audit.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/retirement-audit.json) records hash-bound historical/supporting matches and 15 text matches in the original source ZIP. The read-only Git audit scanned 11 unique commits and found historical text blobs in seven files across two commits, with no standalone component paths in reachable Git trees. These are retained records, not active capability; no literal historical-erasure claim is made. See [reports/councilflow-finalization/git-history-audit.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/git-history-audit.json) for blob and content hashes.
 
 ## Security, MCP, and host observations
 
@@ -51,12 +51,12 @@ Historical text was not rewritten. `reports/councilflow-finalization/retirement-
 
 Gate 3 E1–E10 was **NOT EXECUTED**. The preparation checklist records no E1–E10 PASS or FAIL. Readiness is `BLOCKED_WITH_EXACT_PREREQUISITES`, not an E1–E10 outcome.
 
-- `reports/gate3-next/OWNER-TASK-DRAFT.txt` has exactly two criteria and is explicitly **NOT OWNER-APPROVED**. Do not treat it as the authentic Owner fixture.
-- `reports/gate3-next/disposable-workspace` is the isolated workspace; `demo/gate3-demo/app.py` and `test_app.py` are intentionally unfinished placeholders. The workspace manifest records its source archive identity.
+- [reports/gate3-next/OWNER-TASK-DRAFT.txt](../../../../BACKUPS/CouncilFlow-Archive/reports/gate3-next/OWNER-TASK-DRAFT.txt) has exactly two criteria and is explicitly **NOT OWNER-APPROVED**. Do not treat it as the authentic Owner fixture.
+- [reports/gate3-next/disposable-workspace](../../../../BACKUPS/CouncilFlow-Archive/reports/gate3-next/disposable-workspace) is the isolated workspace; `demo/gate3-demo/app.py` and `test_app.py` are intentionally unfinished placeholders. The workspace manifest records its source archive identity.
 - Before a separate observation, the Owner must personally accept and save the exact task text outside the installed skill, then start a new authenticated local session with that disposable workspace as root and submit only `$council-flow` followed by the exact saved fixture text. Do not paste the skill or add a spawn instruction. The Owner must perform zero courier interventions after submission.
 - The missing prerequisites are an authentic Owner-saved fixture, host-observed skill activation/delegation, and host evidence of effective TOML identity. If distinct native spawning is not established, stop at E3 and return the evidence. Do not start Gate 3 until the prerequisites are genuinely present.
 
-Frozen sources and hashes are recorded in `reports/gate3-next/E1-E10-CHECKLIST.md`; the draft instruction template is `reports/gate3-next/OWNER-INVOCATION.txt`.
+Frozen sources and hashes are recorded in [reports/gate3-next/E1-E10-CHECKLIST.md](../../../../BACKUPS/CouncilFlow-Archive/reports/gate3-next/E1-E10-CHECKLIST.md); the draft instruction template is [reports/gate3-next/OWNER-INVOCATION.txt](../../../../BACKUPS/CouncilFlow-Archive/reports/gate3-next/OWNER-INVOCATION.txt).
 
 ## Prioritized findings and disposition
 
@@ -79,10 +79,14 @@ No separately authorized protocol-policy change was needed. Snapshot Vault AC07/
 
 ## Local checkpoint
 
-- Reviewable full-tree snapshot: `reports/councilflow-finalization/working-tree-checkpoint.zip`. Its exact SHA-256, file count, and exclusions are in `reports/councilflow-finalization/working-tree-checkpoint.manifest.json` and `reports/councilflow-finalization/working-tree-checkpoint.zip.sha256`.
+- Reviewable full-tree snapshot: `reports/councilflow-finalization/working-tree-checkpoint.zip`. Its exact SHA-256, file count, and exclusions are in [reports/councilflow-finalization/working-tree-checkpoint.manifest.json](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/working-tree-checkpoint.manifest.json) and [reports/councilflow-finalization/working-tree-checkpoint.zip.sha256](../../../../BACKUPS/CouncilFlow-Archive/reports/councilflow-finalization/working-tree-checkpoint.zip.sha256).
 - CRC, path safety, and byte-for-byte mapping passed. The checkpoint includes the handoff and an embedded file inventory; `.git`, cache/runtime directories, symlinks, and credential-pattern files were excluded and are listed in the companion manifest.
 - The first checkpoint commit contains 876 selected files: source, tests, release package, documentation, hardening history, finalization evidence, Gate 3 preparation, and this handoff. Commit message: `checkpoint: preserve verified CouncilFlow finalization`.
 - Intentionally excluded but preserved on disk: `reports/councilflow-finalization/working-tree-checkpoint.zip` (local snapshot archive); `reports/councilflow-finalization/tester/extracted-candidate/` and `tester-final/extracted-candidate/` (reproducible package test extractions); `reports/gate3-next/disposable-demo/` (superseded scaffold; current draft points to `disposable-workspace`). Ignored `__pycache__` directories remain ignored. The commit includes the checkpoint ZIP's manifest and checksum sidecars, not the ZIP itself.
 - The handoff update is committed separately after the first commit, as allowed for a post-checkpoint report update. No remote push or merge occurred.
 
 The final local checkpoint and this handoff are for Sol’s review. Do not report `COUNCILFLOW_FULLY_VERIFIED` until a separate authentic Gate 3 observation passes under its governing frozen criteria. No retired standalone recall component was reintroduced.
+
+
+Historical artifact links now resolve to the verified local archive. Original
+report bytes are preserved at the same path inside that archive.
