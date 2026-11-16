@@ -1,0 +1,472 @@
+[
+  {
+    "name": "pristine-efficiency",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\efficiency",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-efficiency.stdout",
+    "stderr_file": "pristine-efficiency.stderr",
+    "summary": "_xkiro_identity_and_cost_not_inferred (test_recorder.RecorderTests.test_claude_xkiro_identity_and_cost_not_inferred) ... ok\r\ntest_codex_partial_and_unknown_are_null (test_recorder.RecorderTests.test_codex_partial_and_unknown_are_null) ... ok\r\ntest_malformed_and_jsonl (test_recorder.RecorderTests.test_malformed_and_jsonl) ... ok\r\ntest_unknown_claude_gateway_route_is_explicit_and_narrow (test_recorder.RecorderTests.test_unknown_claude_gateway_route_is_explicit_and_narrow) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 73 tests in 10.543s\r\n\r\nOK (skipped=3)\r\n"
+  },
+  {
+    "name": "pristine-test_contracts",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_contracts.py",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\core",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-test_contracts.stdout",
+    "stderr_file": "pristine-test_contracts.stderr",
+    "summary": "\r\ntest_windows_drive_paths_are_never_repository_relative (test_contracts.PolicyAndDiagnosticTests.test_windows_drive_paths_are_never_repository_relative) ... ok\r\ntest_yaml_authority_retry_and_boolean_mutations_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_authority_retry_and_boolean_mutations_fail) ... ok\r\ntest_yaml_duplicates_and_unsupported_features_really_fail (test_contracts.PolicyAndDiagnosticTests.test_yaml_duplicates_and_unsupported_features_really_fail) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 81 tests in 7.106s\r\n\r\nOK (skipped=2)\r\n"
+  },
+  {
+    "name": "pristine-test_original_source",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_original_source.py",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\core",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-test_original_source.stdout",
+    "stderr_file": "pristine-test_original_source.stderr",
+    "summary": "cannot_rebind_one_artifact_identity (test_original_source.OriginalSourceTests.test_original_and_derivative_cannot_rebind_one_artifact_identity) ... ok\r\ntest_self_consistent_derivative_and_plan_cannot_replace_original (test_original_source.OriginalSourceTests.test_self_consistent_derivative_and_plan_cannot_replace_original) ... ok\r\ntest_source_provenance_is_required_separately_from_hash (test_original_source.OriginalSourceTests.test_source_provenance_is_required_separately_from_hash) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.418s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "pristine-test_workflow_recovery",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_workflow_recovery.py",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\core",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-test_workflow_recovery.stdout",
+    "stderr_file": "pristine-test_workflow_recovery.stderr",
+    "summary": "claim (test_workflow_recovery.WorkflowRecoveryTests.test_infrastructure_timeout_is_observed_without_success_or_role_claim) ... ok\r\ntest_real_pristine_oracle_catches_defect_hidden_by_weakened_tests (test_workflow_recovery.WorkflowRecoveryTests.test_real_pristine_oracle_catches_defect_hidden_by_weakened_tests) ... ok\r\ntest_reviewer_real_rerun_rejects_false_deterministic_evidence (test_workflow_recovery.WorkflowRecoveryTests.test_reviewer_real_rerun_rejects_false_deterministic_evidence) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 3.969s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "pristine-test_codebase_memory_integration",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_codebase_memory_integration.py",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\core",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-test_codebase_memory_integration.stdout",
+    "stderr_file": "pristine-test_codebase_memory_integration.stderr",
+    "summary": "on (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_installation_includes_reference_without_manual_initialization) ... ok\r\ntest_missing_or_unreachable_mcp_continues_direct_inspection (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_missing_or_unreachable_mcp_continues_direct_inspection) ... ok\r\ntest_retired_standalone_paths_are_absent (test_codebase_memory_integration.CodebaseMemoryInstructionsTests.test_retired_standalone_paths_are_absent) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 0.006s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "pristine-test_release",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_release.py",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\core",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-test_release.stdout",
+    "stderr_file": "pristine-test_release.stderr",
+    "summary": "test_existing_output_hardlinks_do_not_modify_outside_inodes (test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes) ... ok\r\ntest_linked_output_directory_is_rejected_before_writes (test_release.ReleaseOutputTests.test_linked_output_directory_is_rejected_before_writes) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.145s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "pristine-gate3",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\gate\\demo\\gate3-demo",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-pristine-zln4ds8p\\gate",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "pristine-gate3.stdout",
+    "stderr_file": "pristine-gate3.stderr",
+    "summary": "ac1_function (test_app.ColumnSumTests.test_ac1_function) ... ok\r\ntest_ac2_missing_column (test_app.ColumnSumTests.test_ac2_missing_column) ... ok\r\ntest_ac2_nonnumeric (test_app.ColumnSumTests.test_ac2_nonnumeric) ... ok\r\ntest_fractional_and_negative_values (test_app.ColumnSumTests.test_fractional_and_negative_values) ... ok\r\ntest_missing_file (test_app.ColumnSumTests.test_missing_file) ... ok\r\ntest_nonfinite_values_are_errors (test_app.ColumnSumTests.test_nonfinite_values_are_errors) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 7 tests in 3.912s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "checkout-00",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-00.stdout",
+    "stderr_file": "checkout-00.stderr",
+    "summary": "kflow_recovery.WorkflowRecoveryTests.test_infrastructure_timeout_is_observed_without_success_or_role_claim) ... ok\r\ntest_real_pristine_oracle_catches_defect_hidden_by_weakened_tests (test_workflow_recovery.WorkflowRecoveryTests.test_real_pristine_oracle_catches_defect_hidden_by_weakened_tests) ... ok\r\ntest_reviewer_real_rerun_rejects_false_deterministic_evidence (test_workflow_recovery.WorkflowRecoveryTests.test_reviewer_real_rerun_rejects_false_deterministic_evidence) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 199 tests in 35.283s\r\n\r\nOK (skipped=5)\r\n"
+  },
+  {
+    "name": "checkout-01",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/gate3-demo",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-01.stdout",
+    "stderr_file": "checkout-01.stderr",
+    "summary": "test_app.ColumnSumTests.test_fractional_and_negative_values) ... ok\r\ntest_missing_file (test_app.ColumnSumTests.test_missing_file) ... ok\r\ntest_nonfinite_values_are_errors (test_app.ColumnSumTests.test_nonfinite_values_are_errors) ... ok\r\ntest_blank_missing_and_invalid_utf8_values_fail_cleanly (test_edge_cases.ErrorRegressions.test_blank_missing_and_invalid_utf8_values_fail_cleanly) ... ok\r\ntest_bom_decimal_cli_is_exact (test_edge_cases.ErrorRegressions.test_bom_decimal_cli_is_exact) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 6.439s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "checkout-02",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-02.stdout",
+    "stderr_file": "checkout-02.stderr",
+    "summary": "d_generator) ... ok\r\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\r\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\r\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\r\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\r\ntest_version (test_receipt_calculator.CommandLineTests.test_version) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 13 tests in 7.875s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "checkout-03",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-03.stdout",
+    "stderr_file": "checkout-03.stderr",
+    "summary": "r.CSVSummaryTests.test_numeric_rejections) ... ok\r\ntest_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok\r\ntest_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok\r\ntest_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok\r\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 15 tests in 28.786s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "checkout-04",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-04.stdout",
+    "stderr_file": "checkout-04.stderr",
+    "summary": "Tests.test_invalid_values_are_clear_without_traceback) ... ok\r\ntest_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound) ... ok\r\ntest_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok\r\ntest_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok\r\ntest_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 7.718s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "checkout-05",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-05.stdout",
+    "stderr_file": "checkout-05.stderr",
+    "summary": "inistic_independent_receipt_oracle) ... ok\r\ntest_exact_boundary_products_and_sums_using_rational_oracle (test_independent_receipt.IndependentReceiptChecks.test_exact_boundary_products_and_sums_using_rational_oracle) ... ok\r\ntest_rejected_out_of_bounds_and_unsafe_api_values (test_independent_receipt.IndependentReceiptChecks.test_rejected_out_of_bounds_and_unsafe_api_values) ... ok\r\ntest_user_errors_and_help (test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 21.448s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "checkout-06",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "checkout-06.stdout",
+    "stderr_file": "checkout-06.stderr",
+    "summary": "ecords) ... ok\r\ntest_late_bad_numeric_cells_never_emit_partial_summary (test_independent_csv.IndependentCSVChecks.test_late_bad_numeric_cells_never_emit_partial_summary) ... ok\r\ntest_shape_quotes_and_logical_record_error_context (test_independent_csv.IndependentCSVChecks.test_shape_quotes_and_logical_record_error_context) ... ok\r\ntest_utf8_bom_crlf_multiline_quotes_and_requested_order (test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 6 tests in 31.341s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "package-d-offline",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "experiments/agent-efficiency",
+      "-v"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "package-d-offline.stdout",
+    "stderr_file": "package-d-offline.stderr",
+    "summary": "test_paired_metrics_keep_missing_values_and_find_blind_spot (test_evaluate.EvaluationTests.test_paired_metrics_keep_missing_values_and_find_blind_spot) ... ok\r\ntest_protocol_is_draft_and_hash_binding_precedes_run (test_evaluate.EvaluationTests.test_protocol_is_draft_and_hash_binding_precedes_run) ... ok\r\ntest_task_mismatch_rejected (test_evaluate.EvaluationTests.test_task_mismatch_rejected) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 3 tests in 0.001s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "release-build",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "tools/build_release.py"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "352b62bf5b16472d59e85f4f3d20cf51f19b0ecf84d7b0f78cd605891686b1d9",
+    "stdout_file": "release-build.stdout",
+    "stderr_file": "release-build.stderr",
+    "summary": ""
+  },
+  {
+    "name": "release-rebuild",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "tools/build_release.py"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "352b62bf5b16472d59e85f4f3d20cf51f19b0ecf84d7b0f78cd605891686b1d9",
+    "stdout_file": "release-rebuild.stdout",
+    "stderr_file": "release-rebuild.stderr",
+    "summary": ""
+  },
+  {
+    "name": "extracted-00",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-00.stdout",
+    "stderr_file": "extracted-00.stderr",
+    "summary": "kflow_recovery.WorkflowRecoveryTests.test_infrastructure_timeout_is_observed_without_success_or_role_claim) ... ok\r\ntest_real_pristine_oracle_catches_defect_hidden_by_weakened_tests (test_workflow_recovery.WorkflowRecoveryTests.test_real_pristine_oracle_catches_defect_hidden_by_weakened_tests) ... ok\r\ntest_reviewer_real_rerun_rejects_false_deterministic_evidence (test_workflow_recovery.WorkflowRecoveryTests.test_reviewer_real_rerun_rejects_false_deterministic_evidence) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 199 tests in 34.602s\r\n\r\nOK (skipped=5)\r\n"
+  },
+  {
+    "name": "extracted-01",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/gate3-demo",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-01.stdout",
+    "stderr_file": "extracted-01.stderr",
+    "summary": "test_app.ColumnSumTests.test_fractional_and_negative_values) ... ok\r\ntest_missing_file (test_app.ColumnSumTests.test_missing_file) ... ok\r\ntest_nonfinite_values_are_errors (test_app.ColumnSumTests.test_nonfinite_values_are_errors) ... ok\r\ntest_blank_missing_and_invalid_utf8_values_fail_cleanly (test_edge_cases.ErrorRegressions.test_blank_missing_and_invalid_utf8_values_fail_cleanly) ... ok\r\ntest_bom_decimal_cli_is_exact (test_edge_cases.ErrorRegressions.test_bom_decimal_cli_is_exact) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 6.431s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "extracted-02",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/receipt",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-02.stdout",
+    "stderr_file": "extracted-02.stderr",
+    "summary": "d_generator) ... ok\r\ntest_errors_are_concise_without_traceback (test_receipt_calculator.CommandLineTests.test_errors_are_concise_without_traceback) ... ok\r\ntest_fractional_and_zero_cli (test_receipt_calculator.CommandLineTests.test_fractional_and_zero_cli) ... ok\r\ntest_help (test_receipt_calculator.CommandLineTests.test_help) ... ok\r\ntest_sample_cli (test_receipt_calculator.CommandLineTests.test_sample_cli) ... ok\r\ntest_version (test_receipt_calculator.CommandLineTests.test_version) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 13 tests in 7.851s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "extracted-03",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/csv-summary",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-03.stdout",
+    "stderr_file": "extracted-03.stderr",
+    "summary": "r.CSVSummaryTests.test_numeric_rejections) ... ok\r\ntest_ragged_and_blank_records (test_csv_summarizer.CSVSummaryTests.test_ragged_and_blank_records) ... ok\r\ntest_read_errors_and_no_selection_api (test_csv_summarizer.CSVSummaryTests.test_read_errors_and_no_selection_api) ... ok\r\ntest_sample_and_reversed_order (test_csv_summarizer.CSVSummaryTests.test_sample_and_reversed_order) ... ok\r\ntest_zero_and_canonical_format (test_csv_summarizer.CSVSummaryTests.test_zero_and_canonical_format) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 15 tests in 29.879s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "extracted-04",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "demo/structured-flow",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-04.stdout",
+    "stderr_file": "extracted-04.stderr",
+    "summary": "Tests.test_invalid_values_are_clear_without_traceback) ... ok\r\ntest_large_valid_operands_handle_output_conversion_bound (test_sum_values.SumValuesTests.test_large_valid_operands_handle_output_conversion_bound) ... ok\r\ntest_missing_values_and_help (test_sum_values.SumValuesTests.test_missing_values_and_help) ... ok\r\ntest_multiple_signed_values (test_sum_values.SumValuesTests.test_multiple_signed_values) ... ok\r\ntest_single_and_zero (test_sum_values.SumValuesTests.test_single_and_zero) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 7.620s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "extracted-05",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/demo/verification",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-05.stdout",
+    "stderr_file": "extracted-05.stderr",
+    "summary": "inistic_independent_receipt_oracle) ... ok\r\ntest_exact_boundary_products_and_sums_using_rational_oracle (test_independent_receipt.IndependentReceiptChecks.test_exact_boundary_products_and_sums_using_rational_oracle) ... ok\r\ntest_rejected_out_of_bounds_and_unsafe_api_values (test_independent_receipt.IndependentReceiptChecks.test_rejected_out_of_bounds_and_unsafe_api_values) ... ok\r\ntest_user_errors_and_help (test_independent_receipt.IndependentReceiptChecks.test_user_errors_and_help) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 15.680s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "extracted-06",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reports/csv-summary/verification",
+      "-v"
+    ],
+    "workdir": "C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-extracted-850lgie4\\extracted",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_file": "extracted-06.stdout",
+    "stderr_file": "extracted-06.stderr",
+    "summary": "ecords) ... ok\r\ntest_late_bad_numeric_cells_never_emit_partial_summary (test_independent_csv.IndependentCSVChecks.test_late_bad_numeric_cells_never_emit_partial_summary) ... ok\r\ntest_shape_quotes_and_logical_record_error_context (test_independent_csv.IndependentCSVChecks.test_shape_quotes_and_logical_record_error_context) ... ok\r\ntest_utf8_bom_crlf_multiline_quotes_and_requested_order (test_independent_csv.IndependentCSVChecks.test_utf8_bom_crlf_multiline_quotes_and_requested_order) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 6 tests in 31.153s\r\n\r\nOK\r\n"
+  },
+  {
+    "name": "deterministic-csv",
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "demo/gate3-demo/app.py",
+      "demo/gate3-demo/inputs/amount.csv",
+      "amount"
+    ],
+    "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+    "exit_code": 0,
+    "stdout_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "stdout_file": "deterministic-csv.stdout",
+    "stderr_file": "deterministic-csv.stderr",
+    "summary": ""
+  }
+]
