@@ -1,0 +1,34 @@
+{
+  "source_branch": "gate3/native-run-preparation",
+  "source_commit": "14164b6fe39117df9fa644842b6b09269d9bc7cc",
+  "historical_classification": "NATIVE_ROLE_WORKFLOW_PARTIAL",
+  "unverified": [
+    "E1",
+    "E2",
+    "E4"
+  ],
+  "historical_pass_count": 7,
+  "imports": [
+    {
+      "source_path": "demo/gate3-demo/app.py",
+      "source_sha256": "38a5c7e7ce6b065ae9121d2f918e7d01a9e4849c57298d7e9d283e09610a6c39",
+      "destination": "demo/gate3-demo/app.py"
+    },
+    {
+      "source_path": "demo/gate3-demo/test_app.py",
+      "source_sha256": "c8401e6794a3a6438ac76ce41fb80cc69c332200374e2392bc93a898837acd2b",
+      "destination": "demo/gate3-demo/test_app.py"
+    },
+    {
+      "source_path": "owner-fixtures/inputs/amount.csv",
+      "source_sha256": "07e265266826cbe233051199c73a4ddb77b7edfc9d03f3ba9c7937ce4bbe1b30",
+      "destination": "demo/gate3-demo/inputs/amount.csv"
+    },
+    {
+      "source_path": "owner-fixtures/inputs/nonnumeric.csv",
+      "source_sha256": "9420cb4705c7c4096def2d277f566c210625157281ff733d6536671ecb40671e",
+      "destination": "demo/gate3-demo/inputs/nonnumeric.csv"
+    }
+  ],
+  "changes": "app and CSV inputs imported byte-for-byte; test paths localized; additional maintained regression tests are separate. Original evidence remains in disposable source worktree, excluded from release."
+}

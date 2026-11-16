@@ -1,0 +1,106 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "gate3-efficiency-integration",
+  "plan_revision": 1,
+  "task_id": "gate3-efficiency-integration",
+  "attempt_id": "integration-attempt-1",
+  "message_id": "integration-worker-report-1",
+  "message_type": "job.report",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/integration_worker"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "integration-worker-assign-1",
+  "payload": {
+    "status": "passed",
+    "summary": "Implemented bounded Gate3 demo import and optional relocatable efficiency capability; all nine developer commands passed. Await independent verification and Manager Git integration.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3",
+      "AC4",
+      "AC5",
+      "AC6",
+      "AC7"
+    ],
+    "candidate_ref": {
+      "artifact_id": "integration-candidate-1",
+      "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+      "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+      "kind": "candidate-manifest"
+    },
+    "findings": [
+      "One runtime copy under installed skill; digest/adapters/schema byte-identical relocation, recorder extended with explicit CLI.",
+      "199 core tests (5 skips), 9 Gate3, 13 receipt, 15 CSV, 5 structured, 5 independent receipt, 6 independent CSV and 3 draft-evaluator offline unit tests passed.",
+      "Release built with CRC/source-byte checks; new tests exercise archive extraction and skill-only relocation under isolated Python.",
+      "Historical Gate3 E1/E2/E4 and live adapter compatibility remain unverified; no experiment rerun, paid request, hook, route change, or publication.",
+      "AC7 commit/merge/final-main verification belongs to Manager and is not claimed completed by Worker."
+    ],
+    "errors": [],
+    "changed_files": [
+      ".agents/skills/council-flow/SKILL.md",
+      ".agents/skills/council-flow/references/efficiency.md",
+      ".agents/skills/council-flow/scripts/efficiency.py",
+      ".agents/skills/council-flow/scripts/efficiency/claude_adapter.py",
+      ".agents/skills/council-flow/scripts/efficiency/codex_adapter.py",
+      ".agents/skills/council-flow/scripts/efficiency/digest.py",
+      ".agents/skills/council-flow/scripts/efficiency/record.schema.json",
+      ".agents/skills/council-flow/scripts/efficiency/recorder.py",
+      "README.md",
+      "RELEASE.md",
+      "demo/gate3-demo/README.md",
+      "demo/gate3-demo/app.py",
+      "demo/gate3-demo/inputs/amount.csv",
+      "demo/gate3-demo/inputs/nonnumeric.csv",
+      "demo/gate3-demo/provenance.json",
+      "demo/gate3-demo/test_app.py",
+      "demo/gate3-demo/test_edge_cases.py",
+      "dist/council-flow.manifest.json",
+      "dist/council-flow.zip",
+      "dist/council-flow.zip.sha256",
+      "experiments/agent-efficiency/README.md",
+      "experiments/agent-efficiency/claude_adapter.py",
+      "experiments/agent-efficiency/codex_adapter.py",
+      "experiments/agent-efficiency/digest.py",
+      "experiments/agent-efficiency/fixtures/claude-stream-sanitized.jsonl",
+      "experiments/agent-efficiency/fixtures/codex-exec-sanitized.jsonl",
+      "experiments/agent-efficiency/fixtures/sanitized-runs.jsonl",
+      "experiments/agent-efficiency/record.schema.json",
+      "experiments/agent-efficiency/recorder.py",
+      "experiments/agent-efficiency/test_claude_adapter.py",
+      "experiments/agent-efficiency/test_codex_adapter.py",
+      "experiments/agent-efficiency/test_digest.py",
+      "experiments/agent-efficiency/test_recorder.py",
+      "tests/efficiency-fixtures/claude-stream-sanitized.jsonl",
+      "tests/efficiency-fixtures/codex-exec-sanitized.jsonl",
+      "tests/efficiency-fixtures/sanitized-runs.jsonl",
+      "tests/test_efficiency_claude_adapter.py",
+      "tests/test_efficiency_codex_adapter.py",
+      "tests/test_efficiency_digest.py",
+      "tests/test_efficiency_install.py",
+      "tests/test_efficiency_recorder.py",
+      "tests/test_original_source.py",
+      "tests/test_skill_files.py",
+      "tools/build_release.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "integration-candidate-1",
+      "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+      "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "integration-developer-checks",
+      "path": "reports/integration-gate3-efficiency/worker/developer-checks.json",
+      "sha256": "1eb584c1be60481644181bcefbf3769fa3068b0ea077c0f298fe1eba9adf638a",
+      "kind": "execution-records"
+    }
+  ]
+}

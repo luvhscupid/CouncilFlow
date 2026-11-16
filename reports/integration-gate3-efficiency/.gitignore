@@ -1,0 +1,9 @@
+oracle/
+worker/*.stdout
+worker/*.stderr
+tester/*.stdout
+tester/*.stderr
+reviewer/*.stdout
+reviewer/*.stderr
+**/*.stdout
+**/*.stderr

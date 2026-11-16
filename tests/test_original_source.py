@@ -15,6 +15,22 @@ from test_contracts import assignment, publish, ref, sequence
 
 
 class OriginalSourceTests(unittest.TestCase):
+    def test_compact_digest_cannot_replace_frozen_criteria(self):
+        # Summaries support handoffs; full original bytes remain the oracle.
+        sys.path.insert(0, str(ROOT / ".agents/skills/council-flow/scripts/efficiency"))
+        from digest import build_digest, expand_bytes
+        raw = b"Task.\nAC1: " + b"preserve every original word " * 20 + b"\nAC2: Keep failure evidence.\n"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            packet, original, _, plan = self.context(root, raw)
+            summary = build_digest(raw, b"", exit_code=0, command=[], artifact_dir=root / "artifacts", limit=128)
+            self.assertIn("DIGEST_INCOMPLETE", summary["flags"])
+            self.assertEqual(expand_bytes(summary, "stdout"), raw)
+            self.validate(packet, root, original)
+            plan["acceptance"][0]["criterion"] = summary["streams"]["stdout"]["excerpt"]
+            with self.assertRaises(c.ContractError):
+                self.validate(self.write_plan(root, plan), root, original)
+
     def context(self, root, raw=None, acceptance=None):
         original = root / "owner-original.txt"
         original.write_bytes(raw if raw is not None else (ROOT / "tests/fixtures/owner-version-original.txt").read_bytes())

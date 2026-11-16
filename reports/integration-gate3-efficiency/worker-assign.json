@@ -1,0 +1,54 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "integration-worker-assign-1",
+  "message_type": "job.assign",
+  "plan_id": "gate3-efficiency-integration",
+  "plan_revision": 1,
+  "task_id": "gate3-efficiency-integration",
+  "attempt_id": "integration-attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/integration_worker"
+  },
+  "in_reply_to": "integration-plan-publish-1",
+  "payload": {
+    "objective": "Integrate, test, package and locally merge Gate 3 deliverables and optional Agent Efficiency capability into CouncilFlow main under the current Owner request.",
+    "scope": [
+      ".agents/skills/council-flow/",
+      "experiments/agent-efficiency/",
+      "demo/gate3-demo/",
+      "tests/",
+      "tools/build_release.py",
+      "README.md",
+      "RELEASE.md",
+      "reports/integration-gate3-efficiency/",
+      "dist/",
+      "ordinary-local-git-integration"
+    ],
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3",
+      "AC4",
+      "AC5",
+      "AC6",
+      "AC7"
+    ],
+    "instructions": [
+      "Implement U2/U3 under unchanged plan; approved verification strategy oracle.json. Preserve all original artifacts. Return immutable candidate manifest, evidence and report, then stop edits."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "integration-plan-v1",
+      "path": "reports/integration-gate3-efficiency/plan.json",
+      "sha256": "2f0a385f57c799ea5cc0f27665521628757127fc9047db25121432c8a1cc51ca",
+      "kind": "plan"
+    }
+  ]
+}
