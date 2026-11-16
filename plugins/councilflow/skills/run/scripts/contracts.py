@@ -687,11 +687,21 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
                 plan = plans.get(key)
                 if plan is None or comparison["plan_ref"] != plan["payload"]["plan_ref"]:
                     fail("plan_immutable", "payload.comparison.plan_ref", "Reviewer must identify original frozen plan")
-                tester = next((x for x in seen.values() if x["message_type"] == "job.report"
-                               and x["sender"]["role"] == "tester" and x["task_id"] == m["task_id"]
-                               and x["attempt_id"] == m["attempt_id"] and x["payload"]["candidate_ref"] == p["candidate_ref"]), None)
-                if tester is None:
-                    fail("comparison_evidence", "payload.comparison", "actual prior Tester report for exact candidate required")
+                # Select the Tester the Reviewer names, never the first candidate match.
+                # Causal anchor: the Reviewer's genuine assignment must reply to that exact Tester report.
+                tester_id = comparison["tester_report_ref"]["artifact_id"]
+                tester = seen.get(tester_id)
+                if tester is None or tester["message_type"] != "job.report" or tester["sender"]["role"] != "tester":
+                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "must name an earlier actual Tester job.report")
+                if (tester["plan_id"], tester["plan_revision"], tester["task_id"], tester["attempt_id"]) != (
+                        m["plan_id"], m["plan_revision"], m["task_id"], m["attempt_id"]):
+                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "Tester report must share plan, revision, task and attempt")
+                if tester["payload"]["candidate_ref"] != p["candidate_ref"]:
+                    fail("candidate", "payload.comparison.candidate_ref", "must match the Tester-verified candidate")
+                # Reviewer report -> its Manager assignment -> the Tester report it names.
+                if (predecessor is None or predecessor["message_type"] != "job.assign"
+                        or predecessor["in_reply_to"] != tester_id):
+                    fail("comparison_evidence", "in_reply_to", "Reviewer assignment must reply to the Tester report it names")
                 worker = next((x for x in seen.values() if x["message_type"] == "job.report"
                                and x["sender"]["role"] == "worker" and x["task_id"] == m["task_id"]
                                and x["attempt_id"] == m["attempt_id"] and x["payload"]["candidate_ref"] == p["candidate_ref"]), None)

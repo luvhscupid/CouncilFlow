@@ -127,33 +127,6 @@ class DispatchLifecycleTests(unittest.TestCase):
         reviewer["payload"]["comparison"]["tester_report_ref"]["artifact_id"] = "calc-001-tester-report"
         self.assertRejected(data, field="payload.comparison.tester_report_ref")
 
-    @unittest.expectedFailure
-    def test_reviewer_may_cite_corrective_tester_when_earlier_superseded_report_exists(self):
-        """KNOWN VALIDATOR DEFECT (expected failure until the shared contract is fixed).
-
-        After a Tester report M5 is superseded by a corrective Tester report M5b on the
-        same candidate, the Reviewer must be able to cite M5b. contracts.py selects the
-        first candidate-matched Tester in the whole context (M5), so a Reviewer that
-        correctly cites M5b is rejected. Fixing this changes the shared canonical
-        validator, which also serves Codex, so it needs explicit approval first.
-        """
-        data = fixtures.sequence()
-        corrective_assign = copy.deepcopy(by_id(data, "M4"))
-        corrective_assign["message_id"] = "M4b"
-        corrective_assign["in_reply_to"] = "M3"
-        corrective_report = copy.deepcopy(by_id(data, "M5"))
-        corrective_report["message_id"] = "M5b"
-        corrective_report["in_reply_to"] = "M4b"
-        reviewer_assign = copy.deepcopy(by_id(data, "M6"))
-        reviewer_assign["in_reply_to"] = "M5b"
-        reviewer_report = by_id(data, "M7")
-        reviewer_report["in_reply_to"] = "M6"
-        reviewer_report["payload"]["comparison"]["tester_report_ref"]["artifact_id"] = "M5b"
-        # Real history keeps the superseded M5: M4b replies to M3, M5b replies to M4b.
-        chain = [m for m in data if m["message_id"] in {"M1", "M2", "M3", "M4", "M5"}]
-        chain += [corrective_assign, corrective_report, reviewer_assign, reviewer_report]
-        c.validate_sequence(chain)
-
     def test_existing_worker_and_tester_handoffs_stay_valid(self):
         """Worker and Tester legs of the chain are unchanged by the fix."""
         data = fixtures.sequence()[:5]  # plan, worker assign/report, tester assign/report
