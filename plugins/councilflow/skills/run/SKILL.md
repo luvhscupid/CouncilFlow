@@ -68,6 +68,22 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
 3. **Manager** (you): accept the plan; validate packets with `contracts.py`
    (`message`, `sequence`, `--require-criteria-fidelity`); send `job.assign`
    to a fresh Worker.
+
+   **Dispatch lifecycle (every role: Worker, Tester and Reviewer):**
+   - The Manager writes each `job.assign` as a UTF-8 JSON file under
+     `.councilflow/runs/<task-id>/messages/` with its own `message_id`, and
+     `in_reply_to` set to the message it answers (the plan, or the prior report).
+   - The Manager validates that file with `contracts.py message --root .
+     --expected-sender manager` and, where a chain exists, `contracts.py sequence`.
+     Only after both pass does it launch the native subagent.
+   - The launch prompt passes the assignment's exact `message_id` and file path.
+     The subagent writes its `job.report` with `in_reply_to` equal to that
+     `message_id`. It must not invent or reuse another assignment.
+   - Dispatch stops if the assignment is missing, invalid, or references a stale
+     candidate. The Manager never writes a backdated or manufactured assignment
+     afterward to make a report validate.
+   - A failed or invalid message stays where it is, or moves unchanged to a
+     `rejected/` folder, as evidence. It is never rewritten into a valid one.
 4. **Worker** (`council-worker`): implements within scope, runs developer
    checks, returns `job.report` with actual changed files and evidence, then
    stops. Never self-approves.
@@ -80,6 +96,15 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
    deterministic command, compares exit code and normalized stdout SHA-256 and
    reports to you. Mismatch fails review; no command = NOT_COMPARABLE and
    cannot pass. No subjective UX scoring.
+
+   **Reviewer dispatch requires its own assignment.** After the Tester's
+   `job.report` validates, the Manager first writes a new Reviewer `job.assign`
+   with `in_reply_to` set to that Tester report's `message_id`. It carries the
+   exact `candidate_ref` and references the Tester report by path and SHA-256.
+   Only after `contracts.py message` and `sequence` pass is the fresh Reviewer
+   launched with that assignment's `message_id`. Its `job.report` then uses that
+   assignment as `in_reply_to`. Sending the Reviewer without this assignment, or
+   reusing an earlier one, is a dispatch defect: stop and report it.
 7. **Rework**: record `task.decision` (accept/reject/rework/escalate) from
    evidence. In-scope rework uses a fresh Worker under unchanged criteria,
    then affected independent checks (see recovery.md). Never silently change

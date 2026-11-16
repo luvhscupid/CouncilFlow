@@ -38,6 +38,26 @@ the table.
   `.councilflow/runs/<task-id>/`. Packets are UTF-8 JSON referencing evidence by
   path + SHA-256. Run helpers with cwd = the target repository, e.g.
   `python CF/scripts/contracts.py sequence plan.json assign.json --root . ...`.
+- **Dispatch requires a validated assignment first.** For Worker, Tester and
+  Reviewer alike, the Manager writes and validates the `job.assign` (message
+  file, `contracts.py message --root . --expected-sender manager`, plus
+  `sequence` once a chain exists) before launching the native subagent. The
+  launch prompt carries that assignment's exact `message_id` and path, and the
+  subagent's `job.report.in_reply_to` must equal it. A missing or invalid
+  assignment stops dispatch. The Manager must not create a backdated assignment
+  to repair a report; rejected messages are preserved unchanged as evidence.
+- **Every subagent report is persisted as a message file.** A `job.report` that
+  exists only in the subagent's chat reply is not a controlled message. The
+  Manager saves each report under `messages/` and validates it on receipt, with
+  `in_reply_to` set to its assignment, before any later step. A Reviewer
+  comparison requires the Worker's own `job.report` bound to the candidate
+  (`candidate_ref` equal to the verified candidate), so a Worker that returned
+  `candidate_ref: null` must be reported as BLOCKED, not backfilled.
+- **Reviewer after Tester is a separate dispatch.** The Tester's validated report
+  is the input to a new Manager `job.assign` for the Reviewer (`in_reply_to` =
+  Tester report `message_id`, exact `candidate_ref`, Tester report referenced by
+  path and SHA-256). Only that assignment, once validated, authorizes launching
+  the fresh Reviewer. A Reviewer report without a matching assignment is invalid.
 - **Role selection fallback.** If a named plugin agent cannot be launched, give
   the same role instructions (this plugin's agent file body plus
   `CF/references/roles.md`) to a `general-purpose` subagent and disclose the
