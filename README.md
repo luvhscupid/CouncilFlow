@@ -1,77 +1,74 @@
 # CouncilFlow
 
-CouncilFlow is an installable multi-agent workflow **skill** for existing AI
-coding environments. The primary implementation is Codex-native; a Claude Code plugin
-package also exists (offline-verified only; see Host packages). It uses the
-host's existing models, tools, permissions and native agent delegation. A dedicated
-Planner defines acceptance; the parent Manager delegates implementation to a
-fresh Worker, requests separate Tester and Reviewer assessments, coordinates
-repairs, and asks the Planner for a final objective check. Only the Manager gives
-routine progress and results to the human Owner.
+CouncilFlow is an installable **workflow skill** for existing AI coding tools. It is
+not a standalone AI application, assistant, runtime, provider, or service.
 
-These roles are workflow responsibilities, not independent servers or processes.
-CouncilFlow is not a standalone AI agent, alternative coding assistant,
-independent orchestration platform/runtime, provider, gateway, billing service
-or SaaS application, and does not replace Codex, Claude Code or native delegation.
-It may be packaged as a plugin where supported. Specifically authorized scripts,
-utilities, schemas and optional adapters support the skill without changing
-that identity or silently creating a standalone platform.
+## What it is
+
+When you ask for a coding change, CouncilFlow organizes the work into roles, so the
+change is planned, implemented, tested and reviewed by separate steps:
+
+- a **Planner** writes the acceptance criteria,
+- the **Manager** (the main session) hands implementation to a fresh **Worker**,
+- a separate **Tester** and **Reviewer** check the result independently,
+- the Planner makes a final check against the original criteria.
+
+Only the Manager reports progress and results to you, the Owner. These roles are
+workflow responsibilities carried out with the host's own models, tools,
+permissions and native agent delegation. They are not independent servers or
+processes.
+
+CouncilFlow does not replace Codex, Claude Code, or their native delegation. It may be
+packaged as a plugin where the host supports plugins.
+
+## Why it exists
+
+Coding agents are easy to over-trust. CouncilFlow keeps acceptance criteria separate
+from the implementation, requires independent verification, and records every step
+as structured evidence, so a claimed result can be checked.
+
+## Start here
+
+| If you want to... | Read |
+| --- | --- |
+| Install and use it in Codex | [Use in this repository](#use-in-this-repository-codex) below |
+| Use the Claude Code plugin | [Claude Code plugin](docs/technical/claude-code-plugin.md) |
+| Understand the internal message format | [Structured communication](docs/technical/structured-communication.md) |
+| Try a small, offline example | [Demonstrations](#demonstrations) below |
+| Understand the optional efficiency helpers | [Optional efficiency helpers](docs/technical/efficiency-helpers.md) |
+| Find every technical document and its authority | [Documentation index](docs/technical/README.md) |
+| Check release contents and verification commands | [RELEASE.md](RELEASE.md) |
+
+## Authority and status
 
 The [Gate 3 Owner Charter](docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md),
-existing Owner decisions, frozen specifications and role policies retain their
-authority; this identity clarification does not simplify or change the approved
-architecture. [Research proposals](docs/research/README.md) are non-normative
-and do not independently authorize implementation or experiments.
+existing Owner decisions, frozen specifications and role policies keep their authority.
+This page clarifies identity only. It does not simplify or change the approved
+architecture. [Research proposals](docs/research/README.md) are non-normative and do not
+authorize implementation or experiments on their own.
 
-This Git repository contains the current source, regression tests, and installable
-`dist/council-flow.zip` release candidate. Current integration evidence is recorded in
-`reports/integration-gate3-efficiency/`; earlier audit evidence remains historical. See
-[release details](RELEASE.md) for the package and verification commands.
-Software release verification is separate from the frozen Gate 3 experiment.
-Historical Round 6/Gate 3b reports describe earlier workspaces and remain
-unchanged; they do not establish this checkout's activation or configuration.
-No new separately approved Gate 3 experiment is included in this release audit.
-
-It uses native Codex delegation and inherited account/provider permissions. It
-needs no API key, subscription, database, server, or custom agent runtime. Role
-instructions are expected behavior, not independent OS-enforced isolation.
+This Git repository contains the current source, regression tests, and the installable
+`dist/council-flow.zip` release candidate. Current integration evidence is in
+`reports/integration-gate3-efficiency/`. Earlier audit evidence stays historical.
+Round 6 and Gate 3b reports describe earlier workspaces and are kept unchanged, so they
+do not show how this checkout is activated or configured. Software release verification is
+separate from the frozen Gate 3 experiment, and no new Gate 3 experiment is included.
 
 ## Host packages
 
-| Host | Package | Invocation | Status |
+| Host | Package | How to invoke | Status |
 | --- | --- | --- | --- |
-| Codex | `.agents/skills/council-flow/` + `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Existing release, unchanged |
-| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Implemented; offline-verified only. Native subagent execution is **UNVERIFIED** (no live run performed) |
+| Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Existing release, unchanged |
+| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Implemented and verified offline. Live native subagent execution is **UNVERIFIED** (no live run performed) |
 
-The Claude Code plugin reuses the canonical runtime (`references/`, `policies/`,
-`scripts/` including `contracts.py` and the opt-in efficiency helpers) copied
-byte-for-byte from the Codex skill by `tools/build_claude_plugin.py`; a test
-fails on drift. Claude Code subagents cannot spawn subagents, so the main
-session acts as the **Manager** and directly launches the four plugin agents
-(`councilflow:council-planner|worker|tester|reviewer`). Agent files and JSON
-packets are instructions, not a sandbox; Claude Code's permission system is the
-only enforcement.
+Details for each host are in [docs/technical/host-packages.md](docs/technical/host-packages.md).
 
-Load locally (no global config is modified):
+## Use in this repository (Codex)
 
-```sh
-claude --plugin-dir plugins/councilflow          # from this checkout, current session only
-claude plugin validate plugins/councilflow       # manifest/skill/agent validation
-python tools/build_claude_plugin.py sync         # refresh shared runtime after editing the Codex skill
-python tools/build_claude_plugin.py build        # dist/councilflow-claude-plugin.zip (+ .sha256)
-```
-
-For use in another repository, extract the ZIP to a directory and run
-`claude --plugin-dir <that directory>` from the target repository, then
-`/councilflow:run <coding goal>`. Run artifacts belong in the target repository
-under `.councilflow/runs/`. Efficiency helpers stay opt-in; the Phase 5
-evaluation protocol remains DRAFT_NOT_AUTHORIZED.
-
-## Use in this repository
-
-Open Codex at this repository root. The discoverable skill is
-`.agents/skills/council-flow/SKILL.md`; custom agent definitions are under
-`.codex/agents/`. In a host supporting skills and native subagents, invoke:
+1. Open Codex at this repository root.
+2. The skill is `.agents/skills/council-flow/SKILL.md`. Custom agent definitions are in
+   `.codex/agents/`.
+3. Invoke it with a coding request. Include scope and constraints:
 
 ```text
 $council-flow Implement a small offline CSV summarizer in this repository.
@@ -79,199 +76,103 @@ Accept a local input file, validate its columns, print totals, and add tests.
 Stay within demo/csv-summary/ and preserve existing files.
 ```
 
-Supply an ordinary coding request with scope and constraints. The skill creates
-compact internal contracts. Native Planner mode is the default. To supply an
-external plan, explicitly identify it as Owner-approved and include the original
-plan; the Manager preserves it and does not claim to call external ChatGPT.
+The skill creates compact internal contracts. Native Planner mode is the default. To supply
+an external plan, say explicitly that it is Owner-approved and include the original plan. The
+Manager keeps that plan unchanged and does not claim to call an external ChatGPT.
 
-Supplied frozen criteria are captured from the original Owner input before
-Planner, with a separately retained identity/hash and observed provenance. The
-normal workflow compares plan and final acceptance directly to those original
-bytes; generated criteria JSON cannot replace them. Missing, stale, substituted
-or altered input fails closed. See [source fidelity](.agents/skills/council-flow/references/source-fidelity.md)
-for the supported ACn source format, exact comparisons and host limitations. Ordinary
-coding requests without that requirement may generate their native plan without
-inventing an external approval fixture. A matching digest proves integrity, not
-Owner approval; the original request and any actual approval remain authoritative.
+Frozen criteria you supply are captured from your original input before the Planner runs.
+The original bytes and their hash are kept, and their provenance is recorded. Generated
+criteria cannot replace them. Missing, stale, substituted or altered input fails closed.
+The supported format and exact comparison rules are in
+[source fidelity](.agents/skills/council-flow/references/source-fidelity.md). A matching
+hash proves integrity, not Owner approval.
 
-Codex should detect skill changes automatically. If the selector does not update,
-restart Codex in this repository and check `/skills` or type `$` in CLI/IDE. This
-guidance is not a claim that discovery or activation succeeded in every host.
-If native delegation is missing, the workflow reports the gap instead of
-simulating role sessions. See `reports/` for this build's observed verification.
+Codex should detect skill changes automatically. If the selector does not update, restart
+Codex in this repository and check `/skills` or type `$` in the CLI or IDE. This does not
+guarantee that discovery or activation worked in every host. If native delegation is missing,
+the workflow reports the gap instead of simulating role sessions. Observed results for this
+build are in `reports/`.
 
 ## Install in another repository
 
-Copy the whole `.agents/skills/council-flow/` folder to the destination
-repository's `.agents/skills/council-flow/`. Copy the four
-`.codex/agents/council-*.toml` files to that repository's `.codex/agents/` if its
-Codex version supports standalone custom agents. Preserve existing files and
-resolve naming collisions before copying; do not overwrite another installation
-silently. No global configuration registration is needed for the current
-standalone agent format.
+1. Copy the whole `.agents/skills/council-flow/` folder to the same path in the destination
+   repository.
+2. Copy the four `.codex/agents/council-*.toml` files to that repository's `.codex/agents/`,
+   if its Codex version supports standalone custom agents.
+3. Keep existing files. Resolve name collisions first, and do not overwrite another install
+   silently. No global configuration registration is needed for the current agent format.
+4. Restart Codex if needed, then run `$council-flow <your coding goal>`. If the host supports
+   native delegation but cannot select custom agent files, the skill passes role instructions to
+   separate native subagents and reports that limitation.
 
-Restart Codex if needed and invoke `$council-flow <your coding goal>`. Where the
-host supports native delegation but cannot select custom agent files, the skill
-passes role instructions to separate native subagents and reports that limitation.
+A user-wide install (`~/.agents/skills/council-flow/` and `~/.codex/agents/`) is optional. Check
+for conflicts first. This build does not perform that installation or change global settings.
 
-For an optional later user-wide installation using ordinary user permissions,
-copy the skill folder to `~/.agents/skills/council-flow/` and agent TOMLs to
-`~/.codex/agents/`, after checking for conflicts. This build does not perform
-that installation or modify global settings. Repository installation is enough.
+## Codebase Memory context (optional)
 
-## Demonstration and validation
+Invoke `$council-flow <coding request>` as usual. Before the Planner runs, the Manager uses the
+existing DeusData Codebase Memory MCP for existing-project navigation when its tools are
+available. An empty directory, or one with only CouncilFlow installation files, makes zero MCP
+calls. The full lifecycle is in [Codebase Memory context](docs/technical/codebase-memory.md).
 
-`demo/starter/` is a deliberately incomplete, valid Python fixture. Its sample
-calculation test is expected to fail; it is retained as baseline evidence, not
-the finished application. See [demo/README.md](demo/README.md) for its bounded
-interface and commands. The completed application's location and actual role
-results are recorded by the Manager in `reports/` after the real run.
+The lifecycle reference, `.agents/skills/council-flow/references/codebase-memory.md`, ships inside the complete skill folder copied during installation. No manual initialization command is required. No additional
+skill or registration is needed. Focused static instruction checks run with `python -m unittest discover -s tests -p test_codebase_memory_integration.py -v`. These checks do not establish native invocation or live MCP behavior.
 
-The finished offline calculator is `demo/receipt/receipt_calculator.py`. Run:
+## Demonstrations
 
-```sh
-python3 demo/receipt/receipt_calculator.py --item rice 2 30000 kg --item onions 1 43000 kg
-python3 -m unittest discover -s demo/receipt -p 'test_*.py' -v
-```
+All demonstrations are offline examples inside this repository. They are not a standalone
+application.
 
-See [demo instructions](demo/README.md) for numeric bounds, other examples, and
-error handling. This application demonstration does not by itself establish
-successful native skill activation; actual host evidence is reported separately.
+- **Receipt calculator (finished):** `demo/receipt/receipt_calculator.py`.
 
-Static product checks use only Python 3.11+ standard library:
+  ```sh
+  python3 demo/receipt/receipt_calculator.py --item rice 2 30000 kg --item onions 1 43000 kg
+  python3 -m unittest discover -s demo/receipt -p 'test_*.py' -v
+  ```
+
+  See [demo instructions](demo/README.md) for limits and error handling.
+- **Starter fixture (intentionally incomplete):** `demo/starter/`. Its sample calculation test is
+  expected to fail. It is kept as baseline evidence, not as a finished application.
+- **CSV summarizer:** [demo/csv-summary/README.md](demo/csv-summary/README.md).
+
+  ```sh
+  python3 demo/csv-summary/csv_summarizer.py demo/csv-summary/sample.csv --column amount --column quantity
+  python3 -m unittest discover -s demo/csv-summary -v
+  ```
+
+  It uses only the standard library, does not modify its input, and works offline.
+- **Gate 3 column-sum example:** [demo/gate3-demo/README.md](demo/gate3-demo/README.md).
+
+  ```sh
+  python demo/gate3-demo/app.py demo/gate3-demo/inputs/amount.csv amount
+  python -m unittest discover -s demo/gate3-demo -v
+  ```
+
+  Historical Run 01 remains NATIVE_ROLE_WORKFLOW_PARTIAL: seven E-checks passed, and E1, E2 and E4
+  remain UNVERIFIED.
+- **Structured-flow demo:** [demo/structured-flow/README.md](demo/structured-flow/README.md). It
+  shows a mandatory failure and rework path.
+
+Running a demo does not prove that the skill was activated natively. Host evidence is reported
+separately.
+
+## Testing
+
+Static product checks use only Python 3.11 or newer with the standard library:
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-This suite combines static metadata/reference/native-TOML checks and executable
-deterministic JSON/YAML/JSONL validator tests, including synthetic C1/C2 controls. It does not establish native skill
-invocation or real role independence. Application and native-agent observations
-are tested and recorded separately. The V01–V14 definitions remain in
-`tests/validation_cases.json`; T01–T24 are synthetic regression definitions, not
-real native-agent execution evidence.
+This suite covers static metadata, references and native TOML checks, plus deterministic
+JSON/YAML/JSONL validator tests, including synthetic C1/C2 controls. It does not establish native
+skill invocation or real role independence. The V01–V14 definitions are in
+`tests/validation_cases.json`. T01–T24 are synthetic regression definitions, not evidence of real
+native-agent execution.
 
-See [RELEASE.md](RELEASE.md) for package contents, portability, and release checks.
+Release packaging and portability checks are described in [RELEASE.md](RELEASE.md).
 
-## Offline CSV summarizer
+## Where to go next
 
-The [CSV summarizer](demo/csv-summary/README.md) counts data records and prints
-exact totals for explicitly selected numeric columns, with input validation:
-
-```sh
-python3 demo/csv-summary/csv_summarizer.py demo/csv-summary/sample.csv --column amount --column quantity
-python3 -m unittest discover -s demo/csv-summary -v
-```
-
-It uses only the Python standard library, preserves its input, and works offline.
-
-## Automatic Codebase Memory context
-
-Invoke `$council-flow <coding request>` as usual. Before Planner, Manager
-automatically uses the existing DeusData Codebase Memory MCP for relevant
-existing-project navigation when its tools are available. It first inspects local
-content: an empty directory or one containing only CouncilFlow installation
-files makes zero MCP calls. Once meaningful source exists, Manager identifies
-the exact project, initializes a useful missing index, checks freshness, and
-retrieves task-relevant symbols, files, and dependencies. After implementation
-and rework, it updates the index after Worker stops edits. Source reads cover
-critical code, uncertain freshness, and index gaps.
-
-Codebase Memory is an optional, separately configured capability. CouncilFlow
-does not install or reconfigure it and adds no memory engine, manifest, database,
-API key, or manual initialization command. Missing tools or an unreachable
-configured server fall back to ordinary repository inspection, with live MCP
-use reported as UNVERIFIED. Graph findings support navigation; the existing
-independent Tester, Reviewer, and final Planner checks still decide acceptance.
-
-The [lifecycle reference](.agents/skills/council-flow/references/codebase-memory.md)
-ships inside the complete skill folder copied during installation. No additional
-skill or registration is needed. Focused static instruction checks run with
-`python -m unittest discover -s tests -p test_codebase_memory_integration.py -v`;
-run the complete suite with `python -m unittest discover -s tests -v`. These
-checks do not establish native invocation or live MCP behavior.
-
-## Structured internal communication
-
-CouncilFlow 1.0 now defines **UTF-8 JSON** task packets for Planner, Manager,
-Worker, Tester and Reviewer. The role/workflow source is
-[versioned YAML policy](.agents/skills/council-flow/policies/roles.yaml);
-Codex-native agents remain TOML. Optional bounded JSONL is diagnostics.
-Owner progress and results remain concise natural language.
-
-Read the [communication contract](.agents/skills/council-flow/references/communication.md)
-for closed payloads, causal/candidate/origin checks, limits and exact examples.
-The small installed Python helper is standard-library-only:
-
-~~~sh
-python3 .agents/skills/council-flow/scripts/contracts.py message packet.json --root .
-python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
-python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
-python3 .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
-python3 -m unittest discover -s tests -v
-~~~
-
-Sequence context and externally observed actor bindings are not copied from
-self-asserted sender labels. A Worker output may differ from its assigned input;
-Tester and Reviewer must verify the exact output. Reviewer also compares original
-criteria and Tester evidence and reruns one declared deterministic command.
-Manager assigns the test strategy, and a Tester cannot self-approve or substitute
-its oracle.
-For a Tester assignment, `oracle_ref` is **required** and the report must echo
-it exactly. General optional-reference wording applies to other assignments;
-it does not waive the Tester's Manager-approved strategy requirement.
-
-These are controlled-file checks, not authentication, transport enforcement,
-permissions, a database or a new agent engine. The policy uses a restricted,
-documented YAML subset without installing a parser. Product source and all
-subfolders of the skill must be copied together when installing elsewhere.
-
-The fresh [structured-flow demo](demo/structured-flow/README.md) supplies a real
-mandatory failure/rework path, separate from old demonstrations.
-[Requirements traceability](reports/requirements-traceability.md) distinguishes
-static, dynamic, native and blocked evidence. The current final classification
-and new activation result are recorded by Manager after independent verification
-in [reports/final.md](reports/final.md); prior evidence is not a new invocation.
-
-## Optional Agent Efficiency
-
-The installed skill includes recorder, deterministic digest/expand and offline
-Codex/Claude Code/xKiro adapters. They stay disabled unless explicitly requested.
-Invoke `$council-flow <goal>; use the optional efficiency helpers for permitted
-local test output` to opt in, or call the CLI directly:
-
-```sh
-python .agents/skills/council-flow/scripts/efficiency.py --help
-python .agents/skills/council-flow/scripts/efficiency.py record record-input.json --records local-evidence/records.jsonl
-python .agents/skills/council-flow/scripts/efficiency.py digest run --artifacts local-evidence/run-01 --digest-output local-evidence/run-01/digest.json --timeout 30 -- python -m unittest discover -s tests
-python .agents/skills/council-flow/scripts/efficiency.py digest expand local-evidence/run-01/digest.json stderr
-```
-
-Minimal `record-input.json`:
-`{"run_id":"task-01","harness":"codex","route":"codex/native-or-configured"}`.
-For adapters and evidence/failure safeguards, read the packaged
-[efficiency reference](.agents/skills/council-flow/references/efficiency.md).
-Resolve the CLI relative to the actual installed skill path; no development
-checkout is required. Full permitted command output stays available for
-hash-checked expansion. Compact handoffs preserve original criteria and all
-mandatory native roles, independent tests and Reviewer reruns.
-
-Offline parser tests do not prove live Codex or Claude Code/xKiro compatibility,
-which remains LIVE_UNVERIFIED. No native hook, billing/cache savings, effective
-upstream identity or subscription-quota metering is claimed. Package D remains
-DRAFT_NOT_AUTHORIZED outside the distributable; no experimental trials are
-activated. Existing research/backup branches and records remain preserved.
-
-## Maintained Gate 3 example
-
-The [Gate 3 column-sum demo](demo/gate3-demo/README.md) preserves Decimal
-summation, positional CLI arguments and clean nonzero failures:
-
-```sh
-python demo/gate3-demo/app.py demo/gate3-demo/inputs/amount.csv amount
-python -m unittest discover -s demo/gate3-demo -v
-```
-
-Historical Run 01 remains NATIVE_ROLE_WORKFLOW_PARTIAL: seven E-checks passed;
-E1, E2 and E4 remain UNVERIFIED. Original independent verification evidence stays
-in the Gate 3 source worktree; current release tests are separate evidence.
+- [Documentation index](docs/technical/README.md): every technical document, with its purpose.
+- [Requirements traceability](reports/requirements-traceability.md) and [final report](reports/final.md).
