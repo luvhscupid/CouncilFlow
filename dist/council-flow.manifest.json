@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "ce0c0ee264df1cbbddf2c46a2fbb9166a557387fb5dc476c40f15efb40fc0f0b",
+  "sha256": "a5425e27eacaed9a9691470e7a1a466167f427d349778d0cf8f9516df0d00085",
   "entries": 144,
   "files": [
     {
@@ -120,13 +120,13 @@
     },
     {
       "path": "README.md",
-      "size": 13876,
-      "sha256": "037782896e4294cf937e5ca5df80790e5d05c78ecaf476954ff466ef8f87ef2f"
+      "size": 15674,
+      "sha256": "ed3a8241962d3584c04d29d164ee625b760934e136a0939a94a3f13e8ef6b483"
     },
     {
       "path": "RELEASE.md",
-      "size": 11739,
-      "sha256": "c412b57ac0ec3a9c56dd779034377491f30de93e542f8deda8e439b302a15949"
+      "size": 12451,
+      "sha256": "b7b32c40a19cd1c99f92680d56fae109b3cc78a8f5ea8a356191aa6c08106d42"
     },
     {
       "path": "demo/README.md",
@@ -720,8 +720,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 7504,
-      "sha256": "5e8e26aa2168ea8d71fb18f4acc46c57a1335536ca6971d4bb20a58dd2b56d94"
+      "size": 7685,
+      "sha256": "2d702a469f824476003fe0bf6ca83e3e4f96b01393e28eb6c2872a2e9d2e27d5"
     }
   ],
   "crc": "PASS",

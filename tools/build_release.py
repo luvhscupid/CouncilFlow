@@ -56,7 +56,13 @@ def safe_name(name: str) -> bool:
             and all(part not in {"", ".", ".."} for part in name.split("/")))
 
 
+# Claude Code plugin tests need plugins/ and its builder, which are not in this package.
+HOST_ONLY = {"tests/test_claude_plugin.py"}
+
+
 def excluded(name: str) -> bool:
+    if name in HOST_ONLY:
+        return True
     parts = {part.lower() for part in name.split("/")}
     return bool(parts & FORBIDDEN_PARTS) or name.lower().endswith((".pyc", ".pyo", ".tmp", ".temp"))
 
