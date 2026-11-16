@@ -1,10 +1,27 @@
 # CouncilFlow
 
-CouncilFlow is an installable, instruction-based Codex coding skill. A dedicated
+CouncilFlow is an installable multi-agent workflow **skill** for existing AI
+coding environments. The current implementation is Codex-native; Claude Code
+support is a possible extension, not a verified existing feature. It uses the
+host's existing models, tools, permissions and native agent delegation. A dedicated
 Planner defines acceptance; the parent Manager delegates implementation to a
 fresh Worker, requests separate Tester and Reviewer assessments, coordinates
 repairs, and asks the Planner for a final objective check. Only the Manager gives
 routine progress and results to the human Owner.
+
+These roles are workflow responsibilities, not independent servers or processes.
+CouncilFlow is not a standalone AI agent, alternative coding assistant,
+independent orchestration platform/runtime, provider, gateway, billing service
+or SaaS application, and does not replace Codex, Claude Code or native delegation.
+It may be packaged as a plugin where supported. Specifically authorized scripts,
+utilities, schemas and optional adapters support the skill without changing
+that identity or silently creating a standalone platform.
+
+The [Gate 3 Owner Charter](docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md),
+existing Owner decisions, frozen specifications and role policies retain their
+authority; this identity clarification does not simplify or change the approved
+architecture. [Research proposals](docs/research/README.md) are non-normative
+and do not independently authorize implementation or experiments.
 
 This Git repository contains the current source, regression tests, and installable
 `dist/council-flow.zip` release candidate. Current audit and independent release

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://councilflow.invalid/agent-efficiency/run-record.schema.json",
+  "title": "Agent Efficiency Run Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "task_class", "harness", "gateway", "route", "upstream_model", "repository_revision", "elapsed_ms", "usage_scope", "usage", "attempt", "acceptance", "source_kind", "notes"],
+  "properties": {
+    "schema_version": {"const": "1.0"}, "run_id": {"type": "string", "minLength": 1}, "task_class": {"type": ["string", "null"]},
+    "harness": {"enum": ["codex", "claude-code", "unknown"]}, "gateway": {"type": ["string", "null"]}, "route": {"type": "string", "minLength": 1}, "upstream_model": {"type": ["string", "null"]},
+    "repository_revision": {"type": ["string", "null"]}, "elapsed_ms": {"type": ["integer", "null"], "minimum": 0}, "usage_scope": {"enum": ["turn", "task", "session", "unknown"]},
+    "usage": {"type": "object", "additionalProperties": false, "required": ["input", "cached_input", "cache_creation", "output", "reported_cost", "availability"], "properties": {
+      "input": {"type": ["integer", "null"], "minimum": 0}, "cached_input": {"type": ["integer", "null"], "minimum": 0}, "cache_creation": {"type": ["integer", "null"], "minimum": 0}, "output": {"type": ["integer", "null"], "minimum": 0}, "reported_cost": {"type": ["number", "null"], "minimum": 0},
+      "availability": {"type": "object", "additionalProperties": {"type": "string"}}
+    }}, "attempt": {"type": "integer", "minimum": 1}, "acceptance": {"type": "object", "additionalProperties": false, "required": ["status", "evidence_ref", "provenance"], "properties": {"status": {"enum": ["accepted", "rejected", "unknown"]}, "evidence_ref": {"type": ["string", "null"]}, "provenance": {"enum": ["owner", "external-check", "unverified", "unknown"]}}},
+    "source_kind": {"type": "string", "minLength": 1}, "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}
