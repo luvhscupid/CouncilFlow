@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "c6425f79827b7a8ae93cb8e9ddf1a64054f325853e052755d04f094e6891ee3b",
+  "sha256": "7b6aff64d398fc6d7042bf1fad84e35967f49fa8f9e6766a357a8fd359a99c82",
   "entries": 146,
   "files": [
     {
@@ -65,8 +65,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 69888,
-      "sha256": "23bfd9471863b2440fe8b929e50c78429b759a680d2cfeb3ba74f943057abe6a"
+      "size": 68832,
+      "sha256": "ca49ed13cb28729a625fdcb2cf76aa32001627888eff43098a5fad26f27d6134"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
@@ -670,8 +670,8 @@
     },
     {
       "path": "tests/test_dispatch_lifecycle.py",
-      "size": 6434,
-      "sha256": "d14cf6661cbe9360dd517d314b4737cdbbe4f6c12cfcb76e7623a06eb5afa5db"
+      "size": 6297,
+      "sha256": "25f5c8028f3f017171cda7fb1084b908ff80b718f7a35d1f2dc3c74391cd2a72"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -715,8 +715,8 @@
     },
     {
       "path": "tests/test_tester_selection.py",
-      "size": 7671,
-      "sha256": "8f0128856e9a8dd383a9eae338b7a41cd2a9d55526bacf38d76650ec26808a8a"
+      "size": 7513,
+      "sha256": "dae83a294d12b1923eac30008be41deb193fc4579c4f9f78a21361d21cc258f8"
     },
     {
       "path": "tests/test_workflow_recovery.py",
