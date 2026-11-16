@@ -5,12 +5,14 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / ".agents/skills/council-flow/scripts/efficiency"))
 from codex_adapter import parse_stream, process
 from recorder import validate
 from digest import expand_bytes
 import codex_adapter
 
-FIXTURES=Path(__file__).parent/"fixtures"
+FIXTURES=Path(__file__).parent/"efficiency-fixtures"
 
 class CodexAdapterTests(unittest.TestCase):
     def test_fixture_usage_provenance_and_digest(self):

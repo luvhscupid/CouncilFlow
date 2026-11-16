@@ -1,0 +1,161 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "gate3-efficiency-integration",
+  "plan_revision": 1,
+  "task_id": "gate3-efficiency-integration",
+  "attempt_id": "integration-attempt-1",
+  "message_id": "integration-tester-report-1",
+  "message_type": "job.report",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/integration_tester"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "integration-tester-assign-1",
+  "payload": {
+    "status": "passed",
+    "summary": "Independent technical verification passed: pristine behavioral oracles, all seven checkout and extracted suites, deterministic archive rebuild, protected artifacts and exact candidate. Manager commit/merge/final-main verification remains future work.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3",
+      "AC4",
+      "AC5",
+      "AC6",
+      "AC7"
+    ],
+    "candidate_ref": {
+      "artifact_id": "integration-candidate-1",
+      "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+      "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+      "kind": "candidate-manifest"
+    },
+    "oracle_ref": {
+      "artifact_id": "integration-oracle",
+      "path": "reports/integration-gate3-efficiency/oracle.json",
+      "sha256": "fea32abfec39f9d77baa92486b668b6c2e58259d064209aac3bb1ac5996c23d4",
+      "kind": "approved-verification-strategy"
+    },
+    "findings": [
+      "25 independent executions all exit 0. Pristine efficiency73(3 skips), contracts81(2 skips), original-source13, recovery5, memory9, release2 and Gate3 original7 passed.",
+      "Checkout and extracted maintained suites each 252 tests total with 5 platform skips; checkout Package D offline3 passed, no trials.",
+      "Core suite includes skill-only relocation and extracted CLI recorder/digest/expand/both adapter tests using Python -I and empty PYTHONPATH.",
+      "CRC/source-byte/hash/manifest checks and deterministic rebuild passed for 144 archive entries.",
+      "2563 protected external files and42 preserved oracle files match original hashes; frozen specifications and native role definitions unchanged.",
+      "Original static blanket sibling-import prohibition is narrowly superseded by authorized runtime relocation; current bounded stdlib/internal-import guard passed. All preserved behavioral suites executed unmodified against candidate.",
+      "AC7 technical prerequisites passed; local commit/merge and final-main rebuild are Manager duties and not yet claimed completed.",
+      "Historical E1/E2/E4 and live adapter/hook compatibility remain UNVERIFIED; no costs, quota, effective upstream or live native activation claims."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "pristine-oracles-and-protected-files",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "integration-tester-observations",
+          "path": "reports/integration-gate3-efficiency/tester/run-01/observations.json",
+          "sha256": "2b066f05b9f58cc9c6c2e3af4ac2076c3a5ddec493509d22b295c9605626e11e",
+          "kind": "verification-results"
+        }
+      },
+      {
+        "name": "checkout-and-extracted-full-regression",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "integration-tester-executions",
+          "path": "reports/integration-gate3-efficiency/tester/run-01/executions.json",
+          "sha256": "8cd81b23ca13315746dafc63477bf235b6d6846c3839cf26db95dc1dbcc12486",
+          "kind": "execution-records"
+        }
+      },
+      {
+        "name": "deterministic-build-and-install-relocation",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "integration-tester-observations",
+          "path": "reports/integration-gate3-efficiency/tester/run-01/observations.json",
+          "sha256": "2b066f05b9f58cc9c6c2e3af4ac2076c3a5ddec493509d22b295c9605626e11e",
+          "kind": "verification-results"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "demo/gate3-demo/app.py",
+          "demo/gate3-demo/inputs/amount.csv",
+          "amount"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "exit_code": 0,
+        "stdout_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+        "command_id": "integration-gate3-sum",
+        "candidate_ref": {
+          "artifact_id": "integration-candidate-1",
+          "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+          "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "integration-gate3-app",
+            "path": "demo/gate3-demo/app.py",
+            "sha256": "38a5c7e7ce6b065ae9121d2f918e7d01a9e4849c57298d7e9d283e09610a6c39",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "integration-gate3-input",
+            "path": "demo/gate3-demo/inputs/amount.csv",
+            "sha256": "07e265266826cbe233051199c73a4ddb77b7edfc9d03f3ba9c7937ce4bbe1b30",
+            "kind": "input"
+          },
+          {
+            "artifact_id": "integration-oracle",
+            "path": "reports/integration-gate3-efficiency/oracle.json",
+            "sha256": "fea32abfec39f9d77baa92486b668b6c2e58259d064209aac3bb1ac5996c23d4",
+            "kind": "approved-verification-strategy"
+          }
+        ],
+        "acceptance_id": "AC2",
+        "evidence_ref": {
+          "artifact_id": "integration-tester-csv-stdout",
+          "path": "reports/integration-gate3-efficiency/tester/run-01/deterministic-csv.stdout",
+          "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+          "kind": "raw-command-stdout"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "integration-tester-executions",
+      "path": "reports/integration-gate3-efficiency/tester/run-01/executions.json",
+      "sha256": "8cd81b23ca13315746dafc63477bf235b6d6846c3839cf26db95dc1dbcc12486",
+      "kind": "execution-records"
+    },
+    {
+      "artifact_id": "integration-tester-observations",
+      "path": "reports/integration-gate3-efficiency/tester/run-01/observations.json",
+      "sha256": "2b066f05b9f58cc9c6c2e3af4ac2076c3a5ddec493509d22b295c9605626e11e",
+      "kind": "verification-results"
+    },
+    {
+      "artifact_id": "integration-tester-csv-stdout",
+      "path": "reports/integration-gate3-efficiency/tester/run-01/deterministic-csv.stdout",
+      "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+      "kind": "raw-command-stdout"
+    },
+    {
+      "artifact_id": "integration-tester-runner",
+      "path": "reports/integration-gate3-efficiency/tester/verify.py",
+      "sha256": "95ad595e27e960a43540c4d1bb3f498958d17c8421af7350e572546c87414373",
+      "kind": "verification-script"
+    }
+  ]
+}

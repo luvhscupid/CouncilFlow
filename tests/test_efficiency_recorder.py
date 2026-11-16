@@ -1,6 +1,8 @@
 import json
 import unittest
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / ".agents/skills/council-flow/scripts/efficiency"))
 from recorder import record, validate, parse_codex_event, parse_claude_json, append_jsonl
 
 class RecorderTests(unittest.TestCase):

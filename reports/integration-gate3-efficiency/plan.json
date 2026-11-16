@@ -1,0 +1,133 @@
+{
+  "plan_id": "gate3-efficiency-integration",
+  "plan_revision": 1,
+  "objective": "Integrate, test, package and locally merge Gate 3 deliverables and optional Agent Efficiency capability into CouncilFlow main under the current Owner request.",
+  "source_provenance": {
+    "kind": "ordinary-owner-request-in-inherited-host-context",
+    "description": "The full Owner request is visible in inherited conversation context. Acceptance text below is Planner-generated traceability, not a verbatim Owner AC fixture. No independently byte-exported host message is claimed; historical Gate 3 originals remain authoritative for their own criteria."
+  },
+  "scope": [
+    ".agents/skills/council-flow/",
+    "experiments/agent-efficiency/",
+    "demo/gate3-demo/",
+    "tests/",
+    "tools/build_release.py",
+    "README.md",
+    "RELEASE.md",
+    "reports/integration-gate3-efficiency/",
+    "dist/",
+    "ordinary-local-git-integration"
+  ],
+  "acceptance": [
+    {
+      "id": "AC1",
+      "text": "Create an integration branch from verified current local main; import feature/agent-efficiency through Git history; selectively import Gate 3 application/tests and approved sanitized regression assets; preserve original branches, commits, Gate 3 worktree/evidence, frozen specifications, approved fixtures, backups, role definitions and unrelated files.",
+      "source_location": "Owner section 1; sections 2 and 7",
+      "verification": "Git ancestry/status, preserved-source hashes, selected import inventory"
+    },
+    {
+      "id": "AC2",
+      "text": "Maintain Gate 3 CSV column-sum demo with Decimal summation, positional CLI, clean errors and nonzero failures; retain deterministic behavior tests and add only missing focused handoff/criteria-fidelity regression controls.",
+      "source_location": "Owner section 2 items 1-4",
+      "verification": "Demo tests, original Gate 3 acceptance tests, contracts/source-fidelity negative controls"
+    },
+    {
+      "id": "AC3",
+      "text": "Package existing Python recorder, digest/expand, Codex adapter and Claude Code/xKiro adapter as a usable explicitly activated optional skill capability; one maintained runtime copy, relocatable in other compatible repositories, documented small CLI interface, retained full permitted command-output artifacts and existing failure/timeout/incomplete safeguards.",
+      "source_location": "Owner section 3 required behavior 1-9",
+      "verification": "Original toolkit suites plus extracted and relocated CLI tests, opt-in instruction checks"
+    },
+    {
+      "id": "AC4",
+      "text": "Preserve native Codex workflow and distinct Worker, Tester, Reviewer, Manager and Planner responsibilities, original-source fidelity, independent verification and Reviewer deterministic rerun; Owner performs no routine courier work; efficiency cannot replace roles or suppress critical evidence; disabled efficiency preserves normal workflow.",
+      "source_location": "Owner section 2 items 5-7 and section 4",
+      "verification": "Unmodified role policy/native definitions where possible, existing workflow contracts, focused opt-in/fidelity controls, independent Tester/Reviewer evidence"
+    },
+    {
+      "id": "AC5",
+      "text": "Update README, RELEASE, skill references, package tests and release allowlist to include maintained demo, required runtime/references/tests; preserve deterministic ZIP, safe paths/link protections/exclusions; produce dist/council-flow.zip, manifest and SHA-256; verify CRC/source bytes/installability and all applicable suites after extraction without original checkout.",
+      "source_location": "Owner sections 5-6",
+      "verification": "Builder tests, archive inventory/hash/source-byte comparison, separate temporary extraction and relocated install execution"
+    },
+    {
+      "id": "AC6",
+      "text": "Keep historical Gate 3 NATIVE_ROLE_WORKFLOW_PARTIAL separate from release verification: seven E-checks passed; E1/E2/E4 remain UNVERIFIED. Offline adapter verification is not live compatibility proof; Codex/Claude Code/xKiro live remains unverified; no billing/cache/upstream/quota claims, paid/live trials, formal Gate 3 rerun, global hooks/private interception, server/router/orchestrator, universal selector implementation, or Package D trials. Package D remains DRAFT_NOT_AUTHORIZED.",
+      "source_location": "Owner sections 2-6 limitations",
+      "verification": "Documentation review, runtime import/source review, historical frozen-byte comparison, scope diff"
+    },
+    {
+      "id": "AC7",
+      "text": "After successful implementation and independent verification, commit dedicated integration branch, preserve previous main as recoverable reference, merge ordinarily into local main, rebuild and rerun relevant regression/extracted-release verification on main; no reset/clean/force/push. Report invocation, features, evidence, final main hash, ZIP/SHA, limitations and publication readiness.",
+      "source_location": "Owner section 7, definition of done and final report",
+      "verification": "Commit ancestry, backup ref, final main status, final build and verification records"
+    }
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "owner": "manager",
+      "deliverable": "Verify Git state, create integration from local main, merge feature history, snapshot preservation/oracle identities before Worker."
+    },
+    {
+      "id": "U2",
+      "owner": "worker",
+      "deliverable": "Inspect existing code; select minimal Gate 3 application/tests/sanitized fixture import; relocate functional toolkit runtime/tests into installable skill with no diverging copy; retain Package D draft outside active runtime."
+    },
+    {
+      "id": "U3",
+      "owner": "worker",
+      "deliverable": "Add explicit CLI/reference, relocation and packaging regression tests; update README/RELEASE/skill references/release allowlist; run developer suites and build; freeze candidate manifest then stop edits."
+    },
+    {
+      "id": "U4",
+      "owner": "tester",
+      "deliverable": "Independently verify exact candidate against original request/plan, pristine oracles, all relevant suites, archive bytes/extraction/relocation; record exact executable, arguments, workdir, input/candidate hashes, exit and normalized stdout hash."
+    },
+    {
+      "id": "U5",
+      "owner": "reviewer",
+      "deliverable": "Compare original request/plan, candidate, Tester evidence and preserved sources; independently rerun a Tester-declared deterministic command with CRLF-to-LF-only stdout normalization."
+    },
+    {
+      "id": "U6",
+      "owner": "manager-and-original-planner",
+      "deliverable": "Manager evaluates both reports; original Planner checks original acceptance; Manager commits/ordinary-merges and rebuilds/verifies final main, reports remaining limitations."
+    }
+  ],
+  "dependencies": [
+    "U1 -> U2 -> U3 -> U4 -> U5 -> U6",
+    "One mutating Worker; independent Tester and Reviewer never repair product. Rework uses fresh Worker under unchanged acceptance."
+  ],
+  "verification_strategy": [
+    "Manager snapshots existing tests, frozen Gate 3 specifications/approved fixture identities, role definitions and original Gate 3 app/tests before Worker; Worker tests supplement rather than replace.",
+    "Run python -m unittest discover -s tests -v and each maintained demo/report verification suite listed in RELEASE; exclude intentionally failing starter fixture and separately label historical restoration suites.",
+    "Run all existing recorder, digest/expand, Codex adapter, Claude adapter and evaluate offline tests from their maintained relocated paths; retain sanitized fixtures only.",
+    "Test exact Gate 3 positional CLI success/error behaviors with fresh process; verify Decimal precision behavior and failure exits.",
+    "Build python tools/build_release.py; validate ZIP CRC, safe inventory, exact source bytes/manifest/checksum and deterministic rebuild; reject excluded artifacts/secrets/links through existing and focused tests.",
+    "Extract to separate temporary directory; execute applicable full suites and explicit recorder/digest/expand/adapters from extracted skill, then copy only installable skill/native roles to unrelated repository and verify CLI works without development path.",
+    "Tester selects deterministic stdout command (for example Gate 3 CSV invocation against packaged sample) and records exact executable path plus inputs; Reviewer independently repeats and compares exit and SHA-256 after CRLF-to-LF replacement only.",
+    "After merge repeat build and relevant tests on local main; current Windows-local evidence stays separate from historical experiment or Cloud claims."
+  ],
+  "risks": [
+    "Existing toolkit path assumptions/imports may require relocation updates; no duplicate runtime.",
+    "Git author identity was absent; Manager used per-command Codex identity for local history merge without global configuration.",
+    "Gate 3 worktree contains untracked evidence; do not modify or indiscriminately import.",
+    "Current host exact backend model identifier is unavailable; do not infer one.",
+    "No live hook/adapter compatibility, token savings, native Gate3 telemetry completeness or billing proof is established by offline tests."
+  ],
+  "rejected_alternatives": [
+    {
+      "alternative": "Blind Gate 3 workspace merge",
+      "disposition": "Rejected by Owner; selective approved import only."
+    },
+    {
+      "alternative": "Standalone efficiency router/runtime or automatic hooks",
+      "disposition": "Rejected by Owner; explicit local utilities only."
+    },
+    {
+      "alternative": "Package D live evaluation or selector implementation",
+      "disposition": "Outside authorization; preserve draft/research only."
+    }
+  ],
+  "completion_order_note": "Planner final product check precedes Manager local merge. AC7 final-main facts require Manager post-merge evidence; never declare those future steps already executed."
+}

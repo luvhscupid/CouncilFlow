@@ -1,0 +1,173 @@
+{
+  "strategy": "Run preserved existing suites against candidate runtime; run full current suites and extracted relocated skill smoke tests. Mandatory failures block acceptance.",
+  "files": [
+    {
+      "path": "tests/test_codebase_memory_integration.py",
+      "sha256": "031fa02d1d09446f193fd5416a8aca136e6e7e176ffdeee0868e96c90cad661e"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "db7245b333765b03c999f453550227383e9cc8af0f4b04b213269d11cb6140b4"
+    },
+    {
+      "path": "tests/test_original_source.py",
+      "sha256": "b25fe47e5776d4498773b4e16ee87e2c73da438eaf120a32ecaf41ef29b7fe16"
+    },
+    {
+      "path": "tests/test_release.py",
+      "sha256": "303ea53cac2c719f0a761e4e19cc8017b05a2c0cf2216ddef4e5ee706c1fa823"
+    },
+    {
+      "path": "tests/test_skill_files.py",
+      "sha256": "09371df619b6a4d7006f803a46a11aadb86c37381fb93977fc6463263459b751"
+    },
+    {
+      "path": "tests/test_workflow_recovery.py",
+      "sha256": "697752c6ced4a89ce5a22f7e8cf47b42330204d727c58e6487c8ad55ed40ad24"
+    },
+    {
+      "path": "tests/validation_cases.json",
+      "sha256": "31d4c1c2f04fdf262cd8506dd15044c5fb7b79b2df4052b16ee1e3e478054005"
+    },
+    {
+      "path": "tests/fixtures/owner-version-original.txt",
+      "sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d"
+    },
+    {
+      "path": "tests/fixtures/README.md",
+      "sha256": "c886dae34d23a01be6bac39d81e7de0c199265ae6ec9a7ffc77c7f32474615c6"
+    },
+    {
+      "path": "experiments/agent-efficiency/.gitignore",
+      "sha256": "097872f694e081c1bbb1aa319341fbcb72cd7b7e2f11bb8207590df9b5181538"
+    },
+    {
+      "path": "experiments/agent-efficiency/claude_adapter.py",
+      "sha256": "5e05355dd9be80b1a3d8e0236dab3cf4f4ec2fadb4de0d000e1cda913ec49c06"
+    },
+    {
+      "path": "experiments/agent-efficiency/codex_adapter.py",
+      "sha256": "4721e6308c4476f34d8e2e64f5c05b3681ec8dce03ae11e87456592cbc8200c7"
+    },
+    {
+      "path": "experiments/agent-efficiency/digest.py",
+      "sha256": "bc35e15e300a7f8fd221eab5a7910eb69cdd7eba376925e546aac61ea49d601e"
+    },
+    {
+      "path": "experiments/agent-efficiency/evaluate.py",
+      "sha256": "d0ac69f00979a7e206c7e1e9263b4334749f07d519d37531effd49280b025f6c"
+    },
+    {
+      "path": "experiments/agent-efficiency/IMPLEMENTATION-STATUS.md",
+      "sha256": "24b62cc218787a15bab22018a0aa4353d0a65729e0f7fdcdfcb5877d4af92283"
+    },
+    {
+      "path": "experiments/agent-efficiency/README.md",
+      "sha256": "503548c540158c504a4ac01c0c7e74fbe270cb3ba7b7efd79b583f92e3dc56f7"
+    },
+    {
+      "path": "experiments/agent-efficiency/record.schema.json",
+      "sha256": "36d84071abfa4f71743c42ffef37d3050a3f03f8f5d3926b01e3df4a6256d663"
+    },
+    {
+      "path": "experiments/agent-efficiency/recorder.py",
+      "sha256": "83469aad00f22e3b38c0b9cdb566e12ed3e6134671a62484be8541fd4dab735c"
+    },
+    {
+      "path": "experiments/agent-efficiency/test_claude_adapter.py",
+      "sha256": "407807a5e0103582b820519955f70fbbffcf022a9a26d4caab378306cd5ef7fe"
+    },
+    {
+      "path": "experiments/agent-efficiency/test_codex_adapter.py",
+      "sha256": "389f875ee3ce53bb744b14cc073ce5b53104a0de0dced25b694d6453c1d1dc77"
+    },
+    {
+      "path": "experiments/agent-efficiency/test_digest.py",
+      "sha256": "802dce66ee503e85ee384396850ed6c87d15e5d551d5e0b911f753ea1b539e52"
+    },
+    {
+      "path": "experiments/agent-efficiency/test_evaluate.py",
+      "sha256": "2533a802b4cc999584a1a7fda2ea0a69af03dc874568e5590ad893cbbce24c0d"
+    },
+    {
+      "path": "experiments/agent-efficiency/test_recorder.py",
+      "sha256": "cb621deff1c524e0ce5a0e126d2a06991cf3ec36aecedb7465a8b9d2f1a141c0"
+    },
+    {
+      "path": "experiments/agent-efficiency/evaluation/protocol.draft.json",
+      "sha256": "ed54b6a8a6942c292c8718bfbfc58d347c8a96e977c7f1efd791beab134c862f"
+    },
+    {
+      "path": "experiments/agent-efficiency/evaluation/PROTOCOL.md",
+      "sha256": "12536e18fa0f94a4070fd2a99e2d2d772da5c5ca1668ac141973d4d0246fa9d3"
+    },
+    {
+      "path": "experiments/agent-efficiency/evaluation/RUNBOOK.md",
+      "sha256": "87703ae7b14ff2271badade55f44e3c33472b8207deb35f119a6a1cf3ec55fb6"
+    },
+    {
+      "path": "experiments/agent-efficiency/fixtures/claude-stream-sanitized.jsonl",
+      "sha256": "a84bc70654806fa7d45238a865a853ed04e20704ad814a978e20d2692c44871a"
+    },
+    {
+      "path": "experiments/agent-efficiency/fixtures/codex-exec-sanitized.jsonl",
+      "sha256": "879f5a627d0a72fbfb6cd377d97fcdf5a9354f0c9036f8e371db716cb4309a07"
+    },
+    {
+      "path": "experiments/agent-efficiency/fixtures/paired-evaluation.json",
+      "sha256": "8073c81cf991491d709bec99bafea47602ce5d9a5748c9d63ab7e619315f6359"
+    },
+    {
+      "path": "experiments/agent-efficiency/fixtures/sanitized-runs.jsonl",
+      "sha256": "62fe14e40175fa02a7567917c82895a943dd210a31da5a641eec4133ad3aed41"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md",
+      "sha256": "e97053e51723ff40b7a328a10c3c5f759289869d2cc9dfb55dc3c1869bb2b523"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/02-GATE3-v0.2-FROZEN.md",
+      "sha256": "99812898178506eaf88afbc5b31005bf4772f775fef7e46bc633289815167be2"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/03-EXPERIMENT-RECORD.md",
+      "sha256": "1ae70e5a3f77767015b887d36e86bade702b4c61a5ff2d29e7e68b2086072ad1"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/04-TASK-FIXTURE-EXAMPLE.md",
+      "sha256": "1b315295ce7d48762fd3d5d88c4a10438a1d25dc1481121807588f484025f9a3"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/05-COUNCIL-RATIFICATION.md",
+      "sha256": "ba4fc7f9be4175573004fcf3a4df30b2bd1fcdc3742370673daefe7962ce6250"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/06-COUNCIL-APPROVED-ERRATUM-C3.md",
+      "sha256": "4655f3425ed8a312c28b2324e8d5b6730d568bf5ab3aa8c4e2439d9d4d438d6e"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/README.md",
+      "sha256": "432c9deeb8cb9416836ea438395996db2373ab37854678568de59f384f3d0cfb"
+    },
+    {
+      "path": "docs/gate3/CouncilFlow-Gate3-v0.2/SHA256SUMS.txt",
+      "sha256": "78dfce253e079072e5e4a1b82cf3222075d494dcacc4bcaa1d8e7b19a6c5c3c8"
+    },
+    {
+      "path": ".codex/agents/council-planner.toml",
+      "sha256": "929fc12286ab0c09449d4e4e7388cf8f2f9da57a17540e452f493376c66c43e9"
+    },
+    {
+      "path": ".codex/agents/council-reviewer.toml",
+      "sha256": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4"
+    },
+    {
+      "path": ".codex/agents/council-tester.toml",
+      "sha256": "a9a55444b82bdf115fd40d46e8ea5feb377a1d2f132c9e1f77db2c5869da0712"
+    },
+    {
+      "path": ".codex/agents/council-worker.toml",
+      "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
+    }
+  ]
+}

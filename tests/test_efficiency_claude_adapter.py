@@ -5,12 +5,14 @@ import subprocess
 import sys
 import unittest
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / ".agents/skills/council-flow/scripts/efficiency"))
 from claude_adapter import parse_stream, process
 import claude_adapter
 from recorder import record, validate
 from digest import expand_bytes
 
-FIXTURE=Path(__file__).parent/"fixtures"/"claude-stream-sanitized.jsonl"
+FIXTURE=Path(__file__).parent/"efficiency-fixtures"/"claude-stream-sanitized.jsonl"
 
 class ClaudeAdapterTests(unittest.TestCase):
     def test_fixture_distinguishes_harness_gateway_model_and_route(self):

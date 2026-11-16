@@ -1,0 +1,29 @@
+{
+  "scope": "Independent Windows-local integration review; no product changes",
+  "candidate_files_verified": 151,
+  "protected_files_verified": 2563,
+  "archive_entries_verified": 144,
+  "archive_sha256": "ce0c0ee264df1cbbddf2c46a2fbb9166a557387fb5dc476c40f15efb40fc0f0b",
+  "findings": [
+    "AC1 preservation/history: feature checkpoint is an ancestor of integration merge; original branch refs and backup main remain. All2563 protected source/evidence/backup hashes checked independently match.",
+    "AC2 Gate3 app is byte-identical to original snapshot, seven original tests preserved with fixture path adaptation; two additional maintained error/Decimal regression tests supplement them. Tester independently ran original seven plus maintained nine.",
+    "AC3 single runtime copy under installed skill; digest, Codex/Claude adapters and schema are byte-identical relocations. Recorder original implementation is a verbatim prefix with explicit local CLI appended. Wrapper resolves helpers from its own installed file path.",
+    "AC4 mandatory roles and original-source contracts preserved; native role TOMLs, policy, contracts.py and frozen Gate3 docs unchanged. Added digest/source-fidelity negative control does not duplicate workflow implementation. Opt-in reference preserves full evidence and required independent checks.",
+    "AC5 reviewed relocation tests use Python -I and empty PYTHONPATH; skill-only copied repository and extracted CLI exercise recorder/failure/digest/byte expansion/tamper rejection/both adapters. Tester independently executed all seven checkout and extracted suites. Reviewed archive144 entries and every manifest/source byte match.",
+    "AC6 current docs retain historical NATIVE_ROLE_WORKFLOW_PARTIAL, seven PASS and E1/E2/E4 UNVERIFIED, LIVE_UNVERIFIED adapters and DRAFT_NOT_AUTHORIZED PackageD. Original source modules have no integration-added hook, routing or host invocation.",
+    "AC7 technical prerequisites and previous-main backup are verified. Commit/local-main merge/final-main rebuild are pending Manager post-review actions, not completed acceptance facts.",
+    "Exact Tester deterministic command independently executed with preserved executable/arguments/workdir/candidate/input identities; exit and normalized stdout hash MATCH. This proves repeatability only for this command/conditions.",
+    "No substantive discrepancies found in bounded integration review. Existing static sibling-import ban was narrowly updated for three internal names only in efficiency runtime directory; each sibling remains scanned. All original behavioral oracle checks remain independently executed."
+  ],
+  "discrepancies": [],
+  "pending_manager_actions": [
+    "Commit integration",
+    "Merge local main ordinarily",
+    "Rebuild and verify final main"
+  ],
+  "limits": [
+    "No formal Gate3 experiment rerun",
+    "No live adapter/native-hook compatibility established",
+    "Graph coverage metadata_match for13 relevant code files at2026-11-16T03:15:25Z; best-effort, direct source checks used"
+  ]
+}

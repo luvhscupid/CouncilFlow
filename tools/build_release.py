@@ -21,11 +21,25 @@ DIRECTORIES = (
     "docs/gate3/CouncilFlow-Gate3-v0.2", "docs/CouncilFlow-Full-Plan",
     "reports/demo", "reports/csv-summary",
 )
-FILES = ("README.md", "RELEASE.md", "docs/gate3/README.md", "tools/build_release.py")
+FILES = (
+    "README.md", "RELEASE.md", "docs/gate3/README.md", "tools/build_release.py",
+    ".agents/skills/council-flow/scripts/efficiency.py",
+    ".agents/skills/council-flow/scripts/efficiency/recorder.py",
+    ".agents/skills/council-flow/scripts/efficiency/digest.py",
+    ".agents/skills/council-flow/scripts/efficiency/codex_adapter.py",
+    ".agents/skills/council-flow/scripts/efficiency/claude_adapter.py",
+    ".agents/skills/council-flow/scripts/efficiency/record.schema.json",
+    ".agents/skills/council-flow/references/efficiency.md",
+    "demo/gate3-demo/app.py", "demo/gate3-demo/test_app.py",
+    "demo/gate3-demo/inputs/amount.csv", "demo/gate3-demo/inputs/nonnumeric.csv",
+    "tests/test_efficiency_install.py",
+)
+# Efficiency lives inside the complete skill; maintained tests/synthetic fixtures
+# and Gate 3 demo live under tests/ and demo/. Never allow experiments wholesale.
 ROLES = {"council-planner", "council-worker", "council-tester", "council-reviewer"}
 FORBIDDEN_PARTS = {
     ".git", "__pycache__", ".pytest_cache", ".codex-runtime", ".codebase-memory",
-    "runtime", "credentials", "secrets", ".env", ".env.local", "credentials.json", "token.json",
+    "runtime", ".local-runs", "credentials", "secrets", ".env", ".env.local", "credentials.json", "token.json",
 }
 SECRET = re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|"
                     rb"(?:ghp_|github_pat_|sk-proj-|sk-live-|xox[baprs]-)[A-Za-z0-9_-]{16,}|"

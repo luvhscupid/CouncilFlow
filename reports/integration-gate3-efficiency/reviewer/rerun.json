@@ -1,0 +1,50 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "demo/gate3-demo/app.py",
+    "demo/gate3-demo/inputs/amount.csv",
+    "amount"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+  "exit_code": 0,
+  "stdout_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+  "command_id": "integration-gate3-sum",
+  "candidate_ref": {
+    "artifact_id": "integration-candidate-1",
+    "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+    "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+    "kind": "candidate-manifest"
+  },
+  "input_refs": [
+    {
+      "artifact_id": "integration-gate3-app",
+      "path": "demo/gate3-demo/app.py",
+      "sha256": "38a5c7e7ce6b065ae9121d2f918e7d01a9e4849c57298d7e9d283e09610a6c39",
+      "kind": "source"
+    },
+    {
+      "artifact_id": "integration-gate3-input",
+      "path": "demo/gate3-demo/inputs/amount.csv",
+      "sha256": "07e265266826cbe233051199c73a4ddb77b7edfc9d03f3ba9c7937ce4bbe1b30",
+      "kind": "input"
+    },
+    {
+      "artifact_id": "integration-oracle",
+      "path": "reports/integration-gate3-efficiency/oracle.json",
+      "sha256": "fea32abfec39f9d77baa92486b668b6c2e58259d064209aac3bb1ac5996c23d4",
+      "kind": "approved-verification-strategy"
+    }
+  ],
+  "acceptance_id": "AC2",
+  "evidence_ref": {
+    "artifact_id": "integration-tester-csv-stdout",
+    "path": "reports/integration-gate3-efficiency/tester/run-01/deterministic-csv.stdout",
+    "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+    "kind": "raw-command-stdout"
+  },
+  "raw_stdout_sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+  "tester_exit_code": 0,
+  "tester_stdout_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+  "status": "MATCH"
+}

@@ -5,8 +5,7 @@ description: "Coordinate an ordinary coding goal through a Planner, parent Manag
 
 # CouncilFlow
 
-Invoke explicitly with $council-flow followed by an ordinary coding goal.
-Use native Codex tools, inherited provider/model configuration, actual workspace
+Invoke explicitly with $council-flow followed by an ordinary coding goal. Use native Codex tools, inherited provider/model configuration, actual workspace
 permissions and budget. This is an instruction skill, not a security sandbox.
 It needs no new key, subscription, database, service or custom supervisor.
 Only parent **Manager** gives ordinary progress/results to the Owner.
@@ -81,6 +80,7 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
 
 ## Evidence and limits
 
+Efficiency stays disabled unless explicitly requested; then follow [efficiency helpers](references/efficiency.md) using this installed skill's CLI, preserving full evidence and all mandatory roles/checks.
 Follow [workflow](references/workflow.md). Keep real task/plan/attempt/message IDs,
 validated causal order, causal references, commands/exits and evidence hashes.
 Agent-authored envelopes omit `created_at`; diagnostic timestamp syntax does not

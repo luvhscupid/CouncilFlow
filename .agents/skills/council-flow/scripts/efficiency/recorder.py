@@ -53,3 +53,26 @@ def append_jsonl(path, item):
     validate(item)
     p=Path(path); p.parent.mkdir(parents=True,exist_ok=True)
     with p.open("a",encoding="utf-8") as f: f.write(json.dumps(item,sort_keys=True)+"\n")
+
+
+def main(argv=None):
+    """Record caller-supplied fields; absent telemetry remains unknown."""
+    import argparse
+    import sys
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("input", help="JSON object of record() keyword arguments")
+    parser.add_argument("--records", required=True, help="Append validated record to this JSONL file")
+    args = parser.parse_args(argv)
+    try:
+        fields = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        item = validate(record(**fields))
+        append_jsonl(args.records, item)
+    except (OSError, ValueError, TypeError, KeyError, AttributeError) as error:
+        print(f"Error: {error}", file=sys.stderr)
+        return 2
+    print(json.dumps(item, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

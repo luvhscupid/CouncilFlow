@@ -24,8 +24,8 @@ architecture. [Research proposals](docs/research/README.md) are non-normative
 and do not independently authorize implementation or experiments.
 
 This Git repository contains the current source, regression tests, and installable
-`dist/council-flow.zip` release candidate. Current audit and independent release
-evidence are recorded in `reports/councilflow-final-release-audit/`; see
+`dist/council-flow.zip` release candidate. Current integration evidence is recorded in
+`reports/integration-gate3-efficiency/`; earlier audit evidence remains historical. See
 [release details](RELEASE.md) for the package and verification commands.
 Software release verification is separate from the frozen Gate 3 experiment.
 Historical Round 6/Gate 3b reports describe earlier workspaces and remain
@@ -201,3 +201,46 @@ mandatory failure/rework path, separate from old demonstrations.
 static, dynamic, native and blocked evidence. The current final classification
 and new activation result are recorded by Manager after independent verification
 in [reports/final.md](reports/final.md); prior evidence is not a new invocation.
+
+## Optional Agent Efficiency
+
+The installed skill includes recorder, deterministic digest/expand and offline
+Codex/Claude Code/xKiro adapters. They stay disabled unless explicitly requested.
+Invoke `$council-flow <goal>; use the optional efficiency helpers for permitted
+local test output` to opt in, or call the CLI directly:
+
+```sh
+python .agents/skills/council-flow/scripts/efficiency.py --help
+python .agents/skills/council-flow/scripts/efficiency.py record record-input.json --records local-evidence/records.jsonl
+python .agents/skills/council-flow/scripts/efficiency.py digest run --artifacts local-evidence/run-01 --digest-output local-evidence/run-01/digest.json --timeout 30 -- python -m unittest discover -s tests
+python .agents/skills/council-flow/scripts/efficiency.py digest expand local-evidence/run-01/digest.json stderr
+```
+
+Minimal `record-input.json`:
+`{"run_id":"task-01","harness":"codex","route":"codex/native-or-configured"}`.
+For adapters and evidence/failure safeguards, read the packaged
+[efficiency reference](.agents/skills/council-flow/references/efficiency.md).
+Resolve the CLI relative to the actual installed skill path; no development
+checkout is required. Full permitted command output stays available for
+hash-checked expansion. Compact handoffs preserve original criteria and all
+mandatory native roles, independent tests and Reviewer reruns.
+
+Offline parser tests do not prove live Codex or Claude Code/xKiro compatibility,
+which remains LIVE_UNVERIFIED. No native hook, billing/cache savings, effective
+upstream identity or subscription-quota metering is claimed. Package D remains
+DRAFT_NOT_AUTHORIZED outside the distributable; no experimental trials are
+activated. Existing research/backup branches and records remain preserved.
+
+## Maintained Gate 3 example
+
+The [Gate 3 column-sum demo](demo/gate3-demo/README.md) preserves Decimal
+summation, positional CLI arguments and clean nonzero failures:
+
+```sh
+python demo/gate3-demo/app.py demo/gate3-demo/inputs/amount.csv amount
+python -m unittest discover -s demo/gate3-demo -v
+```
+
+Historical Run 01 remains NATIVE_ROLE_WORKFLOW_PARTIAL: seven E-checks passed;
+E1, E2 and E4 remain UNVERIFIED. Original independent verification evidence stays
+in the Gate 3 source worktree; current release tests are separate evidence.

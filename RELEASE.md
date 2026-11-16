@@ -2,8 +2,9 @@
 
 ## Current-checkout release candidate
 
-This section describes the package built from the current verified repository
-worktree for the final release audit. The Round 6 statements and reports below are
+This section describes the current Gate 3 + Agent Efficiency integration source
+bundle. Verification records are kept outside the ZIP in
+`reports/integration-gate3-efficiency/`. The Round 6 statements and reports below are
 historical evidence from earlier snapshots; they do not describe the current
 checkout or prove that its archive is present.
 
@@ -14,29 +15,41 @@ and is built by `python tools/build_release.py` from an explicit allowlist. It i
 complete `.agents/skills/council-flow/` skill and the four native TOML files
 under `.codex/agents/`, README, this release guide, demos, tests, the frozen
 Gate 3 requirements, the Full Plan supporting documents, and demo verification
-reports. Older mission and release reports remain in the checkout but are not
+reports. It also includes the maintained `demo/gate3-demo/`, optional
+efficiency runtime/CLI/reference inside the complete skill, original relocated
+component tests and sanitized synthetic fixtures. Package D draft evaluation,
+experiment workspaces, Gate 3 raw host/evidence records and integration execution
+outputs are excluded. Installation activates no efficiency feature.
+Older mission and release reports remain in the checkout but are not
 packaged as current verification evidence. It excludes `.git`, caches, bytecode, credentials, native
 runtime state, temporary files, the archive itself, and the current hardening
 evidence packet. The reproducible builder itself is included; it writes package
 inventory and checksum records outside the archive to avoid self-inclusion.
 
-Package verification for this run is recorded outside the archive in
-`reports/councilflow-final-release-audit/`. The archive is checked for CRC
+Current package verification is recorded outside the archive in
+`reports/integration-gate3-efficiency/`; final-release-audit records are historical. The archive is checked for CRC
 integrity, safe relative paths, required and excluded entries, and exact file
 hashes against the worktree. It is extracted to a temporary directory for test
 execution. Use `python -m zipfile -t dist/council-flow.zip` to check its ZIP
 container and verify the sibling digest with SHA-256 before distribution.
 
-Run all six current suites on the checkout and again from a fresh final extraction:
+Run these seven maintained suites on the checkout and again from a fresh final extraction:
 
 ```sh
 python -m unittest discover -s tests -v
 python -m unittest discover -s demo/receipt -v
 python -m unittest discover -s demo/csv-summary -v
 python -m unittest discover -s demo/structured-flow -v
+python -m unittest discover -s demo/gate3-demo -v
 python -m unittest discover -s reports/demo/verification -v
 python -m unittest discover -s reports/csv-summary/verification -v
 ```
+
+The main `tests` suite includes recorder, digest/expand, both adapters,
+source-fidelity controls and release/extracted-install relocation controls.
+Separately run `python -m unittest discover -s experiments/agent-efficiency -v`
+for the preserved offline Package D unit tests in the checkout; Package D
+trials remain DRAFT_NOT_AUTHORIZED and that tree is not packaged.
 
 The starter demo is intentionally incomplete. Archived restoration tests use older
 contract fixtures; their outcomes are historical and are reported separately from
@@ -48,7 +61,10 @@ comparison, frozen-source hashes and final package digest live in the audit repo
 This package is an installable source bundle; it does not establish successful
 native `$council-flow` activation, custom-agent TOML loading, or Gate 3 E1-E10
 live outcomes. Those remain subject to host-observed evidence and the authentic
-Owner fixture.
+Owner fixture. Historical Gate 3 Run 01 remains NATIVE_ROLE_WORKFLOW_PARTIAL,
+with seven E-checks PASS and E1/E2/E4 UNVERIFIED. Live Codex and Claude
+Code/xKiro adapter compatibility remains LIVE_UNVERIFIED. No new hook or live
+trial is claimed. See the packaged efficiency reference for explicit CLI use.
 
 ## Historical Round 6 correction package (retained)
 

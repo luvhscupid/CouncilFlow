@@ -1,0 +1,163 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "plan_id": "gate3-efficiency-integration",
+  "plan_revision": 1,
+  "task_id": "gate3-efficiency-integration",
+  "attempt_id": "integration-attempt-1",
+  "message_id": "integration-reviewer-report-1",
+  "message_type": "job.report",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/integration_reviewer"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "integration-reviewer-assign-1",
+  "payload": {
+    "status": "passed",
+    "summary": "Bounded technical comparison passed with no substantive discrepancies; exact independent deterministic rerun MATCH. Manager final Git merge/rebuild remains pending.",
+    "acceptance_ids": [
+      "AC1",
+      "AC2",
+      "AC3",
+      "AC4",
+      "AC5",
+      "AC6",
+      "AC7"
+    ],
+    "candidate_ref": {
+      "artifact_id": "integration-candidate-1",
+      "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+      "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+      "kind": "candidate-manifest"
+    },
+    "findings": [
+      "AC1 preservation/history: feature checkpoint is an ancestor of integration merge; original branch refs and backup main remain. All2563 protected source/evidence/backup hashes checked independently match.",
+      "AC2 Gate3 app is byte-identical to original snapshot, seven original tests preserved with fixture path adaptation; two additional maintained error/Decimal regression tests supplement them. Tester independently ran original seven plus maintained nine.",
+      "AC3 single runtime copy under installed skill; digest, Codex/Claude adapters and schema are byte-identical relocations. Recorder original implementation is a verbatim prefix with explicit local CLI appended. Wrapper resolves helpers from its own installed file path.",
+      "AC4 mandatory roles and original-source contracts preserved; native role TOMLs, policy, contracts.py and frozen Gate3 docs unchanged. Added digest/source-fidelity negative control does not duplicate workflow implementation. Opt-in reference preserves full evidence and required independent checks.",
+      "AC5 reviewed relocation tests use Python -I and empty PYTHONPATH; skill-only copied repository and extracted CLI exercise recorder/failure/digest/byte expansion/tamper rejection/both adapters. Tester independently executed all seven checkout and extracted suites. Reviewed archive144 entries and every manifest/source byte match.",
+      "AC6 current docs retain historical NATIVE_ROLE_WORKFLOW_PARTIAL, seven PASS and E1/E2/E4 UNVERIFIED, LIVE_UNVERIFIED adapters and DRAFT_NOT_AUTHORIZED PackageD. Original source modules have no integration-added hook, routing or host invocation.",
+      "AC7 technical prerequisites and previous-main backup are verified. Commit/local-main merge/final-main rebuild are pending Manager post-review actions, not completed acceptance facts.",
+      "Exact Tester deterministic command independently executed with preserved executable/arguments/workdir/candidate/input identities; exit and normalized stdout hash MATCH. This proves repeatability only for this command/conditions.",
+      "No substantive discrepancies found in bounded integration review. Existing static sibling-import ban was narrowly updated for three internal names only in efficiency runtime directory; each sibling remains scanned. All original behavioral oracle checks remain independently executed."
+    ],
+    "errors": [],
+    "comparison": {
+      "plan_ref": {
+        "artifact_id": "integration-plan-v1",
+        "path": "reports/integration-gate3-efficiency/plan.json",
+        "sha256": "2f0a385f57c799ea5cc0f27665521628757127fc9047db25121432c8a1cc51ca",
+        "kind": "plan"
+      },
+      "tester_report_ref": {
+        "artifact_id": "integration-tester-report-1",
+        "path": "reports/integration-gate3-efficiency/tester-report.json",
+        "sha256": "f7be996e597e01691401169e734293c2d065529bb2090982d80c5f3b8e057d30",
+        "kind": "message"
+      },
+      "candidate_ref": {
+        "artifact_id": "integration-candidate-1",
+        "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+        "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+        "kind": "candidate-manifest"
+      },
+      "findings": [
+        "AC1 preservation/history: feature checkpoint is an ancestor of integration merge; original branch refs and backup main remain. All2563 protected source/evidence/backup hashes checked independently match.",
+        "AC2 Gate3 app is byte-identical to original snapshot, seven original tests preserved with fixture path adaptation; two additional maintained error/Decimal regression tests supplement them. Tester independently ran original seven plus maintained nine.",
+        "AC3 single runtime copy under installed skill; digest, Codex/Claude adapters and schema are byte-identical relocations. Recorder original implementation is a verbatim prefix with explicit local CLI appended. Wrapper resolves helpers from its own installed file path.",
+        "AC4 mandatory roles and original-source contracts preserved; native role TOMLs, policy, contracts.py and frozen Gate3 docs unchanged. Added digest/source-fidelity negative control does not duplicate workflow implementation. Opt-in reference preserves full evidence and required independent checks.",
+        "AC5 reviewed relocation tests use Python -I and empty PYTHONPATH; skill-only copied repository and extracted CLI exercise recorder/failure/digest/byte expansion/tamper rejection/both adapters. Tester independently executed all seven checkout and extracted suites. Reviewed archive144 entries and every manifest/source byte match.",
+        "AC6 current docs retain historical NATIVE_ROLE_WORKFLOW_PARTIAL, seven PASS and E1/E2/E4 UNVERIFIED, LIVE_UNVERIFIED adapters and DRAFT_NOT_AUTHORIZED PackageD. Original source modules have no integration-added hook, routing or host invocation.",
+        "AC7 technical prerequisites and previous-main backup are verified. Commit/local-main merge/final-main rebuild are pending Manager post-review actions, not completed acceptance facts.",
+        "Exact Tester deterministic command independently executed with preserved executable/arguments/workdir/candidate/input identities; exit and normalized stdout hash MATCH. This proves repeatability only for this command/conditions.",
+        "No substantive discrepancies found in bounded integration review. Existing static sibling-import ban was narrowly updated for three internal names only in efficiency runtime directory; each sibling remains scanned. All original behavioral oracle checks remain independently executed."
+      ],
+      "discrepancies": [],
+      "independent_rerun": {
+        "command_id": "integration-gate3-sum",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "demo/gate3-demo/app.py",
+          "demo/gate3-demo/inputs/amount.csv",
+          "amount"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-main",
+        "candidate_ref": {
+          "artifact_id": "integration-candidate-1",
+          "path": "reports/integration-gate3-efficiency/worker/candidate.json",
+          "sha256": "2d00a9d6249925115efe0edae93dc01a10196d8b56c7105c5a63e77c28b60d45",
+          "kind": "candidate-manifest"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "integration-gate3-app",
+            "path": "demo/gate3-demo/app.py",
+            "sha256": "38a5c7e7ce6b065ae9121d2f918e7d01a9e4849c57298d7e9d283e09610a6c39",
+            "kind": "source"
+          },
+          {
+            "artifact_id": "integration-gate3-input",
+            "path": "demo/gate3-demo/inputs/amount.csv",
+            "sha256": "07e265266826cbe233051199c73a4ddb77b7edfc9d03f3ba9c7937ce4bbe1b30",
+            "kind": "input"
+          },
+          {
+            "artifact_id": "integration-oracle",
+            "path": "reports/integration-gate3-efficiency/oracle.json",
+            "sha256": "fea32abfec39f9d77baa92486b668b6c2e58259d064209aac3bb1ac5996c23d4",
+            "kind": "approved-verification-strategy"
+          }
+        ],
+        "acceptance_id": "AC2",
+        "status": "MATCH",
+        "exit_code": 0,
+        "stdout_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+        "evidence_ref": {
+          "artifact_id": "integration-reviewer-csv-stdout",
+          "path": "reports/integration-gate3-efficiency/reviewer/rerun.stdout",
+          "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+          "kind": "raw-command-stdout"
+        },
+        "tester_evidence_ref": {
+          "artifact_id": "integration-tester-csv-stdout",
+          "path": "reports/integration-gate3-efficiency/tester/run-01/deterministic-csv.stdout",
+          "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+          "kind": "raw-command-stdout"
+        },
+        "tester_exit_code": 0,
+        "tester_stdout_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06"
+      }
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "integration-reviewer-csv-stdout",
+      "path": "reports/integration-gate3-efficiency/reviewer/rerun.stdout",
+      "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+      "kind": "raw-command-stdout"
+    },
+    {
+      "artifact_id": "integration-tester-csv-stdout",
+      "path": "reports/integration-gate3-efficiency/tester/run-01/deterministic-csv.stdout",
+      "sha256": "7fb2aaeaf3eef66b52db104118c30f62899f5f0df520350a94a8fcb843c0dfdf",
+      "kind": "raw-command-stdout"
+    },
+    {
+      "artifact_id": "integration-reviewer-execution",
+      "path": "reports/integration-gate3-efficiency/reviewer/rerun.json",
+      "sha256": "ffb477aade3581eed003b827577baabdfc015819c7526fd29e1ace6fba63e0fe",
+      "kind": "execution-record"
+    },
+    {
+      "artifact_id": "integration-reviewer-findings",
+      "path": "reports/integration-gate3-efficiency/reviewer/review.json",
+      "sha256": "a113f55c5bf5cd58f135fc3b1cd2af7839f62e0014854e08d881f2968846ec16",
+      "kind": "review-results"
+    }
+  ]
+}
