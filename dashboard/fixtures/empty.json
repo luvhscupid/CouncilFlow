@@ -1,0 +1,22 @@
+{
+  "view_schema": "councilflow-dashboard-view/1",
+  "synthetic": true,
+  "run_id": "demo-empty",
+  "title": "No run records yet",
+  "status": "queued",
+  "phase": "Unknown",
+  "active_attempt": null,
+  "source": {
+    "label": "Bundled synthetic fixture · no host connection",
+    "original_criteria_ref": "synthetic:owner-plan-v1"
+  },
+  "started_at": null,
+  "last_observed_at": null,
+  "criteria": [],
+  "attempts": [],
+  "evidence": [],
+  "roles": [],
+  "activity": [],
+  "metrics": {},
+  "blockers": []
+}

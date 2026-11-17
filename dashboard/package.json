@@ -1,0 +1,7 @@
+{
+  "name": "councilflow-offline-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node --test tests/projection.test.mjs"},
+  "engines": {"node": ">=18"}
+}

@@ -16,3 +16,6 @@ htmlcov/
 Thumbs.db
 # Local per-task host state; explicit fixtures and canonical reports stay tracked.
 .councilflow/runs/
+
+# Optional dashboard browser-QA snapshots (reviewed evidence lives in dashboard/evidence).
+.playwright-cli/

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151b">
+  <meta name="description" content="An optional, offline evidence viewer for the CouncilFlow host-native workflow.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>CouncilFlow · Mission control</title>
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#overview">Skip to run overview</a>
+  <header class="topbar">
+    <a class="brand" href="#overview"><img src="./mark.svg" width="30" height="30" alt=""><strong>CouncilFlow</strong><span>Mission control</span></a>
+    <div class="header-actions"><span class="offline"><i></i> Offline observer</span><button id="theme" type="button">Light theme</button><button id="import" class="primary" type="button">Import run JSON</button><input id="file" type="file" accept=".json,application/json" hidden></div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Dashboard navigation">
+      <div class="workspace"><span class="workspace-icon">CF</span><div><strong>Local workspace</strong><small>No host connection</small></div></div>
+      <nav><a href="#overview">Run overview</a><a href="#roles">Role activity</a><a href="#criteria">Acceptance ledger</a><a href="#activity">Activity console</a><a href="#trust">Evidence & trust</a><a href="#resources">Resources</a></nav>
+      <div class="sidebar-note"><span class="tiny-label">Execution stays in your host</span><p>Observe the workflow.<br>Inspect the evidence.</p><small>This viewer cannot dispatch agents or authorize actions.</small></div>
+      <a class="docs-link" href="./README.md">Viewer documentation</a>
+    </aside>
+    <main id="main">
+      <div class="toolbar"><div><span class="breadcrumb">Workspace / Runs /</span> <span id="run-id" class="mono"></span></div><label>Scenario <select id="scenario"><option value="review">Review in progress</option><option value="failed">Failed verification</option><option value="interrupted">Interrupted / unknown metrics</option><option value="empty">Empty project</option><option value="stress">Long title / 1,000 events</option></select></label></div>
+      <div id="import-status" role="status" aria-live="polite"></div>
+      <div id="source-banner" class="source-banner"></div>
+      <section id="overview" class="overview" tabindex="-1">
+        <div class="overview-heading"><div><h1 id="title"></h1><p id="run-meta"></p></div><span id="run-status" class="badge"></span></div>
+        <div class="overview-grid"><div class="acceptance-overview"><div class="section-heading"><h2>Final acceptance</h2><span class="badge neutral">Derived from evidence</span></div><div class="progress-number"><strong id="fraction"></strong><span id="percentage"></span></div><div id="segments" class="segments" aria-hidden="true"></div><p id="progress-caption"></p><div id="stage-counts" class="stage-counts"></div></div>
+        <div class="operation"><span class="tiny-label">Recorded operation</span><h2 id="operation"></h2><p id="operation-detail"></p><dl id="timing" class="timing"></dl></div></div>
+        <div class="phase-caption"><strong>Workflow phase</strong><span>Recorded role highlighted · handoff occurrence not inferred</span></div><ol id="phase-rail" class="phase-rail"></ol>
+      </section>
+      <section id="attention" class="attention" aria-label="Blockers and decisions"></section>
+      <section id="roles" class="roles-section"><div class="section-heading"><h2>The role desk</h2><span>Workflow responsibilities · not five persistent agents</span></div><div id="role-cards" class="role-grid"></div></section>
+      <div class="work-grid">
+        <section id="criteria" class="panel"><div class="section-heading"><div><h2>Acceptance ledger</h2><p>Original criteria, candidate by candidate.</p></div><label class="attempt-label">Candidate <select id="attempt"></select></label></div><div class="matrix-labels"><span>Original criterion</span><span>W</span><span>T</span><span>R</span><span>P</span></div><div id="criteria-list"></div><div class="matrix-key">W Worker · T Tester · R Reviewer · P Planner<br>Only a complete final Planner chain counts as accepted.</div></section>
+        <section id="activity" class="panel console"><div class="section-heading"><div><h2>Activity console</h2><p id="event-count"></p></div><span class="snapshot-tag">Snapshot</span></div><div class="filters"><label>Role <select id="role-filter"><option value="all">All roles</option><option>Planner</option><option>Manager</option><option>Worker</option><option>Tester</option><option>Reviewer</option><option>Unattributed</option></select></label><label>Event <select id="type-filter"><option value="all">All events</option><option value="handoff">Handoffs</option><option value="implementation">Implementation</option><option value="verification">Verification</option><option value="decision">Decisions</option><option value="system">System</option></select></label></div><div id="events" class="events"></div><button id="more" class="more" type="button">Load 50 more events</button></section>
+      </div>
+      <div class="bottom-grid"><section id="trust" class="panel"><div class="section-heading"><div><h2>Verification & trust</h2><p>Evidence coverage for the selected candidate.</p></div><span class="badge neutral">Read only</span></div><div id="trust-list"></div><p class="trust-note">Provenance labels are imported claims. Structural checks do not authenticate senders. A matching hash proves repeatability of recorded bytes, not semantic correctness.</p></section><section id="resources" class="panel"><div class="section-heading"><div><h2>Reported resources</h2><p>Unknown values stay unknown.</p></div></div><div id="metrics" class="metrics"></div><p class="trust-note">No cost or ETA is inferred. Open a metric for its scope and limitations.</p></section></div>
+      <footer><span>CouncilFlow / Optional observer</span><span>Explicit import. Local memory only. No execution authority.</span></footer>
+    </main>
+  </div>
+  <dialog id="inspector" aria-labelledby="inspector-title"><div class="drawer-heading"><h2 id="inspector-title"></h2><button id="close-inspector" type="button" aria-label="Close details">Close</button></div><div id="inspector-content"></div></dialog>
+</body>
+</html>

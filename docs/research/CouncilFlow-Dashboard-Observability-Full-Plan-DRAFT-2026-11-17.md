@@ -7,6 +7,8 @@
 **Document authority:** NON-NORMATIVE research/design proposal. It does not supersede the Gate 3 Owner Charter, frozen Architecture Specification v1.0/Security Annex v1.0-A, approved Owner decisions, role policy, source-fidelity rules, or current installed skill.  
 **Scope:** Optional observability and user interface for the existing CouncilFlow host-native workflow skill; no change to the execution authority chain.
 
+**2026-11-17 implementation addendum:** The Owner subsequently authorized the offline, read-only dashboard, presentation projection, synthetic fixtures, tests and associated documentation in a one-shot implementation request. That narrowly supersedes this document's original implementation pause for those deliverables only. The original planning record below remains historical and NON-NORMATIVE; hooks, host experiments, persistent services, security/workflow changes, paid APIs, deployment, release, merge and push remain outside this authorization. See section 17 for the implemented scope and verification.
+
 ## 0. Decision summary
 
 **Council consensus:** Pursue a removable, read-only dashboard. Existing CouncilFlow contracts and evidence remain the source of truth. Examine optional live telemetry from official host lifecycle events in a bounded experiment before promising real-time features. Do not adopt a persistent backend merely to animate a UI. No automatic model switches, role control, permissions, billing, or approvals through the dashboard.
@@ -323,3 +325,40 @@ Do not bundle test recordings, raw hooks, credentials or private host logs into 
 - Codex programmatic host integration context (not authority to replace current workflow): https://developers.openai.com/blog/codex-as-a-platform
 
 **End of plan.**
+
+## 17. Design and Implementation Skill Matrix
+
+**Implementation scope:** Optional offline dashboard in `dashboard/`, based on the planning branch `docs/dashboard-observability-plan-20261117` at `12a4e366bb50245de44ab0ce3363541633c8a16b`. Implemented on `feat/dashboard-observability-mvp-20261117`. This section records engineering choices and observed verification, not a change to the frozen CouncilFlow workflow or security specifications. Sections 4–7's hook feasibility experiments were not performed or implicitly authorized.
+
+| Skill | Selection rationale | Actual invocation/application and limits |
+| --- | --- | --- |
+| codebase-memory | Confirm project/root and package/source scope | Read SKILL.md; list_projects, get_graph_schema, search_graph and check_index_coverage invoked. Exact Windows root mapped to E-Saint-PROJECTS-CouncilFlow-main. Bounded symbol queries returned no matches; direct source inspection supplied the package/contract facts. Clean coverage is best-effort, not proof of completeness. |
+| frontend-design | Deliberate hierarchy and visual identity | Read and applied: three composition directions considered, graphite/blue token system, acceptance ledger selected as anchor, responsive review of actual screenshots. |
+| ui-ux-pro-max | Coherent dashboard and accessible interaction | Read; ran search.py design-system for developer operations dashboard, density 8. Used responsive, focus, target and readability guidance; did not blindly copy marketing-pattern output. |
+| taste-skill | Restraint, one system, actual visual QA | Read. Applied restrained surfaces, no decorative effects, consistent edges and screenshot critique. Marketing hero/photography/palette-deal/one-section-per-screen and its marketing finish gate were unnecessary for this dense offline Operate surface; the Owner's dashboard brief takes priority. No claim of a taste-skill GATE: PASS. |
+| impeccable | Operate-mode craft and mechanical quality scan | Read SKILL.md and relevant new-work/init/craft-floor guidance; context launcher, direction seed and detector actually ran. Fixed tiny functional text, skip-link hover contrast and mobile overflow/inset. Used supplied Owner brief rather than a new interview or selection gate because the Owner explicitly delegated those decisions and requested one continuous build. No hooks installed. |
+| domain-modeling | Separate candidate, attempt, claim and acceptance | Read and applied; dashboard/GLOSSARY.md records precise presentation vocabulary without redefining normative roles. |
+| codebase-design | Keep complexity at the parser/projection seam | Read and applied; parseSnapshot and project isolate bounded validation/acceptance derivation from DOM rendering. No speculative adapter platform. |
+| react | Assess stateful frontend requirements | Read; implementation unnecessary. Native modules, details, dialog and selects cover the interaction surface with no build/runtime dependency. |
+| tailwind | Assess styling approach | Read; unnecessary for a single removable static surface. Semantic CSS variables and a scoped stylesheet avoid a build pipeline. |
+| vercel-react-best-practices | Assess framework/rendering costs | Read; React-specific rules not applicable to the chosen stack. Applied the general intent of bounded lists and no unnecessary dependencies; no claim of React implementation. |
+| web-design-guidelines | Review semantics, focus, responsiveness and motion | Read and fetched the current guideline source. Applied native controls, labels, focus, reduced motion, long-content handling and visible import feedback. No full accessibility certification claimed. |
+| playwright-cli | Actual browser interaction and screenshots | Read; CLI 0.1.24 executed against installed Edge. 40 smoke assertions passed, responsive widths 320–1440, screenshots captured and inspected. CLI obtained in npm cache, no global install. System CA verification used, never TLS bypass. |
+| product-design:audit | Screenshot-led product review | Read and applied to locally served dashboard with Playwright capture. Actual screenshots exposed offscreen event-painting and mobile layout issues, repaired before final capture. Audit and limits recorded in dashboard/evidence/verification.md; no Figma/canvas or deployment. |
+| product-design:ideate | Evaluate visual exploration before commitment | Read; image generation not run. Its multi-option generation and user-selection pause were unnecessary under the Owner's explicit creative delegation/no-stop instruction. Textual composition exploration preceded implementation. No external image service or paid call used. |
+
+### Stack and design decision
+
+Native ES modules and CSS, no production dependencies, build, server-side application or framework. A temporary loopback static-file server is only a local launch/test aid. The repository has a Python skill/package structure and no incumbent frontend dependency set; the bounded single-page interactions do not justify adding React/Tailwind. Self-contained modules, local fonts/icon and restrictive CSP keep the viewer offline. Source, tests, fixtures and docs can be removed together without changing CouncilFlow installation.
+
+Graphite console surfaces and cool blue acceptance segments emphasize evidence rather than apparent agent motion. Desktop uses a navigation rail, overview/phase strip, five expandable role summaries, candidate acceptance ledger and activity console, then trust/resources. Mobile elevates recorded operation, acceptance, blockers and active-role summary; evidence is progressively disclosed. Light theme, explicit textual statuses, native keyboard controls, focus restoration and reduced motion are implemented. No event generator or perpetual animation pretends to be live.
+
+### Delivered, verified and unverified
+
+Implemented: bounded explicit JSON import, unknown-version rejection, duplicate-key/reference checks, safe text rendering, candidate-bound acceptance, preserved rework, six provenance labels, role details, combined event filters, timeline paging, evidence drawer, metrics scope details, demonstration scenario switching, long/empty/interrupted/failing fixtures and responsive themes.
+
+Verification: 12 projection tests passed; existing Python regression suite ran 239 tests, OK with 5 skips; 40 Playwright/Edge browser assertions passed. All evidence is Windows-local. Browser checks include long titles at 1440/1024/820/768/390/320 widths, a 1,000-event timeline, import negative controls, keyboard focus and reduced motion. Final screenshots, a screenshot-led audit, reproduction commands and limits are in `dashboard/evidence/` and `dashboard/README.md`.
+
+Not implemented or verified: live telemetry, hooks, host lifecycle attribution, real model identity/counters/billing, native packet-to-view conversion, automated source authenticity, Firefox/Safari or full assistive-technology conformance. Existing sanitized efficiency records and human-readable smoke summaries were inspected as documentation context, not relabeled into fresh dashboard execution evidence. A future separately authorized adapter can target the view format without altering CouncilFlow packets.
+
+Launch: `python -m http.server 4173 --bind 127.0.0.1 --directory dashboard`, then open `http://127.0.0.1:4173/`. Import via the visible JSON button; bundled `dashboard/fixtures/*.json` are synthetic examples. Reload clears imported memory. Stop the server and remove `dashboard/` to disable/remove; no native/global configuration or canonical package content depends on it. The original release allowlist is unchanged and does not bundle this optional frontend.

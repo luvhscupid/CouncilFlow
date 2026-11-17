@@ -1,0 +1,92 @@
+### Result
+{"passed":40,"checks":["Final acceptance fraction is 3/6, not intermediate progress","Desktop has no page overflow","Role card expands","Criterion opens evidence drawer","Criterion preserves attempt history","Drawer restores keyboard focus","Historical candidate retains its own fraction","Historical context is explicit","Role filter changes timeline","Event category combines with role filter","Event details expand","Trust records are inspectable","Metrics expose attribution scope","Interrupted status is explicit","Missing metrics stay Not reported","Interrupted roles do not imply live activity","Failed verification has an explicit failure symbol","Empty criteria never produce 0 percent","Large timeline initially renders 50 events","Timeline loads the next page","Long title has no overflow at 1440px","Long title has no overflow at 1024px","Long title has no overflow at 820px","Long title has no overflow at 768px","Long title has no overflow at 390px","Long title has no overflow at 320px","Reduced motion disables smooth scrolling","Light theme works","Malformed JSON: previous run survives","Unsupported schema: previous run survives","2 MiB: previous run survives","Duplicate JSON key: previous run survives","Hostile HTML renders literally","No hostile element is created","Hostile script never executes","Imported run is distinct from demonstration","Imported selection restores exact imported run","Keyboard begins at skip link","Keyboard focus is visible","Skip link reaches overview"]}
+### Ran Playwright code
+```js
+await (async page => {
+  const results=[];
+  const check=(value,label)=>{if(!value)throw new Error(label);results.push(label);};
+  const noOverflow=async()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth);
+  await page.goto('http://127.0.0.1:4173/');
+  await page.setViewportSize({width:1440,height:1100});
+  await page.locator('#fraction').waitFor();
+  check(await page.locator('#fraction').textContent()==='3 / 6','Final acceptance fraction is 3/6, not intermediate progress');
+  check(await noOverflow(),'Desktop has no page overflow');
+  await page.locator('.role-card summary').first().click();
+  check(await page.locator('.role-card').first().getAttribute('open')!==null,'Role card expands');
+  await page.locator('.role-card summary').first().click();
+  await page.locator('.criterion-row').first().click();
+  check(await page.locator('#inspector').evaluate(e=>e.open),'Criterion opens evidence drawer');
+  check(await page.locator('#inspector-content').textContent().then(t=>t.includes('Candidate history')&&t.includes('attempt-1')),'Criterion preserves attempt history');
+  await page.keyboard.press('Escape');
+  check(await page.locator('.criterion-row').first().evaluate(e=>e===document.activeElement),'Drawer restores keyboard focus');
+  await page.locator('#attempt').selectOption('attempt-1');
+  check(await page.locator('#fraction').textContent()==='1 / 6','Historical candidate retains its own fraction');
+  check(await page.locator('#attention').textContent().then(t=>t.includes('historical candidate')),'Historical context is explicit');
+  await page.locator('#attempt').selectOption('attempt-2');
+  await page.locator('#role-filter').selectOption('Tester');
+  check(await page.locator('.event').count()===1,'Role filter changes timeline');
+  await page.locator('#type-filter').selectOption('handoff');
+  check(await page.locator('.event').count()===0,'Event category combines with role filter');
+  await page.locator('#role-filter').selectOption('all');
+  await page.locator('#type-filter').selectOption('all');
+  await page.locator('.event summary').first().click();
+  check(await page.locator('.event').first().getAttribute('open')!==null,'Event details expand');
+  await page.locator('.trust-row').first().click();
+  check(await page.locator('#inspector-title').textContent()==='Contract validation','Trust records are inspectable');await page.keyboard.press('Escape');
+  await page.locator('.metric').first().click();
+  check(await page.locator('#inspector-content').textContent().then(t=>t.includes('scope')),'Metrics expose attribution scope');await page.keyboard.press('Escape');
+  await page.locator('#scenario').selectOption('interrupted');
+  check(await page.locator('#run-status').textContent()==='interrupted','Interrupted status is explicit');
+  check(await page.locator('#metrics').textContent().then(t=>t.includes('Not reported')),'Missing metrics stay Not reported');
+  check(await page.locator('#role-cards').textContent().then(t=>!t.includes('Recorded active')),'Interrupted roles do not imply live activity');
+  await page.locator('#scenario').selectOption('failed');
+  check(await page.locator('.check.bad').count()>0,'Failed verification has an explicit failure symbol');
+  await page.locator('#scenario').selectOption('empty');
+  check(await page.locator('#percentage').textContent()==='Not assessable','Empty criteria never produce 0 percent');
+  await page.locator('#scenario').selectOption('stress');
+  check(await page.locator('.event').count()===50,'Large timeline initially renders 50 events');
+  await page.locator('#more').click();check(await page.locator('.event').count()===100,'Timeline loads the next page');
+  for(const width of [1440,1024,820,768,390,320]) {
+    await page.setViewportSize({width,height:900});check(await noOverflow(),`Long title has no overflow at ${width}px`);
+  }
+  await page.locator('#scenario').selectOption('review');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  check(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior==='auto'),'Reduced motion disables smooth scrolling');
+  await page.setViewportSize({width:390,height:844});
+  await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:'dashboard/evidence/mobile.png',fullPage:true});
+  await page.locator('#theme').click();
+  check(await page.locator('html').getAttribute('data-theme')==='light','Light theme works');
+  await page.screenshot({path:'dashboard/evidence/mobile-light.png',fullPage:true});
+  await page.locator('#theme').click();
+  await page.setViewportSize({width:1440,height:1100});
+  await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:'dashboard/evidence/desktop.png',fullPage:true});
+  // Local generated fixture data enters through the same explicit file input as user data.
+  const v=await page.evaluate(async()=> (await import('/fixtures.mjs')).fixture());
+  const upload=async text=>page.locator('#file').setInputFiles({name:'snapshot.json',mimeType:'application/json',buffer:Buffer.from(text)});
+  for(const [input,message] of [['{','Malformed JSON'],[JSON.stringify({...v,view_schema:'future/99'}),'Unsupported schema'],[' '.repeat(2*1024*1024+1),'2 MiB'],['{"a":1,"a":2}','Duplicate JSON key']]) {
+    await upload(input);await page.locator('#import-status').filter({hasText:message}).waitFor();
+    check(await page.locator('#fraction').textContent()==='3 / 6',`${message}: previous run survives`);
+  }
+  v.title='<img src=x onerror=window.hostileExecuted=true>';v.synthetic=false;
+  v.activity.forEach(e=>e.provenance='Agent-reported');
+  v.evidence.forEach(e=>e.provenance='Agent-reported');
+  await upload(JSON.stringify(v));
+  await page.locator('#import-status').filter({hasText:'Snapshot imported locally'}).waitFor();
+  check(await page.locator('#title').textContent()===v.title,'Hostile HTML renders literally');
+  check(await page.locator('#title img').count()===0,'No hostile element is created');
+  check(await page.evaluate(()=>window.hostileExecuted===undefined),'Hostile script never executes');
+  check(await page.locator('#source-banner').textContent().then(t=>t.includes('IMPORTED SNAPSHOT')&&!t.includes('DEMO DATA')),'Imported run is distinct from demonstration');
+  await page.locator('#scenario').selectOption('review');await page.locator('#scenario').selectOption('imported');
+  check(await page.locator('#title').textContent()===v.title,'Imported selection restores exact imported run');
+  await page.locator('#scenario').selectOption('review');
+  await page.goto('http://127.0.0.1:4173/');await page.keyboard.press('Tab');
+  check(await page.locator('.skip').evaluate(e=>e===document.activeElement),'Keyboard begins at skip link');
+  check(await page.locator('.skip').evaluate(e=>getComputedStyle(e).outlineStyle!=='none'),'Keyboard focus is visible');
+  await page.keyboard.press('Enter');check(await page.locator('#overview').evaluate(e=>e===document.activeElement),'Skip link reaches overview');
+  await page.evaluate(()=>scrollTo(0,0));
+  return {passed:results.length,checks:results};
+}
+)(page);
+```

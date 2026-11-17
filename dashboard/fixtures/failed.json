@@ -1,0 +1,826 @@
+{
+  "view_schema": "councilflow-dashboard-view/1",
+  "synthetic": true,
+  "run_id": "demo-failed",
+  "title": "CouncilFlow / Offline evidence viewer",
+  "status": "failed",
+  "phase": "Tester",
+  "active_attempt": "attempt-1",
+  "source": {
+    "label": "Bundled synthetic fixture · no host connection",
+    "original_criteria_ref": "synthetic:owner-plan-v1"
+  },
+  "started_at": "2026-11-17T07:00:00Z",
+  "last_observed_at": "2026-11-17T07:18:42Z",
+  "criteria": [
+    {
+      "id": "AC1",
+      "text": "Preserve the original acceptance criteria"
+    },
+    {
+      "id": "AC2",
+      "text": "Reject malformed and oversized inputs"
+    },
+    {
+      "id": "AC3",
+      "text": "Keep evidence bound to its candidate"
+    },
+    {
+      "id": "AC4",
+      "text": "Verify keyboard and mobile navigation"
+    },
+    {
+      "id": "AC5",
+      "text": "Preserve rework and attempt history"
+    },
+    {
+      "id": "AC6",
+      "text": "Document the offline installation"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "attempt-1",
+      "candidate": "candidate-v1",
+      "label": "Attempt 1 · superseded",
+      "results": [
+        {
+          "criterion_id": "AC1",
+          "stage": "Planner accepted",
+          "evidence_ids": [
+            "attempt-1-AC1-contract",
+            "attempt-1-AC1-source-fidelity",
+            "attempt-1-AC1-worker",
+            "attempt-1-AC1-tester",
+            "attempt-1-AC1-reviewer",
+            "attempt-1-AC1-rerun",
+            "attempt-1-AC1-planner"
+          ]
+        },
+        {
+          "criterion_id": "AC2",
+          "stage": "Tester failed",
+          "evidence_ids": [
+            "attempt-1-AC2-worker",
+            "attempt-1-AC2-tester"
+          ]
+        },
+        {
+          "criterion_id": "AC3",
+          "stage": "Reviewer checked",
+          "evidence_ids": [
+            "attempt-1-AC3-worker",
+            "attempt-1-AC3-tester",
+            "attempt-1-AC3-reviewer"
+          ]
+        },
+        {
+          "criterion_id": "AC4",
+          "stage": "Not started",
+          "evidence_ids": []
+        },
+        {
+          "criterion_id": "AC5",
+          "stage": "Worker reported",
+          "evidence_ids": [
+            "attempt-1-AC5-worker"
+          ]
+        },
+        {
+          "criterion_id": "AC6",
+          "stage": "Not started",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "id": "attempt-2",
+      "candidate": "candidate-v2",
+      "label": "Attempt 2 · current candidate",
+      "results": [
+        {
+          "criterion_id": "AC1",
+          "stage": "Planner accepted",
+          "evidence_ids": [
+            "attempt-2-AC1-contract",
+            "attempt-2-AC1-source-fidelity",
+            "attempt-2-AC1-worker",
+            "attempt-2-AC1-tester",
+            "attempt-2-AC1-reviewer",
+            "attempt-2-AC1-rerun",
+            "attempt-2-AC1-planner"
+          ]
+        },
+        {
+          "criterion_id": "AC2",
+          "stage": "Planner accepted",
+          "evidence_ids": [
+            "attempt-2-AC2-contract",
+            "attempt-2-AC2-source-fidelity",
+            "attempt-2-AC2-worker",
+            "attempt-2-AC2-tester",
+            "attempt-2-AC2-reviewer",
+            "attempt-2-AC2-rerun",
+            "attempt-2-AC2-planner"
+          ]
+        },
+        {
+          "criterion_id": "AC3",
+          "stage": "Planner accepted",
+          "evidence_ids": [
+            "attempt-2-AC3-contract",
+            "attempt-2-AC3-source-fidelity",
+            "attempt-2-AC3-worker",
+            "attempt-2-AC3-tester",
+            "attempt-2-AC3-reviewer",
+            "attempt-2-AC3-rerun",
+            "attempt-2-AC3-planner"
+          ]
+        },
+        {
+          "criterion_id": "AC4",
+          "stage": "Reviewer checked",
+          "evidence_ids": [
+            "attempt-2-AC4-worker",
+            "attempt-2-AC4-tester",
+            "attempt-2-AC4-reviewer"
+          ]
+        },
+        {
+          "criterion_id": "AC5",
+          "stage": "Tester passed",
+          "evidence_ids": [
+            "attempt-2-AC5-worker",
+            "attempt-2-AC5-tester"
+          ]
+        },
+        {
+          "criterion_id": "AC6",
+          "stage": "Worker reported",
+          "evidence_ids": [
+            "attempt-2-AC6-worker"
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "attempt-1-AC1-contract",
+      "kind": "contract",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Controlled packets passed structural validation. This is not sender authentication.",
+      "reference": "synthetic:attempt-1/AC1/contract"
+    },
+    {
+      "id": "attempt-1-AC1-source-fidelity",
+      "kind": "source-fidelity",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Original criterion text compared with the frozen input.",
+      "reference": "synthetic:attempt-1/AC1/source-fidelity"
+    },
+    {
+      "id": "attempt-1-AC1-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-1/AC1/worker"
+    },
+    {
+      "id": "attempt-1-AC1-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-1/AC1/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-1-AC1-reviewer",
+      "kind": "reviewer",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer compared the candidate, original criteria and Tester evidence.",
+      "reference": "synthetic:attempt-1/AC1/reviewer"
+    },
+    {
+      "id": "attempt-1-AC1-rerun",
+      "kind": "rerun",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer rerun matched exit code and CRLF-to-LF normalized stdout SHA-256.",
+      "reference": "synthetic:attempt-1/AC1/rerun",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "compared_exit_code": 0,
+      "compared_stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-1-AC1-planner",
+      "kind": "planner",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC1",
+      "outcome": "accepted",
+      "provenance": "Synthetic demonstration",
+      "summary": "Planner recorded a final criterion decision for this candidate.",
+      "reference": "synthetic:attempt-1/AC1/planner"
+    },
+    {
+      "id": "attempt-1-AC2-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-1/AC2/worker"
+    },
+    {
+      "id": "attempt-1-AC2-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC2",
+      "outcome": "failed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-1/AC2/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 1,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-1-AC3-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-1/AC3/worker"
+    },
+    {
+      "id": "attempt-1-AC3-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-1/AC3/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-1-AC3-reviewer",
+      "kind": "reviewer",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer compared the candidate, original criteria and Tester evidence.",
+      "reference": "synthetic:attempt-1/AC3/reviewer"
+    },
+    {
+      "id": "attempt-1-AC5-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-1",
+      "candidate": "candidate-v1",
+      "criterion_id": "AC5",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-1/AC5/worker"
+    },
+    {
+      "id": "attempt-2-AC1-contract",
+      "kind": "contract",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Controlled packets passed structural validation. This is not sender authentication.",
+      "reference": "synthetic:attempt-2/AC1/contract"
+    },
+    {
+      "id": "attempt-2-AC1-source-fidelity",
+      "kind": "source-fidelity",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Original criterion text compared with the frozen input.",
+      "reference": "synthetic:attempt-2/AC1/source-fidelity"
+    },
+    {
+      "id": "attempt-2-AC1-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-2/AC1/worker"
+    },
+    {
+      "id": "attempt-2-AC1-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-2/AC1/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC1-reviewer",
+      "kind": "reviewer",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer compared the candidate, original criteria and Tester evidence.",
+      "reference": "synthetic:attempt-2/AC1/reviewer"
+    },
+    {
+      "id": "attempt-2-AC1-rerun",
+      "kind": "rerun",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer rerun matched exit code and CRLF-to-LF normalized stdout SHA-256.",
+      "reference": "synthetic:attempt-2/AC1/rerun",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "compared_exit_code": 0,
+      "compared_stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC1-planner",
+      "kind": "planner",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC1",
+      "outcome": "accepted",
+      "provenance": "Synthetic demonstration",
+      "summary": "Planner recorded a final criterion decision for this candidate.",
+      "reference": "synthetic:attempt-2/AC1/planner"
+    },
+    {
+      "id": "attempt-2-AC2-contract",
+      "kind": "contract",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Controlled packets passed structural validation. This is not sender authentication.",
+      "reference": "synthetic:attempt-2/AC2/contract"
+    },
+    {
+      "id": "attempt-2-AC2-source-fidelity",
+      "kind": "source-fidelity",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Original criterion text compared with the frozen input.",
+      "reference": "synthetic:attempt-2/AC2/source-fidelity"
+    },
+    {
+      "id": "attempt-2-AC2-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-2/AC2/worker"
+    },
+    {
+      "id": "attempt-2-AC2-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-2/AC2/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC2-reviewer",
+      "kind": "reviewer",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer compared the candidate, original criteria and Tester evidence.",
+      "reference": "synthetic:attempt-2/AC2/reviewer"
+    },
+    {
+      "id": "attempt-2-AC2-rerun",
+      "kind": "rerun",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer rerun matched exit code and CRLF-to-LF normalized stdout SHA-256.",
+      "reference": "synthetic:attempt-2/AC2/rerun",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "compared_exit_code": 0,
+      "compared_stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC2-planner",
+      "kind": "planner",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC2",
+      "outcome": "accepted",
+      "provenance": "Synthetic demonstration",
+      "summary": "Planner recorded a final criterion decision for this candidate.",
+      "reference": "synthetic:attempt-2/AC2/planner"
+    },
+    {
+      "id": "attempt-2-AC3-contract",
+      "kind": "contract",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Controlled packets passed structural validation. This is not sender authentication.",
+      "reference": "synthetic:attempt-2/AC3/contract"
+    },
+    {
+      "id": "attempt-2-AC3-source-fidelity",
+      "kind": "source-fidelity",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Original criterion text compared with the frozen input.",
+      "reference": "synthetic:attempt-2/AC3/source-fidelity"
+    },
+    {
+      "id": "attempt-2-AC3-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-2/AC3/worker"
+    },
+    {
+      "id": "attempt-2-AC3-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-2/AC3/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC3-reviewer",
+      "kind": "reviewer",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer compared the candidate, original criteria and Tester evidence.",
+      "reference": "synthetic:attempt-2/AC3/reviewer"
+    },
+    {
+      "id": "attempt-2-AC3-rerun",
+      "kind": "rerun",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer rerun matched exit code and CRLF-to-LF normalized stdout SHA-256.",
+      "reference": "synthetic:attempt-2/AC3/rerun",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "compared_exit_code": 0,
+      "compared_stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC3-planner",
+      "kind": "planner",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC3",
+      "outcome": "accepted",
+      "provenance": "Synthetic demonstration",
+      "summary": "Planner recorded a final criterion decision for this candidate.",
+      "reference": "synthetic:attempt-2/AC3/planner"
+    },
+    {
+      "id": "attempt-2-AC4-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC4",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-2/AC4/worker"
+    },
+    {
+      "id": "attempt-2-AC4-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC4",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-2/AC4/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC4-reviewer",
+      "kind": "reviewer",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC4",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Reviewer compared the candidate, original criteria and Tester evidence.",
+      "reference": "synthetic:attempt-2/AC4/reviewer"
+    },
+    {
+      "id": "attempt-2-AC5-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC5",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-2/AC5/worker"
+    },
+    {
+      "id": "attempt-2-AC5-tester",
+      "kind": "tester",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC5",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Tester reported an independent command execution.",
+      "reference": "synthetic:attempt-2/AC5/tester",
+      "command": "python -m unittest discover -s tests",
+      "exit_code": 0,
+      "stdout_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "attempt-2-AC6-worker",
+      "kind": "worker",
+      "attempt_id": "attempt-2",
+      "candidate": "candidate-v2",
+      "criterion_id": "AC6",
+      "outcome": "passed",
+      "provenance": "Synthetic demonstration",
+      "summary": "Worker reported the candidate and developer checks.",
+      "reference": "synthetic:attempt-2/AC6/worker"
+    }
+  ],
+  "roles": [
+    {
+      "role": "Planner",
+      "state": "stopped",
+      "model": null,
+      "assignment": "Check the original criteria",
+      "last_activity": "Accepted AC1–AC3 for candidate-v2",
+      "attempt_id": "attempt-2",
+      "tokens": null
+    },
+    {
+      "role": "Manager",
+      "state": "waiting",
+      "model": null,
+      "assignment": "Coordinate verification",
+      "last_activity": "Dispatched independent Reviewer",
+      "attempt_id": "attempt-2",
+      "tokens": null
+    },
+    {
+      "role": "Worker",
+      "state": "stopped",
+      "model": null,
+      "assignment": "Produce candidate-v2",
+      "last_activity": "Reported candidate-v2",
+      "attempt_id": "attempt-2",
+      "tokens": null
+    },
+    {
+      "role": "Tester",
+      "state": "stopped",
+      "model": null,
+      "assignment": "Verify input safeguards",
+      "last_activity": "Reported 38 checks passed",
+      "attempt_id": "attempt-2",
+      "tokens": null
+    },
+    {
+      "role": "Reviewer",
+      "state": "active",
+      "model": null,
+      "assignment": "Compare evidence and rerun AC4",
+      "last_activity": "Comparing AC4 evidence",
+      "attempt_id": "attempt-2",
+      "tokens": null
+    }
+  ],
+  "activity": [
+    {
+      "id": "event-0",
+      "at": "2026-11-17T07:00:00Z",
+      "role": "Planner",
+      "category": "decision",
+      "tone": "success",
+      "label": "Published the frozen plan",
+      "detail": "Six original criteria retained.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-1"
+    },
+    {
+      "id": "event-1",
+      "at": "2026-11-17T07:02:00Z",
+      "role": "Manager",
+      "category": "handoff",
+      "tone": "info",
+      "label": "Validated the Worker assignment",
+      "detail": "Work scoped to the offline viewer.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-1"
+    },
+    {
+      "id": "event-2",
+      "at": "2026-11-17T07:04:00Z",
+      "role": "Worker",
+      "category": "implementation",
+      "tone": "info",
+      "label": "Started the first candidate",
+      "detail": "Synthetic activity; no agents are running.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-1"
+    },
+    {
+      "id": "event-3",
+      "at": "2026-11-17T07:06:00Z",
+      "role": "Tester",
+      "category": "verification",
+      "tone": "failure",
+      "label": "AC2 failed input validation",
+      "detail": "Oversized input was not rejected. Rework required.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-1"
+    },
+    {
+      "id": "event-4",
+      "at": "2026-11-17T07:08:00Z",
+      "role": "Manager",
+      "category": "decision",
+      "tone": "warning",
+      "label": "Opened attempt 2",
+      "detail": "Attempt 1 remains available in the history selector.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-2"
+    },
+    {
+      "id": "event-5",
+      "at": "2026-11-17T07:10:00Z",
+      "role": "Worker",
+      "category": "implementation",
+      "tone": "success",
+      "label": "Produced candidate-v2",
+      "detail": "Added bounded parsing and safe text rendering.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-2"
+    },
+    {
+      "id": "event-6",
+      "at": "2026-11-17T07:12:00Z",
+      "role": "Tester",
+      "category": "verification",
+      "tone": "success",
+      "label": "Reported 38 checks passed",
+      "detail": "Execution report is distinct from Planner acceptance.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-2"
+    },
+    {
+      "id": "event-7",
+      "at": "2026-11-17T07:14:00Z",
+      "role": "Planner",
+      "category": "decision",
+      "tone": "success",
+      "label": "Accepted AC1, AC2 and AC3",
+      "detail": "Final decisions are bound to candidate-v2.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-2"
+    },
+    {
+      "id": "event-8",
+      "at": "2026-11-17T07:16:00Z",
+      "role": "Manager",
+      "category": "handoff",
+      "tone": "info",
+      "label": "Dispatched Reviewer for AC4",
+      "detail": "Independent comparison and deterministic rerun required.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-2"
+    },
+    {
+      "id": "event-9",
+      "at": "2026-11-17T07:18:42Z",
+      "role": "Reviewer",
+      "category": "verification",
+      "tone": "info",
+      "label": "Comparing keyboard and mobile evidence",
+      "detail": "AC4 remains unaccepted until the complete chain is present.",
+      "provenance": "Synthetic demonstration",
+      "attempt_id": "attempt-2"
+    }
+  ],
+  "metrics": {
+    "tokens": null,
+    "files_changed": 12,
+    "tests_passed": 38,
+    "tests_failed": 1,
+    "messages": 17,
+    "token_scope": null
+  },
+  "blockers": [
+    {
+      "kind": "failed check",
+      "text": "AC2 failed. Candidate-v1 requires rework; later acceptance is not carried backward."
+    }
+  ]
+}
