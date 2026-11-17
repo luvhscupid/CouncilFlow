@@ -1,0 +1,20 @@
+✔ fixtures validate and final acceptance excludes all intermediate stages (12.6439ms)
+✔ new candidate never inherits old acceptance (1.1993ms)
+✔ known failures cannot be hidden by omitting a result reference (1.757ms)
+✔ missing, failed or mismatched verification cannot count as final acceptance (12.5165ms)
+✔ malformed, oversized, nested, duplicate keys and escaped duplicate keys fail closed (1.217ms)
+✔ version, strict allowlist, duplicate IDs and unsafe references fail closed (14.271ms)
+✔ missing optional metrics, role identities and times remain unknown (0.6484ms)
+✔ timestamp chronology and invalid calendar dates are rejected (2.0069ms)
+✔ staleness is a viewer heuristic; duration freezes at last observed event (0.6585ms)
+✔ hostile text and paths remain inert strings, without fetching an artifact (1.0796ms)
+✔ non-demo imports cannot hide synthetic events (1.1049ms)
+✔ minimal empty projection is supported with optional values missing (0.1009ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 135.3349

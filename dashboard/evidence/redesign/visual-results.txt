@@ -1,0 +1,74 @@
+### Result
+{"passed":80,"checks":["dark: --ink contrast >=4.5:1 (13.42:1)","dark: --muted contrast >=4.5:1 (7.34:1)","dark: --accent contrast >=4.5:1 (6.98:1)","dark: --cyan contrast >=4.5:1 (9.62:1)","dark: --violet contrast >=4.5:1 (6.89:1)","dark: --green contrast >=4.5:1 (9.31:1)","dark: --amber contrast >=4.5:1 (9.23:1)","dark: --red contrast >=4.5:1 (8.35:1)","dark: primary contrast >=4.5:1 (7.74:1)","dark: focus contrast >=4.5:1 (12.40:1)","dark: no document overflow at 320px","dark: main heading >=28px at 320px","dark: controls >=44px high at 320px","dark: no document overflow at 375px","dark: main heading >=28px at 375px","dark: controls >=44px high at 375px","dark: no document overflow at 768px","dark: main heading >=28px at 768px","dark: controls >=44px high at 768px","dark: no document overflow at 1024px","dark: main heading >=28px at 1024px","dark: controls >=44px high at 1024px","dark: no document overflow at 1440px","dark: main uses available width at 1440px","dark: main heading >=28px at 1440px","dark: controls >=44px high at 1440px","dark: no document overflow at 1920px","dark: main uses available width at 1920px","dark: main heading >=28px at 1920px","dark: controls >=44px high at 1920px","dark: no document overflow at 2048px","dark: main uses available width at 2048px","dark: main heading >=28px at 2048px","dark: controls >=44px high at 2048px","dark: empty retains demo provenance","dark: failed retains demo provenance","light: --ink contrast >=4.5:1 (12.63:1)","light: --muted contrast >=4.5:1 (5.35:1)","light: --accent contrast >=4.5:1 (5.52:1)","light: --cyan contrast >=4.5:1 (5.67:1)","light: --violet contrast >=4.5:1 (6.26:1)","light: --green contrast >=4.5:1 (5.97:1)","light: --amber contrast >=4.5:1 (5.87:1)","light: --red contrast >=4.5:1 (5.59:1)","light: primary contrast >=4.5:1 (5.88:1)","light: focus contrast >=4.5:1 (5.87:1)","light: no document overflow at 320px","light: main heading >=28px at 320px","light: controls >=44px high at 320px","light: no document overflow at 375px","light: main heading >=28px at 375px","light: controls >=44px high at 375px","light: no document overflow at 768px","light: main heading >=28px at 768px","light: controls >=44px high at 768px","light: no document overflow at 1024px","light: main heading >=28px at 1024px","light: controls >=44px high at 1024px","light: no document overflow at 1440px","light: main uses available width at 1440px","light: main heading >=28px at 1440px","light: controls >=44px high at 1440px","light: no document overflow at 1920px","light: main uses available width at 1920px","light: main heading >=28px at 1920px","light: controls >=44px high at 1920px","light: no document overflow at 2048px","light: main uses available width at 2048px","light: main heading >=28px at 2048px","light: controls >=44px high at 2048px","light: empty retains demo provenance","light: failed retains demo provenance","Evidence drawer contains keyboard focus","Evidence drawer restores focus","Mobile prioritizes recorded active role","Acceptance animation is triggered by a candidate change","Reduced motion suppresses acceptance animation","Filtered console empty state is informative","Import errors retain visible recovery feedback","No browser runtime errors"],"measurements":[{"theme":"dark","width":320,"mainWidth":320,"rightGap":0,"heading":28},{"theme":"dark","width":375,"mainWidth":375,"rightGap":0,"heading":28},{"theme":"dark","width":768,"mainWidth":768,"rightGap":0,"heading":28},{"theme":"dark","width":1024,"mainWidth":1024,"rightGap":0,"heading":28},{"theme":"dark","width":1440,"mainWidth":1238,"rightGap":0,"heading":28.8},{"theme":"dark","width":1920,"mainWidth":1692,"rightGap":0,"heading":34},{"theme":"dark","width":2048,"mainWidth":1820,"rightGap":0,"heading":34},{"theme":"light","width":320,"mainWidth":320,"rightGap":0,"heading":28},{"theme":"light","width":375,"mainWidth":375,"rightGap":0,"heading":28},{"theme":"light","width":768,"mainWidth":768,"rightGap":0,"heading":28},{"theme":"light","width":1024,"mainWidth":1024,"rightGap":0,"heading":28},{"theme":"light","width":1440,"mainWidth":1238,"rightGap":0,"heading":28.8},{"theme":"light","width":1920,"mainWidth":1692,"rightGap":0,"heading":34},{"theme":"light","width":2048,"mainWidth":1820,"rightGap":0,"heading":34}],"errors":[]}
+### Ran Playwright code
+```js
+await (async page => {
+  const checks=[], errors=[], measurements=[];
+  const check=(ok,label)=>{if(!ok)throw new Error(label);checks.push(label);};
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/*',route=>route.continue());
+  await page.goto('http://127.0.0.1:4173/');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  for(const theme of ['dark','light']) {
+    if(theme==='light')await page.locator('#theme').click();
+    const contrast=await page.evaluate(()=>{
+      const css=getComputedStyle(document.documentElement),token=k=>css.getPropertyValue(k).trim();
+      const luminance=hex=>{const rgb=hex.replace('#','').match(/../g).map(n=>parseInt(n,16)/255).map(n=>n<=.04045?n/12.92:((n+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;};
+      const ratio=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
+      const backgrounds=['--bg','--surface','--raised'].map(token);
+      const values=Object.fromEntries(['--ink','--muted','--accent','--cyan','--violet','--green','--amber','--red'].map(k=>[k,Math.min(...backgrounds.map(bg=>ratio(token(k),bg)))]));
+      const light=document.documentElement.dataset.theme==='light';
+      values.primary=Math.min(...(light?['#215fa8','#176d87']:['#80b6ff','#83d7ee']).map(bg=>ratio(light?'#ffffff':'#0b213d',bg)));
+      values.focus=ratio(token('--cyan'),token('--bg'));
+      return values;
+    });
+    for(const [name,ratio] of Object.entries(contrast))check(ratio>=4.5,`${theme}: ${name} contrast >=4.5:1 (${ratio.toFixed(2)}:1)`);
+    for(const width of [320,375,768,1024,1440,1920,2048]) {
+      await page.setViewportSize({width,height:1000});
+      check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme}: no document overflow at ${width}px`);
+      const main=await page.locator('main').boundingBox();
+      if(width>=1440)check(width-main.x-main.width<1,`${theme}: main uses available width at ${width}px`);
+      const heading=await page.locator('#title').evaluate(e=>parseFloat(getComputedStyle(e).fontSize));
+      check(heading>=28,`${theme}: main heading >=28px at ${width}px`);
+      const smallControls=await page.locator('button:not([hidden]), select:not(:disabled)').evaluateAll(es=>es.filter(e=>e.getBoundingClientRect().height>0&&e.getBoundingClientRect().height<44).map(e=>e.id));
+      check(smallControls.length===0,`${theme}: controls >=44px high at ${width}px`);
+      measurements.push({theme,width,mainWidth:main.width,rightGap:width-main.x-main.width,heading});
+      await page.evaluate(()=>scrollTo(0,0));
+      if([375,768,1440,2048].includes(width))await page.screenshot({path:`dashboard/evidence/redesign/${theme}-${width}.png`,fullPage:true});
+    }
+    await page.setViewportSize({width:1440,height:1000});
+    for(const scenario of ['empty','failed']) {
+      await page.locator('#scenario').selectOption(scenario);
+      await page.screenshot({path:`dashboard/evidence/redesign/${theme}-${scenario}.png`,fullPage:true});
+      check(await page.locator('#source-banner').textContent().then(t=>t.includes('DEMO DATA')),`${theme}: ${scenario} retains demo provenance`);
+    }
+    await page.locator('#scenario').selectOption('review');
+  }
+  await page.locator('#theme').click();
+  await page.setViewportSize({width:1440,height:1000});
+  await page.locator('.criterion-row').first().click();
+  await page.screenshot({path:'dashboard/evidence/redesign/evidence-drawer.png'});
+  check(await page.locator('#inspector').evaluate(e=>e.contains(document.activeElement)),'Evidence drawer contains keyboard focus');
+  await page.keyboard.press('Escape');
+  check(await page.locator('.criterion-row').first().evaluate(e=>e===document.activeElement),'Evidence drawer restores focus');
+  await page.setViewportSize({width:375,height:900});
+  check(await page.locator('.recorded-active').evaluate(e=>e.getBoundingClientRect().top===Math.min(...[...document.querySelectorAll('.role-card')].map(x=>x.getBoundingClientRect().top))),'Mobile prioritizes recorded active role');
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  await page.locator('#attempt').selectOption('attempt-1');
+  check(await page.locator('#segments').evaluate(e=>e.getAnimations().length>0),'Acceptance animation is triggered by a candidate change');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.locator('#attempt').selectOption('attempt-2');
+  check(await page.locator('#segments').evaluate(e=>e.getAnimations().every(a=>a.playState!=='running')),'Reduced motion suppresses acceptance animation');
+  await page.locator('#role-filter').selectOption('Tester');
+  await page.locator('#type-filter').selectOption('handoff');
+  check(await page.locator('#events .empty').count()===1,'Filtered console empty state is informative');
+  await page.locator('#file').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{')});
+  await page.locator('#import-status').filter({hasText:'Malformed JSON'}).waitFor();
+  check(await page.locator('#import-status').getAttribute('class')==='import-error','Import errors retain visible recovery feedback');
+  await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:'dashboard/evidence/redesign/import-error.png'});
+  check(errors.length===0,'No browser runtime errors');
+  return {passed:checks.length,checks,measurements,errors};
+}
+)(page);
+```

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11151b">
+  <meta name="theme-color" content="#090f1c">
   <meta name="description" content="An optional, offline evidence viewer for the CouncilFlow host-native workflow.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>CouncilFlow · Mission control</title>
@@ -35,7 +35,7 @@
         <div class="phase-caption"><strong>Workflow phase</strong><span>Recorded role highlighted · handoff occurrence not inferred</span></div><ol id="phase-rail" class="phase-rail"></ol>
       </section>
       <section id="attention" class="attention" aria-label="Blockers and decisions"></section>
-      <section id="roles" class="roles-section"><div class="section-heading"><h2>The role desk</h2><span>Workflow responsibilities · not five persistent agents</span></div><div id="role-cards" class="role-grid"></div></section>
+      <section id="roles" class="roles-section"><div class="section-heading"><h2>Role workspace</h2><span>Workflow responsibilities · not five persistent agents</span></div><div id="role-cards" class="role-grid"></div></section>
       <div class="work-grid">
         <section id="criteria" class="panel"><div class="section-heading"><div><h2>Acceptance ledger</h2><p>Original criteria, candidate by candidate.</p></div><label class="attempt-label">Candidate <select id="attempt"></select></label></div><div class="matrix-labels"><span>Original criterion</span><span>W</span><span>T</span><span>R</span><span>P</span></div><div id="criteria-list"></div><div class="matrix-key">W Worker · T Tester · R Reviewer · P Planner<br>Only a complete final Planner chain counts as accepted.</div></section>
         <section id="activity" class="panel console"><div class="section-heading"><div><h2>Activity console</h2><p id="event-count"></p></div><span class="snapshot-tag">Snapshot</span></div><div class="filters"><label>Role <select id="role-filter"><option value="all">All roles</option><option>Planner</option><option>Manager</option><option>Worker</option><option>Tester</option><option>Reviewer</option><option>Unattributed</option></select></label><label>Event <select id="type-filter"><option value="all">All events</option><option value="handoff">Handoffs</option><option value="implementation">Implementation</option><option value="verification">Verification</option><option value="decision">Decisions</option><option value="system">System</option></select></label></div><div id="events" class="events"></div><button id="more" class="more" type="button">Load 50 more events</button></section>

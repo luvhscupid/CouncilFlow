@@ -51,10 +51,13 @@ UI smoke checks require Playwright CLI and local Edge; they are development tool
 ```powershell
 npx --package @playwright/cli playwright-cli -s=council-dashboard open http://127.0.0.1:4173 --browser=msedge
 npx --package @playwright/cli playwright-cli -s=council-dashboard run-code --filename=dashboard/tests/browser-smoke.cjs
+npx --package @playwright/cli playwright-cli -s=council-dashboard run-code --filename=dashboard/tests/redesign-visual.cjs
 npx --package @playwright/cli playwright-cli -s=council-dashboard close
 ```
 
 This session used @playwright/cli 0.1.24 and the installed Edge. On this machine Node needed `NODE_OPTIONS=--use-system-ca` to trust the system CA when obtaining the CLI; certificate verification was not disabled. See [evidence/verification.md](evidence/verification.md) for observed results and screenshots. No screenshot tests are part of the canonical Python package suites.
+
+The subsequent visual refinement, responsive/theme checks and current screenshots are recorded in [evidence/redesign/README.md](evidence/redesign/README.md). The earlier MVP evidence is preserved separately. Browser tests disable HTTP caching to exercise the current local source.
 
 ## Remove
 

@@ -2,9 +2,12 @@ async page => {
   const results=[];
   const check=(value,label)=>{if(!value)throw new Error(label);results.push(label);};
   const noOverflow=async()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth);
+  // Disable the browser cache so a prior local build cannot satisfy this run.
+  await page.route('**/*',route=>route.continue());
   await page.goto('http://127.0.0.1:4173/');
   await page.setViewportSize({width:1440,height:1100});
   await page.locator('#fraction').waitFor();
+  check(await page.locator('.role-symbol .icon').count()===5,'Current role icon design is loaded');
   check(await page.locator('#fraction').textContent()==='3 / 6','Final acceptance fraction is 3/6, not intermediate progress');
   check(await noOverflow(),'Desktop has no page overflow');
   await page.locator('.role-card summary').first().click();
@@ -42,7 +45,7 @@ async page => {
   await page.locator('#scenario').selectOption('stress');
   check(await page.locator('.event').count()===50,'Large timeline initially renders 50 events');
   await page.locator('#more').click();check(await page.locator('.event').count()===100,'Timeline loads the next page');
-  for(const width of [1440,1024,820,768,390,320]) {
+  for(const width of [2048,1920,1440,1024,820,768,390,375,320]) {
     await page.setViewportSize({width,height:900});check(await noOverflow(),`Long title has no overflow at ${width}px`);
   }
   await page.locator('#scenario').selectOption('review');
@@ -50,14 +53,14 @@ async page => {
   check(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior==='auto'),'Reduced motion disables smooth scrolling');
   await page.setViewportSize({width:390,height:844});
   await page.evaluate(()=>scrollTo(0,0));
-  await page.screenshot({path:'dashboard/evidence/mobile.png',fullPage:true});
+  await page.screenshot({path:'dashboard/evidence/redesign/smoke-mobile.png',fullPage:true});
   await page.locator('#theme').click();
   check(await page.locator('html').getAttribute('data-theme')==='light','Light theme works');
-  await page.screenshot({path:'dashboard/evidence/mobile-light.png',fullPage:true});
+  await page.screenshot({path:'dashboard/evidence/redesign/smoke-mobile-light.png',fullPage:true});
   await page.locator('#theme').click();
   await page.setViewportSize({width:1440,height:1100});
   await page.evaluate(()=>scrollTo(0,0));
-  await page.screenshot({path:'dashboard/evidence/desktop.png',fullPage:true});
+  await page.screenshot({path:'dashboard/evidence/redesign/smoke-desktop.png',fullPage:true});
   // Local generated fixture data enters through the same explicit file input as user data.
   const v=await page.evaluate(async()=> (await import('/fixtures.mjs')).fixture());
   const upload=async text=>page.locator('#file').setInputFiles({name:'snapshot.json',mimeType:'application/json',buffer:Buffer.from(text)});

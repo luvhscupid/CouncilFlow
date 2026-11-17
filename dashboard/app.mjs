@@ -6,6 +6,27 @@ const text = (id,value) => { $(id).textContent = value; };
 function el(tag, cls, value) { const e=document.createElement(tag); if(cls)e.className=cls; if(value!=null)e.textContent=value; return e; }
 function badge(value, cls='neutral') { return el('span',`badge ${cls}`,value); }
 function button(label, fn, cls='') { const b=el('button',cls,label);b.type='button';b.addEventListener('click',fn);return b; }
+// Authored, consistent stroke icons; paths are fixed application data, never imported text.
+function icon(name, cls='') {
+  const paths={
+    Planner:['M12 3 4 7v10l8 4 8-4V7z','M4 7l8 4 8-4M12 11v10','M8 5l8 4'],
+    Manager:['M12 8v4M5 16v-4h14v4','M9 3h6v5H9zM2 16h6v5H2zM16 16h6v5h-6z'],
+    Worker:['m8 6-6 6 6 6M16 6l6 6-6 6M14 3l-4 18'],
+    Tester:['M9 3h6M10 3v6l-6 10a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L14 9V3','M8 14h8M10 17h.01M14 18h.01'],
+    Reviewer:['M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6z','m8 12 3 3 5-6'],
+    Owner:['M8 7a4 4 0 1 0 8 0 4 4 0 0 0-8 0','M4 21v-2a8 8 0 0 1 16 0v2'],
+    overview:['M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z'],
+    activity:['M3 5h18v14H3z','m7 9 3 3-3 3M13 15h4'],
+    criteria:['M9 5h12M9 12h12M9 19h12','m2 5 2 2 3-4m-5 9 2 2 3-4m-5 9 2 2 3-4'],
+    resources:['M4 20V10M10 20V4M16 20v-7M22 20H2'],
+    warning:['M12 3 2 21h20z','M12 9v5M12 17h.01'],
+    chevron:['m9 5 7 7-7 7'],
+    Unattributed:['M4 6h16v12H4z','M9 10h6M9 14h3'],
+  };
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.65');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.setAttribute('aria-hidden','true');svg.setAttribute('class',`icon ${cls}`);
+  for(const d of paths[name]??paths.Unattributed){const p=document.createElementNS(svg.namespaceURI,'path');p.setAttribute('d',d);svg.append(p);}return svg;
+}
 const fmt = n => n == null ? 'Not reported' : new Intl.NumberFormat().format(n);
 const time = value => value ? new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'UTC',hour12:false}).format(new Date(value))+' UTC' : 'Not reported';
 const stamp = value => value ? new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'medium',timeZone:'UTC'}).format(new Date(value))+' UTC' : 'Not reported';
@@ -13,6 +34,9 @@ const duration = seconds => seconds == null ? 'Not reported' : `${Math.floor(sec
 const kindLabel = {contract:'Contract validation','source-fidelity':'Source fidelity',worker:'Worker evidence',tester:'Tester execution',reviewer:'Reviewer comparison',rerun:'Independent rerun',planner:'Final Planner decision'};
 let snapshot=fixture(), selected=snapshot.active_attempt, limit=50, returnFocus=null, imported=null;
 let view;
+let previousProgress=null;
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+reducedMotion.addEventListener('change',event=>{if(event.matches)for(const animation of $('segments').getAnimations())animation.cancel();});
 
 function inspect(title, nodes) {
   returnFocus=document.activeElement;
@@ -46,25 +70,30 @@ function render() {
   text('fraction',`${view.accepted} / ${view.total}`);text('percentage',view.percent==null?'Not assessable':`${view.percent}%`);
   text('progress-caption',view.total?`Original criteria accepted for ${view.attempt?.candidate??'no candidate'}${historical?' · historical view':''}.`:'No original criteria available. Import a sanitized run to assess acceptance.');
   const seg=$('segments');seg.replaceChildren(...view.rows.map(r=>{const s=el('span',r.accepted?'accepted':r.stage.includes('failed')||r.stage.includes('rejected')?'failed':r.stage==='Not started'?'pending':'intermediate');s.title=`${r.id}: ${r.stage}`;return s;}));
+  const progressKey=JSON.stringify([snapshot.run_id,selected,view.rows.map(r=>[r.id,r.accepted,r.stage])]);
+  for(const animation of seg.getAnimations())animation.cancel();
+  if(previousProgress!==null&&previousProgress!==progressKey&&!reducedMotion.matches) seg.animate([{opacity:.5,transform:'translateY(2px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'ease-out'});
+  previousProgress=progressKey;
   const groups=new Map();for(const r of view.rows) {const name=r.incomplete?'Unverified acceptance':r.stage;groups.set(name,(groups.get(name)??0)+1);}
-  $('stage-counts').replaceChildren(...Array.from(groups,([name,count])=>el('span','',`${count} ${name}`)));
+  $('stage-counts').replaceChildren(...Array.from(groups,([name,count])=>el('span',`stage-chip ${name==='Planner accepted'?'final':name.includes('failed')||name.includes('rejected')?'failed':''}`,`${count} ${name}`)));
   text('operation',snapshot.phase==='Unknown'?'No phase reported':`${snapshot.phase} checkpoint`);
   const role=snapshot.roles.find(r=>r.role===snapshot.phase);
   text('operation-detail',role?.assignment??'No current assignment reported.');
   const timing=$('timing');timing.replaceChildren();
   for(const [label,value] of [['Observed duration',duration(view.elapsed)],['Last observation',stamp(snapshot.last_observed_at)],['Freshness',view.stale?'Stale / state unconfirmed':'Within 15-minute freshness window']])timing.append(el('dt','',label),el('dd','',value));
   const phases=['Owner','Planner','Manager','Worker','Tester','Reviewer','Manager','Planner','Owner'];
-  $('phase-rail').replaceChildren(...phases.map((p,i)=>{const item=el('li',p===snapshot.phase?'current':'');item.append(el('span','phase-node',String(i+1)),el('span','',p));if(p===snapshot.phase)item.setAttribute('aria-label',`${p}: recorded phase role; exact handoff occurrence not reported`);return item;}));
+  $('phase-rail').replaceChildren(...phases.map((p,i)=>{const item=el('li',p===snapshot.phase?'current':'');const node=el('span','phase-node');node.append(icon(p));const label=el('span','phase-label');label.append(el('small','',String(i+1).padStart(2,'0')),el('span','',p));item.append(node,label);if(p===snapshot.phase)item.setAttribute('aria-label',`${p}: recorded phase role; exact handoff occurrence not reported`);return item;}));
   const notices=[...(snapshot.blockers??[])];
   if(view.stale)notices.unshift({kind:'stale snapshot',text:'No recent observation. A missing stop event does not prove a role is still running. Freshness uses a 15-minute viewer-clock heuristic.'});
   if(historical)notices.unshift({kind:'historical candidate',text:'You are inspecting a previous attempt. The run overview phase and role desk retain the latest snapshot state.'});
   if(view.rows.some(r=>r.incomplete))notices.push({kind:'missing evidence',text:'A Planner acceptance claim lacks the complete candidate-bound evidence chain and is excluded from final progress.'});
-  $('attention').replaceChildren(...notices.map(b=>{const e=el('div','notice');e.append(el('strong','',b.kind),el('span','',b.text));return e;}));
+  $('attention').replaceChildren(...notices.map(b=>{const e=el('div','notice'),copy=el('div','notice-copy');copy.append(el('strong','',b.kind),el('span','',b.text));e.append(icon('warning'),copy);return e;}));
   $('role-cards').replaceChildren(...ROLES.map(name=>{
     const r=snapshot.roles.find(r=>r.role===name), observed=r?.state??'not observed';
-    const d=el('details',`role-card ${observed==='active'?'recorded-active':''}`),s=el('summary','');
-    const top=el('div','role-top');top.append(el('span','role-initial',name.slice(0,1)),el('strong','',name),el('span','expand','+'));
-    s.append(top,badge(observed==='active'?'Recorded active':observed,observed==='failed'?'failure':'neutral'),el('p','role-assignment',r?.assignment??'No assignment reported'),el('span','model',`Model: ${r?.model??'Not reported'}`));
+    const d=el('details',`role-card role-${name.toLowerCase()} ${observed==='active'?'recorded-active':''}`),s=el('summary','');
+    const top=el('div','role-top'),symbol=el('span','role-symbol');symbol.append(icon(name));top.append(symbol,el('strong','',name),icon('chevron','expand'));
+    const footer=el('span','role-footer');footer.append(el('span','model',`Model: ${r?.model??'Not reported'}`),el('span','role-attempt',r?.attempt_id??'Attempt: Not reported'));
+    s.append(top,badge(observed==='active'?'Recorded active':observed,observed==='failed'?'failure':'neutral'),el('p','role-assignment',r?.assignment??'No assignment reported'),footer);
     const content=el('div','role-detail');content.append(el('p','',r?.last_activity??'Activity not reported'),el('p','mono',`Attempt: ${r?.attempt_id??'Not reported'}`),el('p','',`Tokens: ${fmt(r?.tokens)}`),el('small','','Role state is recorded at import, not a live process indicator. Host identity mapping is not established by a role name.'));
     d.append(s,content);return d;
   }));
@@ -95,7 +124,7 @@ function renderEvents() {
   text('event-count',`${rows.length} matching events · newest records first`);
   $('events').replaceChildren(...rows.slice(0,limit).map(e=>{
     const d=el('details',`event ${e.tone}`), s=el('summary','');
-    const meta=el('span','event-meta');meta.append(el('time','mono',time(e.at)),el('strong','event-role',e.role),el('span','event-tone',e.tone));
+    const meta=el('span','event-meta'),role=el('strong',`event-role role-${e.role.toLowerCase()}`);role.append(icon(e.role),document.createTextNode(e.role));meta.append(el('time','mono',time(e.at)),role,el('span','event-tone',e.tone));
     s.append(meta,el('span','event-label',e.label),el('span','provenance',`${e.provenance} · ${e.category}`));
     const body=el('div','event-detail');body.append(el('p','',e.detail??'No further detail reported.'),el('small','mono',`${e.id} / ${e.attempt_id??'Session-level, unattributed attempt'}`));d.append(s,body);return d;
   }));
@@ -110,18 +139,19 @@ $('more').addEventListener('click',()=>{limit+=50;renderEvents();});
 $('import').addEventListener('click',()=>$('file').click());
 $('file').addEventListener('change',async()=>{
   const f=$('file').files?.[0];if(!f)return;
+  $('import').disabled=true;text('import','Importing…');
   try {
     if(f.size>MAX_BYTES)throw new Error('Input exceeds the 2 MiB limit. Import a smaller sanitized snapshot.');
     const v=parseSnapshot(await f.text());imported=v;load(v);$('import-status').className='';
     let option=$('scenario').querySelector('[value="imported"]');if(!option){option=el('option','','Imported run');option.value='imported';$('scenario').append(option);}
     $('scenario').value='imported';text('import-status','Snapshot imported locally. Its assertions have not been authenticated.');
   }catch(e){text('import-status',`${e.message} Previous run preserved.`);$('import-status').className='import-error';}
-  finally{$('file').value='';}
+  finally{$('file').value='';$('import').disabled=false;text('import','Import run JSON');}
 });
 $('scenario').addEventListener('change',()=>{$('import-status').className='';});
 $('close-inspector').addEventListener('click',()=>$('inspector').close());
 $('inspector').addEventListener('close',()=>returnFocus?.focus());
-$('theme').addEventListener('click',()=>{const light=document.documentElement.dataset.theme!=='light';document.documentElement.dataset.theme=light?'light':'dark';text('theme',light?'Dark theme':'Light theme');});
+$('theme').addEventListener('click',()=>{const light=document.documentElement.dataset.theme!=='light';document.documentElement.dataset.theme=light?'light':'dark';document.querySelector('meta[name="theme-color"]').content=light?'#edf2fa':'#090f1c';text('theme',light?'Dark theme':'Light theme');});
 function updateNavigation() {
   const target=location.hash||'#overview';
   for(const link of document.querySelectorAll('.sidebar nav a')) {
@@ -130,5 +160,8 @@ function updateNavigation() {
   }
 }
 window.addEventListener('hashchange',updateNavigation);
+for(const link of document.querySelectorAll('.sidebar nav a')) {
+  const name=link.hash.slice(1);link.prepend(icon({roles:'Manager',trust:'Reviewer'}[name]??name));
+}
 updateNavigation();
 render();
