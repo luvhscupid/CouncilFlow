@@ -249,8 +249,15 @@ class PackageTests(unittest.TestCase):
                 cwd=snapshot, capture_output=True, timeout=60)
             self.assertEqual(claude_run.returncode, 0, claude_run.stderr.decode(errors="replace"))
             committed_claude = ROOT / "dist/councilflow-claude-plugin.zip"
+            # Diagnose source/entry drift separately from ZIP byte-level drift.
+            with zipfile.ZipFile(claude_archive) as rebuilt_zip, zipfile.ZipFile(committed_claude) as committed_zip:
+                self.assertEqual(rebuilt_zip.namelist(), committed_zip.namelist(),
+                                 "Claude release ZIP entry ordering/inventory differs")
+                for entry_name in rebuilt_zip.namelist():
+                    self.assertEqual(rebuilt_zip.read(entry_name), committed_zip.read(entry_name),
+                                     f"Claude ZIP source-byte mismatch: {entry_name}")
             self.assertEqual(claude_archive.read_bytes(), committed_claude.read_bytes(),
-                             "stale committed release archive: dist/councilflow-claude-plugin.zip")
+                             "Claude ZIP compressed bytes or metadata differ despite identical entries")
             self.assertEqual(claude_archive.with_name(claude_archive.name + ".sha256").read_bytes(),
                              committed_claude.with_name(committed_claude.name + ".sha256").read_bytes(),
                              "stale committed release sidecar: dist/councilflow-claude-plugin.zip.sha256")
