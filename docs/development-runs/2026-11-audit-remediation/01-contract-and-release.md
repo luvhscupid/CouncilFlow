@@ -1,6 +1,6 @@
 # Slice 01 | Claude contract compatibility + release determinism
 
-**Status:** ENGINEERING VERIFIED; NATIVE WORKFLOW UNVERIFIED; OWNER REVIEW PENDING.
+**Status:** ENGINEERING ACCEPTED BY OWNER; NATIVE WORKFLOW UNVERIFIED; MERGE AUTHORIZED.
 **Baseline:** `3bf08cde1ae012d3bf6ef483015ca087bd8f420b`.  
 **Scope:** AR-01 / AR-02 / AR-03 only. This is a repair slice, not an architecture redesign.
 
@@ -40,7 +40,7 @@ Stop rather than silently introduce a new protocol layer, standalone runtime, ex
 
 ## Run record
 
-- Status: ENGINEERING VERIFIED; NATIVE_ACTIVATION_UNVERIFIED; Owner review pending.
+- Status: ENGINEERING ACCEPTED BY OWNER; NATIVE_ACTIVATION_UNVERIFIED; merge authorized.
 - Starting SHA / branch: `f4a6d8e8e1eee07620934bf74a6dac7639c5db96` / `task/slice-01-claude-contract-release`.
 - Active host/session evidence: no verifiable native Planner/Tester/Reviewer session provenance was available. Engineering tests and independent shell verification below are not CouncilFlow role-workflow proof.
 - Scope: AR-01, AR-02, AR-03 only.
@@ -53,6 +53,7 @@ Stop rather than silently introduce a new protocol layer, standalone runtime, ex
 - Intentional release artifact update: regenerated only `dist/councilflow-claude-plugin.zip` and its `.sha256` sidecar because packaged role instructions changed and the deterministic builder now emits the correct stable entry order. Codex archive and sidecar were not changed.
 - Files changed: `plugins/councilflow/agents/council-reviewer.md`, `plugins/councilflow/agents/council-tester.md`, `tests/test_claude_plugin.py`, `tools/build_claude_plugin.py`, `dist/councilflow-claude-plugin.zip`, `dist/councilflow-claude-plugin.zip.sha256`, and this run record plus `README.md` roadmap index. Final review correction additionally changes only `tests/test_claude_plugin.py` and this run record.
 - Additional final-review regressions: focused tests rebuild Codex and Claude packages in an isolated source copy and byte-compare both ZIPs and SHA-256 sidecars against committed artifacts, so stale packages fail. A focused Claude instruction check fails if unsupported `execution_evidence`, `tester_execution_evidence`, or `evidence_type` is directed as packet content. Sequential verification passed. An initial parallel run showed one transient targeted-suite failure; isolated and sequential reruns passed.
-- Remaining issues: native CouncilFlow invocation and real native role-session provenance remain UNVERIFIED; no role evidence was fabricated. No other Slice 1 acceptance gap observed.
+- Windows PR verification: initial pull-request Windows CI exposed a previously missed cross-platform ZIP ordering difference. The builder and regression tests were corrected to sort case-sensitively by relative path components, matching canonical POSIX ordering on Windows and Linux. [GitHub Actions run 44037466290](https://github.com/luvhscupid/CouncilFlow/actions/runs/44037466290) completed SUCCESS across checkout suites, release byte-for-byte rebuild, and extracted-install suites. The earlier failing CI attempts are retained in PR #3 history.
+- Remaining issues: native CouncilFlow invocation and real native role-session provenance remain UNVERIFIED; no role evidence was fabricated. The previously observed transient parallel test failure is not independently root-caused; the maintained sequential verification and Windows CI completed successfully.
 - Commit / push / PR / merge: final-review corrections committed and pushed to `task/slice-01-claude-contract-release`; no merge, PR or release.
-- Owner decision / next action: Owner review of Slice 1. Slice 2 remains unauthorized and not started.
+- Owner decision / next action: Owner explicitly accepted Slice 1 engineering completion and authorized normal, non-force merge into main on 2026-11-17. PR #3 is the approved merge route. Slice 2 remains NOT AUTHORIZED and not started.
