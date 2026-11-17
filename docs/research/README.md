@@ -7,6 +7,7 @@ This directory holds research and planning records. **They are non-normative.** 
 - [Token and context efficiency](AI-Agent-Token-and-Context-Efficiency-2026-11-15.md). A closed research record (status CLOSED). It records discussion and agreed research conclusions. It is not normative and not an approved implementation task.
 - [Draft efficiency implementation phases](Agent-Efficiency-Implementation-Phases-DRAFT-2026-11-15.md). A draft plan, ready for Owner review. It authorizes no implementation. It turns the research into possible bounded tasks.
 - [Model selection and xKiro](Universal-Model-Selector-xKiro-GPT6-Haiku-2026-11-15.md). A closed planning-level consensus record (status CLOSED, non-normative, no implementation authorized). It preserves a proposed model-selector design so it can be recalled later.
+- [Dashboard and observability full plan](CouncilFlow-Dashboard-Observability-Full-Plan-DRAFT-2026-11-17.md). Council-resolved architecture and phased feasibility/UI plan (status DRAFT_NOT_AUTHORIZED, non-normative). No experiment, hook installation, implementation or spending authorized.
 
 ## Scope and authority
 
