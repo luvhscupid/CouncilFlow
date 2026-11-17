@@ -57,7 +57,7 @@ def sync() -> None:
 
 def package_files() -> dict[str, bytes]:
     out = {}
-    for path in sorted(PLUGIN.rglob("*")):
+    for path in sorted(PLUGIN.rglob("*"), key=lambda path: path.relative_to(PLUGIN).as_posix()):
         if path.is_symlink():
             raise ValueError(f"link not allowed: {path}")
         rel = path.relative_to(PLUGIN).as_posix()
