@@ -1,0 +1,17 @@
+{
+  "artifact_id": "native-model-routing-candidate-5",
+  "kind": "candidate-manifest",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-3",
+  "files": [
+    {
+      "path": "experiments/native-model-routing/routing.py",
+      "sha256": "87f07bb060e828de7f64d0e318251444e86f3c65fe44e3254899a08ebdbe2091"
+    },
+    {
+      "path": "tests/test_native_model_routing.py",
+      "sha256": "e6f9b6c826bbc88f80c30e9f41b42ae81a48e995dd6d677ae98d7fb5d5e2bcf4"
+    }
+  ]
+}

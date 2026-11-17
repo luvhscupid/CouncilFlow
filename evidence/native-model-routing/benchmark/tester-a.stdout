@@ -1,0 +1,10 @@
+PASS valid_exact_qualified
+PASS model_identity_mismatch
+PASS unauthorized_role
+PASS incompatible_status
+PASS expired_evidence
+PASS unsupported_effort
+PASS missing_capability
+PASS unavailable
+PASS missing_evidence
+PASS all 9 model-policy fixtures

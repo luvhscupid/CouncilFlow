@@ -1,0 +1,34 @@
+{
+  "native-routing-plan-publish-1": {
+    "role": "planner",
+    "instance_id": "/root/native_planner"
+  },
+  "native-model-routing-worker-assignment-3": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "native-model-routing-worker-report-3": {
+    "role": "worker",
+    "instance_id": "/root/native_model_worker"
+  },
+  "native-model-routing-tester-assignment-2": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "native-model-routing-tester-report-2": {
+    "role": "tester",
+    "instance_id": "/root/native_model_tester"
+  },
+  "native-model-routing-manager-rework-1": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "native-model-routing-worker-assignment-4": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "native-model-routing-worker-report-4": {
+    "role": "worker",
+    "instance_id": "/root/native_model_worker_rework"
+  }
+}

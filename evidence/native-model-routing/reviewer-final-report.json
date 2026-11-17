@@ -1,0 +1,184 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-reviewer-report-final",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "reviewer",
+    "instance_id": "/root/native_model_reviewer_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-reviewer-assignment-final",
+  "payload": {
+    "status": "passed",
+    "summary": "For assigned C04/C06 rework, the attempt-4 Worker change matches the immutable candidate and independent Tester evidence. All 16 marker cases are absent; safe identities persist. My independent exact focused-suite rerun exited 0 with normalized stdout SHA-256 matching Tester. This does not close unrelated original acceptance gaps.",
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    "findings": [
+      "Historical attempt-2 and attempt-3 C04 failures remain preserved; this report verifies the distinct attempt-4 candidate and does not replace prior failures.",
+      "Prior broader Tester evidence identified C08 release-builder/protected-scope audit as UNVERIFIED; this bounded C04/C06 review does not resolve that original-plan gap."
+    ],
+    "errors": [],
+    "comparison": {
+      "plan_ref": {
+        "artifact_id": "native-model-routing-plan-1",
+        "path": "evidence/native-model-routing/plan.json",
+        "kind": "plan",
+        "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+      },
+      "tester_report_ref": {
+        "artifact_id": "native-model-routing-tester-report-final",
+        "path": "evidence/native-model-routing/tester-final-report.json",
+        "kind": "message",
+        "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+      },
+      "candidate_ref": {
+        "artifact_id": "native-model-routing-candidate-6",
+        "path": "evidence/native-model-routing/worker-candidate-4.json",
+        "kind": "candidate-manifest",
+        "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+      },
+      "findings": [
+        "The frozen C04 criterion requires distinct configured/requested/host-reported/effective identities, safe outcomes/resources and no persisted secrets, credentials, hidden prompts, or private reasoning. Attempt-4 uses bounded lowercase labels for retained identity values and nulls invalid values.",
+        "The exact candidate-6 manifest SHA and both source/test member hashes match current bytes. Worker report attempt-4, Tester report attempt-4 and Tester probe evidence all cite candidate-6 and the original plan.",
+        "Tester evidence records the injected marker absent from every provider/route_id/model_id/harness \u00d7 configured/requested/host_reported/effective combination, plus safe-value retention and ancillary metadata/outcome controls.",
+        "The focused and full suites pass according to Tester; this reviewer independently reran the exact focused deterministic command and matched exit and normalized stdout digest.",
+        "Earlier C04 failures and the broader C08 unverified finding remain in immutable history; no A/B benchmark was rerun."
+      ],
+      "discrepancies": [],
+      "independent_rerun": {
+        "status": "MATCH",
+        "command_id": "native-model-routing-tester-final-command-1",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_native_model_routing",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+        "candidate_ref": {
+          "artifact_id": "native-model-routing-candidate-6",
+          "path": "evidence/native-model-routing/worker-candidate-4.json",
+          "kind": "candidate-manifest",
+          "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "native-model-routing-plan-1",
+            "path": "evidence/native-model-routing/plan.json",
+            "kind": "plan",
+            "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+          },
+          {
+            "artifact_id": "native-model-routing-reviewer-assignment-final",
+            "path": "evidence/native-model-routing/reviewer-final-assignment.json",
+            "kind": "message",
+            "sha256": "032956cb34d75a6cd16d195013cc61565b6bac3603d24acf3574b4b77f2d7bc7"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "C04",
+        "evidence_ref": {
+          "artifact_id": "reviewer-final-rerun",
+          "path": "evidence/native-model-routing/reviewer-final-rerun.json",
+          "kind": "verification-evidence",
+          "sha256": "eb86119d8c8f84b67a6679f9b0a1e9c76afa271846b3541a0cebfebe7f04f965"
+        },
+        "tester_exit_code": 0,
+        "tester_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tester_evidence_ref": {
+          "artifact_id": "tester-final-focused-stdout",
+          "path": "evidence/native-model-routing/tester-final-focused-stdout.bin",
+          "kind": "command-output",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "path": "evidence/native-model-routing/worker-final-report-2.json",
+      "kind": "message",
+      "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-final",
+      "path": "evidence/native-model-routing/tester-final-report.json",
+      "kind": "message",
+      "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+    },
+    {
+      "artifact_id": "native-model-routing-reviewer-assignment-final",
+      "path": "evidence/native-model-routing/reviewer-final-assignment.json",
+      "kind": "message",
+      "sha256": "032956cb34d75a6cd16d195013cc61565b6bac3603d24acf3574b4b77f2d7bc7"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-final-probes-1",
+      "path": "evidence/native-model-routing/tester-final-probes.json",
+      "kind": "verification-evidence",
+      "sha256": "1aef082aaff171b8b3e4f5f2a3e852222575697e082d4b5fdc3160e8609b9319"
+    },
+    {
+      "artifact_id": "reviewer-final-rerun",
+      "path": "evidence/native-model-routing/reviewer-final-rerun.json",
+      "kind": "verification-evidence",
+      "sha256": "eb86119d8c8f84b67a6679f9b0a1e9c76afa271846b3541a0cebfebe7f04f965"
+    },
+    {
+      "artifact_id": "reviewer-final-focused-stdout",
+      "path": "evidence/native-model-routing/reviewer-final-focused-stdout.bin",
+      "kind": "command-output",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_id": "reviewer-final-focused-stderr",
+      "path": "evidence/native-model-routing/reviewer-final-focused-stderr.bin",
+      "kind": "command-output",
+      "sha256": "ec23b13e8f7a11042c77c1a2faecbbc29a297741c980a1afb9ed08478f2bfcfa"
+    },
+    {
+      "artifact_id": "tester-final-focused-stdout",
+      "path": "evidence/native-model-routing/tester-final-focused-stdout.bin",
+      "kind": "command-output",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

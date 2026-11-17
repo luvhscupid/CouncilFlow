@@ -1,0 +1,49 @@
+{
+  "evidence_id": "manager-c04-final-redaction-probe-1",
+  "candidate_manifest_sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56",
+  "status": "failed",
+  "probe_marker": "S3CRET_PROBE_value",
+  "identity_results": [
+    {
+      "field": "provider",
+      "marker_retained": true,
+      "identity_fields_present": [
+        "configured_identity",
+        "requested_identity",
+        "host_reported_identity",
+        "effective_identity"
+      ]
+    },
+    {
+      "field": "route_id",
+      "marker_retained": true,
+      "identity_fields_present": [
+        "configured_identity",
+        "requested_identity",
+        "host_reported_identity",
+        "effective_identity"
+      ]
+    },
+    {
+      "field": "model_id",
+      "marker_retained": true,
+      "identity_fields_present": [
+        "configured_identity",
+        "requested_identity",
+        "host_reported_identity",
+        "effective_identity"
+      ]
+    },
+    {
+      "field": "harness",
+      "marker_retained": true,
+      "identity_fields_present": [
+        "configured_identity",
+        "requested_identity",
+        "host_reported_identity",
+        "effective_identity"
+      ]
+    }
+  ],
+  "observation": "Candidate execution_record retains marker in each of four identity slots; see exact inline probe. No candidate files were edited."
+}

@@ -1,0 +1,25 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "evidence_id": "native-model-routing-capability-1",
+  "status": "NATIVE_MODEL_ROUTING_UNVERIFIED",
+  "observation": {
+    "native_delegation_arguments_available": ["model", "reasoning_effort"],
+    "request_formed_by_this_worker": false,
+    "provider_dispatch_attempted": false,
+    "credential_accessed": false,
+    "global_or_parent_configuration_changed": false,
+    "host_reported_identity": null,
+    "effective_identity": null,
+    "entitlement": null
+  },
+  "boundary": "The session tool interface exposes optional model and reasoning_effort arguments. No child dispatch was performed for this feature. Argument availability does not establish entitlement, dispatch, or effective identity. Live routing remains unverified.",
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-worker-assignment-3",
+      "kind": "message",
+      "path": "evidence/native-model-routing/worker-assignment-3.json",
+      "sha256": "dc99d1f4fabdbb3eb87db777d06cb87c62a2e801750558745d901324c65b4362"
+    }
+  ]
+}

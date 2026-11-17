@@ -1,0 +1,245 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-tester-report-resume-1",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-3",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/native_model_tester_resume"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-tester-resume-1",
+  "payload": {
+    "status": "failed",
+    "summary": "Attempt-3 candidate hashes match, and focused (33) and full (272; 5 skipped) suites pass. C04 remains failed: synthetic marker S3CRET_PROBE_value is retained in all 16 identity slot/field combinations across configured, requested, host-reported, and effective identities. Other targeted qualification/resource/digest/rollback redaction checks and safe controls pass.",
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "checks": [
+      {
+        "name": "Attempt-3 candidate manifest and source/test hashes match exact candidate",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-candidate-5",
+          "path": "evidence/native-model-routing/worker-candidate-3.json",
+          "kind": "candidate-manifest",
+          "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+        }
+      },
+      {
+        "name": "C04 secret-like provider/route/model/harness redaction across all four identity slots",
+        "status": "failed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-probes",
+          "path": "evidence/native-model-routing/tester-resume-probes.json",
+          "kind": "verification-evidence",
+          "sha256": "5fac348287d1e70fef2196bb37c16b5c60e0d0629aacaaccab07a155432afa1a"
+        }
+      },
+      {
+        "name": "C04 qualification, rollback, resource, policy digest and reasoning markers omitted",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-probes",
+          "path": "evidence/native-model-routing/tester-resume-probes.json",
+          "kind": "verification-evidence",
+          "sha256": "5fac348287d1e70fef2196bb37c16b5c60e0d0629aacaaccab07a155432afa1a"
+        }
+      },
+      {
+        "name": "C04 safe-value control retained with typed identity, qualification, resource and rollback metadata",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-probes",
+          "path": "evidence/native-model-routing/tester-resume-probes.json",
+          "kind": "verification-evidence",
+          "sha256": "5fac348287d1e70fef2196bb37c16b5c60e0d0629aacaaccab07a155432afa1a"
+        }
+      },
+      {
+        "name": "C04 safe failure, retry, cancel, incomplete and completion outcomes recorded",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-probes",
+          "path": "evidence/native-model-routing/tester-resume-probes.json",
+          "kind": "verification-evidence",
+          "sha256": "5fac348287d1e70fef2196bb37c16b5c60e0d0629aacaaccab07a155432afa1a"
+        }
+      },
+      {
+        "name": "Focused routing and SkillLab suite: 33 tests",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-focused-stderr",
+          "path": "evidence/native-model-routing/tester-resume-1-stderr.bin",
+          "kind": "command-output",
+          "sha256": "638bf0adddff07c3af04b9eee353e07bf73e6372272f1c8ad689253b39a0c2a4"
+        }
+      },
+      {
+        "name": "Full repository suite: 272 tests, 5 skipped",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-full-stderr",
+          "path": "evidence/native-model-routing/tester-resume-2-stderr.bin",
+          "kind": "command-output",
+          "sha256": "5d59f00a770234976990a41e0de24431f87580f71cc0db0ea864be7d24a16f13"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_native_model_routing",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+        "candidate_ref": {
+          "artifact_id": "native-model-routing-candidate-5",
+          "path": "evidence/native-model-routing/worker-candidate-3.json",
+          "kind": "candidate-manifest",
+          "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "native-model-routing-plan-1",
+            "path": "evidence/native-model-routing/plan.json",
+            "kind": "plan",
+            "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-resume-1",
+            "path": "evidence/native-model-routing/tester-resume-assignment.json",
+            "kind": "message",
+            "sha256": "f4ff47182d4f81e34e74006b4987d38c7489c973443cfbb856f777e0f79368d3"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "C04",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-1-stdout",
+          "path": "evidence/native-model-routing/tester-resume-1-stdout.bin",
+          "kind": "command-output",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "command_id": "native-model-routing-tester-resume-command-1"
+      },
+      {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+        "candidate_ref": {
+          "artifact_id": "native-model-routing-candidate-5",
+          "path": "evidence/native-model-routing/worker-candidate-3.json",
+          "kind": "candidate-manifest",
+          "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "native-model-routing-plan-1",
+            "path": "evidence/native-model-routing/plan.json",
+            "kind": "plan",
+            "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-resume-1",
+            "path": "evidence/native-model-routing/tester-resume-assignment.json",
+            "kind": "message",
+            "sha256": "f4ff47182d4f81e34e74006b4987d38c7489c973443cfbb856f777e0f79368d3"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "C06",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-resume-2-stdout",
+          "path": "evidence/native-model-routing/tester-resume-2-stdout.bin",
+          "kind": "command-output",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "command_id": "native-model-routing-tester-resume-command-2"
+      }
+    ],
+    "findings": [
+      "The injected marker appeared in all 16 execution-record identity slot/field combinations. This reproduces the retained Manager finding and means the record can persist arbitrary credential-like identity text. Marker is synthetic test data, not a credential."
+    ],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-1",
+      "path": "evidence/native-model-routing/tester-resume-assignment.json",
+      "kind": "message",
+      "sha256": "f4ff47182d4f81e34e74006b4987d38c7489c973443cfbb856f777e0f79368d3"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-probes",
+      "path": "evidence/native-model-routing/tester-resume-probes.json",
+      "kind": "verification-evidence",
+      "sha256": "5fac348287d1e70fef2196bb37c16b5c60e0d0629aacaaccab07a155432afa1a"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-commands",
+      "path": "evidence/native-model-routing/tester-resume-command-evidence.json",
+      "kind": "verification-evidence",
+      "sha256": "9f056e0aa82a2b37120111969e9c4c7ebb0f5ddc84499477411ca11d9cd1c0c9"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-focused-stderr",
+      "path": "evidence/native-model-routing/tester-resume-1-stderr.bin",
+      "kind": "command-output",
+      "sha256": "638bf0adddff07c3af04b9eee353e07bf73e6372272f1c8ad689253b39a0c2a4"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-full-stderr",
+      "path": "evidence/native-model-routing/tester-resume-2-stderr.bin",
+      "kind": "command-output",
+      "sha256": "5d59f00a770234976990a41e0de24431f87580f71cc0db0ea864be7d24a16f13"
+    }
+  ]
+}

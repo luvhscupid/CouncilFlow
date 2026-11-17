@@ -1,0 +1,11 @@
+{
+  "schema": "councilflow.native-model-routing.policy/1.0",
+  "owner_approved": false,
+  "approved_providers": [],
+  "roles": {},
+  "routes": [],
+  "limits": {},
+  "allow_fallback": false,
+  "allow_escalation": false,
+  "note": "Intentionally empty: no owner-approved entitlement, qualification, credential, price, or model pool is asserted."
+}

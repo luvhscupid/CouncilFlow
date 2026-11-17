@@ -1,0 +1,369 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-planner-final-check-resume",
+  "message_type": "plan.check",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "planner",
+    "instance_id": "/root/native_planner_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-manager-plan-progress-c08-audit",
+  "payload": {
+    "status": "blocked",
+    "summary": "C01-C09 are supported by preserved benchmark, regression, C04 repair, independent verification, capability and scope-audit evidence. C10 remains blocked: the original Planner native session was not reattachable in this new session, so this is a fresh Planner continuation rather than the original Planner instance. The original plan also records that Owner-input byte fidelity was not mechanically captured. No commit or push is justified while a required gate remains blocked.",
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ],
+    "plan_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "results": [
+      {
+        "acceptance_id": "C01",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-benchmark-outcome-1",
+            "path": "evidence/native-model-routing/benchmark-outcome.json",
+            "kind": "benchmark-result",
+            "sha256": "b6544e364cbdd72c8537ae245ce76d52305222a6e64bff1c6aa437ca4d2d5764"
+          },
+          {
+            "artifact_id": "ab-a-tester-report-3",
+            "path": "evidence/native-model-routing/benchmark/tester-a-report.json",
+            "kind": "message",
+            "sha256": "f5452d035910fd55ffdbb3b23f5d32bba895064cf1c56af1f5608bd48fe5eff0"
+          },
+          {
+            "artifact_id": "ab-b-tester-report-3",
+            "path": "evidence/native-model-routing/benchmark/tester-b-report.json",
+            "kind": "message",
+            "sha256": "056e06220417b9241f86a1488b73efd1b03e7646d7985c3c1e012a10e7d800a9"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C02",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-tester-report-1",
+            "path": "evidence/native-model-routing/tester-report.json",
+            "kind": "message",
+            "sha256": "f67ea6a6de6959e94eb591b2965c1dabbcb6399d17b705bf287db982f14a9276"
+          },
+          {
+            "artifact_id": "native-model-routing-candidate-6",
+            "path": "evidence/native-model-routing/worker-candidate-4.json",
+            "kind": "candidate-manifest",
+            "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C03",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-tester-report-1",
+            "path": "evidence/native-model-routing/tester-report.json",
+            "kind": "message",
+            "sha256": "f67ea6a6de6959e94eb591b2965c1dabbcb6399d17b705bf287db982f14a9276"
+          },
+          {
+            "artifact_id": "native-model-routing-capability-1",
+            "path": "evidence/native-model-routing/native-capability.json",
+            "kind": "verification-evidence",
+            "sha256": "93cb41d8dab8fdc117d6acff23b102b5b8124933f6883ddb61d07541feba98b9"
+          },
+          {
+            "artifact_id": "native-model-routing-candidate-6",
+            "path": "evidence/native-model-routing/worker-candidate-4.json",
+            "kind": "candidate-manifest",
+            "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C04",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-candidate-6",
+            "path": "evidence/native-model-routing/worker-candidate-4.json",
+            "kind": "candidate-manifest",
+            "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+          },
+          {
+            "artifact_id": "native-model-routing-worker-report-4",
+            "path": "evidence/native-model-routing/worker-final-report-2.json",
+            "kind": "message",
+            "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-final-probes-1",
+            "path": "evidence/native-model-routing/tester-final-probes.json",
+            "kind": "verification-evidence",
+            "sha256": "1aef082aaff171b8b3e4f5f2a3e852222575697e082d4b5fdc3160e8609b9319"
+          },
+          {
+            "artifact_id": "native-model-routing-reviewer-report-final",
+            "path": "evidence/native-model-routing/reviewer-final-report.json",
+            "kind": "message",
+            "sha256": "bcab98cc4e378893aed3746312089caeeb4573c006d4952f03a1663baf19185b"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C05",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-tester-report-4",
+            "path": "evidence/native-model-routing/tester-rework-report.json",
+            "kind": "message",
+            "sha256": "28df58aa7ff7dce48c3f730d2424fadada456e1b460d83b6960dc05780f6f95d"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          },
+          {
+            "artifact_id": "tester-final-focused-stderr",
+            "path": "evidence/native-model-routing/tester-final-focused-stderr.bin",
+            "kind": "command-output",
+            "sha256": "133a962c7c3d07ca4aa45e017807b0ea7518eb0e8b91692137c3147fec90225c"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C06",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-final-probes-1",
+            "path": "evidence/native-model-routing/tester-final-probes.json",
+            "kind": "verification-evidence",
+            "sha256": "1aef082aaff171b8b3e4f5f2a3e852222575697e082d4b5fdc3160e8609b9319"
+          },
+          {
+            "artifact_id": "tester-final-focused-stderr",
+            "path": "evidence/native-model-routing/tester-final-focused-stderr.bin",
+            "kind": "command-output",
+            "sha256": "133a962c7c3d07ca4aa45e017807b0ea7518eb0e8b91692137c3147fec90225c"
+          },
+          {
+            "artifact_id": "tester-final-full-stderr",
+            "path": "evidence/native-model-routing/tester-final-2-stderr.bin",
+            "kind": "command-output",
+            "sha256": "770d1ddf8a7ef2cefea7e6cfa16b9d3dac088b93807960bb9053543fbff96389"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C07",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-routing-readme",
+            "path": "README.md",
+            "kind": "source-file",
+            "sha256": "7070e753ae5fa615ad53fcc3c5ea155a3fab9e2fce8418953a8bf03312ff9fd0"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-4",
+            "path": "evidence/native-model-routing/tester-rework-report.json",
+            "kind": "message",
+            "sha256": "28df58aa7ff7dce48c3f730d2424fadada456e1b460d83b6960dc05780f6f95d"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C08",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-manager-c08-scope-audit-1",
+            "path": "evidence/native-model-routing/manager-c08-scope-audit.json",
+            "kind": "verification-evidence",
+            "sha256": "dc426a5e373fa3f0e7295acc70d4c90fdf9eb295f7594dcf1289d584c7e50c23"
+          },
+          {
+            "artifact_id": "native-model-routing-manager-plan-progress-c08-audit",
+            "path": "evidence/native-model-routing/manager-plan-progress-c08-audit.json",
+            "kind": "message",
+            "sha256": "ec8c281084339635022cd8e9dd851e4a7b9c61aae4a0d54b805ee5b012debc9e"
+          },
+          {
+            "artifact_id": "native-model-routing-candidate-6",
+            "path": "evidence/native-model-routing/worker-candidate-4.json",
+            "kind": "candidate-manifest",
+            "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C09",
+        "status": "passed",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-model-routing-capability-1",
+            "path": "evidence/native-model-routing/native-capability.json",
+            "kind": "verification-evidence",
+            "sha256": "93cb41d8dab8fdc117d6acff23b102b5b8124933f6883ddb61d07541feba98b9"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-1",
+            "path": "evidence/native-model-routing/tester-report.json",
+            "kind": "message",
+            "sha256": "f67ea6a6de6959e94eb591b2965c1dabbcb6399d17b705bf287db982f14a9276"
+          },
+          {
+            "artifact_id": "native-model-routing-plan-1",
+            "path": "evidence/native-model-routing/plan.json",
+            "kind": "plan",
+            "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+          }
+        ]
+      },
+      {
+        "acceptance_id": "C10",
+        "status": "blocked",
+        "evidence_refs": [
+          {
+            "artifact_id": "native-routing-plan-publish-1",
+            "path": "evidence/native-model-routing/plan-publish.json",
+            "kind": "message",
+            "sha256": "3476baca9ef68e09199fa892780e12f0cb2d65d05cb8e7936520eac4c4a6911a"
+          },
+          {
+            "artifact_id": "native-model-routing-manager-plan-progress-resume",
+            "path": "evidence/native-model-routing/manager-plan-progress-resume.json",
+            "kind": "message",
+            "sha256": "6dd1e485388e4d6df42c074498d5f3224b4da706018c1fd5c72d72492f2a46ba"
+          },
+          {
+            "artifact_id": "native-model-routing-manager-plan-progress-c08-audit",
+            "path": "evidence/native-model-routing/manager-plan-progress-c08-audit.json",
+            "kind": "message",
+            "sha256": "ec8c281084339635022cd8e9dd851e4a7b9c61aae4a0d54b805ee5b012debc9e"
+          },
+          {
+            "artifact_id": "native-model-routing-manager-accept-4",
+            "path": "evidence/native-model-routing/manager-accept-4.json",
+            "kind": "message",
+            "sha256": "1cafb83c292e0a5584fea4fff751f4424e9dc6fa13b4b16268cd4ad9e5b65c9c"
+          },
+          {
+            "artifact_id": "native-model-routing-worker-report-4",
+            "path": "evidence/native-model-routing/worker-final-report-2.json",
+            "kind": "message",
+            "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-report-final",
+            "path": "evidence/native-model-routing/tester-final-report.json",
+            "kind": "message",
+            "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+          },
+          {
+            "artifact_id": "native-model-routing-reviewer-report-final",
+            "path": "evidence/native-model-routing/reviewer-final-report.json",
+            "kind": "message",
+            "sha256": "bcab98cc4e378893aed3746312089caeeb4573c006d4952f03a1663baf19185b"
+          }
+        ]
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-manager-plan-progress-c08-audit",
+      "path": "evidence/native-model-routing/manager-plan-progress-c08-audit.json",
+      "kind": "message",
+      "sha256": "ec8c281084339635022cd8e9dd851e4a7b9c61aae4a0d54b805ee5b012debc9e"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-final",
+      "path": "evidence/native-model-routing/tester-final-report.json",
+      "kind": "message",
+      "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+    },
+    {
+      "artifact_id": "native-model-routing-reviewer-report-final",
+      "path": "evidence/native-model-routing/reviewer-final-report.json",
+      "kind": "message",
+      "sha256": "bcab98cc4e378893aed3746312089caeeb4573c006d4952f03a1663baf19185b"
+    },
+    {
+      "artifact_id": "native-model-routing-manager-c08-scope-audit-1",
+      "path": "evidence/native-model-routing/manager-c08-scope-audit.json",
+      "kind": "verification-evidence",
+      "sha256": "dc426a5e373fa3f0e7295acc70d4c90fdf9eb295f7594dcf1289d584c7e50c23"
+    }
+  ]
+}

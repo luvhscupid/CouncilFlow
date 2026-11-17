@@ -1,0 +1,8 @@
+test_paired_metrics_keep_missing_values_and_find_blind_spot (test_evaluate.EvaluationTests.test_paired_metrics_keep_missing_values_and_find_blind_spot) ... ok
+test_protocol_is_draft_and_hash_binding_precedes_run (test_evaluate.EvaluationTests.test_protocol_is_draft_and_hash_binding_precedes_run) ... ok
+test_task_mismatch_rejected (test_evaluate.EvaluationTests.test_task_mismatch_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

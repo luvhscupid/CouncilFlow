@@ -1,0 +1,48 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-b-worker-report",
+  "message_type": "job.report",
+  "plan_id": "ab-model-policy-B",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-B",
+  "attempt_id": "ab-attempt-1",
+  "sender": {
+    "instance_id": "/root/ab_worker_b",
+    "role": "worker"
+  },
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "in_reply_to": "ab-b-worker-assignment",
+  "payload": {
+    "status": "passed",
+    "summary": "Implemented the pure fail-closed model route authorization function. All nine fixed oracle fixtures passed.",
+    "acceptance_ids": [
+      "C01"
+    ],
+    "candidate_ref": {
+      "kind": "candidate",
+      "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e",
+      "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "artifact_id": "ab-b-candidate"
+    },
+    "changed_files": [
+      "experiments/native-model-routing/benchmark/arms/B/model_policy.py"
+    ],
+    "findings": [
+      "Codebase-design native skill activation UNVERIFIED; router selection was advisory only.",
+      "Requested model gpt-6-luna and reasoning_effort low; effective model identity is unverified."
+    ],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "kind": "candidate",
+      "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e",
+      "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "artifact_id": "ab-b-candidate"
+    }
+  ]
+}

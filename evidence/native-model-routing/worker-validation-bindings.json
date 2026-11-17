@@ -1,0 +1,5 @@
+{
+  "native-routing-plan-publish-1": {"role": "planner", "instance_id": "/root/native_planner"},
+  "native-model-routing-worker-assignment-3": {"role": "manager", "instance_id": "/root"},
+  "native-model-routing-worker-report-3": {"role": "worker", "instance_id": "/root/native_model_worker"}
+}

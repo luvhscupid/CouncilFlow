@@ -1,0 +1,93 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-manager-plan-progress-resume",
+  "message_type": "plan.progress",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/native_planner_final"
+  },
+  "in_reply_to": "native-model-routing-manager-accept-4",
+  "payload": {
+    "status": "in_progress",
+    "objective": "Perform final check of the original immutable CouncilFlow plan C01-C10 against all retained evidence and attempt-4 verification.",
+    "scope": [
+      "Original plan and historical evidence; candidate-6 verification; current uncommitted feature worktree state."
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ],
+    "verified_progress": [
+      "Original plan.json is preserved byte-for-byte and remains authoritative.",
+      "A/B benchmark will not be rerun; its existing reports and outcome file remain preserved.",
+      "Fresh native delegation, fresh C04 Worker attempt-4, independent Tester and independent Reviewer reports are available and validated.",
+      "C04 rework passed 16 marker probes; focused suite passed 35 tests; full suite passed 274 tests with 5 skips; Reviewer rerun matched exit and normalized stdout SHA-256.",
+      "Historical C04 failures remain preserved.",
+      "Prior broader Tester report records C08 release-builder/protected-scope audit as UNVERIFIED; no current evidence has resolved that audit.",
+      "Codebase Memory transport closed on coverage and reindex calls; direct source/evidence validation substituted.",
+      "The original Planner subagent could not be reattached in this new session (`/root/native_planner` not found). This fresh Planner role must disclose whether that gap prevents an original-Planner check."
+    ],
+    "next_action": "Return a plan.check mapped to every original C01-C10 criterion. Do not edit the plan or product, rerun A/B, waive C08, or claim to be the original Planner session. Mark unresolved criteria precisely.",
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "path": "evidence/native-model-routing/worker-final-report-2.json",
+      "kind": "message",
+      "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-final",
+      "path": "evidence/native-model-routing/tester-final-report.json",
+      "kind": "message",
+      "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+    },
+    {
+      "artifact_id": "native-model-routing-reviewer-report-final",
+      "path": "evidence/native-model-routing/reviewer-final-report.json",
+      "kind": "message",
+      "sha256": "bcab98cc4e378893aed3746312089caeeb4573c006d4952f03a1663baf19185b"
+    },
+    {
+      "artifact_id": "native-model-routing-manager-plan-progress-final",
+      "path": "evidence/native-model-routing/manager-plan-progress-final.json",
+      "kind": "message",
+      "sha256": "46b62dab944038fa60141362ddf4e0df35d7b9c2b30f45e0fe100c5555c2c126"
+    }
+  ]
+}

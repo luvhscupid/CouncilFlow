@@ -1,0 +1,12 @@
+{
+  "skilllab_repository": "https://github.com/luvhscupid/CouncilFlow-SkillLab",
+  "skilllab_commit": "40b4239e14f3c711ec3d32bb7ef4bb0820abdc63",
+  "registry_sha256": "5f8c2f969d85ce95431661c60a520ea000b64661555dfb7136b0ee2ba3289a1b",
+  "router_request_sha256": "696d9697a14e481ac4a1fd83ceef64fbfe143e33d47625049b88f9fb633ee851",
+  "router_output_selected": "mattpocock-skills:codebase-design",
+  "eligible": true,
+  "eligibility_reasons": [],
+  "skill_source_sha256": "362b0bec828219d9f4b08ca7c466164e67253bdd817359258e60d2e9c5692a8f",
+  "skill_source_path": "C:/Users/cupid/.codex/plugins/cache/mattpocock/mattpocock-skills/1.3.2/skills/engineering/codebase-design/SKILL.md",
+  "native_activation": "UNVERIFIED; deterministic router selection only"
+}

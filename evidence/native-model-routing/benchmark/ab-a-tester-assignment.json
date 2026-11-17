@@ -1,0 +1,74 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-a-tester-assignment",
+  "message_type": "job.assign",
+  "plan_id": "ab-model-policy-A",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-A",
+  "attempt_id": "ab-attempt-1",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/ab_tester_a"
+  },
+  "in_reply_to": "ab-a-worker-report",
+  "payload": {
+    "oracle_ref": {
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "artifact_id": "ab-oracle",
+      "kind": "verification-oracle",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    "objective": "Independently test Arm A model-policy candidate against the frozen oracle, without repair.",
+    "scope": [
+      "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "evidence/native-model-routing/benchmark/oracle.py"
+    ],
+    "acceptance_ids": [
+      "C01"
+    ],
+    "instructions": [
+      "Verify exact candidate experiments/native-model-routing/benchmark/arms/A/model_policy.py. Do not modify candidate or tests.",
+      "Run the exact deterministic command with executable C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe, arguments oracle.py model_policy.py, and workdir E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing\\experiments\\native-model-routing\\benchmark\\arms\\A. Use subprocess without shell alias; capture raw stdout bytes and exit code, normalize only CRLF to LF for SHA-256.",
+      "Verify the fixed nine-case oracle and that the arm contains no extra Worker-edited files beyond model_policy.py plus the frozen identical task/fixture/oracle inputs.",
+      "Write raw stdout bytes to evidence/native-model-routing/benchmark/tester-a.stdout. Record deterministic_commands and a matching passed/failed check in your report.",
+      "Write a UTF-8 council-flow 1.0 job.report to evidence/native-model-routing/benchmark/tester-a-report.json replying to ab-a-tester-assignment. Echo the exact candidate and oracle refs. Report model gpt-6-luna/low as REQUESTED only; effective identity unknown. Do not claim skill activation; no product repairs."
+    ],
+    "candidate_ref": {
+      "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "artifact_id": "ab-a-candidate",
+      "kind": "candidate",
+      "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7"
+    }
+  },
+  "oracle_ref": {
+    "path": "evidence/native-model-routing/benchmark/oracle.py",
+    "artifact_id": "ab-oracle",
+    "kind": "verification-oracle",
+    "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+  },
+  "evidence_refs": [
+    {
+      "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "artifact_id": "ab-a-candidate",
+      "kind": "candidate",
+      "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "artifact_id": "ab-oracle",
+      "kind": "verification-oracle",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/worker-a-report.json",
+      "artifact_id": "ab-a-worker-report",
+      "kind": "message",
+      "sha256": "74e28afdd7c80f4f0dbc8f2a6876da848ed5a239c61a5fc864a679eca6ef02d5"
+    }
+  ]
+}

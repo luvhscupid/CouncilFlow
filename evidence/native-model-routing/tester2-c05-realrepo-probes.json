@@ -1,0 +1,47 @@
+{
+  "invalid_json": {
+    "status": "unavailable",
+    "selected": null,
+    "activated": "unverified",
+    "adds_tools": false,
+    "secret_absent": true
+  },
+  "invalid_shape": {
+    "status": "unavailable",
+    "selected": null,
+    "activated": "unverified",
+    "adds_tools": false,
+    "secret_absent": true
+  },
+  "selected": {
+    "status": "suggested",
+    "selected": "tdd",
+    "activated": "unverified",
+    "adds_tools": false,
+    "secret_absent": true
+  },
+  "no_skill": {
+    "status": "no_skill",
+    "selected": null,
+    "activated": "unverified",
+    "adds_tools": false,
+    "secret_absent": true
+  },
+  "denied": {
+    "status": "denied",
+    "selected": null,
+    "activated": "unverified",
+    "adds_tools": false,
+    "secret_absent": true
+  },
+  "nonzero": {
+    "status": "unavailable",
+    "selected": null,
+    "secret_absent": true
+  },
+  "subprocess_exception": {
+    "status": "unavailable",
+    "selected": null,
+    "secret_absent": true
+  }
+}

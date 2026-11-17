@@ -1,0 +1,17 @@
+{
+  "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "arguments": [
+    "-B",
+    "-m",
+    "unittest",
+    "tests.test_native_model_routing",
+    "-v"
+  ],
+  "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+  "exit_code": 0,
+  "stdout_sha256_after_crlf_to_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "ec23b13e8f7a11042c77c1a2faecbbc29a297741c980a1afb9ed08478f2bfcfa",
+  "stdout_bytes": 0,
+  "stderr_bytes": 6113
+}

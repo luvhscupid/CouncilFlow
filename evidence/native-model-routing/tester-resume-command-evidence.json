@@ -1,0 +1,40 @@
+[
+  {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "tests.test_native_model_routing",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+    "exit_code": 0,
+    "stdout_path": "evidence/native-model-routing/tester-resume-1-stdout.bin",
+    "stdout_sha256_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_path": "evidence/native-model-routing/tester-resume-1-stderr.bin",
+    "stderr_sha256": "638bf0adddff07c3af04b9eee353e07bf73e6372272f1c8ad689253b39a0c2a4",
+    "stdout_bytes": 0,
+    "stderr_bytes": 5727
+  },
+  {
+    "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "arguments": [
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "working_directory": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+    "exit_code": 0,
+    "stdout_path": "evidence/native-model-routing/tester-resume-2-stdout.bin",
+    "stdout_sha256_lf_only": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_path": "evidence/native-model-routing/tester-resume-2-stderr.bin",
+    "stderr_sha256": "5d59f00a770234976990a41e0de24431f87580f71cc0db0ea864be7d24a16f13",
+    "stdout_bytes": 0,
+    "stderr_bytes": 45623
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "evidence_id": "native-model-routing-benchmark-outcome-1",
+  "classification": "descriptive_offline_comparison",
+  "request": {"model": "gpt-6-luna", "reasoning_effort": "low", "effective_identity": null},
+  "arms": [
+    {"arm": "A", "worker_status": "passed", "tester_status": "passed", "fixture_cases": 9, "exit_code": 0,
+     "normalized_stdout_sha256": "9ed810921d4507720d2297f9fa448c836f7d1b78434e7910cbacb49a560f240c",
+     "skill_activation": "not_applicable", "tokens": null, "cost": null, "quota": null, "duration": null},
+    {"arm": "B", "worker_status": "passed", "tester_status": "passed", "fixture_cases": 9, "exit_code": 0,
+     "normalized_stdout_sha256": "9ed810921d4507720d2297f9fa448c836f7d1b78434e7910cbacb49a560f240c",
+     "skill_activation": "unverified", "tokens": null, "cost": null, "quota": null, "duration": null}
+  ],
+  "limitations": [
+    "Descriptive result for one fixed offline fixture task; no causal or generalized benefit claim.",
+    "Requested model and reasoning are not evidence of effective model identity or live provider dispatch.",
+    "Native SkillLab activation is unverified; selection is advisory.",
+    "Token, cost, quota, and comparable duration data were not exposed in preserved reports."
+  ],
+  "evidence_refs": [
+    {"artifact_id":"ab-a-worker-report","kind":"message","path":"evidence/native-model-routing/benchmark/worker-a-report.json","sha256":"74e28afdd7c80f4f0dbc8f2a6876da848ed5a239c61a5fc864a679eca6ef02d5"},
+    {"artifact_id":"ab-b-worker-report","kind":"message","path":"evidence/native-model-routing/benchmark/worker-b-report.json","sha256":"6e5166a1cbd2012ce0629461c640dc95938969bf43a63b29484e9222e8127568"},
+    {"artifact_id":"ab-a-tester-report","kind":"message","path":"evidence/native-model-routing/benchmark/tester-a-report.json","sha256":"f5452d035910fd55ffdbb3b23f5d32bba895064cf1c56af1f5608bd48fe5eff0"},
+    {"artifact_id":"ab-b-tester-report","kind":"message","path":"evidence/native-model-routing/benchmark/tester-b-report.json","sha256":"056e06220417b9241f86a1488b73efd1b03e7646d7985c3c1e012a10e7d800a9"},
+    {"artifact_id":"ab-a-tester-assignment","kind":"message","path":"evidence/native-model-routing/benchmark/ab-a-tester-assignment-3.json","sha256":"4d01bc399fcbe1778d44ac3a03749e263e5b75af52385b29e6fdef498c71f9d8"},
+    {"artifact_id":"ab-b-tester-assignment","kind":"message","path":"evidence/native-model-routing/benchmark/ab-b-tester-assignment-3.json","sha256":"b23317fafd6187b22d6892145bd37b22490669d5adf16535c3cb7dab17833172"}
+  ]
+}

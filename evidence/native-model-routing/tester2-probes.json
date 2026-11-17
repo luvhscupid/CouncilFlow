@@ -1,0 +1,89 @@
+{
+  "c04": {
+    "serialized": "{\"configured_identity\": {\"harness\": \"h\", \"model_id\": \"m\", \"provider\": \"p\", \"route_id\": \"r\"}, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": {\"artifact_id\": \"S3CRET_PROBE_value\", \"kind\": \"qualification\", \"path\": \"safe/S3CRET_PROBE_value.json\", \"sha256\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}, \"reasoning_effort\": null, \"requested_identity\": {\"harness\": \"h\", \"model_id\": \"m\", \"provider\": \"p\", \"route_id\": \"r\"}, \"resources\": {\"tokens\": {\"disposition\": \"reported\", \"unit\": \"count\", \"value\": null}}, \"retry_count\": 0, \"rollback\": {\"status\": \"failed\", \"target\": \"S3CRET_PROBE_value\"}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}",
+    "secret_absent": false,
+    "numeric_bool_rejected": true,
+    "nan_rejected": true,
+    "inf_rejected": true,
+    "safe_allowlist": true
+  },
+  "c05": {
+    "candidate_duplicate": {
+      "status": "denied",
+      "selected": null,
+      "secret_absent": true
+    },
+    "candidate_too_many": {
+      "status": "denied",
+      "selected": null,
+      "secret_absent": true
+    },
+    "request_shape": {
+      "status": "denied",
+      "selected": null,
+      "secret_absent": true
+    },
+    "filesystem_path": {
+      "status": "unavailable",
+      "selected": null,
+      "secret_absent": true
+    },
+    "changed_executable_denied_before_exec": {
+      "status": "unavailable",
+      "reason": "Pinned public CLI or registry is missing.",
+      "run_called": false,
+      "secret_absent": true
+    },
+    "subprocess_exception": {
+      "status": "unavailable",
+      "selected": null,
+      "secret_absent": true
+    },
+    "invalid_json": {
+      "status": "unavailable",
+      "activated": "unverified",
+      "adds_tools": false,
+      "selected": null,
+      "secret_absent": true
+    },
+    "invalid_shape": {
+      "status": "unavailable",
+      "activated": "unverified",
+      "adds_tools": false,
+      "selected": null,
+      "secret_absent": true
+    },
+    "selected": {
+      "status": "unavailable",
+      "activated": "unverified",
+      "adds_tools": false,
+      "selected": null,
+      "secret_absent": true
+    },
+    "no_skill": {
+      "status": "unavailable",
+      "activated": "unverified",
+      "adds_tools": false,
+      "selected": null,
+      "secret_absent": true
+    },
+    "denied": {
+      "status": "unavailable",
+      "activated": "unverified",
+      "adds_tools": false,
+      "selected": null,
+      "secret_absent": true
+    },
+    "nonzero": {
+      "status": "unavailable",
+      "selected": null,
+      "secret_absent": true
+    },
+    "unavailable": {
+      "status": "unavailable",
+      "activated": "unverified",
+      "adds_tools": false,
+      "selected": null
+    }
+  }
+}

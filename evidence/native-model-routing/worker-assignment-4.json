@@ -1,0 +1,66 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-assignment-4",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/native_model_worker_rework",
+    "role": "worker"
+  },
+  "in_reply_to": "native-model-routing-manager-rework-1",
+  "payload": {
+    "objective": "Repair only verified C04/C05 failures from the prior candidate, add focused negative controls, and report.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "experiments/skilllab-integration/adapter.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C05",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    "instructions": [
+      "Fresh Worker attempt. Do not inspect A/B benchmark arm implementations. Do not modify prior evidence, first-attempt candidate, plan, role policies, README, protected files, SkillLab repo, or provider/global config.",
+      "Fix C04: execution_record must fail closed and redact arbitrary sensitive content. Only allow safe, typed resource values/units and validate policy digests and qualification refs against closed exact schemas. Untrusted nested objects or malformed/secret-like values must not persist; unknown stays null. Extend tests with secret strings, nested/token fields, malformed digest and metadata injection.",
+      "Fix C05: validate the actual SkillLab executable source identity, not only git HEAD/registry digest. Pin or verify the skilllab.py bytes against commit 40b4239e14f3c711ec3d32bb7ef4bb0820abdc63; treat modified/unverifiable CLI as denied/unavailable. Ensure malformed requests/JSON shapes, filesystem errors, subprocess errors, invalid UTF-8 and malformed CLI output fail closed rather than leak exceptions. Keep Manager-only suggestion, seven-candidate boundary, no authority expansion, no SkillLab mutation. Add negative controls.",
+      "Do not add new product capability. Do not silently change compatibility pins. Preserve passing C02/C03/C07-C09 semantics. Run focused tests and full `python -B -m unittest discover -s tests -v`; save raw result.",
+      "Write new immutable candidate manifest to evidence/native-model-routing/worker-candidate-2.json and UTF-8 Worker report to evidence/native-model-routing/worker-rework-report.json with actual file hashes and checks, replying to this assignment. Do not overwrite earlier Worker report or manifest. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-2",
+      "kind": "message",
+      "path": "evidence/native-model-routing/tester-report.json",
+      "sha256": "f67ea6a6de6959e94eb591b2965c1dabbcb6399d17b705bf287db982f14a9276"
+    }
+  ]
+}

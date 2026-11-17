@@ -1,0 +1,38 @@
+{
+  "benchmark_id": "model-policy-validator-ab-1",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "model-policy-validator-ab",
+  "source_commit": "842f2a8b210d0661cf413ecd1fd8f9791783ca1f",
+  "objective": "Implement one pure standard-library Python function that fails closed when checking an exact model route identity against an approved policy and qualification evidence.",
+  "api": "authorize(identity: dict, policy: dict, request: dict, now_utc: datetime) -> dict with exactly decision ('allow'|'deny') and reason_code (string)",
+  "constraints": [
+    "No subprocesses, network, external services, credential reads, provider config reads, or file I/O.",
+    "Never accept credentials or secrets as input or echo input values in errors.",
+    "An allow decision requires exact provider, route_id, model_id, and harness match to an explicitly permitted entry for the requested role and task_class.",
+    "An allow decision requires identity compatibility_status QUALIFIED, available true, a well-formed qualification evidence reference, a future qualification expiry, supported requested reasoning effort, and all requested capabilities.",
+    "Missing, malformed, mismatched, unknown, expired, unavailable, unqualified, or unsupported inputs deny; no fallback or silent substitution.",
+    "Use only Python standard library and deterministic explicit now_utc input."
+  ],
+  "fixtures": "fixtures.json",
+  "tester_oracle": "oracle.py",
+  "resource_profile": {
+    "native_workers_per_arm": 1,
+    "attempts_per_arm": 1,
+    "output_files_per_arm": 1,
+    "network_calls": 0,
+    "credential_access": 0,
+    "requested_model": "gpt-6-luna (native collaboration tool option)",
+    "requested_reasoning_effort": "low",
+    "usage_or_token_ceiling": "not exposed; equal host defaults, numerical ceiling unknown"
+  },
+  "treatment": {
+    "A": "Ordinary CouncilFlow Worker receives the task and fixtures only.",
+    "B": "Worker receives the same task and fixtures plus the read-only SkillLab route suggestion from the pinned published router. The suggestion is advisory; host skill activation must be independently observed or reported UNVERIFIED."
+  },
+  "acceptance": [
+    "The independent oracle passes every fixed fixture with exact decision/reason_code.",
+    "Malformed inputs fail closed without exceptions or sensitive-value echo.",
+    "Worker changes only model_policy.py in its own arm directory."
+  ]
+}

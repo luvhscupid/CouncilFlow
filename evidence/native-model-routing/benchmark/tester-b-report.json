@@ -1,0 +1,152 @@
+{
+  "version": "1.0",
+  "plan_revision": 1,
+  "message_type": "job.report",
+  "plan_id": "ab-model-policy-B",
+  "sender": {
+    "instance_id": "/root/ab_tester_b",
+    "role": "tester"
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "ab-b-candidate",
+      "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e",
+      "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "kind": "candidate"
+    },
+    {
+      "artifact_id": "ab-oracle",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "kind": "benchmark-input"
+    },
+    {
+      "artifact_id": "ab-b-tester-stdout",
+      "sha256": "7cbb71116c0842ad9c34cc386c0d22b23f2d1ad14c33b938f646578dd5015633",
+      "path": "evidence/native-model-routing/benchmark/tester-b.stdout",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "ab-arm-workspaces-manifest",
+      "sha256": "6dd86f5a52063371e1feaa3907b2952a0d541fa1c798d207a175d099d3197795",
+      "path": "evidence/native-model-routing/benchmark/initial-workspace-manifest.json",
+      "kind": "benchmark-input"
+    },
+    {
+      "artifact_id": "ab-b-worker-report",
+      "sha256": "6e5166a1cbd2012ce0629461c640dc95938969bf43a63b29484e9222e8127568",
+      "path": "evidence/native-model-routing/benchmark/worker-b-report.json",
+      "kind": "message"
+    }
+  ],
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "message_id": "ab-b-tester-report-3",
+  "protocol": "council-flow",
+  "payload": {
+    "acceptance_ids": [
+      "C01"
+    ],
+    "oracle_ref": {
+      "artifact_id": "ab-oracle",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "kind": "benchmark-input"
+    },
+    "deterministic_commands": [
+      {
+        "command_id": "ab-b-oracle-run-1",
+        "evidence_ref": {
+          "artifact_id": "ab-b-tester-stdout",
+          "sha256": "7cbb71116c0842ad9c34cc386c0d22b23f2d1ad14c33b938f646578dd5015633",
+          "path": "evidence/native-model-routing/benchmark/tester-b.stdout",
+          "kind": "test-output"
+        },
+        "stdout_sha256": "9ed810921d4507720d2297f9fa448c836f7d1b78434e7910cbacb49a560f240c",
+        "arguments": [
+          "oracle.py",
+          "model_policy.py"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing\\experiments\\native-model-routing\\benchmark\\arms\\B",
+        "candidate_ref": {
+          "artifact_id": "ab-b-candidate",
+          "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e",
+          "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+          "kind": "candidate"
+        },
+        "exit_code": 0,
+        "input_refs": [
+          {
+            "artifact_id": "ab-oracle",
+            "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509",
+            "path": "evidence/native-model-routing/benchmark/oracle.py",
+            "kind": "benchmark-input"
+          },
+          {
+            "artifact_id": "ab-b-fixtures",
+            "sha256": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+            "path": "experiments/native-model-routing/benchmark/arms/B/fixtures.json",
+            "kind": "benchmark-input"
+          },
+          {
+            "artifact_id": "ab-b-task",
+            "sha256": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+            "path": "experiments/native-model-routing/benchmark/arms/B/task.json",
+            "kind": "benchmark-input"
+          }
+        ],
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "acceptance_id": "C01"
+      }
+    ],
+    "checks": [
+      {
+        "name": "Fixed nine-case oracle behavior",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "ab-b-tester-stdout",
+          "sha256": "7cbb71116c0842ad9c34cc386c0d22b23f2d1ad14c33b938f646578dd5015633",
+          "path": "evidence/native-model-routing/benchmark/tester-b.stdout",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "Frozen task, fixture, and oracle identity",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "ab-arm-workspaces-manifest",
+          "sha256": "6dd86f5a52063371e1feaa3907b2952a0d541fa1c798d207a175d099d3197795",
+          "path": "evidence/native-model-routing/benchmark/initial-workspace-manifest.json",
+          "kind": "benchmark-input"
+        }
+      },
+      {
+        "name": "Arm B changed-file scope",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "ab-b-worker-report",
+          "sha256": "6e5166a1cbd2012ce0629461c640dc95938969bf43a63b29484e9222e8127568",
+          "path": "evidence/native-model-routing/benchmark/worker-b-report.json",
+          "kind": "message"
+        }
+      }
+    ],
+    "findings": [
+      "Requested model gpt-6-luna/low only; effective identity is unverified. Native SkillLab activation is unverified."
+    ],
+    "status": "passed",
+    "candidate_ref": {
+      "artifact_id": "ab-b-candidate",
+      "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e",
+      "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "kind": "candidate"
+    },
+    "summary": "Arm B exact candidate passed all nine fixed oracle fixtures. Candidate and frozen inputs matched assigned identities; Worker report lists only model_policy.py as changed.",
+    "errors": []
+  },
+  "task_id": "ab-model-policy-B",
+  "in_reply_to": "ab-b-tester-assignment-3",
+  "attempt_id": "ab-attempt-1"
+}

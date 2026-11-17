@@ -1,0 +1,98 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-report-3",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root/native_model_worker",
+    "role": "worker"
+  },
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "in_reply_to": "native-model-routing-worker-assignment-3",
+  "payload": {
+    "status": "passed",
+    "summary": "Implemented offline fail-closed route qualification and native request contracts, a pinned read-only SkillLab suggestion adapter, README and technical/benchmark documentation. Full regression suite passed.",
+    "acceptance_ids": ["C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09"],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    "findings": [
+      "NATIVE_MODEL_ROUTING_UNVERIFIED: this Worker did not dispatch a child task; the host-reported and effective identities and entitlement remain unknown. The helper only forms explicit model/reasoning request arguments.",
+      "All model-route and SkillLab integration test outcomes are synthetic/local CLI observations, not proof of native activation or provider routing.",
+      "SkillLab adapter verifies the pinned repository HEAD, registry version and registry SHA-256 before using its validated CLI. It returns a Manager-only suggestion; activation remains unverified.",
+      "No release archive rebuild was run because no shipped skill or plugin contents changed."
+    ],
+    "errors": [],
+    "changed_files": [
+      "README.md",
+      "docs/technical/README.md",
+      "docs/technical/native-model-routing.md",
+      "docs/benchmarks/native-model-routing.md",
+      "experiments/native-model-routing/__init__.py",
+      "experiments/native-model-routing/README.md",
+      "experiments/native-model-routing/route-policy.json",
+      "experiments/native-model-routing/routing.py",
+      "experiments/skilllab-integration/__init__.py",
+      "experiments/skilllab-integration/adapter.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/native-capability.json",
+      "evidence/native-model-routing/benchmark-outcome.json",
+      "evidence/native-model-routing/worker-tests.stdout",
+      "evidence/native-model-routing/assignment-validation.stdout",
+      "evidence/native-model-routing/policy-validation.stdout",
+      "evidence/native-model-routing/skilllab-validation.stdout",
+      "evidence/native-model-routing/worker-candidate.json",
+      "evidence/native-model-routing/worker-checks.json",
+      "evidence/native-model-routing/worker-validation-bindings.json",
+      "evidence/native-model-routing/worker-report.json"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    {
+      "artifact_id": "worker-checks-attempt-1",
+      "kind": "verification-evidence",
+      "path": "evidence/native-model-routing/worker-checks.json",
+      "sha256": "c639f51d3f2f6b9db5fd88ff28dd6349c2c3015acc53195541ad907916d25ea9"
+    },
+    {
+      "artifact_id": "native-model-routing-capability-1",
+      "kind": "host-capability-evidence",
+      "path": "evidence/native-model-routing/native-capability.json",
+      "sha256": "93cb41d8dab8fdc117d6acff23b102b5b8124933f6883ddb61d07541feba98b9"
+    },
+    {
+      "artifact_id": "native-model-routing-benchmark-outcome-1",
+      "kind": "benchmark-evidence",
+      "path": "evidence/native-model-routing/benchmark-outcome.json",
+      "sha256": "b6544e364cbdd72c8537ae245ce76d52305222a6e64bff1c6aa437ca4d2d5764"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "worker-validation-bindings-attempt-1",
+      "kind": "validation-bindings",
+      "path": "evidence/native-model-routing/worker-validation-bindings.json",
+      "sha256": "d97235084ec43a8aeba16467e85280abc638a3a9e77940664cbbb8392115ebb1"
+    }
+  ]
+}

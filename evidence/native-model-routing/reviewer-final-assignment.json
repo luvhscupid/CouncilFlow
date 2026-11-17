@@ -1,0 +1,75 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-reviewer-assignment-final",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "reviewer",
+    "instance_id": "/root/native_model_reviewer_final"
+  },
+  "in_reply_to": "native-model-routing-tester-report-final",
+  "payload": {
+    "objective": "Independently compare the original frozen plan, attempt-4 Worker candidate and independent Tester evidence; rerun one exact Tester-declared deterministic command and record comparison.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "instructions": [
+      "Fresh Reviewer, independent of Worker and Tester. Read the original plan, exact Worker report, exact Tester report, and underlying evidence. Do not implement or alter criteria.",
+      "Check exact candidate hashes, confirm C04/C06 evidence is bound to candidate-6 and attempt-4, independently compare all 16 marker cases/safe controls from Tester evidence and the Worker report. Also review whether the C04 identity fix is appropriately fail-closed and whether the documented synthetic/live-routing limits remain accurate. Note preserved earlier failures and any unresolved original acceptance gaps.",
+      "Independently rerun exactly the first deterministic_commands entry from Tester report without shell alias: executable `C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe`, args `-B -m unittest tests.test_native_model_routing -v`, cwd `E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing`. Record raw stdout bytes, actual exit, CRLF-to-LF-only stdout SHA-256, compare to Tester. Do not rerun A/B benchmark.",
+      "Write a Reviewer CouncilFlow 1.0 job.report to evidence/native-model-routing/reviewer-final-report.json replying to this assignment. Include original plan reference, Worker candidate, exact Tester report reference, comparison, deterministic rerun evidence, discrepancies and status. Keep raw output in a new artifact. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "path": "evidence/native-model-routing/worker-final-report-2.json",
+      "kind": "message",
+      "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-final",
+      "path": "evidence/native-model-routing/tester-final-report.json",
+      "kind": "message",
+      "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+    }
+  ]
+}

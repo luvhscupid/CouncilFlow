@@ -1,0 +1,30 @@
+{
+  "now_utc": "2026-11-17T00:00:00Z",
+  "valid_identity": {
+    "provider": "synthetic-provider",
+    "route_id": "fixture-route-not-live",
+    "model_id": "fixture-model-001",
+    "harness": "codex-fixture",
+    "compatibility_status": "QUALIFIED",
+    "available": true,
+    "supported_reasoning_efforts": ["low", "medium"],
+    "capabilities": ["text", "python-tools"],
+    "qualification_evidence": {"evidence_id": "fixture-qual-1", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "valid_until": "2026-12-01T00:00:00Z"}
+  },
+  "valid_policy": {
+    "policy_id": "fixture-policy-1",
+    "allowed_models": [{"provider": "synthetic-provider", "route_id": "fixture-route-not-live", "model_id": "fixture-model-001", "harness": "codex-fixture", "roles": ["worker"], "task_classes": ["policy-validation"], "reasoning_efforts": ["low"]}]
+  },
+  "valid_request": {"role": "worker", "task_class": "policy-validation", "provider": "synthetic-provider", "route_id": "fixture-route-not-live", "model_id": "fixture-model-001", "harness": "codex-fixture", "reasoning_effort": "low", "required_capabilities": ["text"]},
+  "cases": [
+    {"id": "valid_exact_qualified", "mutation": "none", "expected": ["allow", "eligible"]},
+    {"id": "model_identity_mismatch", "mutation": {"request.model_id": "fixture-model-other"}, "expected": ["deny", "identity_mismatch"]},
+    {"id": "unauthorized_role", "mutation": {"request.role": "reviewer"}, "expected": ["deny", "not_authorized"]},
+    {"id": "incompatible_status", "mutation": {"identity.compatibility_status": "UNVERIFIED"}, "expected": ["deny", "not_qualified"]},
+    {"id": "expired_evidence", "mutation": {"identity.qualification_evidence.valid_until": "2026-11-16T00:00:00Z"}, "expected": ["deny", "qualification_expired"]},
+    {"id": "unsupported_effort", "mutation": {"request.reasoning_effort": "high"}, "expected": ["deny", "unsupported_effort"]},
+    {"id": "missing_capability", "mutation": {"request.required_capabilities": ["text", "vision"]}, "expected": ["deny", "capability_missing"]},
+    {"id": "unavailable", "mutation": {"identity.available": false}, "expected": ["deny", "unavailable"]},
+    {"id": "missing_evidence", "mutation": {"identity.qualification_evidence": null}, "expected": ["deny", "qualification_evidence_missing"]}
+  ]
+}

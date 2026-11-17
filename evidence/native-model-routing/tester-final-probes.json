@@ -1,0 +1,134 @@
+{
+  "evidence_id": "native-model-routing-tester-final-probes-1",
+  "candidate_manifest_sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517",
+  "candidate_file_hashes": [
+    {
+      "path": "experiments/native-model-routing/routing.py",
+      "expected": "d7216a3c6018f3bea74bfea1b971c80afd9dd49112af5d5f19b09a28045562f6",
+      "actual": "d7216a3c6018f3bea74bfea1b971c80afd9dd49112af5d5f19b09a28045562f6",
+      "match": true
+    },
+    {
+      "path": "tests/test_native_model_routing.py",
+      "expected": "7734afed6238d7a8d7fd8b3620ca0f2b704fb61924ca59fd31dc58958b43f79a",
+      "actual": "7734afed6238d7a8d7fd8b3620ca0f2b704fb61924ca59fd31dc58958b43f79a",
+      "match": true
+    }
+  ],
+  "marker": "S3CRET_PROBE_value",
+  "identity_results": [
+    {
+      "slot": "configured",
+      "field": "provider",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "configured",
+      "field": "route_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "configured",
+      "field": "model_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "configured",
+      "field": "harness",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "requested",
+      "field": "provider",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "requested",
+      "field": "route_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "requested",
+      "field": "model_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "requested",
+      "field": "harness",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "host_reported",
+      "field": "provider",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "host_reported",
+      "field": "route_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "host_reported",
+      "field": "model_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "host_reported",
+      "field": "harness",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "effective",
+      "field": "provider",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "effective",
+      "field": "route_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "effective",
+      "field": "model_id",
+      "marker_retained": false,
+      "result_identity": null
+    },
+    {
+      "slot": "effective",
+      "field": "harness",
+      "marker_retained": false,
+      "result_identity": null
+    }
+  ],
+  "identity_status": "passed",
+  "safe_identity_retained": true,
+  "qualification_marker_retained": false,
+  "resource_marker_retained": false,
+  "policy_digest_marker_retained": false,
+  "reasoning_marker_retained": false,
+  "rollback_marker_retained": false,
+  "invalid_resource_values_rejected": true,
+  "safe_qualification_ref_retained": true,
+  "safe_rollback_target_retained": true,
+  "status_cases": {
+    "dispatch_failed": "dispatch_failed",
+    "retrying": "retrying",
+    "cancelled": "cancelled",
+    "incomplete": "incomplete",
+    "completed": "completed"
+  }
+}

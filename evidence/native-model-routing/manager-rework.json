@@ -1,0 +1,66 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-manager-rework-1",
+  "message_type": "task.decision",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/native_planner",
+    "role": "planner"
+  },
+  "in_reply_to": "native-model-routing-tester-report-2",
+  "payload": {
+    "disposition": "rework",
+    "reason": "Independent Tester found C04 secret-retention and evidence-integrity failures: execution_record persists arbitrary resource/qualification content, and SkillLab CLI source bytes are not pinned despite matching HEAD and registry metadata. Repair these narrowly and extend regression cases; do not change acceptance or approved scope.",
+    "acceptance_ids": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09"
+    ],
+    "failed_acceptance_ids": [
+      "C04",
+      "C05"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    "report_ids": [
+      "native-model-routing-tester-report-2"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-2",
+      "kind": "message",
+      "path": "evidence/native-model-routing/tester-report.json",
+      "sha256": "f67ea6a6de6959e94eb591b2965c1dabbcb6399d17b705bf287db982f14a9276"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    }
+  ]
+}

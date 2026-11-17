@@ -1,0 +1,575 @@
+test_agents_and_tool_boundaries (test_claude_plugin.AgentTests.test_agents_and_tool_boundaries) ... FAIL
+test_manager_is_main_session_and_order (test_claude_plugin.AgentTests.test_manager_is_main_session_and_order) ... ERROR
+test_role_boundaries (test_claude_plugin.AgentTests.test_role_boundaries) ... ERROR
+test_adapter_is_plugin_only_and_not_shared_runtime (test_claude_plugin.HostAdapterTests.test_adapter_is_plugin_only_and_not_shared_runtime) ... FAIL
+test_adapter_maps_every_shared_codex_reference (test_claude_plugin.HostAdapterTests.test_adapter_maps_every_shared_codex_reference) ... ERROR
+test_codex_skill_and_roles_keep_codex_syntax (test_claude_plugin.HostAdapterTests.test_codex_skill_and_roles_keep_codex_syntax) ... ERROR
+test_entrypoints_direct_to_adapter (test_claude_plugin.HostAdapterTests.test_entrypoints_direct_to_adapter) ... ERROR
+test_manifest (test_claude_plugin.ManifestTests.test_manifest) ... ERROR
+test_no_hardcoded_paths_or_global_config (test_claude_plugin.ManifestTests.test_no_hardcoded_paths_or_global_config) ... ok
+test_skill_invocation_format (test_claude_plugin.ManifestTests.test_skill_invocation_format) ... ERROR
+test_codex_release_excludes_plugin (test_claude_plugin.PackageTests.test_codex_release_excludes_plugin) ... ERROR
+test_package_deterministic_and_portable (test_claude_plugin.PackageTests.test_package_deterministic_and_portable) ... FAIL
+test_contract_cli_surface (test_claude_plugin.RuntimeTests.test_contract_cli_surface) ... FAIL
+test_drift_detected (test_claude_plugin.RuntimeTests.test_drift_detected) ... ERROR
+test_original_criteria_fidelity_enforced (test_claude_plugin.RuntimeTests.test_original_criteria_fidelity_enforced)
+The plugin's copy of the validator accepts faithful criteria and rejects altered ones. ... ERROR
+test_relocated_plugin_runs_helpers (test_claude_plugin.RuntimeTests.test_relocated_plugin_runs_helpers) ... ERROR
+test_reviewer_deterministic_comparison (test_claude_plugin.RuntimeTests.test_reviewer_deterministic_comparison)
+Exit code + CRLF->LF stdout SHA-256 semantics the Reviewer applies. ... ok
+test_runtime_identical_to_canonical (test_claude_plugin.RuntimeTests.test_runtime_identical_to_canonical) ... ok
+setUpClass (test_codebase_memory_integration.CodebaseMemoryInstructionsTests) ... ERROR
+test_contracts (unittest.loader._FailedTest.test_contracts) ... ERROR
+test_dispatch_lifecycle (unittest.loader._FailedTest.test_dispatch_lifecycle) ... ERROR
+test_efficiency_claude_adapter (unittest.loader._FailedTest.test_efficiency_claude_adapter) ... ERROR
+test_efficiency_codex_adapter (unittest.loader._FailedTest.test_efficiency_codex_adapter) ... ERROR
+test_efficiency_digest (unittest.loader._FailedTest.test_efficiency_digest) ... ERROR
+test_local_run_output_is_excluded_inside_allowlisted_skill (test_efficiency_install.InstalledEfficiencyTests.test_local_run_output_is_excluded_inside_allowlisted_skill) ... ok
+test_release_inventory_bytes_determinism_and_extracted_cli (test_efficiency_install.InstalledEfficiencyTests.test_release_inventory_bytes_determinism_and_extracted_cli) ... ERROR
+test_skill_only_copy_runs_from_unrelated_repository (test_efficiency_install.InstalledEfficiencyTests.test_skill_only_copy_runs_from_unrelated_repository) ... ERROR
+test_efficiency_recorder (unittest.loader._FailedTest.test_efficiency_recorder) ... ERROR
+test_original_source (unittest.loader._FailedTest.test_original_source) ... ERROR
+test_existing_output_hardlinks_do_not_modify_outside_inodes (test_release.ReleaseOutputTests.test_existing_output_hardlinks_do_not_modify_outside_inodes) ... ok
+test_linked_output_directory_is_rejected_before_writes (test_release.ReleaseOutputTests.test_linked_output_directory_is_rejected_before_writes) ... ok
+test_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure) ... ERROR
+test_gate3_e4_erratum_preserves_frozen_specification (test_skill_files.SkillFilesTests.test_gate3_e4_erratum_preserves_frozen_specification) ... FAIL
+test_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful) ... ERROR
+test_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning) ... FAIL
+test_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset) ... ERROR
+test_planner_failure_requires_explicit_manager_rework (test_skill_files.SkillFilesTests.test_planner_failure_requires_explicit_manager_rework) ... ERROR
+test_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency) ... FAIL
+test_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset) ... ERROR
+test_review_binds_exact_executable_and_completed_tester_message (test_skill_files.SkillFilesTests.test_review_binds_exact_executable_and_completed_tester_message) ... ERROR
+test_reviewer_is_comparator_not_ux_evaluator (test_skill_files.SkillFilesTests.test_reviewer_is_comparator_not_ux_evaluator) ... ERROR
+test_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented) ... ERROR
+test_validation_manifest_does_not_claim_runtime_passes (test_skill_files.SkillFilesTests.test_validation_manifest_does_not_claim_runtime_passes) ... ok
+test_tester_selection (unittest.loader._FailedTest.test_tester_selection) ... ERROR
+test_workflow_recovery (unittest.loader._FailedTest.test_workflow_recovery) ... ERROR
+
+======================================================================
+ERROR: test_manager_is_main_session_and_order (test_claude_plugin.AgentTests.test_manager_is_main_session_and_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 98, in test_manager_is_main_session_and_order
+    _, text = frontmatter(RUN / "SKILL.md")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 35, in frontmatter
+    text = path.read_text(encoding="utf-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\skills\\run\\SKILL.md'
+
+======================================================================
+ERROR: test_role_boundaries (test_claude_plugin.AgentTests.test_role_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 87, in test_role_boundaries
+    text = {r: frontmatter(PLUGIN / "agents" / f"council-{r}.md")[1] for r in ROLES}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 35, in frontmatter
+    text = path.read_text(encoding="utf-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\agents\\council-planner.md'
+
+======================================================================
+ERROR: test_adapter_maps_every_shared_codex_reference (test_claude_plugin.HostAdapterTests.test_adapter_maps_every_shared_codex_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 236, in test_adapter_maps_every_shared_codex_reference
+    adapter = " ".join((RUN / "host-claude.md").read_text(encoding="utf-8").split())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\skills\\run\\host-claude.md'
+
+======================================================================
+ERROR: test_codex_skill_and_roles_keep_codex_syntax (test_claude_plugin.HostAdapterTests.test_codex_skill_and_roles_keep_codex_syntax)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 261, in test_codex_skill_and_roles_keep_codex_syntax
+    codex = (ROOT / ".agents/skills/council-flow/SKILL.md").read_text(encoding="utf-8")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\SKILL.md'
+
+======================================================================
+ERROR: test_entrypoints_direct_to_adapter (test_claude_plugin.HostAdapterTests.test_entrypoints_direct_to_adapter)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 256, in test_entrypoints_direct_to_adapter
+    self.assertIn("CF/host-claude.md", (RUN / "SKILL.md").read_text(encoding="utf-8"))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\skills\\run\\SKILL.md'
+
+======================================================================
+ERROR: test_manifest (test_claude_plugin.ManifestTests.test_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 48, in test_manifest
+    manifest = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\.claude-plugin\\plugin.json'
+
+======================================================================
+ERROR: test_skill_invocation_format (test_claude_plugin.ManifestTests.test_skill_invocation_format)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 55, in test_skill_invocation_format
+    meta, text = frontmatter(RUN / "SKILL.md")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 35, in frontmatter
+    text = path.read_text(encoding="utf-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\skills\\run\\SKILL.md'
+
+======================================================================
+ERROR: test_codex_release_excludes_plugin (test_claude_plugin.PackageTests.test_codex_release_excludes_plugin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 231, in test_codex_release_excludes_plugin
+    self.assertFalse(any(n.startswith("plugins/") for n in codex.source_bytes(ROOT)))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tools\build_release.py", line 96, in source_bytes
+    raise ValueError(f"missing or linked allowlisted directory: {relative}")
+ValueError: missing or linked allowlisted directory: .agents/skills/council-flow
+
+======================================================================
+ERROR: test_drift_detected (test_claude_plugin.RuntimeTests.test_drift_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 120, in test_drift_detected
+    shutil.copytree(old, copy)
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\shutil.py", line 598, in copytree
+    with os.scandir(src) as itr:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow\\skills\\run'
+
+======================================================================
+ERROR: test_original_criteria_fidelity_enforced (test_claude_plugin.RuntimeTests.test_original_criteria_fidelity_enforced)
+The plugin's copy of the validator accepts faithful criteria and rejects altered ones.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 156, in test_original_criteria_fidelity_enforced
+    from test_contracts import ref
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_contracts.py", line 15, in <module>
+    import contracts as c
+ModuleNotFoundError: No module named 'contracts'
+
+======================================================================
+ERROR: test_relocated_plugin_runs_helpers (test_claude_plugin.RuntimeTests.test_relocated_plugin_runs_helpers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 131, in test_relocated_plugin_runs_helpers
+    shutil.copytree(PLUGIN, installed)
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\shutil.py", line 598, in copytree
+    with os.scandir(src) as itr:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\plugins\\councilflow'
+
+======================================================================
+ERROR: setUpClass (test_codebase_memory_integration.CodebaseMemoryInstructionsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_codebase_memory_integration.py", line 18, in setUpClass
+    cls.skill = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\SKILL.md'
+
+======================================================================
+ERROR: test_contracts (unittest.loader._FailedTest.test_contracts)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_contracts
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_contracts.py", line 15, in <module>
+    import contracts as c
+ModuleNotFoundError: No module named 'contracts'
+
+
+======================================================================
+ERROR: test_dispatch_lifecycle (unittest.loader._FailedTest.test_dispatch_lifecycle)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dispatch_lifecycle
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_dispatch_lifecycle.py", line 16, in <module>
+    import test_contracts as fixtures
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_contracts.py", line 15, in <module>
+    import contracts as c
+ModuleNotFoundError: No module named 'contracts'
+
+
+======================================================================
+ERROR: test_efficiency_claude_adapter (unittest.loader._FailedTest.test_efficiency_claude_adapter)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_efficiency_claude_adapter
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_efficiency_claude_adapter.py", line 10, in <module>
+    from claude_adapter import parse_stream, process
+ModuleNotFoundError: No module named 'claude_adapter'
+
+
+======================================================================
+ERROR: test_efficiency_codex_adapter (unittest.loader._FailedTest.test_efficiency_codex_adapter)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_efficiency_codex_adapter
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_efficiency_codex_adapter.py", line 10, in <module>
+    from codex_adapter import parse_stream, process
+ModuleNotFoundError: No module named 'codex_adapter'
+
+
+======================================================================
+ERROR: test_efficiency_digest (unittest.loader._FailedTest.test_efficiency_digest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_efficiency_digest
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_efficiency_digest.py", line 11, in <module>
+    import digest as module
+ModuleNotFoundError: No module named 'digest'
+
+
+======================================================================
+ERROR: test_release_inventory_bytes_determinism_and_extracted_cli (test_efficiency_install.InstalledEfficiencyTests.test_release_inventory_bytes_determinism_and_extracted_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_efficiency_install.py", line 76, in test_release_inventory_bytes_determinism_and_extracted_cli
+    sources = builder.source_bytes(ROOT)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tools\build_release.py", line 96, in source_bytes
+    raise ValueError(f"missing or linked allowlisted directory: {relative}")
+ValueError: missing or linked allowlisted directory: .agents/skills/council-flow
+
+======================================================================
+ERROR: test_skill_only_copy_runs_from_unrelated_repository (test_efficiency_install.InstalledEfficiencyTests.test_skill_only_copy_runs_from_unrelated_repository)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_efficiency_install.py", line 70, in test_skill_only_copy_runs_from_unrelated_repository
+    shutil.copytree(ROOT / SKILL, root / SKILL, ignore=shutil.ignore_patterns("__pycache__"))
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\shutil.py", line 598, in copytree
+    with os.scandir(src) as itr:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow'
+
+======================================================================
+ERROR: test_efficiency_recorder (unittest.loader._FailedTest.test_efficiency_recorder)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_efficiency_recorder
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_efficiency_recorder.py", line 6, in <module>
+    from recorder import record, validate, parse_codex_event, parse_claude_json, append_jsonl
+ModuleNotFoundError: No module named 'recorder'
+
+
+======================================================================
+ERROR: test_original_source (unittest.loader._FailedTest.test_original_source)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_original_source
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_original_source.py", line 13, in <module>
+    import contracts as c
+ModuleNotFoundError: No module named 'contracts'
+
+
+======================================================================
+ERROR: test_fixture_is_valid_python_without_executing_expected_failure (test_skill_files.SkillFilesTests.test_fixture_is_valid_python_without_executing_expected_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 127, in test_fixture_is_valid_python_without_executing_expected_failure
+    ast.parse((fixture / name).read_text(), filename=name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\demo\\starter\\receipt_calculator.py'
+
+======================================================================
+ERROR: test_local_reference_targets_exist_and_are_useful (test_skill_files.SkillFilesTests.test_local_reference_targets_exist_and_are_useful)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 35, in test_local_reference_targets_exist_and_are_useful
+    source = (SKILL / "SKILL.md").read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\SKILL.md'
+
+======================================================================
+ERROR: test_optional_metadata_small_yaml_subset (test_skill_files.SkillFilesTests.test_optional_metadata_small_yaml_subset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 44, in test_optional_metadata_small_yaml_subset
+    source = (SKILL / "agents" / "openai.yaml").read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\agents\\openai.yaml'
+
+======================================================================
+ERROR: test_planner_failure_requires_explicit_manager_rework (test_skill_files.SkillFilesTests.test_planner_failure_requires_explicit_manager_rework)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 109, in test_planner_failure_requires_explicit_manager_rework
+    skill = (SKILL / "SKILL.md").read_text()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\SKILL.md'
+
+======================================================================
+ERROR: test_required_frontmatter_subset (test_skill_files.SkillFilesTests.test_required_frontmatter_subset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 23, in test_required_frontmatter_subset
+    source = (SKILL / "SKILL.md").read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\SKILL.md'
+
+======================================================================
+ERROR: test_review_binds_exact_executable_and_completed_tester_message (test_skill_files.SkillFilesTests.test_review_binds_exact_executable_and_completed_tester_message)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 98, in test_review_binds_exact_executable_and_completed_tester_message
+    reviewer = (ROOT / ".codex" / "agents" / "council-reviewer.toml").read_text()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.codex\\agents\\council-reviewer.toml'
+
+======================================================================
+ERROR: test_reviewer_is_comparator_not_ux_evaluator (test_skill_files.SkillFilesTests.test_reviewer_is_comparator_not_ux_evaluator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 89, in test_reviewer_is_comparator_not_ux_evaluator
+    role = (ROOT / ".codex" / "agents" / "council-reviewer.toml").read_text()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.codex\\agents\\council-reviewer.toml'
+
+======================================================================
+ERROR: test_separate_contract_types_are_documented (test_skill_files.SkillFilesTests.test_separate_contract_types_are_documented)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 68, in test_separate_contract_types_are_documented
+    source = (SKILL / "references" / "roles.md").read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-tester-kqjd5kcz\\baseline\\.agents\\skills\\council-flow\\references\\roles.md'
+
+======================================================================
+ERROR: test_tester_selection (unittest.loader._FailedTest.test_tester_selection)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_tester_selection
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_tester_selection.py", line 14, in <module>
+    import test_contracts as fixtures
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_contracts.py", line 15, in <module>
+    import contracts as c
+ModuleNotFoundError: No module named 'contracts'
+
+
+======================================================================
+ERROR: test_workflow_recovery (unittest.loader._FailedTest.test_workflow_recovery)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_workflow_recovery
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cupid\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_workflow_recovery.py", line 15, in <module>
+    import test_contracts as fixtures
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_contracts.py", line 15, in <module>
+    import contracts as c
+ModuleNotFoundError: No module named 'contracts'
+
+
+======================================================================
+FAIL: test_agents_and_tool_boundaries (test_claude_plugin.AgentTests.test_agents_and_tool_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 76, in test_agents_and_tool_boundaries
+    self.assertEqual(names, sorted(f"council-{r}" for r in ROLES))
+AssertionError: Lists differ: [] != ['council-planner', 'council-reviewer', 'council-tester', 'council-worker']
+
+Second list contains 4 additional elements.
+First extra element 0:
+'council-planner'
+
+- []
++ ['council-planner', 'council-reviewer', 'council-tester', 'council-worker']
+
+======================================================================
+FAIL: test_adapter_is_plugin_only_and_not_shared_runtime (test_claude_plugin.HostAdapterTests.test_adapter_is_plugin_only_and_not_shared_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 253, in test_adapter_is_plugin_only_and_not_shared_runtime
+    self.assertIn("skills/run/host-claude.md", z.namelist())
+AssertionError: 'skills/run/host-claude.md' not found in []
+
+======================================================================
+FAIL: test_package_deterministic_and_portable (test_claude_plugin.PackageTests.test_package_deterministic_and_portable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 215, in test_package_deterministic_and_portable
+    self.assertIn(required, names)
+AssertionError: '.claude-plugin/plugin.json' not found in []
+
+======================================================================
+FAIL: test_contract_cli_surface (test_claude_plugin.RuntimeTests.test_contract_cli_surface)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_claude_plugin.py", line 149, in test_contract_cli_surface
+    self.assertEqual(helped.returncode, 0)
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_gate3_e4_erratum_preserves_frozen_specification (test_skill_files.SkillFilesTests.test_gate3_e4_erratum_preserves_frozen_specification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 118, in test_gate3_e4_erratum_preserves_frozen_specification
+    self.assertTrue(erratum.is_file())
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_native_agent_toml_format_without_model_pinning (test_skill_files.SkillFilesTests.test_native_agent_toml_format_without_model_pinning)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 55, in test_native_agent_toml_format_without_model_pinning
+    self.assertEqual({p.stem for p in paths}, {
+AssertionError: Items in the second set but not the first:
+'council-worker'
+'council-reviewer'
+'council-tester'
+'council-planner'
+
+======================================================================
+FAIL: test_product_has_no_runtime_or_external_dependency (test_skill_files.SkillFilesTests.test_product_has_no_runtime_or_external_dependency)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\cupid\AppData\Local\Temp\councilflow-tester-kqjd5kcz\baseline\tests\test_skill_files.py", line 134, in test_product_has_no_runtime_or_external_dependency
+    self.assertTrue((SKILL / "scripts" / "contracts.py").is_file())
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 44 tests in 6.595s
+
+FAILED (failures=7, errors=31)

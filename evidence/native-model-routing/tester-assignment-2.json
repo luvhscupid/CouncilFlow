@@ -1,0 +1,95 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-tester-assignment-2",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/native_model_tester",
+    "role": "tester"
+  },
+  "in_reply_to": "native-model-routing-worker-report-3",
+  "payload": {
+    "objective": "Independently verify the frozen native-model-routing/SkillLab candidate against C02-C09 and the preserved baseline, without repairs.",
+    "scope": [
+      "README.md",
+      "docs/technical/README.md",
+      "docs/technical/native-model-routing.md",
+      "docs/benchmarks/native-model-routing.md",
+      "experiments/native-model-routing/",
+      "experiments/skilllab-integration/",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/worker-candidate.json"
+    ],
+    "acceptance_ids": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    "instructions": [
+      "Verify the worker candidate manifest hashes match every listed candidate file. Do not change candidate files. Check there are no changed implementation files missing from the manifest.",
+      "Independently run full suite from repo root using C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest discover -s tests -v. Capture stdout/stderr and exit status. Save raw stdout bytes to evidence/native-model-routing/tester-tests.stdout; normalized stdout SHA may normalize only CRLF to LF.",
+      "Independently run `python -B -m unittest discover -s experiments/agent-efficiency -v` and capture output in evidence/native-model-routing/tester-efficiency.stdout.",
+      "Run the original baseline oracle tests from the pinned baseline-oracles ZIP in a temporary scratch directory, without editing archive or repository; record count/status and clean only your unique temporary directory.",
+      "Run read-only route policy/assignment contract checks and verify SkillLab source HEAD/registry pin and adapter selected, denied, unavailable, no-skill boundaries. Do not invoke native skill activation or live model provider calls. Check README relative links and Mermaid fence structure.",
+      "Confirm runtime status stays NATIVE_MODEL_ROUTING_UNVERIFIED, no owner-approved policy/routes populated, execution identity fields keep unknown as null, and no external provider/credential/spend activity is claimed. Inspect safety limitations in APIs/docs.",
+      "Write UTF-8 CouncilFlow 1.0 Tester job.report to evidence/native-model-routing/tester-report.json replying to this assignment. Include candidate_ref equal to manifest, exact oracle/input refs, checks, deterministic_commands for the full suite and benchmark commands, raw stdout evidence references and honest limitations. Do not modify candidate or fix issues; report failures clearly."
+    ],
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-baseline-oracle",
+      "kind": "baseline-oracles",
+      "path": "evidence/native-model-routing/baseline-oracles-842f2a8b.zip",
+      "sha256": "31d1b256583b719a5dea900c7093bcbf983b761e5221004574fa0bf95ff9fb66"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-3",
+      "kind": "message",
+      "path": "evidence/native-model-routing/worker-report.json",
+      "sha256": "d950f76a503b7a873b1093814a7acf0356e694ee805c4ebc39478adbce38e8c1"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "baseline-oracles-842f2a8b",
+      "kind": "baseline-oracles",
+      "path": "evidence/native-model-routing/baseline-oracles-842f2a8b.zip",
+      "sha256": "31d1b256583b719a5dea900c7093bcbf983b761e5221004574fa0bf95ff9fb66"
+    },
+    {
+      "artifact_id": "native-model-routing-baseline-oracle",
+      "kind": "baseline-oracles",
+      "path": "evidence/native-model-routing/baseline-oracles-842f2a8b.zip",
+      "sha256": "31d1b256583b719a5dea900c7093bcbf983b761e5221004574fa0bf95ff9fb66"
+    }
+  ]
+}

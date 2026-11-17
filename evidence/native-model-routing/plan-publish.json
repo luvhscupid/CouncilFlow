@@ -1,0 +1,51 @@
+{
+  "payload": {
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ],
+    "scope": [
+      "The isolated feature worktree and listed plan paths only."
+    ],
+    "plan_ref": {
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86",
+      "artifact_id": "native-model-routing-plan-1"
+    },
+    "objective": "Implement and independently verify bounded native per-role model routing and SkillLab suggestions, run one controlled A/B task, redesign README, and report live host limitations honestly."
+  },
+  "task_id": "native-model-routing-and-benchmark",
+  "protocol": "council-flow",
+  "evidence_refs": [
+    {
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86",
+      "artifact_id": "native-model-routing-plan-1"
+    }
+  ],
+  "plan_revision": 1,
+  "version": "1.0",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root/native_planner",
+    "role": "planner"
+  },
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "message_type": "plan.publish",
+  "message_id": "native-routing-plan-publish-1",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "in_reply_to": null
+}

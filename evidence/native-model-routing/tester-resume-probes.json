@@ -1,0 +1,234 @@
+{
+  "candidate_manifest_sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56",
+  "marker": "synthetic only; not a credential",
+  "identity_cases": [
+    {
+      "slot": "configured",
+      "field": "provider",
+      "marker_retained": true,
+      "record_field": "configured_identity",
+      "serialized": "{\"configured_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"S3CRET_PROBE_value\", \"route_id\": \"safe-route\"}, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "requested",
+      "field": "provider",
+      "marker_retained": true,
+      "record_field": "requested_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"S3CRET_PROBE_value\", \"route_id\": \"safe-route\"}, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "host_reported",
+      "field": "provider",
+      "marker_retained": true,
+      "record_field": "host_reported_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"S3CRET_PROBE_value\", \"route_id\": \"safe-route\"}, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "effective",
+      "field": "provider",
+      "marker_retained": true,
+      "record_field": "effective_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"S3CRET_PROBE_value\", \"route_id\": \"safe-route\"}, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "configured",
+      "field": "route_id",
+      "marker_retained": true,
+      "record_field": "configured_identity",
+      "serialized": "{\"configured_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"S3CRET_PROBE_value\"}, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "requested",
+      "field": "route_id",
+      "marker_retained": true,
+      "record_field": "requested_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"S3CRET_PROBE_value\"}, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "host_reported",
+      "field": "route_id",
+      "marker_retained": true,
+      "record_field": "host_reported_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"S3CRET_PROBE_value\"}, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "effective",
+      "field": "route_id",
+      "marker_retained": true,
+      "record_field": "effective_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"S3CRET_PROBE_value\"}, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "configured",
+      "field": "model_id",
+      "marker_retained": true,
+      "record_field": "configured_identity",
+      "serialized": "{\"configured_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"S3CRET_PROBE_value\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "requested",
+      "field": "model_id",
+      "marker_retained": true,
+      "record_field": "requested_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"S3CRET_PROBE_value\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "host_reported",
+      "field": "model_id",
+      "marker_retained": true,
+      "record_field": "host_reported_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"S3CRET_PROBE_value\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "effective",
+      "field": "model_id",
+      "marker_retained": true,
+      "record_field": "effective_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": {\"harness\": \"safe-harness\", \"model_id\": \"S3CRET_PROBE_value\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "configured",
+      "field": "harness",
+      "marker_retained": true,
+      "record_field": "configured_identity",
+      "serialized": "{\"configured_identity\": {\"harness\": \"S3CRET_PROBE_value\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "requested",
+      "field": "harness",
+      "marker_retained": true,
+      "record_field": "requested_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": {\"harness\": \"S3CRET_PROBE_value\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "host_reported",
+      "field": "harness",
+      "marker_retained": true,
+      "record_field": "host_reported_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": null, \"host_reported_identity\": {\"harness\": \"S3CRET_PROBE_value\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    },
+    {
+      "slot": "effective",
+      "field": "harness",
+      "marker_retained": true,
+      "record_field": "effective_identity",
+      "serialized": "{\"configured_identity\": null, \"credential_material\": \"never_recorded\", \"disclaimer\": \"Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation.\", \"effective_identity\": {\"harness\": \"S3CRET_PROBE_value\", \"model_id\": \"safe-model\", \"provider\": \"safe-provider\", \"route_id\": \"safe-route\"}, \"host_reported_identity\": null, \"isolation\": {\"os_enforced\": false, \"tester_blind_to_worker_private_state\": null, \"worker_context_separate\": null}, \"outcome\": \"incomplete\", \"policy_sha256\": null, \"qualification_ref\": null, \"reasoning_effort\": null, \"requested_identity\": null, \"resources\": {}, \"retry_count\": 0, \"rollback\": {\"status\": \"not_attempted\", \"target\": null}, \"schema\": \"councilflow.native-model-routing.execution/1.0\"}"
+    }
+  ],
+  "qualification_cases": [
+    {
+      "field": "artifact_id",
+      "marker_retained": false,
+      "qualification_ref": null
+    },
+    {
+      "field": "path",
+      "marker_retained": false,
+      "qualification_ref": null
+    },
+    {
+      "field": "kind",
+      "marker_retained": false,
+      "qualification_ref": null
+    }
+  ],
+  "rollback_marker_retained": false,
+  "rollback_result": {
+    "status": "not_attempted",
+    "target": null
+  },
+  "resource_marker_retained": false,
+  "resource_result": {
+    "tokens": {
+      "value": null,
+      "disposition": "reported",
+      "unit": "count"
+    },
+    "input_tokens": {
+      "value": null,
+      "disposition": "reported",
+      "unit": "count"
+    }
+  },
+  "policy_digest_marker_retained": false,
+  "policy_digest_result": null,
+  "reasoning_marker_retained": false,
+  "reasoning_result": null,
+  "status_cases": {
+    "dispatch_failed": {
+      "outcome": "dispatch_failed",
+      "recorded": true
+    },
+    "retrying": {
+      "outcome": "retrying",
+      "recorded": true
+    },
+    "cancelled": {
+      "outcome": "cancelled",
+      "recorded": true
+    },
+    "incomplete": {
+      "outcome": "incomplete",
+      "recorded": true
+    },
+    "completed": {
+      "outcome": "completed",
+      "recorded": true
+    }
+  },
+  "safe_control": {
+    "schema": "councilflow.native-model-routing.execution/1.0",
+    "configured_identity": {
+      "provider": "safe-provider",
+      "route_id": "safe-route",
+      "model_id": "safe-model",
+      "harness": "safe-harness"
+    },
+    "requested_identity": {
+      "provider": "safe-provider",
+      "route_id": "safe-route",
+      "model_id": "safe-model",
+      "harness": "safe-harness"
+    },
+    "host_reported_identity": {
+      "provider": "safe-provider",
+      "route_id": "safe-route",
+      "model_id": "safe-model",
+      "harness": "safe-harness"
+    },
+    "effective_identity": {
+      "provider": "safe-provider",
+      "route_id": "safe-route",
+      "model_id": "safe-model",
+      "harness": "safe-harness"
+    },
+    "reasoning_effort": "low",
+    "policy_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "qualification_ref": {
+      "artifact_id": "safe-artifact",
+      "path": "safe/path",
+      "kind": "qualification",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "resources": {
+      "tokens": {
+        "value": 4,
+        "disposition": "reported",
+        "unit": "count"
+      }
+    },
+    "outcome": "cancelled",
+    "retry_count": 0,
+    "rollback": {
+      "status": "available",
+      "target": "previous-approved-config"
+    },
+    "isolation": {
+      "worker_context_separate": null,
+      "tester_blind_to_worker_private_state": null,
+      "os_enforced": false
+    },
+    "credential_material": "never_recorded",
+    "disclaimer": "Descriptive data only; no authentication, resource enforcement, dispatch, or OS isolation."
+  }
+}

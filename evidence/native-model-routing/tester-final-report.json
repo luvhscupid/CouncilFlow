@@ -1,0 +1,235 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-tester-report-final",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "tester",
+    "instance_id": "/root/native_model_tester_final"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-tester-assignment-final",
+  "payload": {
+    "status": "passed",
+    "summary": "Attempt-4 candidate hashes matched. Independent probing found S3CRET_PROBE_value absent from all 16 identity slot/field combinations while safe identity controls remain. Ancillary C04 metadata/outcome controls pass. Focused suite passed 35 tests; full suite passed 274 tests with 5 skips.",
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "checks": [
+      {
+        "name": "Attempt-4 candidate manifest and source/test hashes match exact candidate",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-candidate-6",
+          "path": "evidence/native-model-routing/worker-candidate-4.json",
+          "kind": "candidate-manifest",
+          "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+        }
+      },
+      {
+        "name": "C04 synthetic marker absent in all 16 identity slot/field combinations; safe identities retained",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-final-probes-1",
+          "path": "evidence/native-model-routing/tester-final-probes.json",
+          "kind": "verification-evidence",
+          "sha256": "1aef082aaff171b8b3e4f5f2a3e852222575697e082d4b5fdc3160e8609b9319"
+        }
+      },
+      {
+        "name": "C04 qualification, resource, digest, effort, rollback, isolation and outcome controls",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-tester-final-probes-1",
+          "path": "evidence/native-model-routing/tester-final-probes.json",
+          "kind": "verification-evidence",
+          "sha256": "1aef082aaff171b8b3e4f5f2a3e852222575697e082d4b5fdc3160e8609b9319"
+        }
+      },
+      {
+        "name": "Focused routing/SkillLab tests (35 tests)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-final-focused-stderr",
+          "path": "evidence/native-model-routing/tester-final-focused-stderr.bin",
+          "kind": "command-output",
+          "sha256": "133a962c7c3d07ca4aa45e017807b0ea7518eb0e8b91692137c3147fec90225c"
+        }
+      },
+      {
+        "name": "Full repository suite (274 tests; 5 skipped)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-final-full-stderr",
+          "path": "evidence/native-model-routing/tester-final-2-stderr.bin",
+          "kind": "command-output",
+          "sha256": "770d1ddf8a7ef2cefea7e6cfa16b9d3dac088b93807960bb9053543fbff96389"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_native_model_routing",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+        "candidate_ref": {
+          "artifact_id": "native-model-routing-candidate-6",
+          "path": "evidence/native-model-routing/worker-candidate-4.json",
+          "kind": "candidate-manifest",
+          "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "native-model-routing-plan-1",
+            "path": "evidence/native-model-routing/plan.json",
+            "kind": "plan",
+            "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-assignment-final",
+            "path": "evidence/native-model-routing/tester-final-assignment.json",
+            "kind": "message",
+            "sha256": "d7ef83e8298fee0af1f09eba46f15eeb37f4d5ce1e52678d24cd6cec329f0194"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "C04",
+        "evidence_ref": {
+          "artifact_id": "tester-final-focused-stdout",
+          "path": "evidence/native-model-routing/tester-final-focused-stdout.bin",
+          "kind": "command-output",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "command_id": "native-model-routing-tester-final-command-1"
+      },
+      {
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+        "candidate_ref": {
+          "artifact_id": "native-model-routing-candidate-6",
+          "path": "evidence/native-model-routing/worker-candidate-4.json",
+          "kind": "candidate-manifest",
+          "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "native-model-routing-plan-1",
+            "path": "evidence/native-model-routing/plan.json",
+            "kind": "plan",
+            "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+          },
+          {
+            "artifact_id": "native-model-routing-tester-assignment-final",
+            "path": "evidence/native-model-routing/tester-final-assignment.json",
+            "kind": "message",
+            "sha256": "d7ef83e8298fee0af1f09eba46f15eeb37f4d5ce1e52678d24cd6cec329f0194"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "acceptance_id": "C06",
+        "evidence_ref": {
+          "artifact_id": "tester-final-2-stdout",
+          "path": "evidence/native-model-routing/tester-final-2-stdout.bin",
+          "kind": "command-output",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "command_id": "native-model-routing-tester-final-command-2"
+      }
+    ],
+    "findings": [],
+    "errors": []
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-assignment-final",
+      "path": "evidence/native-model-routing/tester-final-assignment.json",
+      "kind": "message",
+      "sha256": "d7ef83e8298fee0af1f09eba46f15eeb37f4d5ce1e52678d24cd6cec329f0194"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "path": "evidence/native-model-routing/worker-final-report-2.json",
+      "kind": "message",
+      "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-final-probes-1",
+      "path": "evidence/native-model-routing/tester-final-probes.json",
+      "kind": "verification-evidence",
+      "sha256": "1aef082aaff171b8b3e4f5f2a3e852222575697e082d4b5fdc3160e8609b9319"
+    },
+    {
+      "artifact_id": "tester-final-focused-stdout",
+      "path": "evidence/native-model-routing/tester-final-focused-stdout.bin",
+      "kind": "command-output",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_id": "tester-final-focused-stderr",
+      "path": "evidence/native-model-routing/tester-final-focused-stderr.bin",
+      "kind": "command-output",
+      "sha256": "133a962c7c3d07ca4aa45e017807b0ea7518eb0e8b91692137c3147fec90225c"
+    },
+    {
+      "artifact_id": "tester-final-full-stdout",
+      "path": "evidence/native-model-routing/tester-final-2-stdout.bin",
+      "kind": "command-output",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_id": "tester-final-full-stderr",
+      "path": "evidence/native-model-routing/tester-final-2-stderr.bin",
+      "kind": "command-output",
+      "sha256": "770d1ddf8a7ef2cefea7e6cfa16b9d3dac088b93807960bb9053543fbff96389"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "environment": "Windows local worktree; offline tests and local CLI only",
+  "checks": [
+    {
+      "name": "Focused synthetic route and SkillLab tests (included in full suite)",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_ref": {
+        "artifact_id": "worker-full_tests-output",
+        "kind": "verification-evidence",
+        "path": "evidence/native-model-routing/worker-tests.stdout",
+        "sha256": "42020e36706bec96e03d457faf19963daa0c12d8a53d93b3e282453979ac6a8b"
+      }
+    },
+    {
+      "name": "Full product regression suite",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_ref": {
+        "artifact_id": "worker-full_tests-output",
+        "kind": "verification-evidence",
+        "path": "evidence/native-model-routing/worker-tests.stdout",
+        "sha256": "42020e36706bec96e03d457faf19963daa0c12d8a53d93b3e282453979ac6a8b"
+      },
+      "summary": "263 tests passed; 5 skipped."
+    },
+    {
+      "name": "Assigned packet controlled-boundary validation",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "message",
+        "evidence/native-model-routing/worker-assignment-3.json",
+        "--root",
+        ".",
+        "--expected-sender",
+        "manager",
+        "--expected-instance",
+        "/root"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_ref": {
+        "artifact_id": "worker-assignment_validation-output",
+        "kind": "verification-evidence",
+        "path": "evidence/native-model-routing/assignment-validation.stdout",
+        "sha256": "92db5a1d4959e6f224937fe6bfc10cdfb20a9e2317415ffa6b0837968e2fe838"
+      }
+    },
+    {
+      "name": "Role policy validation",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        ".agents/skills/council-flow/scripts/contracts.py",
+        "policy",
+        ".agents/skills/council-flow/policies/roles.yaml"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_ref": {
+        "artifact_id": "worker-policy_validation-output",
+        "kind": "verification-evidence",
+        "path": "evidence/native-model-routing/policy-validation.stdout",
+        "sha256": "074f588ee6b65188c7986423198d2e9ee80eda0e0bf564c2ca8b911090a04457"
+      }
+    },
+    {
+      "name": "Pinned SkillLab CLI validation",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "E:\\Saint\\PROJECTS\\CouncilFlow-SkillLab\\skilllab.py",
+        "validate"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_ref": {
+        "artifact_id": "worker-skilllab_validation-output",
+        "kind": "verification-evidence",
+        "path": "evidence/native-model-routing/skilllab-validation.stdout",
+        "sha256": "42360b8996df4f5f0da75c227644f6bac966265a29ca15a95fb8447d2f9f3a6f"
+      }
+    },
+    {
+      "name": "Release packaging",
+      "status": "not_run",
+      "reason": "No shipped skill or plugin contents changed."
+    }
+  ],
+  "limitations": [
+    "All routing tests are synthetic offline validations.",
+    "No live child dispatch, provider access, credential access, spending, or effective model identity observation occurred.",
+    "Five existing tests were skipped by their suite conditions."
+  ]
+}

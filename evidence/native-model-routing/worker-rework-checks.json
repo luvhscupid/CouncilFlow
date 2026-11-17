@@ -1,0 +1,58 @@
+{
+  "attempt_id": "attempt-2",
+  "status": "passed",
+  "environment": "Windows local worktree; offline test suites and read-only local SkillLab CLI source identity check",
+  "checks": [
+    {
+      "name": "Focused C04/C05 routing and SkillLab negative controls",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_native_model_routing",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_path": "evidence/native-model-routing/worker-rework-focused.stderr",
+      "evidence_sha256": "bb70c8a6596aacf5472a211af25025a670bdb5872db56b40820960e3dbf32417",
+      "summary": "31 tests passed."
+    },
+    {
+      "name": "Full regression suite",
+      "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_path": "evidence/native-model-routing/worker-rework-full.stderr",
+      "evidence_sha256": "43cf4912b2df19e91cb4f0ebfae1c91f0a6b58d1ffd7590c7d1493a486c6b7f1",
+      "summary": "270 tests passed; 5 skipped."
+    },
+    {
+      "name": "Pinned SkillLab executable bytes compared with pinned commit",
+      "command": "python",
+      "arguments": [
+        "hashlib.sha256(skilllab.py bytes) compared with git show 40b4239e14f3c711ec3d32bb7ef4bb0820abdc63:skilllab.py"
+      ],
+      "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing",
+      "exit_code": 0,
+      "evidence_path": "evidence/native-model-routing/worker-rework-skilllab-pin.json",
+      "evidence_sha256": "c74c2b7eb6d5cfbf9e236ed15a9debda815306d64e5c9d979345fe4ff927cbeb",
+      "summary": "Current and pinned executable bytes match."
+    }
+  ],
+  "limitations": [
+    "Test and CLI results are local observations and do not prove native activation.",
+    "No provider dispatch, credential access, network request, or spending occurred.",
+    "Five tests skipped because Windows symlink creation was unavailable."
+  ]
+}

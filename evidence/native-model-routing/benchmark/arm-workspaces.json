@@ -1,0 +1,25 @@
+{
+  "common_inputs_byte_identical": true,
+  "common_files": {
+    "task.json": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+    "fixtures.json": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+    "oracle.py": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+  },
+  "arm_A": {
+    "path": "experiments/native-model-routing/benchmark/arms/A",
+    "hashes": {
+      "task.json": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+      "fixtures.json": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+      "oracle.py": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    }
+  },
+  "arm_B": {
+    "path": "experiments/native-model-routing/benchmark/arms/B",
+    "hashes": {
+      "task.json": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+      "fixtures.json": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+      "oracle.py": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509",
+      "skilllab-suggestion.json": "ee37ed9f787a1623af9fbb544611a18c27fb738c1e44ab3da011b5b900368e64"
+    }
+  }
+}

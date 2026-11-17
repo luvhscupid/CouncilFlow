@@ -1,0 +1,123 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-report-4",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/native_model_worker_rework_3"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-worker-assignment-6",
+  "payload": {
+    "status": "passed",
+    "summary": "Repaired execution-record identity redaction: an identity is retained only when every field is a bounded lowercase safe label. Added all 16 injected-marker slot/field negative controls and safe identity retention control. Focused suite (35) and full suite (274, 5 skipped) passed.",
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py"
+    ],
+    "checks": [
+      {
+        "name": "Focused routing and SkillLab suite: 35 tests",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "worker4-focused-check-output",
+          "path": "evidence/native-model-routing/worker4-focused.stderr.bin",
+          "kind": "command-output",
+          "sha256": "9a00d2414cd73762420ab716c0a2fbce239eddb2c61faebf10bd25ebac2d48bf"
+        }
+      },
+      {
+        "name": "Full repository suite: 274 tests, 5 skipped",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "worker4-full-check-output",
+          "path": "evidence/native-model-routing/worker4-full.stderr.bin",
+          "kind": "command-output",
+          "sha256": "88d82711851caef88407f4fa13cc021708c0d6bc143cc01d06f92becb423c170"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-assignment-6",
+      "path": "evidence/native-model-routing/worker-assignment-6.json",
+      "kind": "message",
+      "sha256": "2ef678159fd3b8522db8049d2242093d968d525a4089a210eea12455e254696f"
+    },
+    {
+      "artifact_id": "worker4-developer-checks",
+      "path": "evidence/native-model-routing/worker4-developer-checks.json",
+      "kind": "verification-evidence",
+      "sha256": "4cd695c5fb4630068190dd001b20fc191f9776fa307514c84b752cbb639d227e"
+    },
+    {
+      "artifact_id": "worker4-focused-stdout",
+      "path": "evidence/native-model-routing/worker4-focused.stdout.bin",
+      "kind": "command-output",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_id": "worker4-focused-stderr",
+      "path": "evidence/native-model-routing/worker4-focused.stderr.bin",
+      "kind": "command-output",
+      "sha256": "9a00d2414cd73762420ab716c0a2fbce239eddb2c61faebf10bd25ebac2d48bf"
+    },
+    {
+      "artifact_id": "worker4-full-stdout",
+      "path": "evidence/native-model-routing/worker4-full.stdout.bin",
+      "kind": "command-output",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "artifact_id": "worker4-full-stderr",
+      "path": "evidence/native-model-routing/worker4-full.stderr.bin",
+      "kind": "command-output",
+      "sha256": "88d82711851caef88407f4fa13cc021708c0d6bc143cc01d06f92becb423c170"
+    }
+  ]
+}

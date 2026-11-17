@@ -7,3 +7,5 @@
 # Integration provenance and verification packets are exact-byte hash-bound records.
 /demo/gate3-demo/provenance.json -text whitespace=cr-at-eol
 /reports/integration-gate3-efficiency/** -text whitespace=cr-at-eol
+# Native model-routing packets and artifacts are exact-byte SHA-256 evidence.
+/evidence/native-model-routing/** -text -eol whitespace=cr-at-eol

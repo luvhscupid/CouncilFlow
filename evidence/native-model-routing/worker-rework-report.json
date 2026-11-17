@@ -1,0 +1,101 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-report-4",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/native_model_worker_rework"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-worker-assignment-4",
+  "payload": {
+    "status": "passed",
+    "summary": "Repaired C04 metadata redaction and C05 SkillLab executable pin/fail-closed handling in fresh attempt 2; focused and full regression checks passed.",
+    "acceptance_ids": [
+      "C04",
+      "C05",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-4",
+      "path": "evidence/native-model-routing/worker-candidate-2.json",
+      "kind": "candidate-manifest",
+      "sha256": "b114f29347d0c9528593d378aa8c406985d0e2df05ca7ce6d52f74995058e5ee"
+    },
+    "input_candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-3",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate.json",
+      "sha256": "6bd800933d54c97ca05061336293d774bdd3d0e6ab73da2b4e71460dc2667167"
+    },
+    "findings": [
+      "C04: execution records retain only typed safe metadata; malformed, nested, unknown, non-finite, boolean, and secret-like values are omitted or null. Policy digest, qualification reference, route identity, rollback, and isolation fields use closed checks.",
+      "C05: SkillLab adapter pins skilllab.py bytes to SHA-256 observed from commit 40b4239e14f3c711ec3d32bb7ef4bb0820abdc63. Malformed requests, JSON shapes, filesystem/subprocess errors and invalid CLI output fail closed without echoing CLI text. Manager-only suggestion, seven-candidate bound, and no authority expansion remain.",
+      "C06 regression: 270 full suite tests passed; five were skipped due to unavailable Windows symlink privilege.",
+      "Requested model gpt-6-luna/low; effective runtime model identity remains unknown. No provider routing or native SkillLab activation was attempted."
+    ],
+    "errors": [],
+    "changed_files": [
+      "experiments/native-model-routing/routing.py",
+      "experiments/skilllab-integration/adapter.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/worker-rework-focused.stdout",
+      "evidence/native-model-routing/worker-rework-focused.stderr",
+      "evidence/native-model-routing/worker-rework-focused.exit",
+      "evidence/native-model-routing/worker-rework-full.stdout",
+      "evidence/native-model-routing/worker-rework-full.stderr",
+      "evidence/native-model-routing/worker-rework-full.exit",
+      "evidence/native-model-routing/worker-rework-validation-bindings.json",
+      "evidence/native-model-routing/worker-rework-skilllab-pin.json",
+      "evidence/native-model-routing/worker-rework-checks.json",
+      "evidence/native-model-routing/worker-candidate-2.json",
+      "evidence/native-model-routing/worker-rework-report.json"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-4",
+      "path": "evidence/native-model-routing/worker-candidate-2.json",
+      "kind": "candidate-manifest",
+      "sha256": "b114f29347d0c9528593d378aa8c406985d0e2df05ca7ce6d52f74995058e5ee"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-checks-4",
+      "path": "evidence/native-model-routing/worker-rework-checks.json",
+      "kind": "verification-evidence",
+      "sha256": "d1598a5bff72c44549d928ce2bbe162ea1e0e8304078dae180ddc3785123e42c"
+    },
+    {
+      "artifact_id": "native-model-routing-focused-tests-4",
+      "path": "evidence/native-model-routing/worker-rework-focused.stderr",
+      "kind": "verification-evidence",
+      "sha256": "bb70c8a6596aacf5472a211af25025a670bdb5872db56b40820960e3dbf32417"
+    },
+    {
+      "artifact_id": "native-model-routing-full-tests-4",
+      "path": "evidence/native-model-routing/worker-rework-full.stderr",
+      "kind": "verification-evidence",
+      "sha256": "43cf4912b2df19e91cb4f0ebfae1c91f0a6b58d1ffd7590c7d1493a486c6b7f1"
+    },
+    {
+      "artifact_id": "skilllab-source-pin-attempt-2",
+      "path": "evidence/native-model-routing/worker-rework-skilllab-pin.json",
+      "kind": "verification-evidence",
+      "sha256": "c74c2b7eb6d5cfbf9e236ed15a9debda815306d64e5c9d979345fe4ff927cbeb"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-bindings-4",
+      "path": "evidence/native-model-routing/worker-rework-validation-bindings.json",
+      "kind": "validation-bindings",
+      "sha256": "66a57972c006609feebea2f40132f01a8272f4a590af3d4856234f3e85d6551e"
+    }
+  ]
+}

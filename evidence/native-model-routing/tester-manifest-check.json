@@ -1,0 +1,68 @@
+[
+  {
+    "path": "README.md",
+    "expected": "7070e753ae5fa615ad53fcc3c5ea155a3fab9e2fce8418953a8bf03312ff9fd0",
+    "actual": "7070e753ae5fa615ad53fcc3c5ea155a3fab9e2fce8418953a8bf03312ff9fd0",
+    "match": true
+  },
+  {
+    "path": "docs/technical/README.md",
+    "expected": "216b45b63f78bd03418e8f9751125f3f57cd8245eef3aa6a765a0cd5074e0779",
+    "actual": "216b45b63f78bd03418e8f9751125f3f57cd8245eef3aa6a765a0cd5074e0779",
+    "match": true
+  },
+  {
+    "path": "docs/technical/native-model-routing.md",
+    "expected": "c752aaeb46fecf891de356dae6fa3a5b96eb5753e2ddf4c0e097c7079480f71e",
+    "actual": "c752aaeb46fecf891de356dae6fa3a5b96eb5753e2ddf4c0e097c7079480f71e",
+    "match": true
+  },
+  {
+    "path": "docs/benchmarks/native-model-routing.md",
+    "expected": "7d9014dcd3bf90de17653238c019ca32560a442d9d067913e465d6020218e89a",
+    "actual": "7d9014dcd3bf90de17653238c019ca32560a442d9d067913e465d6020218e89a",
+    "match": true
+  },
+  {
+    "path": "experiments/native-model-routing/__init__.py",
+    "expected": "b136d7e3ac8aef4eced482a933ba79ac27d0cbedfbd1d6609b04c7644b041891",
+    "actual": "b136d7e3ac8aef4eced482a933ba79ac27d0cbedfbd1d6609b04c7644b041891",
+    "match": true
+  },
+  {
+    "path": "experiments/native-model-routing/README.md",
+    "expected": "b3c6be5fd5a913a6cc36295050c8936540796af65be7b12fefff59a8be2b52f7",
+    "actual": "b3c6be5fd5a913a6cc36295050c8936540796af65be7b12fefff59a8be2b52f7",
+    "match": true
+  },
+  {
+    "path": "experiments/native-model-routing/route-policy.json",
+    "expected": "6b0a98dba483fa58efd40dccd1e3ef8af5c670ce17cea612768832c6dcf33d63",
+    "actual": "6b0a98dba483fa58efd40dccd1e3ef8af5c670ce17cea612768832c6dcf33d63",
+    "match": true
+  },
+  {
+    "path": "experiments/native-model-routing/routing.py",
+    "expected": "363afb752abefeceec39f0d1ab76f3f7752d3adb82057cccf82d250b76133324",
+    "actual": "363afb752abefeceec39f0d1ab76f3f7752d3adb82057cccf82d250b76133324",
+    "match": true
+  },
+  {
+    "path": "experiments/skilllab-integration/__init__.py",
+    "expected": "3c3e5eb174174c9f61ab4df5e97b142eabd0e6931cc2e0d68b409fd60771efdb",
+    "actual": "3c3e5eb174174c9f61ab4df5e97b142eabd0e6931cc2e0d68b409fd60771efdb",
+    "match": true
+  },
+  {
+    "path": "experiments/skilllab-integration/adapter.py",
+    "expected": "0ca193d5a3f01f29c419bcc25eb9a46fec2465421125852b70a2d12f8a822b7d",
+    "actual": "0ca193d5a3f01f29c419bcc25eb9a46fec2465421125852b70a2d12f8a822b7d",
+    "match": true
+  },
+  {
+    "path": "tests/test_native_model_routing.py",
+    "expected": "72e2b0c04429e0a4b017e364c5a340e406e9e8671219a1b3dc31298e99571c21",
+    "actual": "72e2b0c04429e0a4b017e364c5a340e406e9e8671219a1b3dc31298e99571c21",
+    "match": true
+  }
+]

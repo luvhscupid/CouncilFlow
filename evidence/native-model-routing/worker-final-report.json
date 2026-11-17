@@ -1,0 +1,81 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-report-3",
+  "message_type": "job.report",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-3",
+  "sender": {
+    "role": "worker",
+    "instance_id": "/root/native_model_worker_rework_2"
+  },
+  "recipient": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "in_reply_to": "native-model-routing-worker-assignment-5",
+  "payload": {
+    "status": "passed",
+    "summary": "Applied fail-closed safe qualification reference labels and enum rollback targets; marker leak and safe-value regressions pass. Exact commands: python -B -m unittest tests.test_native_model_routing -v (exit 0); python -B -m unittest discover -s tests -v (exit 0, 5 symlink-related skips). Effective model identity is unobservable.",
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56",
+      "kind": "candidate-manifest"
+    },
+    "findings": [],
+    "errors": [],
+    "changed_files": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py"
+    ],
+    "checks": [
+      {
+        "name": "focused unittest suite (33 tests)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-worker3-focused",
+          "path": "evidence/native-model-routing/worker-attempt-3-focused.txt",
+          "sha256": "80dfd0dc81f95451a3966573218c408550f48cb34c81108934ddf7eaf044ae30",
+          "kind": "test-output"
+        }
+      },
+      {
+        "name": "full unittest suite (272 tests, 5 skipped)",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "native-model-routing-worker3-full",
+          "path": "evidence/native-model-routing/worker-attempt-3-full.txt",
+          "sha256": "58058c677b58ff30971d00508bb5e6c6de9077ff2dec542030c58741db0fffc2",
+          "kind": "test-output"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56",
+      "kind": "candidate-manifest"
+    },
+    {
+      "artifact_id": "native-model-routing-worker3-focused",
+      "path": "evidence/native-model-routing/worker-attempt-3-focused.txt",
+      "sha256": "80dfd0dc81f95451a3966573218c408550f48cb34c81108934ddf7eaf044ae30",
+      "kind": "test-output"
+    },
+    {
+      "artifact_id": "native-model-routing-worker3-full",
+      "path": "evidence/native-model-routing/worker-attempt-3-full.txt",
+      "sha256": "58058c677b58ff30971d00508bb5e6c6de9077ff2dec542030c58741db0fffc2",
+      "kind": "test-output"
+    }
+  ]
+}

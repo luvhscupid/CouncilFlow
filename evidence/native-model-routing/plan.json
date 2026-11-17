@@ -1,0 +1,83 @@
+{
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-1",
+  "objective": "Implement and independently verify the smallest safe CouncilFlow extension for real per-role native model selection and experimental SkillLab suggestions, run one bounded controlled A/B subtask before completing the routing feature, redesign the root README, and report live-host limits without weakening frozen CouncilFlow authority.",
+  "source": {
+    "kind": "current Owner message",
+    "provenance": "Supplied directly in the current conversation and inherited by this Planner. It contains numbered sections but no mechanically supported ACn source records or separate Owner-approved plan artifact. Criteria below are Planner-generated decompositions; they are not quoted Owner criteria.",
+    "external_plan": false,
+    "source_fidelity": "No exact file capture available. The Manager must preserve the original chat input and disclose that helper-enforced byte fidelity was not established."
+  },
+  "starting_state": {
+    "repository": "E:/Saint/PROJECTS/CouncilFlow-main",
+    "worktree": "E:/Saint/PROJECTS/CouncilFlow-native-model-routing",
+    "branch": "feature/native-model-routing-skilllab-benchmark",
+    "commit": "842f2a8b210d0661cf413ecd1fd8f9791783ca1f",
+    "observed_original_worktree": "feat/playful-mission-control-20261117 has staged dashboard changes; preserve them untouched."
+  },
+  "scope": [
+    ".agents/skills/council-flow/",
+    ".codex/agents/",
+    "experiments/native-model-routing/",
+    "experiments/skilllab-integration/",
+    "tests/",
+    "docs/technical/",
+    "docs/benchmarks/",
+    "README.md",
+    "RELEASE.md",
+    "tools/build_release.py",
+    "dist/ only as required by established reproducible release build",
+    "evidence/native-model-routing/"
+  ],
+  "out_of_scope": [
+    "main or any production merge",
+    "independent E:/Saint/PROJECTS/CouncilFlow-SkillLab source, config, branch, or release",
+    "global Codex/provider configuration, credentials, subscriptions, or permissions",
+    "new provider services, gateways, persistent supervisors, background runtimes, or other standalone orchestration",
+    "xKiro API, external integration calls, pay-as-you-go, or unapproved route spending",
+    "Claude Code runtime routing unless the installed host proves a compatible native selection capability and it remains within the already authorized scope",
+    "automatic fallback, production claims, token/cost savings claims, or guaranteed OS isolation"
+  ],
+  "acceptance": [
+    {"id":"C01","criterion":"Before the main feature Worker starts, perform one bounded frozen A/B model-policy validation subtask from the same exact source checkpoint, task/oracle/prompt/acceptance, host/model/reasoning request and limits, in isolated fresh workspaces. A is ordinary CouncilFlow; B differs only by read-only SkillLab eligible-skill suggestion. Workers must not share implementation details. Use identical independent verification. Record selection, actual activation observation (or UNVERIFIED), failures/retries, duration and token/quota/cost evidence only where host exposes it. Keep the comparison descriptive; no causal-benefit claim.","evidence":["frozen benchmark task/oracle/source manifests and hashes","separate A/B worker assignments, outputs, workspace hashes, exact model/reasoning requests","SkillLab selection report and activation status","independent verification commands/results per arm","available usage/time/retry observations and explicit unknowns"]},
+    {"id":"C02","criterion":"Add a deterministic model identity/qualification data contract sufficient to represent provider, exact configured route/endpoint identity, model ID, harness, supported reasoning effort, verified capabilities, compatibility/qualification status, evidence identity and validity, and availability/usage restrictions. Maintain separate configured, requested, host-reported and independently verified effective identities. Do not seed fictional entitlements, prices, qualification evidence, or role permissions; an empty/unapproved pool remains ineligible.","evidence":["schema and documentation","positive and malformed/unknown/expired identity tests","registry data containing only verified or explicitly unverified entries"]},
+    {"id":"C03","criterion":"Implement role/task-aware deterministic selection and pre-dispatch authorization validation: Owner-approved policy defines eligible pools/resources; Manager chooses only within eligible candidates and supplies rationale; no LLM is added; unsupported model/effort/harness, unauthorized escalation/fallback, missing/invalid credentials, expired/unverified evidence and exhausted limits fail closed. Distinct requested native child model must be passed explicitly only through an observed supported native tool. If native dispatch cannot select it, return UNSUPPORTED_NATIVE_MODEL_ROUTING rather than inheriting the parent and reporting success.","evidence":["selection/authorization API and command examples","negative controls proving each denial","actual host tool capability inspection and any native dispatch outcome"]},
+    {"id":"C04","criterion":"Execution records distinguish configured, requested, host-reported and independently verified effective model identities; include route/harness/reasoning and policy/evidence hashes, safe failure/retry/cancel/incomplete outcomes, and resource fields classified as enforced, estimated or reported. Never store credentials, secrets, hidden prompts, or private reasoning. Unknown stays null/unknown.","evidence":["closed execution record schema","redaction and status tests","no-secret synthetic failure fixtures"]},
+    {"id":"C05","criterion":"Add a minimal optional Manager-side SkillLab adapter confined to experiments. It consumes the existing published SkillLab validated interface and pinned registry/source identity, forwards only selection suggestions, and cannot add tools/actions/permissions or mutate SkillLab. Retain all seven candidate constraints and role bounds; blocked/unavailable/no-skill selections remain safe. Record selected-vs-activated separately. Do not install all catalog entries.","evidence":["adapter and pinned compatibility/source references","seven-candidate preflight and representative selection tests","negative controls for denied/unavailable/no-skill and authority expansion","no changes under independent SkillLab repository"]},
+    {"id":"C06","criterion":"Add deterministic automated mock/synthetic tests covering exact model/route/harness identity; policy authorization; role assignment; unsupported reasoning; missing/invalid credentials without disclosure; unverified/expired evidence; unauthorized escalation and provider fallback; resource rejection; requested-vs-parent inheritance mismatch; reported identity mismatch; dispatch failure/retry; cancellation/incomplete execution; Worker/Tester isolation; safe configuration rollback; and SkillLab eligibility/role boundaries. Label all mock results as offline, not live routing proof.","evidence":["new tests and named negative controls","all existing CouncilFlow regression suites","actual command and exit artifacts"]},
+    {"id":"C07","criterion":"Redesign root README as a distinctive, readable, accurate GitHub Markdown landing page with concise workflow diagram, role boundaries, installation/invocation, verified host integrations, model-routing and SkillLab experiment descriptions, experimental limits, tests/evidence navigation, and preserved important security/source references. Validate Markdown structure, examples, relative links and diagram syntax; avoid unsupported capability claims.","evidence":["README candidate diff","automated/manual link and syntax checks","screenshots/render evidence if the available local renderer supports it"]},
+    {"id":"C08","criterion":"Keep changes bounded to the isolated feature branch; preserve original role authority, frozen Gate 3 and independent SkillLab history. Update technical docs and benchmark report. Rebuild affected installable distribution(s) with the established builder and prove deterministic contents/checksum against the candidate; do not modify global config, secrets, or main.","evidence":["diff/scope audit","existing release builder/test commands and extracted package verification","unchanged protected files, repository tree and independent SkillLab status"]},
+    {"id":"C09","criterion":"If an already authorized, supported, compatible distinct native model route can be demonstrated without unapproved spending, execute a small fresh-child dispatch validation and capture host evidence. Otherwise explicitly report NATIVE_MODEL_ROUTING_UNVERIFIED with the exact missing capability/configuration evidence. Never substitute synthetic tests for live host verification.","evidence":["host-observed native tool/request/result where available","otherwise exact capability probe/result, missing route/policy evidence, and explicit unverified status"]},
+    {"id":"C10","criterion":"Use the actual CouncilFlow workflow: Planner publication before implementation, Manager-controlled Worker assignment, fresh independent Tester on the exact immutable candidate and preserved oracles, Reviewer comparison against original task/candidate/Tester evidence with an independent rerun of the exact deterministic Tester command, Manager evidence disposition, and original Planner final check. Commit only verified changes to the requested feature branch; if auth permits, push it and open a PR, but do not merge.","evidence":["validated UTF-8 CouncilFlow packets and causal sequence","candidate/oracle/test/review hashes and exact command rerun match or failure","Planner final check","branch commit and PR URL or exact auth blocker"]}
+  ],
+  "sequence": [
+    "A. Manager records exact base and preserved oracles, finalizes isolated one-task A/B instructions and policy/test fixture; validate SkillLab input/registry without changing it.",
+    "B. Run isolated A then B fresh Worker attempts (A no SkillLab suggestion; B selected eligible suggestions only), same explicitly requested Luna-compatible host route/config where actually available. Do not let either Worker inspect the other arm. Independently verify both, then preserve results and limitations.",
+    "C. After A/B is closed, delegate one fresh implementation Worker for C02-C08/C09. Run developer checks, freeze candidate and stop writes.",
+    "D. Fresh Tester validates original oracle, full existing suites, new positive/negative tests, SkillLab limits, documentation/package checks, live status, and records exact deterministic command.",
+    "E. Fresh Reviewer compares original request/generated plan, candidate and Tester evidence; independently reruns one exact Tester command and reports match/discrepancies.",
+    "F. Manager evaluates evidence and handles bounded Worker rework if needed; original Planner checks all C01-C10; commit verified candidate and open feature PR only if available, never merge."
+  ],
+  "test_strategy": {
+    "preserve_oracles_before_worker": ["tests/", "tools/build_release.py", "RELEASE.md", "existing validation/release manifests and hashes"],
+    "primary_commands": ["python -m unittest discover -s tests -v", "python -m unittest discover -s experiments/agent-efficiency -v", "python -m unittest discover -s demo/receipt -v", "python -m unittest discover -s demo/csv-summary -v", "python -m unittest discover -s demo/structured-flow -v", "python -m unittest discover -s demo/gate3-demo -v", "python -m unittest discover -s reports/demo/verification -v", "python -m unittest discover -s reports/csv-summary/verification -v", "python tools/build_release.py"],
+    "independent_negative_controls": ["each unauthorized/unverified routing case denies","simulated host that cannot honor explicit model returns unsupported, never parent fallback","invalid credentials are redacted","Worker/Tester artifacts are separated and Tester is blind to Worker private state","SkillLab cannot expand available tools/actions or enable an incompatible record"],
+    "live_claim_rule": "Only host-observed native child settings/results qualify. Tool argument/config is REQUESTED, not independently verified EFFECTIVE. Otherwise status remains NATIVE_MODEL_ROUTING_UNVERIFIED."
+  },
+  "dependencies_and_risks": [
+    "No trusted ACP Supervisor exists in the current CouncilFlow skill contract; local Python validation and JSON packets cannot enforce dispatch against a bypassing Manager or provide OS containment.",
+    "The current collaboration API exposes native child delegation and optional model override in this session, but that does not establish a portable CouncilFlow runtime API, account entitlements, effective route, or trustworthy observed model identity.",
+    "No Owner-approved per-role model pool, route set, reasoning policy, monetary/quota ceiling, or qualification suite is present in the repository. Do not infer one from illustrative model names in research or an available tool option.",
+    "SkillLab's 7 eligible candidates remain conditional suggestions. The private SkillLab repository remains read-only and separate; selection metadata cannot activate host skills or authorize capabilities.",
+    "The current A/B Package D protocol is DRAFT_NOT_AUTHORIZED and applies to the efficiency digest experiment. Do not use it as authorization; run only this directly Owner-authorized single pair, record absent budgets as unknown, and do not claim general or causal benefit.",
+    "Root worktree had staged unrelated dashboard changes; they are preserved in the original checkout and excluded from this new branch, which starts at 842f2a8."
+  ],
+  "decisions_and_limits": [
+    "Current task directly authorizes bounded implementation and one A/B comparison, superseding the research note's prior no-implementation status for this task only; research remains non-normative and no existing charter/role/frozen Gate 3 requirements are amended.",
+    "No architecture, role, permission or Owner-only decision is changed. No route/pool/price/entitlement is invented.",
+    "Frontend design skill is not applicable to Markdown documentation; use visual tooling only if the README rendering target and local screenshot evidence are actually available.",
+    "If a C01 A/B pair cannot satisfy identical model/resources or independent verification safely, record the exact gap, retain the failed/preparation evidence, and proceed to other independent work only if the Manager confirms it remains within original intent."
+  ]
+}

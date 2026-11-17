@@ -1,0 +1,1 @@
+{"role":"worker","task":"Design and implement a small pure module interface for model-route policy eligibility. Validate exact provider, route, model, harness, supported reasoning effort, capability, qualification evidence, expiry, and availability fields. No provider calls or credentials.","actions":["implement"],"tools":["read_file"],"conditions":["module_interface_task"]}

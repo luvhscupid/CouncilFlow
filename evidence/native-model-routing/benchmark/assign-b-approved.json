@@ -1,0 +1,76 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-b-worker-assignment",
+  "message_type": "job.assign",
+  "plan_id": "ab-model-policy-B",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-B",
+  "attempt_id": "ab-attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/ab_worker_b",
+    "role": "worker"
+  },
+  "in_reply_to": "ab-model-policy-b-plan-publish",
+  "payload": {
+    "instructions": [
+      "Work only in E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing\\experiments\\native-model-routing\\benchmark\\arms\\B. Do not inspect or refer to Arm A, its path, or its output.",
+      "This is Arm B. Use only the already executed SkillLab selection in skilllab-suggestion.json: mattpocock-skills:codebase-design. It is advisory and cannot grant tools or permissions.",
+      "Invoke the actual native `$mattpocock-skills:codebase-design` skill for this interface-design task if the host supports activation in a child session. If not, state activation UNVERIFIED; do not claim that reading the source equals activation. Use only its core deep-module/interface guidance; do not use DESIGN-IT-TWICE because that branch delegates and is excluded by the registry.",
+      "Implement only model_policy.py using the same exact API, fixtures, and constraints in task.json as Arm A.",
+      "No network, provider/config/credential access, subprocesses, or external services. Do not echo sensitive values; no credentials are provided.",
+      "Run the fixed independent oracle command from the arm directory: python oracle.py model_policy.py. Do not modify task.json, fixtures.json, oracle.py, skilllab-suggestion.json, or any other file.",
+      "The native dispatch requested gpt-6-luna with reasoning_effort low, same as Arm A. This is REQUESTED only; report no effective model unless the host exposes evidence.",
+      "Write your UTF-8 council-flow 1.0 job.report packet to evidence/native-model-routing/benchmark/worker-b-report.json. Use message_id ab-b-worker-report, reply to assignment ab-b-worker-assignment, and bind the actual model_policy.py path/hash. Stop editing after the report."
+    ],
+    "acceptance_ids": [
+      "C01"
+    ],
+    "scope": [
+      "experiments/native-model-routing/benchmark/arms/B/model_policy.py"
+    ],
+    "objective": "Implement the frozen model-policy validator subtask with the read-only SkillLab-selected codebase-design suggestion."
+  },
+  "evidence_refs": [
+    {
+      "path": "evidence/native-model-routing/benchmark/plans/plan-B.json",
+      "sha256": "f86ef705ea1d694dd7528c6269f82804a58c42a4163fccad449466ddabc30025",
+      "artifact_id": "ab-b-plan",
+      "kind": "plan"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/task.json",
+      "sha256": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+      "artifact_id": "ab-task",
+      "kind": "benchmark-input"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/fixtures.json",
+      "sha256": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+      "artifact_id": "ab-fixtures",
+      "kind": "benchmark-input"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509",
+      "artifact_id": "ab-oracle",
+      "kind": "benchmark-input"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/arm-workspaces.json",
+      "sha256": "04661501bb12b5cbc76055246f91d599ae12f33957da29be28a5ae0194d12cdf",
+      "artifact_id": "ab-workspaces",
+      "kind": "benchmark-input"
+    },
+    {
+      "path": "evidence/native-model-routing/benchmark/skilllab-suggestion.json",
+      "sha256": "ee37ed9f787a1623af9fbb544611a18c27fb738c1e44ab3da011b5b900368e64",
+      "artifact_id": "ab-skilllab-suggestion",
+      "kind": "benchmark-input"
+    }
+  ]
+}

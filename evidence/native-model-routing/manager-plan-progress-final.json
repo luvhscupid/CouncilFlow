@@ -1,0 +1,93 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-manager-plan-progress-final",
+  "message_type": "plan.progress",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/native_planner"
+  },
+  "in_reply_to": "native-model-routing-manager-accept-4",
+  "payload": {
+    "status": "in_progress",
+    "objective": "Check the completed native model-routing benchmark and attempt-4 C04 repair against every criterion in the original immutable plan; preserve failures and unverified results.",
+    "scope": [
+      "Original plan scope and prior evidence; latest repaired candidate-6 and its independent verification."
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ],
+    "verified_progress": [
+      "Original plan and A/B benchmark evidence remain immutable; no A/B rerun occurred.",
+      "Fresh native delegation worked in this session.",
+      "Attempt-4 C04 identity redaction repair passed 16 independent injected-marker cases and safe controls; candidate-6 hashes match.",
+      "Fresh Tester passed focused 35-test and full 274-test suites (5 skipped).",
+      "Fresh Reviewer compared original C04, exact Worker candidate and Tester evidence; independent focused command exit and normalized stdout hash matched Tester.",
+      "Historical attempts 2 and 3 C04 failures remain preserved.",
+      "Earlier report marks C08 release-builder/protected-scope audit UNVERIFIED; current Reviewer did not resolve that broader original acceptance gap.",
+      "Codebase Memory index/coverage tools returned Transport closed for this worktree; direct source and evidence checks were used."
+    ],
+    "next_action": "Perform final plan.check against the original plan acceptance C01-C10. Do not change criteria, rerun A/B, or mark C08 passed without evidence. Report any unmet criterion precisely. No commit/push unless every required gate passes.",
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "path": "evidence/native-model-routing/worker-final-report-2.json",
+      "kind": "message",
+      "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-final",
+      "path": "evidence/native-model-routing/tester-final-report.json",
+      "kind": "message",
+      "sha256": "c39d176a0be0e823016cc9b9c61991fc94bd07b51ff7b7cf554df18e849d1067"
+    },
+    {
+      "artifact_id": "native-model-routing-reviewer-report-final",
+      "path": "evidence/native-model-routing/reviewer-final-report.json",
+      "kind": "message",
+      "sha256": "bcab98cc4e378893aed3746312089caeeb4573c006d4952f03a1663baf19185b"
+    },
+    {
+      "artifact_id": "native-model-routing-manager-accept-4",
+      "path": "evidence/native-model-routing/manager-accept-4.json",
+      "kind": "message",
+      "sha256": "1cafb83c292e0a5584fea4fff751f4424e9dc6fa13b4b16268cd4ad9e5b65c9c"
+    }
+  ]
+}

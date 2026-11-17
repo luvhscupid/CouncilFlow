@@ -1,0 +1,95 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-tester-assignment-4",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-2",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/native_model_tester_2",
+    "role": "tester"
+  },
+  "in_reply_to": "native-model-routing-worker-report-4",
+  "payload": {
+    "objective": "Independently verify attempt-2 candidate after C04/C05 rework, including failed-criteria repair, regression, baseline evidence, documentation, and scope.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "experiments/skilllab-integration/adapter.py",
+      "tests/test_native_model_routing.py",
+      "README.md",
+      "docs/technical/README.md",
+      "docs/technical/native-model-routing.md",
+      "docs/benchmarks/native-model-routing.md",
+      "evidence/native-model-routing/worker-candidate-2.json"
+    ],
+    "acceptance_ids": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-4",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate-2.json",
+      "sha256": "b114f29347d0c9528593d378aa8c406985d0e2df05ca7ce6d52f74995058e5ee"
+    },
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "instructions": [
+      "Verify each attempt-2 manifest-listed file SHA and confirm the only code/test files added by rework are routing.py, adapter.py, and test_native_model_routing.py. Do not modify any candidate.",
+      "Run exact full test command using C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -B -m unittest discover -s tests -v from repo root. Run focused routing command `-B -m unittest tests.test_native_model_routing -v` and Agent Efficiency suite `-B -m unittest discover -s experiments/agent-efficiency -v`. Capture stdout and stderr separately, exit status, normalized stdout (CRLF->LF only), and save to new attempt-2 tester paths under evidence/native-model-routing/.",
+      "Independently probe C04 adversarial redaction: secret-like strings in resource values/unit, qualification artifact id/path/kind/extra fields, policy digest, reasoning effort, rollback target, and nested isolation. Verify serialized record contains no injected secret. Probe numeric bool/NaN/inf and safe value allowlist.",
+      "Independently probe C05: CLI exact source byte digest and registry pin; a modified executable is denied before execution; invalid candidate sets/request shapes/source filesystem paths, subprocess exceptions, nonzero exit, invalid UTF-8/JSON/JSON shape and secret CLI output remain denied/unavailable without secret echo. Confirm successful selected, no-skill, denied, unavailable remain suggestion-only. Use temporary fixtures only and do not mutate independent SkillLab.",
+      "Check README relative links and Mermaid fence from tests; verify docs preserve requested/effective identity and limitations. Confirm native status remains NATIVE_MODEL_ROUTING_UNVERIFIED and route-policy empty. Verify no changes touch packaged .agents skill/plugin/dist files; no build is required if none changed.",
+      "Use previous Tester report only to establish the documented C04/C05 failure that triggered rework; do not repeat the incomplete baseline ZIP extraction. Verify preserved pre-change run evidence states 239 tests, 5 skipped at source commit 842f2a8b; do not represent the failed partial ZIP run as a pass.",
+      "Write a fresh CouncilFlow 1.0 Tester report to evidence/native-model-routing/tester-rework-report.json replying to this assignment. Include C04/C05 outcomes, full suite results, exact deterministic_commands for the full suite and focused suite, raw outputs, refs, all observed limitations. Do not repair. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-4",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate-2.json",
+      "sha256": "b114f29347d0c9528593d378aa8c406985d0e2df05ca7ce6d52f74995058e5ee"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "kind": "message",
+      "path": "evidence/native-model-routing/worker-rework-report.json",
+      "sha256": "0bed5f3336e83d6f628ce93cb31a5b9e3cefe0e81c3292f331880dfd7ed1f88d"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-2",
+      "kind": "message",
+      "path": "evidence/native-model-routing/tester-report.json",
+      "sha256": "f67ea6a6de6959e94eb591b2965c1dabbcb6399d17b705bf287db982f14a9276"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "baseline-fullsuite-output-842",
+      "kind": "baseline-test-evidence",
+      "path": "evidence/native-model-routing/baseline-tests-output.txt",
+      "sha256": "f289af76fe6f805514a29c977f4bb0fb3057b69021969ca31c5b4e40c5bea1da"
+    }
+  ]
+}

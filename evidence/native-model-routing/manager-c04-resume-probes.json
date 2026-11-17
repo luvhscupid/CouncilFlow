@@ -1,0 +1,50 @@
+{
+  "evidence_id": "manager-c04-resume-probes-1",
+  "candidate_manifest_sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56",
+  "marker": "S3CRET_PROBE_value",
+  "cases": [
+    {
+      "case": "single_provider",
+      "retained": true,
+      "identity_values_present": 4
+    },
+    {
+      "case": "single_route_id",
+      "retained": true,
+      "identity_values_present": 4
+    },
+    {
+      "case": "single_model_id",
+      "retained": true,
+      "identity_values_present": 4
+    },
+    {
+      "case": "single_harness",
+      "retained": true,
+      "identity_values_present": 4
+    },
+    {
+      "case": "combined",
+      "retained": true,
+      "identity_values_present": 4
+    },
+    {
+      "case": "repeated",
+      "retained": true,
+      "identity_values_present": 4
+    },
+    {
+      "case": "nested",
+      "retained": false,
+      "identity_values_present": 0
+    },
+    {
+      "case": "qualification_and_rollback_marker",
+      "retained": false,
+      "qualification_ref_present": false,
+      "rollback_target": null
+    }
+  ],
+  "status": "failed",
+  "meaning": "synthetic marker only; no credentials used"
+}

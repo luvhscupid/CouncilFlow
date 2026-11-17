@@ -1,0 +1,68 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-b-tester-assignment-3",
+  "message_type": "job.assign",
+  "plan_id": "ab-model-policy-B",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-B",
+  "attempt_id": "ab-attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/ab_tester_b",
+    "role": "tester"
+  },
+  "in_reply_to": "ab-b-worker-report",
+  "payload": {
+    "oracle_ref": {
+      "artifact_id": "ab-oracle",
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    "acceptance_ids": [
+      "C01"
+    ],
+    "scope": [
+      "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "evidence/native-model-routing/benchmark/oracle.py"
+    ],
+    "instructions": [
+      "Independently verify Arm B candidate experiments/native-model-routing/benchmark/arms/B/model_policy.py. Do not modify candidate or tests.",
+      "Run executable C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe with arguments oracle.py and model_policy.py; set workdir to E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing\\experiments\\native-model-routing\\benchmark\\arms\\B. Capture raw stdout bytes and exit code; normalize only CRLF to LF for SHA-256.",
+      "Check the fixed nine-case oracle and that Worker added no other files in this arm beyond model_policy.py; frozen task/fixture/oracle inputs are supplied identically.",
+      "Save raw stdout to evidence/native-model-routing/benchmark/tester-b.stdout. Persist a job.report to evidence/native-model-routing/benchmark/tester-b-report.json replying to this assignment. Include a deterministic_commands record and matching check. Echo the exact candidate/oracle refs.",
+      "Model gpt-6-luna/low was requested only; effective identity and skill activation remain unverified. Do not repair product code."
+    ],
+    "objective": "Independently verify Arm B against the frozen oracle, without repair.",
+    "candidate_ref": {
+      "artifact_id": "ab-b-candidate",
+      "kind": "candidate",
+      "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "ab-b-candidate",
+      "kind": "candidate",
+      "path": "experiments/native-model-routing/benchmark/arms/B/model_policy.py",
+      "sha256": "62c57ec5108c1ffaf903522c45c3439d2fc7fd513853eea96f9080d83fb5b33e"
+    },
+    {
+      "artifact_id": "ab-oracle",
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    {
+      "artifact_id": "ab-b-worker-report",
+      "kind": "message",
+      "path": "evidence/native-model-routing/benchmark/worker-b-report.json",
+      "sha256": "6e5166a1cbd2012ce0629461c640dc95938969bf43a63b29484e9222e8127568"
+    }
+  ]
+}

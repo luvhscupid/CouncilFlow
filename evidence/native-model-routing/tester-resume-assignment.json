@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-tester-resume-1",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-3",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/native_model_tester_resume"
+  },
+  "in_reply_to": "native-model-routing-worker-report-3",
+  "payload": {
+    "objective": "Independently verify the attempt-3 candidate against original C04 and relevant C06 controls; determine whether the new Manager identity-field probes reproduce.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "instructions": [
+      "Use the exact candidate manifest and verify file hashes before testing. Do not modify product files or repair.",
+      "Independently test C04 redaction for secret-like markers in provider, route_id, model_id, harness across configured_identity, requested_identity, host_reported_identity, and effective_identity, plus qualification refs, rollback target, resource metadata, policy/evidence hashes, failures/retries/cancel/incomplete outcomes. Ensure no injected marker is serialized. Include safe-value controls.",
+      "Run focused routing suite and full repository suite on the exact current candidate. Record absolute executable path, arguments, working directory, exit code, raw stdout and CRLF-to-LF-only normalized stdout SHA-256 for both; identify one suitable deterministic command for Reviewer rerun.",
+      "Write an immutable CouncilFlow 1.0 Tester job.report to evidence/native-model-routing/tester-resume-report.json replying to this assignment; include all original acceptance IDs applicable to this report (C04, C06), checks/findings/errors and exact deterministic_commands. Save probe evidence to a new file; do not overwrite prior history. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    }
+  ]
+}

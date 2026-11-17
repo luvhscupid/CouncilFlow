@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-assignment-6",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "worker",
+    "instance_id": "/root/native_model_worker_rework_3"
+  },
+  "in_reply_to": "native-model-routing-manager-rework-3",
+  "payload": {
+    "objective": "Repair the reproducible C04 leak where credential-like S3CRET_PROBE_value is persisted in model identity metadata, while preserving safe identity values.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    "instructions": [
+      "Fresh Worker attempt 4. Work only in this worktree. Do not alter prior evidence, A/B records, README/docs, SkillLab, route policy, role policy, release package, or global/provider settings.",
+      "Fix C04 identity redaction for configured/requested/host_reported/effective identity values. The Tester showed S3CRET_PROBE_value persists for provider, route_id, model_id and harness. Avoid a blacklist-only fix; use a bounded safe identifier/value class compatible with legitimate examples in the current tests/docs, and return null for any unknown or unsafe identity. Do not persist free text or nested metadata.",
+      "Keep routing selection contracts intact; this task concerns execution_record redaction only unless a minimal shared validation fix is essential. Extend tests to cover every four identity fields in all four record slots with the exact injected marker, plus safe-value retention. Retain qualification/resource/policy/effort/rollback tests and outcomes.",
+      "Run `python -B -m unittest tests.test_native_model_routing -v` and `python -B -m unittest discover -s tests -v`; save exact outputs. Create new immutable candidate manifest `evidence/native-model-routing/worker-candidate-4.json` and report `evidence/native-model-routing/worker-final-report-2.json` replying to this assignment. Include actual changed files/checks and hashes. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-report-1",
+      "path": "evidence/native-model-routing/tester-resume-report.json",
+      "kind": "message",
+      "sha256": "7e9b43be6d3cc83919495293f3b734b5dd08497b99e5e49e3c8452fa0d9acb76"
+    },
+    {
+      "artifact_id": "native-model-routing-manager-rework-3",
+      "path": "evidence/native-model-routing/manager-rework-3.json",
+      "kind": "message",
+      "sha256": "3ccb9b3ac1942d65f188bacfe3cc92a4c9997c188d642b117f3d3ba58b8cba94"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-assignment-3",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-1",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/native_model_worker",
+    "role": "worker"
+  },
+  "in_reply_to": "native-routing-plan-publish-1",
+  "payload": {
+    "objective": "Implement the approved isolated CouncilFlow native model-routing and SkillLab experiment, then redesign README; preserve all frozen role/security boundaries.",
+    "scope": [
+      "experiments/native-model-routing/",
+      "experiments/skilllab-integration/",
+      "tests/",
+      "docs/technical/",
+      "docs/benchmarks/",
+      "README.md",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09"
+    ],
+    "instructions": [
+      "Inspect project instructions and frozen charter already referenced by the original plan before implementation; preserve current role policy and all unrelated source history.",
+      "Do not inspect, reuse, copy, or mention A/B worker candidate implementations under experiments/native-model-routing/benchmark/arms. Treat that tree solely as sealed benchmark evidence. Do not modify the benchmark task, fixtures, oracle, assignments, candidate arms, tester artifacts, original plan, frozen Gate 3, or independent SkillLab repository.",
+      "Implement the smallest useful deterministic model routing/qualification contract in experiments/native-model-routing only. Exact route identity must include provider, route/endpoint id, model id and harness. Keep configured, requested, host-reported and independently effective identities distinct. Qualification evidence, validity, capabilities, availability/usage restrictions and reasoning support must be explicit. Do not invent any owner-approved model pool, entitlement, credentials, price, or qualification. Empty/unapproved policy must fail closed.",
+      "Implement selection and authorization as deterministic validation with role/task constraints and rationale. Include resource disposition classes enforced/estimated/reported, fail-closed request-vs-parent mismatch, identity mismatch, unsupported route/reasoning, missing/invalid credential indicators without echo, unverified/expired qualification, unauthorized fallback/escalation, limits, failed dispatch/retry, cancel/incomplete, worker/tester isolation metadata, and safe rollback semantics. This data helper is not a trusted Supervisor or security boundary.",
+      "Inspect actual native child-delegation API available in this host: explicit model and reasoning_effort are available on native collaboration invocation; this alone proves neither entitlement nor effective execution. Code the adapter as an explicit request only. When the configured host API cannot select distinct model, return UNSUPPORTED_NATIVE_MODEL_ROUTING. Never silently inherit the parent or claim actual dispatch. Record requested/host-reported/effective as unknown unless observable. Do not change the active parent session or global/provider configuration. No provider dispatch, credential access, network, or spending. Record the exact evidence boundary.",
+      "Build the minimal optional SkillLab Manager-side adapter under experiments/skilllab-integration/. Pin independent repo identity/version/registry SHA from evidence and use SkillLab existing validated public CLI/interface as suggestion only. Add no tools/actions/permissions, do not mutate SkillLab, keep seven candidate constraints and role bounds, distinguish selected vs activated. Test denied/unavailable/no-skill selections. Native skill activation must be marked unverified unless host evidence is available.",
+      "Add synthetic offline tests and representative negative controls for C06; label mock outcomes clearly. Preserve all existing tests. Include explicit tests for selection roles, exact identity, authorization, distinct assignment, unsupported effort, no credentials and redaction, qualification expiry/unverified, no unapproved fallback/escalation, resource-limit rejection, inherited parent mismatch, host reported mismatch, dispatch fail/retry, cancel/incomplete, blind Tester boundaries, rollback, and SkillLab eligibility/authority.",
+      "Redesign README with personality and concise accurate Mermaid role workflow, install/invoke, verified hosts, model-routing + SkillLab experimental status, test/evidence navigation, limits and preserved references. Check relative links and Mermaid/Markdown syntax with available offline tools.",
+      "Add technical documentation, reproducible benchmark outcome report including A/B evidence and limitations, exact local-host native routing capability evidence and NATIVE_MODEL_ROUTING_UNVERIFIED if no observable permitted route. A/B is descriptive, same requested gpt-6-luna/low, token/cost/duration data only if exposed, no causal claims.",
+      "Run relevant developer tests and release packaging if the shipped skill/plugin changes. Preserve binary/packaging conventions. Do not modify packages unless skill contents changed; rebuild reproducibly if so. No git commit/push/merge; Manager owns git. Write a CouncilFlow 1.0 Worker report to evidence/native-model-routing/worker-report.json replying to this assignment, bind candidate paths and SHA-256 hashes, actual changed files, checks/results and unknowns. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-spec",
+      "kind": "frozen-spec",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    }
+  ]
+}

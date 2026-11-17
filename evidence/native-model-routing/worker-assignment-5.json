@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-worker-assignment-5",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-3",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/native_model_worker_rework_2",
+    "role": "worker"
+  },
+  "in_reply_to": "native-model-routing-manager-rework-2",
+  "payload": {
+    "objective": "Repair only the residual C04 metadata marker leak and extend its negative control.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-4",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate-2.json",
+      "sha256": "b114f29347d0c9528593d378aa8c406985d0e2df05ca7ce6d52f74995058e5ee"
+    },
+    "instructions": [
+      "Fresh Worker attempt 3. Work only in E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing. Do not touch prior candidate/evidence, docs/README, SkillLab, role policies, benchmark arms, packages, or global/provider settings.",
+      "C04: S3CRET_PROBE_value currently passes safe_ref path/id and rollback target checks and is serialized. Avoid blacklists as the sole protection. Use fixed safe value classes: artifact ids and relative path segments must be lowercase bounded safe identifiers with no uppercase/obfuscated secret markers; rollback target should be an explicit small enum/allowlist, or null. Keep resource numeric fields typed/finite and metadata fail-closed. No input free-text should be persisted.",
+      "Extend tests to assert exact injected marker is absent from serialized execution records across qualification artifact_id/path and rollback.target, while safe qualification refs/rollback labels remain accepted. Do not weaken existing controls.",
+      "Run focused `python -B -m unittest tests.test_native_model_routing -v` and full `python -B -m unittest discover -s tests -v`. Save exact output and exit status. Create immutable candidate manifest at evidence/native-model-routing/worker-candidate-3.json with hashes of modified source/tests and Worker report at evidence/native-model-routing/worker-final-report.json replying to this assignment; include actual changed files/checks. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "kind": "plan",
+      "path": "evidence/native-model-routing/plan.json",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-4",
+      "kind": "candidate-manifest",
+      "path": "evidence/native-model-routing/worker-candidate-2.json",
+      "sha256": "b114f29347d0c9528593d378aa8c406985d0e2df05ca7ce6d52f74995058e5ee"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-report-4",
+      "kind": "message",
+      "path": "evidence/native-model-routing/tester-rework-report.json",
+      "sha256": "28df58aa7ff7dce48c3f730d2424fadada456e1b460d83b6960dc05780f6f95d"
+    }
+  ]
+}

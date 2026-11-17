@@ -1,0 +1,53 @@
+{
+  "artifact_id": "native-model-routing-candidate-3",
+  "kind": "candidate-manifest",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-1",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "7070e753ae5fa615ad53fcc3c5ea155a3fab9e2fce8418953a8bf03312ff9fd0"
+    },
+    {
+      "path": "docs/technical/README.md",
+      "sha256": "216b45b63f78bd03418e8f9751125f3f57cd8245eef3aa6a765a0cd5074e0779"
+    },
+    {
+      "path": "docs/technical/native-model-routing.md",
+      "sha256": "c752aaeb46fecf891de356dae6fa3a5b96eb5753e2ddf4c0e097c7079480f71e"
+    },
+    {
+      "path": "docs/benchmarks/native-model-routing.md",
+      "sha256": "7d9014dcd3bf90de17653238c019ca32560a442d9d067913e465d6020218e89a"
+    },
+    {
+      "path": "experiments/native-model-routing/__init__.py",
+      "sha256": "b136d7e3ac8aef4eced482a933ba79ac27d0cbedfbd1d6609b04c7644b041891"
+    },
+    {
+      "path": "experiments/native-model-routing/README.md",
+      "sha256": "b3c6be5fd5a913a6cc36295050c8936540796af65be7b12fefff59a8be2b52f7"
+    },
+    {
+      "path": "experiments/native-model-routing/route-policy.json",
+      "sha256": "6b0a98dba483fa58efd40dccd1e3ef8af5c670ce17cea612768832c6dcf33d63"
+    },
+    {
+      "path": "experiments/native-model-routing/routing.py",
+      "sha256": "363afb752abefeceec39f0d1ab76f3f7752d3adb82057cccf82d250b76133324"
+    },
+    {
+      "path": "experiments/skilllab-integration/__init__.py",
+      "sha256": "3c3e5eb174174c9f61ab4df5e97b142eabd0e6931cc2e0d68b409fd60771efdb"
+    },
+    {
+      "path": "experiments/skilllab-integration/adapter.py",
+      "sha256": "0ca193d5a3f01f29c419bcc25eb9a46fec2465421125852b70a2d12f8a822b7d"
+    },
+    {
+      "path": "tests/test_native_model_routing.py",
+      "sha256": "72e2b0c04429e0a4b017e364c5a340e406e9e8671219a1b3dc31298e99571c21"
+    }
+  ]
+}

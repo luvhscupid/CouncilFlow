@@ -1,0 +1,16 @@
+{
+  "source_commit": "842f2a8b210d0661cf413ecd1fd8f9791783ca1f",
+  "arms": {
+    "A": {
+      "task.json": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+      "fixtures.json": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+      "oracle.py": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    "B": {
+      "task.json": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+      "fixtures.json": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+      "oracle.py": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    }
+  },
+  "byte_identical": true
+}

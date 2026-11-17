@@ -1,0 +1,158 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-a-tester-report-3",
+  "message_type": "job.report",
+  "plan_id": "ab-model-policy-A",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-A",
+  "attempt_id": "ab-attempt-1",
+  "sender": {
+    "instance_id": "/root/ab_tester_a",
+    "role": "tester"
+  },
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "in_reply_to": "ab-a-tester-assignment-3",
+  "payload": {
+    "status": "passed",
+    "summary": "Arm A matches all nine fixed oracle fixtures. The exact candidate and frozen inputs are byte-identical to assigned references/manifests; worker report scopes its change to model_policy.py. Requested gpt-6-luna/low only; effective identity and skill activation are unverified.",
+    "acceptance_ids": [
+      "C01"
+    ],
+    "candidate_ref": {
+      "artifact_id": "ab-a-candidate",
+      "kind": "candidate",
+      "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7"
+    },
+    "oracle_ref": {
+      "artifact_id": "ab-oracle",
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    "findings": [
+      "All nine oracle fixture outputs match exact expected decision/reason_code.",
+      "Arm A contains model_policy.py plus the three frozen common input files; worker changed_files lists only model_policy.py.",
+      "Fixed fixtures cover valid allow, identity mismatch, unauthorized role, incompatible status, expired evidence, unsupported effort, missing capability, unavailable identity and missing evidence."
+    ],
+    "errors": [],
+    "checks": [
+      {
+        "name": "C01 fixed nine-case oracle, exact candidate and arm scope",
+        "status": "passed",
+        "evidence_ref": {
+          "artifact_id": "tester-a-stdout",
+          "kind": "test-evidence",
+          "path": "evidence/native-model-routing/benchmark/tester-a.stdout",
+          "sha256": "7cbb71116c0842ad9c34cc386c0d22b23f2d1ad14c33b938f646578dd5015633"
+        }
+      }
+    ],
+    "deterministic_commands": [
+      {
+        "command_id": "arm-a-fixed-oracle-python312",
+        "command": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "arguments": [
+          "oracle.py",
+          "model_policy.py"
+        ],
+        "workdir": "E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing\\experiments\\native-model-routing\\benchmark\\arms\\A",
+        "candidate_ref": {
+          "artifact_id": "ab-a-candidate",
+          "kind": "candidate",
+          "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+          "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7"
+        },
+        "input_refs": [
+          {
+            "artifact_id": "ab-oracle",
+            "kind": "benchmark-input",
+            "path": "evidence/native-model-routing/benchmark/oracle.py",
+            "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+          },
+          {
+            "artifact_id": "fixtures-frozen",
+            "kind": "benchmark-input",
+            "path": "evidence/native-model-routing/benchmark/fixtures.json",
+            "sha256": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670"
+          },
+          {
+            "artifact_id": "task-frozen",
+            "kind": "benchmark-input",
+            "path": "evidence/native-model-routing/benchmark/task.json",
+            "sha256": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff"
+          },
+          {
+            "artifact_id": "ab-a-tester-assignment-3",
+            "kind": "message",
+            "path": "evidence/native-model-routing/benchmark/ab-a-tester-assignment-3.json",
+            "sha256": "4d01bc399fcbe1778d44ac3a03749e263e5b75af52385b29e6fdef498c71f9d8"
+          },
+          {
+            "artifact_id": "ab-a-worker-report",
+            "kind": "message",
+            "path": "evidence/native-model-routing/benchmark/worker-a-report.json",
+            "sha256": "74e28afdd7c80f4f0dbc8f2a6876da848ed5a239c61a5fc864a679eca6ef02d5"
+          }
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "9ed810921d4507720d2297f9fa448c836f7d1b78434e7910cbacb49a560f240c",
+        "acceptance_id": "C01",
+        "evidence_ref": {
+          "artifact_id": "tester-a-stdout",
+          "kind": "test-evidence",
+          "path": "evidence/native-model-routing/benchmark/tester-a.stdout",
+          "sha256": "7cbb71116c0842ad9c34cc386c0d22b23f2d1ad14c33b938f646578dd5015633"
+        }
+      }
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "ab-a-candidate",
+      "kind": "candidate",
+      "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7"
+    },
+    {
+      "artifact_id": "ab-oracle",
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    {
+      "artifact_id": "tester-a-stdout",
+      "kind": "test-evidence",
+      "path": "evidence/native-model-routing/benchmark/tester-a.stdout",
+      "sha256": "7cbb71116c0842ad9c34cc386c0d22b23f2d1ad14c33b938f646578dd5015633"
+    },
+    {
+      "artifact_id": "ab-a-tester-assignment-3",
+      "kind": "message",
+      "path": "evidence/native-model-routing/benchmark/ab-a-tester-assignment-3.json",
+      "sha256": "4d01bc399fcbe1778d44ac3a03749e263e5b75af52385b29e6fdef498c71f9d8"
+    },
+    {
+      "artifact_id": "ab-a-worker-report",
+      "kind": "message",
+      "path": "evidence/native-model-routing/benchmark/worker-a-report.json",
+      "sha256": "74e28afdd7c80f4f0dbc8f2a6876da848ed5a239c61a5fc864a679eca6ef02d5"
+    },
+    {
+      "artifact_id": "task-frozen",
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/task.json",
+      "sha256": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff"
+    },
+    {
+      "artifact_id": "fixtures-frozen",
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/fixtures.json",
+      "sha256": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "field": "provider",
+    "input": "bearer TOPSECRET",
+    "configured_persisted": false,
+    "requested_persisted": false,
+    "host_reported_persisted": false,
+    "effective_persisted": false,
+    "serialized_contains_value": false
+  },
+  {
+    "field": "route_id",
+    "input": "https://user:password@example.test/route",
+    "configured_persisted": false,
+    "requested_persisted": false,
+    "host_reported_persisted": false,
+    "effective_persisted": false,
+    "serialized_contains_value": false
+  },
+  {
+    "field": "model_id",
+    "input": "api_token=abc123",
+    "configured_persisted": false,
+    "requested_persisted": false,
+    "host_reported_persisted": false,
+    "effective_persisted": false,
+    "serialized_contains_value": false
+  },
+  {
+    "field": "harness",
+    "input": "credential_material: secret",
+    "configured_persisted": false,
+    "requested_persisted": false,
+    "host_reported_persisted": false,
+    "effective_persisted": false,
+    "serialized_contains_value": false
+  }
+]

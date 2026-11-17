@@ -1,0 +1,70 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-manager-plan-progress-c08-audit",
+  "message_type": "plan.progress",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/native_planner_final"
+  },
+  "in_reply_to": "native-model-routing-manager-plan-progress-resume",
+  "payload": {
+    "status": "in_progress",
+    "objective": "Supplement original C01-C10 final check with a direct read-only C08 scope audit completed after the initial progress packet.",
+    "scope": [
+      "Same original plan and candidate-6 worktree; no product changes."
+    ],
+    "acceptance_ids": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10"
+    ],
+    "verified_progress": [
+      "New manager-c08-scope-audit.json records the exact worktree status, tracked diff, worktree list, original checkout status and release-surface diff. No out-of-scope paths were found; all changed paths are under README/docs/evidence/experiments/tests. The isolated branch remains at base commit 842f2a8b.",
+      "No files changed in shipped skill/plugin directories, release builder, RELEASE.md, or dist; the tracked release surface is unchanged, so no affected installable distribution required rebuilding.",
+      "Original CouncilFlow-main checkout remains on feat/playful-mission-control-20261117 with the previously observed staged dashboard edits intact."
+    ],
+    "next_action": "Include the new scope audit evidence in the unchanged original acceptance map; determine whether it resolves C08 protected-scope and affected-release requirements.",
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    }
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-manager-c08-scope-audit-1",
+      "path": "evidence/native-model-routing/manager-c08-scope-audit.json",
+      "kind": "verification-evidence",
+      "sha256": "dc426a5e373fa3f0e7295acc70d4c90fdf9eb295f7594dcf1289d584c7e50c23"
+    }
+  ]
+}

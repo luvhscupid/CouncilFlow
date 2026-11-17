@@ -1,0 +1,69 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-tester-assignment-final",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-4",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "tester",
+    "instance_id": "/root/native_model_tester_final"
+  },
+  "in_reply_to": "native-model-routing-worker-report-4",
+  "payload": {
+    "objective": "Independently verify the repaired attempt-4 candidate for original C04 and affected C06 controls, and confirm the exact C04 failure is absent.",
+    "scope": [
+      "experiments/native-model-routing/routing.py",
+      "tests/test_native_model_routing.py",
+      "evidence/native-model-routing/"
+    ],
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    "oracle_ref": {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    "instructions": [
+      "Verify candidate manifest and source/test hashes before testing. Do not modify product files or repair.",
+      "Independently probe exact S3CRET_PROBE_value in each identity field (provider, route_id, model_id, harness) across configured, requested, host_reported, effective slots. Assert serialized execution_record contains no marker. Include safe identity retention and all earlier qualification, resource, policy digest, reasoning effort, rollback, isolation, failure/retry/cancel/incomplete controls.",
+      "Run focused `python -B -m unittest tests.test_native_model_routing -v` and full `python -B -m unittest discover -s tests -v`. Record full actual executable path, arguments, working directory, exit code, raw stdout and stderr file identities/hashes, and stdout SHA-256 after CRLF-to-LF-only normalization. Select focused suite command as deterministic Reviewer rerun if suitable.",
+      "Create immutable probe file evidence/native-model-routing/tester-final-probes.json and CouncilFlow 1.0 job.report evidence/native-model-routing/tester-final-report.json replying to this assignment. Report C04 and C06 results, findings/errors and command evidence. Stop after report."
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-6",
+      "path": "evidence/native-model-routing/worker-candidate-4.json",
+      "kind": "candidate-manifest",
+      "sha256": "7e56e150318e6070f2b84a9d87a2b0712dc5a23f23d0804d9240e839ae89d517"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    },
+    {
+      "artifact_id": "native-model-routing-worker-report-4",
+      "path": "evidence/native-model-routing/worker-final-report-2.json",
+      "kind": "message",
+      "sha256": "132bdca2fddff307ac28a3184ff1e4c4d3a38aaeef05425c28fae7a91ce137c2"
+    }
+  ]
+}

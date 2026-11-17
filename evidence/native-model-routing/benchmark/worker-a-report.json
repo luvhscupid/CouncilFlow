@@ -1,0 +1,47 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-a-worker-report",
+  "message_type": "job.report",
+  "plan_id": "ab-model-policy-A",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-A",
+  "attempt_id": "ab-attempt-1",
+  "sender": {
+    "instance_id": "/root/ab_worker_a",
+    "role": "worker"
+  },
+  "recipient": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "in_reply_to": "ab-a-worker-assignment",
+  "payload": {
+    "status": "passed",
+    "summary": "Implemented the model-policy validator. Requested model gpt-6-luna and reasoning_effort low; effective model identity and skill activation UNVERIFIED.",
+    "acceptance_ids": [
+      "C01"
+    ],
+    "candidate_ref": {
+      "artifact_id": "ab-a-candidate",
+      "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7",
+      "kind": "candidate"
+    },
+    "findings": [
+      "python oracle.py model_policy.py exited 0; all 9 fixed fixtures passed."
+    ],
+    "errors": [],
+    "changed_files": [
+      "experiments/native-model-routing/benchmark/arms/A/model_policy.py"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "ab-a-candidate",
+      "path": "experiments/native-model-routing/benchmark/arms/A/model_policy.py",
+      "sha256": "b143feea7cfd51624c07524431dcd940b7b83a862d1b5d993a15ba61db0e0ad7",
+      "kind": "candidate"
+    }
+  ]
+}

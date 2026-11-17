@@ -1,0 +1,59 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "native-model-routing-manager-rework-3",
+  "message_type": "task.decision",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "attempt-3",
+  "sender": {
+    "role": "manager",
+    "instance_id": "/root"
+  },
+  "recipient": {
+    "role": "planner",
+    "instance_id": "/root/native_planner"
+  },
+  "in_reply_to": "native-model-routing-tester-report-resume-1",
+  "payload": {
+    "disposition": "rework",
+    "reason": "Fresh Tester independently reproduced C04 failure on attempt-3 candidate: S3CRET_PROBE_value is serialized in all 16 provider/route/model/harness identity field and configured/requested/host-reported/effective slot combinations. Preserve all prior evidence; repair identity sanitization fail-closed and keep safe identity controls.",
+    "acceptance_ids": [
+      "C04",
+      "C06"
+    ],
+    "failed_acceptance_ids": [
+      "C04"
+    ],
+    "candidate_ref": {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    "report_ids": [
+      "native-model-routing-tester-report-resume-1"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "artifact_id": "native-model-routing-candidate-5",
+      "path": "evidence/native-model-routing/worker-candidate-3.json",
+      "kind": "candidate-manifest",
+      "sha256": "796cae0cf83c52349c641ea32d3eedd9f9bf1bea07e1b2d4f70ee7d25d97be56"
+    },
+    {
+      "artifact_id": "native-model-routing-tester-resume-report-1",
+      "path": "evidence/native-model-routing/tester-resume-report.json",
+      "kind": "message",
+      "sha256": "7e9b43be6d3cc83919495293f3b734b5dd08497b99e5e49e3c8452fa0d9acb76"
+    },
+    {
+      "artifact_id": "native-model-routing-plan-1",
+      "path": "evidence/native-model-routing/plan.json",
+      "kind": "plan",
+      "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86"
+    }
+  ]
+}

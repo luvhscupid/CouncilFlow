@@ -1,0 +1,56 @@
+{
+  "plan_id": "ab-model-policy-A",
+  "plan_revision": 1,
+  "task_id": "ab-model-policy-A",
+  "attempt_id": "ab-attempt-1",
+  "parent_plan_ref": {
+    "artifact_id": "native-model-routing-plan-1",
+    "path": "evidence/native-model-routing/plan.json",
+    "sha256": "af946b49acdfd98584a46f8e053039e71ae89ede55bf372e4c228a1e21802d86",
+    "kind": "plan"
+  },
+  "parent_acceptance_id": "C01",
+  "objective": "Implement one pure standard-library Python function that fails closed when checking an exact model route identity against an approved policy and qualification evidence.",
+  "arm": "A",
+  "treatment": "Ordinary CouncilFlow baseline; no SkillLab routing/suggestion.",
+  "scope": [
+    "experiments/native-model-routing/benchmark/arms/A",
+    "evidence/native-model-routing/benchmark/task.json",
+    "evidence/native-model-routing/benchmark/fixtures.json",
+    "evidence/native-model-routing/benchmark/oracle.py"
+  ],
+  "acceptance": [
+    {
+      "id": "C01",
+      "criterion": "Before the main feature Worker starts, perform one bounded frozen A/B model-policy validation subtask from the same exact source checkpoint, task/oracle/prompt/acceptance, host/model/reasoning request and limits, in isolated fresh workspaces. A is ordinary CouncilFlow; B differs only by read-only SkillLab eligible-skill suggestion. Workers must not share implementation details. Use identical independent verification. Record selection, actual activation observation (or UNVERIFIED), failures/retries, duration and token/quota/cost evidence only where host exposes it. Keep the comparison descriptive; no causal-benefit claim."
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "artifact_id": "ab-task",
+      "path": "evidence/native-model-routing/benchmark/task.json",
+      "sha256": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff",
+      "kind": "benchmark-input"
+    },
+    {
+      "artifact_id": "ab-fixtures",
+      "path": "evidence/native-model-routing/benchmark/fixtures.json",
+      "sha256": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670",
+      "kind": "benchmark-input"
+    },
+    {
+      "artifact_id": "ab-oracle",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509",
+      "kind": "benchmark-input"
+    }
+  ],
+  "read_only_treatment_ref": null,
+  "constraints": [
+    "Worker may change only model_policy.py within this arm directory.",
+    "Frozen task, fixtures, and oracle inputs are read-only.",
+    "No network, credential, provider-config, subprocess, or external-service access.",
+    "Use the exact common native model/reasoning request from the frozen task; report requested identity as REQUESTED only.",
+    "Never inspect the other arm or its output."
+  ]
+}

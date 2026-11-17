@@ -1,0 +1,63 @@
+{
+  "protocol": "council-flow",
+  "version": "1.0",
+  "message_id": "ab-a-worker-assignment",
+  "message_type": "job.assign",
+  "plan_id": "native-model-routing-skilllab-benchmark",
+  "plan_revision": 1,
+  "task_id": "native-model-routing-and-benchmark",
+  "attempt_id": "ab-attempt-a",
+  "sender": {
+    "instance_id": "/root",
+    "role": "manager"
+  },
+  "recipient": {
+    "instance_id": "/root/ab_worker_a",
+    "role": "worker"
+  },
+  "in_reply_to": "native-routing-plan-publish-1",
+  "payload": {
+    "scope": [
+      "experiments/native-model-routing/benchmark/arms/A/model_policy.py"
+    ],
+    "instructions": [
+      "Work only in E:\\Saint\\PROJECTS\\CouncilFlow-native-model-routing\\experiments\\native-model-routing\\benchmark\\arms\\A. Do not read or refer to Arm B, its path, or its outputs.",
+      "This is Arm A: ordinary CouncilFlow only. Do not use SkillLab or additional skill routing.",
+      "Implement only model_policy.py using the exact frozen API, fixtures, constraints, and independent oracle referenced by this assignment.",
+      "No network, provider/config/credential access, subprocesses, or external services. Do not echo secrets; no credentials are provided.",
+      "Run the provided independent oracle command against your module. Do not edit task.json, fixtures.json, oracle.py, or any other file.",
+      "The native dispatch requested model gpt-6-luna with reasoning_effort low. Report this as REQUESTED only; do not claim effective identity unless host evidence exposes it.",
+      "Return a UTF-8 council-flow 1.0 job.report in evidence/native-model-routing/benchmark/worker-a-report.json, replying to this assignment. Bind the candidate by exact path and SHA-256. Report actual native skill activation as unverified unless observed."
+    ],
+    "objective": "Implement the frozen model-policy validator subtask as the no-SkillLab baseline arm.",
+    "acceptance_ids": [
+      "C01"
+    ]
+  },
+  "evidence_refs": [
+    {
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/task.json",
+      "artifact_id": "ab-task",
+      "sha256": "103a0ee4f2a7862f49fe11ae657dc3c1f3ebe4c8c47e7c00616139bb743e4dff"
+    },
+    {
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/fixtures.json",
+      "artifact_id": "ab-fixtures",
+      "sha256": "6452e51c43f9ee8ff67a159d6622d2c75ba579c012a26bd3c188cdbfa067d670"
+    },
+    {
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/oracle.py",
+      "artifact_id": "ab-oracle",
+      "sha256": "28ba7b38b764fd992a4d98c4fa1dc18ceed881d3e7b2f6d52679c9085a29c509"
+    },
+    {
+      "kind": "benchmark-input",
+      "path": "evidence/native-model-routing/benchmark/arm-workspaces.json",
+      "artifact_id": "ab-arm-workspaces",
+      "sha256": "04661501bb12b5cbc76055246f91d599ae12f33957da29be28a5ae0194d12cdf"
+    }
+  ]
+}
