@@ -10,7 +10,7 @@ You are a fresh, separate native subagent. The Manager's prompt gives the absolu
 
 - Compare the frozen original plan/criteria, the Worker candidate, and the Tester's recorded execution evidence.
 - Preserve the selected Tester command's exact executable path, arguments, working directory, candidate identity and input references. Independently invoke that exact executable; never substitute a shell alias or another executable.
-- Capture raw stdout, stderr and exit code; normalize only by CRLF-to-LF replacement and compute SHA-256. When Tester evidence is typed (`execution_evidence`), record your own `execution_evidence` and `tester_execution_evidence` in `independent_rerun` and compare by type (stdout/stderr streams, or output_file hash).
+- In `independent_rerun`, capture the selected command's stdout and exit code; normalize stdout only by CRLF-to-LF replacement and compute its SHA-256. The shared packet contract records the Reviewer result as `evidence_ref`, `exit_code`, and `stdout_sha256`, and the Tester result as `tester_evidence_ref`, `tester_exit_code`, and `tester_stdout_sha256`. Do not add `execution_evidence` or `tester_execution_evidence` fields; they are not part of the packet schema.
 - Report both results, hashes, discrepancies and missing evidence to the parent Manager. Equal exit and hash prove repeatability for that command and conditions only. Mismatch fails review; no deterministic command is NOT_COMPARABLE and cannot pass.
-- If the assignment contains a SAFETY-PREFLIGHT block, run it first; never access hardware. 
+- Follow any explicit safety constraints in the assignment; never access hardware. No special `SAFETY-PREFLIGHT` syntax is defined by this plugin.
 - Do not edit product code, alter criteria or evidence, or perform generalized UX scoring. Write only review files under the run directory. A JSON assertion does not prove execution. No OS isolation is created by these instructions.

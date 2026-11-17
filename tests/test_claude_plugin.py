@@ -205,26 +205,34 @@ class RuntimeTests(unittest.TestCase):
 
 class PackageTests(unittest.TestCase):
     def test_package_deterministic_and_portable(self):
-        first, second = builder.build(), builder.build()
-        self.assertEqual(first, second)
-        archive = ROOT / "dist/councilflow-claude-plugin.zip"
-        with zipfile.ZipFile(archive) as z:
-            names = z.namelist()
-            for required in (".claude-plugin/plugin.json", "skills/run/SKILL.md",
-                             "skills/run/scripts/contracts.py", "skills/run/scripts/efficiency.py"):
-                self.assertIn(required, names)
-            self.assertEqual(sum(n.startswith("agents/council-") for n in names), 4)
-            for n in names:
-                self.assertFalse(n.startswith("/") or ".." in n.split("/") or "\\" in n or ":" in n, n)
-                self.assertNotIn("__pycache__", n)
-                self.assertFalse(n.endswith(".pyc"))
-            with tempfile.TemporaryDirectory() as tmp:
-                z.extractall(tmp)
-                r = py(tmp, Path(tmp) / "skills/run/scripts/contracts.py", "policy",
-                       Path(tmp) / "skills/run/policies/roles.yaml")
-                self.assertEqual(r.returncode, 0, r.stderr)
-        sidecar = (ROOT / "dist/councilflow-claude-plugin.zip.sha256").read_text()
-        self.assertEqual(sidecar.split()[0], hashlib.sha256(archive.read_bytes()).hexdigest())
+        tracked_archive = ROOT / "dist/councilflow-claude-plugin.zip"
+        tracked_sidecar = ROOT / "dist/councilflow-claude-plugin.zip.sha256"
+        before = (tracked_archive.read_bytes(), tracked_sidecar.read_bytes())
+        with tempfile.TemporaryDirectory() as tmp:
+            archive = Path(tmp) / "councilflow-claude-plugin.zip"
+            first, second = builder.build(archive), builder.build(archive)
+            self.assertEqual(first, second)
+            self.assertEqual(first["archive"], archive.as_posix())
+            self.assertEqual(first["sha256"], hashlib.sha256(archive.read_bytes()).hexdigest())
+            self.assertEqual((tracked_archive.read_bytes(), tracked_sidecar.read_bytes()), before)
+            with zipfile.ZipFile(archive) as z:
+                names = z.namelist()
+                for required in (".claude-plugin/plugin.json", "skills/run/SKILL.md",
+                                 "skills/run/scripts/contracts.py", "skills/run/scripts/efficiency.py"):
+                    self.assertIn(required, names)
+                self.assertEqual(sum(n.startswith("agents/council-") for n in names), 4)
+                for n in names:
+                    self.assertFalse(n.startswith("/") or ".." in n.split("/") or "\\" in n or ":" in n, n)
+                    self.assertNotIn("__pycache__", n)
+                    self.assertFalse(n.endswith(".pyc"))
+                with tempfile.TemporaryDirectory() as extracted:
+                    z.extractall(extracted)
+                    r = py(extracted, Path(extracted) / "skills/run/scripts/contracts.py", "policy",
+                           Path(extracted) / "skills/run/policies/roles.yaml")
+                    self.assertEqual(r.returncode, 0, r.stderr)
+            sidecar = archive.with_name(archive.name + ".sha256").read_text()
+            self.assertEqual(sidecar.split()[0], hashlib.sha256(archive.read_bytes()).hexdigest())
+            self.assertEqual(sidecar.split()[1], archive.name)
 
     def test_codex_release_excludes_plugin(self):
         codex = load("codex_builder", "tools/build_release.py")
@@ -249,8 +257,11 @@ class HostAdapterTests(unittest.TestCase):
     def test_adapter_is_plugin_only_and_not_shared_runtime(self):
         self.assertFalse((ROOT / ".agents/skills/council-flow/host-claude.md").exists())
         self.assertEqual(builder.drift(), [])  # adapter does not count as shared-runtime drift
-        with zipfile.ZipFile(builder.build() and ROOT / "dist/councilflow-claude-plugin.zip") as z:
-            self.assertIn("skills/run/host-claude.md", z.namelist())
+        with tempfile.TemporaryDirectory() as tmp:
+            archive = Path(tmp) / "plugin.zip"
+            builder.build(archive)
+            with zipfile.ZipFile(archive) as z:
+                self.assertIn("skills/run/host-claude.md", z.namelist())
 
     def test_entrypoints_direct_to_adapter(self):
         self.assertIn("CF/host-claude.md", (RUN / "SKILL.md").read_text(encoding="utf-8"))

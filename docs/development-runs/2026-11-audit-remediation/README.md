@@ -18,7 +18,7 @@ This is a **non-normative development roadmap**, not a change to the skill, appr
 
 | Slice | File | Status | Prerequisite | Exit gate |
 | --- | --- | --- | --- | --- |
-| 01 | [Claude contract + package reproducibility](01-contract-and-release.md) | READY TO DISPATCH; NOT RUN | Independent repro of claimed defects | Valid Claude messages, negative tests green, clean tree after suites, both ZIPs reproduce |
+| 01 | [Claude contract + package reproducibility](01-contract-and-release.md) | ENGINEERING VERIFIED; NATIVE WORKFLOW UNVERIFIED; OWNER REVIEW PENDING | Owner review | Engineering gates pass; native Planner/Tester/Reviewer session provenance unverified |
 | 02 | [Documentation, CI and distribution hygiene](02-docs-ci-and-distribution.md) | PROPOSED; NOT AUTHORIZED | Owner review of Slice 01 | Accurate host docs, main-triggered CI, package checks, explicit license decision |
 | 03 | [Native-host verification and evidence](03-native-host-verification.md) | PROPOSED; NOT AUTHORIZED | Stable release from Slices 01-02; host access | Genuine session evidence and honest E1/E2/E4 outcomes, shareable sanitized proof |
 | 04 | [Value measurement and next design decision](04-value-and-roadmap.md) | PROPOSED; NOT AUTHORIZED | Representative functional host runs; Owner-approved study | Reproducible comparison and explicit keep/change/defer decisions |

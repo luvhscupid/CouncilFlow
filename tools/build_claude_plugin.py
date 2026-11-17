@@ -68,14 +68,13 @@ def package_files() -> dict[str, bytes]:
     return out
 
 
-def build() -> dict:
+def build(output: Path | None = None) -> dict:
     problems = drift()
     if problems:
         raise ValueError("plugin runtime drifted from canonical skill; run sync: " + "; ".join(problems))
     files = package_files()
-    dist = ROOT / "dist"
-    dist.mkdir(exist_ok=True)
-    archive = dist / "councilflow-claude-plugin.zip"
+    archive = Path(output) if output is not None else ROOT / "dist/councilflow-claude-plugin.zip"
+    archive.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for name, data in files.items():
             info = zipfile.ZipInfo(name, date_time=(2020, 1, 1, 0, 0, 0))
@@ -84,21 +83,23 @@ def build() -> dict:
             info.external_attr = 0o100644 << 16
             z.writestr(info, data)
     digest = hashlib.sha256(archive.read_bytes()).hexdigest()
-    (dist / "councilflow-claude-plugin.zip.sha256").write_text(
-        f"{digest}  councilflow-claude-plugin.zip\n", encoding="ascii", newline="\n")
-    return {"archive": "dist/councilflow-claude-plugin.zip", "sha256": digest, "entries": len(files)}
+    archive.with_name(archive.name + ".sha256").write_text(
+        f"{digest}  {archive.name}\n", encoding="ascii", newline="\n")
+    return {"archive": archive.as_posix(), "sha256": digest, "entries": len(files)}
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=("sync", "check", "build"))
-    cmd = parser.parse_args().command
+    parser.add_argument("--output", type=Path, help="write archive and sidecar to this path")
+    args = parser.parse_args()
+    cmd = args.command
     try:
         if cmd == "sync":
             sync()
         if cmd in ("sync", "check") and drift():
             print("\n".join(drift())); sys.exit(1)
         if cmd == "build":
-            print(json.dumps(build()))
+            print(json.dumps(build(args.output)))
     except ValueError as exc:
         print(exc); sys.exit(1)
