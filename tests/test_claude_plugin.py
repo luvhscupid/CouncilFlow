@@ -83,6 +83,21 @@ class AgentTests(unittest.TestCase):
             self.assertNotIn("Agent", tools)  # subagents cannot delegate
             self.assertEqual("Edit" in tools, role == "worker")  # only Worker edits code
 
+    def test_claude_instructions_do_not_require_unsupported_packet_fields(self):
+        tester = (PLUGIN / "agents/council-tester.md").read_text(encoding="utf-8")
+        reviewer = (PLUGIN / "agents/council-reviewer.md").read_text(encoding="utf-8")
+        unsupported = ("execution_evidence", "tester_execution_evidence", "evidence_type")
+        for field in unsupported:
+            # A prohibition may name the unsupported field; instructions must not
+            # tell a role to populate it as packet content.
+            directive = re.compile(
+                rf"\b(?:record|include|set|provide|emit|require)\b[^\n]{{0,100}}"
+                rf"\b{re.escape(field)}\b", re.IGNORECASE)
+            self.assertIsNone(directive.search(tester), f"Tester requires unsupported {field}")
+            self.assertIsNone(directive.search(reviewer), f"Reviewer requires unsupported {field}")
+        self.assertIn("no `evidence_type` field", tester)
+        self.assertIn("Do not add `execution_evidence` or `tester_execution_evidence` fields", reviewer)
+
     def test_role_boundaries(self):
         text = {r: frontmatter(PLUGIN / "agents" / f"council-{r}.md")[1] for r in ROLES}
         self.assertIn("Do not repair", text["tester"])
@@ -204,6 +219,42 @@ class RuntimeTests(unittest.TestCase):
 
 
 class PackageTests(unittest.TestCase):
+    def test_committed_release_artifacts_match_isolated_rebuilds(self):
+        """Fail when either committed ZIP or sidecar is stale versus current sources."""
+        with tempfile.TemporaryDirectory() as tmp:
+            snapshot = Path(tmp) / "source"
+            shutil.copytree(ROOT, snapshot, ignore=shutil.ignore_patterns(
+                ".git", "dist", "__pycache__", ".pytest_cache", "*.pyc", "*.pyo"))
+
+            spec = importlib.util.spec_from_file_location(
+                "isolated_codex_builder", snapshot / "tools/build_release.py")
+            codex = importlib.util.module_from_spec(spec)
+            sys.modules[spec.name] = codex
+            spec.loader.exec_module(codex)
+            codex_result = codex.build(root=snapshot)
+            for relative, result in (("dist/council-flow.zip", codex_result),):
+                rebuilt = snapshot / relative
+                committed = ROOT / relative
+                self.assertEqual(rebuilt.read_bytes(), committed.read_bytes(),
+                                 f"stale committed release archive: {relative}")
+                rebuilt_sidecar = rebuilt.with_name(rebuilt.name + ".sha256")
+                committed_sidecar = committed.with_name(committed.name + ".sha256")
+                self.assertEqual(rebuilt_sidecar.read_bytes(), committed_sidecar.read_bytes(),
+                                 f"stale committed release sidecar: {relative}.sha256")
+                self.assertEqual(result["sha256"], hashlib.sha256(committed.read_bytes()).hexdigest())
+
+            claude_archive = snapshot / "dist/councilflow-claude-plugin.zip"
+            claude_run = subprocess.run(
+                [sys.executable, "tools/build_claude_plugin.py", "build", "--output", str(claude_archive)],
+                cwd=snapshot, capture_output=True, timeout=60)
+            self.assertEqual(claude_run.returncode, 0, claude_run.stderr.decode(errors="replace"))
+            committed_claude = ROOT / "dist/councilflow-claude-plugin.zip"
+            self.assertEqual(claude_archive.read_bytes(), committed_claude.read_bytes(),
+                             "stale committed release archive: dist/councilflow-claude-plugin.zip")
+            self.assertEqual(claude_archive.with_name(claude_archive.name + ".sha256").read_bytes(),
+                             committed_claude.with_name(committed_claude.name + ".sha256").read_bytes(),
+                             "stale committed release sidecar: dist/councilflow-claude-plugin.zip.sha256")
+
     def test_package_deterministic_and_portable(self):
         tracked_archive = ROOT / "dist/councilflow-claude-plugin.zip"
         tracked_sidecar = ROOT / "dist/councilflow-claude-plugin.zip.sha256"
