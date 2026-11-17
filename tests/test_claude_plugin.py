@@ -275,7 +275,8 @@ class PackageTests(unittest.TestCase):
             self.assertEqual((tracked_archive.read_bytes(), tracked_sidecar.read_bytes()), before)
             with zipfile.ZipFile(archive) as z:
                 names = z.namelist()
-                self.assertEqual(names, sorted(names), "ZIP entries must use portable case-sensitive ordering")
+                self.assertEqual(names, sorted(names, key=lambda name: tuple(name.split("/"))),
+                                 "ZIP entries must use portable case-sensitive component ordering")
                 for required in (".claude-plugin/plugin.json", "skills/run/SKILL.md",
                                  "skills/run/scripts/contracts.py", "skills/run/scripts/efficiency.py"):
                     self.assertIn(required, names)
