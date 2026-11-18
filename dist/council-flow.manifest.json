@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "7c56ac117b8f260df8880b2ec90c5a014394225d84f2c33e0e9a07b1cda2533c",
-  "entries": 173,
+  "sha256": "2f8d86fed39575b4f5dd1aaa4ef517851f45059b154a3f989f42852df6f7b8b1",
+  "entries": 183,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -69,6 +69,11 @@
       "sha256": "ca49ed13cb28729a625fdcb2cf76aa32001627888eff43098a5fad26f27d6134"
     },
     {
+      "path": ".agents/skills/council-flow/scripts/doctor.py",
+      "size": 2620,
+      "sha256": "883938b28cc00229b25566e21cdf5098605efce32ce239bf11be9693552681a5"
+    },
+    {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
       "size": 829,
       "sha256": "10a6722a2eea376f54d0322cea163a8bb2f48fac0bac3343b233ba77efbf3a2e"
@@ -97,6 +102,21 @@
       "path": ".agents/skills/council-flow/scripts/efficiency/recorder.py",
       "size": 5452,
       "sha256": "9a0553fcf781624bb223e72336d26c32fc256c7de38bdef946505efe0334c574"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/experience.py",
+      "size": 1795,
+      "sha256": "e49cb8a176f407efcaf771474f569b4533cd53c410e72a9874a6db828ce1f862"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
+      "size": 2492,
+      "sha256": "89da07801928dd8573e0cdac71aad6021960e04c02fb6bc9adb2bf053636c6f2"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/task_graph.py",
+      "size": 2443,
+      "sha256": "ece1bfdce8562443b6c25303c610b6ce16f5576af612935617f72f91cc5cdbad"
     },
     {
       "path": ".codex/agents/council-planner.toml",
@@ -410,8 +430,8 @@
     },
     {
       "path": "docs/technical/README.md",
-      "size": 2256,
-      "sha256": "7a44d5d6da05f4061d298e2b0208f589b26c07068b04839a7f62edcee7d16cc6"
+      "size": 2433,
+      "sha256": "ede44b43c9247d406e6ab7d3732840b182b99fe4f23d23079620e2711c75e7c0"
     },
     {
       "path": "docs/technical/claude-code-plugin.md",
@@ -432,6 +452,11 @@
       "path": "docs/technical/host-packages.md",
       "size": 2773,
       "sha256": "5ff685bfda013cdae8338683a0256275e6375dcbc573a11b79d8a19ab40a4d3b"
+    },
+    {
+      "path": "docs/technical/multi-agent-evolution.md",
+      "size": 2265,
+      "sha256": "8569fe6ef531e034563bfced5e1ff04920c7ddb4a93267ceae9d263cf72823e8"
     },
     {
       "path": "docs/technical/structured-communication.md",
@@ -809,6 +834,11 @@
       "sha256": "3be6d5337151db15c45d553d330e83172eb1537f97bc4141e0e12ca7fe1b85d1"
     },
     {
+      "path": "tests/test_doctor.py",
+      "size": 1652,
+      "sha256": "5cb70fc5a092e90b7ce4e17e895ae36c69a92767a7cbe5cabe2f076f3963a24c"
+    },
+    {
       "path": "tests/test_efficiency_claude_adapter.py",
       "size": 16692,
       "sha256": "7314d5caf7a33f409e794cd833acd0e7cee5e33fdf47b92b667eb4eda7c03993"
@@ -834,6 +864,16 @@
       "sha256": "91821708320d485fb1fff14c5de68ce64036b5b129627ede2795de13c8faf55e"
     },
     {
+      "path": "tests/test_experience.py",
+      "size": 1250,
+      "sha256": "e5423ecc2ff9e56dcefd6631e5cd8025663c98b97f82a7d42de291e7d7c8ebf7"
+    },
+    {
+      "path": "tests/test_journal.py",
+      "size": 2794,
+      "sha256": "489fae8a1223ad8ef732ba22adf834c347d77c3db812bc323a1d7244b49cd5dc"
+    },
+    {
       "path": "tests/test_original_source.py",
       "size": 14690,
       "sha256": "341ad9127bf7e0693a83fff658b9cf91564aa7d194338cee5cbb683c721f218f"
@@ -844,9 +884,19 @@
       "sha256": "303ea53cac2c719f0a761e4e19cc8017b05a2c0cf2216ddef4e5ee706c1fa823"
     },
     {
+      "path": "tests/test_role_capabilities.py",
+      "size": 2282,
+      "sha256": "b36ff626d3704f62524a2032490fe5d81e2b7382d7c52d63bc86dd35945e55b4"
+    },
+    {
       "path": "tests/test_skill_files.py",
       "size": 8685,
       "sha256": "e810cd34a036ceeff999e0eb82c4d6160f2a71c555a91d440deb184860820a0b"
+    },
+    {
+      "path": "tests/test_task_graph.py",
+      "size": 1643,
+      "sha256": "e685824c9326817f55b0e4d62aeb9a3bf5773972389b463f27a22db0a52fb2f0"
     },
     {
       "path": "tests/test_tester_selection.py",
