@@ -173,13 +173,15 @@
 
 ### Task 8: Decide whether P7 warrants a separate project
 
+**Execution result:** `NOT_APPLICABLE` to core completion; any opinion board is a separate project. The threat list and entry boundaries are recorded in the status report.
+
 **Files:** create a separate design only if required; do not modify CouncilFlow runtime in this task.
 
 **Interfaces:** The board has no repository access, process execution, provider credentials, or authority to import plans. Submitter/model identity is a claim until independently evidenced.
 
-- [ ] **Step 1: Threat model.** Define forged/replayed submissions, poisoned instructions, stale plan revisions, secret-bearing inputs, retention deletion, attribution, and Owner-approved import controls.
-- [ ] **Step 2: Make an explicit outcome.** Either `NOT_APPLICABLE` with rationale or a separate authorized prototype spec. No service is built as part of P0–P6.
-- [ ] **Step 3: Commit decision.** `docs: record P7 separate-project decision` only if a durable decision is needed.
+- [x] **Step 1: Threat model.** Define forged/replayed submissions, poisoned instructions, stale plan revisions, secret-bearing inputs, retention deletion, attribution, and Owner-approved import controls.
+- [x] **Step 2: Make an explicit outcome.** `NOT_APPLICABLE` to core completion; no existing user need or integration point was identified. Any board requires a separate design and authorization. No service is built as part of P0–P6.
+- [x] **Step 3: Commit decision.** `docs: record P7 separate-project decision`.
 
 **Exit:** P7 remains optional and cannot block the core phase program.
 

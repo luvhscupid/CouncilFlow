@@ -17,3 +17,5 @@ Task 5: complete (commits 67e590b..HEAD, tests: python -B -m unittest tests.test
 Task 6: complete (commits fc6f9a2..HEAD, tests: python -B -m unittest tests.test_experience tests.test_doctor -v → 25 passed; python -B -m unittest discover -s tests -v → 294 passed, 1 platform skip; canonical/Claude runtime copies byte-identical; Claude sync/check/build and Codex release CRC/source-byte checks passed; git diff --check passed). Schema v1 output contract tested unchanged; schema v2 host claims remain unverified; no executable is run or memory injected.
 
 Task 7: complete (commits e63d0fb..HEAD, tests: python -B -m unittest discover -s experiments/agent-efficiency -v → 3 passed; git diff --check passed). P6 closed BLOCKED_OWNER_INPUT after recording missing phase-card fields; zero live calls, fixtures, or promotions.
+
+Task 8: complete (commits f2e28cf..HEAD, tests: not applicable—documentation-only threat/decision record; git diff --check passed). P7 is NOT_APPLICABLE to this core program and remains a separately authorized project; no service, storage, or import path was created.

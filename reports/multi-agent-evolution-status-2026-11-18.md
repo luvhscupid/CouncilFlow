@@ -13,7 +13,7 @@
 | P4 DAG/isolation | `ISOLATION_BLOCKED; SERIAL_MUTATION` | Pure graph validation remains offline and passes 5 focused tests. This environment has `bwrap` and a Codex sandbox CLI, but no worker-specific sandbox policy/state or cross-workspace deny evidence was available; unrestricted workspace access is not isolation evidence. No scheduler, model worker, or parallel write was started. |
 | P5 experience/doctor/observability | `OFFLINE_SCHEMA_V2_COMPLETE; AUTHORITY_UNVERIFIED` | Duplicate experience IDs fail closed; selection remains project/supersession metadata filtering with `review_status: UNVERIFIED`. Doctor schema v1 output remains stable; v2 hashes rooted executable bytes without executing them and marks caller host records `UNVERIFIED`. No Worker-context injection or dashboard exists. |
 | P6 workflow optimization | `OFFLINE_FIXTURE_ONLY; LIVE_BLOCKED_OWNER_INPUT` | Evaluator tests pass 3/3 and the fixture remains descriptive only. No approved phase card, host/route, frozen task/oracle set, independent verifier bindings, complete telemetry/retention, all-role numeric budgets, enforced stop control, or effect/reliability decision rule exists. No live call or promotion was performed. |
-| P7 opinion board | `DEFERRED` | No service was added. It remains an optional separate project requiring its own privacy, identity and storage design. |
+| P7 opinion board | `NOT_APPLICABLE_TO_CORE; SEPARATE_PROJECT_REQUIRED` | Threat review recorded below. No board service or runtime was added; a separate user need and design authorization are prerequisites. |
 
 ## Verification
 
@@ -82,6 +82,22 @@ The product helpers are deterministic local code, not a trusted supervisor or au
 - `python -B -m unittest discover -s experiments/agent-efficiency -v`: **3 passed**; the existing fixture still reports its descriptive `CLOSED_NO_BENEFIT` result and `NOT_APPROVED; offline analysis only` status.
 - No phase card is approved and no host/route, oracle hashes, independent Tester/Reviewer bindings, complete telemetry/retention, numeric all-role call/quota/cost/time ceilings, enforced stop operator, or effect/reliability decision rule is supplied. P2 host capability query is also unsupported in this environment.
 - P6 closes `BLOCKED_OWNER_INPUT`. No fixtures were created, no live call was made, and no candidate was promoted. Evidence remains metadata-only; no prompts, private conversations, or credentials were stored.
+
+## 2026-11-19 completion-plan P7 separate-project decision
+
+P7 is `NOT_APPLICABLE` to the core evolution completion. An opinion board would create a new durable, multi-author input surface with no identified user need or existing integration point. A separate project would need to resolve these threats before any prototype:
+
+| Threat | Required boundary before design approval |
+| --- | --- |
+| Forged or replayed submissions | Treat author/model/session labels as claims; bind each proposal to a unique nonce and exact plan revision; use supported host attestation if authorship must be verified. |
+| Poisoned instructions | Import submissions as inert proposals; never execute embedded commands or inject text into Worker context automatically. |
+| Stale plan revisions | Bind proposal and any patch to the frozen plan SHA and current base; reject mismatches rather than rebase silently. |
+| Secret-bearing inputs | Define allowed data classes and redaction before ingestion; do not accept credentials, private conversations, or unrestricted prompts by default. |
+| Retention and deletion | Specify storage owner, retention window, deletion, backup expiry, access control and incident handling before durable storage. |
+| Attribution | Keep identity and contribution labels unverified unless the native host provides independently checkable evidence. |
+| Owner-approved imports | Require an explicit Owner decision on exact files/diff, source/license review, and independent Tester/Reviewer checks before manual application; no automatic repository access or import. |
+
+No repository access, execution, provider credentials, durable storage, or import authority is added. Reopen P7 only under a separate product request with privacy, identity, retention, and import-control decisions.
 
 ## 2026-11-19 completion-plan P1 live gate
 
