@@ -108,3 +108,56 @@
 2. [x] **Tracked package outputs:** retain deterministic `dist/` archives because the repository test suite checks they match source. Clarify the design/status docs that regenerating tracked artifacts is a consistency operation, not release promotion or publication. Keep the generated archives in the branch.
 3. [x] **Stale DAG revisions:** mark stale tasks blocked and propagate blocking to descendants. Add tests for stale parent and child; invalid graph continues to return an empty execution order.
 4. [x] **Verification:** focused RED/GREEN tests, full `tests/` (264 passed, 1 platform skip), package sync/build checks, and `git diff --check` passed. Commit and push this feature branch.
+
+### Anti-Slop audit follow-up scope (2026-11-19)
+
+**Scope:** resolve every finding from the full Anti-Slop audit of `origin/main...evolution/multi-agent-plan-2026-11-17`. Keep changes on this branch. Do not add host integrations, trust/authentication systems, model calls, or journal recovery guarantees beyond tested behavior.
+
+#### A. Make the doctor useful without overstating trust
+
+**Files:** `.agents/skills/council-flow/scripts/doctor.py`, `tests/test_doctor.py`, mirrored Claude runtime, `docs/technical/multi-agent-evolution.md`.
+
+1. Define the input contract and status meanings before changing code:
+   - `FAIL`: malformed evidence structure, invalid typed fields, duplicate keys, or a directly verified digest mismatch.
+   - `BLOCKED`: a required evidence item is absent or cannot be read/verified.
+   - `PASS`: only a specific check the doctor itself completed, such as schema validation or byte/hash comparison; never means a native role, approval, or task outcome is true based only on a caller boolean/label.
+   - `SKIP`: optional check not configured.
+   - `UNVERIFIED`: a claim depends on native host/session evidence the doctor cannot authenticate or inspect.
+2. Replace unused `required_roles`/`native_roles` type checks with defined checks that inspect declared evidence references and identity fields. Preserve `UNVERIFIED` for native-execution claims unless the referenced evidence format supports a deterministic local check; document precisely what a `PASS` proves.
+3. Add red-first tests for valid evidence, absent required evidence, malformed objects/types, digest mismatch, caller-asserted success remaining unverified, optional dashboard skip, duplicate fields, CLI stdin/file input, and exit codes.
+4. Implement only the checks above; use a context manager for file reads and explicit duplicate/non-finite JSON rejection. Do not add arbitrary filesystem traversal or host discovery.
+
+#### B. Make public validators reject malformed JSON types consistently
+
+**Files:** `.agents/skills/council-flow/scripts/role_capabilities.py`, `experience.py`, `task_graph.py`; corresponding focused tests and Claude mirrors.
+
+1. Require exact integer types for schema and plan revisions (`bool` must not count as `int`), exact booleans for capability flags, and strings before enum/set membership checks.
+2. Convert invalid caller data to documented `ValueError` results rather than leaking `TypeError` from unhashable arrays/objects.
+3. Add red-first cases for `schema_version: true`, `explicit_role_selection: 0/1`, list/dict preferences, list/dict experience kinds, boolean plan revisions, malformed dependency IDs, and valid boundary values.
+4. Preserve valid existing JSON contracts and verify Codex/Claude copies byte-for-byte.
+
+#### C. Align journal claims and journal tests with actual guarantees
+
+**Files:** `experiments/multi-agent-evolution/journal.py`, `tests/test_journal.py`, `docs/superpowers/specs/2026-11-18-multi-agent-evolution-design.md`, `docs/technical/multi-agent-evolution.md`, phase status report.
+
+1. Keep the journal explicitly experimental. Its current boundary is a local SQLite state-transition prototype with schema version, transaction/CAS revision checks, duplicate event rejection, an allowlisted metadata payload, and opaque evidence references.
+2. Do not claim it validates attempt identity, evidence bytes, artifact hashes, native sessions, crash recovery across platforms, or authenticated approvals unless those behaviors are implemented and independently tested. Correct design/status wording to the narrower observed contract.
+3. Replace the current schema-version test with a direct SQLite metadata-row assertion and an unsupported-version rejection case. Strengthen export determinism by comparing results across separate connections and after reopening the database. Test a valid acceptance transition’s required fields and malformed candidate digest.
+4. Keep evidence references opaque; do not dereference external paths as part of this prototype.
+
+#### D. Reconcile memory terminology everywhere
+
+**Files:** `experience.py` docstring, design spec, implementation plan, technical notes, phase status report.
+
+1. Describe entries as caller-claimed review metadata, never as authenticated or verified Owner-reviewed lessons.
+2. Preserve `review_status: UNVERIFIED` as a mandatory invariant for every returned item.
+3. Search the branch docs and package copies for `manually reviewed`, `manually curated`, or equivalent claims; retain only text that clearly distinguishes a claim from verified provenance.
+
+#### E. Final verification and release hygiene
+
+1. Run focused tests and observe each new test fail before implementation, then pass after the smallest code change.
+2. Run `python -B -m unittest discover -s tests -v`, the Agent Efficiency tests, Claude runtime `sync`/`check`, both package builds, and `git diff --check`.
+3. Review the final diff, generated artifact changes, test-oracle changes, and report counts. Update the status report with exact observed results.
+4. Commit and push only this branch after verification. Do not merge or promote to `main`.
+
+**Acceptance:** the doctor performs checks whose status names match their demonstrated meaning; all malformed values fail through controlled errors; journal docs/tests describe only proven prototype guarantees; no memory entry is marked verified; packages remain synchronized; full tests and package checks pass.
