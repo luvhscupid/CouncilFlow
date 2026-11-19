@@ -14,7 +14,12 @@ sys.path.insert(0, str(ROOT / "experiments" / "multi-agent-evolution"))
 from journal import Journal, JournalError
 import journal as journal_module
 
-SAFE_DESCRIPTOR_READS = os.open in os.supports_dir_fd and hasattr(os, "O_NOFOLLOW")
+SAFE_DESCRIPTOR_READS = (
+    os.open in os.supports_dir_fd
+    and os.stat in os.supports_dir_fd
+    and os.stat in os.supports_follow_symlinks
+    and hasattr(os, "O_NOFOLLOW")
+)
 
 
 class JournalTests(unittest.TestCase):

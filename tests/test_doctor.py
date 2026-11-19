@@ -14,7 +14,12 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import doctor
 from doctor import diagnose, load_evidence
 
-SAFE_DESCRIPTOR_READS = os.open in os.supports_dir_fd and hasattr(os, "O_NOFOLLOW")
+SAFE_DESCRIPTOR_READS = (
+    os.open in os.supports_dir_fd
+    and os.stat in os.supports_dir_fd
+    and os.stat in os.supports_follow_symlinks
+    and hasattr(os, "O_NOFOLLOW")
+)
 
 
 class DoctorTests(unittest.TestCase):
@@ -220,7 +225,7 @@ class DoctorTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 2)
 
     def test_artifact_hash_rejects_replaced_ancestor_during_hash(self):
-        if os.open not in os.supports_dir_fd or not hasattr(os, "O_NOFOLLOW"):
+        if not SAFE_DESCRIPTOR_READS:
             self.skipTest("descriptor-relative no-follow reads unavailable")
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
