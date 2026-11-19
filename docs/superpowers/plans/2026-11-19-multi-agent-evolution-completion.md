@@ -88,12 +88,12 @@
 
 **Interfaces:** Keep `validate_profile(data)` and `resolve_role(profile, capabilities, role)` pure and offline. This plan defines no native adapter signature. If documentation proves a supported API exists, write and approve a host-specific subplan with exact signature, errors, and tests before implementation. If not, close P2 as `UNSUPPORTED` with inherited routing.
 
-- [ ] **Step 1: Check existing host-support tests.** Confirm `test_unobserved_capability_is_not_supported` and `test_caller_supplied_capability_cannot_be_promoted_to_verified` cover `UNKNOWN`/`INHERIT_HOST` and cannot create `effective_model` or `route_verified` claims; add a regression only if an actual gap is found.
-- [ ] **Step 2: Run focused tests.** `python -B -m unittest tests.test_role_capabilities -v`.
-- [ ] **Step 3: Inspect supported host API.** Record host name/version and source documentation. If no explicit selection API exists, make no adapter; record `UNSUPPORTED` and proceed to independent work. If it exists, record its exact documented parameters/errors before implementation.
-- [ ] **Step 4: If supported, stop at a design handoff.** Record the API evidence and create a separate implementation subplan; do not invent an adapter signature in this cross-host plan.
-- [ ] **Step 5: Verify.** Focused tests, Claude `sync`/`check`, package/runtime equality, and a native smoke only if a later card authorizes it. Native smoke must retain sanitized evidence and actual host/version.
-- [ ] **Step 6: Commit.** `docs: record P2 host capability result`.
+- [x] **Step 1: Check existing host-support tests.** Confirm `test_unobserved_capability_is_not_supported` and `test_caller_supplied_capability_cannot_be_promoted_to_verified` cover `UNKNOWN`/`INHERIT_HOST` and cannot create `effective_model` or `route_verified` claims; add a regression only if an actual gap is found.
+- [x] **Step 2: Run focused tests.** `python -B -m unittest tests.test_role_capabilities -v`.
+- [x] **Step 3: Inspect supported host API.** Record host name/version and source documentation. If no explicit selection API exists, make no adapter; record `UNSUPPORTED` and proceed to independent work. If it exists, record its exact documented parameters/errors before implementation.
+- [x] **Step 4: If supported, stop at a design handoff.** Record the API evidence and create a separate implementation subplan; do not invent an adapter signature in this cross-host plan.
+- [x] **Step 5: Verify.** Focused tests, Claude `sync`/`check`, package/runtime equality, and a native smoke only if a later card authorizes it. Native smoke must retain sanitized evidence and actual host/version.
+- [x] **Step 6: Commit.** `docs: record P2 host capability result`.
 
 **Exit:** route remains inherited and P2 is `UNSUPPORTED`, or the documented API is recorded in a separate `DESIGN_READY` host-specific plan. This task does not implement the adapter. No API is inferred from a host label.
 
