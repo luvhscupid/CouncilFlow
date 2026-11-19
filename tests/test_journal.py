@@ -286,6 +286,38 @@ class JournalTests(unittest.TestCase):
             {"path": "candidate", "sha256": hashlib.sha256(b"candidate").hexdigest()})
         self.assertEqual(result["status"], "BLOCKED")
 
+    def test_journal_hash_rejects_root_replaced_by_symlink_during_hash(self):
+        if not SAFE_DESCRIPTOR_READS or not hasattr(os, "symlink"):
+            self.skipTest("safe symlink-root checks unavailable")
+        parent = self.root
+        evidence_root = parent / "evidence"
+        evidence_root.mkdir()
+        data = b"root race" * 10000
+        (evidence_root / "candidate").write_bytes(data)
+        expected = hashlib.sha256(data).hexdigest()
+        actual = hashlib.sha256()
+        changed = [False]
+
+        class ReplacingHash:
+            def update(self, chunk):
+                actual.update(chunk)
+                if not changed[0]:
+                    changed[0] = True
+                    detached = parent / "detached"
+                    evidence_root.rename(detached)
+                    evidence_root.symlink_to(detached, target_is_directory=True)
+
+            def hexdigest(self):
+                return actual.hexdigest()
+
+        with patch.object(journal_module.hashlib, "sha256", return_value=ReplacingHash()):
+            result = journal_module._hash_under_root(evidence_root, {"path": "candidate", "sha256": expected})
+        self.assertEqual(result["status"], "BLOCKED")
+
+    def test_reconcile_unknown_run_id_is_not_journal_unavailable(self):
+        with self.assertRaisesRegex(JournalError, "unknown run"):
+            self.journal.reconcile("missing-run", self.root)
+
     def test_nonacceptance_terminals_require_a_reason(self):
         for field, state in (("BLOCKED", "BLOCKED"), ("CANCELLED", "CANCELLED"), ("REJECTED", "REJECTED")):
             with self.subTest(state=state):

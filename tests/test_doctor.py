@@ -247,6 +247,32 @@ class DoctorTests(unittest.TestCase):
                 result = doctor._hash_artifact(root, "sub/artifact")
             self.assertEqual(result["status"], "BLOCKED")
 
+    @unittest.skipUnless(SAFE_DESCRIPTOR_READS and hasattr(os, "symlink"), "safe symlink-root checks unavailable")
+    def test_artifact_hash_rejects_root_replaced_by_symlink_during_hash(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            parent = Path(tmp)
+            root = parent / "evidence"
+            root.mkdir()
+            (root / "artifact").write_bytes(b"root race" * 10000)
+            actual = hashlib.sha256()
+            changed = [False]
+
+            class ReplacingHash:
+                def update(self, data):
+                    actual.update(data)
+                    if not changed[0]:
+                        changed[0] = True
+                        detached = parent / "detached"
+                        root.rename(detached)
+                        root.symlink_to(detached, target_is_directory=True)
+
+                def hexdigest(self):
+                    return actual.hexdigest()
+
+            with patch.object(doctor.hashlib, "sha256", return_value=ReplacingHash()):
+                result = doctor._hash_artifact(root, "artifact")
+        self.assertEqual(result["status"], "BLOCKED")
+
     def test_platform_without_descriptor_reads_reports_unverified(self):
         with patch.object(doctor.os, "supports_dir_fd", set()):
             result = doctor._hash_artifact(Path.cwd(), "README.md")

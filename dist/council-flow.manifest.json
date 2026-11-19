@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "b442c793e8c311473f0d8411f48720bbf17e8f5dfb7a56d446f0a8bc9c73ae73",
+  "sha256": "903c0aecf093c4db05faab10a5f09f955d4c892aa410eb4e43b9580e9a028ff8",
   "entries": 182,
   "files": [
     {
@@ -70,8 +70,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 17116,
-      "sha256": "ff911e2df2736a4b97fabfd4c4226342bc382dac687e7ba77088ea37d7e53e5c"
+      "size": 16852,
+      "sha256": "29be22ec2e6d327bbbda3af9972408296a950b744ca47c68f3264eb704d283ef"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
@@ -835,8 +835,8 @@
     },
     {
       "path": "tests/test_doctor.py",
-      "size": 16314,
-      "sha256": "5715c9141907f0173fa927273274ed9f195e1acc75ed9a0514fd0405805c168d"
+      "size": 17452,
+      "sha256": "ee344f7d779e6c8631638a536bd44639d5a08c4658603bf5c2d0ff8b2724eba8"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",

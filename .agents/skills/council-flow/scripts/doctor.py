@@ -51,18 +51,23 @@ def _relative_parts(relative):
     return parts if all(part not in {"", ".", ".."} for part in parts) else None
 
 
-def _has_linked_component(path):
-    candidate = Path(os.path.abspath(path))
-    current = Path(candidate.anchor)
-    for part in candidate.parts[1:]:
-        current = current / part
-        try:
-            info = current.lstat()
-        except OSError:
-            return False
-        if stat.S_ISLNK(info.st_mode) or getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400):
-            return True
-    return False
+def _open_directory_chain(path, directory_flags):
+    absolute = Path(os.path.abspath(path))
+    current_fd = os.open(absolute.anchor, directory_flags)
+    opened = [(current_fd, None, None)]
+    try:
+        for part in absolute.parts[1:]:
+            info = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
+            if not stat.S_ISDIR(info.st_mode):
+                raise NotADirectoryError(part)
+            next_fd = os.open(part, directory_flags, dir_fd=current_fd)
+            opened.append((next_fd, current_fd, (part, info.st_dev, info.st_ino)))
+            current_fd = next_fd
+    except BaseException:
+        for descriptor_fd, _, _ in reversed(opened):
+            os.close(descriptor_fd)
+        raise
+    return opened, current_fd
 
 
 def _hash_artifact(root, relative):
@@ -73,13 +78,8 @@ def _hash_artifact(root, relative):
             or os.stat not in os.supports_follow_symlinks or not hasattr(os, "O_NOFOLLOW")):
         return {"status": "UNVERIFIED", "detail": "this platform cannot enforce descriptor-relative no-follow reads", "digest": None}
     try:
-        root_input = Path(root)
-        if _has_linked_component(root_input):
-            return {"status": "BLOCKED", "detail": "linked evidence roots are not accepted", "digest": None}
-        base = root_input.resolve(strict=True)
         directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | os.O_NOFOLLOW
-        current_fd = os.open(base, directory_flags)
-        opened = [(current_fd, None, None)]
+        opened, current_fd = _open_directory_chain(root, directory_flags)
         try:
             for part in parts[:-1]:
                 info = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
@@ -111,10 +111,6 @@ def _hash_artifact(root, relative):
                     if ((current.st_dev, current.st_ino) != (device, inode)
                             or (opened_info.st_dev, opened_info.st_ino) != (device, inode)):
                         return {"status": "BLOCKED", "detail": "artifact ancestor changed during verification", "digest": None}
-                root_now = os.stat(base)
-                root_info = os.fstat(opened[0][0])
-                if (root_now.st_dev, root_now.st_ino) != (root_info.st_dev, root_info.st_ino):
-                    return {"status": "BLOCKED", "detail": "evidence root changed during verification", "digest": None}
                 signature = (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
                 final_signature = (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns)
                 path_signature = (path_after.st_dev, path_after.st_ino, path_after.st_size, path_after.st_mtime_ns, path_after.st_ctime_ns)

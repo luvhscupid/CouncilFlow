@@ -15,6 +15,10 @@ class JournalError(ValueError):
     pass
 
 
+class _UnknownRunError(JournalError):
+    pass
+
+
 _NEXT = {
     "PLANNED": {"READY", "BLOCKED", "CANCELLED"},
     "READY": {"ASSIGNED", "BLOCKED", "CANCELLED"},
@@ -45,22 +49,27 @@ def _valid_digest(value):
     return isinstance(value, str) and len(value) == _DIGEST_LENGTH and all(c in "0123456789abcdef" for c in value)
 
 
-def _has_linked_component(path):
-    candidate = Path(os.path.abspath(path))
-    current = Path(candidate.anchor)
-    for part in candidate.parts[1:]:
-        current = current / part
-        try:
-            info = current.lstat()
-        except OSError:
-            return False
-        if stat.S_ISLNK(info.st_mode) or getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400):
-            return True
-    return False
-
-
 def _nonempty_string(value):
     return isinstance(value, str) and bool(value.strip())
+
+
+def _open_directory_chain(path, directory_flags):
+    absolute = Path(os.path.abspath(path))
+    current_fd = os.open(absolute.anchor, directory_flags)
+    opened = [(current_fd, None, None)]
+    try:
+        for part in absolute.parts[1:]:
+            entry = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
+            if not stat.S_ISDIR(entry.st_mode):
+                raise NotADirectoryError(part)
+            next_fd = os.open(part, directory_flags, dir_fd=current_fd)
+            opened.append((next_fd, current_fd, (part, entry.st_dev, entry.st_ino)))
+            current_fd = next_fd
+    except BaseException:
+        for descriptor_fd, _, _ in reversed(opened):
+            os.close(descriptor_fd)
+        raise
+    return opened, current_fd
 
 
 def _validate_artifact(value):
@@ -128,13 +137,8 @@ def _hash_under_root(evidence_root, descriptor):
             or not hasattr(os, "O_NOFOLLOW")):
         return {"status": "UNVERIFIED", "detail": "this platform cannot enforce descriptor-relative no-follow reads"}
     try:
-        root = Path(evidence_root).resolve(strict=True)
         directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | os.O_NOFOLLOW
-        root_input = Path(evidence_root)
-        if _has_linked_component(root_input):
-            return {"status": "BLOCKED", "detail": "linked evidence roots are not accepted"}
-        current_fd = os.open(root, directory_flags)
-        opened = [(current_fd, None, None)]
+        opened, current_fd = _open_directory_chain(evidence_root, directory_flags)
         parts = descriptor["path"].split("/")
         try:
             for part in parts[:-1]:
@@ -164,10 +168,6 @@ def _hash_under_root(evidence_root, descriptor):
                     if ((current.st_dev, current.st_ino) != (device, inode)
                             or (opened_info.st_dev, opened_info.st_ino) != (device, inode)):
                         return {"status": "BLOCKED", "detail": "candidate artifact ancestor changed during verification"}
-                root_now = os.stat(root)
-                root_info = os.fstat(opened[0][0])
-                if (root_now.st_dev, root_now.st_ino) != (root_info.st_dev, root_info.st_ino):
-                    return {"status": "BLOCKED", "detail": "evidence root changed during verification"}
                 signature = lambda item: (item.st_dev, item.st_ino, item.st_size, item.st_mtime_ns, item.st_ctime_ns)
                 if signature(before) != signature(after) or signature(after) != signature(path_after):
                     return {"status": "BLOCKED", "detail": "candidate artifact changed during verification"}
@@ -359,7 +359,7 @@ class Journal:
             db.execute("BEGIN")
             run = db.execute("SELECT * FROM runs WHERE run_id=?", (run_id,)).fetchone()
             if run is None:
-                raise JournalError("unknown run")
+                raise _UnknownRunError("unknown run")
             events = db.execute("SELECT event_id, revision, state, payload FROM events WHERE run_id=? ORDER BY revision", (run_id,)).fetchall()
         parsed = []
         for event in events:
@@ -488,6 +488,8 @@ class Journal:
     def reconcile(self, run_id, evidence_root):
         try:
             run, events = self._load(run_id)
+        except _UnknownRunError:
+            raise
         except (JournalError, sqlite3.DatabaseError) as exc:
             return {"run_id": run_id, "recovery_status": "UNAVAILABLE",
                     "last_verified_revision": None, "reason_codes": ["JOURNAL_UNAVAILABLE"],
