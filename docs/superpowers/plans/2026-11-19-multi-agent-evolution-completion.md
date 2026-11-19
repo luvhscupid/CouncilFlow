@@ -153,6 +153,8 @@
 
 ### Task 7: Execute P6 only after P1–P3 evidence gates are complete
 
+**Execution result:** `BLOCKED_OWNER_INPUT`. Evaluator tests passed, but the live phase card lacks a route, frozen oracles, independent verifier bindings, retention, all-role budgets, stop control, and outcome rules. No fixture or live run was started.
+
 **Files:**
 - Read: `experiments/agent-efficiency/evaluation/PROTOCOL.md`, `RUNBOOK.md`, `protocol.draft.json`
 - New run artifacts: only in ignored `.local-runs/` or an explicitly approved external directory
@@ -160,12 +162,12 @@
 
 **Interfaces:** Each candidate is a frozen manifest compared to an unchanged baseline. The evaluation result includes failed/censored attempts, independent Tester/Reviewer outcomes, unknown measures, and a written `CLOSED_NO_BENEFIT`, `INCONCLUSIVE`, or `BENEFIT_OBSERVED` only under a separately approved confirmatory protocol; no automatic promotion.
 
-- [ ] **Step 1: Preflight checklist.** Compare the proposed phase card against required task/oracle hashes, verifier bindings, route, telemetry, budget, stop mechanism, retention, effect threshold, and reliability rule. Do not add a readiness service; any missing value means no live run.
-- [ ] **Step 2: Run existing evaluator tests.** `python -B -m unittest discover -s experiments/agent-efficiency -v`; correct no failure by weakening controls.
-- [ ] **Step 3: Seal the experiment.** Only after a phase card is explicitly approved, freeze task copies/oracles, order, retries, host/route, candidate, output manifests, all-role call/time/quota/cost ceilings, stop operator, independent verifiers, and analysis rules before the first call. Use no production repository as a task fixture.
-- [ ] **Step 4: Run one authorized block.** Preserve every failed, timed-out, abandoned, repaired, and censored attempt. Stop at first bound or safety breach. Do not enlarge budgets or retry a failed route without new approval.
-- [ ] **Step 5: Analyze and review.** Report uncertainty and missing telemetry; do not claim benefit from the six-task feasibility pilot or use `evaluate.py` output as authorization. Require independent replay and Owner decision before a new proposal.
-- [ ] **Step 6: Commit evidence metadata only.** Keep prompts, credentials, and private conversations out of the repository. Publish no model call data without an explicit retention/sharing decision.
+- [x] **Step 1: Preflight checklist.** Compare the proposed phase card against required task/oracle hashes, verifier bindings, route, telemetry, budget, stop mechanism, retention, effect threshold, and reliability rule. Do not add a readiness service; any missing value means no live run.
+- [x] **Step 2: Run existing evaluator tests.** `python -B -m unittest discover -s experiments/agent-efficiency -v`; correct no failure by weakening controls.
+- [x] **Step 3: Seal the experiment.** Blocked: no phase card or required Owner/host inputs. No task copies/oracles or live candidate are created.
+- [x] **Step 4: Run one authorized block.** Blocked: authorization and numeric safety bounds are absent; zero calls were made.
+- [x] **Step 5: Analyze and review.** No live results exist to analyze. The existing offline fixture remains `NOT_APPROVED` and cannot establish benefit.
+- [x] **Step 6: Commit evidence metadata only.** Record only blocker metadata; no prompts, credentials, or private conversations were created or published.
 
 **Exit:** an approved feasibility pilot yields `INCONCLUSIVE` or `CLOSED_NO_BENEFIT`. `BENEFIT_OBSERVED` is unavailable unless a separate confirmatory protocol is approved and completed. No production configuration changes.
 

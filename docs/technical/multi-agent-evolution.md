@@ -69,6 +69,8 @@ cross-platform crash recovery remains unverified.
 - P5 doctor v2 adds local executable-byte integrity and structural native-host
   references only. Experience entries remain metadata filters labeled
   `UNVERIFIED`; no Worker-context injection or dashboard is implemented.
+- P6 live optimization is `BLOCKED_OWNER_INPUT`; the synthetic evaluator is
+  descriptive offline analysis and does not authorize a model call or promotion.
 - No dashboard or independent-model council room was added.
 - Native Codex/Claude activation and route identity remain unverified for this
   branch.

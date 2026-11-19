@@ -12,7 +12,7 @@
 | P3 local journal prototype | `EXPERIMENTAL_V2_LOCAL_CHECKS; HOST_AUTH_UNVERIFIED` | Schema v2 journal under `experiments/multi-agent-evolution/` remains outside installable runtime. It records attempt/parent identity and can read-only check local event chains and explicitly rooted candidate bytes. V1 remains read-only export. Actor/session and approval claims remain unverified; OS-platform coverage beyond Linux is unverified. No dispatch/replay or durable-user-data path exists. |
 | P4 DAG/isolation | `ISOLATION_BLOCKED; SERIAL_MUTATION` | Pure graph validation remains offline and passes 5 focused tests. This environment has `bwrap` and a Codex sandbox CLI, but no worker-specific sandbox policy/state or cross-workspace deny evidence was available; unrestricted workspace access is not isolation evidence. No scheduler, model worker, or parallel write was started. |
 | P5 experience/doctor/observability | `OFFLINE_SCHEMA_V2_COMPLETE; AUTHORITY_UNVERIFIED` | Duplicate experience IDs fail closed; selection remains project/supersession metadata filtering with `review_status: UNVERIFIED`. Doctor schema v1 output remains stable; v2 hashes rooted executable bytes without executing them and marks caller host records `UNVERIFIED`. No Worker-context injection or dashboard exists. |
-| P6 workflow optimization | `OFFLINE_FIXTURE_ONLY; LIVE_BLOCKED` | Existing synthetic evaluator was exercised and found no benefit under its fixture. No benchmark corpus, candidate promotion or live optimization was performed. |
+| P6 workflow optimization | `OFFLINE_FIXTURE_ONLY; LIVE_BLOCKED_OWNER_INPUT` | Evaluator tests pass 3/3 and the fixture remains descriptive only. No approved phase card, host/route, frozen task/oracle set, independent verifier bindings, complete telemetry/retention, all-role numeric budgets, enforced stop control, or effect/reliability decision rule exists. No live call or promotion was performed. |
 | P7 opinion board | `DEFERRED` | No service was added. It remains an optional separate project requiring its own privacy, identity and storage design. |
 
 ## Verification
@@ -76,6 +76,12 @@ The product helpers are deterministic local code, not a trusted supervisor or au
 - Experience tests reject duplicate IDs, malformed review claims, wrong-project and superseded entries. Returned entries keep `review_status: UNVERIFIED`, and selection does not mutate source records or create Worker context.
 - Doctor schema v1 preserves its output structure; artifact hashes now use no-follow regular-file reads. Schema v2 adds nullable executable-artifact and native-host fields, validates executable bytes without invoking them, and keeps host references `UNVERIFIED`.
 - Focused P5 tests: **25 passed**. Full tests: **294 passed, 1 platform skip**. Canonical/Claude copies are synchronized; package check/build results are recorded with the final P5 run.
+
+## 2026-11-19 completion-plan P6 live preflight
+
+- `python -B -m unittest discover -s experiments/agent-efficiency -v`: **3 passed**; the existing fixture still reports its descriptive `CLOSED_NO_BENEFIT` result and `NOT_APPROVED; offline analysis only` status.
+- No phase card is approved and no host/route, oracle hashes, independent Tester/Reviewer bindings, complete telemetry/retention, numeric all-role call/quota/cost/time ceilings, enforced stop operator, or effect/reliability decision rule is supplied. P2 host capability query is also unsupported in this environment.
+- P6 closes `BLOCKED_OWNER_INPUT`. No fixtures were created, no live call was made, and no candidate was promoted. Evidence remains metadata-only; no prompts, private conversations, or credentials were stored.
 
 ## 2026-11-19 completion-plan P1 live gate
 
