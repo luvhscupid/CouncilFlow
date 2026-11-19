@@ -22,6 +22,23 @@ SAFE_DESCRIPTOR_READS = (
 )
 
 
+def _can_create_symlinks():
+    if not hasattr(os, "symlink"):
+        return False
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            target = root / "target"
+            target.touch()
+            (root / "link").symlink_to(target)
+        return True
+    except (OSError, NotImplementedError):
+        return False
+
+
+SYMLINKS_AVAILABLE = _can_create_symlinks()
+
+
 class DoctorTests(unittest.TestCase):
     def test_schema_v1_output_contract_is_unchanged(self):
         self.assertEqual(diagnose({"schema_version": 1}), [
@@ -64,8 +81,9 @@ class DoctorTests(unittest.TestCase):
             expected = hashlib.sha256(b"source bytes").hexdigest()
             result = diagnose({"schema_version": 1, "source_artifact": {"path": "source.txt", "sha256": expected}}, root)
             source = next(item for item in result if item["check"] == "source_integrity")
-            self.assertEqual(source["status"], "PASS")
-            self.assertEqual(source["detail"], "referenced source bytes match the declared SHA-256")
+            self.assertEqual(source["status"], "PASS" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
+            if SAFE_DESCRIPTOR_READS:
+                self.assertEqual(source["detail"], "referenced source bytes match the declared SHA-256")
 
     def test_v2_null_executable_and_host_evidence_are_blocked(self):
         result = diagnose({"schema_version": 2, "executable_artifact": None, "native_host": None})
@@ -86,7 +104,8 @@ class DoctorTests(unittest.TestCase):
                 "native_host": {"name": "Codex", "version": "caller-version", "evidence_ref": "host.json"},
             }, root)
             self.assertFalse(marker.exists())
-        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "PASS")
+        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"],
+                         "PASS" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
         self.assertEqual(next(item for item in result if item["check"] == "native_host")["status"], "UNVERIFIED")
 
     def test_v2_malformed_records_digest_mismatch_and_missing_fields_fail(self):
@@ -106,7 +125,7 @@ class DoctorTests(unittest.TestCase):
                                "native_host": None}, tmp)
         self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
-    @unittest.skipUnless(hasattr(os, "symlink"), "symlinks are unavailable")
+    @unittest.skipUnless(SYMLINKS_AVAILABLE, "symlink creation is unavailable")
     def test_v2_symlink_executable_fails_without_reading_target(self):
         with tempfile.TemporaryDirectory() as root_dir, tempfile.TemporaryDirectory() as outside_dir:
             root, outside = Path(root_dir), Path(outside_dir)
@@ -143,8 +162,9 @@ class DoctorTests(unittest.TestCase):
 
     def test_source_path_traversal_fails_closed(self):
         result = diagnose({"schema_version": 1, "source_artifact": {"path": "../outside", "sha256": "0" * 64}}, Path.cwd())
-        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
+        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL")
 
+    @unittest.skipUnless(SYMLINKS_AVAILABLE, "symlink creation is unavailable")
     def test_source_symlink_escape_fails_closed(self):
         with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as outside:
             root = Path(tmp)
@@ -153,7 +173,7 @@ class DoctorTests(unittest.TestCase):
             result = diagnose({"schema_version": 1, "source_artifact": {"path": "link", "sha256": hashlib.sha256(b"outside").hexdigest()}}, root)
             self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
-    @unittest.skipUnless(hasattr(os, "symlink"), "symlinks are unavailable")
+    @unittest.skipUnless(SYMLINKS_AVAILABLE, "symlink creation is unavailable")
     def test_source_symlink_inside_root_fails_without_following(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -208,16 +228,18 @@ class DoctorTests(unittest.TestCase):
         self.assertEqual(json.loads(stdin_run.stdout)[1]["status"], "BLOCKED")
         self.assertEqual(bad_run.returncode, 2)
 
+    @unittest.skipUnless(SYMLINKS_AVAILABLE or hasattr(os, "mkfifo"), "symlink and FIFO inputs are unavailable")
     def test_cli_rejects_symlink_and_fifo_evidence_inputs_without_blocking(self):
         script = Path(__file__).resolve().parents[1] / ".agents" / "skills" / "council-flow" / "scripts" / "doctor.py"
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             regular = root / "regular.json"
             regular.write_text('{"schema_version":1}', encoding="utf-8")
-            link = root / "link.json"
-            link.symlink_to(regular)
-            linked = subprocess.run([sys.executable, "-B", str(script), str(link)], capture_output=True, text=True, timeout=3)
-            self.assertEqual(linked.returncode, 2)
+            if SYMLINKS_AVAILABLE:
+                link = root / "link.json"
+                link.symlink_to(regular)
+                linked = subprocess.run([sys.executable, "-B", str(script), str(link)], capture_output=True, text=True, timeout=3)
+                self.assertEqual(linked.returncode, 2)
             if hasattr(os, "mkfifo"):
                 fifo = root / "evidence.fifo"
                 os.mkfifo(fifo)
@@ -252,7 +274,7 @@ class DoctorTests(unittest.TestCase):
                 result = doctor._hash_artifact(root, "sub/artifact")
             self.assertEqual(result["status"], "BLOCKED")
 
-    @unittest.skipUnless(SAFE_DESCRIPTOR_READS and hasattr(os, "symlink"), "safe symlink-root checks unavailable")
+    @unittest.skipUnless(SAFE_DESCRIPTOR_READS and SYMLINKS_AVAILABLE, "safe symlink-root checks unavailable")
     def test_artifact_hash_rejects_root_replaced_by_symlink_during_hash(self):
         with tempfile.TemporaryDirectory() as tmp:
             parent = Path(tmp)
@@ -284,7 +306,7 @@ class DoctorTests(unittest.TestCase):
         self.assertEqual(result["status"], "UNVERIFIED")
 
     def test_linked_evidence_root_is_rejected(self):
-        if not SAFE_DESCRIPTOR_READS:
+        if not SAFE_DESCRIPTOR_READS or not SYMLINKS_AVAILABLE:
             self.skipTest("descriptor-relative no-follow reads unavailable")
         with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as outside:
             root = Path(tmp)

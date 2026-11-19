@@ -4,6 +4,7 @@ import os
 import sqlite3
 import tempfile
 import unittest
+from contextlib import closing
 from pathlib import Path
 import sys
 from unittest.mock import patch
@@ -20,6 +21,23 @@ SAFE_DESCRIPTOR_READS = (
     and os.stat in os.supports_follow_symlinks
     and hasattr(os, "O_NOFOLLOW")
 )
+
+
+def _can_create_symlinks():
+    if not hasattr(os, "symlink"):
+        return False
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            target = root / "target"
+            target.touch()
+            (root / "link").symlink_to(target)
+        return True
+    except (OSError, NotImplementedError):
+        return False
+
+
+SYMLINKS_AVAILABLE = _can_create_symlinks()
 
 
 class JournalTests(unittest.TestCase):
@@ -141,12 +159,12 @@ class JournalTests(unittest.TestCase):
         reopened = Journal(self.path)
         self.assertEqual(self.journal.export(self.run_id), reopened.export(self.run_id))
         self.assertEqual(json.loads(reopened.export(self.run_id))["schema_version"], 2)
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             self.assertEqual(db.execute("SELECT value FROM metadata WHERE key='schema_version'").fetchone()[0], "2")
 
     def test_v1_is_preserved_and_available_only_for_readonly_export(self):
         path = self.root / "legacy-v1.sqlite3"
-        with sqlite3.connect(path) as db:
+        with closing(sqlite3.connect(path)) as db, db:
             db.executescript("""
                 CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL);
                 CREATE TABLE runs (run_id TEXT PRIMARY KEY, plan_ref TEXT NOT NULL, plan_sha256 TEXT NOT NULL, state TEXT NOT NULL, revision INTEGER NOT NULL);
@@ -182,7 +200,7 @@ class JournalTests(unittest.TestCase):
         original_ref = {"path": "candidate.bin", "sha256": hashlib.sha256(original.read_bytes()).hexdigest()}
         accepted_ref = {"path": "other.bin", "sha256": hashlib.sha256(accepted.read_bytes()).hexdigest()}
         self.accept(original_ref)
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             payload = json.loads(db.execute("SELECT payload FROM events WHERE run_id=? ORDER BY revision DESC LIMIT 1",
                                             (self.run_id,)).fetchone()[0])
             payload["candidate_sha256"] = accepted_ref["sha256"]
@@ -203,10 +221,10 @@ class JournalTests(unittest.TestCase):
 
     def test_persisted_run_plan_digest_and_duplicate_json_keys_fail_integrity(self):
         self.journal.transition(self.run_id, 0, "READY", self.payload())
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("UPDATE runs SET plan_sha256='invalid' WHERE run_id=?", (self.run_id,))
         self.assertIn("INVALID_RUN", [c["detail"] for c in self.journal.verify_run(self.run_id, self.root)["checks"]])
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("UPDATE runs SET plan_sha256=? WHERE run_id=?", ("a" * 64, self.run_id))
             db.execute("UPDATE events SET payload=? WHERE run_id=?", ('{"attempt_id":"a","attempt_id":"b"}', self.run_id))
         self.assertEqual(self.journal.verify_run(self.run_id, self.root)["integrity_status"], "FAIL")
@@ -240,7 +258,7 @@ class JournalTests(unittest.TestCase):
             local.transition(local_run, 0, "READY", payload)
             return local.verify_run(local_run, self.root)["integrity_status"]
 
-        if hasattr(os, "symlink"):
+        if SYMLINKS_AVAILABLE:
             (self.root / "link.bin").symlink_to(regular)
             self.assertEqual(verify_unsafe_path("link.bin"), "BLOCKED" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
         if hasattr(os, "mkfifo"):
@@ -280,7 +298,7 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(result["status"], "BLOCKED")
 
     def test_journal_rejects_linked_evidence_root(self):
-        if not SAFE_DESCRIPTOR_READS:
+        if not SAFE_DESCRIPTOR_READS or not SYMLINKS_AVAILABLE:
             self.skipTest("descriptor-relative no-follow reads unavailable")
         outside = self.root / "outside"
         outside.mkdir()
@@ -292,7 +310,7 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(result["status"], "BLOCKED")
 
     def test_journal_hash_rejects_root_replaced_by_symlink_during_hash(self):
-        if not SAFE_DESCRIPTOR_READS or not hasattr(os, "symlink"):
+        if not SAFE_DESCRIPTOR_READS or not SYMLINKS_AVAILABLE:
             self.skipTest("safe symlink-root checks unavailable")
         parent = self.root
         evidence_root = parent / "evidence"
@@ -354,7 +372,7 @@ class JournalTests(unittest.TestCase):
 
     def test_event_chain_corruption_is_reported_and_reconciliation_does_not_repair(self):
         self.journal.transition(self.run_id, 0, "READY", self.payload())
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("UPDATE events SET payload=? WHERE run_id=?", (json.dumps(self.payload(parent_event_id="forged-parent")), self.run_id))
         before = hashlib.sha256(self.path.read_bytes()).hexdigest()
         report = self.journal.verify_run(self.run_id, self.root)
@@ -370,13 +388,13 @@ class JournalTests(unittest.TestCase):
         self.accept(artifact)
         before = hashlib.sha256(self.path.read_bytes()).hexdigest()
         result = self.journal.reconcile(self.run_id, self.root)
-        self.assertEqual(result["recovery_status"], "COMPLETE_RECORD")
+        self.assertEqual(result["recovery_status"], "COMPLETE_RECORD" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
         self.assertIn("UNVERIFIED_ACTOR", result["reason_codes"])
         self.assertIn("UNVERIFIED_APPROVAL", result["reason_codes"])
         self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), before)
 
     def test_sqlite_failure_rolls_back_event_and_run_state(self):
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("CREATE TRIGGER reject_event BEFORE INSERT ON events BEGIN SELECT RAISE(ABORT, 'injected'); END")
         with self.assertRaises(JournalError):
             self.journal.transition(self.run_id, 0, "READY", self.payload())
@@ -386,7 +404,7 @@ class JournalTests(unittest.TestCase):
         other_path = self.root / "state-update.sqlite3"
         other = Journal(other_path)
         other_run = other.create_run("state-run", "plan", "d" * 64)
-        with sqlite3.connect(other_path) as db:
+        with closing(sqlite3.connect(other_path)) as db, db:
             db.execute("CREATE TRIGGER reject_state BEFORE UPDATE OF state ON runs BEGIN SELECT RAISE(ABORT, 'injected'); END")
         payload = {
             "attempt_id": other.get_run(other_run)["attempt_id"], "attempt_revision": 0,
@@ -423,7 +441,7 @@ class JournalTests(unittest.TestCase):
 
     def test_corrupt_event_json_is_reported_as_integrity_failure(self):
         self.journal.transition(self.run_id, 0, "READY", self.payload())
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("UPDATE events SET payload='not-json' WHERE run_id=?", (self.run_id,))
         report = self.journal.verify_run(self.run_id, self.root)
         self.assertEqual(report["integrity_status"], "FAIL")
