@@ -40,13 +40,14 @@ review, ingest model output, or inject lessons into Worker context.
 `experiments/multi-agent-evolution/journal.py` is an offline SQLite prototype.
 It is intentionally outside the installed skill because current product tests
 forbid SQLite in runtime code and no storage/retention policy has been qualified.
-It stores allowlisted state metadata and opaque evidence references, not
-evidence content. It provides a SQLite schema version, state transitions,
-transaction/CAS revision checks, duplicate event rejection, and required
-acceptance-reference fields. It does not inspect reference targets, validate
-attempt identity, recompute artifact hashes, authenticate approvals or native
-sessions, reconcile interrupted host sessions, or establish cross-platform
-crash recovery. It is not a trusted authorization service.
+Schema v2 stores allowlisted event metadata, opaque evidence references, attempt
+and parent-event identity, and optional rooted candidate-artifact descriptors.
+`verify_run` checks local event-chain consistency and candidate bytes beneath an
+explicit evidence root; `reconcile` is read-only and never dispatches or replays
+work. Legacy v1 databases remain unchanged and can only be opened read-only for
+export. Actor/session and approval fields are claims and stay `UNVERIFIED`.
+This prototype is not a trusted authorization or native-session service, and
+cross-platform crash recovery remains unverified.
 
 ## Current phase limits
 
