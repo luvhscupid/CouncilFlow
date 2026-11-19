@@ -52,7 +52,10 @@ cross-platform crash recovery remains unverified.
 ## Current phase limits
 
 - No live role/model routing, model trials, or Package D A/B experiment.
-- No OS-enforced workspace isolation; parallel mutation remains disabled.
+- P4 isolation remains `ISOLATION_BLOCKED`; the DAG helper does not schedule tasks.
+  Codex sandbox tooling and `bwrap` are present, but no worker-specific deny
+  policy or cross-workspace test evidence is available. Serial mutation remains
+  in force.
 - No dashboard or independent-model council room was added.
 - Native Codex/Claude activation and route identity remain unverified for this
   branch.

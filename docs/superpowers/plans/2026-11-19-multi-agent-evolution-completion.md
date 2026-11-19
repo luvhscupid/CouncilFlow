@@ -117,17 +117,19 @@
 
 ### Task 5: Qualify P4 isolation without enabling unproven parallel writes
 
+**Execution result:** `ISOLATION_BLOCKED`. No concrete per-worker OS sandbox policy or approved deny-test harness is available in this environment. The graph validator passed; direct path, symlink/reparse, inherited-handle, and stale-promotion isolation probes remain `NOT RUN`, so no isolation adapter or scheduler was added.
+
 **Files:**
 - Modify only the pure graph helper if a test reveals a defect: `.agents/skills/council-flow/scripts/task_graph.py`, `tests/test_task_graph.py`
 - Add an isolated harness only after the actual OS mechanism is identified and approved; document in `docs/technical/multi-agent-evolution.md` and status report
 
 **Interfaces:** `validate_graph(nodes, plan_revision)` remains a pure validator. A workspace launcher is outside the current helper and must not be added until a documented OS sandbox API and rollback design exist.
 
-- [ ] **Step 1: Add isolation controls.** Define tests where worker A attempts read/write through direct path, symlink/reparse path, inherited process handle, and concurrent/stale-base promotion into worker B's workspace. Require the OS sandbox, not application path checks, to deny access.
-- [ ] **Step 2: Verify the baseline.** Run graph tests and confirm the existing environment's declared/actual permissions. No model agents or mutating tasks are started.
-- [ ] **Step 3: Decide by evidence.** If a host/OS sandbox provides enforceable deny controls, implement a disabled-by-default adapter plus conflict, stale-base, failed-promotion, and rollback tests. If not, record `ISOLATION_BLOCKED` and make no scheduler or parallel mutation feature.
-- [ ] **Step 4: Verify promotion semantics.** Any combined candidate gets a fresh independent Tester/Reviewer pass against original criteria. Conflicted, stale, or partial promotion must leave trusted source untouched.
-- [ ] **Step 5: Commit.** `feat: add isolated workspace qualification` or `docs: keep P4 parallel writes blocked`.
+- [x] **Step 1: Add isolation controls.** Define tests where worker A attempts read/write through direct path, symlink/reparse path, inherited process handle, and concurrent/stale-base promotion into worker B's workspace. Require the OS sandbox, not application path checks, to deny access. The matrix is recorded in the status report; executable probes are blocked until a concrete policy is available.
+- [x] **Step 2: Verify the baseline.** Run graph tests and confirm the existing environment's declared/actual permissions. No model agents or mutating tasks are started.
+- [x] **Step 3: Decide by evidence.** If a host/OS sandbox provides enforceable deny controls, implement a disabled-by-default adapter plus conflict, stale-base, failed-promotion, and rollback tests. If not, record `ISOLATION_BLOCKED` and make no scheduler or parallel mutation feature.
+- [x] **Step 4: Verify promotion semantics.** No combined candidate or promotion was created; the isolation gate is blocked and trusted source was not modified.
+- [x] **Step 5: Commit.** `feat: add isolated workspace qualification` or `docs: keep P4 parallel writes blocked`.
 
 **Exit:** demonstrated cross-workspace deny and serialized promotion, or an explicit `ISOLATION_BLOCKED` result with serial mode retained.
 

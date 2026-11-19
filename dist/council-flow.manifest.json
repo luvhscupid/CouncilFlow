@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "f7a571a71a8d80d0d2766a5246f841320ade604867c1fca714995087fee5ce4e",
+  "sha256": "56f9bc1510c9d5639ae3054765a8700cb1f7b894b855bb92d86ef94a44282e9d",
   "entries": 183,
   "files": [
     {
@@ -455,8 +455,8 @@
     },
     {
       "path": "docs/technical/multi-agent-evolution.md",
-      "size": 3157,
-      "sha256": "7579ff3228e59b8b467b016399da53522f8682cd24c8ee74ab48ee18162573bd"
+      "size": 3336,
+      "sha256": "c82a8d7cd27ffd722777b95a48aa1e25f86bcffd8655482730f9ed1b705af255"
     },
     {
       "path": "docs/technical/structured-communication.md",
