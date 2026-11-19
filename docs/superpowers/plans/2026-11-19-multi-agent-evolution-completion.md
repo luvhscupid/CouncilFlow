@@ -189,10 +189,10 @@
 
 **Files:** status report and any phase evidence docs; generated artifacts only if source packages changed.
 
-- [ ] **Step 1: Run** `python -B -m unittest discover -s tests -v` and `python -B -m unittest discover -s experiments/agent-efficiency -v`.
-- [ ] **Step 2: Run** `python -B tools/build_claude_plugin.py sync`, `check`, and `build`; run `python -B tools/build_release.py` if release sources changed. Then run `git diff --check` and inspect staged/generated ZIP contents.
+- [x] **Step 1: Run** `python -B -m unittest discover -s tests -v` and `python -B -m unittest discover -s experiments/agent-efficiency -v`.
+- [x] **Step 2: Run** `python -B tools/build_claude_plugin.py sync`, `check`, and `build`; run `python -B tools/build_release.py` if release sources changed. Then run `git diff --check` and inspect staged/generated ZIP contents.
 - [ ] **Step 3: Verify** canonical/Claude runtime file equality; list changed files; compare current base/candidate hashes; record exact pass/fail/skip counts and phase status. Fresh independent Reviewer checks P0–P6 claims and unresolved risk list.
-- [ ] **Step 4: Close every phase** as `COMPLETE`, `BLOCKED_*`, `NO_GO`, or `NOT_APPLICABLE`; do not leave an implied green state. Any final commit or push updates only the feature branch. No merge/release occurs under this plan.
+- [x] **Step 4: Close every phase** as `COMPLETE`, `BLOCKED_*`, `NO_GO`, or `NOT_APPLICABLE`; do not leave an implied green state. Any final commit or push updates only the feature branch. No merge/release occurs under this plan.
 - [ ] **Step 5: Commit and publish the plan's execution evidence** on the feature branch only. Do not merge or release.
 
 ## Execution order and parallelism

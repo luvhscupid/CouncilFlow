@@ -99,6 +99,13 @@ P7 is `NOT_APPLICABLE` to the core evolution completion. An opinion board would 
 
 No repository access, execution, provider credentials, durable storage, or import authority is added. Reopen P7 only under a separate product request with privacy, identity, retention, and import-control decisions.
 
+## 2026-11-19 completion-plan whole-program closeout
+
+- All phases have explicit outcomes: P0 refreshed with license unresolved; P1 offline-qualified/live blocked; P2 capability query unsupported in this environment; P3 local experimental journal v2 complete with host authentication unverified; P4 isolation blocked and serial; P5 offline schema v2 complete; P6 live optimization blocked on Owner inputs; P7 not applicable to the core program.
+- Verification on this candidate: `python -B -m unittest discover -s tests -v` — **294 passed, 1 platform skip**; `python -B -m unittest discover -s experiments/agent-efficiency -v` — **3 passed**. Codex release build CRC/source-byte checks and Claude sync/check/build passed; package consistency tests passed. Canonical/Claude runtime copies were checked; neither archive includes the experimental journal.
+- Base SHA and branch ancestry remain `5d8eb8686c51c392c0689e04932758ca30a76f2d`; the feature candidate before this closeout record was `906b8f93a441d77d88b9ab8c3a48a0edaa49966c`. Changes are confined to the feature branch. The generated ZIPs are repository consistency artifacts, not a product release; no merge or promotion occurred.
+- All work stayed offline: zero live model calls/spend, no provider/host configuration or permission changes, no parallel workers, and no durable user-data journal.
+
 ## 2026-11-19 completion-plan P1 live gate
 
 - Compared `PROTOCOL.md`, `RUNBOOK.md`, `protocol.draft.json`, `test_evaluate.py`, and the implementation status. The recorded offline qualification remains unchanged; the evaluator test suite passes 3 tests (exact rerun recorded in this execution's commit history/verification log).

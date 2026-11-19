@@ -19,3 +19,5 @@ Task 6: complete (commits fc6f9a2..HEAD, tests: python -B -m unittest tests.test
 Task 7: complete (commits e63d0fb..HEAD, tests: python -B -m unittest discover -s experiments/agent-efficiency -v → 3 passed; git diff --check passed). P6 closed BLOCKED_OWNER_INPUT after recording missing phase-card fields; zero live calls, fixtures, or promotions.
 
 Task 8: complete (commits f2e28cf..HEAD, tests: not applicable—documentation-only threat/decision record; git diff --check passed). P7 is NOT_APPLICABLE to this core program and remains a separately authorized project; no service, storage, or import path was created.
+
+Task 9: verification complete; independent whole-branch review and feature-branch push remain (pre-review commit pending). Fresh final runs: main suite 294 passed / 1 platform skip; Agent Efficiency 3 passed; Codex release CRC/source bytes PASS; Claude sync/check/build PASS; both packages exclude journal; git diff --check PASS. `origin/main` and merge-base remain 5d8eb8686c51c392c0689e04932758ca30a76f2d.
