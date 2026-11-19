@@ -73,10 +73,10 @@
 
 **Interfaces:** P1 offline status is already `OFFLINE_QUALIFICATION_COMPLETE`; refresh it only if protocol/source evidence changes. Live readiness is an approved phase card, not a code-level boolean. This task adds no readiness service or live call.
 
-- [ ] **Step 1: Compare recorded offline evidence.** Check the protocol, runbook, draft JSON, evaluator, and status report. Re-run offline suites only if relevant sources changed.
-- [ ] **Step 2: Record live blockers.** A pilot card must supply one host/route, frozen tasks/oracles, independent Tester and Reviewer bindings, permitted telemetry/retention, numeric all-role call/time/quota/cost bounds, reliable stop control, target effect/quality rules, and explicit authorization. Missing any field yields `BLOCKED_OWNER_INPUT`; the plan does not fill these values by assumption.
-- [ ] **Step 3: Keep live readiness closed.** Keep the protocol `DRAFT_NOT_AUTHORIZED` until actual authorization exists. No live calls are performed in this plan.
-- [ ] **Step 4: Commit.** `docs: record P1 live gate`.
+- [x] **Step 1: Compare recorded offline evidence.** Check the protocol, runbook, draft JSON, evaluator, and status report. Re-run offline suites only if relevant sources changed.
+- [x] **Step 2: Record live blockers.** A pilot card must supply one host/route, frozen tasks/oracles, independent Tester and Reviewer bindings, permitted telemetry/retention, numeric all-role call/time/quota/cost bounds, reliable stop control, target effect/quality rules, and explicit authorization. Missing any field yields `BLOCKED_OWNER_INPUT`; the plan does not fill these values by assumption.
+- [x] **Step 3: Keep live readiness closed.** Keep the protocol `DRAFT_NOT_AUTHORIZED` until actual authorization exists. No live calls are performed in this plan.
+- [x] **Step 4: Commit.** `docs: record P1 live gate`.
 
 **Exit:** offline qualification is current and repeatable; live P1 either has a complete approved card or is explicitly closed `BLOCKED`/`NOT_APPROVED`. A live pilot is not part of the default execution path.
 
