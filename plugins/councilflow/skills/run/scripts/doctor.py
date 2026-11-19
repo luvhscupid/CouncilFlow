@@ -51,23 +51,42 @@ def _relative_parts(relative):
     return parts if all(part not in {"", ".", ".."} for part in parts) else None
 
 
+def _has_linked_component(path):
+    candidate = Path(os.path.abspath(path))
+    current = Path(candidate.anchor)
+    for part in candidate.parts[1:]:
+        current = current / part
+        try:
+            info = current.lstat()
+        except OSError:
+            return False
+        if stat.S_ISLNK(info.st_mode) or getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400):
+            return True
+    return False
+
+
 def _hash_artifact(root, relative):
     parts = _relative_parts(relative)
     if parts is None:
         return {"status": "FAIL", "detail": "artifact path must be a normalized relative path", "digest": None}
-    if os.open not in os.supports_dir_fd or not hasattr(os, "O_NOFOLLOW"):
+    if (os.open not in os.supports_dir_fd or os.stat not in os.supports_dir_fd
+            or os.stat not in os.supports_follow_symlinks or not hasattr(os, "O_NOFOLLOW")):
         return {"status": "UNVERIFIED", "detail": "this platform cannot enforce descriptor-relative no-follow reads", "digest": None}
     try:
-        base = Path(root).resolve(strict=True)
+        root_input = Path(root)
+        if _has_linked_component(root_input):
+            return {"status": "BLOCKED", "detail": "linked evidence roots are not accepted", "digest": None}
+        base = root_input.resolve(strict=True)
         directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | os.O_NOFOLLOW
         current_fd = os.open(base, directory_flags)
+        opened = [(current_fd, None, None)]
         try:
             for part in parts[:-1]:
                 info = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
                 if not stat.S_ISDIR(info.st_mode):
                     return {"status": "BLOCKED", "detail": "artifact path contains a non-directory component", "digest": None}
                 next_fd = os.open(part, directory_flags, dir_fd=current_fd)
-                os.close(current_fd)
+                opened.append((next_fd, current_fd, (part, info.st_dev, info.st_ino)))
                 current_fd = next_fd
             info = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
             if stat.S_ISLNK(info.st_mode):
@@ -85,6 +104,17 @@ def _hash_artifact(root, relative):
                         digest.update(chunk)
                 after = os.fstat(file_fd)
                 path_after = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+                for directory_fd, parent_fd, identity in opened[1:]:
+                    name, device, inode = identity
+                    current = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+                    opened_info = os.fstat(directory_fd)
+                    if ((current.st_dev, current.st_ino) != (device, inode)
+                            or (opened_info.st_dev, opened_info.st_ino) != (device, inode)):
+                        return {"status": "BLOCKED", "detail": "artifact ancestor changed during verification", "digest": None}
+                root_now = os.stat(base)
+                root_info = os.fstat(opened[0][0])
+                if (root_now.st_dev, root_now.st_ino) != (root_info.st_dev, root_info.st_ino):
+                    return {"status": "BLOCKED", "detail": "evidence root changed during verification", "digest": None}
                 signature = (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
                 final_signature = (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns)
                 path_signature = (path_after.st_dev, path_after.st_ino, path_after.st_size, path_after.st_mtime_ns, path_after.st_ctime_ns)
@@ -93,7 +123,8 @@ def _hash_artifact(root, relative):
             finally:
                 os.close(file_fd)
         finally:
-            os.close(current_fd)
+            for directory_fd, _, _ in reversed(opened):
+                os.close(directory_fd)
     except (OSError, RuntimeError, ValueError):
         return {"status": "BLOCKED", "detail": "artifact cannot be safely opened beneath the evidence root", "digest": None}
     return {"status": "PASS", "detail": "artifact bytes were read from a stable regular file", "digest": digest.hexdigest()}
@@ -219,15 +250,67 @@ def main(argv=None):
             root = Path.cwd()
         else:
             evidence_path = Path(args.evidence)
-            with evidence_path.open(encoding="utf-8") as evidence_file:
-                raw = evidence_file.read()
-            root = evidence_path.resolve().parent
+            raw = _read_evidence_file(evidence_path)
+            root = evidence_path.absolute().parent.resolve()
         result = diagnose(load_evidence(raw), root)
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
     return 0
+
+
+def _read_evidence_file(path):
+    if (os.open not in os.supports_dir_fd or os.stat not in os.supports_dir_fd
+            or os.stat not in os.supports_follow_symlinks or not hasattr(os, "O_NOFOLLOW")):
+        raise ValueError("this platform cannot safely open an evidence file path; use stdin with '-'")
+    absolute = Path(os.path.abspath(path))
+    parts = absolute.parts[1:]
+    if not parts:
+        raise ValueError("evidence input must name a regular file")
+    directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | os.O_NOFOLLOW
+    file_flags = os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_NONBLOCK", 0)
+    opened = []
+    try:
+        current_fd = os.open(absolute.anchor, directory_flags)
+        opened.append((current_fd, None, None))
+        for part in parts[:-1]:
+            before_dir = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
+            if not stat.S_ISDIR(before_dir.st_mode):
+                raise ValueError("evidence path contains a linked or non-directory component")
+            next_fd = os.open(part, directory_flags, dir_fd=current_fd)
+            opened.append((next_fd, current_fd, (part, before_dir.st_dev, before_dir.st_ino)))
+            current_fd = next_fd
+        fd = os.open(parts[-1], file_flags, dir_fd=current_fd)
+        try:
+            before = os.fstat(fd)
+            path_before = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+            if not stat.S_ISREG(before.st_mode):
+                raise ValueError("evidence input must be a regular file")
+            if (before.st_dev, before.st_ino) != (path_before.st_dev, path_before.st_ino):
+                raise ValueError("evidence file changed while opening")
+            with os.fdopen(fd, "rb", closefd=False) as stream:
+                raw = stream.read()
+            after = os.fstat(fd)
+            path_after = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+            signature = lambda item: (item.st_dev, item.st_ino, item.st_size, item.st_mtime_ns, item.st_ctime_ns)
+            if signature(before) != signature(after) or signature(after) != signature(path_after):
+                raise ValueError("evidence input changed during reading")
+        finally:
+            os.close(fd)
+        for directory_fd, parent_fd, identity in opened[1:]:
+            name, device, inode = identity
+            current = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+            opened_info = os.fstat(directory_fd)
+            if ((current.st_dev, current.st_ino) != (device, inode)
+                    or (opened_info.st_dev, opened_info.st_ino) != (device, inode)):
+                raise ValueError("evidence file ancestor changed during reading")
+    except OSError as exc:
+        raise ValueError(f"evidence file cannot be safely opened ({type(exc).__name__})") from exc
+    finally:
+        for directory_fd, _, _ in reversed(opened):
+            os.close(directory_fd)
+    return raw.decode("utf-8")
 
 
 if __name__ == "__main__":

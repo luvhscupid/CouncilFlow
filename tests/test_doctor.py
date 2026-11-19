@@ -4,13 +4,17 @@ import os
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 import sys
 
 SCRIPT_DIR = Path(__file__).resolve().parents[1] / ".agents" / "skills" / "council-flow" / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
+import doctor
 from doctor import diagnose, load_evidence
+
+SAFE_DESCRIPTOR_READS = os.open in os.supports_dir_fd and hasattr(os, "O_NOFOLLOW")
 
 
 class DoctorTests(unittest.TestCase):
@@ -95,7 +99,7 @@ class DoctorTests(unittest.TestCase):
             result = diagnose({"schema_version": 2,
                                "executable_artifact": {"path": "tool", "sha256": "0" * 64},
                                "native_host": None}, tmp)
-        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "FAIL")
+        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     @unittest.skipUnless(hasattr(os, "symlink"), "symlinks are unavailable")
     def test_v2_symlink_executable_fails_without_reading_target(self):
@@ -107,7 +111,7 @@ class DoctorTests(unittest.TestCase):
             result = diagnose({"schema_version": 2,
                                "executable_artifact": {"path": "link", "sha256": hashlib.sha256(b"outside").hexdigest()},
                                "native_host": None}, root)
-        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "FAIL")
+        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     @unittest.skipUnless(hasattr(os, "mkfifo"), "named pipes are unavailable")
     def test_v2_fifo_executable_reference_returns_without_blocking(self):
@@ -123,18 +127,18 @@ class DoctorTests(unittest.TestCase):
                                  capture_output=True, text=True, timeout=2)
         self.assertEqual(run.returncode, 0, run.stderr)
         result = json.loads(run.stdout)
-        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "BLOCKED")
+        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "BLOCKED" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     def test_source_hash_mismatch_fails(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / "source.txt").write_bytes(b"actual")
             result = diagnose({"schema_version": 1, "source_artifact": {"path": "source.txt", "sha256": "0" * 64}}, root)
-            self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL")
+            self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     def test_source_path_traversal_fails_closed(self):
         result = diagnose({"schema_version": 1, "source_artifact": {"path": "../outside", "sha256": "0" * 64}}, Path.cwd())
-        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL")
+        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     def test_source_symlink_escape_fails_closed(self):
         with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as outside:
@@ -142,7 +146,7 @@ class DoctorTests(unittest.TestCase):
             (Path(outside) / "source.txt").write_bytes(b"outside")
             (root / "link").symlink_to(Path(outside) / "source.txt")
             result = diagnose({"schema_version": 1, "source_artifact": {"path": "link", "sha256": hashlib.sha256(b"outside").hexdigest()}}, root)
-            self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL")
+            self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     @unittest.skipUnless(hasattr(os, "symlink"), "symlinks are unavailable")
     def test_source_symlink_inside_root_fails_without_following(self):
@@ -153,7 +157,7 @@ class DoctorTests(unittest.TestCase):
             (root / "link.txt").symlink_to(target)
             result = diagnose({"schema_version": 1,
                                "source_artifact": {"path": "link.txt", "sha256": hashlib.sha256(b"source").hexdigest()}}, root)
-        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL")
+        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     @unittest.skipUnless(hasattr(os, "mkfifo"), "named pipes are unavailable")
     def test_fifo_reference_returns_without_blocking(self):
@@ -169,7 +173,7 @@ class DoctorTests(unittest.TestCase):
                                  capture_output=True, text=True, timeout=2)
         result = json.loads(run.stdout)
         self.assertEqual(run.returncode, 0)
-        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "BLOCKED")
+        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "BLOCKED" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
 
     def test_duplicate_json_fields_are_rejected(self):
         with self.assertRaises(ValueError):
@@ -194,10 +198,71 @@ class DoctorTests(unittest.TestCase):
             file_run = subprocess.run([sys.executable, "-B", str(script), str(evidence_file)], capture_output=True, text=True)
         stdin_run = subprocess.run([sys.executable, "-B", str(script), "-"], input=payload, capture_output=True, text=True)
         bad_run = subprocess.run([sys.executable, "-B", str(script), "-"], input="{bad", capture_output=True, text=True)
-        self.assertEqual(file_run.returncode, 0)
+        self.assertEqual(file_run.returncode, 0 if SAFE_DESCRIPTOR_READS else 2)
         self.assertEqual(stdin_run.returncode, 0)
         self.assertEqual(json.loads(stdin_run.stdout)[1]["status"], "BLOCKED")
         self.assertEqual(bad_run.returncode, 2)
+
+    def test_cli_rejects_symlink_and_fifo_evidence_inputs_without_blocking(self):
+        script = Path(__file__).resolve().parents[1] / ".agents" / "skills" / "council-flow" / "scripts" / "doctor.py"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            regular = root / "regular.json"
+            regular.write_text('{"schema_version":1}', encoding="utf-8")
+            link = root / "link.json"
+            link.symlink_to(regular)
+            linked = subprocess.run([sys.executable, "-B", str(script), str(link)], capture_output=True, text=True, timeout=3)
+            self.assertEqual(linked.returncode, 2)
+            if hasattr(os, "mkfifo"):
+                fifo = root / "evidence.fifo"
+                os.mkfifo(fifo)
+                result = subprocess.run([sys.executable, "-B", str(script), str(fifo)], capture_output=True, text=True, timeout=3)
+                self.assertEqual(result.returncode, 2)
+
+    def test_artifact_hash_rejects_replaced_ancestor_during_hash(self):
+        if os.open not in os.supports_dir_fd or not hasattr(os, "O_NOFOLLOW"):
+            self.skipTest("descriptor-relative no-follow reads unavailable")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            sub = root / "sub"
+            sub.mkdir()
+            (sub / "artifact").write_bytes(b"x" * 100000)
+            actual = hashlib.sha256()
+            moved = False
+
+            class ReplacingHash:
+                def update(self, data):
+                    nonlocal moved
+                    actual.update(data)
+                    if not moved:
+                        moved = True
+                        sub.rename(root / "detached")
+                        sub.mkdir()
+                        (sub / "artifact").write_bytes(b"x" * 100000)
+
+                def hexdigest(self):
+                    return actual.hexdigest()
+
+            with patch.object(doctor.hashlib, "sha256", return_value=ReplacingHash()):
+                result = doctor._hash_artifact(root, "sub/artifact")
+            self.assertEqual(result["status"], "BLOCKED")
+
+    def test_platform_without_descriptor_reads_reports_unverified(self):
+        with patch.object(doctor.os, "supports_dir_fd", set()):
+            result = doctor._hash_artifact(Path.cwd(), "README.md")
+        self.assertEqual(result["status"], "UNVERIFIED")
+
+    def test_linked_evidence_root_is_rejected(self):
+        if not SAFE_DESCRIPTOR_READS:
+            self.skipTest("descriptor-relative no-follow reads unavailable")
+        with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as outside:
+            root = Path(tmp)
+            target = Path(outside)
+            (target / "source.txt").write_bytes(b"source")
+            linked_root = root / "root-link"
+            linked_root.symlink_to(target, target_is_directory=True)
+            result = doctor._hash_artifact(linked_root, "source.txt")
+        self.assertEqual(result["status"], "BLOCKED")
 
 
 if __name__ == "__main__":

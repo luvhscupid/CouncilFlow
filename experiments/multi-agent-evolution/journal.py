@@ -45,6 +45,20 @@ def _valid_digest(value):
     return isinstance(value, str) and len(value) == _DIGEST_LENGTH and all(c in "0123456789abcdef" for c in value)
 
 
+def _has_linked_component(path):
+    candidate = Path(os.path.abspath(path))
+    current = Path(candidate.anchor)
+    for part in candidate.parts[1:]:
+        current = current / part
+        try:
+            info = current.lstat()
+        except OSError:
+            return False
+        if stat.S_ISLNK(info.st_mode) or getattr(info, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400):
+            return True
+    return False
+
+
 def _nonempty_string(value):
     return isinstance(value, str) and bool(value.strip())
 
@@ -109,17 +123,24 @@ def _hash_under_root(evidence_root, descriptor):
         return {"status": "FAIL", "detail": str(exc)}
     if descriptor is None:
         return {"status": "BLOCKED", "detail": "candidate artifact is missing"}
-    if not os.supports_dir_fd or os.open not in os.supports_dir_fd or not hasattr(os, "O_NOFOLLOW"):
+    if (not os.supports_dir_fd or os.open not in os.supports_dir_fd
+            or os.stat not in os.supports_dir_fd or os.stat not in os.supports_follow_symlinks
+            or not hasattr(os, "O_NOFOLLOW")):
         return {"status": "UNVERIFIED", "detail": "this platform cannot enforce descriptor-relative no-follow reads"}
     try:
         root = Path(evidence_root).resolve(strict=True)
         directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | os.O_NOFOLLOW
+        root_input = Path(evidence_root)
+        if _has_linked_component(root_input):
+            return {"status": "BLOCKED", "detail": "linked evidence roots are not accepted"}
         current_fd = os.open(root, directory_flags)
+        opened = [(current_fd, None, None)]
         parts = descriptor["path"].split("/")
         try:
             for part in parts[:-1]:
+                entry = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
                 next_fd = os.open(part, directory_flags, dir_fd=current_fd)
-                os.close(current_fd)
+                opened.append((next_fd, current_fd, (part, entry.st_dev, entry.st_ino)))
                 current_fd = next_fd
             file_flags = os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_NONBLOCK", 0)
             file_fd = os.open(parts[-1], file_flags, dir_fd=current_fd)
@@ -134,13 +155,27 @@ def _hash_under_root(evidence_root, descriptor):
                         digest.update(chunk)
                 after = os.fstat(file_fd)
                 path_after = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+                if (before.st_dev, before.st_ino) != (path_after.st_dev, path_after.st_ino):
+                    return {"status": "BLOCKED", "detail": "candidate artifact path changed during verification"}
+                for directory_fd, parent_fd, entry_identity in opened[1:]:
+                    name, device, inode = entry_identity
+                    current = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+                    opened_info = os.fstat(directory_fd)
+                    if ((current.st_dev, current.st_ino) != (device, inode)
+                            or (opened_info.st_dev, opened_info.st_ino) != (device, inode)):
+                        return {"status": "BLOCKED", "detail": "candidate artifact ancestor changed during verification"}
+                root_now = os.stat(root)
+                root_info = os.fstat(opened[0][0])
+                if (root_now.st_dev, root_now.st_ino) != (root_info.st_dev, root_info.st_ino):
+                    return {"status": "BLOCKED", "detail": "evidence root changed during verification"}
                 signature = lambda item: (item.st_dev, item.st_ino, item.st_size, item.st_mtime_ns, item.st_ctime_ns)
                 if signature(before) != signature(after) or signature(after) != signature(path_after):
                     return {"status": "BLOCKED", "detail": "candidate artifact changed during verification"}
             finally:
                 os.close(file_fd)
         finally:
-            os.close(current_fd)
+            for descriptor_fd, _, _ in reversed(opened):
+                os.close(descriptor_fd)
     except (OSError, RuntimeError, ValueError) as exc:
         return {"status": "BLOCKED", "detail": f"candidate artifact could not be safely opened ({type(exc).__name__})"}
     if digest.hexdigest() != descriptor["sha256"]:
@@ -262,9 +297,29 @@ class Journal:
                 if attempt_changed:
                     if payload["attempt_id"] == run["attempt_id"]:
                         raise JournalError("a rework attempt requires a new attempt_id")
+                    prior_attempts = {run["initial_attempt_id"]}
+                    for row in db.execute("SELECT payload FROM events WHERE run_id=?", (run_id,)):
+                        try:
+                            prior_attempts.add(json.loads(row["payload"])["attempt_id"])
+                        except (KeyError, TypeError, ValueError) as exc:
+                            raise JournalError("cannot start rework from a corrupt event history") from exc
+                    if payload["attempt_id"] in prior_attempts:
+                        raise JournalError("an attempt_id cannot be reused after rework")
                 elif payload["attempt_id"] != run["attempt_id"]:
                     raise JournalError("attempt_id changed outside a rework transition")
                 self._validate_terminal(new_state, payload)
+                if new_state == "ACCEPTED":
+                    candidates = db.execute(
+                        "SELECT payload FROM events WHERE run_id=? AND state='CANDIDATE' ORDER BY revision DESC", (run_id,)
+                    ).fetchall()
+                    matching_candidate = None
+                    for row in candidates:
+                        candidate_payload = json.loads(row["payload"])
+                        if candidate_payload.get("attempt_id") == payload["attempt_id"]:
+                            matching_candidate = candidate_payload.get("candidate_artifact")
+                            break
+                    if matching_candidate is None or payload["candidate_artifact"] != matching_candidate:
+                        raise JournalError("acceptance must identify the candidate artifact from this attempt")
                 next_revision = expected_revision + 1
                 body = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
                 db.execute("INSERT INTO events VALUES (?, ?, ?, ?, ?)", (event_id, run_id, next_revision, new_state, body))
@@ -301,6 +356,7 @@ class Journal:
 
     def _load(self, run_id):
         with closing(self._connect(read_only=True)) as db:
+            db.execute("BEGIN")
             run = db.execute("SELECT * FROM runs WHERE run_id=?", (run_id,)).fetchone()
             if run is None:
                 raise JournalError("unknown run")
@@ -308,21 +364,36 @@ class Journal:
         parsed = []
         for event in events:
             try:
-                payload = json.loads(event["payload"])
-            except (TypeError, json.JSONDecodeError) as exc:
+                payload = json.loads(event["payload"], object_pairs_hook=_unique_json_object)
+            except (TypeError, ValueError, json.JSONDecodeError) as exc:
                 raise JournalError("event payload is corrupt JSON") from exc
             parsed.append({"event_id": event["event_id"], "revision": event["revision"],
                            "state": event["state"], "payload": payload})
         return dict(run), parsed
 
     @staticmethod
+    def _validate_run(run):
+        if (not _nonempty_string(run.get("run_id")) or not _nonempty_string(run.get("plan_ref"))
+                or not _valid_digest(run.get("plan_sha256")) or run.get("state") not in (set(_NEXT) | _TERMINAL)
+                or type(run.get("revision")) is not int or run["revision"] < 0
+                or not _nonempty_string(run.get("attempt_id"))
+                or not _nonempty_string(run.get("initial_attempt_id"))
+                or type(run.get("attempt_revision")) is not int or run["attempt_revision"] < 0):
+            return False
+        return True
+
+    @staticmethod
     def _check_chain(run, events):
+        if not Journal._validate_run(run):
+            return False, "INVALID_RUN"
         event_ids = [event["event_id"] for event in events]
         if len(event_ids) != len(set(event_ids)):
             return False, "DUPLICATE_EVENT"
         expected_state = "PLANNED"
         attempt_id = run["initial_attempt_id"]
         attempt_revision = 0
+        seen_attempts = {attempt_id}
+        candidate_by_attempt = {}
         previous_event_id = None
         for revision, event in enumerate(events, start=1):
             payload = event["payload"]
@@ -339,15 +410,20 @@ class Journal:
                 return False, "EVENT_CHAIN_MISMATCH"
             rework = expected_state == "REWORK_REQUIRED" and event["state"] == "READY"
             if rework:
-                if payload["attempt_id"] == attempt_id or payload["attempt_revision"] != attempt_revision + 1:
+                if payload["attempt_id"] in seen_attempts or payload["attempt_revision"] != attempt_revision + 1:
                     return False, "ATTEMPT_CHAIN_MISMATCH"
                 attempt_id, attempt_revision = payload["attempt_id"], attempt_revision + 1
+                seen_attempts.add(attempt_id)
             elif payload["attempt_id"] != attempt_id or payload["attempt_revision"] != attempt_revision:
                 return False, "ATTEMPT_CHAIN_MISMATCH"
             try:
                 Journal._validate_terminal(event["state"], payload)
             except JournalError:
                 return False, "INVALID_TERMINAL_EVENT"
+            if event["state"] == "CANDIDATE":
+                candidate_by_attempt[attempt_id] = payload["candidate_artifact"]
+            if event["state"] == "ACCEPTED" and payload["candidate_artifact"] != candidate_by_attempt.get(attempt_id):
+                return False, "ACCEPTED_CANDIDATE_MISMATCH"
             expected_state, previous_event_id = event["state"], event["event_id"]
         if (run["revision"] != len(events) or run["state"] != expected_state
                 or run["attempt_id"] != attempt_id or run["attempt_revision"] != attempt_revision):
@@ -373,12 +449,16 @@ class Journal:
                           ensure_ascii=False, sort_keys=True, indent=2) + "\n"
 
     def verify_run(self, run_id, evidence_root):
-        checks = []
         try:
             run, events = self._load(run_id)
         except (JournalError, sqlite3.DatabaseError) as exc:
             return {"integrity_status": "FAIL", "checks": [{"name": "journal_read", "status": "FAIL", "detail": str(exc)}]}
-        chain_ok, chain_code = self._check_chain(run, events)
+        return self._verify_snapshot(run, events, evidence_root)
+
+    @staticmethod
+    def _verify_snapshot(run, events, evidence_root):
+        checks = []
+        chain_ok, chain_code = Journal._check_chain(run, events)
         checks.append({"name": "event_chain", "status": "PASS" if chain_ok else "FAIL",
                        "detail": "event revisions, states, parents, and attempts are consistent" if chain_ok else chain_code})
         descriptors = [event["payload"].get("candidate_artifact") for event in events
@@ -406,10 +486,13 @@ class Journal:
         return {"integrity_status": status, "checks": checks}
 
     def reconcile(self, run_id, evidence_root):
-        run = self.get_run(run_id)
-        if run is None:
-            raise JournalError("unknown run")
-        verification = self.verify_run(run_id, evidence_root)
+        try:
+            run, events = self._load(run_id)
+        except (JournalError, sqlite3.DatabaseError) as exc:
+            return {"run_id": run_id, "recovery_status": "UNAVAILABLE",
+                    "last_verified_revision": None, "reason_codes": ["JOURNAL_UNAVAILABLE"],
+                    "integrity_status": "FAIL", "detail": str(exc)}
+        verification = self._verify_snapshot(run, events, evidence_root)
         reason_codes = []
         status_by_name = {check["name"]: check["status"] for check in verification["checks"]}
         if status_by_name.get("event_chain") == "FAIL":
@@ -435,3 +518,12 @@ class Journal:
         return {"run_id": run_id, "recovery_status": recovery,
                 "last_verified_revision": run["revision"] if status_by_name.get("event_chain") == "PASS" else None,
                 "reason_codes": list(dict.fromkeys(reason_codes))}
+
+
+def _unique_json_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("duplicate JSON object key")
+        result[key] = value
+    return result

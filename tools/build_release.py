@@ -72,7 +72,7 @@ def safe_name(name: str) -> bool:
 
 
 # Claude Code plugin tests need plugins/ and its builder, which are not in this package.
-HOST_ONLY = {"tests/test_claude_plugin.py"}
+HOST_ONLY = {"tests/test_claude_plugin.py", "tests/test_journal.py"}
 
 
 def excluded(name: str) -> bool:

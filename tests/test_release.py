@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +29,30 @@ def fixture(root):
 
 
 class ReleaseOutputTests(unittest.TestCase):
+    def test_archive_does_not_include_unbundled_experimental_tests(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests", prefix="release-tests-") as temporary:
+            authorized = Path(temporary).resolve() / "authorized"
+            fixture(authorized)
+            # Simulate an experimental test that imports source deliberately
+            # excluded from the standalone release bundle.
+            journal_test = authorized / "tests/test_journal.py"
+            journal_test.write_text("import journal\n", encoding="utf-8")
+            (authorized / "tests/test_portable.py").write_text(
+                "import unittest\nclass PortableTests(unittest.TestCase):\n def test_runs(self): self.assertTrue(True)\n",
+                encoding="utf-8")
+            (authorized / "tests/test_efficiency_install.py").write_text(
+                "import unittest\nclass IncludedTests(unittest.TestCase):\n def test_runs(self): self.assertTrue(True)\n",
+                encoding="utf-8")
+            self.assertTrue(builder.excluded("tests/test_journal.py"))
+            report = builder.build(authorized)
+            with zipfile.ZipFile(authorized / report["archive"]) as archive:
+                self.assertNotIn("tests/test_journal.py", archive.namelist())
+                archive.extractall(authorized / "extracted")
+            run = subprocess.run([os.sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-q"],
+                                 cwd=authorized / "extracted", capture_output=True, text=True)
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertIn("Ran 2 tests", run.stderr)
+
     def test_existing_output_hardlinks_do_not_modify_outside_inodes(self):
         with tempfile.TemporaryDirectory(dir=ROOT / "tests", prefix="release-output-") as temporary:
             parent = Path(temporary).resolve()

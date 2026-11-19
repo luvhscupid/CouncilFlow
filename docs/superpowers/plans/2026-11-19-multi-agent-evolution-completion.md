@@ -88,6 +88,8 @@
 
 **Interfaces:** Keep `validate_profile(data)` and `resolve_role(profile, capabilities, role)` pure and offline. This plan defines no native adapter signature. If documentation proves a supported API exists, write and approve a host-specific subplan with exact signature, errors, and tests before implementation. If not, close P2 as `UNSUPPORTED` with inherited routing.
 
+**P2 handoff:** `docs/superpowers/plans/2026-11-19-p2-model-override-handoff.md` records the documented native delegation `model` argument and its `fork_turns="none"` constraint, plus the missing capability/effective-route contract. It is a design handoff only; it grants no adapter, route-selection, or native-call authorization.
+
 - [x] **Step 1: Check existing host-support tests.** Confirm `test_unobserved_capability_is_not_supported` and `test_caller_supplied_capability_cannot_be_promoted_to_verified` cover `UNKNOWN`/`INHERIT_HOST` and cannot create `effective_model` or `route_verified` claims; add a regression only if an actual gap is found.
 - [x] **Step 2: Run focused tests.** `python -B -m unittest tests.test_role_capabilities -v`.
 - [x] **Step 3: Inspect supported host API.** Record host name/version and source documentation. If no explicit selection API exists, make no adapter; record `UNSUPPORTED` and proceed to independent work. If it exists, record its exact documented parameters/errors before implementation.
@@ -191,9 +193,9 @@
 
 - [x] **Step 1: Run** `python -B -m unittest discover -s tests -v` and `python -B -m unittest discover -s experiments/agent-efficiency -v`.
 - [x] **Step 2: Run** `python -B tools/build_claude_plugin.py sync`, `check`, and `build`; run `python -B tools/build_release.py` if release sources changed. Then run `git diff --check` and inspect staged/generated ZIP contents.
-- [ ] **Step 3: Verify** canonical/Claude runtime file equality; list changed files; compare current base/candidate hashes; record exact pass/fail/skip counts and phase status. Fresh independent Reviewer checks P0–P6 claims and unresolved risk list.
+- [x] **Step 3: Verify** canonical/Claude runtime file equality; list changed files; compare current base/candidate hashes; record exact pass/fail/skip counts and phase status. Fresh independent Reviewer checked P0–P6 claims and unresolved risk list; review findings and one-pass remediation are recorded in the progress ledger and status report.
 - [x] **Step 4: Close every phase** as `COMPLETE`, `BLOCKED_*`, `NO_GO`, or `NOT_APPLICABLE`; do not leave an implied green state. Any final commit or push updates only the feature branch. No merge/release occurs under this plan.
-- [ ] **Step 5: Commit and publish the plan's execution evidence** on the feature branch only. Do not merge or release.
+- [x] **Step 5: Commit and publish the plan's execution evidence** on the feature branch only. Do not merge or release.
 
 ## Execution order and parallelism
 

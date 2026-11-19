@@ -12,6 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "experiments" / "multi-agent-evolution"))
 
 from journal import Journal, JournalError
+import journal as journal_module
+
+SAFE_DESCRIPTOR_READS = os.open in os.supports_dir_fd and hasattr(os, "O_NOFOLLOW")
 
 
 class JournalTests(unittest.TestCase):
@@ -108,6 +111,16 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(after["attempt_revision"], before["attempt_revision"] + 1)
         self.assertEqual(revision, 7)
 
+    def test_rework_cannot_reuse_any_prior_attempt_id(self):
+        revision = 0
+        for state in ["READY", "ASSIGNED", "RUNNING", "CANDIDATE", "TESTING", "REWORK_REQUIRED"]:
+            revision = self.journal.transition(self.run_id, revision, state, self.payload())
+        revision = self.journal.transition(self.run_id, revision, "READY", self.payload(attempt_id="attempt-2", attempt_revision=1))
+        for state in ["ASSIGNED", "RUNNING", "CANDIDATE", "TESTING", "REWORK_REQUIRED"]:
+            revision = self.journal.transition(self.run_id, revision, state, self.payload())
+        with self.assertRaisesRegex(JournalError, "cannot be reused"):
+            self.journal.transition(self.run_id, revision, "READY", self.payload(attempt_id=self.journal.get_run(self.run_id)["initial_attempt_id"], attempt_revision=2))
+
     def test_payload_types_are_strict_and_references_remain_opaque(self):
         bad = self.payload(attempt_revision=True)
         with self.assertRaises(JournalError):
@@ -152,9 +165,46 @@ class JournalTests(unittest.TestCase):
         artifact = {"path": "candidate.bin", "sha256": hashlib.sha256(candidate.read_bytes()).hexdigest()}
         self.accept(artifact)
         report = self.journal.verify_run(self.run_id, self.root)
-        self.assertEqual(report["integrity_status"], "PASS")
+        self.assertEqual(report["integrity_status"], "PASS" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
         self.assertTrue(any(c["name"] == "actor_claim" and c["status"] == "UNVERIFIED" for c in report["checks"]))
         self.assertTrue(any(c["name"] == "approval_claim" and c["status"] == "UNVERIFIED" for c in report["checks"]))
+
+    def test_acceptance_must_bind_candidate_to_same_attempt_candidate_event(self):
+        original = self.root / "candidate.bin"
+        original.write_bytes(b"worker candidate")
+        accepted = self.root / "other.bin"
+        accepted.write_bytes(b"different artifact")
+        original_ref = {"path": "candidate.bin", "sha256": hashlib.sha256(original.read_bytes()).hexdigest()}
+        accepted_ref = {"path": "other.bin", "sha256": hashlib.sha256(accepted.read_bytes()).hexdigest()}
+        self.accept(original_ref)
+        with sqlite3.connect(self.path) as db:
+            payload = json.loads(db.execute("SELECT payload FROM events WHERE run_id=? ORDER BY revision DESC LIMIT 1",
+                                            (self.run_id,)).fetchone()[0])
+            payload["candidate_sha256"] = accepted_ref["sha256"]
+            payload["candidate_artifact"] = accepted_ref
+            db.execute("UPDATE events SET payload=? WHERE run_id=? AND state='ACCEPTED'",
+                       (json.dumps(payload), self.run_id))
+        report = self.journal.verify_run(self.run_id, self.root)
+        self.assertEqual(report["integrity_status"], "FAIL")
+        self.assertIn("ACCEPTED_CANDIDATE_MISMATCH", [c["detail"] for c in report["checks"]])
+
+    def test_reconcile_returns_structured_unavailable_for_unreadable_database(self):
+        missing = Journal.__new__(Journal)
+        missing.path = str(self.root / "missing.sqlite3")
+        missing._read_only = False
+        result = missing.reconcile("missing", self.root)
+        self.assertEqual(result["recovery_status"], "UNAVAILABLE")
+        self.assertEqual(result["reason_codes"], ["JOURNAL_UNAVAILABLE"])
+
+    def test_persisted_run_plan_digest_and_duplicate_json_keys_fail_integrity(self):
+        self.journal.transition(self.run_id, 0, "READY", self.payload())
+        with sqlite3.connect(self.path) as db:
+            db.execute("UPDATE runs SET plan_sha256='invalid' WHERE run_id=?", (self.run_id,))
+        self.assertIn("INVALID_RUN", [c["detail"] for c in self.journal.verify_run(self.run_id, self.root)["checks"]])
+        with sqlite3.connect(self.path) as db:
+            db.execute("UPDATE runs SET plan_sha256=? WHERE run_id=?", ("a" * 64, self.run_id))
+            db.execute("UPDATE events SET payload=? WHERE run_id=?", ('{"attempt_id":"a","attempt_id":"b"}', self.run_id))
+        self.assertEqual(self.journal.verify_run(self.run_id, self.root)["integrity_status"], "FAIL")
 
     def test_missing_mismatched_symlink_and_fifo_artifacts_fail_closed(self):
         self.assertEqual(self.journal.verify_run(self.run_id, self.root)["integrity_status"], "BLOCKED")
@@ -163,8 +213,9 @@ class JournalTests(unittest.TestCase):
         descriptor = {"path": "candidate.bin", "sha256": "0" * 64}
         revision = self.journal.transition(self.run_id, 0, "READY", self.payload(candidate_artifact=descriptor))
         report = self.journal.verify_run(self.run_id, self.root)
-        self.assertEqual(report["integrity_status"], "FAIL")
-        self.assertIn("DIGEST_MISMATCH", self.journal.reconcile(self.run_id, self.root)["reason_codes"])
+        self.assertEqual(report["integrity_status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
+        if SAFE_DESCRIPTOR_READS:
+            self.assertIn("DIGEST_MISMATCH", self.journal.reconcile(self.run_id, self.root)["reason_codes"])
 
         for unsafe in ("../outside", "/absolute/file", "C:/outside/file"):
             with self.subTest(path=unsafe), self.assertRaises(JournalError):
@@ -186,23 +237,83 @@ class JournalTests(unittest.TestCase):
 
         if hasattr(os, "symlink"):
             (self.root / "link.bin").symlink_to(regular)
-            self.assertEqual(verify_unsafe_path("link.bin"), "BLOCKED")
+            self.assertEqual(verify_unsafe_path("link.bin"), "BLOCKED" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
         if hasattr(os, "mkfifo"):
             os.mkfifo(self.root / "pipe.bin")
-            self.assertEqual(verify_unsafe_path("pipe.bin"), "BLOCKED")
+            self.assertEqual(verify_unsafe_path("pipe.bin"), "BLOCKED" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
+
+    def test_platform_without_descriptor_reads_reports_unverified(self):
+        with patch.object(journal_module.os, "supports_dir_fd", set()):
+            result = journal_module._hash_under_root(self.root, {"path": "candidate", "sha256": "0" * 64})
+        self.assertEqual(result["status"], "UNVERIFIED")
+
+    def test_journal_artifact_hash_rejects_replaced_ancestor(self):
+        if not SAFE_DESCRIPTOR_READS:
+            self.skipTest("descriptor-relative no-follow reads unavailable")
+        directory = self.root / "nested"
+        directory.mkdir()
+        (directory / "candidate").write_bytes(b"x" * 100000)
+        actual = hashlib.sha256()
+        moved = False
+
+        class ReplacingHash:
+            def update(inner_self, data):
+                nonlocal moved
+                actual.update(data)
+                if not moved:
+                    moved = True
+                    directory.rename(self.root / "detached")
+                    directory.mkdir()
+                    (directory / "candidate").write_bytes(b"x" * 100000)
+
+            def hexdigest(inner_self):
+                return actual.hexdigest()
+
+        with patch.object(journal_module.hashlib, "sha256", return_value=ReplacingHash()):
+            result = journal_module._hash_under_root(self.root,
+                {"path": "nested/candidate", "sha256": hashlib.sha256(b"x" * 100000).hexdigest()})
+        self.assertEqual(result["status"], "BLOCKED")
+
+    def test_journal_rejects_linked_evidence_root(self):
+        if not SAFE_DESCRIPTOR_READS:
+            self.skipTest("descriptor-relative no-follow reads unavailable")
+        outside = self.root / "outside"
+        outside.mkdir()
+        (outside / "candidate").write_bytes(b"candidate")
+        linked_root = self.root / "root-link"
+        linked_root.symlink_to(outside, target_is_directory=True)
+        result = journal_module._hash_under_root(linked_root,
+            {"path": "candidate", "sha256": hashlib.sha256(b"candidate").hexdigest()})
+        self.assertEqual(result["status"], "BLOCKED")
 
     def test_nonacceptance_terminals_require_a_reason(self):
         for field, state in (("BLOCKED", "BLOCKED"), ("CANCELLED", "CANCELLED"), ("REJECTED", "REJECTED")):
             with self.subTest(state=state):
                 journal = Journal(self.root / f"{field}.sqlite3")
                 run_id = journal.create_run(field, "plan", "c" * 64)
-                with self.assertRaises(JournalError):
-                    journal.transition(run_id, 0, state, {
+                payload = {
                         "attempt_id": journal.get_run(run_id)["attempt_id"], "attempt_revision": 0,
                         "parent_event_id": None, "actor_claim": {"role": "Manager", "identity": "id", "session_ref": "session"},
                         "criteria_ref": "criteria", "candidate_artifact": None,
                         "terminal_reason": None, "approval_ref": None,
-                    })
+                    }
+                if state in {"BLOCKED", "CANCELLED"}:
+                    revision = 0
+                else:
+                    revision = 0
+                    for step in ["READY", "ASSIGNED", "RUNNING", "CANDIDATE", "TESTING"]:
+                        events = json.loads(journal.export(run_id))["events"]
+                        payload["parent_event_id"] = events[-1]["event_id"] if events else None
+                        revision = journal.transition(run_id, revision, step, payload)
+                events = json.loads(journal.export(run_id))["events"]
+                payload["parent_event_id"] = events[-1]["event_id"] if events else None
+                with self.assertRaisesRegex(JournalError, "terminal_reason"):
+                    journal.transition(run_id, revision, state, payload)
+
+    def test_duplicate_event_id_with_valid_parent_is_rejected(self):
+        self.journal.transition(self.run_id, 0, "READY", self.payload(), event_id="event-1")
+        with self.assertRaisesRegex(JournalError, "duplicate event"):
+            self.journal.transition(self.run_id, 1, "ASSIGNED", self.payload(), event_id="event-1")
 
     def test_event_chain_corruption_is_reported_and_reconciliation_does_not_repair(self):
         self.journal.transition(self.run_id, 0, "READY", self.payload())

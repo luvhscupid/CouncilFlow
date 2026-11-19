@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "34013374f5f6b93521324aab36824abae732ecffa29c33a130c931c0fd1553b3",
-  "entries": 183,
+  "sha256": "b442c793e8c311473f0d8411f48720bbf17e8f5dfb7a56d446f0a8bc9c73ae73",
+  "entries": 182,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -70,8 +70,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 12426,
-      "sha256": "6d2b53eaa59a059e87b148304c5068fec6421fbf50493a96224ccef820624bbf"
+      "size": 17116,
+      "sha256": "ff911e2df2736a4b97fabfd4c4226342bc382dac687e7ba77088ea37d7e53e5c"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
@@ -835,8 +835,8 @@
     },
     {
       "path": "tests/test_doctor.py",
-      "size": 12802,
-      "sha256": "62bcd99055b581285c35b01af774a403a904c648d1c188343152b9f933da88b0"
+      "size": 16314,
+      "sha256": "5715c9141907f0173fa927273274ed9f195e1acc75ed9a0514fd0405805c168d"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -869,19 +869,14 @@
       "sha256": "b34e8269b3dd9f21e2f53faba5b1d3fab42fb614392cb1bf42655dc9de58b70e"
     },
     {
-      "path": "tests/test_journal.py",
-      "size": 15939,
-      "sha256": "d9514549bd7d570ee580e3ab5f6f6eefc2bdb48e46609d3b038be4cbbd23fc1f"
-    },
-    {
       "path": "tests/test_original_source.py",
       "size": 14690,
       "sha256": "341ad9127bf7e0693a83fff658b9cf91564aa7d194338cee5cbb683c721f218f"
     },
     {
       "path": "tests/test_release.py",
-      "size": 3879,
-      "sha256": "303ea53cac2c719f0a761e4e19cc8017b05a2c0cf2216ddef4e5ee706c1fa823"
+      "size": 5546,
+      "sha256": "4c558315dd4ce3fa157419b4f9d7525560bf11337e485d5d8e27cde49b8316b9"
     },
     {
       "path": "tests/test_role_capabilities.py",
@@ -915,8 +910,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 8471,
-      "sha256": "8abc1693f302d031ad38004b96fc49a1869299195fbf96f3e7dd515cc5a891c1"
+      "size": 8496,
+      "sha256": "5936c78090133b473c340752f9ed6b407ef82ca3e64ca8343d78706dc02509fd"
     }
   ],
   "crc": "PASS",
