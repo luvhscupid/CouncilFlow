@@ -14,7 +14,7 @@
 
 - Preserve Owner → Planner → Manager → Worker → Tester → Reviewer → Manager → Planner → Owner.
 - Preserve original plan bytes, criterion IDs, candidate identity, independent Tester/Reviewer and final Planner checks.
-- No paid model calls, provider routes, configuration/credential changes, permission changes, publication, release or merge.
+- The original run performed no paid model calls, provider route, configuration/credential or permission changes, release, or merge. The feature branch was subsequently pushed; this is branch publication only, not a product release or promotion.
 - Unknown host capability, model identity, route, usage or spend stays unknown.
 - Existing behavior stays unchanged unless an opt-in interface is explicitly invoked.
 - Python 3.11+ standard library only; no new runtime dependency.

@@ -58,10 +58,10 @@
 
 **Interfaces:** Produce an evidence record with current local/remote HEADs, branch ancestry and dirty state; available PR/overlap evidence; current tests/build commands; license status; exact status of P0–P7; and an execution card template. Do not absorb unrelated audit-remediation scope.
 
-- [ ] **Step 1: Record current evidence.** Capture `git status -sb`, `git rev-parse HEAD origin/main`, `git ls-remote origin refs/heads/main refs/heads/evolution/multi-agent-plan-2026-11-17`, current test/build commands, and GitHub PR/branch inventory only if an authenticated supported interface is available. Do not change the historical baseline report.
-- [ ] **Step 2: Update current status.** Add a dated P0 refresh to the status report with raw evidence references. Change “no publication” to “no release publication or promotion; feature branch pushed” where applicable. Record unavailable open-PR/license facts as unknown. Treat audit-remediation Slice 02 as separate scope; use Slice 03 artifacts as host evidence if present.
-- [ ] **Step 3: Verify.** Re-run Git queries; compare every current status claim with evidence. `git diff --check` must pass. No code tests are required for a report-only update.
-- [ ] **Step 4: Commit.** `docs: refresh evolution completion baseline`.
+- [x] **Step 1: Record current evidence.** Capture `git status -sb`, `git rev-parse HEAD origin/main`, `git ls-remote origin refs/heads/main refs/heads/evolution/multi-agent-plan-2026-11-17`, current test/build commands, and GitHub PR/branch inventory only if an authenticated supported interface is available. Do not change the historical baseline report.
+- [x] **Step 2: Update current status.** Add a dated P0 refresh to the status report with raw evidence references. Change “no publication” to “no release publication or promotion; feature branch pushed” where applicable. Record unavailable open-PR/license facts as unknown. Treat audit-remediation Slice 02 as separate scope; use Slice 03 artifacts as host evidence if present.
+- [x] **Step 3: Verify.** Re-run Git queries; compare every current status claim with evidence. `git diff --check` must pass. No code tests are required for a report-only update.
+- [x] **Step 4: Commit.** `docs: refresh evolution completion baseline`.
 
 **Exit:** current base/branch status and work boundaries are reproducible. An unresolved license is not a blocker for code using only existing sources and standard library; it blocks reuse of external code/dependencies and distribution decisions.
 
