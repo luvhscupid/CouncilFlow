@@ -3,15 +3,19 @@
 import argparse
 import hashlib
 import json
+import ntpath
+import os
 from pathlib import Path
 import re
+import stat
 import sys
 
 
 ROLES = ("planner", "worker", "tester", "reviewer")
 _SHA256 = re.compile(r"[0-9a-f]{64}\Z")
-_FIELDS = {"schema_version", "source_artifact", "source_hash_valid", "native_role_evidence",
-           "tester_evidence", "reviewer_rerun", "planner_check", "dashboard"}
+_FIELDS_V1 = {"schema_version", "source_artifact", "source_hash_valid", "native_role_evidence",
+              "tester_evidence", "reviewer_rerun", "planner_check", "dashboard"}
+_FIELDS_V2 = _FIELDS_V1 | {"executable_artifact", "native_host"}
 
 
 def _unique_object(pairs):
@@ -39,6 +43,78 @@ def _result(check, status, detail):
     return {"check": check, "status": status, "detail": detail}
 
 
+def _relative_parts(relative):
+    if (not isinstance(relative, str) or not relative or "\\" in relative or "\x00" in relative
+            or relative.startswith("/") or ntpath.splitdrive(relative)[0]):
+        return None
+    parts = relative.split("/")
+    return parts if all(part not in {"", ".", ".."} for part in parts) else None
+
+
+def _hash_artifact(root, relative):
+    parts = _relative_parts(relative)
+    if parts is None:
+        return {"status": "FAIL", "detail": "artifact path must be a normalized relative path", "digest": None}
+    if os.open not in os.supports_dir_fd or not hasattr(os, "O_NOFOLLOW"):
+        return {"status": "UNVERIFIED", "detail": "this platform cannot enforce descriptor-relative no-follow reads", "digest": None}
+    try:
+        base = Path(root).resolve(strict=True)
+        directory_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | os.O_NOFOLLOW
+        current_fd = os.open(base, directory_flags)
+        try:
+            for part in parts[:-1]:
+                info = os.stat(part, dir_fd=current_fd, follow_symlinks=False)
+                if not stat.S_ISDIR(info.st_mode):
+                    return {"status": "BLOCKED", "detail": "artifact path contains a non-directory component", "digest": None}
+                next_fd = os.open(part, directory_flags, dir_fd=current_fd)
+                os.close(current_fd)
+                current_fd = next_fd
+            info = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+            if stat.S_ISLNK(info.st_mode):
+                return {"status": "FAIL", "detail": "symlink artifacts are not read", "digest": None}
+            file_flags = os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_NONBLOCK", 0)
+            file_fd = os.open(parts[-1], file_flags, dir_fd=current_fd)
+            try:
+                before = os.fstat(file_fd)
+                path_before = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+                if not stat.S_ISREG(before.st_mode) or (before.st_dev, before.st_ino) != (path_before.st_dev, path_before.st_ino):
+                    return {"status": "BLOCKED", "detail": "artifact is not a regular in-root file", "digest": None}
+                digest = hashlib.sha256()
+                with os.fdopen(file_fd, "rb", closefd=False) as stream:
+                    for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                        digest.update(chunk)
+                after = os.fstat(file_fd)
+                path_after = os.stat(parts[-1], dir_fd=current_fd, follow_symlinks=False)
+                signature = (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
+                final_signature = (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns)
+                path_signature = (path_after.st_dev, path_after.st_ino, path_after.st_size, path_after.st_mtime_ns, path_after.st_ctime_ns)
+                if signature != final_signature or final_signature != path_signature:
+                    return {"status": "BLOCKED", "detail": "artifact changed during verification", "digest": None}
+            finally:
+                os.close(file_fd)
+        finally:
+            os.close(current_fd)
+    except (OSError, RuntimeError, ValueError):
+        return {"status": "BLOCKED", "detail": "artifact cannot be safely opened beneath the evidence root", "digest": None}
+    return {"status": "PASS", "detail": "artifact bytes were read from a stable regular file", "digest": digest.hexdigest()}
+
+
+def _artifact_check(name, artifact, root):
+    if artifact is None:
+        return _result(name, "BLOCKED", "artifact reference is missing")
+    if not isinstance(artifact, dict) or set(artifact) != {"path", "sha256"}:
+        return _result(name, "FAIL", "artifact must contain only path and sha256")
+    digest = artifact["sha256"]
+    if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
+        return _result(name, "FAIL", "artifact SHA-256 is malformed")
+    check = _hash_artifact(root, artifact["path"])
+    if check["status"] != "PASS":
+        return _result(name, check["status"], check["detail"])
+    if check["digest"] != artifact["sha256"]:
+        return _result(name, "FAIL", "artifact bytes do not match the declared SHA-256")
+    return _result(name, "PASS", "artifact bytes match the declared SHA-256")
+
+
 def _source_check(evidence, root):
     artifact = evidence.get("source_artifact")
     if artifact is None:
@@ -47,31 +123,29 @@ def _source_check(evidence, root):
         return _result("source_integrity", "BLOCKED", "source artifact reference is missing")
     if not isinstance(artifact, dict) or set(artifact) != {"path", "sha256"}:
         return _result("source_integrity", "FAIL", "source_artifact must contain only path and sha256")
-    relative = artifact["path"]
-    digest = artifact["sha256"]
-    if not isinstance(relative, str) or not relative or not isinstance(digest, str) or not _SHA256.fullmatch(digest):
+    relative, expected = artifact["path"], artifact["sha256"]
+    if not isinstance(relative, str) or not relative or not isinstance(expected, str) or not _SHA256.fullmatch(expected):
         return _result("source_integrity", "FAIL", "source artifact path or SHA-256 is malformed")
-    candidate = Path(relative)
-    if candidate.is_absolute() or ".." in candidate.parts:
+    if _relative_parts(relative) is None:
         return _result("source_integrity", "FAIL", "source artifact path must stay within the evidence root")
-    try:
-        base = Path(root).resolve()
-        target = (base / candidate).resolve(strict=True)
-    except (OSError, RuntimeError):
-        return _result("source_integrity", "BLOCKED", "referenced source artifact cannot be read within the evidence root")
-    try:
-        target.relative_to(base)
-    except ValueError:
-        return _result("source_integrity", "FAIL", "source artifact resolves outside the evidence root")
-    if not target.is_file():
-        return _result("source_integrity", "BLOCKED", "referenced source artifact is not a regular file")
-    try:
-        actual = hashlib.sha256(target.read_bytes()).hexdigest()
-    except OSError:
-        return _result("source_integrity", "BLOCKED", "referenced source artifact cannot be read within the evidence root")
-    if actual != digest:
+    check = _hash_artifact(root, relative)
+    if check["status"] != "PASS":
+        detail = ("referenced source artifact cannot be read within the evidence root"
+                  if check["status"] == "BLOCKED" else check["detail"])
+        return _result("source_integrity", check["status"], detail)
+    if check["digest"] != expected:
         return _result("source_integrity", "FAIL", "source artifact bytes do not match the declared SHA-256")
     return _result("source_integrity", "PASS", "referenced source bytes match the declared SHA-256")
+
+
+def _native_host_check(host):
+    if host is None:
+        return _result("native_host", "BLOCKED", "native host reference is missing")
+    if not isinstance(host, dict) or set(host) != {"name", "version", "evidence_ref"}:
+        return _result("native_host", "FAIL", "native_host must contain name, version, and evidence_ref")
+    if any(not isinstance(value, str) or not value.strip() for value in host.values()):
+        return _result("native_host", "FAIL", "native_host fields must be non-empty strings")
+    return _result("native_host", "UNVERIFIED", "host name/version/reference are caller claims")
 
 
 def _role_check(evidence):
@@ -99,15 +173,18 @@ def diagnose(evidence, evidence_root=None):
     """Return checks; PASS is limited to local schema and digest validation."""
     if not isinstance(evidence, dict):
         raise ValueError("evidence must be an object")
-    if not set(evidence).issubset(_FIELDS):
-        raise ValueError("evidence contains unsupported fields")
     version = evidence.get("schema_version")
-    if type(version) is not int or version != 1:
-        raise ValueError("schema_version must be integer 1")
+    if type(version) is not int or version not in {1, 2}:
+        raise ValueError("schema_version must be integer 1 or 2")
+    fields = _FIELDS_V1 if version == 1 else _FIELDS_V2
+    if not set(evidence).issubset(fields):
+        raise ValueError("evidence contains unsupported fields")
+    if version == 2 and not {"executable_artifact", "native_host"}.issubset(evidence):
+        raise ValueError("schema_version 2 requires executable_artifact and native_host")
     if "source_hash_valid" in evidence and type(evidence["source_hash_valid"]) is not bool:
         raise ValueError("source_hash_valid must be a caller-claimed boolean")
     root = Path.cwd() if evidence_root is None else Path(evidence_root)
-    results = [_result("evidence_schema", "PASS", "top-level evidence object uses schema version 1")]
+    results = [_result("evidence_schema", "PASS", f"top-level evidence object uses schema version {version}")]
     results.append(_source_check(evidence, root))
     results.append(_role_check(evidence))
     for key, check in (("tester_evidence", "independent_tester"), ("reviewer_rerun", "reviewer_rerun"),
@@ -126,6 +203,9 @@ def diagnose(evidence, evidence_root=None):
         results.append(_result("dashboard", "UNVERIFIED", "dashboard configuration is not independently checked"))
     else:
         results.append(_result("dashboard", "FAIL", "dashboard configuration must be an object or null"))
+    if version == 2:
+        results.append(_artifact_check("executable_integrity", evidence["executable_artifact"], root))
+        results.append(_native_host_check(evidence["native_host"]))
     return results
 
 

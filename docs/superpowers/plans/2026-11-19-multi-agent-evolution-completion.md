@@ -135,17 +135,19 @@
 
 ### Task 6: Complete P5 memory/doctor evidence tests without granting memory authority
 
+**Execution result:** Offline schema v2 complete. Schema v1 output structure remains stable with symlink reads rejected; experience memory stays caller-claimed and out of Worker context. No dashboard or executable discovery was added.
+
 **Files:**
 - Modify if needed: `.agents/skills/council-flow/scripts/experience.py`, `doctor.py`, `tests/test_experience.py`, `tests/test_doctor.py`
 - Modify: matching `plugins/councilflow/skills/run/scripts/` mirrors, `docs/technical/multi-agent-evolution.md`, status report
 
 **Interfaces:** Every experience entry keeps `review_status: UNVERIFIED`. `select_entries` remains metadata filtering only. Doctor schema v1 keeps its current result contract unchanged. Schema v2 adds nullable `executable_artifact: {path: str, sha256: lowercase 64-character hex}` and `native_host: {name: non-empty str, version: non-empty str, evidence_ref: non-empty str}` objects; both fields must be present in v2, with `null` meaning absent evidence. V2 emits checks named `executable_integrity` and `native_host`; the first can `PASS` only when regular-file bytes under the configured root match the declared digest, and the second stays `UNVERIFIED` for a valid caller record. It does not execute the path or discover/authenticate a host. Null/absent evidence is `BLOCKED`, malformed records or digest mismatch are `FAIL`; unknown schema versions fail.
 
-- [ ] **Step 1: Add adversarial fixtures.** Test poisoned/stale/superseded/wrong-project entries, duplicate IDs, malformed review claims, and proof that returned entries never gain verification or enter Worker context. Test v1 doctor output remains unchanged, v2 accepts nullable executable/host records but reports absent records `BLOCKED`, malformed records/unknown versions fail, duplicate keys fail, source and executable digest mismatch fail, and symlink/FIFO evidence never gets read. No test launches a caller-specified executable.
-- [ ] **Step 2: Run tests red.** `python -B -m unittest tests.test_experience tests.test_doctor -v`.
-- [ ] **Step 3: Implement only rooted byte checks and structural host-reference checks.** Do not add executable invocation or host discovery. Do not create a dashboard. If a dashboard becomes an actual available integration, prepare a separate read-only projection proposal with privacy/retention data; never make it an authorization source.
-- [ ] **Step 4: Verify.** Focused tests, package sync/check, full tests, package rebuild, and diff review. All entries and native claims remain visibly unverified.
-- [ ] **Step 5: Commit.** `test: harden P5 memory and doctor boundaries` or a scoped implementation commit if actual changes are required.
+- [x] **Step 1: Add adversarial fixtures.** Test poisoned/stale/superseded/wrong-project entries, duplicate IDs, malformed review claims, and proof that returned entries never gain verification or enter Worker context. Test v1 doctor output remains unchanged, v2 accepts nullable executable/host records but reports absent records `BLOCKED`, malformed records/unknown versions fail, duplicate keys fail, source and executable digest mismatch fail, and symlink/FIFO evidence never gets read. No test launches a caller-specified executable.
+- [x] **Step 2: Run tests red.** `python -B -m unittest tests.test_experience tests.test_doctor -v`.
+- [x] **Step 3: Implement only rooted byte checks and structural host-reference checks.** Do not add executable invocation or host discovery. Do not create a dashboard. If a dashboard becomes an actual available integration, prepare a separate read-only projection proposal with privacy/retention data; never make it an authorization source.
+- [x] **Step 4: Verify.** Focused tests, package sync/check, full tests, package rebuild, and diff review. All entries and native claims remain visibly unverified.
+- [x] **Step 5: Commit.** `test: harden P5 memory and doctor boundaries` or a scoped implementation commit if actual changes are required.
 
 **Exit:** poisoning and missing-evidence cases fail closed; no memory is auto-injected and no dashboard/runtime is invented.
 

@@ -29,8 +29,12 @@ def select_entries(entries, project_scope):
     if not isinstance(entries, list) or not isinstance(project_scope, str) or not project_scope:
         raise ValueError("entries and project_scope are required")
     selected = []
+    seen_ids = set()
     for entry in entries:
         checked = validate_entry(entry)
+        if checked["entry_id"] in seen_ids:
+            raise ValueError("experience entry IDs must be unique")
+        seen_ids.add(checked["entry_id"])
         if checked["project_scope"] == project_scope and checked["superseded_by"] is None:
             selected.append(checked)
     return sorted(selected, key=lambda item: item["entry_id"])

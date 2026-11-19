@@ -1,4 +1,5 @@
 import unittest
+from copy import deepcopy
 from pathlib import Path
 import sys
 
@@ -37,6 +38,26 @@ class ExperienceTests(unittest.TestCase):
         for value in ([], {}, 1):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 validate_entry(self.entry(kind=value))
+
+    def test_duplicate_ids_fail_closed_across_scopes(self):
+        with self.assertRaises(ValueError):
+            select_entries([self.entry(), self.entry(project_scope="other")], "demo")
+
+    def test_poisoned_and_malformed_review_claims_do_not_become_memory_authority(self):
+        original = self.entry()
+        snapshot = deepcopy(original)
+        selected = select_entries([original], "demo")
+        self.assertEqual(original, snapshot)
+        self.assertEqual(selected[0]["review_status"], "UNVERIFIED")
+        self.assertEqual(set(selected[0]), set(snapshot) | {"review_status"})
+        for claim in (None, [], {}, "model_verified"):
+            with self.subTest(claim=claim), self.assertRaises(ValueError):
+                validate_entry(self.entry(review_claim=claim))
+
+    def test_wrong_project_and_superseded_entries_are_never_selected(self):
+        values = [self.entry(entry_id="wrong", project_scope="another-project"),
+                  self.entry(entry_id="stale", superseded_by="replacement")]
+        self.assertEqual(select_entries(values, "demo"), [])
 
 
 if __name__ == "__main__":

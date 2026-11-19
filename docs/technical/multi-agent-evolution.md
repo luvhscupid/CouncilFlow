@@ -26,6 +26,16 @@ labels and native-session references remain unverified because this CLI cannot
 authenticate native host sessions. A pass proves only the local check named in
 that result.
 
+Schema v1 keeps its existing result shape. Schema v2 requires nullable
+`executable_artifact` (`path`, `sha256`) and `native_host` (`name`, `version`,
+`evidence_ref`) fields. `executable_integrity` hashes stable regular-file bytes
+under the explicit evidence root and never executes the path. `native_host`
+records remain caller claims and return `UNVERIFIED`; null evidence is
+`BLOCKED`, malformed records or digest mismatches are `FAIL`. Symlink and FIFO
+references are not read.
+The v1 output shape remains stable; artifact checks now reject symlinks without
+following them, including links that resolve within the evidence root.
+
 ## Task graph and experience review claims
 
 `scripts/task_graph.py` validates prerequisites, revisions, cycles and blocked
@@ -56,6 +66,9 @@ cross-platform crash recovery remains unverified.
   Codex sandbox tooling and `bwrap` are present, but no worker-specific deny
   policy or cross-workspace test evidence is available. Serial mutation remains
   in force.
+- P5 doctor v2 adds local executable-byte integrity and structural native-host
+  references only. Experience entries remain metadata filters labeled
+  `UNVERIFIED`; no Worker-context injection or dashboard is implemented.
 - No dashboard or independent-model council room was added.
 - Native Codex/Claude activation and route identity remain unverified for this
   branch.

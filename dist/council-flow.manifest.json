@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "56f9bc1510c9d5639ae3054765a8700cb1f7b894b855bb92d86ef94a44282e9d",
+  "sha256": "e0e88a9c8912c693997a76307a8984ee780949cf1fbe01626a95953831bee09f",
   "entries": 183,
   "files": [
     {
@@ -70,8 +70,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 7411,
-      "sha256": "c5fcc8b4a1c5dad4376eac84e72747de98bac403c1ae4394e4fe7234ec73da5e"
+      "size": 12426,
+      "sha256": "6d2b53eaa59a059e87b148304c5068fec6421fbf50493a96224ccef820624bbf"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
@@ -105,8 +105,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/experience.py",
-      "size": 1883,
-      "sha256": "421437176e593636c93af8db59003e6586530ab33a9cf3e77ded7cbec745f7fb"
+      "size": 2058,
+      "sha256": "d388f398679bcf12d2f987b71a18956e3c44b2f317a5416dd821cf9a14f5e9e0"
     },
     {
       "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
@@ -455,8 +455,8 @@
     },
     {
       "path": "docs/technical/multi-agent-evolution.md",
-      "size": 3336,
-      "sha256": "c82a8d7cd27ffd722777b95a48aa1e25f86bcffd8655482730f9ed1b705af255"
+      "size": 4191,
+      "sha256": "5e64a762575f109ce6a1f9f235bbc3d8d0a885c038689f9dd24cdfb135f06f1f"
     },
     {
       "path": "docs/technical/structured-communication.md",
@@ -835,8 +835,8 @@
     },
     {
       "path": "tests/test_doctor.py",
-      "size": 6648,
-      "sha256": "6d9de1fc9d691c4f5c7b9d1643ea7fd8e6f430961f6eb90bcff16efa7e0fe928"
+      "size": 12802,
+      "sha256": "62bcd99055b581285c35b01af774a403a904c648d1c188343152b9f933da88b0"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -865,8 +865,8 @@
     },
     {
       "path": "tests/test_experience.py",
-      "size": 1811,
-      "sha256": "cb67f5e77ad9ab68437aedb6364f472928912a6349166b9998635b239c154cb1"
+      "size": 2922,
+      "sha256": "b34e8269b3dd9f21e2f53faba5b1d3fab42fb614392cb1bf42655dc9de58b70e"
     },
     {
       "path": "tests/test_journal.py",
