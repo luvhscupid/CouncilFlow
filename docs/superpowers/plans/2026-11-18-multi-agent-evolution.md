@@ -67,7 +67,7 @@
 
 **Files:** Create `scripts/experience.py`, `tests/test_experience.py`.
 
-**Interfaces:** `validate_entry(entry: object) -> dict`; `select_entries(entries, project_scope) -> list`. Filter to reviewed entries with provenance, evidence refs and no supersession; this is metadata only and is not injected into Worker context.
+**Interfaces:** `validate_entry(entry: object) -> dict`; `select_entries(entries, project_scope) -> list`. Filter caller-claimed review entries by scope and supersession, while returning `review_status: UNVERIFIED`; this is metadata only and is not injected into Worker context.
 
 - [x] Test missing provenance, wrong scope, supersession and deterministic ordering.
 - [x] Verify expected failures.
@@ -99,3 +99,12 @@
 - OS-enforced P4 parallel workspace isolation: cannot be established by code declarations alone.
 - P7 independent-model council room: optional product-adjacent project requiring its own privacy/authentication threat model and persistence scope.
 - External release, merge or promotion to `main`.
+
+### Review follow-up scope (2026-11-19)
+
+**Scope:** resolve the two important review findings and the stale-DAG minor finding without expanding runtime authority.
+
+1. [x] **Memory provenance:** rename the input field to `review_claim`; allow only the literal `owner_reviewed` as a claim, attach `review_status: UNVERIFIED` to all validated/selected entries, and clarify docs that the helper does not authenticate an Owner. Add tests showing claims never become verified.
+2. [x] **Tracked package outputs:** retain deterministic `dist/` archives because the repository test suite checks they match source. Clarify the design/status docs that regenerating tracked artifacts is a consistency operation, not release promotion or publication. Keep the generated archives in the branch.
+3. [x] **Stale DAG revisions:** mark stale tasks blocked and propagate blocking to descendants. Add tests for stale parent and child; invalid graph continues to return an empty execution order.
+4. [x] **Verification:** focused RED/GREEN tests, full `tests/` (264 passed, 1 platform skip), package sync/build checks, and `git diff --check` passed. Commit and push this feature branch.

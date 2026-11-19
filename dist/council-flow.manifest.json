@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "2f8d86fed39575b4f5dd1aaa4ef517851f45059b154a3f989f42852df6f7b8b1",
+  "sha256": "c66ae28390da9f1b31c7fdf92b4db4db4c70b5e6adc5adc036f9f92d7bab8788",
   "entries": 183,
   "files": [
     {
@@ -105,8 +105,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/experience.py",
-      "size": 1795,
-      "sha256": "e49cb8a176f407efcaf771474f569b4533cd53c410e72a9874a6db828ce1f862"
+      "size": 1846,
+      "sha256": "b8ad6b204b95bbaa971919e1f887c756ff945462e0c2a8084eeabcd011eb49fc"
     },
     {
       "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
@@ -115,8 +115,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/task_graph.py",
-      "size": 2443,
-      "sha256": "ece1bfdce8562443b6c25303c610b6ce16f5576af612935617f72f91cc5cdbad"
+      "size": 2476,
+      "sha256": "b07493696285aeb2b14dc364a7c2bb1ad1e193319e131e2f9b3922e3e5a2dd9d"
     },
     {
       "path": ".codex/agents/council-planner.toml",
@@ -455,8 +455,8 @@
     },
     {
       "path": "docs/technical/multi-agent-evolution.md",
-      "size": 2265,
-      "sha256": "8569fe6ef531e034563bfced5e1ff04920c7ddb4a93267ceae9d263cf72823e8"
+      "size": 2370,
+      "sha256": "86fcde441841a28fd80b0f976616e5c9160312b10d9da7ff96d9f38c5766ddb0"
     },
     {
       "path": "docs/technical/structured-communication.md",
@@ -865,8 +865,8 @@
     },
     {
       "path": "tests/test_experience.py",
-      "size": 1250,
-      "sha256": "e5423ecc2ff9e56dcefd6631e5cd8025663c98b97f82a7d42de291e7d7c8ebf7"
+      "size": 1564,
+      "sha256": "063a770cdd0fd58321ed3c44663418d0a812571223d1b8412dc673d9ccf4a15f"
     },
     {
       "path": "tests/test_journal.py",
@@ -895,8 +895,8 @@
     },
     {
       "path": "tests/test_task_graph.py",
-      "size": 1643,
-      "sha256": "e685824c9326817f55b0e4d62aeb9a3bf5773972389b463f27a22db0a52fb2f0"
+      "size": 2070,
+      "sha256": "6ce596a022c0cf0c0ca2830f7b235f122761eb6ed8059f1a76cdf7c883af6a48"
     },
     {
       "path": "tests/test_tester_selection.py",

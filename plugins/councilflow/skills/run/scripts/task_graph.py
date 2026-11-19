@@ -20,6 +20,7 @@ def validate_graph(nodes, plan_revision):
             raise ValueError("depends_on must be a list of task IDs")
         if node.get("plan_revision") != plan_revision:
             errors.append("STALE_PLAN_REVISION")
+            blocked.add(task_id)
         if node.get("status") in {"BLOCKED", "FAILED", "CANCELLED"}:
             blocked.add(task_id)
     indegree = {task_id: 0 for task_id in by_id}

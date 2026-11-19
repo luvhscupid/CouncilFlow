@@ -17,7 +17,7 @@
 
 ## Verification
 
-- `python -B -m unittest discover -s tests -v`: **262 tests passed, 1 platform skip** after independent review fixes.
+- `python -B -m unittest discover -s tests -v`: **262 tests passed, 1 platform skip** before the 2026-11-19 review follow-up; see the follow-up plan for final rerun evidence.
 - `python -B -m unittest discover -s experiments/agent-efficiency -v`: **3 passed**.
 - `python -B tools/build_release.py`: package built with source-byte and CRC checks passing.
 - `python -B tools/build_claude_plugin.py sync`, `check`, and `build`: shared runtime synchronized; package built.
@@ -26,3 +26,10 @@
 ## Limits
 
 The product helpers are deterministic local code, not a trusted supervisor or authentication layer. The journal prototype is not included in product bundles. Capability/profile data is caller-supplied; it cannot prove actual host route or model identity. The DAG helper does not enforce workspace separation. No evidence here establishes live Codex or Claude activation, model cost, quota, billing, or workflow improvement.
+
+## 2026-11-19 review follow-up
+
+- Experience entries use `review_claim`; every validated entry is labeled `review_status: UNVERIFIED`.
+- Stale plan revisions block the affected task and descendants.
+- Tracked ZIP regeneration is documented as package consistency, not release promotion.
+- Follow-up verification: **264 tests passed, 1 platform skip**; Claude shared runtime sync, both package builds, `git diff --check`, and independent review passed.

@@ -25,9 +25,10 @@ is unverified and cannot become a pass.
 
 `scripts/task_graph.py` validates prerequisites, revisions, cycles and blocked
 descendants. It returns a stable graph order but does not schedule or parallelize
-work. `scripts/experience.py` validates manually Owner-reviewed lesson metadata
-and filters by project scope/supersession. It does not ingest model output or
-inject lessons into Worker context.
+work. `scripts/experience.py` validates lesson metadata and filters by project
+scope/supersession. Its `review_claim` is caller-supplied, and every entry is
+returned with `review_status: UNVERIFIED`. It does not authenticate Owner
+review, ingest model output, or inject lessons into Worker context.
 
 ## Experimental journal
 

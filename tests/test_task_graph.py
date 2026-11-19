@@ -36,6 +36,15 @@ class TaskGraphTests(unittest.TestCase):
         self.assertIn("b", result["blocked"])
         self.assertIn("STALE_PLAN_REVISION", result["errors"])
 
+    def test_stale_parent_and_descendants_are_blocked(self):
+        result = validate_graph([
+            {"task_id": "a", "depends_on": [], "plan_revision": 0},
+            {"task_id": "b", "depends_on": ["a"], "plan_revision": 1},
+            {"task_id": "c", "depends_on": ["b"], "plan_revision": 1},
+        ], 1)
+        self.assertEqual(result["blocked"], ["a", "b", "c"])
+        self.assertEqual(result["order"], [])
+
 
 if __name__ == "__main__":
     unittest.main()

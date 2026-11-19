@@ -18,7 +18,7 @@ Implement the compatible parts of the 2026-11-17 evolution plan as optional, off
 ## Non-goals
 
 - No model/provider calls, live A/B evaluation, claims of lower cost, or use of Package D as an authorized trial.
-- No credential/configuration inspection or mutation, OAuth reuse, API gateway, permission changes, OS sandbox, server, dashboard, autonomous coding agent, auto-merge, deployment, release, or main-branch changes.
+- No credential/configuration inspection or mutation, OAuth reuse, API gateway, permission changes, OS sandbox, server, dashboard, autonomous coding agent, auto-merge, deployment, release promotion, or main-branch changes. Tracked deterministic ZIPs/checksums may be regenerated to satisfy repository package consistency tests; this is not a release or publication.
 - No weakening of the Owner Charter, frozen plans, role independence, independent Tester/Reviewer checks, or original evidence requirements.
 - No import of upstream code; only independent implementations of compatible concepts.
 

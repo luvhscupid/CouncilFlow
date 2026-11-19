@@ -11,13 +11,13 @@ from experience import select_entries, validate_entry
 class ExperienceTests(unittest.TestCase):
     def entry(self, **changes):
         value = {"entry_id": "lesson-1", "kind": "INSIGHT", "project_scope": "demo",
-                 "provenance": "owner_reviewed", "evidence_refs": ["report.md"], "superseded_by": None}
+                 "review_claim": "owner_reviewed", "evidence_refs": ["report.md"], "superseded_by": None}
         value.update(changes)
         return value
 
-    def test_unreviewed_or_missing_provenance_is_rejected(self):
+    def test_unreviewed_claim_or_missing_evidence_is_rejected(self):
         with self.assertRaises(ValueError):
-            validate_entry(self.entry(provenance="model_generated"))
+            validate_entry(self.entry(review_claim="model_generated"))
         with self.assertRaises(ValueError):
             validate_entry(self.entry(evidence_refs=[]))
 
@@ -26,6 +26,12 @@ class ExperienceTests(unittest.TestCase):
                   self.entry(entry_id="old", superseded_by="lesson-2")]
         selected = select_entries(values, "demo")
         self.assertEqual([item["entry_id"] for item in selected], ["lesson-1"])
+        self.assertEqual(selected[0]["review_status"], "UNVERIFIED")
+
+    def test_owner_review_claim_never_becomes_verified(self):
+        entry = validate_entry(self.entry())
+        self.assertEqual(entry["review_claim"], "owner_reviewed")
+        self.assertEqual(entry["review_status"], "UNVERIFIED")
 
 
 if __name__ == "__main__":
