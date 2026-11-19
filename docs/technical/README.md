@@ -16,7 +16,7 @@ the host's models, tools and native delegation.
 | [Structured communication](structured-communication.md) | The UTF-8 JSON message format, the validator commands, and their limits. |
 | [Codebase Memory context](codebase-memory.md) | How the optional Codebase Memory tool is used for existing projects, and its fallbacks. |
 | [Optional efficiency helpers](efficiency-helpers.md) | The opt-in recorder and digest helpers, and their unverified claims. |
-| [Evolution helpers](multi-agent-evolution.md) | Offline role capability reporting, diagnostics, graph validation, reviewed memory records, and the experimental run journal. |
+| [Evolution helpers](multi-agent-evolution.md) | Offline role capability reporting, diagnostics, graph validation, caller-claimed review metadata, and the experimental run journal. |
 
 ## Where authoritative sources live
 

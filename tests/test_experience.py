@@ -33,6 +33,11 @@ class ExperienceTests(unittest.TestCase):
         self.assertEqual(entry["review_claim"], "owner_reviewed")
         self.assertEqual(entry["review_status"], "UNVERIFIED")
 
+    def test_kind_rejects_unhashable_and_non_string_values_as_value_errors(self):
+        for value in ([], {}, 1):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                validate_entry(self.entry(kind=value))
+
 
 if __name__ == "__main__":
     unittest.main()

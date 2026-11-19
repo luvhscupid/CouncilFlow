@@ -1,4 +1,4 @@
-"""Validation for manually reviewed lessons; no automatic prompt injection."""
+"""Validate caller-claimed review metadata; no automatic prompt injection."""
 
 from copy import deepcopy
 
@@ -12,7 +12,7 @@ def validate_entry(entry):
         raise ValueError("experience entry has an invalid schema")
     if not all(isinstance(entry[key], str) and entry[key].strip() for key in ("entry_id", "project_scope")):
         raise ValueError("entry_id and project_scope must be non-empty strings")
-    if entry["kind"] not in _KINDS:
+    if not isinstance(entry["kind"], str) or entry["kind"] not in _KINDS:
         raise ValueError("kind must be SUCCESS, FAILURE, or INSIGHT")
     if entry["review_claim"] != "owner_reviewed":
         raise ValueError("review_claim must be owner_reviewed")

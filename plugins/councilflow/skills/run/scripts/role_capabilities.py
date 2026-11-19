@@ -11,7 +11,7 @@ def validate_profile(data):
     """Validate and copy the version 1 role preference profile."""
     if not isinstance(data, dict) or set(data) != {"schema_version", "roles"}:
         raise ValueError("profile must contain only schema_version and roles")
-    if data["schema_version"] != 1:
+    if type(data["schema_version"]) is not int or data["schema_version"] != 1:
         raise ValueError("unsupported profile schema_version")
     roles = data["roles"]
     if not isinstance(roles, dict) or not set(roles).issubset(_ROLES):
@@ -19,7 +19,7 @@ def validate_profile(data):
     for role, settings in roles.items():
         if not isinstance(settings, dict) or set(settings) != {"preference"}:
             raise ValueError(f"{role} settings must contain only preference")
-        if settings["preference"] not in _PREFERENCES:
+        if not isinstance(settings["preference"], str) or settings["preference"] not in _PREFERENCES:
             raise ValueError(f"unsupported preference for {role}")
     return deepcopy(data)
 
@@ -31,12 +31,12 @@ def resolve_role(profile, capabilities, role):
     documented host-specific adapter exists, the effective model stays unknown.
     """
     profile = validate_profile(profile)
-    if role not in _ROLES:
+    if not isinstance(role, str) or role not in _ROLES:
         raise ValueError("unknown role")
     if not isinstance(capabilities, dict):
         raise ValueError("capabilities must be an object")
     explicit = capabilities.get("explicit_role_selection")
-    if explicit not in (True, False, None):
+    if explicit is not None and type(explicit) is not bool:
         raise ValueError("explicit_role_selection must be true, false, or null")
     evidence_ref = capabilities.get("evidence_ref")
     if evidence_ref is not None and (not isinstance(evidence_ref, str) or not evidence_ref.strip()):

@@ -24,7 +24,7 @@
 
 - Malformed or future-version JSON must fail closed — test invalid/duplicate keys and unknown versions in each schema owner.
 - Stale or duplicate journal transitions must never accept a run — test revision mismatch and replay.
-- Journal paths are opaque references and never dereferenced — test that traversal-like strings are retained as references only.
+- Journal paths are opaque references and never dereferenced — test that traversal-like strings are retained as references only. The journal is a local state-transition prototype, not a recovery/authentication service.
 - Missing/poisoned memory must not become Worker authority — test untrusted provenance and superseded entries.
 - Absent native host capability must never be green or select a guessed model — test unknown capability and inherited fallback.
 
@@ -45,12 +45,12 @@
 
 **Files:** Create experimental `experiments/multi-agent-evolution/journal.py`, tests `tests/test_journal.py`; update docs only after API stabilized.
 
-**Interfaces:** `Journal(path).create_run(...)`, `.transition(run_id, expected_revision, new_state, payload, event_id=None)`, `.get_run(run_id)`, `.export(run_id)`. Store metadata and evidence references only; transition is a SQLite transaction with revision compare-and-swap. Keep this prototype under `experiments/multi-agent-evolution/`, outside the installed skill, because current product tests prohibit SQLite runtime code.
+**Interfaces:** `Journal(path).create_run(...)`, `.transition(run_id, expected_revision, new_state, payload, event_id=None)`, `.get_run(run_id)`, `.export(run_id)`. Store allowlisted metadata and opaque evidence references only; transition is a SQLite transaction with revision compare-and-swap. The prototype does not inspect reference targets, validate attempt identity, recompute hashes, authenticate approvals/native sessions, or establish cross-platform crash recovery. Keep it under `experiments/multi-agent-evolution/`, outside the installed skill, because current product tests prohibit SQLite runtime code.
 
 - [x] Write tests for valid transitions, stale revision, duplicate event, skipped required role, restricted payload and deterministic export.
 - [x] Verify failures before implementing.
 - [x] Implement schema-versioned local journal; never auto-create unless the caller explicitly constructs it with a path.
-- [x] Verify required transitions and acceptance references; actual artifacts are not dereferenced or independently hash-verified.
+- [x] Verify required transitions and acceptance-reference fields; actual artifacts are not dereferenced or independently hash-verified.
 
 ### Task 3: Dependency graph validation
 
@@ -63,7 +63,7 @@
 - [x] Implement pure graph validation only.
 - [x] Verify tests and document that parallel mutation remains disabled.
 
-### Task 4: Reviewed memory records
+### Task 4: Caller-claimed review metadata
 
 **Files:** Create `scripts/experience.py`, `tests/test_experience.py`.
 
@@ -72,13 +72,13 @@
 - [x] Test missing provenance, wrong scope, supersession and deterministic ordering.
 - [x] Verify expected failures.
 - [x] Implement schema and filtering.
-- [x] Verify tests; document manual review and no automatic retrieval/injection.
+- [x] Verify tests; document that review is caller-claimed, remains unverified, and is not automatically retrieved/injected.
 
 ### Task 5: Deterministic diagnostics
 
 **Files:** Create standalone `scripts/doctor.py`, `tests/test_doctor.py`; do not change default skill behavior.
 
-**Interfaces:** `diagnose(evidence: dict) -> list[dict]`; statuses only `PASS`, `FAIL`, `BLOCKED`, `SKIP`, `UNVERIFIED`. Missing events/capabilities can never yield PASS.
+**Interfaces:** `diagnose(evidence: dict, evidence_root=None) -> list[dict]`; statuses only `PASS`, `FAIL`, `BLOCKED`, `SKIP`, `UNVERIFIED`. PASS names only a completed local check; it never authenticates a host claim or caller-reported outcome.
 
 - [x] Test missing native role/session evidence, duplicate JSON keys, and caller-claimed outcomes.
 - [x] Verify expected failures.
@@ -123,8 +123,8 @@
    - `PASS`: only a specific check the doctor itself completed, such as schema validation or byte/hash comparison; never means a native role, approval, or task outcome is true based only on a caller boolean/label.
    - `SKIP`: optional check not configured.
    - `UNVERIFIED`: a claim depends on native host/session evidence the doctor cannot authenticate or inspect.
-2. Replace unused `required_roles`/`native_roles` type checks with defined checks that inspect declared evidence references and identity fields. Preserve `UNVERIFIED` for native-execution claims unless the referenced evidence format supports a deterministic local check; document precisely what a `PASS` proves.
-3. Add red-first tests for valid evidence, absent required evidence, malformed objects/types, digest mismatch, caller-asserted success remaining unverified, optional dashboard skip, duplicate fields, CLI stdin/file input, and exit codes.
+2. Replace unused `required_roles`/`native_roles` type checks with defined structural checks for declared role, identity, and evidence-reference fields. Treat those values as caller claims; preserve `UNVERIFIED` for native-execution claims unless the referenced evidence format supports a deterministic local check. Document precisely what a `PASS` proves.
+3. Add red-first tests for valid evidence, absent required evidence, malformed objects/types, digest mismatch, caller-asserted success remaining unverified, optional dashboard skip, duplicate fields, CLI stdin/file input, and exit codes. Contract: version 1; local source references use `{path, sha256}` relative to the evidence file's parent (stdin uses the current directory); native role records are caller claims with exactly `{role, identity, evidence_ref}` for planner/worker/tester/reviewer; tester/reviewer/planner claims are booleans; dashboard is null or an object.
 4. Implement only the checks above; use a context manager for file reads and explicit duplicate/non-finite JSON rejection. Do not add arbitrary filesystem traversal or host discovery.
 
 #### B. Make public validators reject malformed JSON types consistently

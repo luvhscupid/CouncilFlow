@@ -18,15 +18,20 @@ adapter was observed in this environment.
 Run `python .agents/skills/council-flow/scripts/doctor.py evidence.json` or pipe
 JSON to `python .agents/skills/council-flow/scripts/doctor.py -`. The input is
 explicit evidence, not auto-discovered host state. Output statuses are
-`PASS`, `FAIL`, `BLOCKED`, `SKIP`, and `UNVERIFIED`; missing native role evidence
-is unverified and cannot become a pass.
+`PASS`, `FAIL`, `BLOCKED`, `SKIP`, and `UNVERIFIED`. Schema validation and a
+SHA-256 comparison against bytes read from a relative path under the evidence
+file's directory (or the current directory for stdin) can pass. Missing required
+references are blocked; malformed data and digest mismatches fail. Declared role
+labels and native-session references remain unverified because this CLI cannot
+authenticate native host sessions. A pass proves only the local check named in
+that result.
 
-## Task graph and reviewed experience
+## Task graph and experience review claims
 
 `scripts/task_graph.py` validates prerequisites, revisions, cycles and blocked
 descendants. It returns a stable graph order but does not schedule or parallelize
-work. `scripts/experience.py` validates lesson metadata and filters by project
-scope/supersession. Its `review_claim` is caller-supplied, and every entry is
+work. `scripts/experience.py` validates review-claim metadata and filters by
+project scope/supersession. Its `review_claim` is caller-supplied, and every entry is
 returned with `review_status: UNVERIFIED`. It does not authenticate Owner
 review, ingest model output, or inject lessons into Worker context.
 
@@ -35,9 +40,13 @@ review, ingest model output, or inject lessons into Worker context.
 `experiments/multi-agent-evolution/journal.py` is an offline SQLite prototype.
 It is intentionally outside the installed skill because current product tests
 forbid SQLite in runtime code and no storage/retention policy has been qualified.
-It stores state metadata and evidence references, not evidence content. It is
-not a trusted authorization service and does not establish crash safety across
-all filesystems or host environments.
+It stores allowlisted state metadata and opaque evidence references, not
+evidence content. It provides a SQLite schema version, state transitions,
+transaction/CAS revision checks, duplicate event rejection, and required
+acceptance-reference fields. It does not inspect reference targets, validate
+attempt identity, recompute artifact hashes, authenticate approvals or native
+sessions, reconcile interrupted host sessions, or establish cross-platform
+crash recovery. It is not a trusted authorization service.
 
 ## Current phase limits
 

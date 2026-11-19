@@ -23,6 +23,12 @@ class RoleCapabilityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_profile({"schema_version": 99, "roles": {}})
 
+    def test_profile_rejects_boolean_version_and_unhashable_preference(self):
+        with self.assertRaises(ValueError):
+            validate_profile({"schema_version": True, "roles": {}})
+        with self.assertRaises(ValueError):
+            validate_profile({"schema_version": 1, "roles": {"worker": {"preference": []}}})
+
     def test_unsupported_override_inherits_host_without_model_claim(self):
         result = resolve_role(
             {"schema_version": 1, "roles": {"worker": {"preference": "lower_cost_if_qualified"}}},
@@ -51,6 +57,11 @@ class RoleCapabilityTests(unittest.TestCase):
         self.assertEqual(result["capability_status"], "UNKNOWN")
         self.assertTrue(result["capability_reported"])
         self.assertFalse(result["route_verified"])
+
+    def test_capability_flag_requires_exact_boolean_or_null(self):
+        for value in (0, 1):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                resolve_role({"schema_version": 1, "roles": {}}, {"explicit_role_selection": value}, "worker")
 
 
 if __name__ == "__main__":

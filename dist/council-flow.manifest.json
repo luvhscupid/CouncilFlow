@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "c66ae28390da9f1b31c7fdf92b4db4db4c70b5e6adc5adc036f9f92d7bab8788",
+  "sha256": "4d53a2d35d272b5f518aa1079ca4dfd0771fffac48939f38ebb01052898c53bf",
   "entries": 183,
   "files": [
     {
@@ -70,8 +70,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 2620,
-      "sha256": "883938b28cc00229b25566e21cdf5098605efce32ce239bf11be9693552681a5"
+      "size": 7411,
+      "sha256": "c5fcc8b4a1c5dad4376eac84e72747de98bac403c1ae4394e4fe7234ec73da5e"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
@@ -105,18 +105,18 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/experience.py",
-      "size": 1846,
-      "sha256": "b8ad6b204b95bbaa971919e1f887c756ff945462e0c2a8084eeabcd011eb49fc"
+      "size": 1883,
+      "sha256": "421437176e593636c93af8db59003e6586530ab33a9cf3e77ded7cbec745f7fb"
     },
     {
       "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
-      "size": 2492,
-      "sha256": "89da07801928dd8573e0cdac71aad6021960e04c02fb6bc9adb2bf053636c6f2"
+      "size": 2627,
+      "sha256": "194ce9988d41692a40f67c1f9172a5866f8b0cb4d453666830a1ee72ae3467c9"
     },
     {
       "path": ".agents/skills/council-flow/scripts/task_graph.py",
-      "size": 2476,
-      "sha256": "b07493696285aeb2b14dc364a7c2bb1ad1e193319e131e2f9b3922e3e5a2dd9d"
+      "size": 2778,
+      "sha256": "dbcb9ae67ba9a81d99817f9d3afd6fef1a0ad2ed3466a72b785bdf61d5a0a874"
     },
     {
       "path": ".codex/agents/council-planner.toml",
@@ -430,8 +430,8 @@
     },
     {
       "path": "docs/technical/README.md",
-      "size": 2433,
-      "sha256": "ede44b43c9247d406e6ab7d3732840b182b99fe4f23d23079620e2711c75e7c0"
+      "size": 2440,
+      "sha256": "a82f65109ae8dd8f2db27bd4d3207c71a44f7b56253ab6babb914f33fab884ed"
     },
     {
       "path": "docs/technical/claude-code-plugin.md",
@@ -455,8 +455,8 @@
     },
     {
       "path": "docs/technical/multi-agent-evolution.md",
-      "size": 2370,
-      "sha256": "86fcde441841a28fd80b0f976616e5c9160312b10d9da7ff96d9f38c5766ddb0"
+      "size": 3061,
+      "sha256": "4a4d5b170a59c5b9ce32a73d11d9681e8d8b8f032d7dc562129df0ce0c63ef56"
     },
     {
       "path": "docs/technical/structured-communication.md",
@@ -835,8 +835,8 @@
     },
     {
       "path": "tests/test_doctor.py",
-      "size": 1652,
-      "sha256": "5cb70fc5a092e90b7ce4e17e895ae36c69a92767a7cbe5cabe2f076f3963a24c"
+      "size": 6648,
+      "sha256": "6d9de1fc9d691c4f5c7b9d1643ea7fd8e6f430961f6eb90bcff16efa7e0fe928"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -865,13 +865,13 @@
     },
     {
       "path": "tests/test_experience.py",
-      "size": 1564,
-      "sha256": "063a770cdd0fd58321ed3c44663418d0a812571223d1b8412dc673d9ccf4a15f"
+      "size": 1811,
+      "sha256": "cb67f5e77ad9ab68437aedb6364f472928912a6349166b9998635b239c154cb1"
     },
     {
       "path": "tests/test_journal.py",
-      "size": 2794,
-      "sha256": "489fae8a1223ad8ef732ba22adf834c347d77c3db812bc323a1d7244b49cd5dc"
+      "size": 4442,
+      "sha256": "a8f583a9763690f70e4526ea0dfd2a247cd0f850213e517f32aae7ed5a3ec392"
     },
     {
       "path": "tests/test_original_source.py",
@@ -885,8 +885,8 @@
     },
     {
       "path": "tests/test_role_capabilities.py",
-      "size": 2282,
-      "sha256": "b36ff626d3704f62524a2032490fe5d81e2b7382d7c52d63bc86dd35945e55b4"
+      "size": 2893,
+      "sha256": "8338d06c5d8ac67df42687e82ecaf16cf233ce33012c607aac688ac706d58f0d"
     },
     {
       "path": "tests/test_skill_files.py",
@@ -895,8 +895,8 @@
     },
     {
       "path": "tests/test_task_graph.py",
-      "size": 2070,
-      "sha256": "6ce596a022c0cf0c0ca2830f7b235f122761eb6ed8059f1a76cdf7c883af6a48"
+      "size": 2669,
+      "sha256": "2963f57edd4ce731d4bc464a44aef12913c4a525c7c35be0ad6060873337d4ef"
     },
     {
       "path": "tests/test_tester_selection.py",

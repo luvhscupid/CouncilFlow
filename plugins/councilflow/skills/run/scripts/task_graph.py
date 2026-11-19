@@ -7,7 +7,7 @@ def validate_graph(nodes, plan_revision):
     errors = []
     blocked = set()
     by_id = {}
-    if not isinstance(nodes, list) or not isinstance(plan_revision, int):
+    if not isinstance(nodes, list) or type(plan_revision) is not int:
         raise ValueError("nodes must be a list and plan_revision an integer")
     for node in nodes:
         if not isinstance(node, dict) or not isinstance(node.get("task_id"), str) or not node["task_id"]:
@@ -16,12 +16,18 @@ def validate_graph(nodes, plan_revision):
         if task_id in by_id:
             errors.append("DUPLICATE_TASK_ID")
         by_id[task_id] = node
-        if not isinstance(node.get("depends_on"), list) or any(not isinstance(dep, str) for dep in node["depends_on"]):
+        if not isinstance(node.get("depends_on"), list) or any(not isinstance(dep, str) or not dep for dep in node["depends_on"]):
             raise ValueError("depends_on must be a list of task IDs")
-        if node.get("plan_revision") != plan_revision:
+        revision = node.get("plan_revision")
+        if type(revision) is not int:
+            raise ValueError("plan_revision on each node must be an integer")
+        if revision != plan_revision:
             errors.append("STALE_PLAN_REVISION")
             blocked.add(task_id)
-        if node.get("status") in {"BLOCKED", "FAILED", "CANCELLED"}:
+        status = node.get("status")
+        if status is not None and not isinstance(status, str):
+            raise ValueError("status must be a string or null")
+        if status in {"BLOCKED", "FAILED", "CANCELLED"}:
             blocked.add(task_id)
     indegree = {task_id: 0 for task_id in by_id}
     children = defaultdict(list)

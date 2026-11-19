@@ -45,6 +45,16 @@ class TaskGraphTests(unittest.TestCase):
         self.assertEqual(result["blocked"], ["a", "b", "c"])
         self.assertEqual(result["order"], [])
 
+    def test_revisions_reject_booleans_and_dependencies_reject_unhashable_values(self):
+        with self.assertRaises(ValueError):
+            validate_graph([], plan_revision=True)
+        with self.assertRaises(ValueError):
+            validate_graph([{"task_id": "a", "depends_on": [], "plan_revision": True}], 1)
+        with self.assertRaises(ValueError):
+            validate_graph([{"task_id": "a", "depends_on": [[]], "plan_revision": 1}], 1)
+        with self.assertRaises(ValueError):
+            validate_graph([{"task_id": "a", "depends_on": [], "plan_revision": 1, "status": []}], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
