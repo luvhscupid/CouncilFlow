@@ -44,7 +44,7 @@ hashes against the worktree. It is extracted to a temporary directory for test
 execution. Use `python -m zipfile -t dist/council-flow.zip` to check its ZIP
 container and verify the sibling digest with SHA-256 before distribution.
 
-Run these seven maintained suites on the checkout and again from a fresh final extraction:
+Run these nine maintained commands on the checkout and again from a fresh final extraction:
 
 ```sh
 python -m unittest discover -s tests -v
@@ -54,9 +54,12 @@ python -m unittest discover -s demo/structured-flow -v
 python -m unittest discover -s demo/gate3-demo -v
 python -m unittest discover -s reports/demo/verification -v
 python -m unittest discover -s reports/csv-summary/verification -v
+python -m unittest discover -s demo/dashboard/tests -v
+node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs
 ```
 
-The main `tests` suite includes recorder, digest/expand, both adapters,
+The dashboard Python suite covers the packet publisher; the Node command runs
+both the packet reader and folder-import UI suites. The main `tests` suite includes recorder, digest/expand, both adapters,
 source-fidelity controls and release/extracted-install relocation controls.
 Separately run `python -m unittest discover -s experiments/agent-efficiency -v`
 for the preserved offline Package D unit tests in the checkout; Package D
@@ -77,10 +80,10 @@ with seven E-checks PASS and E1/E2/E4 UNVERIFIED. Live Codex and Claude
 Code/xKiro adapter compatibility remains LIVE_UNVERIFIED. No new hook or live
 trial is claimed. See the packaged efficiency reference for explicit CLI use.
 
-## Claude Code plugin package (feature/claude-code-plugin)
+## Historical Claude Code plugin package (feature/claude-code-plugin)
 
-Separate from the Codex release above. The plugin source and ZIP are unchanged by
-this documentation maintenance. Package:
+The current release scope is Codex-native. The historical plugin source and ZIP
+are records of a possible Claude Code extension. Historical package:
 `dist/councilflow-claude-plugin.zip` with sibling `.sha256`, built
 deterministically by `python tools/build_claude_plugin.py build` from
 `plugins/councilflow/`. Verified offline: `claude plugin validate`, plugin

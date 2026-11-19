@@ -1,6 +1,6 @@
 # CouncilFlow
 
-CouncilFlow is an installable **workflow skill** for existing AI coding tools. It is
+CouncilFlow is an installable **Codex-native workflow skill**. It is
 not a standalone AI application, assistant, runtime, provider, or service.
 
 ## What it is
@@ -32,7 +32,6 @@ as structured evidence, so a claimed result can be checked.
 | If you want to... | Read |
 | --- | --- |
 | Install and use it in Codex | [Use in this repository](#use-in-this-repository-codex) below |
-| Use the Claude Code plugin | [Claude Code plugin](docs/technical/claude-code-plugin.md) |
 | Understand the internal message format | [Structured communication](docs/technical/structured-communication.md) |
 | Try a small, offline example | [Demonstrations](#demonstrations) below |
 | Understand the optional efficiency helpers | [Optional efficiency helpers](docs/technical/efficiency-helpers.md) |
@@ -60,13 +59,10 @@ separate from the frozen Gate 3 experiment, and no new Gate 3 experiment is incl
 | Host | Package | How to invoke | Status |
 | --- | --- | --- | --- |
 | Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Supported native skill and role workflow. Run 01: **NATIVE_ROLE_WORKFLOW_PARTIAL**; E1/E2/E4 UNVERIFIED, other seven checks PASS |
-| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Installable plugin; one real smoke run **VERIFIED_ACCEPT**, with native Planner, Worker, Tester and Reviewer sessions and an 11-message validated sequence |
 
-Details for each host are in [docs/technical/host-packages.md](docs/technical/host-packages.md).
-The Claude result is limited to calc-001; it does not establish universal host compatibility.
-Upstream model identity, effective route, cost and quota remain unknown. See the sanitized
-[Gate 3 summary](reports/documentation-release-sync/gate3-run-01.md) and
-[Claude smoke summary](reports/documentation-release-sync/claude-calc-001.md).
+See the [Gate 3 Run 01 summary](reports/documentation-release-sync/gate3-run-01.md).
+Historical Claude Code work is documented in [Host packages](docs/technical/host-packages.md).
+Claude Code remains a possible extension. The historical calc-001 smoke run applies to its recorded candidate.
 Agent Efficiency helpers are offline-tested and opt-in; live adapter and billing compatibility
 remain unverified. Package D remains **DRAFT_NOT_AUTHORIZED**.
 

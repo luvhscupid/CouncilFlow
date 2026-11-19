@@ -23,9 +23,7 @@ language; do not expose internal envelopes or long logs by default.
 
 ## Automatic project context
 
-Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md) automatically; no separate Owner command is required.
-Inspect local project content first: empty or installation-only projects make zero MCP calls. For existing source, discover the actual MCP capability, bind the exact project, check freshness, and retrieve bounded context; unavailable MCP means direct inspection.
-After Worker stops edits, repeat the lifecycle to update the index for meaningful source, including new projects and rework. Graph findings inform navigation; independent verification remains mandatory.
+Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md) automatically; no separate Owner command is required. Empty/install-only projects make zero MCP calls. For source, bind the actual project, check freshness and retrieve bounded context, or inspect directly if MCP is unavailable. After Worker stops edits, update the index for meaningful source; graph findings inform navigation, independent verification remains mandatory.
 
 ## Execute the goal
 
@@ -33,10 +31,10 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
    capabilities. Define the Owner objective, approved paths and observable
    acceptance. Before Planner, bind supplied frozen input and preserve test
    oracles using [source fidelity](references/source-fidelity.md). Never invent IDs or capabilities.
-2. **Planner.** Dedicated native Planner publishes plan.publish JSON before
-   implementation. Preserve original plan and mandatory acceptance. External
-   mode preserves an Owner-approved supplied plan and provenance unchanged;
-   never claim to contact the external ChatGPT conversation.
+2. **Planner.** Dedicated native Planner publishes plan.publish JSON before implementation, preserving
+   original plan and acceptance. External mode preserves an Owner-approved supplied plan and provenance
+   without claiming contact. After validating publication, Manager opens the task board once and republishes
+   after packet writes/validated role results; follow [workflow](references/workflow.md).
 3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate

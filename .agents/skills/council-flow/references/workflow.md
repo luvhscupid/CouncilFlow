@@ -55,12 +55,23 @@ Planner final check → Owner. Preserve that responsibility order.
 
 ## Practical file boundary
 
-Use ordinary bounded files, for example messages/M001.json, candidate.json and
-test-output.txt, referenced by artifact identity/path/SHA-256. Validate UTF-8 JSON
+For Codex runs, Manager stores each task's packet files in
+`.councilflow/runs/<task-id>/`, with messages in its `messages/` folder. Use
+ordinary bounded files, for example `messages/M001.json`, `candidate.json` and
+`test-output.txt`, referenced by artifact identity/path/SHA-256. Validate UTF-8 JSON
 using scripts/contracts.py. Ordered message context checks causal links,
 attempt/candidate identities, published acceptance and known actor bindings.
 Refer to communication.md for exact schemas, CLI and limitations. This is not a
 database, message broker, Supervisor, agent simulator or transport adapter.
+
+After validating `plan.publish`, Manager opens the read-only dashboard once for
+the task with `scripts/dashboard.py publish --root . --task-id <task-id> --open`.
+After each Manager packet write and each validated role result, Manager reruns
+the helper without `--open` so the same self-contained board refreshes from the
+current task directory. The dashboard is an informational projection; packets
+remain authoritative, and no local service or watcher is started. If the host
+cannot open the browser, report the dashboard as blocked and continue the normal
+workflow without claiming a live connection.
 
 Native Codex transport may wrap these messages in an opaque protocol. CouncilFlow
 only controls the task packet/report files and instructions passed through

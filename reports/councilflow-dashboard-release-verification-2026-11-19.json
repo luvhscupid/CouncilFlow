@@ -1,0 +1,221 @@
+{
+  "date": "2026-11-19",
+  "archive": "dist/council-flow.zip",
+  "sha256": "1feb9d36157fc04e56811807910b444baeddb5b799b1160ebda70126691352ed",
+  "entries": 193,
+  "manifest_sha256": "1feb9d36157fc04e56811807910b444baeddb5b799b1160ebda70126691352ed",
+  "sidecar_sha256": "1feb9d36157fc04e56811807910b444baeddb5b799b1160ebda70126691352ed",
+  "manifest_inventory_matches_zip": true,
+  "zip_crc": "PASS",
+  "python_executable": "C:\\Users\\cupid\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "node_executable": "node (PATH)",
+  "commands": [
+    "python -m unittest discover -s tests -v",
+    "python -m unittest discover -s demo/receipt -v",
+    "python -m unittest discover -s demo/csv-summary -v",
+    "python -m unittest discover -s demo/structured-flow -v",
+    "python -m unittest discover -s demo/gate3-demo -v",
+    "python -m unittest discover -s reports/demo/verification -v",
+    "python -m unittest discover -s reports/csv-summary/verification -v",
+    "python -m unittest discover -s demo/dashboard/tests -v",
+    "node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs"
+  ],
+  "checkout": {
+    "all_passed": false,
+    "results": [
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 1,
+        "duration_seconds": 70.797,
+        "summary": {
+          "tests": 313,
+          "failures": 7,
+          "errors": 13,
+          "skipped": 13
+        },
+        "failure_tail": "+ PASS\n\n\n======================================================================\nFAIL: test_reconcile_is_readonly_and_never_promotes_claims_to_authority (test_journal.JournalTests.test_reconcile_is_readonly_and_never_promotes_claims_to_authority)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"E:\\Saint\\PROJECTS\\CouncilFlow-beta\\tests\\test_journal.py\", line 373, in test_reconcile_is_readonly_and_never_promotes_claims_to_authority\n    self.assertEqual(result[\"recovery_status\"], \"COMPLETE_RECORD\")\nAssertionError: 'UNVERIFIED' != 'COMPLETE_RECORD'\n- UNVERIFIED\n+ COMPLETE_RECORD\n\n\n----------------------------------------------------------------------\nRan 313 tests in 70.135s\n\nFAILED (failures=7, errors=13, skipped=13)"
+      },
+      {
+        "command": "python -m unittest discover -s demo/receipt -v",
+        "exit_code": 0,
+        "duration_seconds": 11.218,
+        "summary": {
+          "tests": 13,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/csv-summary -v",
+        "exit_code": 0,
+        "duration_seconds": 43.11,
+        "summary": {
+          "tests": 15,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/structured-flow -v",
+        "exit_code": 0,
+        "duration_seconds": 11.031,
+        "summary": {
+          "tests": 5,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/gate3-demo -v",
+        "exit_code": 0,
+        "duration_seconds": 9.594,
+        "summary": {
+          "tests": 9,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s reports/demo/verification -v",
+        "exit_code": 0,
+        "duration_seconds": 20.547,
+        "summary": {
+          "tests": 5,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s reports/csv-summary/verification -v",
+        "exit_code": 0,
+        "duration_seconds": 44.5,
+        "summary": {
+          "tests": 6,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/dashboard/tests -v",
+        "exit_code": 0,
+        "duration_seconds": 1.359,
+        "summary": {
+          "tests": 8,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs",
+        "exit_code": 0,
+        "duration_seconds": 0.328,
+        "summary": {
+          "tests": 22,
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0
+        }
+      }
+    ]
+  },
+  "fresh_extraction": {
+    "all_passed": false,
+    "results": [
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 1,
+        "duration_seconds": 58.438,
+        "summary": {
+          "tests": 267,
+          "failures": 3,
+          "errors": 5,
+          "skipped": 10
+        },
+        "failure_tail": "+ PASS\n\n\n======================================================================\nFAIL: test_valid_source_artifact_is_hashed_from_bytes (test_doctor.DoctorTests.test_valid_source_artifact_is_hashed_from_bytes)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\cupid\\AppData\\Local\\Temp\\councilflow-release-extract-1_obmpv3\\tests\\test_doctor.py\", line 67, in test_valid_source_artifact_is_hashed_from_bytes\n    self.assertEqual(source[\"status\"], \"PASS\")\nAssertionError: 'UNVERIFIED' != 'PASS'\n- UNVERIFIED\n+ PASS\n\n\n----------------------------------------------------------------------\nRan 267 tests in 57.576s\n\nFAILED (failures=3, errors=5, skipped=10)"
+      },
+      {
+        "command": "python -m unittest discover -s demo/receipt -v",
+        "exit_code": 0,
+        "duration_seconds": 11.016,
+        "summary": {
+          "tests": 13,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/csv-summary -v",
+        "exit_code": 0,
+        "duration_seconds": 42.578,
+        "summary": {
+          "tests": 15,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/structured-flow -v",
+        "exit_code": 0,
+        "duration_seconds": 11.047,
+        "summary": {
+          "tests": 5,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/gate3-demo -v",
+        "exit_code": 0,
+        "duration_seconds": 9.531,
+        "summary": {
+          "tests": 9,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s reports/demo/verification -v",
+        "exit_code": 0,
+        "duration_seconds": 20.64,
+        "summary": {
+          "tests": 5,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s reports/csv-summary/verification -v",
+        "exit_code": 0,
+        "duration_seconds": 44.204,
+        "summary": {
+          "tests": 6,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "python -m unittest discover -s demo/dashboard/tests -v",
+        "exit_code": 0,
+        "duration_seconds": 1.328,
+        "summary": {
+          "tests": 8,
+          "skipped": 0
+        }
+      },
+      {
+        "command": "node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs",
+        "exit_code": 0,
+        "duration_seconds": 0.297,
+        "summary": {
+          "tests": 22,
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "temporary_directory_removed": true
+  },
+  "browser_acceptance": "UNVERIFIED; browser rendering was blocked by Windows browser URL policy during the task.",
+  "native_skill_activation": "UNVERIFIED; no live CouncilFlow role chain was observed.",
+  "reproducibility": {
+    "second_build_exit": 0,
+    "zip_bytes_identical": true,
+    "manifest_inventory_identical": true,
+    "sha256": "1feb9d36157fc04e56811807910b444baeddb5b799b1160ebda70126691352ed",
+    "entries": 193
+  },
+  "clean_extraction_result": "PARTIAL: 8 of 9 commands passed; the full tests suite exited 1 (3 failures, 5 errors, 10 skipped). All other seven Python commands and the combined Node command exited 0.",
+  "checkout_result": "PARTIAL: 8 of 9 commands passed; the full tests suite exited 1 (7 failures, 13 errors, 13 skipped). All other seven Python commands and the combined Node command exited 0.",
+  "notes": [
+    "Checkout failures include pre-existing historical Claude plugin parity checks and Windows-sensitive Doctor/Journal test changes; those sources/tests were preserved. The portable extraction excludes the historical Claude plugin and Journal suites but still contains Windows-sensitive Doctor assertions.",
+    "No source code or tests outside the five-finding plan were changed to suppress these failures."
+  ]
+}

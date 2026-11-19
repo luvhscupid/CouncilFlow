@@ -28,6 +28,11 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Verify protected blob bytes and committed release
         shell: python
         run: |
@@ -54,7 +59,7 @@ jobs:
               for name in protected:
                   assert archive.read(name) == pathlib.Path(name).read_bytes()
 
-      - name: Verify six test suites in clean Windows checkout
+      - name: Verify nine test commands in clean Windows checkout
         shell: pwsh
         run: |
           python -m unittest discover -s tests -v
@@ -65,9 +70,15 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s demo/structured-flow -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s demo/gate3-demo -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s reports/demo/verification -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s reports/csv-summary/verification -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s demo/dashboard/tests -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Verify deterministic rebuild matches committed archive
@@ -100,7 +111,7 @@ jobs:
               raise AssertionError("Windows release rebuild differs from committed ZIP")
           assert pathlib.Path("dist/council-flow.zip.sha256").read_text("ascii").split()[0] == original_sha
 
-      - name: Verify six suites in fresh Windows release extraction
+      - name: Verify nine test commands in fresh Windows release extraction
         shell: python
         run: |
           import pathlib
@@ -114,8 +125,10 @@ jobs:
               "demo/receipt",
               "demo/csv-summary",
               "demo/structured-flow",
+              "demo/gate3-demo",
               "reports/demo/verification",
               "reports/csv-summary/verification",
+              "demo/dashboard/tests",
           )
           with tempfile.TemporaryDirectory() as temp:
               root = pathlib.Path(temp)
@@ -128,3 +141,9 @@ jobs:
                       check=True,
                       timeout=240,
                   )
+              subprocess.run(
+                  ["node", "--test", "demo/dashboard/tests/run-reader.test.cjs", "demo/dashboard/tests/auto-connection.test.cjs"],
+                  cwd=root,
+                  check=True,
+                  timeout=240,
+              )

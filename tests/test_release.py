@@ -29,6 +29,41 @@ def fixture(root):
 
 
 class ReleaseOutputTests(unittest.TestCase):
+    def test_current_release_contains_dashboard_sources_and_tests(self):
+        archive_path = ROOT / "dist/council-flow.zip"
+        if not archive_path.is_file():
+            report = builder.build(ROOT)
+            archive_path = ROOT / report["archive"]
+        with zipfile.ZipFile(archive_path) as archive:
+            names = set(archive.namelist())
+        required = {
+            ".agents/skills/council-flow/scripts/dashboard.py",
+            ".agents/skills/council-flow/dashboard/index.html",
+            ".agents/skills/council-flow/dashboard/app.js",
+            ".agents/skills/council-flow/dashboard/run-reader.js",
+            ".agents/skills/council-flow/dashboard/styles.css",
+            "demo/dashboard/tests/test_publisher.py",
+            "demo/dashboard/tests/run-reader.test.cjs",
+            "demo/dashboard/tests/auto-connection.test.cjs",
+        }
+        self.assertTrue(required <= names, f"missing dashboard release paths: {sorted(required - names)}")
+
+    def test_release_and_ci_cover_the_documented_suites(self):
+        release = (ROOT / "RELEASE.md").read_text(encoding="utf-8")
+        workflow = (ROOT / ".github/workflows/verify-portable-release.yml").read_text(encoding="utf-8")
+        expected = (
+            "demo/gate3-demo",
+            "python -m unittest discover -s demo/dashboard/tests -v",
+            "node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs",
+        )
+        for command in expected:
+            with self.subTest(command=command):
+                self.assertIn(command, release)
+                self.assertIn(command, workflow)
+        for path in ("demo/dashboard/tests/run-reader.test.cjs", "demo/dashboard/tests/auto-connection.test.cjs"):
+            self.assertIn(path, release)
+            self.assertIn(path, workflow)
+
     def test_archive_does_not_include_unbundled_experimental_tests(self):
         with tempfile.TemporaryDirectory(dir=ROOT / "tests", prefix="release-tests-") as temporary:
             authorized = Path(temporary).resolve() / "authorized"

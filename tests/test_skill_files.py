@@ -19,6 +19,17 @@ SKILL = ROOT / ".agents" / "skills" / "council-flow"
 
 
 class SkillFilesTests(unittest.TestCase):
+    def test_current_host_claims_match_project_contract(self) -> None:
+        for relative in ("README.md", "docs/technical/host-packages.md",
+                         "docs/research/README.md", "RELEASE.md"):
+            with self.subTest(path=relative):
+                source = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertIn("Codex-native", source)
+                for line in source.splitlines():
+                    if line.startswith("| Claude Code |") or "Claude Code is an installable plugin" in line:
+                        self.fail(f"Claude Code presented as a current host: {line}")
+                self.assertIn("Historical Claude Code", source)
+
     def test_required_frontmatter_subset(self) -> None:
         source = (SKILL / "SKILL.md").read_text()
         self.assertTrue(source.startswith("---\n"))
@@ -134,7 +145,10 @@ class SkillFilesTests(unittest.TestCase):
         self.assertTrue((SKILL / "scripts" / "contracts.py").is_file())
         for path in SKILL.rglob("*"):
             if path.is_file() and "__pycache__" not in path.parts:
-                self.assertIn(path.suffix, (".md", ".yaml", ".json", ".py"))
+                allowed = (".md", ".yaml", ".json", ".py")
+                if path.is_relative_to(SKILL / "dashboard"):
+                    allowed += (".html", ".css", ".js")
+                self.assertIn(path.suffix, allowed)
                 source = path.read_text()
                 self.assertNotIn("import acp", source.lower())
                 self.assertNotIn("import execution_kernel", source.lower())

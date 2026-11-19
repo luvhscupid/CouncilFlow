@@ -1,17 +1,37 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "2c536226f488210c256e207635e47499cb26ee280136727ff6ce74019bf0db98",
-  "entries": 182,
+  "sha256": "1feb9d36157fc04e56811807910b444baeddb5b799b1160ebda70126691352ed",
+  "entries": 193,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 7144,
-      "sha256": "6a36739837b3dffbdbc9b2fcb7fb6c9b0a33077bd0de6692c584e7a1137e55f2"
+      "size": 7113,
+      "sha256": "a285b0c9a36507c59c7aacff783af468be61e62560cd12dcc728b7427462d675"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
       "size": 262,
       "sha256": "3a464c734167669588604d577aee29ff405f5ad20f709640fe5b954b3b6afff0"
+    },
+    {
+      "path": ".agents/skills/council-flow/dashboard/app.js",
+      "size": 16336,
+      "sha256": "87af21083d2ba9931b5227f5d02211d322d2ba3b4e957167ed4824a017f470b4"
+    },
+    {
+      "path": ".agents/skills/council-flow/dashboard/index.html",
+      "size": 5840,
+      "sha256": "454d7912b09e326047b31c065619fe06bb63a7c1c982511925fcfe27e473418a"
+    },
+    {
+      "path": ".agents/skills/council-flow/dashboard/run-reader.js",
+      "size": 22791,
+      "sha256": "f9973cb479fa1f89f900e9998a040327efd9b20c9f6da5ecea654f1a8a9f9de8"
+    },
+    {
+      "path": ".agents/skills/council-flow/dashboard/styles.css",
+      "size": 12408,
+      "sha256": "880988f82983562786df54da94c61c12ac50db089a92bdafdcde7967d9c7bb77"
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
@@ -60,13 +80,18 @@
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 5965,
-      "sha256": "4395d9423ef64c1e0c5456e9b1d970b667c82f7a9dd97cf7dc387533db4998ed"
+      "size": 6707,
+      "sha256": "facef15d8593c0b626113450693288b79d774b361a845915dc32d2037365f384"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
       "size": 68832,
       "sha256": "ca49ed13cb28729a625fdcb2cf76aa32001627888eff43098a5fad26f27d6134"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/dashboard.py",
+      "size": 10172,
+      "sha256": "0679d8fdbe697127d6a41ef140146a5027b73f7d9289865fdee97ebdb87766d4"
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
@@ -145,13 +170,13 @@
     },
     {
       "path": "README.md",
-      "size": 10145,
-      "sha256": "46ee0cbc9a87028f2b432e907200f8e032aa8b5a1f55d21a75cc409d82049deb"
+      "size": 9629,
+      "sha256": "ec08e910d559e8bcebeaf83c1c44ba62f2b07c8e4a439d4532de38d046fafa03"
     },
     {
       "path": "RELEASE.md",
-      "size": 13711,
-      "sha256": "5367be97e6ac6c1b8fb01803f61e541d17f01c8389317391729f0eea456c5614"
+      "size": 14033,
+      "sha256": "b22449471c78524870dd3a1a14ab3627f61916af26af608743794026560c3ede"
     },
     {
       "path": "demo/README.md",
@@ -177,6 +202,36 @@
       "path": "demo/csv-summary/test_csv_summarizer.py",
       "size": 8655,
       "sha256": "f4cea35b304410920a3dfc4bd7b6c0a460b3a69a6cb8d4221a575805c0c54487"
+    },
+    {
+      "path": "demo/dashboard/README.md",
+      "size": 1103,
+      "sha256": "0fed19313b02bcfe7646edfeb7cdca5b4e9def95d9ab78ea65cb985fba0ca992"
+    },
+    {
+      "path": "demo/dashboard/index.html",
+      "size": 438,
+      "sha256": "2804db4f47e2afa8ab1df378a57cf8830e72574f65e1ed402e868dc81955df89"
+    },
+    {
+      "path": "demo/dashboard/run-reader.js",
+      "size": 167,
+      "sha256": "bd7e668839710d8dc110010138373f52d08e52a7e9abbef38950eaf555a077c9"
+    },
+    {
+      "path": "demo/dashboard/tests/auto-connection.test.cjs",
+      "size": 15265,
+      "sha256": "53068070f887f6de3d764ccdda14182d16d182fb9cbd0c7cbc82811174245e56"
+    },
+    {
+      "path": "demo/dashboard/tests/run-reader.test.cjs",
+      "size": 11197,
+      "sha256": "66f38fb6c54c3e83f24d2020cfd37a78e0da02c636f311c5918c00289cd36fa3"
+    },
+    {
+      "path": "demo/dashboard/tests/test_publisher.py",
+      "size": 9155,
+      "sha256": "72d8dedd6639696a5d92c73d40985d11de861a97160551541c66ae2db3c92fa1"
     },
     {
       "path": "demo/gate3-demo/README.md",
@@ -420,8 +475,8 @@
     },
     {
       "path": "docs/research/README.md",
-      "size": 3362,
-      "sha256": "48a43c9b6a064e97c995d3fd79f782fbc48fbd8c6482b4c022cc216a79c82ab7"
+      "size": 3120,
+      "sha256": "b5c52eabdbe51d72dd929c610dd67a8f029072e31aa42dfe2f1efff42c756a05"
     },
     {
       "path": "docs/research/Universal-Model-Selector-xKiro-GPT6-Haiku-2026-11-15.md",
@@ -450,13 +505,13 @@
     },
     {
       "path": "docs/technical/host-packages.md",
-      "size": 2773,
-      "sha256": "5ff685bfda013cdae8338683a0256275e6375dcbc573a11b79d8a19ab40a4d3b"
+      "size": 1647,
+      "sha256": "ecd4eb0378808be0f6f30675e6dcdbea80e2ff0e09f8982c0e5bb503cdde1a46"
     },
     {
       "path": "docs/technical/multi-agent-evolution.md",
-      "size": 4348,
-      "sha256": "2c6a005bc54480db77dfdd8194ad47264b96905bf6de57bc6fc134c64ebe4d3c"
+      "size": 4719,
+      "sha256": "12147dcae9fc06788cac0681380824f4e820f35e31860d2bcc3c6513a089c952"
     },
     {
       "path": "docs/technical/structured-communication.md",
@@ -835,8 +890,8 @@
     },
     {
       "path": "tests/test_doctor.py",
-      "size": 18306,
-      "sha256": "8591da9a099afa9c8fd17fc0150f2465bfd0c5234a71a1445d1542a1ff7a3ed8"
+      "size": 17508,
+      "sha256": "f030e18615a38224167820399a19d861f37cdf15782cc3cf6e71eb3b36ace4dd"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -875,8 +930,8 @@
     },
     {
       "path": "tests/test_release.py",
-      "size": 5546,
-      "sha256": "4c558315dd4ce3fa157419b4f9d7525560bf11337e485d5d8e27cde49b8316b9"
+      "size": 7391,
+      "sha256": "be00e355c6412e88c408e4423b604d7a0dc4234f98e0f1982bb178638e0409f8"
     },
     {
       "path": "tests/test_role_capabilities.py",
@@ -885,8 +940,8 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 8685,
-      "sha256": "e810cd34a036ceeff999e0eb82c4d6160f2a71c555a91d440deb184860820a0b"
+      "size": 9527,
+      "sha256": "c9c191c6c9e683d55918beaa4f44e5315481c75ea7a594e81a91fdd3a214e7a5"
     },
     {
       "path": "tests/test_task_graph.py",

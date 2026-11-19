@@ -68,9 +68,14 @@ cross-platform crash recovery remains unverified.
   in force.
 - P5 doctor v2 adds local executable-byte integrity and structural native-host
   references only. Experience entries remain metadata filters labeled
-  `UNVERIFIED`; no Worker-context injection or dashboard is implemented.
+  `UNVERIFIED`; no Worker-context injection is implemented. The optional local
+  dashboard reads supplied run packets and user-selected JSON files, and presents
+  packet-derived status without authenticating senders or granting approval.
+  Its original LIVE-01–LIVE-04 acceptance remains `UNVERIFIED`: the fresh
+  attempt has deterministic unit evidence, but the supported browser could not
+  be inspected and no live CouncilFlow role chain was observed.
 - P6 live optimization is `BLOCKED_OWNER_INPUT`; the synthetic evaluator is
   descriptive offline analysis and does not authorize a model call or promotion.
-- No dashboard or independent-model council room was added.
+- No independent-model council room was added.
 - Native Codex/Claude activation and route identity remain unverified for this
   branch.
