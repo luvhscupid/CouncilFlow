@@ -278,11 +278,15 @@
     let plan = null;
     if (publication) {
       const reference = publication.payload.plan_ref;
-      const linked = plans.find(entry => {
+      if (!isObject(reference) || !nonEmpty(reference.path)) {
+        recordIssue(issues, "missing_plan_reference", "The plan.publish packet does not name a plan file.");
+      }
+      const linked = !isObject(reference) || !nonEmpty(reference.path) ? undefined : plans.find(entry => {
         const artifact = reference && reference.path ? reference.path.replace(/\\/g, "/").split("/").pop() : "";
         return entry.name === artifact || entry.path === reference.path;
       });
-      if (!linked) recordIssue(issues, "missing_plan", "The plan referenced by plan.publish was not found in the selected folder.");
+      if (!isObject(reference) || !nonEmpty(reference.path)) { /* reported above as missing_plan_reference */ }
+      else if (!linked) recordIssue(issues, "missing_plan", "The plan referenced by plan.publish was not found in the selected folder.");
       else if (reference.sha256 && !linked.sha256) recordIssue(issues, "plan_hash_unverifiable", "This browser cannot verify the selected plan's SHA-256.");
       else if (linked.sha256 && reference.sha256 && linked.sha256 !== reference.sha256) recordIssue(issues, "plan_hash_mismatch", "The selected plan file does not match the published plan hash.");
       else if (linked.plan.plan_id !== publication.plan_id || linked.plan.plan_revision !== publication.plan_revision || linked.plan.task_id !== publication.task_id) {

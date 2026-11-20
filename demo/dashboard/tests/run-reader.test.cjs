@@ -191,3 +191,14 @@ test("flags packet folders containing multiple task or plan identities", () => {
   const snapshot = buildSnapshot(input(messages));
   assert.ok(snapshot.issues.some(issue => issue.code === "mixed_runs"));
 });
+
+test("a plan.publish without plan_ref reports an issue instead of throwing", () => {
+  const messages = completeMessages();
+  delete messages[0].payload.plan_ref;
+  const entries = messages.map(message => ({ name: `${message.message_id}.json`, path: `messages/${message.message_id}.json`, data: message, error: null, isMessageFile: true }));
+  entries.push({ name: "plan.json", path: "plan.json", data: plan, error: null, isMessageFile: false, sha256: hash });
+  let snapshot;
+  assert.doesNotThrow(() => { snapshot = buildSnapshot(entries); });
+  assert.equal(snapshot.valid, false);
+  assert.ok(snapshot.issues.some(issue => issue.code === "missing_plan_reference"));
+});

@@ -352,3 +352,43 @@ test("the folder watch can pause and resume on the same selected directory", asy
   await waitFor(() => app.intervals.length === 2, "folder watch did not resume");
   assert.equal(control.textContent, "Pause watching");
 });
+
+test("a reader failure on the embedded path clears loading and reports an incomplete run", async () => {
+  const ids = [
+    "connection-state", "folder-fallback", "file-picker", "choose-folder", "choose-files",
+    "refresh-run", "empty-state", "board", "run-summary", "run-health", "current-activity",
+    "acceptance-count", "acceptance-progress", "progress-fill", "progress-label", "progress-honesty",
+    "acceptance-caption", "role-list", "criteria-list", "activity-count", "activity-list", "record-alert",
+    "loading-state"
+  ];
+  const elements = Object.fromEntries(ids.map(id => [id, new Element(id)]));
+  elements["record-alert"].hidden = true;
+  elements["connection-state"].append(new Element("dot"), new Element("label"));
+  elements["councilflow-run-data"] = new Element("councilflow-run-data");
+  elements["councilflow-run-data"].textContent = JSON.stringify(fixture());
+  const refreshMeta = new Element("refresh-meta");
+  const frames = [];
+  const document = {
+    getElementById(id) { return elements[id] || (elements[id] = new Element(id)); },
+    createElement(tag) { return new Element(tag); },
+    createElementNS(_namespace, tag) { return new Element(tag); },
+    querySelector(selector) { return selector.includes("http-equiv") ? refreshMeta : null; }
+  };
+  const window = {
+    CouncilFlowRunReader: { buildSnapshot() { throw new Error("reader exploded"); } },
+    location: { reload() {} },
+    setInterval() { return 1; },
+    clearInterval() {},
+    requestAnimationFrame(callback) { frames.push(callback); }
+  };
+  const appPath = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard/app.js");
+  vm.runInNewContext(fs.readFileSync(appPath, "utf8"), { document, window, crypto: null, console });
+  while (frames.length) frames.shift()();
+  await new Promise(resolve => setImmediate(resolve));
+  await new Promise(resolve => setImmediate(resolve));
+
+  assert.equal(elements["loading-state"].hidden, true, "loading message must not stay visible");
+  assert.match(elements["connection-state"].lastElementChild.textContent, /incomplete/i);
+  assert.match(elements["record-alert"].textContent, /reader exploded/);
+  assert.equal(elements["record-alert"].hidden, false);
+});

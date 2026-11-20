@@ -176,12 +176,7 @@ def _inline(source: str, stylesheet: str, reader: str, app: str, files: list[dic
     source = source.replace(
         '<script src="run-reader.js"></script>\n    <script src="app.js"></script>', scripts
     )
-    source = source.replace(
-        '<meta name="color-scheme" content="dark">',
-        '<meta name="color-scheme" content="dark">\n'
-        '<meta http-equiv="refresh" content="2">',
-    )
-    if "id=\"councilflow-run-data\"" not in source or "http-equiv=\"refresh\"" not in source:
+    if "id=\"councilflow-run-data\"" not in source:
         raise RuntimeError("dashboard template no longer matches the publisher interface")
     return source
 
@@ -192,9 +187,12 @@ def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=
         raise ValueError("task ID must be a single safe path segment")
     root = Path(root).resolve()
     run_dir = root / ".councilflow" / "runs" / task_id
+    existing = run_dir if run_dir.exists() else run_dir.parent
+    if run_dir.is_symlink() or not existing.resolve().is_relative_to(root):
+        raise ValueError("task run directory must stay inside the repository")
     if not run_dir.exists():
         run_dir.mkdir(parents=True)
-    if run_dir.is_symlink() or not run_dir.resolve().is_relative_to(root):
+    if not run_dir.resolve().is_relative_to(root):
         raise ValueError("task run directory must stay inside the repository")
 
     files, errors = _run_files(root, task_id)

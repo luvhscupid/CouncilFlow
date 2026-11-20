@@ -242,9 +242,13 @@
   }
 
   function showIncompleteRead(error) {
+    const empty = {
+      valid: false, issues: [], taskId: null, planId: null, stages: [], criteria: [], activity: [], current: null,
+      progress: { passed: 0, total: 0, recorded: false }, disposition: "Run in progress", sourceNotice: ""
+    };
     const snapshot = lastSnapshot
-      ? { ...lastSnapshot, progress: { ...lastSnapshot.progress }, criteria: lastSnapshot.criteria.map(item => ({ ...item })) }
-      : reader.buildSnapshot([]);
+      ? { ...lastSnapshot, progress: { ...lastSnapshot.progress }, criteria: lastSnapshot.criteria.map(item => ({ ...item })), issues: [...lastSnapshot.issues] }
+      : empty;
     snapshot.valid = false;
     snapshot.progress.passed = 0;
     snapshot.progress.recorded = false;
@@ -376,8 +380,11 @@
         importedFiles = run.files;
         $("refresh-run").textContent = "Refresh now";
         $("refresh-run").disabled = false;
-        showFiles(run.files);
-        setConnection(`Connected to ${run.taskId || "active run"} · refreshes every 2 seconds`, "watching");
+        showFiles(run.files).catch(error => {
+          showIncompleteRead(error);
+          setConnection("Embedded run data is incomplete", "warning");
+        });
+        setConnection(`Connected to ${run.taskId || "active run"} · use Refresh to reload`, "watching");
       } else {
         setLoading("");
         setConnection("Dashboard data is invalid", "warning");

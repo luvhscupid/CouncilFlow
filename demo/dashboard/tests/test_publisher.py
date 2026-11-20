@@ -107,7 +107,7 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertTrue(result["opened"])
             self.assertEqual(len(opened), 1)
             self.assertTrue(opened[0].startswith("file:///"))
-            self.assertIn('http-equiv="refresh" content="2"', page)
+            self.assertNotIn('http-equiv="refresh" content="2"', page)
             self.assertIn('id="councilflow-run-data"', page)
             self.assertIn('"task_id":"task-one"', page)
             self.assertIn("function buildSnapshot", page)
@@ -187,6 +187,28 @@ class DashboardPublisherTests(unittest.TestCase):
             page = Path(result["snapshot_path"]).read_text(encoding="utf-8")
             self.assertNotIn("</script><script>alert(1)", page)
             self.assertIn("\\u003c/script\\u003e\\u003cscript\\u003e", page)
+
+    def test_refused_run_directory_is_not_created_on_disk(self):
+        # A path whose containment check fails must not leave a directory behind.
+        # Here the runs folder is itself a junction to a folder outside the root,
+        # so the new task directory would land outside the repository.
+        import os
+        import subprocess
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "repo"
+            outside = Path(temporary) / "outside"
+            (root / ".councilflow").mkdir(parents=True)
+            outside.mkdir()
+            runs = root / ".councilflow" / "runs"
+            if os.name == "nt":
+                made = subprocess.run(["cmd", "/c", "mklink", "/J", str(runs), str(outside)], capture_output=True, text=True)
+                if made.returncode != 0:
+                    self.skipTest(f"cannot create a directory junction: {made.stderr.strip()}")
+            else:
+                os.symlink(outside, runs, target_is_directory=True)
+            with self.assertRaises(ValueError):
+                dashboard.publish_run(root, "escaped-task")
+            self.assertFalse((outside / "escaped-task").exists())
 
 
 if __name__ == "__main__":
