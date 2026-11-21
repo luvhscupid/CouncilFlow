@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +29,72 @@ def fixture(root):
 
 
 class ReleaseOutputTests(unittest.TestCase):
+    def test_user_wide_bootstrap_scripts_are_in_release_sources(self):
+        sources = builder.source_bytes(ROOT)
+        self.assertIn("scripts/bootstrap.ps1", sources)
+        self.assertIn("scripts/remote-update.ps1", sources)
+
+    def test_current_release_contains_dashboard_sources_and_tests(self):
+        archive_path = ROOT / "dist/council-flow.zip"
+        if not archive_path.is_file():
+            report = builder.build(ROOT)
+            archive_path = ROOT / report["archive"]
+        with zipfile.ZipFile(archive_path) as archive:
+            names = set(archive.namelist())
+        required = {
+            ".agents/skills/council-flow/scripts/dashboard.py",
+            ".agents/skills/council-flow/dashboard/index.html",
+            ".agents/skills/council-flow/dashboard/app.js",
+            ".agents/skills/council-flow/dashboard/run-reader.js",
+            ".agents/skills/council-flow/dashboard/styles.css",
+            "demo/dashboard/tests/test_publisher.py",
+            "demo/dashboard/tests/run-reader.test.cjs",
+            "demo/dashboard/tests/auto-connection.test.cjs",
+        }
+        self.assertTrue(required <= names, f"missing dashboard release paths: {sorted(required - names)}")
+
+    def test_release_and_ci_cover_the_documented_suites(self):
+        release = (ROOT / "RELEASE.md").read_text(encoding="utf-8")
+        workflow = (ROOT / ".github/workflows/verify-portable-release.yml").read_text(encoding="utf-8")
+        expected = (
+            "demo/gate3-demo",
+            "python -m unittest discover -s demo/dashboard/tests -v",
+            "node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-connection.test.cjs",
+        )
+        for command in expected:
+            with self.subTest(command=command):
+                self.assertIn(command, release)
+                self.assertIn(command, workflow)
+        for path in ("demo/dashboard/tests/run-reader.test.cjs", "demo/dashboard/tests/auto-connection.test.cjs"):
+            self.assertIn(path, release)
+            self.assertIn(path, workflow)
+
+    def test_archive_does_not_include_unbundled_experimental_tests(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / "tests", prefix="release-tests-") as temporary:
+            authorized = Path(temporary).resolve() / "authorized"
+            fixture(authorized)
+            # Simulate an experimental test that imports source deliberately
+            # excluded from the standalone release bundle.
+            journal_test = authorized / "tests/test_journal.py"
+            journal_test.write_text("import journal\n", encoding="utf-8")
+            (authorized / "tests/test_portable.py").write_text(
+                "import unittest\nclass PortableTests(unittest.TestCase):\n def test_runs(self): self.assertTrue(True)\n",
+                encoding="utf-8")
+            (authorized / "tests/test_efficiency_install.py").write_text(
+                "import unittest\nclass IncludedTests(unittest.TestCase):\n def test_runs(self): self.assertTrue(True)\n",
+                encoding="utf-8")
+            self.assertTrue(builder.excluded("tests/test_journal.py"))
+            self.assertTrue(builder.excluded("tests/test_release.py"))
+            report = builder.build(authorized)
+            with zipfile.ZipFile(authorized / report["archive"]) as archive:
+                self.assertNotIn("tests/test_journal.py", archive.namelist())
+                self.assertNotIn("tests/test_release.py", archive.namelist())
+                archive.extractall(authorized / "extracted")
+            run = subprocess.run([os.sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-q"],
+                                 cwd=authorized / "extracted", capture_output=True, text=True)
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertIn("Ran 2 tests", run.stderr)
+
     def test_existing_output_hardlinks_do_not_modify_outside_inodes(self):
         with tempfile.TemporaryDirectory(dir=ROOT / "tests", prefix="release-output-") as temporary:
             parent = Path(temporary).resolve()

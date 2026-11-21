@@ -51,7 +51,7 @@ Only the Manager reports progress to the Owner, in concise natural language.
 
 ## Required reading, then execute
 
-Read `CF/host-claude.md`, `CF/references/communication.md`, `roles.md`, `workflow.md`,
+Read `CF/host-claude.md`, `CF/references/planner.md`, `CF/references/communication.md`, `roles.md`, `workflow.md`,
 `source-fidelity.md`, `acceptance.md`, `recovery.md`, and `CF/policies/roles.yaml`.
 All plans, assignments, reports and decisions MUST be UTF-8 JSON under
 council-flow 1.0 and validated with `contracts.py` at controlled boundaries.
@@ -65,9 +65,12 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
 2. **Planner** (`council-planner`): publishes `plan.publish` JSON before any
    implementation, preserving original criteria exactly. A supplied
    Owner-approved plan is preserved unchanged with its provenance.
-3. **Manager** (you): accept the plan; validate packets with `contracts.py`
-   (`message`, `sequence`, `--require-criteria-fidelity`); send `job.assign`
-   to a fresh Worker.
+3. **Manager** (you): accept only a READY plan; validate packets with `contracts.py`
+   (`message`, `sequence`, `--require-criteria-fidelity`). Before each Worker
+   dispatch, validate the plan and exact selected-task instruction transfer with
+   `python "${CLAUDE_SKILL_DIR}/scripts/planner_contract.py" assignment
+   <plan.json> <frozen-criteria.json> <assignment.json>`. Do not dispatch a
+   non-ready plan or rewrite Planner-authored task instructions.
 
    **Dispatch lifecycle (every role: Worker, Tester and Reviewer):**
    - The Manager writes each `job.assign` as a UTF-8 JSON file under

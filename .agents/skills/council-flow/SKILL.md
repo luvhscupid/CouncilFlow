@@ -11,7 +11,6 @@ It needs no new key, subscription, database, service or custom supervisor.
 Only parent **Manager** gives ordinary progress/results to the Owner.
 
 ## Required communication
-
 Read [communication](references/communication.md), [roles](references/roles.md)
 and the versioned [YAML policy](policies/roles.yaml).
 Agent task assignments, plans, reports and decisions **MUST be UTF-8 JSON**
@@ -22,25 +21,24 @@ JSONL diagnostics are optional. Owner-facing communication stays concise natural
 language; do not expose internal envelopes or long logs by default.
 
 ## Automatic project context
-
-Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md) automatically; no separate Owner command is required.
-Inspect local project content first: empty or installation-only projects make zero MCP calls. For existing source, discover the actual MCP capability, bind the exact project, check freshness, and retrieve bounded context; unavailable MCP means direct inspection.
-After Worker stops edits, repeat the lifecycle to update the index for meaningful source, including new projects and rework. Graph findings inform navigation; independent verification remains mandatory.
+Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md) automatically; no separate Owner command is required. Empty/install-only projects make zero MCP calls. For source, bind the actual project, check freshness and retrieve bounded context, or inspect directly if MCP is unavailable. After Worker stops edits, update the index for meaningful source; graph findings inform navigation, independent verification remains mandatory.
 
 ## Execute the goal
-
 1. **Establish scope.** Inspect repository instructions/status and real native
    capabilities. Define the Owner objective, approved paths and observable
    acceptance. Before Planner, bind supplied frozen input and preserve test
    oracles using [source fidelity](references/source-fidelity.md). Never invent IDs or capabilities.
-2. **Planner.** Dedicated native Planner publishes plan.publish JSON before
-   implementation. Preserve original plan and mandatory acceptance. External
-   mode preserves an Owner-approved supplied plan and provenance unchanged;
-   never claim to contact the external ChatGPT conversation.
+2. **Planner.** Follow the canonical [Planner contract](references/planner.md).
+   Manager supplies bounded verified context; Planner does not explore
+   application source. Publish only a dispatchable READY plan. External mode
+   preserves an Owner-approved plan and provenance. Follow [workflow](references/workflow.md).
 3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate
-   hashes, original-source fidelity and ordered context. Native transport is not enforced
+   hashes, source fidelity and ordered context. Before Worker dispatch, validate
+   plan coverage and exact selected-task instruction transfer with
+   scripts/planner_contract.py. Non-ready responses are never dispatched. Native
+   transport is not enforced
    by this helper. Pass role instructions to native subagents when custom-role
    selection is unavailable, and disclose that fallback.
 4. **Worker.** Implement only bounded work, perform developer checks, return
@@ -78,9 +76,11 @@ After Worker stops edits, repeat the lifecycle to update the index for meaningfu
    Worker checklist. Manager gives the Owner concise natural-language results
    using [acceptance](references/acceptance.md).
 
-## Evidence and limits
+## Optional routing hint
 
-Efficiency stays disabled unless explicitly requested; then follow [efficiency helpers](references/efficiency.md) using this installed skill's CLI, preserving full evidence and all mandatory roles/checks.
+`scripts/route.py` is an opt-in local classifier. It emits hashes and confidence; Manager validates, ignores, or overrides the hint. It cannot dispatch roles, authorize tools, select an unobserved provider or model, expand scope, or alter packets.
+
+Efficiency stays disabled unless explicitly requested; follow [efficiency helpers](references/efficiency.md) and preserve full evidence.
 Follow [workflow](references/workflow.md). Keep real task/plan/attempt/message IDs,
 validated causal order, causal references, commands/exits and evidence hashes.
 Agent-authored envelopes omit `created_at`; diagnostic timestamp syntax does not

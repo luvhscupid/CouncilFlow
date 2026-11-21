@@ -1,6 +1,6 @@
 # CouncilFlow
 
-CouncilFlow is an installable **workflow skill** for existing AI coding tools. It is
+CouncilFlow is an installable **Codex-native workflow skill**. It is
 not a standalone AI application, assistant, runtime, provider, or service.
 
 ## What it is
@@ -32,7 +32,6 @@ as structured evidence, so a claimed result can be checked.
 | If you want to... | Read |
 | --- | --- |
 | Install and use it in Codex | [Use in this repository](#use-in-this-repository-codex) below |
-| Use the Claude Code plugin | [Claude Code plugin](docs/technical/claude-code-plugin.md) |
 | Understand the internal message format | [Structured communication](docs/technical/structured-communication.md) |
 | Try a small, offline example | [Demonstrations](#demonstrations) below |
 | Understand the optional efficiency helpers | [Optional efficiency helpers](docs/technical/efficiency-helpers.md) |
@@ -60,13 +59,10 @@ separate from the frozen Gate 3 experiment, and no new Gate 3 experiment is incl
 | Host | Package | How to invoke | Status |
 | --- | --- | --- | --- |
 | Codex | `.agents/skills/council-flow/` and `.codex/agents/*.toml` (`dist/council-flow.zip`) | `$council-flow <goal>` | Supported native skill and role workflow. Run 01: **NATIVE_ROLE_WORKFLOW_PARTIAL**; E1/E2/E4 UNVERIFIED, other seven checks PASS |
-| Claude Code | `plugins/councilflow/` (`dist/councilflow-claude-plugin.zip`) | `/councilflow:run <goal>` | Installable plugin; one real smoke run **VERIFIED_ACCEPT**, with native Planner, Worker, Tester and Reviewer sessions and an 11-message validated sequence |
 
-Details for each host are in [docs/technical/host-packages.md](docs/technical/host-packages.md).
-The Claude result is limited to calc-001; it does not establish universal host compatibility.
-Upstream model identity, effective route, cost and quota remain unknown. See the sanitized
-[Gate 3 summary](reports/documentation-release-sync/gate3-run-01.md) and
-[Claude smoke summary](reports/documentation-release-sync/claude-calc-001.md).
+See the [Gate 3 Run 01 summary](reports/documentation-release-sync/gate3-run-01.md).
+Historical Claude Code work is documented in [Host packages](docs/technical/host-packages.md).
+Claude Code remains a possible extension. The historical calc-001 smoke run applies to its recorded candidate.
 Agent Efficiency helpers are offline-tested and opt-in; live adapter and billing compatibility
 remain unverified. Package D remains **DRAFT_NOT_AUTHORIZED**.
 
@@ -87,6 +83,10 @@ The skill creates compact internal contracts. Native Planner mode is the default
 an external plan, say explicitly that it is Owner-approved and include the original plan. The
 Manager keeps that plan unchanged and does not claim to call an external ChatGPT.
 
+The production Planner follows `.agents/skills/council-flow/references/planner.md`.
+Manager validates each READY plan and the selected task's exact instruction transfer before
+Worker dispatch with `scripts/planner_contract.py`; non-ready plans remain nondispatchable.
+
 Frozen criteria you supply are captured from your original input before the Planner runs.
 The original bytes and their hash are kept, and their provenance is recorded. Generated
 criteria cannot replace them. Missing, stale, substituted or altered input fails closed.
@@ -99,6 +99,53 @@ Codex in this repository and check `/skills` or type `$` in the CLI or IDE. This
 guarantee that discovery or activation worked in every host. If native delegation is missing,
 the workflow reports the gap instead of simulating role sessions. Observed results for this
 build are in `reports/`.
+
+## User-wide bootstrap
+
+From PowerShell 7 (`pwsh`) in a CouncilFlow checkout, inspect the intended user paths first:
+
+```powershell
+./scripts/bootstrap.ps1 -Install -DryRun
+```
+
+Install, inspect status, refresh safe managed copies, or remove only recognized installations:
+
+```powershell
+./scripts/bootstrap.ps1 -Install
+./scripts/bootstrap.ps1 -Status
+./scripts/bootstrap.ps1 -Update
+./scripts/bootstrap.ps1 -Uninstall
+./scripts/bootstrap.ps1 -CheckRemote
+./scripts/bootstrap.ps1 -UpdateRemote
+./scripts/bootstrap.ps1 -Rollback
+./scripts/bootstrap.ps1 -EnableAutomatic -DryRun
+./scripts/bootstrap.ps1 -EnableAutomatic
+./scripts/bootstrap.ps1 -DisableAutomatic
+```
+
+The Codex skill targets `~/.agents/skills/council-flow`; role files target
+`~/.codex/agents/council-*.toml`. When the Claude CLI and the optional
+`plugins/councilflow/.claude-plugin/plugin.json` source are both present, the bootstrap
+synchronizes that tree to `~/.claude/skills/councilflow`. This file sync alone does not
+prove Claude plugin discovery or role dispatch. Directory junctions and file
+symlinks keep these installations synchronized with the checkout. Where a link cannot be
+created, the bootstrap records managed copies and updates them only while their installed
+hashes still match. Existing destinations are treated as collisions; the agent directory is
+never replaced. Restart the host if it does not reload changed instructions.
+
+`-Update` synchronizes from the currently installed local or managed source. `-CheckRemote`
+checks the pinned `https://github.com/luvhscupid/CouncilFlow` `main` branch without activating
+it. `-UpdateRemote` clones that branch into a separate managed checkout, confirms the branch
+and commit, rejects non-fast-forward changes, runs deterministic package tests, and swaps only
+bootstrap-owned destinations. It preserves the prior source and supports `-Rollback`. Failed
+checks leave the active installation unchanged. Git operations never fetch or merge into the
+development checkout.
+
+Daily updates are opt-in with `-EnableAutomatic`; `-EnableAutomatic -DryRun` only previews the
+current-user, limited-privilege Task Scheduler registration. No task was registered during
+implementation. `-DisableAutomatic` removes only a task whose action matches this bootstrap.
+The updater requires network access to the configured upstream when run and refuses dirty
+managed checkouts or an unexpected default branch.
 
 ## Install in another repository
 

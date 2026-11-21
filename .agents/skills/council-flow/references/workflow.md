@@ -8,7 +8,10 @@ Planner final check → Owner. Preserve that responsibility order.
    actual Owner authorization remain authoritative. Manager performs the
    [Codebase Memory lifecycle](codebase-memory.md) and
    [original-input/oracle capture](source-fidelity.md) before Planner automatically.
-2. Dedicated Planner returns plan.publish JSON with exact immutable acceptance
+   An optional routing hint may classify the bounded task before planning, but
+   Manager validates the route hint and may ignore or override it. Routing never
+   grants scope, tool authorization, model identity, or role dispatch.
+2. Dedicated Planner follows [planner.md](planner.md) and returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
    Supplied frozen criteria always require the pre-Planner original-input
@@ -23,8 +26,14 @@ Planner final check → Owner. Preserve that responsibility order.
    supplied frozen criteria may generate a native plan, preserving the actual
    request and distinguishing generated acceptance.
 3. Manager constructs bounded job.assign JSON with objective, scope, original
-   acceptance IDs, exact candidate reference and instructions. Validate the
-   controlled packet, file hashes and any required criteria fidelity before delegation. Supply known native
+   acceptance IDs, exact candidate reference and instructions. For each Worker
+   assignment, validate the READY plan against frozen criteria and verify the
+   plan ID/revision, task ID, acceptance IDs and Planner-authored instruction
+   array exactly match that selected task using
+   `scripts/planner_contract.py assignment <plan.json> <frozen-criteria.json> <assignment.json>`.
+   Also validate the controlled packet, file hashes and any required criteria
+   fidelity before delegation. Non-ready responses are not published or dispatched.
+   Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not
@@ -55,12 +64,23 @@ Planner final check → Owner. Preserve that responsibility order.
 
 ## Practical file boundary
 
-Use ordinary bounded files, for example messages/M001.json, candidate.json and
-test-output.txt, referenced by artifact identity/path/SHA-256. Validate UTF-8 JSON
+For Codex runs, Manager stores each task's packet files in
+`.councilflow/runs/<task-id>/`, with messages in its `messages/` folder. Use
+ordinary bounded files, for example `messages/M001.json`, `candidate.json` and
+`test-output.txt`, referenced by artifact identity/path/SHA-256. Validate UTF-8 JSON
 using scripts/contracts.py. Ordered message context checks causal links,
 attempt/candidate identities, published acceptance and known actor bindings.
 Refer to communication.md for exact schemas, CLI and limitations. This is not a
 database, message broker, Supervisor, agent simulator or transport adapter.
+
+After validating `plan.publish`, Manager opens the read-only dashboard once for
+the task with `scripts/dashboard.py publish --root . --task-id <task-id> --open`.
+After each Manager packet write and each validated role result, Manager reruns
+the helper without `--open` so the same self-contained board refreshes from the
+current task directory. The dashboard is an informational projection; packets
+remain authoritative, and no local service or watcher is started. If the host
+cannot open the browser, report the dashboard as blocked and continue the normal
+workflow without claiming a live connection.
 
 Native Codex transport may wrap these messages in an opaque protocol. CouncilFlow
 only controls the task packet/report files and instructions passed through

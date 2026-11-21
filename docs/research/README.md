@@ -13,9 +13,9 @@ This directory holds research and planning records. **They are non-normative.** 
 CouncilFlow is an installable multi-agent workflow skill for existing AI coding environments, currently Codex-native. It is not a standalone AI agent, coding assistant, orchestration platform or runtime, provider, gateway, billing service, or SaaS application. It does not replace the host or its native delegation.
 
 - Codex supports the native skill and role workflow. Gate 3 Run 01 is **NATIVE_ROLE_WORKFLOW_PARTIAL**: E1, E2 and E4 remain UNVERIFIED; the other seven checks passed.
-- Claude Code is an installable plugin. One real `/councilflow:run` smoke test completed **VERIFIED_ACCEPT**, with actual native Planner, Worker, Tester and Reviewer sessions and a validated 11-message sequence. This does not establish universal host compatibility. Upstream model identity, effective route, cost and quota remain unknown.
+- Historical Claude Code smoke run calc-001 recorded **VERIFIED_ACCEPT** for its candidate. Claude Code remains a possible extension under the current Codex-native project contract.
 - Agent Efficiency helpers are offline-tested and opt-in. Live adapter and billing compatibility remain unverified; Package D remains **DRAFT_NOT_AUTHORIZED**.
-- Current evidence summaries: [Gate 3 Run 01](../../reports/documentation-release-sync/gate3-run-01.md) and [Claude calc-001](../../reports/documentation-release-sync/claude-calc-001.md). These current statuses do not amend the historical research or authorize its proposals.
+- Evidence summaries: [Gate 3 Run 01](../../reports/documentation-release-sync/gate3-run-01.md) and [historical Claude calc-001](../../reports/documentation-release-sync/claude-calc-001.md).
 - The roles use host models, tools, permissions and native delegation. They do not require independent role servers or processes.
 - Memory, efficiency, model-selection and xKiro proposals require explicit Owner authorization before implementation, installation, experiments or spending.
 - Authorized supporting scripts, utilities, schemas and optional adapters may extend the skill or plugin ecosystem. They must not silently turn CouncilFlow into a standalone platform.

@@ -24,6 +24,7 @@ DIRECTORIES = (
 FILES = (
     "README.md", "RELEASE.md", "docs/gate3/README.md", "tools/build_release.py",
     "AGENTS.md", "docs/gate3/current-implementation-gaps.md", "docs/gate3/import-record.json",
+    "scripts/bootstrap.ps1", "scripts/remote-update.ps1",
     "reports/README.md",
     "reports/councilflow-hardening/README.md",
     "reports/councilflow-final-release-audit/README.md",
@@ -72,7 +73,7 @@ def safe_name(name: str) -> bool:
 
 
 # Claude Code plugin tests need plugins/ and its builder, which are not in this package.
-HOST_ONLY = {"tests/test_claude_plugin.py"}
+HOST_ONLY = {"tests/test_claude_plugin.py", "tests/test_journal.py", "tests/test_release.py"}
 
 
 def excluded(name: str) -> bool:
