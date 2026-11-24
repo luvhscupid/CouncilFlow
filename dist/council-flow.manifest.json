@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "e45d42bb6d9f84e89cede6babafb945e0ec4ec2c0ed6aa5cfee9696faa0d1a37",
-  "entries": 240,
+  "sha256": "d62101673832dbd9985769cab03036c53be222cb00def0baeaa59111e56c5550",
+  "entries": 243,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -110,18 +110,23 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/claude_adapter.py",
-      "size": 18775,
-      "sha256": "cefc118e79de0d95117c196a4897ed91400a53e8d7c3078e54f75489d24817f9"
+      "size": 16499,
+      "sha256": "120f97ad66ceb0d7a490501112475c597c40438a9bb4431341bf99d7b7ffa13e"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/codex_adapter.py",
-      "size": 11948,
-      "sha256": "7e9c93c6230876ffd7dded502f08692d4b8b1aa0eb020dc6187d866fca0c8140"
+      "size": 9151,
+      "sha256": "f0e375b4b205c457a1d6b28508ff39122b8e086c1efb1a9ec3d81ed66bbb36ac"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/digest.py",
       "size": 9419,
       "sha256": "bc35e15e300a7f8fd221eab5a7910eb69cdd7eba376925e546aac61ea49d601e"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/efficiency/pipeline.py",
+      "size": 4716,
+      "sha256": "fc20f6c03003aa7fdd5d191cf2b9cad555a56aa8890a339094d262383009cffa"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/record.schema.json",
@@ -999,6 +1004,11 @@
       "sha256": "4128489ff4843345804e54b0beca3095e945ca4fe85708b0c5114b1e21b82cee"
     },
     {
+      "path": "tests/efficiency-fixtures/adapter-golden.json",
+      "size": 66623,
+      "sha256": "4497db2129bd8821a20b526b56d1fbe258a2692f0a68139921f2f93fb67539aa"
+    },
+    {
       "path": "tests/efficiency-fixtures/claude-stream-sanitized.jsonl",
       "size": 422,
       "sha256": "a84bc70654806fa7d45238a865a853ed04e20704ad814a978e20d2692c44871a"
@@ -1099,6 +1109,11 @@
       "sha256": "4f42e3ee80077ccfc8b4f0580d6eefe10eb537bcebd05127dc328a8767b8db2f"
     },
     {
+      "path": "tests/test_efficiency_pipeline.py",
+      "size": 5271,
+      "sha256": "97efd9c4eed38a7f3fa8222f6f2ca760f63eb9fabce9f8fd7ae5bcab536444ae"
+    },
+    {
       "path": "tests/test_efficiency_recorder.py",
       "size": 2484,
       "sha256": "91821708320d485fb1fff14c5de68ce64036b5b129627ede2795de13c8faf55e"
@@ -1165,8 +1180,8 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 10281,
-      "sha256": "f85cc7764bc8bf8a266bb9af3d963b039ae0ae3ab971ef077d4fa6b033e5083e"
+      "size": 10276,
+      "sha256": "02ddd49e2b8f0d844a64225eca86acd7747aaa989da2b726c80f546b8051df29"
     },
     {
       "path": "tests/test_strict_json.py",

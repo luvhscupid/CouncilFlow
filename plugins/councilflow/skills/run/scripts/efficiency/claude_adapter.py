@@ -1,20 +1,17 @@
 """Opt-in metadata-only Claude Code JSON/JSONL ingestion; no host or network access."""
 from __future__ import annotations
-import argparse
 import hashlib
-import json
 from pathlib import Path
 import sys
 import uuid
 
-_SCRIPTS = str(Path(__file__).resolve().parents[1])
-if _SCRIPTS not in sys.path:
-    sys.path.append(_SCRIPTS)  # shared strict_json lives in the parent scripts folder
+_HERE = str(Path(__file__).resolve().parent)
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)  # sibling pipeline/recorder load when imported by path
 
-from strict_json import loads as strict_loads  # noqa: E402
-from codex_adapter import _identifier  # noqa: E402
-from digest import build_digest
-from recorder import record, validate, append_jsonl
+import pipeline  # noqa: E402
+from pipeline import safe_label as _identifier, strict_loads  # noqa: E402
+from recorder import record, validate  # noqa: E402
 
 SUPPORTED = {'system', 'assistant', 'user', 'result', 'stream_event'}
 SYSTEM_TYPES = {'init', 'compact_boundary', 'status', 'api_retry', 'hook_started',
@@ -105,23 +102,7 @@ def parse_stream(raw, *, run_id=None, gateway=None, gateway_source='caller-suppl
             input_format = 'json'
     except (ValueError, UnicodeDecodeError, RecursionError):
         pass
-    for number, line in enumerate(lines, 1):
-        if not line.strip():
-            continue
-        try:
-            event = strict_loads(line)
-        except (ValueError, UnicodeDecodeError, RecursionError):
-            issues.append(f'line {number}: malformed JSON/encoding; contents omitted')
-            safe_events.append({'type': 'malformed'})
-            continue
-        if not isinstance(event, dict) or not isinstance(event.get('type'), str) or event['type'] not in SUPPORTED:
-            issues.append(f'line {number}: unsupported event type; contents omitted')
-            safe_events.append({'type': 'unsupported'})
-            continue
-        if 'schema_version' in event or 'version' in event:
-            issues.append(f'line {number}: explicit event version unsupported')
-            safe_events.append({'type': 'unsupported-version'})
-            continue
+    for number, event in pipeline.events(lines, SUPPORTED, issues, safe_events):
         kind = event['type']
         safe = {'type': kind}
         sid = event.get('session_id')
@@ -291,42 +272,21 @@ def parse_stream(raw, *, run_id=None, gateway=None, gateway_source='caller-suppl
 
 
 def process(raw, *, artifact_dir, **kwargs):
-    result = parse_stream(raw, **kwargs)
-    safe = (json.dumps({'events': result.pop('sanitized_events')}, sort_keys=True)+'\n').encode()
-    result['digest'] = build_digest(safe, b'', exit_code=result['process_exit_code'], command=[],
-                                    artifact_dir=artifact_dir, run_id=result['record']['run_id'])
-    result['digest']['source_kind'] = 'sanitized-claude-event-metadata; not a process capture'
-    if not result['complete']:
-        result['digest']['flags'] = sorted(set(result['digest']['flags']) | {'DIGEST_INCOMPLETE'})
-    return result
+    """Digest only sanitized metadata. Original supplied transcript is never persisted."""
+    return pipeline.process(parse_stream, raw, artifact_dir=artifact_dir, host="claude", **kwargs)
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('events', nargs='?', help='Explicit JSON or JSONL capture; defaults to stdin')
-    parser.add_argument('--artifacts', required=True)
-    parser.add_argument('--records')
-    parser.add_argument('--run-id')
+    parser = pipeline.parser(__doc__, "Explicit JSON or JSONL capture; defaults to stdin")
     parser.add_argument('--gateway', choices=('xkiro',))
-    parser.add_argument('--gateway-source', choices=('caller-supplied','configured','synthetic-fixture'), default='caller-supplied')
+    parser.add_argument('--gateway-source', choices=('caller-supplied', 'configured', 'synthetic-fixture'),
+                        default='caller-supplied')
     parser.add_argument('--configured-model', '--model', dest='configured_model')
-    parser.add_argument('--cli-version')
     parser.add_argument('--route')
-    parser.add_argument('--revision')
-    parser.add_argument('--elapsed-ms', type=int)
-    parser.add_argument('--process-exit-code', type=int)
-    parser.add_argument('--cancelled', action='store_true')
-    parser.add_argument('--source', choices=('supplied-capture','synthetic-fixture'), default='supplied-capture')
     args = parser.parse_args(argv)
-    raw = Path(args.events).read_bytes() if args.events else sys.stdin.buffer.read()
-    result = process(raw, artifact_dir=args.artifacts, run_id=args.run_id, gateway=args.gateway,
-                     gateway_source=args.gateway_source, configured_model=args.configured_model,
-                     cli_version=args.cli_version, route=args.route, repository_revision=args.revision,
-                     elapsed_ms=args.elapsed_ms, process_exit_code=args.process_exit_code,
-                     cancelled=args.cancelled, source=args.source)
-    if args.records: append_jsonl(args.records, result['record'])
-    print(json.dumps(result, indent=2, sort_keys=True))
-    return 0 if result['complete'] else 2
+    return pipeline.run(parse_stream, args, host="claude", gateway=args.gateway,
+                        gateway_source=args.gateway_source, configured_model=args.configured_model,
+                        route=args.route)
 
 
 if __name__ == '__main__':

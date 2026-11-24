@@ -3,33 +3,23 @@
 Never invokes Codex, reads host configuration, or persists event payload text.
 """
 from __future__ import annotations
-import argparse
 import hashlib
-import json
 from pathlib import Path
-import re
 import sys
 import uuid
 
-_SCRIPTS = str(Path(__file__).resolve().parents[1])
-if _SCRIPTS not in sys.path:
-    sys.path.append(_SCRIPTS)  # shared strict_json lives in the parent scripts folder
+_HERE = str(Path(__file__).resolve().parent)
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)  # sibling pipeline/recorder load when imported by path
 
-from strict_json import loads as strict_loads  # noqa: E402
-from digest import build_digest
-from recorder import record, validate, append_jsonl
+import pipeline  # noqa: E402
+from pipeline import safe_label as _identifier, strict_loads  # noqa: E402,F401 (shared strict reader)
+from recorder import record, validate  # noqa: E402
 
 SUPPORTED = {"thread.started", "turn.started", "turn.completed", "turn.failed",
              "item.started", "item.updated", "item.completed", "error"}
 TOKEN_FIELDS = {"input": "input_tokens", "cached_input": "cached_input_tokens",
                 "cache_creation": "cache_write_input_tokens", "output": "output_tokens"}
-MODEL_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._/-]{0,127}")
-SENSITIVE_ID = re.compile(r"sk-|bearer|secret|password|api[_-]?key", re.I)
-
-
-def _identifier(value):
-    return (value if isinstance(value, str) and MODEL_ID.fullmatch(value)
-            and not SENSITIVE_ID.search(value) else None)
 
 
 def _usage(value, issues, line):
@@ -81,24 +71,8 @@ def parse_stream(raw, *, run_id=None, route="codex/native-or-configured",
     stream_error = False
     completed_count = 0
     metrics, reasons = _usage(None, issues, 0)
-    for number, line in enumerate(raw.splitlines(), 1):
-        if not line.strip():
-            continue
-        try:
-            event = strict_loads(line)
-        except (ValueError, UnicodeDecodeError, RecursionError):
-            issues.append(f"line {number}: malformed JSON/encoding; contents omitted")
-            safe_events.append({"type": "malformed"})
-            continue
-        if not isinstance(event, dict) or not isinstance(event.get("type"), str) or event["type"] not in SUPPORTED:
-            issues.append(f"line {number}: unsupported event type; contents omitted")
-            safe_events.append({"type": "unsupported"})
-            continue
+    for number, event in pipeline.events(raw.splitlines(), SUPPORTED, issues, safe_events):
         kind = event["type"]
-        if "schema_version" in event or "version" in event:
-            issues.append(f"line {number}: explicit event version unsupported")
-            safe_events.append({"type": "unsupported-version"})
-            continue
         safe = {"type": kind}
         if event.get("model") is not None:
             model = _identifier(event["model"])
@@ -190,39 +164,14 @@ def parse_stream(raw, *, run_id=None, route="codex/native-or-configured",
 
 def process(raw, *, artifact_dir, **kwargs):
     """Digest only sanitized metadata. Original supplied transcript is never persisted."""
-    result = parse_stream(raw, **kwargs)
-    safe = (json.dumps({"events": result.pop("sanitized_events")}, sort_keys=True) + "\n").encode("utf-8")
-    result["digest"] = build_digest(safe, b"", exit_code=result["process_exit_code"],
-                                    command=[], artifact_dir=artifact_dir, run_id=result["record"]["run_id"])
-    result["digest"]["source_kind"] = "sanitized-codex-event-metadata; not a process capture"
-    if not result["complete"]:
-        result["digest"]["flags"] = sorted(set(result["digest"]["flags"]) | {"DIGEST_INCOMPLETE"})
-    return result
+    return pipeline.process(parse_stream, raw, artifact_dir=artifact_dir, host="codex", **kwargs)
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("events", nargs="?", help="Explicitly supplied JSONL file; defaults to stdin")
-    parser.add_argument("--artifacts", required=True)
-    parser.add_argument("--records")
-    parser.add_argument("--run-id")
+    parser = pipeline.parser(__doc__, "Explicitly supplied JSONL file; defaults to stdin")
     parser.add_argument("--route", default="codex/native-or-configured")
-    parser.add_argument("--revision")
-    parser.add_argument("--elapsed-ms", type=int)
-    parser.add_argument("--process-exit-code", type=int, help="Caller-observed Codex exit code, never inferred")
-    parser.add_argument("--cancelled", action="store_true", help="Caller-observed cancellation")
-    parser.add_argument("--cli-version", help="Caller-observed CLI version label")
-    parser.add_argument("--source", choices=("supplied-capture", "synthetic-fixture"), default="supplied-capture")
     args = parser.parse_args(argv)
-    raw = Path(args.events).read_bytes() if args.events else sys.stdin.buffer.read()
-    result = process(raw, artifact_dir=args.artifacts, run_id=args.run_id, route=args.route,
-                     repository_revision=args.revision, elapsed_ms=args.elapsed_ms,
-                     process_exit_code=args.process_exit_code, cancelled=args.cancelled,
-                     cli_version=args.cli_version, source=args.source)
-    if args.records:
-        append_jsonl(args.records, result["record"])
-    print(json.dumps(result, indent=2, sort_keys=True))
-    return 0 if result["complete"] else 2
+    return pipeline.run(parse_stream, args, host="codex", route=args.route)
 
 
 if __name__ == "__main__":
