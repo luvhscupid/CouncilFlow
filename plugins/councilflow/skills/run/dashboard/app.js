@@ -18,6 +18,36 @@
   const MAX_JSON_FILES = 1024;
   const MAX_DIRECTORY_DEPTH = 16;
   const MAX_TOTAL_JSON_BYTES = 16 * 1024 * 1024;
+  const MAX_VISIBLE_ISSUES = 20;
+  const ISSUE_PHRASES = {
+    duplicate_message_id: id => `Two messages use the same id: ${id}.`,
+    cross_run_parent: id => `Message ${id} replies to a message from a different task, plan or plan revision.`,
+    cross_attempt_parent: id => `Message ${id} replies to a message from a different attempt.`,
+    unsupported_contract: id => `Message ${id} uses an unsupported protocol or version.`,
+    invalid_identity: id => `Message ${id} has an invalid id, type, plan, task, attempt or plan revision.`,
+    invalid_envelope: id => `Message ${id} has an invalid sender, recipient, reply link, payload or evidence list.`,
+    invalid_route: id => `Message ${id} was sent between roles that should not exchange this message type.`,
+    invalid_plan_publication: id => `Plan publication ${id} is not a valid Planner publication with acceptance ids.`,
+    invalid_assignment: id => `Assignment ${id} is missing its acceptance ids or instructions.`,
+    invalid_report: id => `Report ${id} is missing its acceptance ids or has an unknown status.`,
+    invalid_final_check: id => `Final check ${id} is missing its results or acceptance ids, or has an unknown status.`,
+    invalid_decision: id => `Decision ${id} is missing its report ids or has an unknown disposition.`,
+    missing_criterion_evidence: id => `No evidence was recorded for criterion ${id}.`,
+    report_without_matching_assignment: id => `Report ${id} does not match any assignment.`,
+    final_check_without_progress: id => `Final check ${id} has no matching progress record.`
+  };
+  const ISSUE_FALLBACK_DETAILS = {
+    unsupported_contract: "Unknown packet",
+    invalid_identity: "Packet identity or type is invalid."
+  };
+
+  function formatIssueLine(issue) {
+    const detail = issue && issue.detail !== undefined ? String(issue.detail) : "";
+    const code = issue && issue.code;
+    if (!code || !Object.prototype.hasOwnProperty.call(ISSUE_PHRASES, code)) return detail;
+    if (Object.prototype.hasOwnProperty.call(ISSUE_FALLBACK_DETAILS, code) && detail === ISSUE_FALLBACK_DETAILS[code]) return detail;
+    return ISSUE_PHRASES[code](detail);
+  }
 
   function setConnection(label, state) {
     const element = $("connection-state");
@@ -157,7 +187,11 @@
     const alert = $("record-alert");
     if (snapshot.issues.length) {
       alert.hidden = false;
-      alert.textContent = `${snapshot.issues.length} record issue${snapshot.issues.length === 1 ? "" : "s"}: ${snapshot.issues.slice(0, 3).map(issue => issue.detail).join(" ")}`;
+      const issues = snapshot.issues;
+      const lines = [`${issues.length} record issue${issues.length === 1 ? "" : "s"}:`];
+      for (const issue of issues.slice(0, MAX_VISIBLE_ISSUES)) lines.push(`- ${formatIssueLine(issue)}`);
+      if (issues.length > MAX_VISIBLE_ISSUES) lines.push(`${issues.length - MAX_VISIBLE_ISSUES} more not shown.`);
+      alert.textContent = lines.join("\n");
     } else {
       alert.hidden = true;
       alert.textContent = "";
