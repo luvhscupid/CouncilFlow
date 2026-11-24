@@ -161,7 +161,14 @@ class SkillFilesTests(unittest.TestCase):
                             imports.add(node.module.split(".")[0])
                     # Only the packaged adapters may import their sibling helpers.
                     # Every sibling is scanned independently by this same guard.
-                    internal = {"recorder", "digest", "codex_adapter"} if path.parent == SKILL / "scripts/efficiency" else set()
+                    if path.parent == SKILL / "scripts/efficiency":
+                        internal = {"recorder", "digest", "codex_adapter"}
+                    elif path.parent == SKILL / "scripts/routing":
+                        internal = {"contract", "core", "encoders", "composition", "decision"}
+                    elif path == SKILL / "scripts" / "route.py":
+                        internal = {"routing"}
+                    else:
+                        internal = set()
                     self.assertTrue(imports <= sys.stdlib_module_names | internal, (path, imports))
                     self.assertFalse(imports & {"sqlite3", "http", "socket", "urllib"})
         # Static dependency inspection only; independent offline execution is separate.

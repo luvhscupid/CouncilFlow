@@ -1,0 +1,5 @@
+[
+  {"manager_action": "ignored", "route": "docs"},
+  {"manager_action": "accepted", "route": "docs"},
+  {"manager_action": "overridden", "route": "docs"}
+]

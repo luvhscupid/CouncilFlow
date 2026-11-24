@@ -8,7 +8,10 @@ Planner final check → Owner. Preserve that responsibility order.
    actual Owner authorization remain authoritative. Manager performs the
    [Codebase Memory lifecycle](codebase-memory.md) and
    [original-input/oracle capture](source-fidelity.md) before Planner automatically.
-2. Dedicated Planner returns plan.publish JSON with exact immutable acceptance
+   An optional routing hint may classify the bounded task before planning, but
+   Manager validates the route hint and may ignore or override it. Routing never
+   grants scope, tool authorization, model identity, or role dispatch.
+2. Dedicated Planner follows [planner.md](planner.md) and returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
    Supplied frozen criteria always require the pre-Planner original-input
@@ -23,8 +26,14 @@ Planner final check → Owner. Preserve that responsibility order.
    supplied frozen criteria may generate a native plan, preserving the actual
    request and distinguishing generated acceptance.
 3. Manager constructs bounded job.assign JSON with objective, scope, original
-   acceptance IDs, exact candidate reference and instructions. Validate the
-   controlled packet, file hashes and any required criteria fidelity before delegation. Supply known native
+   acceptance IDs, exact candidate reference and instructions. For each Worker
+   assignment, validate the READY plan against frozen criteria and verify the
+   plan ID/revision, task ID, acceptance IDs and Planner-authored instruction
+   array exactly match that selected task using
+   `scripts/planner_contract.py assignment <plan.json> <frozen-criteria.json> <assignment.json>`.
+   Also validate the controlled packet, file hashes and any required criteria
+   fidelity before delegation. Non-ready responses are not published or dispatched.
+   Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not

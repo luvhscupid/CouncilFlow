@@ -1,0 +1,13 @@
+{
+  "version": "routing-v1",
+  "threshold": 0.5,
+  "margin": 0.2,
+  "routes": [
+    {"name": "bounded_offline_change", "examples": ["edit a local source file"], "metadata": {"kind": "bounded"}},
+    {"name": "documentation_only", "examples": ["write project documentation"], "metadata": {"kind": "docs"}},
+    {"name": "security_sensitive", "examples": ["audit authentication security"], "metadata": {"kind": "security"}},
+    {"name": "dependency_change", "examples": ["upgrade a package dependency"], "metadata": {"kind": "dependency"}},
+    {"name": "frontend_change", "examples": ["change the dashboard interface"], "metadata": {"kind": "frontend"}},
+    {"name": "needs_information", "examples": ["request missing requirements"], "metadata": {"kind": "blocked"}}
+  ]
+}

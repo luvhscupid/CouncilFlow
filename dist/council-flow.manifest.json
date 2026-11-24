@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "0a59e50ccb0630f8f291deae488d4adab5c5deb829e15b89fefb6395d43266a1",
-  "entries": 195,
+  "sha256": "322ccd68c2b0bca228287a548f2e9bfdc9e5da7a2126ab803d6ef8d08d131c44",
+  "entries": 216,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 7113,
-      "sha256": "a285b0c9a36507c59c7aacff783af468be61e62560cd12dcc728b7427462d675"
+      "size": 7578,
+      "sha256": "54444b12be5226106143c62a5be0bcdf18a0fd79d1ac6d1b6318c224f11ee4ac"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -64,14 +64,19 @@
       "sha256": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783"
     },
     {
+      "path": ".agents/skills/council-flow/references/planner.md",
+      "size": 4214,
+      "sha256": "dbdf6961386cdda0970add37998614b2b74b45f9d37db922b456e8e879dd3990"
+    },
+    {
       "path": ".agents/skills/council-flow/references/recovery.md",
       "size": 3832,
       "sha256": "d14125b64519747390c8c801da31e2a6beb8a11413fa371a25e7c12c9504e3ec"
     },
     {
       "path": ".agents/skills/council-flow/references/roles.md",
-      "size": 3841,
-      "sha256": "a0e6e870ff737302c331e00fe2c01ca9e99a0ca2b35aeed537edeab4780c9775"
+      "size": 3965,
+      "sha256": "e915d96314d2d69e93cb352cfa42094ca8fec7d9b5884a519ef947dd8ed6db30"
     },
     {
       "path": ".agents/skills/council-flow/references/source-fidelity.md",
@@ -80,8 +85,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 6707,
-      "sha256": "facef15d8593c0b626113450693288b79d774b361a845915dc32d2037365f384"
+      "size": 7357,
+      "sha256": "c835c0ab17e4c364f8a8c1ced8611e437452e91474e74ca383dbf61db220d114"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
@@ -134,9 +139,49 @@
       "sha256": "d388f398679bcf12d2f987b71a18956e3c44b2f317a5416dd821cf9a14f5e9e0"
     },
     {
+      "path": ".agents/skills/council-flow/scripts/planner_contract.py",
+      "size": 9685,
+      "sha256": "6bf1887b8f51ba441e30275d38d9590fbd497c6b53bedfdd2b0b223b6b15e4cc"
+    },
+    {
       "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
       "size": 2627,
       "sha256": "194ce9988d41692a40f67c1f9172a5866f8b0cb4d453666830a1ee72ae3467c9"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/route.py",
+      "size": 2892,
+      "sha256": "9aad48cec2644fa3176f38405642007a098baa027c283ec648400192cc2de8e3"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/routing/__init__.py",
+      "size": 369,
+      "sha256": "d917ca967ca1b555c6ca031a087763424c07ea2ac2b0bcbb20e5287af4b784b6"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/routing/composition.py",
+      "size": 4360,
+      "sha256": "54a8cd105484a19d8d5c2a0806d605fbdeaa4af6fbb1391e8bf441062cb949fa"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/routing/contract.py",
+      "size": 6322,
+      "sha256": "305984c7b44e5eb3d519655f94eec7b715921d8c4485696c91fd63f5f53e09f4"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/routing/core.py",
+      "size": 5549,
+      "sha256": "9d6742b685a71fa8789a08720817347297750f440c5f56577bb2c001267d2830"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/routing/decision.py",
+      "size": 5262,
+      "sha256": "543b690c829a10d5d5dbb09f98f288dcbd3ee35ba8c02d54e769df471582a29a"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/routing/encoders.py",
+      "size": 2510,
+      "sha256": "1c772570ab35ab6907ecaa5019d646dbc01390d8307644750b1eb253c9ab11b7"
     },
     {
       "path": ".agents/skills/council-flow/scripts/task_graph.py",
@@ -145,8 +190,8 @@
     },
     {
       "path": ".codex/agents/council-planner.toml",
-      "size": 1740,
-      "sha256": "929fc12286ab0c09449d4e4e7388cf8f2f9da57a17540e452f493376c66c43e9"
+      "size": 1447,
+      "sha256": "b4a67fb7375a3e8721816415e40110015c7fa510a45f960fb7204b54a81020f1"
     },
     {
       "path": ".codex/agents/council-reviewer.toml",
@@ -884,6 +929,31 @@
       "sha256": "e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d"
     },
     {
+      "path": "tests/fixtures/routing/calibration.json",
+      "size": 89,
+      "sha256": "d1e5271e7dc937d8944ad3262cbd346aa1bd5881e29e0b0e3769b8c7c2ce8266"
+    },
+    {
+      "path": "tests/fixtures/routing/core-cases.json",
+      "size": 343,
+      "sha256": "3d8720467884f6e5f0eaa7ff814da491188ef9b5554ec7c52e4d79d58856bddc"
+    },
+    {
+      "path": "tests/fixtures/routing/decision-cases.json",
+      "size": 157,
+      "sha256": "1eb54cd1078511a3ba05992e73e649fd3d82fce65a42966be4d0bbc9f644093e"
+    },
+    {
+      "path": "tests/fixtures/routing/routes.json",
+      "size": 774,
+      "sha256": "d9a5d7aa876134ecfa08015a8a95dde188fbb496cb150302c48dd8229cff68b2"
+    },
+    {
+      "path": "tests/fixtures/routing/vector-cases.json",
+      "size": 138,
+      "sha256": "2dedef868f0be2f3811afe8ba5eb05a7eef948f73757bc1636449e1781e77af9"
+    },
+    {
       "path": "tests/test_codebase_memory_integration.py",
       "size": 7723,
       "sha256": "031fa02d1d09446f193fd5416a8aca136e6e7e176ffdeee0868e96c90cad661e"
@@ -939,6 +1009,11 @@
       "sha256": "341ad9127bf7e0693a83fff658b9cf91564aa7d194338cee5cbb683c721f218f"
     },
     {
+      "path": "tests/test_planner_contract.py",
+      "size": 4956,
+      "sha256": "24806df0ab23cb55fd3e92d599a9d122ff05d9633a52b2ae697529fae1cd2cf1"
+    },
+    {
       "path": "tests/test_release.py",
       "size": 7391,
       "sha256": "be00e355c6412e88c408e4423b604d7a0dc4234f98e0f1982bb178638e0409f8"
@@ -949,9 +1024,39 @@
       "sha256": "8338d06c5d8ac67df42687e82ecaf16cf233ce33012c607aac688ac706d58f0d"
     },
     {
+      "path": "tests/test_routing_cli.py",
+      "size": 2597,
+      "sha256": "30d5155e5f885c034c65bbc83db5d55a177f4e8011caff68502999e9079109bf"
+    },
+    {
+      "path": "tests/test_routing_composition.py",
+      "size": 2702,
+      "sha256": "ffa54efc1f840fdacc48239e3cda47f585c329f9a49c98de7e9f678d70fcd9b2"
+    },
+    {
+      "path": "tests/test_routing_contract.py",
+      "size": 3890,
+      "sha256": "b35fb095b86ea71f7bb4a1a9ce41c3b6b1e7b83f222fe35b595ccd9a4aa9c88d"
+    },
+    {
+      "path": "tests/test_routing_core.py",
+      "size": 3666,
+      "sha256": "33f7ae70bfcdd8ac613ab40db1700e3bdc6c64398a6793bacc34c404e3a14feb"
+    },
+    {
+      "path": "tests/test_routing_decision.py",
+      "size": 2948,
+      "sha256": "48bdfb83c003c7e730ba178b2a3abaf0909feee6afe9b7e0eb4bdf28a464ce33"
+    },
+    {
+      "path": "tests/test_routing_encoders.py",
+      "size": 2665,
+      "sha256": "5ff73656aeedd6c50a4273347fed2ec061d49c12ebe76247d484c41c21e0cdbc"
+    },
+    {
       "path": "tests/test_skill_files.py",
-      "size": 9527,
-      "sha256": "c9c191c6c9e683d55918beaa4f44e5315481c75ea7a594e81a91fdd3a214e7a5"
+      "size": 9882,
+      "sha256": "5c3b61f7da4e27c1bd56358e7d66f134bd8529d50f246f37422bffbb346e5994"
     },
     {
       "path": "tests/test_task_graph.py",
@@ -975,8 +1080,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 8549,
-      "sha256": "5d67a2b3da69f17c31bda629a9324c6dd91ceea4c427e8430c8b4e2564092dfe"
+      "size": 8582,
+      "sha256": "89789318cf191eaced227e2cd86bc4ab6e568d983f53206af14f1542b3999930"
     }
   ],
   "crc": "PASS",
