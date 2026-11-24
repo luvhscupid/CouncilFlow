@@ -1,7 +1,8 @@
 # CouncilFlow
 
-CouncilFlow is an installable **Codex-native workflow skill**. It is
-not a standalone AI application, assistant, runtime, provider, or service.
+CouncilFlow is an installable **agent workflow skill** for existing AI coding agents.
+The current implementation is Codex-native. It is not a standalone AI application,
+assistant, runtime, provider, or service.
 
 ## What it is
 
@@ -18,8 +19,8 @@ workflow responsibilities carried out with the host's own models, tools,
 permissions and native agent delegation. They are not independent servers or
 processes.
 
-CouncilFlow does not replace Codex, Claude Code, or their native delegation. It may be
-packaged as a plugin where the host supports plugins.
+CouncilFlow does not replace your coding agent, such as Codex or Claude Code, or its native
+delegation. It may be packaged as a plugin where the host supports plugins.
 
 ## Why it exists
 
@@ -31,7 +32,7 @@ as structured evidence, so a claimed result can be checked.
 
 | If you want to... | Read |
 | --- | --- |
-| Install and use it in Codex | [Use in this repository](#use-in-this-repository-codex) below |
+| Install and use it in your coding agent | [Use in this repository](#use-in-this-repository) below |
 | Understand the internal message format | [Structured communication](docs/technical/structured-communication.md) |
 | Try a small, offline example | [Demonstrations](#demonstrations) below |
 | Understand the optional efficiency helpers | [Optional efficiency helpers](docs/technical/efficiency-helpers.md) |
@@ -66,11 +67,11 @@ Claude Code remains a possible extension. The historical calc-001 smoke run appl
 Agent Efficiency helpers are offline-tested and opt-in; live adapter and billing compatibility
 remain unverified. Package D remains **DRAFT_NOT_AUTHORIZED**.
 
-## Use in this repository (Codex)
+## Use in this repository
 
-1. Open Codex at this repository root.
+1. Open your coding agent at this repository root. Codex is the currently supported host.
 2. The skill is `.agents/skills/council-flow/SKILL.md`. Custom agent definitions are in
-   `.codex/agents/`.
+   `.codex/agents/` (Codex format).
 3. Invoke it with a coding request. Include scope and constraints:
 
 ```text
@@ -90,8 +91,8 @@ The supported format and exact comparison rules are in
 [source fidelity](.agents/skills/council-flow/references/source-fidelity.md). A matching
 hash proves integrity, not Owner approval.
 
-Codex should detect skill changes automatically. If the selector does not update, restart
-Codex in this repository and check `/skills` or type `$` in the CLI or IDE. This does not
+The agent should detect skill changes automatically. If the selector does not update, restart
+the agent in this repository. In Codex, check `/skills` or type `$` in the CLI or IDE. This does not
 guarantee that discovery or activation worked in every host. If native delegation is missing,
 the workflow reports the gap instead of simulating role sessions. Observed results for this
 build are in `reports/`.
@@ -104,7 +105,7 @@ build are in `reports/`.
    if its Codex version supports standalone custom agents.
 3. Keep existing files. Resolve name collisions first, and do not overwrite another install
    silently. No global configuration registration is needed for the current agent format.
-4. Restart Codex if needed, then run `$council-flow <your coding goal>`. If the host supports
+4. Restart the agent if needed, then run `$council-flow <your coding goal>`. If the host supports
    native delegation but cannot select custom agent files, the skill passes role instructions to
    separate native subagents and reports that limitation.
 
