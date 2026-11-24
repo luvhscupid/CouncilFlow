@@ -493,10 +493,15 @@ def validate_message(message, *, root=None, expected_sender=None):
     return message
 
 
-def validate_sequence(messages, *, root=None, expected_senders=None, owner_provenance=(),
-                      authoritative_criteria_ref=None, original_source_ref=None,
-                      require_criteria_fidelity=False):
-    """Validate supplied ordered context, never authenticate opaque native transport."""
+class _RunState:
+    """Shared state while one supplied run is checked in order; never reused between calls."""
+    __slots__ = ("root", "expected_senders", "owner_provenance", "expected_criteria",
+                 "original_source_ref", "seen", "actors", "plans", "artifact_ids")
+
+
+def _sequence_context(messages, root, expected_senders, owner_provenance,
+                      authoritative_criteria_ref, original_source_ref, require_criteria_fidelity):
+    """Check the supplied context and criteria references; return the run state."""
     if not isinstance(messages, (list, tuple)) or len(messages) > 1024:
         fail("context", "$", "supply at most 1024 ordered messages")
     seen, actors, plans, artifact_ids = {}, {}, {}, {}
@@ -535,256 +540,325 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
         if previous is not None and previous != authoritative_criteria_ref:
             fail("artifact_identity", "authoritative_criteria_ref", "original and derivative cannot share a changed artifact identity")
         artifact_ids[authoritative_criteria_ref["artifact_id"]] = authoritative_criteria_ref
-    for m in messages:
-        # Validate the object and identity before using either as a lookup key.
-        validate_message(m, root=root)
-        expected_sender = expected_senders.get(m["message_id"])
-        if expected_sender is not None and m["sender"] != expected_sender:
-            fail("origin_binding", "sender", "does not match externally observed sender")
-        mid, kind, p = m["message_id"], m["message_type"], m["payload"]
-        if mid in seen:
-            fail("message_identity", "message_id", "duplicate message identity")
-        for who in ("sender", "recipient"):
-            actor = m[who]
-            old = actors.get(actor["instance_id"])
-            if old is not None and old != actor["role"]:
-                fail("origin_binding", who, "known instance cannot change role")
-            actors[actor["instance_id"]] = actor["role"]
-        reply = m["in_reply_to"]
-        predecessor = seen.get(reply) if reply is not None else None
-        if reply is not None and predecessor is None:
-            fail("causal_reference", "in_reply_to", "predecessor is not in supplied earlier context")
-        if predecessor:
-            for field in ("plan_id", "plan_revision", "task_id"):
-                if m[field] != predecessor[field]:
-                    fail("causal_identity", field, "must match predecessor")
-        key = (m["plan_id"], m["plan_revision"])
-        if kind == "plan.publish":
-            if key in plans:
-                original = plans[key]
-                if p != original["payload"] or any(m[actor] != original[actor] for actor in ("sender", "recipient")):
-                    fail("plan_immutable", "payload", "published objective, scope, acceptance, plan or actors changed")
-            if any(plan == m["plan_id"] and revision != m["plan_revision"] for plan, revision in plans):
-                fail("plan_revision", "plan_revision", "amendments need separately approved context; not inferred")
-            plans.setdefault(key, m)
-            if root is not None:
-                plan = read_json(Path(root) / p["plan_ref"]["path"])
-                planner_contract.validate_plan_context(
-                    plan, plan_id=m["plan_id"], plan_revision=m["plan_revision"],
-                    acceptance_ids=p["acceptance_ids"], expected_criteria=expected_criteria,
-                    original_source_ref=original_source_ref)
-        elif kind != "plan.progress" and key not in plans:
-            fail("plan_context", "plan_id", "published plan required")
-        if key in plans and "acceptance_ids" in p:
-            published = set(plans[key]["payload"]["acceptance_ids"])
-            if not set(p["acceptance_ids"]) <= published:
-                fail("acceptance", "payload.acceptance_ids", "unknown original acceptance")
-            if kind in {"plan.check", "task.decision"} and (kind == "plan.check" or p["disposition"] == "accept"):
-                if set(p["acceptance_ids"]) != published:
-                    fail("acceptance", "payload.acceptance_ids", "cannot silently omit mandatory criteria")
-        if ((kind == "task.decision" and p["disposition"] == "accept")
-                or (kind == "plan.check" and p["status"] == "passed")):
-            if any(check["message_type"] == "plan.check" and check["payload"]["status"] != "passed"
-                   and all(check[field] == m[field] for field in ("plan_id", "plan_revision", "task_id", "attempt_id"))
-                   for check in seen.values()):
-                fail("failed_planner_check", "attempt_id", "an unmet original Planner check requires preserved rework and a fresh attempt")
-        if kind == "job.report":
-            if not predecessor or predecessor["message_type"] != "job.assign":
-                fail("assignment", "in_reply_to", "report must reply to actual assignment")
-            if m["sender"] != predecessor["recipient"] or m["recipient"] != predecessor["sender"]:
-                fail("assignment", "sender", "report actors differ from assignment")
-            if m["attempt_id"] != predecessor["attempt_id"]:
-                fail("attempt", "attempt_id", "report attempt differs from assignment")
-            assigned_input = predecessor["payload"].get("candidate_ref")
-            if m["sender"]["role"] == "worker":
-                if p.get("input_candidate_ref") != assigned_input:
-                    fail("candidate_input", "payload.input_candidate_ref", "Worker must echo assigned input separately from output")
-            elif p["candidate_ref"] != assigned_input:
-                fail("candidate", "payload.candidate_ref", "verification candidate differs from assignment")
-            if m["sender"]["role"] == "tester" and p["oracle_ref"] != predecessor["payload"]["oracle_ref"]:
-                fail("oracle_binding", "payload.oracle_ref", "Tester cannot change or self-approve strategy")
-            if m["sender"]["role"] == "reviewer":
-                comparison = p["comparison"]
-                plan = plans.get(key)
-                if plan is None or comparison["plan_ref"] != plan["payload"]["plan_ref"]:
-                    fail("plan_immutable", "payload.comparison.plan_ref", "Reviewer must identify original frozen plan")
-                # Select the Tester the Reviewer names, never the first candidate match.
-                # Causal anchor: the Reviewer's genuine assignment must reply to that exact Tester report.
-                tester_id = comparison["tester_report_ref"]["artifact_id"]
-                tester = seen.get(tester_id)
-                if tester is None or tester["message_type"] != "job.report" or tester["sender"]["role"] != "tester":
-                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "must name an earlier actual Tester job.report")
-                if (tester["plan_id"], tester["plan_revision"], tester["task_id"], tester["attempt_id"]) != (
-                        m["plan_id"], m["plan_revision"], m["task_id"], m["attempt_id"]):
-                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "Tester report must share plan, revision, task and attempt")
-                if tester["payload"]["candidate_ref"] != p["candidate_ref"]:
-                    fail("candidate", "payload.comparison.candidate_ref", "must match the Tester-verified candidate")
-                # Reviewer report -> its Manager assignment -> the Tester report it names.
-                if (predecessor is None or predecessor["message_type"] != "job.assign"
-                        or predecessor["in_reply_to"] != tester_id):
-                    fail("comparison_evidence", "in_reply_to", "Reviewer assignment must reply to the Tester report it names")
-                worker = next((x for x in seen.values() if x["message_type"] == "job.report"
-                               and x["sender"]["role"] == "worker" and x["task_id"] == m["task_id"]
-                               and x["attempt_id"] == m["attempt_id"] and x["payload"]["candidate_ref"] == p["candidate_ref"]), None)
-                if worker is None or tester["payload"]["candidate_ref"] != worker["payload"]["candidate_ref"]:
-                    fail("candidate", "payload.comparison.candidate_ref", "must bind the Worker's actual candidate checked by Tester")
-                tc = comparison["independent_rerun"]
-                tester_ref = comparison["tester_report_ref"]
-                if tester_ref["artifact_id"] != tester["message_id"] or tester_ref["kind"] != "message":
-                    fail("comparison_evidence", "payload.comparison.tester_report_ref", "must reference the exact earlier Tester message")
-                if root is not None:
-                    tester_file = read_json(Path(root) / tester_ref["path"])
-                    if tester_file != tester:
-                        fail("comparison_evidence", "payload.comparison.tester_report_ref", "referenced bytes must contain the exact earlier Tester message")
-                commands = tester["payload"].get("deterministic_commands", [])
-                declared = next((x for x in commands if x["command_id"] == tc.get("command_id")), None)
-                if tc["status"] == "NOT_COMPARABLE":
-                    if commands:
-                        fail("comparison", "payload.comparison.independent_rerun", "Tester declared a deterministic command; Reviewer must select one")
-                else:
-                    if declared is None:
-                        fail("comparison_evidence", "payload.comparison.independent_rerun.command_id", "must select an actual Tester-declared command")
-                    if tc["acceptance_id"] not in p["acceptance_ids"]:
-                        fail("comparison_binding", "payload.comparison.independent_rerun.acceptance_id", "rerun must address an assigned Reviewer criterion")
-                    for field in ("command", "arguments", "workdir", "candidate_ref", "input_refs", "acceptance_id"):
-                        if tc[field] != declared[field]:
-                            fail("comparison_binding", "payload.comparison.independent_rerun." + field, "rerun conditions differ from Tester record")
-                    if tc["tester_exit_code"] != declared["exit_code"] or tc["tester_stdout_sha256"] != declared["stdout_sha256"] or tc["tester_evidence_ref"] != declared["evidence_ref"]:
-                        fail("comparison_binding", "payload.comparison.independent_rerun", "Tester execution result/evidence identity changed")
-                    if not any(tc["tester_evidence_ref"] == x for x in tester["evidence_refs"]):
-                        fail("comparison_evidence", "payload.comparison.independent_rerun.tester_evidence_ref", "Tester execution record must be cited by Tester report")
-                    if not any(tc["evidence_ref"] == x for x in m["evidence_refs"]):
-                        fail("comparison_evidence", "payload.comparison.independent_rerun.evidence_ref", "Reviewer rerun record must be cited by Reviewer report")
-                    if p["status"] == "passed" and tc["status"] != "MATCH":
-                        fail("comparison", "payload.status", "only an exactly matching independent rerun can pass review")
-                if not comparison["findings"]:
-                    fail("comparison", "payload.comparison.findings", "record comparison findings against plan, candidate and Tester evidence")
-            if p["acceptance_ids"] != predecessor["payload"]["acceptance_ids"]:
-                fail("acceptance", "payload.acceptance_ids", "report changed assigned criteria")
-        if kind == "job.assign" and m["recipient"]["role"] == "worker":
-            earlier_workers = [x for x in seen.values() if x["message_type"] == "job.assign"
-                               and x["recipient"]["role"] == "worker"
-                               and all(x[field] == m[field] for field in ("plan_id", "plan_revision", "task_id"))]
-            if earlier_workers and (not predecessor or predecessor["message_type"] != "task.decision"
-                                    or predecessor["payload"]["disposition"] != "rework"):
-                fail("rework_evidence", "in_reply_to", "another implementation attempt requires an explicit preserved Manager rework decision")
-        if kind == "job.assign" and predecessor:
-            if predecessor["message_type"] == "task.decision" and predecessor["payload"]["disposition"] == "rework":
-                if m["recipient"]["role"] == "worker":
-                    if m["attempt_id"] == predecessor["attempt_id"]:
-                        fail("fresh_attempt", "attempt_id", "repair requires fresh attempt")
-                    old_workers = {x["recipient"]["instance_id"] for x in seen.values()
-                                   if x["message_type"] == "job.assign" and x["recipient"]["role"] == "worker"}
-                    if m["recipient"]["instance_id"] in old_workers:
-                        fail("fresh_worker", "recipient.instance_id", "repair requires fresh native Worker")
-                    if any(x["attempt_id"] == m["attempt_id"] for x in earlier_workers):
-                        fail("fresh_attempt", "attempt_id", "repair cannot reuse any earlier implementation attempt")
-            elif m["attempt_id"] != predecessor["attempt_id"]:
-                fail("attempt", "attempt_id", "unexpected attempt change")
-        if kind == "task.decision":
-            reports = []
-            for report_id in p["report_ids"]:
-                report = seen.get(report_id)
-                if report is None or report["message_type"] != "job.report":
-                    fail("decision_evidence", "payload.report_ids", "known prior reports required")
-                if any(report[f] != m[f] for f in ("plan_id", "plan_revision", "task_id", "attempt_id")):
-                    fail("decision_identity", "payload.report_ids", "report belongs to another task/attempt")
-                if report["payload"]["candidate_ref"] != p["candidate_ref"]:
-                    fail("candidate", "payload.report_ids", "report candidate differs")
-                reports.append(report)
-            if p["disposition"] == "accept":
-                known_failures = [r for r in seen.values()
-                                  if r["message_type"] == "job.report" and r["sender"]["role"] in {"tester", "reviewer"}
-                                  and r["payload"]["status"] == "failed"
-                                  and all(r[f] == m[f] for f in ("plan_id", "plan_revision", "task_id", "attempt_id"))
-                                  and r["payload"]["candidate_ref"] == p["candidate_ref"]]
-                if known_failures:
-                    fail("failed_verification", "payload.report_ids", "cannot hide known failed mandatory verification for this candidate")
-                if any(r["sender"]["role"] in {"tester", "reviewer"} and r["payload"]["status"] != "passed" for r in reports):
-                    fail("failed_verification", "payload.report_ids", "cannot accept supplied failed mandatory verification")
-                testers = [r for r in reports if r["sender"]["role"] == "tester" and r["payload"]["status"] == "passed"]
-                reviewers = [r for r in reports if r["sender"]["role"] == "reviewer" and r["payload"]["status"] == "passed"]
-                workers = {r["sender"]["instance_id"] for r in reports if r["sender"]["role"] == "worker"}
-                if not testers or not reviewers:
-                    fail("independent_evidence", "payload.report_ids", "passing separate Tester and Reviewer required")
-                identities = {r["sender"]["instance_id"] for r in testers + reviewers}
-                if len(identities) < 2 or identities & workers:
-                    fail("independent_evidence", "payload.report_ids", "role sessions must be distinct")
-                for role_reports in (testers, reviewers):
-                    covered = set().union(*(set(r["payload"]["acceptance_ids"]) for r in role_reports))
-                    if not set(p["acceptance_ids"]) <= covered:
-                        fail("acceptance", "payload.report_ids", "Tester and Reviewer must each cover all required criteria")
-            if p["disposition"] == "rework":
-                failures = [r for r in reports if r["payload"]["status"] == "failed"]
-                planner_check = predecessor if predecessor and predecessor["message_type"] == "plan.check" else None
-                if planner_check is not None:
-                    if planner_check["payload"]["status"] == "passed":
-                        fail("rework_evidence", "in_reply_to", "Planner rework must cite a failed or blocked check")
-                    check_progress = seen.get(planner_check["in_reply_to"])
-                    if not check_progress or check_progress["message_type"] != "plan.progress":
-                        fail("rework_evidence", "in_reply_to", "failed Planner check must follow Manager progress")
-                    prior_acceptance = seen.get(check_progress["in_reply_to"])
-                    if (not prior_acceptance or prior_acceptance["message_type"] != "task.decision"
-                            or prior_acceptance["payload"]["disposition"] != "accept"
-                            or prior_acceptance["payload"]["candidate_ref"] != p["candidate_ref"]
-                            or prior_acceptance["attempt_id"] != m["attempt_id"]):
-                        fail("rework_evidence", "in_reply_to", "Planner-detected rework must preserve the earlier Manager acceptance of this candidate")
-                    if not set(prior_acceptance["payload"]["report_ids"]) <= set(p["report_ids"]):
-                        fail("rework_evidence", "payload.report_ids", "rework must retain the reports cited by the earlier Manager acceptance")
-                    planner_failures = {result["acceptance_id"] for result in planner_check["payload"]["results"]
-                                        if result["status"] in {"failed", "blocked", "unverified"}}
-                    if not planner_failures:
-                        fail("rework_evidence", "in_reply_to", "failed Planner check must identify unmet original criteria")
-                    if set(p["failed_acceptance_ids"]) != planner_failures:
-                        fail("rework_evidence", "payload.failed_acceptance_ids", "must preserve every failed Planner criterion exactly")
-                elif not failures:
-                    fail("rework_evidence", "payload.report_ids", "failed verification or a failed Planner check must be explicit")
-                known_failed = set().union(*(set(r["payload"]["acceptance_ids"]) for r in failures)) if failures else set()
-                if planner_check is not None:
-                    known_failed.update(planner_failures)
-                if not set(p["failed_acceptance_ids"]) <= (set(p["acceptance_ids"]) & known_failed):
-                    fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned criteria and supplied failure evidence")
-        if kind == "plan.check" and key in plans:
+    state = _RunState()
+    state.root, state.expected_senders, state.owner_provenance = root, expected_senders, owner_provenance
+    state.expected_criteria, state.original_source_ref = expected_criteria, original_source_ref
+    state.seen, state.actors, state.plans, state.artifact_ids = seen, actors, plans, artifact_ids
+    return state
+
+
+def _check_identity_and_reply(state, m):
+    """Message check, observed sender, unique identity, stable instance roles and the reply link."""
+    root, seen, actors, expected_senders = state.root, state.seen, state.actors, state.expected_senders
+    validate_message(m, root=root)
+    expected_sender = expected_senders.get(m["message_id"])
+    if expected_sender is not None and m["sender"] != expected_sender:
+        fail("origin_binding", "sender", "does not match externally observed sender")
+    mid, kind, p = m["message_id"], m["message_type"], m["payload"]
+    if mid in seen:
+        fail("message_identity", "message_id", "duplicate message identity")
+    for who in ("sender", "recipient"):
+        actor = m[who]
+        old = actors.get(actor["instance_id"])
+        if old is not None and old != actor["role"]:
+            fail("origin_binding", who, "known instance cannot change role")
+        actors[actor["instance_id"]] = actor["role"]
+    reply = m["in_reply_to"]
+    predecessor = seen.get(reply) if reply is not None else None
+    if reply is not None and predecessor is None:
+        fail("causal_reference", "in_reply_to", "predecessor is not in supplied earlier context")
+    if predecessor:
+        for field in ("plan_id", "plan_revision", "task_id"):
+            if m[field] != predecessor[field]:
+                fail("causal_identity", field, "must match predecessor")
+    key = (m["plan_id"], m["plan_revision"])
+    return predecessor, key
+
+
+def _check_plan_context(state, m, predecessor, key):
+    """Plan publication, the published-plan requirement, original acceptance and failed Planner checks."""
+    root, seen, plans = state.root, state.seen, state.plans
+    expected_criteria, original_source_ref = state.expected_criteria, state.original_source_ref
+    kind, p = m["message_type"], m["payload"]
+    if kind == "plan.publish":
+        if key in plans:
             original = plans[key]
-            if m["sender"] != original["sender"] or m["recipient"] != original["recipient"]:
-                fail("plan_origin", "sender/recipient", "final check requires the original Planner and Manager actors")
-            if p["plan_ref"] != plans[key]["payload"]["plan_ref"]:
-                fail("plan_immutable", "payload.plan_ref", "must check original plan")
-            if p["status"] == "passed":
-                acceptance = predecessor if predecessor and predecessor["message_type"] == "task.decision" else None
-                if predecessor and predecessor["message_type"] == "plan.progress":
-                    progress_acceptance = seen.get(predecessor["in_reply_to"])
-                    if progress_acceptance and progress_acceptance["message_type"] == "task.decision":
-                        acceptance = progress_acceptance
-                        if predecessor["payload"].get("candidate_ref") not in (None, acceptance["payload"]["candidate_ref"]):
-                            fail("final_check_context", "in_reply_to", "Manager progress cannot change the accepted candidate")
-                if (acceptance is None or acceptance["payload"]["disposition"] != "accept"
-                        or acceptance["attempt_id"] != m["attempt_id"]):
-                    fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance, directly or through its progress packet")
+            if p != original["payload"] or any(m[actor] != original[actor] for actor in ("sender", "recipient")):
+                fail("plan_immutable", "payload", "published objective, scope, acceptance, plan or actors changed")
+        if any(plan == m["plan_id"] and revision != m["plan_revision"] for plan, revision in plans):
+            fail("plan_revision", "plan_revision", "amendments need separately approved context; not inferred")
+        plans.setdefault(key, m)
+        if root is not None:
+            plan = read_json(Path(root) / p["plan_ref"]["path"])
+            planner_contract.validate_plan_context(
+                plan, plan_id=m["plan_id"], plan_revision=m["plan_revision"],
+                acceptance_ids=p["acceptance_ids"], expected_criteria=expected_criteria,
+                original_source_ref=original_source_ref)
+    elif kind != "plan.progress" and key not in plans:
+        fail("plan_context", "plan_id", "published plan required")
+    if key in plans and "acceptance_ids" in p:
+        published = set(plans[key]["payload"]["acceptance_ids"])
+        if not set(p["acceptance_ids"]) <= published:
+            fail("acceptance", "payload.acceptance_ids", "unknown original acceptance")
+        if kind in {"plan.check", "task.decision"} and (kind == "plan.check" or p["disposition"] == "accept"):
+            if set(p["acceptance_ids"]) != published:
+                fail("acceptance", "payload.acceptance_ids", "cannot silently omit mandatory criteria")
+    if ((kind == "task.decision" and p["disposition"] == "accept")
+            or (kind == "plan.check" and p["status"] == "passed")):
+        if any(check["message_type"] == "plan.check" and check["payload"]["status"] != "passed"
+               and all(check[field] == m[field] for field in ("plan_id", "plan_revision", "task_id", "attempt_id"))
+               for check in seen.values()):
+            fail("failed_planner_check", "attempt_id", "an unmet original Planner check requires preserved rework and a fresh attempt")
+
+
+def _check_report(state, m, predecessor, key):
+    """A Worker, Tester or Reviewer job.report against its own assignment; Reviewer comparison evidence."""
+    root, seen, plans = state.root, state.seen, state.plans
+    p = m["payload"]
+    if not predecessor or predecessor["message_type"] != "job.assign":
+        fail("assignment", "in_reply_to", "report must reply to actual assignment")
+    if m["sender"] != predecessor["recipient"] or m["recipient"] != predecessor["sender"]:
+        fail("assignment", "sender", "report actors differ from assignment")
+    if m["attempt_id"] != predecessor["attempt_id"]:
+        fail("attempt", "attempt_id", "report attempt differs from assignment")
+    assigned_input = predecessor["payload"].get("candidate_ref")
+    if m["sender"]["role"] == "worker":
+        if p.get("input_candidate_ref") != assigned_input:
+            fail("candidate_input", "payload.input_candidate_ref", "Worker must echo assigned input separately from output")
+    elif p["candidate_ref"] != assigned_input:
+        fail("candidate", "payload.candidate_ref", "verification candidate differs from assignment")
+    if m["sender"]["role"] == "tester" and p["oracle_ref"] != predecessor["payload"]["oracle_ref"]:
+        fail("oracle_binding", "payload.oracle_ref", "Tester cannot change or self-approve strategy")
+    if m["sender"]["role"] == "reviewer":
+        comparison = p["comparison"]
+        plan = plans.get(key)
+        if plan is None or comparison["plan_ref"] != plan["payload"]["plan_ref"]:
+            fail("plan_immutable", "payload.comparison.plan_ref", "Reviewer must identify original frozen plan")
+        # Select the Tester the Reviewer names, never the first candidate match.
+        # Causal anchor: the Reviewer's genuine assignment must reply to that exact Tester report.
+        tester_id = comparison["tester_report_ref"]["artifact_id"]
+        tester = seen.get(tester_id)
+        if tester is None or tester["message_type"] != "job.report" or tester["sender"]["role"] != "tester":
+            fail("comparison_evidence", "payload.comparison.tester_report_ref", "must name an earlier actual Tester job.report")
+        if (tester["plan_id"], tester["plan_revision"], tester["task_id"], tester["attempt_id"]) != (
+                m["plan_id"], m["plan_revision"], m["task_id"], m["attempt_id"]):
+            fail("comparison_evidence", "payload.comparison.tester_report_ref", "Tester report must share plan, revision, task and attempt")
+        if tester["payload"]["candidate_ref"] != p["candidate_ref"]:
+            fail("candidate", "payload.comparison.candidate_ref", "must match the Tester-verified candidate")
+        # Reviewer report -> its Manager assignment -> the Tester report it names.
+        if (predecessor is None or predecessor["message_type"] != "job.assign"
+                or predecessor["in_reply_to"] != tester_id):
+            fail("comparison_evidence", "in_reply_to", "Reviewer assignment must reply to the Tester report it names")
+        worker = next((x for x in seen.values() if x["message_type"] == "job.report"
+                       and x["sender"]["role"] == "worker" and x["task_id"] == m["task_id"]
+                       and x["attempt_id"] == m["attempt_id"] and x["payload"]["candidate_ref"] == p["candidate_ref"]), None)
+        if worker is None or tester["payload"]["candidate_ref"] != worker["payload"]["candidate_ref"]:
+            fail("candidate", "payload.comparison.candidate_ref", "must bind the Worker's actual candidate checked by Tester")
+        tc = comparison["independent_rerun"]
+        tester_ref = comparison["tester_report_ref"]
+        if tester_ref["artifact_id"] != tester["message_id"] or tester_ref["kind"] != "message":
+            fail("comparison_evidence", "payload.comparison.tester_report_ref", "must reference the exact earlier Tester message")
+        if root is not None:
+            tester_file = read_json(Path(root) / tester_ref["path"])
+            if tester_file != tester:
+                fail("comparison_evidence", "payload.comparison.tester_report_ref", "referenced bytes must contain the exact earlier Tester message")
+        commands = tester["payload"].get("deterministic_commands", [])
+        declared = next((x for x in commands if x["command_id"] == tc.get("command_id")), None)
+        if tc["status"] == "NOT_COMPARABLE":
+            if commands:
+                fail("comparison", "payload.comparison.independent_rerun", "Tester declared a deterministic command; Reviewer must select one")
+        else:
+            if declared is None:
+                fail("comparison_evidence", "payload.comparison.independent_rerun.command_id", "must select an actual Tester-declared command")
+            if tc["acceptance_id"] not in p["acceptance_ids"]:
+                fail("comparison_binding", "payload.comparison.independent_rerun.acceptance_id", "rerun must address an assigned Reviewer criterion")
+            for field in ("command", "arguments", "workdir", "candidate_ref", "input_refs", "acceptance_id"):
+                if tc[field] != declared[field]:
+                    fail("comparison_binding", "payload.comparison.independent_rerun." + field, "rerun conditions differ from Tester record")
+            if tc["tester_exit_code"] != declared["exit_code"] or tc["tester_stdout_sha256"] != declared["stdout_sha256"] or tc["tester_evidence_ref"] != declared["evidence_ref"]:
+                fail("comparison_binding", "payload.comparison.independent_rerun", "Tester execution result/evidence identity changed")
+            if not any(tc["tester_evidence_ref"] == x for x in tester["evidence_refs"]):
+                fail("comparison_evidence", "payload.comparison.independent_rerun.tester_evidence_ref", "Tester execution record must be cited by Tester report")
+            if not any(tc["evidence_ref"] == x for x in m["evidence_refs"]):
+                fail("comparison_evidence", "payload.comparison.independent_rerun.evidence_ref", "Reviewer rerun record must be cited by Reviewer report")
+            if p["status"] == "passed" and tc["status"] != "MATCH":
+                fail("comparison", "payload.status", "only an exactly matching independent rerun can pass review")
+        if not comparison["findings"]:
+            fail("comparison", "payload.comparison.findings", "record comparison findings against plan, candidate and Tester evidence")
+    if p["acceptance_ids"] != predecessor["payload"]["acceptance_ids"]:
+        fail("acceptance", "payload.acceptance_ids", "report changed assigned criteria")
+
+
+def _check_assign(state, m, predecessor):
+    """Fresh Worker attempts only after an explicit rework decision; otherwise the attempt is unchanged."""
+    seen = state.seen
+    kind = m["message_type"]
+    if kind == "job.assign" and m["recipient"]["role"] == "worker":
+        earlier_workers = [x for x in seen.values() if x["message_type"] == "job.assign"
+                           and x["recipient"]["role"] == "worker"
+                           and all(x[field] == m[field] for field in ("plan_id", "plan_revision", "task_id"))]
+        if earlier_workers and (not predecessor or predecessor["message_type"] != "task.decision"
+                                or predecessor["payload"]["disposition"] != "rework"):
+            fail("rework_evidence", "in_reply_to", "another implementation attempt requires an explicit preserved Manager rework decision")
+    if kind == "job.assign" and predecessor:
+        if predecessor["message_type"] == "task.decision" and predecessor["payload"]["disposition"] == "rework":
+            if m["recipient"]["role"] == "worker":
+                if m["attempt_id"] == predecessor["attempt_id"]:
+                    fail("fresh_attempt", "attempt_id", "repair requires fresh attempt")
+                old_workers = {x["recipient"]["instance_id"] for x in seen.values()
+                               if x["message_type"] == "job.assign" and x["recipient"]["role"] == "worker"}
+                if m["recipient"]["instance_id"] in old_workers:
+                    fail("fresh_worker", "recipient.instance_id", "repair requires fresh native Worker")
+                if any(x["attempt_id"] == m["attempt_id"] for x in earlier_workers):
+                    fail("fresh_attempt", "attempt_id", "repair cannot reuse any earlier implementation attempt")
+        elif m["attempt_id"] != predecessor["attempt_id"]:
+            fail("attempt", "attempt_id", "unexpected attempt change")
+
+
+def _check_decision(state, m, predecessor):
+    """A Manager task.decision: known reports, independent passing evidence, or explicit rework evidence."""
+    seen, p = state.seen, m["payload"]
+    reports = []
+    for report_id in p["report_ids"]:
+        report = seen.get(report_id)
+        if report is None or report["message_type"] != "job.report":
+            fail("decision_evidence", "payload.report_ids", "known prior reports required")
+        if any(report[f] != m[f] for f in ("plan_id", "plan_revision", "task_id", "attempt_id")):
+            fail("decision_identity", "payload.report_ids", "report belongs to another task/attempt")
+        if report["payload"]["candidate_ref"] != p["candidate_ref"]:
+            fail("candidate", "payload.report_ids", "report candidate differs")
+        reports.append(report)
+    if p["disposition"] == "accept":
+        known_failures = [r for r in seen.values()
+                          if r["message_type"] == "job.report" and r["sender"]["role"] in {"tester", "reviewer"}
+                          and r["payload"]["status"] == "failed"
+                          and all(r[f] == m[f] for f in ("plan_id", "plan_revision", "task_id", "attempt_id"))
+                          and r["payload"]["candidate_ref"] == p["candidate_ref"]]
+        if known_failures:
+            fail("failed_verification", "payload.report_ids", "cannot hide known failed mandatory verification for this candidate")
+        if any(r["sender"]["role"] in {"tester", "reviewer"} and r["payload"]["status"] != "passed" for r in reports):
+            fail("failed_verification", "payload.report_ids", "cannot accept supplied failed mandatory verification")
+        testers = [r for r in reports if r["sender"]["role"] == "tester" and r["payload"]["status"] == "passed"]
+        reviewers = [r for r in reports if r["sender"]["role"] == "reviewer" and r["payload"]["status"] == "passed"]
+        workers = {r["sender"]["instance_id"] for r in reports if r["sender"]["role"] == "worker"}
+        if not testers or not reviewers:
+            fail("independent_evidence", "payload.report_ids", "passing separate Tester and Reviewer required")
+        identities = {r["sender"]["instance_id"] for r in testers + reviewers}
+        if len(identities) < 2 or identities & workers:
+            fail("independent_evidence", "payload.report_ids", "role sessions must be distinct")
+        for role_reports in (testers, reviewers):
+            covered = set().union(*(set(r["payload"]["acceptance_ids"]) for r in role_reports))
+            if not set(p["acceptance_ids"]) <= covered:
+                fail("acceptance", "payload.report_ids", "Tester and Reviewer must each cover all required criteria")
+    if p["disposition"] == "rework":
+        failures = [r for r in reports if r["payload"]["status"] == "failed"]
+        planner_check = predecessor if predecessor and predecessor["message_type"] == "plan.check" else None
+        if planner_check is not None:
+            if planner_check["payload"]["status"] == "passed":
+                fail("rework_evidence", "in_reply_to", "Planner rework must cite a failed or blocked check")
+            check_progress = seen.get(planner_check["in_reply_to"])
+            if not check_progress or check_progress["message_type"] != "plan.progress":
+                fail("rework_evidence", "in_reply_to", "failed Planner check must follow Manager progress")
+            prior_acceptance = seen.get(check_progress["in_reply_to"])
+            if (not prior_acceptance or prior_acceptance["message_type"] != "task.decision"
+                    or prior_acceptance["payload"]["disposition"] != "accept"
+                    or prior_acceptance["payload"]["candidate_ref"] != p["candidate_ref"]
+                    or prior_acceptance["attempt_id"] != m["attempt_id"]):
+                fail("rework_evidence", "in_reply_to", "Planner-detected rework must preserve the earlier Manager acceptance of this candidate")
+            if not set(prior_acceptance["payload"]["report_ids"]) <= set(p["report_ids"]):
+                fail("rework_evidence", "payload.report_ids", "rework must retain the reports cited by the earlier Manager acceptance")
+            planner_failures = {result["acceptance_id"] for result in planner_check["payload"]["results"]
+                                if result["status"] in {"failed", "blocked", "unverified"}}
+            if not planner_failures:
+                fail("rework_evidence", "in_reply_to", "failed Planner check must identify unmet original criteria")
+            if set(p["failed_acceptance_ids"]) != planner_failures:
+                fail("rework_evidence", "payload.failed_acceptance_ids", "must preserve every failed Planner criterion exactly")
+        elif not failures:
+            fail("rework_evidence", "payload.report_ids", "failed verification or a failed Planner check must be explicit")
+        known_failed = set().union(*(set(r["payload"]["acceptance_ids"]) for r in failures)) if failures else set()
+        if planner_check is not None:
+            known_failed.update(planner_failures)
+        if not set(p["failed_acceptance_ids"]) <= (set(p["acceptance_ids"]) & known_failed):
+            fail("acceptance", "payload.failed_acceptance_ids", "failed IDs must belong to original assigned criteria and supplied failure evidence")
+
+
+def _check_final(state, m, predecessor, key):
+    """The original Planner's final plan.check follows Manager acceptance of the same attempt."""
+    seen, plans, p = state.seen, state.plans, m["payload"]
+    original = plans[key]
+    if m["sender"] != original["sender"] or m["recipient"] != original["recipient"]:
+        fail("plan_origin", "sender/recipient", "final check requires the original Planner and Manager actors")
+    if p["plan_ref"] != plans[key]["payload"]["plan_ref"]:
+        fail("plan_immutable", "payload.plan_ref", "must check original plan")
+    if p["status"] == "passed":
+        acceptance = predecessor if predecessor and predecessor["message_type"] == "task.decision" else None
+        if predecessor and predecessor["message_type"] == "plan.progress":
+            progress_acceptance = seen.get(predecessor["in_reply_to"])
+            if progress_acceptance and progress_acceptance["message_type"] == "task.decision":
+                acceptance = progress_acceptance
+                if predecessor["payload"].get("candidate_ref") not in (None, acceptance["payload"]["candidate_ref"]):
+                    fail("final_check_context", "in_reply_to", "Manager progress cannot change the accepted candidate")
+        if (acceptance is None or acceptance["payload"]["disposition"] != "accept"
+                or acceptance["attempt_id"] != m["attempt_id"]):
+            fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance, directly or through its progress packet")
+
+
+def _check_approval(state, m, predecessor):
+    """An Owner approval.decision answers an actual request and carries external Owner provenance."""
+    owner_provenance = state.owner_provenance
+    p, reply = m["payload"], m["in_reply_to"]
+    if not predecessor or predecessor["message_type"] != "approval.request" or p["approval_request_id"] != reply:
+        fail("approval_reference", "payload.approval_request_id", "actual prior request required")
+    if p["provenance_ref"]["artifact_id"] not in owner_provenance:
+        fail("owner_provenance", "payload.provenance_ref", "external Owner provenance is required")
+    if m["sender"] != predecessor["recipient"]:
+        fail("approval_origin", "sender", "must match intended human Owner")
+
+
+def _record_artifacts(state, m):
+    """One artifact identity keeps one content and path across the whole run."""
+    artifact_ids, p = state.artifact_ids, m["payload"]
+    refs = list(m["evidence_refs"])
+    refs.extend(p[name] for name in ("candidate_ref", "input_candidate_ref", "plan_ref", "oracle_ref", "operation_ref", "provenance_ref") if name in p)
+    refs.extend(check["evidence_ref"] for check in p.get("checks", []))
+    for command in p.get("deterministic_commands", []):
+        refs.extend([command["candidate_ref"], command["evidence_ref"]] + command["input_refs"])
+    if "comparison" in p:
+        refs.extend(p["comparison"][k] for k in ("plan_ref", "tester_report_ref", "candidate_ref"))
+        rerun = p["comparison"]["independent_rerun"]
+        refs.extend(rerun[k] for k in ("candidate_ref", "evidence_ref", "tester_evidence_ref") if k in rerun)
+        refs.extend(rerun.get("input_refs", []))
+    refs.extend(ref for result in p.get("results", []) for ref in result["evidence_refs"])
+    for ref in refs:
+        previous = artifact_ids.get(ref["artifact_id"])
+        if previous is not None and ref != previous:
+            fail("artifact_identity", "evidence_refs", "same artifact identity cannot change content/path")
+        artifact_ids[ref["artifact_id"]] = ref
+
+
+def validate_sequence(messages, *, root=None, expected_senders=None, owner_provenance=(),
+                      authoritative_criteria_ref=None, original_source_ref=None,
+                      require_criteria_fidelity=False):
+    """Validate supplied ordered context, never authenticate opaque native transport."""
+    state = _sequence_context(messages, root, expected_senders, owner_provenance,
+                              authoritative_criteria_ref, original_source_ref, require_criteria_fidelity)
+    for m in messages:
+        # Same checks in the same order as before the split; the first failure wins.
+        predecessor, key = _check_identity_and_reply(state, m)
+        kind = m["message_type"]
+        _check_plan_context(state, m, predecessor, key)
+        if kind == "job.report":
+            _check_report(state, m, predecessor, key)
+        if kind == "job.assign":
+            _check_assign(state, m, predecessor)
+        if kind == "task.decision":
+            _check_decision(state, m, predecessor)
+        if kind == "plan.check" and key in state.plans:
+            _check_final(state, m, predecessor, key)
         if kind == "approval.decision":
-            if not predecessor or predecessor["message_type"] != "approval.request" or p["approval_request_id"] != reply:
-                fail("approval_reference", "payload.approval_request_id", "actual prior request required")
-            if p["provenance_ref"]["artifact_id"] not in owner_provenance:
-                fail("owner_provenance", "payload.provenance_ref", "external Owner provenance is required")
-            if m["sender"] != predecessor["recipient"]:
-                fail("approval_origin", "sender", "must match intended human Owner")
-        refs = list(m["evidence_refs"])
-        refs.extend(p[name] for name in ("candidate_ref", "input_candidate_ref", "plan_ref", "oracle_ref", "operation_ref", "provenance_ref") if name in p)
-        refs.extend(check["evidence_ref"] for check in p.get("checks", []))
-        for command in p.get("deterministic_commands", []):
-            refs.extend([command["candidate_ref"], command["evidence_ref"]] + command["input_refs"])
-        if "comparison" in p:
-            refs.extend(p["comparison"][k] for k in ("plan_ref", "tester_report_ref", "candidate_ref"))
-            rerun = p["comparison"]["independent_rerun"]
-            refs.extend(rerun[k] for k in ("candidate_ref", "evidence_ref", "tester_evidence_ref") if k in rerun)
-            refs.extend(rerun.get("input_refs", []))
-        refs.extend(ref for result in p.get("results", []) for ref in result["evidence_refs"])
-        for ref in refs:
-            previous = artifact_ids.get(ref["artifact_id"])
-            if previous is not None and ref != previous:
-                fail("artifact_identity", "evidence_refs", "same artifact identity cannot change content/path")
-            artifact_ids[ref["artifact_id"]] = ref
-        seen[mid] = m
+            _check_approval(state, m, predecessor)
+        _record_artifacts(state, m)
+        state.seen[m["message_id"]] = m
     return messages
 
 
@@ -913,11 +987,82 @@ def validate_jsonl(source, *, messages=None, root=None):
     return len(lines)
 
 
+SAVE_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}")
+MAX_RUN_MESSAGES = 1024
+
+
+def _run_order(messages):
+    """Order saved packets by their reply links, ties by message_id (as the dashboard does)."""
+    pending = sorted(messages, key=lambda m: m["message_id"])
+    ordered, emitted = [], set()
+    while pending:
+        ready = [m for m in pending if m["in_reply_to"] is None or m["in_reply_to"] in emitted]
+        if not ready:
+            return ordered + pending
+        for m in ready:
+            ordered.append(m)
+            emitted.add(m["message_id"])
+            pending.remove(m)
+    return ordered
+
+
+def save_message(raw, run_dir, *, root=None, expected_sender=None):
+    """Save one full packet into run_dir/messages/<message_id>.json, or refuse.
+
+    The packet must pass validate_message, and the packets already saved in the run
+    plus this one must pass validate_sequence. Nothing is overwritten. The original
+    bytes are written unchanged, so any hash the caller recorded stays valid.
+    """
+    message = loads(raw)
+    if isinstance(message, dict) and "protocol" not in message and "message_type" not in message:
+        fail("bare_payload", "$", "this looks like a report or payload body; wrap it in the "
+             "council-flow envelope (protocol, message_id, message_type, sender, recipient, "
+             "payload, ...) before saving")
+    validate_message(message, root=root, expected_sender=expected_sender)
+    if not SAVE_NAME.fullmatch(message["message_id"]):
+        fail("message_file_name", "message_id", "save needs a message_id of letters, digits, '.', '_' or '-'")
+    run_dir = Path(run_dir)
+    if run_dir.is_symlink() or not run_dir.is_dir():
+        fail("run_folder", "run", "run folder must be an existing, unlinked directory")
+    folder = run_dir / "messages"
+    if folder.is_symlink() or (folder.exists() and not folder.is_dir()):
+        fail("run_folder", "messages", "messages must be an unlinked directory")
+    folder.mkdir(exist_ok=True)
+    target = folder / (message["message_id"] + ".json")
+    if target.exists() or target.is_symlink():
+        fail("message_exists", "message_id", f"{target.name} is already saved; packets are never overwritten")
+    saved = []
+    names = sorted(folder.glob("*.json"))
+    if len(names) >= MAX_RUN_MESSAGES:
+        fail("run_size", "messages", f"maximum {MAX_RUN_MESSAGES} saved packets")
+    for path in names:
+        if path.is_symlink() or not path.is_file():
+            fail("run_record", path.name, "linked or non-regular packet files are not read")
+        try:
+            saved.append(read_json(path))
+        except ContractError as error:
+            fail("run_record", path.name, f"saved file is not valid JSON: {error}")
+    validate_sequence(_run_order(saved) + [message], root=root)
+    temporary = folder / ("." + target.name + ".saving")
+    with temporary.open("xb") as stream:
+        stream.write(raw)
+    try:
+        if target.exists():
+            fail("message_exists", "message_id", f"{target.name} is already saved; packets are never overwritten")
+        temporary.replace(target)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+    return {"saved": True, "path": target.as_posix(), "message_id": message["message_id"],
+            "message_type": message["message_type"], "sha256": hashlib.sha256(raw).hexdigest()}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["message", "sequence", "capture", "policy", "events"])
+    parser.add_argument("mode", choices=["message", "sequence", "capture", "policy", "events", "save"])
     parser.add_argument("files", nargs="+")
     parser.add_argument("--root", type=Path, help="verify referenced artifact existence/hash inside this root")
+    parser.add_argument("--run", type=Path, help="save mode: the run folder, e.g. .councilflow/runs/<task-id>")
     parser.add_argument("--expected-sender", choices=sorted(ROLES))
     parser.add_argument("--expected-instance")
     parser.add_argument("--bindings", type=Path, help="trusted JSON map message_id -> externally observed actor")
@@ -937,6 +1082,15 @@ def main(argv=None):
             if not args.expected_sender or not args.expected_instance:
                 fail("origin_binding", "$", "supply both expected sender and instance")
             expected = {"role": args.expected_sender, "instance_id": args.expected_instance}
+        if args.mode != "save" and args.run is not None:
+            fail("save_mode", "run", "--run applies only to save")
+        if args.mode == "save":
+            if len(args.files) != 1 or args.run is None:
+                fail("save_mode", "files", "save takes exactly one packet file and --run")
+            with Path(args.files[0]).open("rb") as stream:
+                raw = stream.read(MAX_BYTES + 1)
+            print(json.dumps(save_message(raw, args.run, root=args.root, expected_sender=expected)))
+            return 0
         if args.mode == "message":
             for path in args.files:
                 validate_message(read_json(path), root=args.root, expected_sender=expected)

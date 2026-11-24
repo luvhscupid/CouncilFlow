@@ -59,7 +59,9 @@ the table.
   (see references/communication.md). A hint never selects a subagent, model or tool.
 - **Every subagent report is persisted as a message file.** A `job.report` that
   exists only in the subagent's chat reply is not a controlled message. The
-  Manager saves each report under `messages/` and validates it on receipt, with
+  Manager saves each report under `messages/` with `python CF/scripts/contracts.py
+  save <report.json> --run .councilflow/runs/<task-id> --root .`, which refuses a
+  bare report body and anything that fails validation, with
   `in_reply_to` set to its assignment, before any later step. A Reviewer
   comparison requires the Worker's own `job.report` bound to the candidate
   (`candidate_ref` equal to the verified candidate), so a Worker that returned

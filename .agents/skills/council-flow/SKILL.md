@@ -36,7 +36,7 @@ Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md)
 3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate
-   hashes, source fidelity and ordered context. Before Worker dispatch, validate plan coverage and exact
+   hashes, source fidelity and ordered context. Save every packet, including each role's job.report, only with `contracts.py save`, which refuses bare report bodies. Before Worker dispatch, validate plan coverage and exact
    selected-task instruction transfer with scripts/planner_contract.py; copy Planner instructions exactly; never dispatch non-ready responses (ask the Owner via approval.request).
    Native transport is not enforced by this helper. Pass role instructions to native subagents when custom-role
    selection is unavailable, and disclose that fallback.

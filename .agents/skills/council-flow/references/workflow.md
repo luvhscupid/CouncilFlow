@@ -72,7 +72,14 @@ For Codex runs, Manager stores each task's packet files in
 `.councilflow/runs/<task-id>/`, with messages in its `messages/` folder. Use
 ordinary bounded files, for example `messages/M001.json`, `candidate.json` and
 `test-output.txt`, referenced by artifact identity/path/SHA-256. Validate UTF-8 JSON
-using scripts/contracts.py. Ordered message context checks causal links,
+using scripts/contracts.py. Save every packet into `messages/` only with
+`contracts.py save <packet.json> --run .councilflow/runs/<task-id> --root .`:
+Planner packets, every `job.assign` (Worker, Tester and Reviewer), every
+`job.report`, `task.decision`, `plan.progress` and `plan.check`. It refuses a
+bare report body without the council-flow envelope, a packet that fails
+`message` or breaks the run order, and an existing message id; a refused packet
+is kept outside `messages/` as evidence, never rewritten to pass. Do not write
+packets into `messages/` by hand or as Markdown. Ordered message context checks causal links,
 attempt/candidate identities, published acceptance and known actor bindings.
 Refer to communication.md for exact schemas, CLI and limitations. This is not a
 database, message broker, Supervisor, agent simulator or transport adapter.

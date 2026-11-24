@@ -82,7 +82,20 @@ python3 .agents/skills/council-flow/scripts/contracts.py message packet.json --r
 python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
 python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
 python3 .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
+python3 .agents/skills/council-flow/scripts/contracts.py save report.json --run .councilflow/runs/<task-id> --root .
 ~~~
+
+`save` is the only way packets enter a run's `messages/` folder. It checks the
+packet like `message`, then checks the packets already saved plus this one like
+`sequence`, refuses to overwrite an existing `messages/<message_id>.json` or to
+use linked folders, writes the original bytes unchanged and prints their SHA-256.
+A bare payload (for example a report body with `status` and `summary` but no
+`protocol` or `message_type`) fails with `bare_payload`. Every role report is a
+full packet: envelope plus a `job.report` payload with `status`, `summary`,
+`acceptance_ids`, `candidate_ref`, `findings` and `errors`; Worker adds
+`changed_files`, Tester adds `checks`, `oracle_ref` and `deterministic_commands`,
+and Reviewer adds `comparison`. Extra payload fields are refused, so put other
+detail in `findings` or in a referenced evidence file.
 
 The sequence begins with a plan.publish envelope, not the larger plan artifact.
 With --root, the referenced JSON plan must contain typed plan_id, positive integer
@@ -99,7 +112,7 @@ pre-schema bootstrap packets unchanged and label their limitations; do not
 rewrite them to manufacture successful history.
 
 Importable API: loads, read_json, capture_criteria, validate_message, validate_sequence,
-parse_policy, validate_policy, validate_jsonl. Expected sender is an externally
+parse_policy, validate_policy, validate_jsonl, save_message. Expected sender is an externally
 observed {role,instance_id}. Sequence expected_senders is a mapping from message
 identity to externally observed actor, not an assertion copied from the packet.
 Optional owner_provenance is a set of externally confirmed human-provenance
