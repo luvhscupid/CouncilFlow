@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "c5464f59f0098ef520afd972aa0753ae9ef0476d32eeaf893d88d25425281af2",
-  "entries": 220,
+  "sha256": "c44ac2bffa664af264bbe6a87442e087def116fb2b2293220b5bac51afb16eeb",
+  "entries": 221,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -15,8 +15,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/app.js",
-      "size": 16732,
-      "sha256": "55b48ceea5e8f876a6d12e0bca362784a15ab474e877e2337cc92475ce6cfe10"
+      "size": 19095,
+      "sha256": "eb17a5b233948e4daf7db84377e6b1bce18138a49b3a28461fa6b9536cdda0fc"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/index.html",
@@ -30,8 +30,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/styles.css",
-      "size": 13881,
-      "sha256": "ffa0a5799ed27e69e9b9247405b93c66d68a4faaaeca587e62593d23e6db62df"
+      "size": 13904,
+      "sha256": "4977694dba6fd2a55ea8d9f61116f147e8c91726f61381d8191b62e05bc5d7eb"
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
@@ -282,6 +282,11 @@
       "path": "demo/dashboard/tests/auto-connection.test.cjs",
       "size": 17486,
       "sha256": "3af2456ef568cf5aac4cedca8a26ca5b31f5cf6229314499a16d1057319f9981"
+    },
+    {
+      "path": "demo/dashboard/tests/record-alert-lines.test.cjs",
+      "size": 7568,
+      "sha256": "667a19c1d4981aab85eacba655245961bd0854048fb7a66fce148727e7e85e2f"
     },
     {
       "path": "demo/dashboard/tests/run-reader.test.cjs",

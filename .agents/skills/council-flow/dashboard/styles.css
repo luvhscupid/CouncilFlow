@@ -292,7 +292,7 @@ h1 { margin-bottom: 8px; font-size: 30px; line-height: 1.15; letter-spacing: -0.
 .criteria-empty { padding: 13px 0; color: var(--quiet); font-size: 13px; }
 
 .activity-heading { padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); }
-.record-alert { margin: 12px 0 0; padding: 10px 12px; border: 1px solid var(--line-warning); border-radius: 9px; color: var(--text-warning); background: var(--surface-warning); font-size: 12px; }
+.record-alert { margin: 12px 0 0; padding: 10px 12px; border: 1px solid var(--line-warning); border-radius: 9px; color: var(--text-warning); background: var(--surface-warning); font-size: 12px; white-space: pre-line; }
 .activity-list { display: grid; list-style: none; gap: 0; max-height: 360px; overflow: auto; margin: 0; padding: 4px 0 0; }
 .activity-item { min-height: 38px; display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; align-items: center; gap: 10px; border-bottom: 1px solid var(--line-soft); }
 .activity-item:last-child { border-bottom: 0; }
