@@ -7,11 +7,23 @@ This directory contains **test data**, not application code, specifications, or 
 | File | Kind | Size | SHA-256 |
 | --- | --- | --- | --- |
 | `owner-version-original.txt` | Test data: regression oracle | 260 bytes | `e0ec215cf548c73f98063b22127e99fccd4b4f80afae3a805beb38bb58e0d79d` |
+| `sequence-split-golden.json` | Test data: generated regression oracle | 131,433 bytes | `d06fb75824c34b1bbcfa021c7ea201624c789b2539608b3f3a36e396a13da4d5` |
+| `bare-worker-report-M003.json` | Test data: negative fixture | 3,407 bytes | `e54788dc453169f786e54bcd02ea08b376c4312b19a2eab7d3e5c9e1f02fa9f8` |
 
 `owner-version-original.txt` is a byte-for-byte maintenance copy of the
 Owner-saved file `E:\Saint\PROJECTS\CouncilFlow-gate3-owner-fixture.txt`, made
 during the recovery. The historical file and the failed experiment were left
 untouched. The copy is used as a regression oracle for original-source handling.
+
+`sequence-split-golden.json` holds the result ("ok" or the first error) of the
+unsplit `validate_sequence` from main bdda379 for 663 seeded fixture mutations;
+[`tests/test_sequence_split.py`](../test_sequence_split.py) regenerates the same
+inputs and requires the same results from the split implementation.
+
+`bare-worker-report-M003.json` is a byte-for-byte copy of the Worker report body
+saved in the first dogfood run (`dashboard-issues-1`, message M003). It has no
+council-flow envelope, so [`tests/test_packet_save.py`](../test_packet_save.py)
+uses it to prove `contracts.py save` refuses that shape.
 
 ## Purpose
 
