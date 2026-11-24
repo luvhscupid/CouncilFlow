@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "966ae271d75936d339f3ec3877cb93be7ca1e8b82c9122737bc6ae37123629a6",
+  "sha256": "6c42ac3c3dafb6510b465549d72f69fa3498607518c69acbe41181be62a443bc",
   "entries": 246,
   "files": [
     {
@@ -50,8 +50,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
-      "size": 18589,
-      "sha256": "0980984385c80853125366422981153f06d4aca2bbaeb36e1d44fbb626537ac1"
+      "size": 19219,
+      "sha256": "9eed77ec3ed0d8c89044961f5430f608504cf47332925f56e63c8ccf3c815126"
     },
     {
       "path": ".agents/skills/council-flow/references/efficiency.md",
@@ -150,8 +150,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/route.py",
-      "size": 2892,
-      "sha256": "9aad48cec2644fa3176f38405642007a098baa027c283ec648400192cc2de8e3"
+      "size": 5575,
+      "sha256": "05e7d61db8004b81d12eb5449516866266d23903f3e439e5e02167d7cff26c0d"
     },
     {
       "path": ".agents/skills/council-flow/scripts/routing/__init__.py",
@@ -1155,8 +1155,8 @@
     },
     {
       "path": "tests/test_routing_cli.py",
-      "size": 2597,
-      "sha256": "30d5155e5f885c034c65bbc83db5d55a177f4e8011caff68502999e9079109bf"
+      "size": 8196,
+      "sha256": "78ddae79b59ad233bfad6ce7c36ed646c30a9ae19f4879e2e5b7a6cb5e829f95"
     },
     {
       "path": "tests/test_routing_composition.py",
