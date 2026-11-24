@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "8f851dd8f90c02040f0fc9063269ba34e641f89a5b308b2c49798f9febd0ddae",
-  "entries": 217,
+  "sha256": "4abeaecf1bb7daf744e797189619ea28d6fc4a64b609ddfb6260d74f65d68b07",
+  "entries": 218,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -35,8 +35,8 @@
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
-      "size": 3489,
-      "sha256": "ed337641fa35eb9bc401e40fc0b2baae9015165081ba3cf6094db5c79bc5cf48"
+      "size": 3696,
+      "sha256": "92bdf8a6086447025a168e3aa3684887ca7fe5b74d41871a73c206dd7949b491"
     },
     {
       "path": ".agents/skills/council-flow/references/acceptance.md",
@@ -75,8 +75,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/roles.md",
-      "size": 4282,
-      "sha256": "d4ee58cddb4334d1bc726babae4cf95fb536dd2d056af4f4ea5b0e1fd39e77d9"
+      "size": 4551,
+      "sha256": "d3d2415539b57ff7c8d512a06282064ba163dee6a78bdaa20375f7281fa8a13c"
     },
     {
       "path": ".agents/skills/council-flow/references/source-fidelity.md",
@@ -205,8 +205,8 @@
     },
     {
       "path": ".codex/agents/council-worker.toml",
-      "size": 1319,
-      "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
+      "size": 1813,
+      "sha256": "2d99cfda571c62386492769e0d81918b8cdd51ddbc399967e8b11fdebeccfc2e"
     },
     {
       "path": ".github/workflows/verify-portable-release.yml",
@@ -1072,6 +1072,11 @@
       "path": "tests/test_tester_selection.py",
       "size": 7513,
       "sha256": "dae83a294d12b1923eac30008be41deb193fc4579c4f9f78a21361d21cc258f8"
+    },
+    {
+      "path": "tests/test_worker_upgrade.py",
+      "size": 5448,
+      "sha256": "9714ff3e2c3a8d9fda50041ca4e9b19fac46855b58cf57b506acd52f7f5c0636"
     },
     {
       "path": "tests/test_workflow_recovery.py",

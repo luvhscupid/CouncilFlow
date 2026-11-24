@@ -21,7 +21,7 @@ roles:
     abilities: ["delegate", "request_rework", "evaluate_evidence"]
     application_code: false
   worker:
-    responsibilities: ["Fresh native implementation attempt within approved scope", "Performs developer checks", "Cannot self-approve"]
+    responsibilities: ["Fresh native implementation attempt within approved scope", "Follows Planner-authored task instructions exactly and in order", "Performs developer checks", "Writes code only; does not plan, review or change scope", "Reports blocked instead of guessing when instructions are unclear or conflict", "Cannot self-approve"]
     abilities: ["implement"]
     application_code: true
   tester:
