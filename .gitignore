@@ -16,3 +16,6 @@ htmlcov/
 Thumbs.db
 # Local per-task host state; explicit fixtures and canonical reports stay tracked.
 .councilflow/runs/
+
+# Dashboard build dependencies (the built app.js is committed).
+node_modules/
