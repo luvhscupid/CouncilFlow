@@ -1,0 +1,16 @@
+{
+  "name": "councilflow-dashboard-app",
+  "private": true,
+  "description": "Source for the CouncilFlow run dashboard. The build writes one self-contained app.js into the skill's dashboard folder.",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs --check"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}
