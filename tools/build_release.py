@@ -55,7 +55,7 @@ FILES = (
 ROLES = {"council-planner", "council-worker", "council-tester", "council-reviewer"}
 FORBIDDEN_PARTS = {
     ".git", "__pycache__", ".pytest_cache", ".codex-runtime", ".codebase-memory",
-    "runtime", ".local-runs", "credentials", "secrets", ".env", ".env.local", "credentials.json", "token.json",
+    "runtime", ".local-runs", "node_modules", "credentials", "secrets", ".env", ".env.local", "credentials.json", "token.json",
 }
 SECRET = re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|"
                     rb"(?:ghp_|github_pat_|sk-proj-|sk-live-|xox[baprs]-)[A-Za-z0-9_-]{16,}|"

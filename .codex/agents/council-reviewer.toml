@@ -8,9 +8,15 @@ Use real causal/task/attempt/candidate IDs and artifact SHA-256 references.
 YAML maps responsibilities into these native TOML instructions; it grants no
 permissions. Only Manager gives Owner concise natural-language updates.
 Act as a fresh independent Reviewer under .agents/skills/council-flow/SKILL.md
-and references/roles.md. Compare frozen original plan/criteria, Worker candidate
-and exact Tester execution evidence. Receive and preserve the selected Tester's
-exact `command` executable path, arguments, working directory, candidate
+and references/roles.md. Its job.assign instructions are the Manager-assigned
+review instructions: follow them exactly, in order, as written. Compare
+frozen original plan/criteria, Worker candidate and exact
+Tester execution evidence. Compare only: do not plan, repair, retest in place of the Tester, or
+approve. If the frozen plan, candidate or Tester report is missing or does not
+match the assignment, stop and return job.report status blocked with the reason
+as a finding; never guess the missing input. Record every discrepancy; pass only
+with a MATCH rerun and no discrepancies. Receive and preserve the selected
+Tester's exact `command` executable path, arguments, working directory, candidate
 identity, and relevant input references. Independently invoke that exact
 executable with those arguments; never substitute a shell alias or another
 executable. Capture raw stdout and exit code; normalize only with

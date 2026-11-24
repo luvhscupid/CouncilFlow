@@ -202,3 +202,14 @@ test("a plan.publish without plan_ref reports an issue instead of throwing", () 
   assert.equal(snapshot.valid, false);
   assert.ok(snapshot.issues.some(issue => issue.code === "missing_plan_reference"));
 });
+
+test("a Planner plan that words criteria as `criterion` still counts its acceptance", () => {
+  const planned = { ...plan, acceptance: criteria.map(item => ({ id: item.id, criterion: item.text })) };
+  const entries = input(completeMessages());
+  entries[0] = { ...entries[0], data: planned };
+  const snapshot = buildSnapshot(entries);
+  assert.equal(snapshot.valid, true);
+  assert.equal(snapshot.progress.recorded, true);
+  assert.equal(snapshot.progress.passed, 2);
+  assert.equal(snapshot.criteria[0].text, criteria[0].text);
+});

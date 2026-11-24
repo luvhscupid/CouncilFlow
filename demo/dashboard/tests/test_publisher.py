@@ -111,7 +111,8 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertIn('id="councilflow-run-data"', page)
             self.assertIn('"task_id":"task-one"', page)
             self.assertIn("function buildSnapshot", page)
-            self.assertIn("function renderSnapshot", page)
+            self.assertIn('id="councilflow-root"', page)
+            self.assertIn("CouncilFlow dashboard bundle", page)
 
     def test_malformed_message_is_embedded_as_a_visible_issue(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -140,8 +141,8 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertIn('"task_id":"task-one"', first)
             self.assertNotIn('"task_id":"task-two"', first)
             self.assertIn('"task_id":"task-two"', second)
-            self.assertIn('id="choose-folder"', second)
-            self.assertIn('id="choose-files"', second)
+            self.assertIn("Open run folder", second)
+            self.assertIn("Choose message files", second)
 
     def test_republishing_replaces_the_same_task_page_with_new_packets(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -209,6 +210,59 @@ class DashboardPublisherTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 dashboard.publish_run(root, "escaped-task")
             self.assertFalse((outside / "escaped-task").exists())
+
+
+
+def embedded(page):
+    start = page.index('<script id="councilflow-run-data" type="application/json">') + len(
+        '<script id="councilflow-run-data" type="application/json">')
+    return json.loads(page[start:page.index("</script>", start)])
+
+
+class DashboardContextTests(unittest.TestCase):
+    def test_snapshot_carries_file_times_policy_and_no_invented_usage(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            write_packet_run(root, "task-context")
+            result = dashboard.publish_run(root, "task-context")
+            data = embedded(Path(result["snapshot_path"]).read_text(encoding="utf-8"))
+            self.assertEqual(data["taskId"], "task-context")
+            self.assertTrue(data["generatedAt"].endswith("+00:00"))
+            self.assertIsNone(data["efficiency"])
+            self.assertEqual(data["policy"]["order"][0], "owner")
+            self.assertIn("worker", data["policy"]["roles"])
+            for entry in data["files"]:
+                self.assertRegex(entry["modified"], r"^\d{4}-\d{2}-\d{2}T")
+
+    def test_efficiency_records_are_validated_and_filtered_to_the_task(self):
+        recorder_path = PUBLISHER.parent / "efficiency" / "recorder.py"
+        spec = importlib.util.spec_from_file_location("recorder_for_test", recorder_path)
+        recorder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(recorder)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            write_packet_run(root, "task-usage")
+            mine = recorder.record(run_id="task-usage", harness="codex", route="codex/native-or-configured",
+                                   upstream_model="example-model", usage={"input": 1200, "output": 300})
+            other = recorder.record(run_id="other-task", harness="unknown", route="manual")
+            records = root / "records.jsonl"
+            records.write_text("\n".join([json.dumps(mine), json.dumps(other), "{\"bad\": true}"]) + "\n",
+                               encoding="utf-8")
+            result = dashboard.publish_run(root, "task-usage", efficiency_records=records)
+            efficiency = embedded(Path(result["snapshot_path"]).read_text(encoding="utf-8"))["efficiency"]
+            self.assertEqual(efficiency["matched"], 1)
+            self.assertEqual(efficiency["other_runs"], 1)
+            self.assertEqual(efficiency["invalid"], 1)
+            self.assertEqual(efficiency["records"][0]["upstream_model"], "example-model")
+
+    def test_missing_efficiency_file_is_reported_not_fatal(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            write_packet_run(root, "task-missing")
+            result = dashboard.publish_run(root, "task-missing", efficiency_records=root / "absent.jsonl")
+            efficiency = embedded(Path(result["snapshot_path"]).read_text(encoding="utf-8"))["efficiency"]
+            self.assertEqual(efficiency["records"], [])
+            self.assertIn("absent.jsonl", efficiency["error"])
 
 
 if __name__ == "__main__":
