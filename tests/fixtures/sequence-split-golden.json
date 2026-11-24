@@ -1,0 +1,5126 @@
+[
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "63c378c9d661a2be3046b31acadc0dfa1d8094246ade1833251a8765b114c1d9",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "3146040086e7ef0c0e690eddaed06db0703b68440767818c84de7288b554fe77",
+"result": "ok"
+},
+{
+"input_sha256": "18dca53a8187a66176b7db6f49fff6631eeb5194771810e79f21145b77bf5e6f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "8f2b32ee69c417b688b1a751bebd96d3e6964642fedd180bc032940059a87484",
+"result": [
+"message_type",
+"message_type",
+"message_type at message_type: unsupported type"
+]
+},
+{
+"input_sha256": "9ecbe6aeb862e14ea037eaca5a9d220be02b9ea0648759547d919ec972f17336",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6b01b2d167b13b2a82928c2ba713d1578c3b67121d70235139dc116a817cb537",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "b20c072daf5dfed75c766c92f2fcfe6cfa11b0c54e2deec2c756feed8a32501d",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "bd56e19fe41d837c9d2f4fbba4cbae12bc8224c32124b18d902e6ff35506e402",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "d7638855df7106a481f1e12ba69ba214b6e2297ebc1944f203d8ba37fe6f097f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "1835c6395702e088526bcfd4e1d7394eda683e9142cc5a1d61078330bb4b95bf",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "8ad627f33acb7347e1c6aab4c012ff317553d915d1fdc503b09710ab2ff650fe",
+"result": [
+"array",
+"payload.acceptance_ids",
+"array at payload.acceptance_ids: expected bounded string array"
+]
+},
+{
+"input_sha256": "9f56c49e8a916ddb397cd0c29daa081027532fece493f12de122d2cb26206288",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a7832557c22b17625749ee65e91f094672e10b612d28f5d2befd7e5523c89ad8",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id,kind,path,sha256"
+]
+},
+{
+"input_sha256": "cb4d94674d5d70fbde41490ab9ba20c7c72b248a613544f0c6b840d5436049d2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "356246fc6dc11567b5a461725dc6c1574a487e78bf5e1dac8f605a588b0fb5ba",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "06764726c2b32e847dd690c0f8d526b38be6aa371cf7c1b157b423a15804df01",
+"result": [
+"type",
+"payload.comparison.independent_rerun",
+"type at payload.comparison.independent_rerun: expected object"
+]
+},
+{
+"input_sha256": "cfd522c165790095550baad9717630c164382a5b9232c55d99da35451cdd7a3c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "567488714599a1b1ece0b5d13cb0a08d6a6dc6231f3ef7fa4fab2a202a9d58c8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7301f35121daf2f4da2b051dd768b449aad5fc78edb7fef4b8ddadac94c52b08",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "0cf782061e3e062fe56ac9bd8c5818cc69a65a7d0478454fc007217cf97ff4a5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "18dca53a8187a66176b7db6f49fff6631eeb5194771810e79f21145b77bf5e6f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5ed752c55cd5c23da38614bed512c08d46d0d707159aa7bdfebdcda220114cc2",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: kind"
+]
+},
+{
+"input_sha256": "eaa515aa7930e2addf20a5da4880be34efd57fc4fea82eca52f9bb24eea95fa8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e8022f9596ce1672436403bad0355cf19cd0e77520827b99633a480722c113ff",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "887f28926d6c7865761e0ee221eac596ae8e6742c10b7e36e8f3fd82fe692413",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "381360ae2c8a20e49a86f33336bf7c5132e1a5a8b8a3da15e3d2009c52169a92",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "aa55ac3f5d1fc69c5cbb50a8a0ffe3e65685982c54b39a1b35ec10000b476cf5",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "d60dd7da9373867bf8cf3e7f8408dc4a5df307bca3472aa16d55d3efc751720e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "eb7c3eeead9d2e0429f21ed94e0b630df0cac2092c11c7f15e51ce1ccdfeb10e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "18dca53a8187a66176b7db6f49fff6631eeb5194771810e79f21145b77bf5e6f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "c34419edce8cb9e0780fb3c16091cbec0d9b3dc9f238c0cc9d2ce49ccb33da12",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "cb4d94674d5d70fbde41490ab9ba20c7c72b248a613544f0c6b840d5436049d2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "22013363fcb9860ddbc1d133937b5d037178df71ae1d9b6c37795c373919e375",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "3c483e41d906db0b554dbe3a93ed65d150783a2bce90f53b6191a619e775c236",
+"result": [
+"required",
+"payload",
+"required at payload: findings"
+]
+},
+{
+"input_sha256": "18dca53a8187a66176b7db6f49fff6631eeb5194771810e79f21145b77bf5e6f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ac514b6d72789b0cd35a78dbcb438293f302840c36bb621afa20e13baa992ce0",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4fd1151942ca8249f0b5271805ed3512d1c80da103dc1fcb91cec22fdb1c93fa",
+"result": [
+"acceptance",
+"payload.results",
+"acceptance at payload.results: must map each listed acceptance exactly once"
+]
+},
+{
+"input_sha256": "6d958d4a2c11b98540620bdc23c6b20ddddd3c60a443011396e9c570cf192949",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "84dd4a4e0334980055557d6fef455b247abe0bc1b189f3d8bc572646303cd5cd",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "567488714599a1b1ece0b5d13cb0a08d6a6dc6231f3ef7fa4fab2a202a9d58c8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "95b36b842074f2851fed54a2a40a0d6701229e8bcd93a2c9cec2473b061debe5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4f7c315ec20cc2c0882912e5a86e3b2e4c204ccb34ff1e3488d16690e1170ed8",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "0fcb0648a8b3128094538337cc1eabe9b82cf13ab1678d5829375baa0d458057",
+"result": "ok"
+},
+{
+"input_sha256": "527b22122b4b7c6aa8a82a0d0961a1d05a1dbc23b8a05be773c4762a385fb3f5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "2817b023aab0df4b48230cf637d0f2a2cb8aabe83291fe389c2759e16e0a2e0f",
+"result": [
+"required",
+"sender",
+"required at sender: instance_id"
+]
+},
+{
+"input_sha256": "aa55ac3f5d1fc69c5cbb50a8a0ffe3e65685982c54b39a1b35ec10000b476cf5",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "a14bf8669c590ca1bf50eda5ca84c3853f0a2eab1fdd07784a37a950ddecb13d",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "401f0b55c55e0b48713a2f9214d698df931eb7539fd45417170a069eb93b910a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a94d35bd02221fa794e489772dfd29690e5b830e2f951e73131c8c29c563c3d8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "cb4d94674d5d70fbde41490ab9ba20c7c72b248a613544f0c6b840d5436049d2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a9641f29ba9d094953f782025a4483a7c570e1d9d2d127d4997c47ca9d3458c6",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "0a33a2ca71555c7c720c20f26b37e1addcf9a53d9fe103a9891a3e1621c66270",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "2412f6da67c6cb2c2d662c5084c52696f67365f7faa52d65f3557d8f7144eedf",
+"result": [
+"required",
+"payload",
+"required at payload: errors"
+]
+},
+{
+"input_sha256": "33dab995ebf2b2c23c80eae765e75a7224876329cce6874672cb069e88e1a47c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "008631fc74bb2d0c10c9a00373ab6ad99893f566dbe99298573213b51c38c6c8",
+"result": [
+"required",
+"payload",
+"required at payload: summary"
+]
+},
+{
+"input_sha256": "c34419edce8cb9e0780fb3c16091cbec0d9b3dc9f238c0cc9d2ce49ccb33da12",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "12fd1c6ab878c93334ab56e0deef69f2c4de9c1f5f37904fd1777f512b5e6b34",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "0d143942326fa99c93c3d2af3251bb8981fbcb371bce5f20b2905130a2293554",
+"result": [
+"required",
+"$",
+"required at $: payload"
+]
+},
+{
+"input_sha256": "9471a1bb2dcecbd1e5ced37a28350ab0ea094912c07215a9b29d5daf5b72e651",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c64b99b96f9b379b7aca57cc305fb555e8095a5950a6038d6445f89447002a12",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "cb4d94674d5d70fbde41490ab9ba20c7c72b248a613544f0c6b840d5436049d2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e314c4968006c55b22fde3695fb0bdfad2727b70ef13307745d149fcc20a138d",
+"result": [
+"message_type",
+"message_type",
+"message_type at message_type: unsupported type"
+]
+},
+{
+"input_sha256": "687c54100d0dff366022d390f0dfbbe270192b4338dbe28f7d31dce898d7b80c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "82988acc92724fff9a8589ca33f8bc1668ed7669efdc922e2c2bbfed6d15bd59",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4690784744021bae312766b11cc036813106e7b0f64f88a88b65e4059abb59bf",
+"result": [
+"enum",
+"sender.role",
+"enum at sender.role: unsupported value"
+]
+},
+{
+"input_sha256": "a94d35bd02221fa794e489772dfd29690e5b830e2f951e73131c8c29c563c3d8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5c9313198fac4aa2d1a1fbeae3d72c1782329ae33b15cbc7be69dad29f42a844",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "42771ebdb79a154dea444513dc9d3141afffc83a65d34f7b74d19866253343f5",
+"result": [
+"type",
+"recipient",
+"type at recipient: expected object"
+]
+},
+{
+"input_sha256": "96f1fb4d59be87a42e6f6afb0f638f2582e0e26affa1eba9a85c56bcdd563cb5",
+"result": [
+"type",
+"sender",
+"type at sender: expected object"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "9471a1bb2dcecbd1e5ced37a28350ab0ea094912c07215a9b29d5daf5b72e651",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c165e22ddcb47102e0f81ec217b89fca7d9e7d3403620a132aecdc4aca075a70",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "28d20a28e770f6320df8e1a272e716b4c2c21be3e6df57f3420f28351e5ce54d",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "999ef160790f0ac91de13576f0c97f55a9aa37540b98e896c03a89aa9c7f08ca",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "116530c0e74a92b45bdc4e5af4704bd17fc3cde828515639de07e8afd74f0568",
+"result": [
+"string",
+"payload.candidate_ref.artifact_id",
+"string at payload.candidate_ref.artifact_id: expected nonempty string, at most 128 characters"
+]
+},
+{
+"input_sha256": "fe9c47ce214d143f98a6a6325ff1dcad780126831df39605c2502ba4464fb254",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "691a6192cf7d17c408d4b3423fcaaf110e151685c2ed18fba89d1454ac8ad320",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "8c363e99d2a98ea8c1edbae65be71772c7ffe53d262ba9d2dc45f6d4d3c3562a",
+"result": [
+"type",
+"payload.results.evidence_refs",
+"type at payload.results.evidence_refs: expected object"
+]
+},
+{
+"input_sha256": "1ae1a6ff70df7177886d947b0c531eae928dbc84fabbda2b304a8a6ea4a0b127",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "759e8dc8ad957b87cb70d329dd60bc878d192dcef4214309d4994228f960e407",
+"result": [
+"hash",
+"payload.results.evidence_refs.sha256",
+"hash at payload.results.evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "3146040086e7ef0c0e690eddaed06db0703b68440767818c84de7288b554fe77",
+"result": "ok"
+},
+{
+"input_sha256": "0dbdcf509bcfa872e769bf59047c49de716b26ad66d0865ecb34aecdfa1e9775",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e8022f9596ce1672436403bad0355cf19cd0e77520827b99633a480722c113ff",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "87688ba4eb16ab4586c869d84d7251dbb7ab1d31ccd1b013aeb5b46c4c89e394",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "96016dd8ad0c3d371ca41ab1295cc4b6ed8b9805173064770e89e0167b8bd44f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9471a1bb2dcecbd1e5ced37a28350ab0ea094912c07215a9b29d5daf5b72e651",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e8022f9596ce1672436403bad0355cf19cd0e77520827b99633a480722c113ff",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ed623d64e11464af9eb2bd1bd10f2cfef5e9bf695b43d9afa13f6d148363229d",
+"result": [
+"candidate",
+"payload.candidate_ref",
+"candidate at payload.candidate_ref: verification candidate differs from assignment"
+]
+},
+{
+"input_sha256": "c34419edce8cb9e0780fb3c16091cbec0d9b3dc9f238c0cc9d2ce49ccb33da12",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "cb3d17545728823dd3ecc95fd9920a830ab8e3d8e176a35ad7541b5a73e25d60",
+"result": [
+"required",
+"payload.deterministic_commands[0].evidence_ref",
+"required at payload.deterministic_commands[0].evidence_ref: kind"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "21153f2b0662433421eb1ab92d2c251abf9e7df724e80f8809ae25bbdd3f977c",
+"result": [
+"required",
+"$",
+"required at $: in_reply_to"
+]
+},
+{
+"input_sha256": "b9b53b00535d834dd2f023d833d7049b3239e54b967107f1f71a6177f6ddd6c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a9760f61ad763bd63e7429c700299e998c107d0385b7702d1b7fac54fc997957",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "18dca53a8187a66176b7db6f49fff6631eeb5194771810e79f21145b77bf5e6f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "82cb5fffbe31169595c7dc3f13a69219c5d607035fca7d42e2d2dcaba94bda65",
+"result": [
+"required",
+"recipient",
+"required at recipient: instance_id"
+]
+},
+{
+"input_sha256": "61114adcbb6a69b5df4408b313685c1053ddea77de9957754e3596e3a87c5a07",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "d913b4a3c40d68cbd6fbfdecfb24be60869e2e880ded9bfebfad2fbd60676ef0",
+"result": [
+"array",
+"payload.acceptance_ids",
+"array at payload.acceptance_ids: expected bounded string array"
+]
+},
+{
+"input_sha256": "fc55f641a8e0809a179e40b5f1f2ddc9a536a1003e865f8686f31ae71d16d8f1",
+"result": [
+"required",
+"payload",
+"required at payload: acceptance_ids"
+]
+},
+{
+"input_sha256": "9ecbe6aeb862e14ea037eaca5a9d220be02b9ea0648759547d919ec972f17336",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "02d2ea8d39050804f3876d007f4485a75a715b957f4b2b883a1e050de0c1b6d4",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "61776adcc1c5a84e766e9602bfd844d156310bb7a6d3708bb906143372c0cf0c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "9fa55d4dfaa1cf241c8ab157eb99ceb88e7f6208540dc7a405501d9b0e709c91",
+"result": [
+"required",
+"$",
+"required at $: plan_revision"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5ad87cec120db259475b9969c9f8de2740731871f66bd63d4583db757c798a71",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a6c074af8d1acf58b0401debe2fca8c31a057104d0dedca5bdbcd959ad3a7693",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5883cf82aa8ba71acc331c93c3ebb997d2ebfbdc00262393f0fcf9fe27dbce06",
+"result": [
+"required",
+"sender",
+"required at sender: role"
+]
+},
+{
+"input_sha256": "c484fb34f17fefe8f8ba34e10ce837caa68cf26c85104ab0ceb5ae5ef3e3b019",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fcd3319c0c5d7d6f1d93585a78e6715ae305c92f6da5fcdb20a86c158c8b46d3",
+"result": [
+"version",
+"version",
+"version at version: supported version is string 1.0"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "0f902c18af74e805e47d5f5d49a0a4d0233afbda3f5e1794af0f32b8276fba96",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "36eee226836efdb0fc965c4b2670b6f3032a19a982293416d94b64228809fec5",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "6528538c87095fcf954fa1c54605e2b9503b49397a9257be5e76428de698ee64",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "23dabe9db1644724af58b998d1b4f51d79e4983aa2d145c614ec774ab2b5367f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5883cf82aa8ba71acc331c93c3ebb997d2ebfbdc00262393f0fcf9fe27dbce06",
+"result": [
+"required",
+"sender",
+"required at sender: role"
+]
+},
+{
+"input_sha256": "c94ad1f7cc80680cfadbe19303bec9be81e614626dbae0015c770ae4d55bee11",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6ce16a96bf2f802a61ae74b30c14c7fcd71d1f80eb84f1db31cdf0d37b6dae76",
+"result": [
+"hash",
+"payload.candidate_ref.sha256",
+"hash at payload.candidate_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fdc1a43d4d7d4ac59fedd4b61a4a83210381253c8a2a3d18928e44a81bc1fed7",
+"result": [
+"required",
+"$",
+"required at $: message_type"
+]
+},
+{
+"input_sha256": "64abdba1db24eb63a87069ec5b45bbee49fbfaa8e8b25630e4eadcbd559050db",
+"result": [
+"string",
+"payload.scope",
+"string at payload.scope: expected nonempty string, at most 8192 characters"
+]
+},
+{
+"input_sha256": "8e7fb8d76b1624f26ff632671e888a956bb01b36737af564dd7feb362c92a626",
+"result": [
+"type",
+"recipient",
+"type at recipient: expected object"
+]
+},
+{
+"input_sha256": "a246169111e7abcc1d3d494aad58cc46847ed3bb73d419a81aa12fe1eb572a1e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "84ad99aef2d9b8143f8deaea95f1327ca25420ced6e5b334103d33b80db65545",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7cf8aaba3da927b3c6df8a9d867d89a97817126979e4e072e7b72c68a814cf80",
+"result": [
+"required",
+"recipient",
+"required at recipient: role"
+]
+},
+{
+"input_sha256": "8b6a6934a3f94fbb2c069e104eb3d4e880445e26ae41bf23b1005e80df6d0022",
+"result": "ok"
+},
+{
+"input_sha256": "df4322d2f0742fd7086e2c7fc907fbaba3e91b212bc02506aca3042b087b890c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "0a0d85273f3bf298f900dab1938ec1c16812017dcf1e93559d1863bb5d221eda",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "284154b9b0cc6848131f8083cfa0fefb444a06fc5dd16501fba4e1ef00369b0b",
+"result": [
+"decision_identity",
+"payload.report_ids",
+"decision_identity at payload.report_ids: report belongs to another task/attempt"
+]
+},
+{
+"input_sha256": "09916ce642dce04e330985d50497cf0193d93e6b3cee1af30feb5887d8214228",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "fa6f8d5d8ce3dde32c443e11836ff92a240738859768bd6d4ea738220b119174",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "0476c851acb6e6c7467f6090f348c45d61abd566082f2d9a70148de590495780",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "223c13959b6cb0d5f187a384c1e95e315ec09a402d3579ab24f7ef4ee21e4737",
+"result": [
+"integer",
+"plan_revision",
+"integer at plan_revision: expected positive integer, never bool"
+]
+},
+{
+"input_sha256": "9adc3389550c076a80a20f77cf4bde275762691c7fabc54224b7211547b90d34",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: path"
+]
+},
+{
+"input_sha256": "cb4d94674d5d70fbde41490ab9ba20c7c72b248a613544f0c6b840d5436049d2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9ecbe6aeb862e14ea037eaca5a9d220be02b9ea0648759547d919ec972f17336",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e1cec742fad44f91b59a9435646bab26e42af3fefe0d4f5b5db283299d2217cb",
+"result": [
+"required",
+"payload",
+"required at payload: status"
+]
+},
+{
+"input_sha256": "e8022f9596ce1672436403bad0355cf19cd0e77520827b99633a480722c113ff",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e95a4fe6a32473c236c0ba20062a2fd2ff33843a8093405df313c2f70b0892ad",
+"result": [
+"type",
+"payload",
+"type at payload: expected object"
+]
+},
+{
+"input_sha256": "21798b0080f4c6ffaec527219c472f7eedbc090d77ad0cd641ebad63faf436f9",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6f47ebeb22004a5801972863f4a07fbb6caf85fb1e91c63dfb0b6f26305392c3",
+"result": "ok"
+},
+{
+"input_sha256": "646347bb98bd05a3323957659a6be16929f1922a07252c5e1ad47c4a11618f31",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "68be964c6b452c0784bc9cee2fae4ee3700231d4a4d8d046da87bcf95cac757e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "61ebde6112172874ced4b02a79788ab043d2ba96fa7ffd0ce8d2416d37db030b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "be7997e1e8927dc9e631355859b7596f4029cedd7e7a2834f0c32d1c7c1e97b4",
+"result": [
+"required",
+"recipient",
+"required at recipient: role"
+]
+},
+{
+"input_sha256": "22cd39a331c920fcbb0457c9338845fb6bd5993d5b70b2f51dde5d9b6eaac15b",
+"result": [
+"array",
+"payload.acceptance_ids",
+"array at payload.acceptance_ids: expected bounded string array"
+]
+},
+{
+"input_sha256": "d9513396da5dccd6bd0aae22586e1ccab1c2b670695c0590d4d8e35d43cca81f",
+"result": [
+"required",
+"sender",
+"required at sender: role"
+]
+},
+{
+"input_sha256": "205fd7bdc556dc05998d35cb24199449c247d4b3dac24b91872b5d077eb9ef08",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "de6a5fc0fb4587c568ffe2f4cdce4a879349d350828b14ea997193a2f64e421e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "4b73d068348b3c32e3254c0666b86f51f23dbb29ff16ab07a3778e20a04ae04a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a94d35bd02221fa794e489772dfd29690e5b830e2f951e73131c8c29c563c3d8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "47c1f09cdab629946ee8f8c181c176f57944d5263bf939a2eb6ce9c8c7fe9365",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "cbb22039c30082bf8007ef917edd634636040f5b2309a4f3960ae1a6d80c98a1",
+"result": [
+"type",
+"payload.deterministic_commands[0].evidence_ref",
+"type at payload.deterministic_commands[0].evidence_ref: expected object"
+]
+},
+{
+"input_sha256": "5a033a8bbfba5a1562441a9cd7c8cb765d686ad80800c3a7c94b25b3df794dc6",
+"result": [
+"type",
+"payload.candidate_ref",
+"type at payload.candidate_ref: expected object"
+]
+},
+{
+"input_sha256": "8ce9a21388d000c318f9fcd7f52cc6cbd7b42cbc3f14a49e29857a1ad1329751",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "33dab995ebf2b2c23c80eae765e75a7224876329cce6874672cb069e88e1a47c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "21798b0080f4c6ffaec527219c472f7eedbc090d77ad0cd641ebad63faf436f9",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "28d20a28e770f6320df8e1a272e716b4c2c21be3e6df57f3420f28351e5ce54d",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "29d729bd4fd0519a20bc3befb3be3f8604664d1ca43cc15a6e8eb77d163f4ddd",
+"result": [
+"required",
+"payload",
+"required at payload: results"
+]
+},
+{
+"input_sha256": "e5120e8572e78c720a8a8a4734979549f158900a41772d5a1599f6a37ff8c45f",
+"result": [
+"protocol",
+"protocol",
+"protocol at protocol: unsupported protocol"
+]
+},
+{
+"input_sha256": "b73dbb43357ecbe31a83bbdd0ce81b3ce64f1d62792eea76a4f5d85f948d22f4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e7ab0340949a4c884ff7ffa252c43926d5e14d82776be80cfd63bce291a2a6e9",
+"result": [
+"required",
+"$",
+"required at $: protocol"
+]
+},
+{
+"input_sha256": "6528538c87095fcf954fa1c54605e2b9503b49397a9257be5e76428de698ee64",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6489777acf6c41fb3e093b01cbabc30bfe6a4cfd47eb241ed8de11662a92625d",
+"result": [
+"type",
+"recipient",
+"type at recipient: expected object"
+]
+},
+{
+"input_sha256": "de6a5fc0fb4587c568ffe2f4cdce4a879349d350828b14ea997193a2f64e421e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "567488714599a1b1ece0b5d13cb0a08d6a6dc6231f3ef7fa4fab2a202a9d58c8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "888ec9019d7e8b5bdf51f4938f6cc091c0a4b3236ad366e8d7729d1d71adcd0c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c0fa7b10491fac0ba892b31d5242a98e2c476691fe2c230945efe528dab0ff53",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "edb772a89a4945d098e324ab3b6b526f0717208e93f214494cf16aaf99b50052",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d9fb5e7570e57b1d7cd8d14dff8afeb7fa2f67a96c8479cfea16c031c1862c8c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c6634c5a7b4e81c2a28c4300b7f2fe9a1ab5cf4fee6adfc98193a19e8f83a780",
+"result": [
+"type",
+"payload.deterministic_commands[0]",
+"type at payload.deterministic_commands[0]: expected object"
+]
+},
+{
+"input_sha256": "f56a0decdca2808630e605aa1b806f18e6961bedda82b020774cc5037387d3cb",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "4ae2793bce92a7c1c5e34de736bc67f39239aa25f1514d6d940511cc7667f30c",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9ecbe6aeb862e14ea037eaca5a9d220be02b9ea0648759547d919ec972f17336",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a3c2433c7aeafafb895054f8600c6d3d2bc7593c548e96879572e4c455653b2e",
+"result": [
+"array",
+"evidence_refs",
+"array at evidence_refs: expected bounded evidence array"
+]
+},
+{
+"input_sha256": "cb4d94674d5d70fbde41490ab9ba20c7c72b248a613544f0c6b840d5436049d2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6e3fd3d928559e2def3014f74393e5d5fa4da5fe24610cf92ed032d4c44521ab",
+"result": [
+"required",
+"sender",
+"required at sender: instance_id"
+]
+},
+{
+"input_sha256": "2e2bebca9dd9e9d44791b1fcd6681417e833c6f8d9fc1f89c7b7f6987ec4d1f1",
+"result": [
+"protocol",
+"protocol",
+"protocol at protocol: unsupported protocol"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "3146040086e7ef0c0e690eddaed06db0703b68440767818c84de7288b554fe77",
+"result": "ok"
+},
+{
+"input_sha256": "fb6c75b1fee1915cd5b2df427dfb34018db21f71e32beaa00700680af69dc5cf",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a08017ee3c065c2d50661e411071e90584fdb2fe3fc1174767da820f269a997a",
+"result": [
+"type",
+"evidence_refs",
+"type at evidence_refs: expected object"
+]
+},
+{
+"input_sha256": "9885a012555d94717ee6b11a52d66667c33aec51776de9621b5557381313cb49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "0e1172fef3f08bd3c9e05a0e03b86ae06aff024bfbe6b14f4629971e4dc05d47",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fa6f8d5d8ce3dde32c443e11836ff92a240738859768bd6d4ea738220b119174",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9ecbe6aeb862e14ea037eaca5a9d220be02b9ea0648759547d919ec972f17336",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4536c20951597c6561f0865aeafe50d28228a569d57d6e5fe720a5ac5df4064b",
+"result": [
+"required",
+"$",
+"required at $: in_reply_to"
+]
+},
+{
+"input_sha256": "c165e22ddcb47102e0f81ec217b89fca7d9e7d3403620a132aecdc4aca075a70",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "45e5cdaf0f9331965c58808f0731067079b844d3c4b0d3227c19d2fdc548f79b",
+"result": [
+"required",
+"payload.comparison.independent_rerun.evidence_ref",
+"required at payload.comparison.independent_rerun.evidence_ref: kind"
+]
+},
+{
+"input_sha256": "0ce382e4d6fabb06d47deb6a1fc2c2071afa6b5257e7c1d3c71bae5e8ab884fc",
+"result": [
+"type",
+"evidence_refs",
+"type at evidence_refs: expected object"
+]
+},
+{
+"input_sha256": "c34419edce8cb9e0780fb3c16091cbec0d9b3dc9f238c0cc9d2ce49ccb33da12",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "df09c1ea9789dedc7c9e3dc8587f5e8ddea02721e9d0e29d8cd21d73b4aeb882",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "424d90b82b08809c3bb4bf01d9479cdaec750510a0e791cf151e484c4660d8eb",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "06a48bb7a5acff01bbfc0d5a2d6117311878310c43aa6f6e17d911610bf37af0",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9ecbe6aeb862e14ea037eaca5a9d220be02b9ea0648759547d919ec972f17336",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "88fdcbeeaa69d44c8dd9de5cf901910c563fb1c47866e260d0f462e43ba9a6bd",
+"result": [
+"type",
+"payload.plan_ref",
+"type at payload.plan_ref: expected object"
+]
+},
+{
+"input_sha256": "1294d8b62092769e6d2f5e60b58fc0580d9027c88503b4c49e6696ae38961221",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e8022f9596ce1672436403bad0355cf19cd0e77520827b99633a480722c113ff",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fbcc0a3011fccc24be588ca8a155052ce97087ea79aaa3297b4778c1b649ab7c",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "51e485ed1068398535d82d4104b5de13dbb12c0e830d3d801fd3165f789de06d",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "43dec065d9415f969a574d4113cda5625d8a425e744da1347e4767f5d9d81ada",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9c31dc42244b52580773c16ef56360db453d83fe26b46e5335a577abaae8c670",
+"result": [
+"string",
+"evidence_refs.artifact_id",
+"string at evidence_refs.artifact_id: expected nonempty string, at most 128 characters"
+]
+},
+{
+"input_sha256": "a4fb5c72b8aa20b6572f8fef9a4291663a4b7745394bfd00d171b7491200aeb9",
+"result": [
+"required",
+"$",
+"required at $: recipient"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "e0af4d388368d0fe92a6bfa9cd4d8a52585567cc919fb707dd0d366715be2949",
+"result": [
+"required",
+"payload.comparison.independent_rerun",
+"required at payload.comparison.independent_rerun: stdout_sha256"
+]
+},
+{
+"input_sha256": "67fbcdf0a16d5e896e7f123fbf878188bd2a9696d76d3e17fee67f38a7c557f1",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "3e18e79fa8e5df7ed0cfa4333937c06e990fdefa966af543045ca6e41b1b3ce2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "f71c2febd45bba907bf43aa11c4a5181cc5d2d52823adbedc0bf7f9e804c7a1d",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "996eceb58cc0f8ccaf0a4eba3fef4c80ac4ee4318beeb3e543ab14e2102d7e59",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "c121891fbdfadd1862ad09f955a36d7963f7fcbc914f79fd507ead59d022b62e",
+"result": [
+"string",
+"payload.acceptance_ids",
+"string at payload.acceptance_ids: expected nonempty string, at most 8192 characters"
+]
+},
+{
+"input_sha256": "9111e2a0fbc2f4e4d44611226f06f57e874c04299fe485551d7feb200eb5a79f",
+"result": [
+"string",
+"payload.objective",
+"string at payload.objective: expected nonempty string, at most 8192 characters"
+]
+},
+{
+"input_sha256": "036a9ee35b2b3b0345e80bc66a88b39f4b0bb6cd32a2e274288fa3ee0becec4c",
+"result": [
+"string",
+"payload.oracle_ref.path",
+"string at payload.oracle_ref.path: expected nonempty string, at most 1024 characters"
+]
+},
+{
+"input_sha256": "637adbcd68d5e3e6cc3da909c4a6437236b3a482d2fdcbd2eeb0de97307b3e71",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "6937f94307c29b1d0b1adf733f6f8df130d623fbdc4a053a5a5d5acf63b3dc19",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5a2e254c6853ef2dff5b0544c18b2465fb85e0576078317bc94010b9a7489f0d",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: sha256"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "823f459550f2b5d49b4ee313e07e48d8c6c7249055d3f3eeb9ec28d44a7370f9",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "c3c101b41f32c96a050c95082133092a8ce6cc27fedf7a02179ac1ce1edf7f93",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "bed1b1ab8c69d62d0f809c6e75949364b8e9f2bde813a914719b288783fe417b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "017a09771e3776270863564e9a12e741f5f457fae4a87ec256f6115c9ae9028c",
+"result": [
+"required",
+"payload.checks.evidence_ref",
+"required at payload.checks.evidence_ref: sha256"
+]
+},
+{
+"input_sha256": "663fe8d15da3d91af487cf3fb70d3ded06e112515bc009a2ca41c634a1be6d25",
+"result": [
+"hash",
+"payload.candidate_ref.sha256",
+"hash at payload.candidate_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "9e7509e734817755b49184f3523b259cf2a636c1a2f99c9d1610582a8947cd04",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "b56d47290a9205babfe697b5ac1d8a55ad4134932089f499c46756a54a2e05c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "685b076105183fc2545a585f6b39273959b8cbb17282f32730976da12d34254c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "77e433e0ef7ea1d1c59eb8612d0ea6780d840447a564f7cfdc7cfe88a69cf573",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "b5c3b5515a0671b7a812bd59b7f4a66e2c35d5f84ed879f42d47f5096a57f38e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "a504d49cbd4a947e7f8747695752af7ca6b564e5bf7c7cc69747b685197ff4f5",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "3a999a2f6538f9762808ada96bcab4290ee1f2cbc3ad0c11d3e8feed91b72edc",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b2b7d1f2ff236f6d026f116716550f45e3d0311a45147342bb8c9b8d6c775bbd",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "208e920216ba9176c01b52c0b2c6ff967cba2cf6fc50bdfb4f4f8a8533cb508e",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "3e18e79fa8e5df7ed0cfa4333937c06e990fdefa966af543045ca6e41b1b3ce2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b528f745217ce208352502821ee3a0f6c0ec30e4ac7859a3075658aebed26989",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "8f4ceddc8ef8ebe37c94c064c071d200e2f87ef1099d3abcd05191657389f9bf",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "eb5da7443c37c53839600b1861a28ddc7698685f72c4a23a53a87b12956684f7",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "8fcfd1740b4c124da169644b95dc8875a5b85e13231f9fd82a4461334f506065",
+"result": [
+"required",
+"payload",
+"required at payload: acceptance_ids"
+]
+},
+{
+"input_sha256": "1dae0517ed07c230b2253bcd0632e9d6e9951b70ab47dc90a33bd6cce6b27650",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "024c9587967cda420c79d521c7cf58c810efa464443c10157bf07661789c416f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6248940ce9d656a4d893c71145f82806049f72d1281384a51a5325731a16d040",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: kind"
+]
+},
+{
+"input_sha256": "42367951f6ac338a5598f9a8b0d2b3cddd296de30f30d32b92a34cc10e6fdb1a",
+"result": [
+"required",
+"$",
+"required at $: attempt_id"
+]
+},
+{
+"input_sha256": "5c75fc04ef19124f0074e0913a64830a68805113d05404c0cccd3f8d035778ea",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6ca369f60262ce08130b304f2a8060339bb3e9b2327c703865938b2f9a3bc7a9",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9b3b0c3167f3b16525971565bf403ed092e5cd50d867ac250d60a437f44d274e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e59639110df33f0f587883bfa0c0bad4c7aed755e95781c1628fb0784eaf2ecf",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "93c0b5936bcc75b8c7ce33df8f704c7cf209b9e3c6a0465712b033e1c1bf7e8b",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "c1f436c9877f94897c0ab1d05cbe60b4d73ea2c321c81d00ee870bd6acfb58a9",
+"result": "ok"
+},
+{
+"input_sha256": "d06bd9a8000e4549021cfa183dbd84b48dd169fa728e95e690d8be0b6ba14747",
+"result": [
+"type",
+"payload",
+"type at payload: expected object"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "bb4df4e7d23ccc90ef04b7536c25d35b4c4c9646fd22fde8dd378944de37cbed",
+"result": [
+"version",
+"version",
+"version at version: supported version is string 1.0"
+]
+},
+{
+"input_sha256": "acfed58cad37b93e4b1adcac3f714eaaf727cb3c781cad5540162e0a50002f25",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: verification requires exact assigned candidate"
+]
+},
+{
+"input_sha256": "75c6272fa2248cee81ed716930af95d9b4ba9d0ecc76f6d3e73253db47360129",
+"result": [
+"required",
+"$",
+"required at $: evidence_refs"
+]
+},
+{
+"input_sha256": "3b28d59a33aba7ea47ae179cb642f7dbe81c59583feaf6e42b953681ee0f5321",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "3057763db59f9ab16bf0472843986b96b6bbc3bde97d8ac9e8211a2972f72f35",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7d2bc493ec8c9b5d18c822388ed8dfc8079ea942b5709786f1ab25ec0c8e151f",
+"result": [
+"type",
+"recipient",
+"type at recipient: expected object"
+]
+},
+{
+"input_sha256": "eb5da7443c37c53839600b1861a28ddc7698685f72c4a23a53a87b12956684f7",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "3f75049b538931bda1ce351622f9899383a0080923efb9278c6f2a98002985f5",
+"result": "ok"
+},
+{
+"input_sha256": "57e8a413da81b8211d6ca52468771b79b008cadcddd94e9b0b26defb9a08d8be",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "f5ace91d4d5d5ae668c485394ea92f22a9ab1203b7366918fcb8cf87572d3396",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e5c1f846ea5a41749012d3b37f5ebd3ce06c89c2514314130fd362d771c6d6b5",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "18fae8fe3e12d05682c3213bf442b66813fd8ced65bf7c4f95461647e7f8dcb8",
+"result": [
+"type",
+"payload.comparison.independent_rerun.candidate_ref",
+"type at payload.comparison.independent_rerun.candidate_ref: expected object"
+]
+},
+{
+"input_sha256": "d8a3148fa0d2253a7367c72b8f5967c893d1f510375f1ff910dc2a425f9c8cbd",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "e03936f7451434ae3a57ebf9d5f02738849fd5b0ab617fb5ba2eae1f49ac9127",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "2866456e1291fa56c703b1d1434a49bc57da0a28cacbb9e9ab432593b86d6037",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "ca26f7d7b4307d9cbf47657f36fddb57bdef723da8d0fed90fec53e881a576e3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "af5773d47ed60a2c27d7e7d26dea11722aad8db8e4e125f879bd6ddd7b750613",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "0de7fcb866d79b9034b7a607382d19d7835f26154c523b3b2ead289a561ac305",
+"result": [
+"type",
+"payload.oracle_ref",
+"type at payload.oracle_ref: expected object"
+]
+},
+{
+"input_sha256": "77e0b2eccc19f36b2c387beb9e04140033e99f5467f79248164bd35e3fe015bb",
+"result": [
+"required",
+"payload",
+"required at payload: acceptance_ids"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "28be710088c41d00a6fea152b58997388922fee963f0507adc5445f4b7754ece",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: kind"
+]
+},
+{
+"input_sha256": "e03936f7451434ae3a57ebf9d5f02738849fd5b0ab617fb5ba2eae1f49ac9127",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "80d3a2115ae2c8e08326949163a6ca57aafca52fee847b615de6f866eeb473e2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "60e8e6b28617bdf2b0be8bc1096c1997a371bfb07e2ca4220accdc79f4a178c7",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e890b1046b51054a7bd61c027176234865cf69ceda76549be430525afc65f559",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: path"
+]
+},
+{
+"input_sha256": "6dfd136365fca1321b58e10c4ccf59d3fcfc4602c6f924d1acf1414248d147ab",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d6d0dd521987ab76684206731b79f65c3fe61752dbde58c920929f40272331ff",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "7b102f4753b002531692fdaeda67c5e5979740dbf3898fe32c85e3a4530e2537",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "608920960c7f7bb1e25f9748c38a0202b495c91f6795192f183b7b2a182b51c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4b042eaf9530419338eaec873ab76085936e5d78e047b8eb37dac1602f63b94c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e52481367733d1a922e21a61ffddbfa06b53dd9b04141039c74f0124b0a8a3b3",
+"result": [
+"type",
+"payload.deterministic_commands[0]",
+"type at payload.deterministic_commands[0]: expected object"
+]
+},
+{
+"input_sha256": "625c5e9179231681a55e8df47d19ae5b621eb86d9dff13e43e16435030444134",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a437eabafd1a3b58003a47a209d9f5e1c2dbefcbe09ff713d23e35c7e6124b3d",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "0f4bf5b1d0a1b407291507dedeb331a1da8b59a4fb1f2fec5da95a287c36815a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fb264396ad7bc3b7557eaa1a37d7ee1466c082838bb787701fc6c5986170c38f",
+"result": [
+"required",
+"$",
+"required at $: message_type"
+]
+},
+{
+"input_sha256": "f48b160fb51159ceb6c5e9e41e7cea0325837c636d24efafb71bc587bee19dbf",
+"result": [
+"hash",
+"payload.candidate_ref.sha256",
+"hash at payload.candidate_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "71c087536cf26377b00a69356b4f30e83e590b40a9389172df1da70df5e72fc8",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "39a8793a7d32e556ba48884c4fe286bcc1e6eabf02b2103e18d26fa76d4c446c",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "26fea3385c79ad75389885b80c82f2bad737259e64a5c3e537811a3535332400",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "bed1b1ab8c69d62d0f809c6e75949364b8e9f2bde813a914719b288783fe417b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a71b0d81cf6eb68906e11b84a25bb3e5b430ead18d603fd8fce026b560e16fc9",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "470981447e20a34020ca3b3869c178d02aca13b9c97754789fce781b188ca7e3",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "60e8e6b28617bdf2b0be8bc1096c1997a371bfb07e2ca4220accdc79f4a178c7",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "22136afba53a7ec44de626c3f5d815822bf59a771d35908d0fc052cc2feb887e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9b3b0c3167f3b16525971565bf403ed092e5cd50d867ac250d60a437f44d274e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4b042eaf9530419338eaec873ab76085936e5d78e047b8eb37dac1602f63b94c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c47e8dd1a68886767cc3264f030282271e1f3c354c74f871a36d861f24b8cb5b",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "cd4a6bd8acd3291cff39649bc851cfbdedbfa39b09a7d97b9254e61c6ef5c2f7",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4d2eab6e9985c8c5dde94db95294efc0309a3f6dc34918b4173ff47267c54548",
+"result": [
+"hash",
+"payload.deterministic_commands[0].evidence_ref.sha256",
+"hash at payload.deterministic_commands[0].evidence_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "719c614ad5aa65efffe542256aae330082b2ccc3e8238c6e94a8ec239cf2e1ad",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "215c47c1c68dd7f8346004e94c93306e3ad4abd7b6f44f0ed30d29d3ee34218c",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "6a7581d7012ffab21af65009936351b193aa8043038af1f794eaf1a3646e5468",
+"result": [
+"string",
+"payload.plan_ref.path",
+"string at payload.plan_ref.path: expected nonempty string, at most 1024 characters"
+]
+},
+{
+"input_sha256": "2b61cc09bca05a00d76bff64632ad20297dddd4ece20e69abf466c3b9f6a7efd",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "84a54ce9a72fb66e8d9b996244dfe59b674a67957cad67883daf4c528c35aebf",
+"result": [
+"required",
+"payload.deterministic_commands",
+"required at payload.deterministic_commands: Tester must declare deterministic commands or an empty list"
+]
+},
+{
+"input_sha256": "c1f436c9877f94897c0ab1d05cbe60b4d73ea2c321c81d00ee870bd6acfb58a9",
+"result": "ok"
+},
+{
+"input_sha256": "c5db2d453203bdc0c05276ce5ef614513b11b61384a4b84e5b4b3314f135c898",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "01b296d054e762cd6652cd5e5e42566a270351cbc45999c75596276b76b70345",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "0bbcbe75b8d9a3d5fae7fb6e5bdb918fd69409e98362ef857d1fe8066389d2f4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ca6a9df6a47f8193e814c97049ea9e7b0576208a6ab3bca0b7ccdf2d12e85c79",
+"result": [
+"enum",
+"recipient.role",
+"enum at recipient.role: unsupported value"
+]
+},
+{
+"input_sha256": "5c75fc04ef19124f0074e0913a64830a68805113d05404c0cccd3f8d035778ea",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "02a7c8f4eaacfbb53511babbaffd76ac6407f8df127cdece2064a99740da53a3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d1f698208d6651d25cc17d54865d332c5e643cad8a50db006c7f4b0aab5366d4",
+"result": [
+"required",
+"$",
+"required at $: attempt_id"
+]
+},
+{
+"input_sha256": "02a7c8f4eaacfbb53511babbaffd76ac6407f8df127cdece2064a99740da53a3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "3f75049b538931bda1ce351622f9899383a0080923efb9278c6f2a98002985f5",
+"result": "ok"
+},
+{
+"input_sha256": "0c717a0b44e538fdad73b84a4269594285c7315a9c3b20743b0eeea923e94bf7",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e03936f7451434ae3a57ebf9d5f02738849fd5b0ab617fb5ba2eae1f49ac9127",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a118836bd84a8831835743b901bc805b5630d78006427ae683253595dcbfb33f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "48eb59bd4ad51d84d870e46a82283ec915aa182bd0d4edb992e8af37a3111ffa",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: sha256"
+]
+},
+{
+"input_sha256": "3b28d59a33aba7ea47ae179cb642f7dbe81c59583feaf6e42b953681ee0f5321",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "91304281224890c7fd580e54f56a241855f3c47af3225f5c0b3efb2a3bdbdd13",
+"result": [
+"required",
+"sender",
+"required at sender: instance_id"
+]
+},
+{
+"input_sha256": "a4c51ee769a4b5727a436b8f5b3233f0b5d5eb5e1c1aa2c1bd5c89ed9ab40b43",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a504d49cbd4a947e7f8747695752af7ca6b564e5bf7c7cc69747b685197ff4f5",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "3fb3fbfa6e6f62d969b7ea2a381733169974eb5eea7403452ec71050c4dcca44",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5f2d0eec53b02c53818eb305f9dcdf7026ba113ede876576d63dc07788d83dea",
+"result": [
+"command_binding",
+"payload.deterministic_commands[0]",
+"command_binding at payload.deterministic_commands[0]: command must bind to this report candidate and original criterion"
+]
+},
+{
+"input_sha256": "d6b2350d0273d236a236c9cd21979672a5a526e659731b64a3e61c0a05d8b94c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a72fbfe282aa87869abd5189317c9cbacd970230a38991785661bf1faa9e146f",
+"result": [
+"causal_identity",
+"task_id",
+"causal_identity at task_id: must match predecessor"
+]
+},
+{
+"input_sha256": "685b076105183fc2545a585f6b39273959b8cbb17282f32730976da12d34254c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e03936f7451434ae3a57ebf9d5f02738849fd5b0ab617fb5ba2eae1f49ac9127",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "655fdb49af1470f5fa68c3fc764771757d41eafc22c6dc084ad9f1fbad3fee2f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e03936f7451434ae3a57ebf9d5f02738849fd5b0ab617fb5ba2eae1f49ac9127",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "e80ef575c0828a5472df2a2b1db42ade03cfca0fae2eee4b5ba02ab6b136be93",
+"result": [
+"type",
+"payload",
+"type at payload: expected object"
+]
+},
+{
+"input_sha256": "d60897fe21f70f53a83c2c4f8dba9a299f725e7a0b086f22abf5fa543fa6237a",
+"result": [
+"required",
+"$",
+"required at $: evidence_refs"
+]
+},
+{
+"input_sha256": "33fc7255e2d60ec10002ededcaca7807a9b48797373b25cb624e6088f4b6b7c3",
+"result": [
+"acceptance",
+"payload.acceptance_ids",
+"acceptance at payload.acceptance_ids: unknown original acceptance"
+]
+},
+{
+"input_sha256": "bbd19c1b5f0529b4c328b40da3defa81f96379f6249a82f2a71eb1c9b7fa82c3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b268775f05d3fc79f24bb2c9da03b3d48ebb98a522feb7875aa86e927618a1e1",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: path"
+]
+},
+{
+"input_sha256": "2c25d59d269b837ae51fb2abfa8d32c3f08a9c6211bcd1b87b4e804c3cd27543",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9a25755a3363126417ec7566d039a0d6b64b49e68ce890e6494b07df878ebafd",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "719c614ad5aa65efffe542256aae330082b2ccc3e8238c6e94a8ec239cf2e1ad",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9980be4154237720e679e0f1523a88f9fc1340b50e7decefea3e20ba55a9ddec",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "0bbcbe75b8d9a3d5fae7fb6e5bdb918fd69409e98362ef857d1fe8066389d2f4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "2bff6adfa86b71f9caba1c530ca33b678854dd61c7f59dd571c6a666311f586e",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "b5d2efbddfe45c6f8696d375c9e582c2bd96e56488722ea1af59df55212c2f5e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "c8360034863fd32734c031062b1d3847b40d7097c5cacbb794a53a0c1f399c0c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7b102f4753b002531692fdaeda67c5e5979740dbf3898fe32c85e3a4530e2537",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "6e105c16ca30822b9b9e3457420327b0f00d18a6c50df3e3eed13aa6a022bcfe",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "93756b84380afdb64eb213394b7449f192ca7ddade2a3661d258f6e836e427a7",
+"result": [
+"required",
+"$",
+"required at $: task_id"
+]
+},
+{
+"input_sha256": "0bbcbe75b8d9a3d5fae7fb6e5bdb918fd69409e98362ef857d1fe8066389d2f4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b1b5fdf89480f8c901c9929ba584563c4813524829a03a349c78336522467849",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "281a3a1d87d3c5d15e84420da94a47c22253ff981845f90fd90e09206c2bb25a",
+"result": [
+"type",
+"payload.candidate_ref",
+"type at payload.candidate_ref: expected object"
+]
+},
+{
+"input_sha256": "4f7cabea7aa36f20cfbab668e45fd4b4e82ae70a325900fc054e4ad9a541206e",
+"result": [
+"command_binding",
+"payload.deterministic_commands[0]",
+"command_binding at payload.deterministic_commands[0]: command must bind to this report candidate and original criterion"
+]
+},
+{
+"input_sha256": "f9cd8a3ab4df7e942c8a37a3849aa9a0932846ac00a9060568be02651fde01db",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "90d3e468ca54d79cbded426c53ed1aeced20e430cf3981aefcd83e57f32b25ee",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "46d22a0435b1bca4661ab1c43f345b1e80120f7c15b6444f93ddb5ea1b594d18",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "672e6f863cf88d1b624cf529e1b3e196ceac6baf4a694b1e05a23d758d4998fd",
+"result": [
+"protocol",
+"protocol",
+"protocol at protocol: unsupported protocol"
+]
+},
+{
+"input_sha256": "6d2b82bceec125555bbdacc88c7bb106af1ce204f28fa70e719150cbc9ad2db0",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "02a7c8f4eaacfbb53511babbaffd76ac6407f8df127cdece2064a99740da53a3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b235ae2be23a89491bb709b1874d1db1a03faa0d967277820b7fb2d82b9e85dd",
+"result": [
+"hash",
+"payload.candidate_ref.sha256",
+"hash at payload.candidate_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "b8ce88c3479032c88bd7b7cb712f9edbabf08bc87f7d7cd41ef61173acc178a1",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "bed1b1ab8c69d62d0f809c6e75949364b8e9f2bde813a914719b288783fe417b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "736befe2c744b2cd78d7942ce8087b8540bf75c4befad43ddb2c29693237076a",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "95128399833df721cb834f15f9839664f5d7e941d4e0c2eb6e21f2508b279a93",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "21fb65401bf9965fb1599286814d49fd6a33fb37c999959f2a246c52e1bff118",
+"result": [
+"required",
+"$",
+"required at $: version"
+]
+},
+{
+"input_sha256": "a91a9a582607b9a5a2ea6b576f46a35d281bcb69d214a57b196dae433d4e5c49",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "bed1b1ab8c69d62d0f809c6e75949364b8e9f2bde813a914719b288783fe417b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "f9b1909c8b470fd5a547bee32af276caa706062644e7e2f734bd80d06d52b0d5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d5ad31b42b9b40a44af420bab44239fc9813578ddb1a762ad14d40677a2112ca",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "e13921320bc9aaa77d456b9d48a250c6dd2b99b7c4e3dc2f2b7d234fca4f5ef3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "8c74d372061a2d7eac138626219833e18576ec3e628b3d65cfabb5e541a9e78b",
+"result": [
+"required",
+"$",
+"required at $: in_reply_to"
+]
+},
+{
+"input_sha256": "5d7b86ff289761412edec38c1c03d73416b5980114e00e31ae28c7a4cc58ed05",
+"result": [
+"required",
+"$",
+"required at $: evidence_refs"
+]
+},
+{
+"input_sha256": "7a9835b590230dc4742d5d1e7efcb9266521e18aa74d8b8d0551841237decba2",
+"result": [
+"required",
+"sender",
+"required at sender: instance_id"
+]
+},
+{
+"input_sha256": "841b117db36bae1098d705a08f6a2e11bce34f70f669a7faf5974580f8280ffb",
+"result": [
+"required",
+"payload",
+"required at payload: objective"
+]
+},
+{
+"input_sha256": "404e644da236acc57a30cb882a26054e703fbdd37e3e0e9b5f276b63deeea791",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "adfbac0001995a95b7abe6741875945e12654044cb4141679492fe0842707eb5",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "de4fc4b2dff486f6043bf6e0d0ee17c7f861df5a82cf95493bac0d44dcfd9308",
+"result": [
+"oracle_binding",
+"payload.oracle_ref",
+"oracle_binding at payload.oracle_ref: Tester cannot change or self-approve strategy"
+]
+},
+{
+"input_sha256": "c1fc183557cbb39639d9e103ea779e9f39e9fa10fa000dcc6b8190a5f2aa5ab8",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "05fdc72b454dd31cf91be95e2d2c34a180b56cdb2eb336d388925c082f6a7465",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6b2e772493323b584229bfea77ff5984d3d5f9b00d5daa697765eda6868a8344",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c90740a20b73534cae8ce2959b0c52dcb3f0dd061934a72d2cfb4aca46d96ffb",
+"result": [
+"required",
+"payload.deterministic_commands[0].evidence_ref",
+"required at payload.deterministic_commands[0].evidence_ref: sha256"
+]
+},
+{
+"input_sha256": "d6b2350d0273d236a236c9cd21979672a5a526e659731b64a3e61c0a05d8b94c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "707979d57d6deb6fb8abb5128b68ab0ddb34b5dee6f10cb9b32c77ebf24f90e5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a6c482f927138fe4a7c73fdff4865948b96611a6980e96b85f18b34bb165e37a",
+"result": "ok"
+},
+{
+"input_sha256": "2fe91d20ce4f3933134725e2379464d8a4794d706202c67b77702264edef98c8",
+"result": [
+"required",
+"$",
+"required at $: protocol"
+]
+},
+{
+"input_sha256": "6ba5d5a81e66c8822be913b16d1a8b899eeb0299e2a418ea9f9c8e1f6f15d90e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "bed1b1ab8c69d62d0f809c6e75949364b8e9f2bde813a914719b288783fe417b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "309a1e95bec222060a2d79e37aa5e7dab6ddbd633642076683bd31c595973adc",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b917b5be8c9e1721a50afa6a417765ad62f90eb21430417ca647a9fedca3f7df",
+"result": [
+"causal_identity",
+"task_id",
+"causal_identity at task_id: must match predecessor"
+]
+},
+{
+"input_sha256": "86dd952ae20a3026d82f011f84aa7688679ec66b356b6ec8c937ce38b1e4d405",
+"result": [
+"hash",
+"payload.plan_ref.sha256",
+"hash at payload.plan_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "d6b2350d0273d236a236c9cd21979672a5a526e659731b64a3e61c0a05d8b94c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "eac1989d5a1bca91471d1aaa8c481f59b7a3b1dddaefe13be428e53be10cc8be",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "96a9249cfce2284970b2ba4a7724949cd97313b46df85f92a26ba7f1196a3320",
+"result": [
+"required",
+"$",
+"required at $: in_reply_to"
+]
+},
+{
+"input_sha256": "0d6aab055e424310065eac545ffd4e9772f8e5de3eb26082b6dafff294f9af0a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7829e447c437d90340c747b9b5e02d76c71418986c6907b38c93bca812dc4b56",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c1f436c9877f94897c0ab1d05cbe60b4d73ea2c321c81d00ee870bd6acfb58a9",
+"result": "ok"
+},
+{
+"input_sha256": "83db726b0376a99ae63b2d0ed31af70162792e70fb8244a65eb0be8775e1b0c2",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "51cec6ec8e88f398a9136a6dd709ac540113b5aa493164dd7c58f0427f951d53",
+"result": [
+"required",
+"payload.plan_ref",
+"required at payload.plan_ref: sha256"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "9d43f44549ab48038a72ff01a9b92cb421d516f86a3156caa999257481b92d51",
+"result": [
+"enum",
+"sender.role",
+"enum at sender.role: unsupported value"
+]
+},
+{
+"input_sha256": "75e82858caaf4949de8a5c83ef4516b59c1beb06f633cd35b39a81368d912e4b",
+"result": [
+"required",
+"$",
+"required at $: protocol"
+]
+},
+{
+"input_sha256": "94dcdd3073d63a7eeb048b77d8352c199e5be1f90d0d50c825275630f6bcd6d9",
+"result": [
+"required",
+"recipient",
+"required at recipient: instance_id"
+]
+},
+{
+"input_sha256": "7b7d52a3a0b1b7578a98cf2662ea15973b7df23d118abcea3e5afb1fbeed58fb",
+"result": [
+"enum",
+"recipient.role",
+"enum at recipient.role: unsupported value"
+]
+},
+{
+"input_sha256": "01dcfd39b1d9fc49245ec1040390f5cd693891e2cdce61b3fe7c244d35fef9fc",
+"result": [
+"required",
+"$",
+"required at $: payload"
+]
+},
+{
+"input_sha256": "404e644da236acc57a30cb882a26054e703fbdd37e3e0e9b5f276b63deeea791",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "f71c2febd45bba907bf43aa11c4a5181cc5d2d52823adbedc0bf7f9e804c7a1d",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "3951ec3dbe3812f99d6017bb68cf1bdea07d50c1d815d98d818eb0bdc6a79f93",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "2153262bbfa2755834df59ce6758e6dbf65047316fd89784a8a5998aca48318d",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9e7509e734817755b49184f3523b259cf2a636c1a2f99c9d1610582a8947cd04",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "6670b34879d20814d40c032d16eb7c0dfbd7dc158cd4c8305ba79bcce007bb80",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "dee28087714bb8f6b37903a49488189e757d6176a51363b518a2855a4b507671",
+"result": [
+"string",
+"evidence_refs.artifact_id",
+"string at evidence_refs.artifact_id: expected nonempty string, at most 128 characters"
+]
+},
+{
+"input_sha256": "772d3442eacf5cd5208fefb4f94cd26ae994c054d39cdf63703b9a4f8248df44",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "dbeb43d7f90b4fd86bc362e25155cbb4b7dac6bf259c52bf082268b4fb804ff9",
+"result": [
+"required",
+"$",
+"required at $: message_type"
+]
+},
+{
+"input_sha256": "2063e8385fcc8fe2597de7ef0e1adbc57b6f599a2346233b9b2bbfe3d9baaac1",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "02a7c8f4eaacfbb53511babbaffd76ac6407f8df127cdece2064a99740da53a3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "99738da081d217b9f29b74fda1214d71babb072ccfb9fc61c096b208d0167bf3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5734ac0184095a15ec26ead5ad4612b658adb1fd4277f302942e4609404ee69e",
+"result": [
+"version",
+"version",
+"version at version: supported version is string 1.0"
+]
+},
+{
+"input_sha256": "9d283ca6333365b617f45a139c71924d5768caa476013365781e066ddde71962",
+"result": [
+"hash",
+"payload.oracle_ref.sha256",
+"hash at payload.oracle_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "53f2d86ddda23a9ef09261c177b5cb5432298f00a25ca641ace716ae908ec6c5",
+"result": "ok"
+},
+{
+"input_sha256": "676f617af88d5196b24695ae087d1e9294822d42080fea9d0a4904573f48f7aa",
+"result": [
+"required",
+"payload.plan_ref",
+"required at payload.plan_ref: path"
+]
+},
+{
+"input_sha256": "dc38f5dad95030c50b40eeb326eeceb8bdaebb75d32e0863d620530bd702da9d",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "df00a7eae513ed9d7bb24ec446e319c0e77f67678dc51aeaf49dd9d50b8fb568",
+"result": [
+"assignment",
+"sender",
+"assignment at sender: report actors differ from assignment"
+]
+},
+{
+"input_sha256": "d4382474a2e9f8fe68d6ddb2e8c1925a5932065336cf4d1bf10a94688ee2d807",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9c680bb62b7542bfda7a19c9080e4333db142034f931bb67d19ea0de83f777b0",
+"result": [
+"required",
+"payload.checks.evidence_ref",
+"required at payload.checks.evidence_ref: kind"
+]
+},
+{
+"input_sha256": "5a03f474e638918e9250241adc5b7aca312041c078e9a603a681fe2c50b1bd45",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e5d312eb4f496091f8b56ec582bc6b64620400a5a49a4bdccd365411cd247025",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9689433e6cc0d7c8a39dae99637a0f7eb18405d206a03a7620af96ddbf0df8c5",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "e549b6424cec5ae5a8c4739f68b049aa9363c56304eb8594da9a111965ac2ac4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "1b0a281edae16d723234e9deaa2af2f5e3c71cc75a4605e4cc628af98f572907",
+"result": [
+"required",
+"$",
+"required at $: recipient"
+]
+},
+{
+"input_sha256": "64568521b938d4b58fa657a952ce2f34d88261d1609ad4f830cca9fe120217e3",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ae15065eefaa535ef14600dcbfc7dd0818d94052fb767716c7b5c25730e88142",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "16d73bc6f40922c93dfbcf6f39f2b62107f376173f7e26df4a65265486fb8c42",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6e5b0476787588ab7e506431e84789e69b322fc3f350819b1db4ebeef6766746",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: path"
+]
+},
+{
+"input_sha256": "e4b1f78aa341e0b44ff14a920195bd2ef289b34c3564510df93b108c8f6fb5d8",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "6053a7b3333842e43815568e2f545c06009197ea162257cd7a42abfd7d15dcba",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4882380947c0f1814945c0b5683a4344cfb1aa4ef785ce8c20c627320f602797",
+"result": [
+"string",
+"payload.comparison.independent_rerun.workdir",
+"string at payload.comparison.independent_rerun.workdir: expected nonempty string, at most 8192 characters"
+]
+},
+{
+"input_sha256": "13afec6a38441c17b8c450462c6b7685f4ee3b49ddefdf9ca6a0ff7b8ad16bf5",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "678931ce38b360ec49d0df74f42c87c46b13a0205375c2cdf4a37ff37ba799af",
+"result": [
+"required",
+"$",
+"required at $: plan_id"
+]
+},
+{
+"input_sha256": "8f4f1cc8b0d071c3c5220a0b1e1a1ef39d42fb36c41ae22d28104ba3071085ea",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: sha256"
+]
+},
+{
+"input_sha256": "a56ccb2f68eba20194c4e8fcb88a4e3ff97bcef5ab0bcd38b3ccd0ab5da830cb",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "e7604c4eea34443b9206915706923841aa5092a0b8d2849917b21b21ea80d756",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a18617ef7b9cbece679852310f16d0f498585ddb94c858431b8716c2de7a1e50",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "a75db009b622e4057ad0622feb0019c07e176f7b5862772d3435987a7fa572d9",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "860a250707d17b77a9d635864fbcf405bedb27df76a6bd6b24ec1de56c99a702",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "32d5a9f94071fc6f9a994985891a5d3e54ec82e671f655f137c4bdbdb9a76d10",
+"result": [
+"required",
+"payload.checks",
+"required at payload.checks: evidence_ref"
+]
+},
+{
+"input_sha256": "c909bdd0a857d82ec89cf4da78e8e29d8ef394f065eecf6dffa6fbb31ff35c8c",
+"result": [
+"required",
+"recipient",
+"required at recipient: instance_id"
+]
+},
+{
+"input_sha256": "b28b3ad60b8041eb343a8997762bceeaf5c4bdc71a2b840fc0868147d4ea0d19",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "7f57352db299004c6e5298d4d1de22d7fef06a4fd87c71464d46edbce9194f69",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "44b753599443faf7db7e2d26ee2077a5cb24e94c2b42c9950e1a84889768a284",
+"result": [
+"type",
+"recipient",
+"type at recipient: expected object"
+]
+},
+{
+"input_sha256": "c1013866cb86d29fb2b7e4fa54266fa87486f7adac50c4f3c745739595f94948",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "13afec6a38441c17b8c450462c6b7685f4ee3b49ddefdf9ca6a0ff7b8ad16bf5",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "acde14bfb09aa96074a5ebcd3ec8c19797ad9ac9d64f379d276a9481c4898cce",
+"result": [
+"route",
+"sender/recipient",
+"route at sender/recipient: role cannot send this message type to recipient"
+]
+},
+{
+"input_sha256": "897a572147e0bed4f587c23f6d7f64e86570746f84f88a5743d307fb7a131394",
+"result": [
+"comparison_evidence",
+"payload.comparison.tester_report_ref",
+"comparison_evidence at payload.comparison.tester_report_ref: must name an earlier actual Tester job.report"
+]
+},
+{
+"input_sha256": "ae15065eefaa535ef14600dcbfc7dd0818d94052fb767716c7b5c25730e88142",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "34d34e084fdb0792b213e621f64e66ed87f80832a5f6e9f42b42c2f087369984",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "81f1a0fb537df9df0aa03c8855e1e39d587a2e161d43b51af4679c954561e02d",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "ef93fb2278dd0997c282fc9846ac05da5a38480e374c0b9cb50a613f93e23682",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4177f94489b6acde4a1bf638f195d4fe31b3800270f1b284f16f5a1fdf56a44b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ee942c4279ecda4398ad04491c2b55da0b6e99dd6d728c8a22a02a8046421fc5",
+"result": [
+"oracle_binding",
+"payload.oracle_ref",
+"oracle_binding at payload.oracle_ref: Tester cannot change or self-approve strategy"
+]
+},
+{
+"input_sha256": "49449075f43e8679f35a5d869ad064bf760d4e995c69f89a7262965803e22a2e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fdd28ca9fc1d48650dee86f7c927c5e7440a9ef5a792eccb83572b2786bc654c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "767b485c14f32b07475f424b21fc5d21208a8985a4d59fac5f3f36dc46155c16",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e57ba9d7c365fc0c28de0100aa489a46e4f66c503ed03d05b0673bd4a512d16e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c88e8774f4ff8b34b62d26a8041ed4d5ce11e36e9724640b2399f755d562e6cb",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: path"
+]
+},
+{
+"input_sha256": "f450121ab7b3f55f642ce6dd6cf6daff97fefd092d36a33a05ef4a03d19c2c50",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "8c949ca9924782e4aee6f60e4666927755edf915bcbc53ce3b859631842b6912",
+"result": [
+"required",
+"$",
+"required at $: sender"
+]
+},
+{
+"input_sha256": "ea148fc169e4b8bae5d55b87acd6abf342ad2db637e2ffdb5de8bfc8be2b6e5b",
+"result": [
+"hash",
+"payload.checks.evidence_ref.sha256",
+"hash at payload.checks.evidence_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "5698bd77abda9901f810ba4505c702525e1a22234ff27e25fc690b27f5eeb5c6",
+"result": [
+"required",
+"$",
+"required at $: protocol"
+]
+},
+{
+"input_sha256": "ae15065eefaa535ef14600dcbfc7dd0818d94052fb767716c7b5c25730e88142",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4291b1f23968bf22e9f76d7b5d64ff304dbec6304d572930af381e7610f80c39",
+"result": [
+"required",
+"payload.deterministic_commands[0]",
+"required at payload.deterministic_commands[0]: exit_code"
+]
+},
+{
+"input_sha256": "897a572147e0bed4f587c23f6d7f64e86570746f84f88a5743d307fb7a131394",
+"result": [
+"comparison_evidence",
+"payload.comparison.tester_report_ref",
+"comparison_evidence at payload.comparison.tester_report_ref: must name an earlier actual Tester job.report"
+]
+},
+{
+"input_sha256": "e57ba9d7c365fc0c28de0100aa489a46e4f66c503ed03d05b0673bd4a512d16e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "71111c93ffb830bc144e778cfee6971c0df680741b2eeb4468698d54ab7efe28",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "7e5b719ffaaba1c8df2f76009e5592070f8a88f51af8db9730ec99de222f9ecc",
+"result": [
+"required",
+"payload.checks.evidence_ref",
+"required at payload.checks.evidence_ref: artifact_id,kind,path,sha256"
+]
+},
+{
+"input_sha256": "273b51051cfdd42775f05fdbcb1b89ddffdd47d7b514797a62cb6dbaf2d6b0a0",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a2a22095a61038bbf5b548f922275d7ed7add7b2a9f5e99a0dd95a8728288644",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5a03f474e638918e9250241adc5b7aca312041c078e9a603a681fe2c50b1bd45",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c6a8252c1b654fc6d65711f077eff040c788def46d9c4126ce906b573abd1f43",
+"result": [
+"required",
+"payload.deterministic_commands[0].evidence_ref",
+"required at payload.deterministic_commands[0].evidence_ref: kind"
+]
+},
+{
+"input_sha256": "ab027bda84c564ea7400f9e9765c675e102a5caa5758481612fd0a616e4dad35",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "d129496fea8e50ae3124bf713ced520aad03ede0b01ff53d8b71feee4a909e9c",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: path"
+]
+},
+{
+"input_sha256": "897a572147e0bed4f587c23f6d7f64e86570746f84f88a5743d307fb7a131394",
+"result": [
+"comparison_evidence",
+"payload.comparison.tester_report_ref",
+"comparison_evidence at payload.comparison.tester_report_ref: must name an earlier actual Tester job.report"
+]
+},
+{
+"input_sha256": "95904af8e309c176eed244612fbaf448f976e210bc713d21babcbb814ede7285",
+"result": [
+"required",
+"$",
+"required at $: sender"
+]
+},
+{
+"input_sha256": "d2651eda75a0fbfd6c0f5dc9011ed65999b725dce928fa7dfbc9527bd8d5117e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "ab1a08e1077163418929fd9232a5193d46aaedc964f458f5f5031f385d850cb6",
+"result": [
+"type",
+"payload.oracle_ref",
+"type at payload.oracle_ref: expected object"
+]
+},
+{
+"input_sha256": "a9923b9e21150231f1d55988edacb57859c7fdab988d5e4b21dda72bc3c8428b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "dc38f5dad95030c50b40eeb326eeceb8bdaebb75d32e0863d620530bd702da9d",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "c996259f35b944427923c2b7453f1a40c70c2429e5f5a7a1fdb5c404ee0e4709",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: path"
+]
+},
+{
+"input_sha256": "fa2a2d9da3dc9ce9c4c9417b0fd71260555e3b8b88d3ada0cb6a06ae2757c5f7",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b79fa0969bb57e4888d37c9d074e5db27e91708ba5b981397a4932cc190a3c89",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "870909439bfc9063f1812a1651ae1b0fc1aa0362ed676b94799b2aa86d226a0b",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: path"
+]
+},
+{
+"input_sha256": "1b5cd63717918725b5473407db6461238d0aa02551640791143d916d4978d366",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "472e8b870497e417b12b214e85254b5d99d7724eefb77851d8a61248f9f1a881",
+"result": [
+"required",
+"payload.deterministic_commands[0]",
+"required at payload.deterministic_commands[0]: command_id"
+]
+},
+{
+"input_sha256": "03d428a13cc94f6bb28b6c8f64eee203667d2a11a56b043da73c841572e8812c",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "5fad46921a0361d9ebdb88697cc2c327264062143a7b3c84290d851b86de212c",
+"result": [
+"type",
+"payload.comparison.candidate_ref",
+"type at payload.comparison.candidate_ref: expected object"
+]
+},
+{
+"input_sha256": "a9767351ff689b18d46500883f50f703eb228661b1c92ac9d220ab00906bf01c",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: artifact_id"
+]
+},
+{
+"input_sha256": "a2f07cd8215d4785f69012814222e53f8458293daed337009dd32de6c2931c5c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "a50f959075bfb15f48901890cd099c81aa19e7d94fc06d395cc0d694590b0bd8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d10f37a052ecb127c025108acb329cf5e64731319bf1dac69aff0d5f9ab174f8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "af584a9f9a6cbd092edab2934b10310f9d1012b2d10d73f433f5dff40d275914",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c30bff24c94adee67de3d04bd7df7e8181796c2aaa8d721009d1737bf4597628",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "b1949e4f0d1797b4f1e911a81ce2339337036fd41e08a2c250981db4a250478c",
+"result": [
+"enum",
+"sender.role",
+"enum at sender.role: unsupported value"
+]
+},
+{
+"input_sha256": "dc38f5dad95030c50b40eeb326eeceb8bdaebb75d32e0863d620530bd702da9d",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "1ac73e842debb5949289b680a1adc01adc3045240c60dd5e38b78f60e8ed4eec",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "258905d90c7ff9a5e83dccd90fe27a262c488ff0c14d9125a075f61bcd9288c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "104553160d2d04bc699aac38bbc997cac8277e120df2e634b39795766f901b4a",
+"result": [
+"required",
+"recipient",
+"required at recipient: instance_id"
+]
+},
+{
+"input_sha256": "cfa66096b467329ed4a75c189d8ba7debb39fb0b6b8db52080217bc783598e46",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4f15134a87678e3bec9d1a41252d4dd90106be7e24e5f86952ee00d887539a2f",
+"result": [
+"type",
+"evidence_refs",
+"type at evidence_refs: expected object"
+]
+},
+{
+"input_sha256": "ae15065eefaa535ef14600dcbfc7dd0818d94052fb767716c7b5c25730e88142",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "024c64af9d64f9cdc390def7c26341767fca081f1622b4df7420384b581ac32e",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "ef64c6d94f9cafbade71ecc6c57e6c889e250643c8b01b87bb08e4911faf483a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ec1e03518fec9a71a0919d07b5f5ae3ec083cb113e347bebabe669748da5c4d7",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b0d9f16e802b5396452cb1b897adc5b29e82948859186d0bbf9401de568c6294",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4aede9c2f125da8f8ac015b4c68440b58ef307bd847f88bea016173ba34d7ed2",
+"result": [
+"enum",
+"sender.role",
+"enum at sender.role: unsupported value"
+]
+},
+{
+"input_sha256": "73c5779507d86bee0883ca039b15f0b9a596ef92013f077401e8d94775a38f08",
+"result": [
+"hash",
+"payload.checks.evidence_ref.sha256",
+"hash at payload.checks.evidence_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "bb155a90697fd0649370539bfff29771812ed7010f75f03fb664386aecbcc45f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7d333a0e224678ae9ca3c983179692e91e7095e27f02865d8bdc8f58350fa1c5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5c821509c89672ab20045559d2d6293a691b0b58ea0d9087f2c24eced45487c5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "42b357d807a0ef1dcd92e306dee3dd0c30e982ad2df13dd067583808213fc1a3",
+"result": [
+"type",
+"payload.comparison.tester_report_ref",
+"type at payload.comparison.tester_report_ref: expected object"
+]
+},
+{
+"input_sha256": "81accd3acf322b52732b62fdf8aa3fda6902f2fda45c9f082c2d524ccbe29725",
+"result": [
+"array",
+"payload.scope",
+"array at payload.scope: expected bounded string array"
+]
+},
+{
+"input_sha256": "8005745b87718d0e9e14b14deba0946db8ca7e0feb5e65700f611d02ceb48a60",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "87c40128f132d292ec22ac0f75a3e81b5195dccc6e57e075ddc44b8706f95b93",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "0afaa41ae37dbb065dadcf45c53d14a82e293a1acc78aa0a5ea1ae77153791a5",
+"result": [
+"required",
+"$",
+"required at $: message_type"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "d51888494de83c430a3369b157237e070b3cb313f9fe6c8db49f5402d843ac2a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c9fb04dd6e8db90a0fac8390af4aaeba8ec6c1b30b550e380e9d015a02de60c7",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "411e4f00331e97cd68db7049707dee2fe2e83ee562a3a4b85c3adf621612bb1b",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "03788537816550911ee902ace58ea113e2878680b8049ce5e34404156c4d5316",
+"result": [
+"enum",
+"sender.role",
+"enum at sender.role: unsupported value"
+]
+},
+{
+"input_sha256": "ee8a534bb8275e61952caf38ff7fd0361146608ee48a805b30b680027e9b3217",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "fd4c6efe6c1216a329734033e4cd0bbd806d3ffb1c6f30cfca3e53d9037b487f",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "54a59a148124314107ed9c92a549e7154dd3c3f79efc1dce13b1b8188606df86",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7bff1d367a68a129191958fec550248a6a32313a1fa0829cf5240dc6f394f49f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d5d1ec428c03b8f884d26bfc99ec4f2831b5eb62c9092324f2cd0089444280de",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "302c3a5f3f078510c7ee89214361d86b917578a630a9c790eda6e4d64882f221",
+"result": [
+"required",
+"payload",
+"required at payload: scope"
+]
+},
+{
+"input_sha256": "13afec6a38441c17b8c450462c6b7685f4ee3b49ddefdf9ca6a0ff7b8ad16bf5",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "7d333a0e224678ae9ca3c983179692e91e7095e27f02865d8bdc8f58350fa1c5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "68817ace68de6cbfa1add7c9d291f62edfa7f2366ec6f03a22a79828f5f7e33a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "037f4c921d7a7fac352de25cc906cd38b6ad9292405e0a368239ce69616a132d",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "897a572147e0bed4f587c23f6d7f64e86570746f84f88a5743d307fb7a131394",
+"result": [
+"comparison_evidence",
+"payload.comparison.tester_report_ref",
+"comparison_evidence at payload.comparison.tester_report_ref: must name an earlier actual Tester job.report"
+]
+},
+{
+"input_sha256": "53be543f547e178fbdc799d384c00a62dc7b131f8fe93de834a79b4b0d05ca9b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "1b6227dbb9f81ad0779fd42c23b759a648d59a6d57cb8ffcf684c49a2bcb4724",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "162b1c8387c7eb1d678bb155f99732df246ce6f3bb7d42b48c89282ae8cdc5c5",
+"result": [
+"required",
+"payload",
+"required at payload: objective"
+]
+},
+{
+"input_sha256": "ebea6259d78276717061202ee65816a728731aa985bf531a1f9d5c47d0332734",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d2030f6cee1b477bb07903e17bfabf1bdf50831d2fe51b4d7cad48c56e94604b",
+"result": [
+"required",
+"$",
+"required at $: payload"
+]
+},
+{
+"input_sha256": "9b1b2267be56141a18597c4d56ec25232aecf261862b8576087462e68242211a",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "f450121ab7b3f55f642ce6dd6cf6daff97fefd092d36a33a05ef4a03d19c2c50",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "897a572147e0bed4f587c23f6d7f64e86570746f84f88a5743d307fb7a131394",
+"result": [
+"comparison_evidence",
+"payload.comparison.tester_report_ref",
+"comparison_evidence at payload.comparison.tester_report_ref: must name an earlier actual Tester job.report"
+]
+},
+{
+"input_sha256": "00df413f49a90cf6386bad74dc24968e0a3e87ab97c449398dc376597430004e",
+"result": [
+"hash",
+"payload.comparison.tester_report_ref.sha256",
+"hash at payload.comparison.tester_report_ref.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "b0d9f16e802b5396452cb1b897adc5b29e82948859186d0bbf9401de568c6294",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "30a185ab2ec5d5045689b6d0f46c37156a19b33cf823628aefd7a44014541907",
+"result": [
+"type",
+"recipient",
+"type at recipient: expected object"
+]
+},
+{
+"input_sha256": "85ee89fe80707bd030d2f4ae984336a455d96171b489ccc66f8ad04369db70f1",
+"result": [
+"array",
+"payload.deterministic_commands[0].arguments",
+"array at payload.deterministic_commands[0].arguments: expected bounded string array"
+]
+},
+{
+"input_sha256": "20778051f7afbb1c948f7d001b034217ca2344fbc198ed12e5757afb9d216026",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "e6530cf94735974d43f34799bd5a8a59595b04711d82f4ee43b6f730d6b147c9",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "c0b51e1d22d60b1737c4d4fe53cd070d70ca939135a9890f3ecadc8b343c006b",
+"result": [
+"array",
+"evidence_refs",
+"array at evidence_refs: expected bounded evidence array"
+]
+},
+{
+"input_sha256": "3c416542a4f0186f1f1825ea1dce0a481c050eaa82d2e90faf005d74a3930541",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "3d1ef84ffd42bf8b7da86531a608340fad86e559d6ba2235ecdf1cd363c23bc5",
+"result": [
+"required",
+"$",
+"required at $: evidence_refs"
+]
+},
+{
+"input_sha256": "c993e7c82212e49487bf0c6afca748a0d92aeb9f6bf67a480a4fe9728fe79b03",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c720acf55de22a0d19faa9673463553db1d5ff77fcfe0e5566057e8a14bbb5d1",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5888791d7169c8e28a3b4c33e6a4d560d24f9c74291cd0501a9989f11d100348",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c993e7c82212e49487bf0c6afca748a0d92aeb9f6bf67a480a4fe9728fe79b03",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9fecd2d2f889d1e9e40e27813131a1e59b04fe24804502cfd8b07c17dc648018",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ac70391b4441011a4ba4918b37629c23716ecd598a3ea297907e7d2d398bd0c4",
+"result": [
+"required",
+"$",
+"required at $: in_reply_to"
+]
+},
+{
+"input_sha256": "5a03f474e638918e9250241adc5b7aca312041c078e9a603a681fe2c50b1bd45",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "81f8a56f68b0512571b8c4a9ef828e508daa61034546d7f54154b7dbd4327de2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e57ba9d7c365fc0c28de0100aa489a46e4f66c503ed03d05b0673bd4a512d16e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5a03f474e638918e9250241adc5b7aca312041c078e9a603a681fe2c50b1bd45",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "258905d90c7ff9a5e83dccd90fe27a262c488ff0c14d9125a075f61bcd9288c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "4256eb308d692391db4034b4d07a9a34f2b16641ed166811136931f2bd27834d",
+"result": [
+"array",
+"payload.deterministic_commands[0].input_refs",
+"array at payload.deterministic_commands[0].input_refs: expected bounded evidence array"
+]
+},
+{
+"input_sha256": "5a03f474e638918e9250241adc5b7aca312041c078e9a603a681fe2c50b1bd45",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "576629baf53cb2cfd2d9bdb017c104840171ce1d8b1725030f88a6b83dd93df8",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "82181993829187e8828c3c65f99c363c2bc9c897aa186ccfe95fe6adb0fcdb04",
+"result": [
+"string",
+"payload.objective",
+"string at payload.objective: expected nonempty string, at most 8192 characters"
+]
+},
+{
+"input_sha256": "bb155a90697fd0649370539bfff29771812ed7010f75f03fb664386aecbcc45f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "23f76d887c246585814d1299576826d12b994558c1aa59436e9ab6cbb191d6ff",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9fd80cf552de2d5c658f122d86f09e5eb13843a0a97290afaaddcd9d9601c50e",
+"result": [
+"required",
+"recipient",
+"required at recipient: instance_id"
+]
+},
+{
+"input_sha256": "6c8fbb4d5e3ce6b1f908a88ac7a09fda7e17d8f9bddfd020335702ae7a0b5fba",
+"result": [
+"type",
+"sender",
+"type at sender: expected object"
+]
+},
+{
+"input_sha256": "ff197e46506f2b0b84d900f759bd6c45b47695e924b40ccac207ba44dff2fa7c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b14e5f56325a049fa86dfd92b2e9fe6f1da229478f77dd2f50ff859a173fae28",
+"result": [
+"enum",
+"recipient.role",
+"enum at recipient.role: unsupported value"
+]
+},
+{
+"input_sha256": "6053a7b3333842e43815568e2f545c06009197ea162257cd7a42abfd7d15dcba",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "b0d9f16e802b5396452cb1b897adc5b29e82948859186d0bbf9401de568c6294",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "69f1a4c9a998e75b53dad0271b8df730e0757e42c941e36d9bf3b9802bcc8433",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e57ba9d7c365fc0c28de0100aa489a46e4f66c503ed03d05b0673bd4a512d16e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c67e47c7cb4e8a5dd160133b7498f89c21b614eae587000b3556472cc9176d87",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: kind"
+]
+},
+{
+"input_sha256": "860a250707d17b77a9d635864fbcf405bedb27df76a6bd6b24ec1de56c99a702",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "1555d1ec9cc7a82e043fc226471327f78ec332a68a8b4c8437cc554f5c3e26fc",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "13934ec15b2c553f740e85464506c10eeeb00dfb7dafddf4210a2124fa2c5ce0",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: kind"
+]
+},
+{
+"input_sha256": "f6743ebdd7392a9cad448ecb63d37638e1ab4b7c746e1faac5325793a45cd39a",
+"result": [
+"required",
+"recipient",
+"required at recipient: role"
+]
+},
+{
+"input_sha256": "595ed6b4a891ca8471d27ae7cc3e58063839e6289c319fb12d54c7c8df8039b2",
+"result": [
+"required",
+"$",
+"required at $: version"
+]
+},
+{
+"input_sha256": "1569f6cb0839ab61d645f76c63fdebc95cf04bb45752eff595c44bd95c78f162",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "258905d90c7ff9a5e83dccd90fe27a262c488ff0c14d9125a075f61bcd9288c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ee1b7c85ecf5c1f8626688c98c072bd5309c2ae661e2453586a939ad6af119b4",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "4e7225c3c4f456566e8f03d0c6c14c7239022c69a050009edcdb1f3cb07d73f2",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "fd4c6efe6c1216a329734033e4cd0bbd806d3ffb1c6f30cfca3e53d9037b487f",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "5d814ebd69add600e2e0959c9970a87c8a9263919887c38867b2d532e168822c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "cd213a0e0aca2467af9c25663b357eb34bf61514f2d7add75caa89a05f611e37",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "69f1a4c9a998e75b53dad0271b8df730e0757e42c941e36d9bf3b9802bcc8433",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "dc38f5dad95030c50b40eeb326eeceb8bdaebb75d32e0863d620530bd702da9d",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "6c161524babb49c3f1302872ce1029ed3c5329d5b6055f4219b1dd3f200efad4",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "3aa1ef6ba5e4cdaf87268cd39e911a504159a3e0af13f1c4b8f4134e6cc4a930",
+"result": [
+"hash",
+"evidence_refs.sha256",
+"hash at evidence_refs.sha256: expected lowercase SHA-256"
+]
+},
+{
+"input_sha256": "5369bb40724f8ae0d1c49f4a8ce7490ea987aa0334670957220789acdcd419a7",
+"result": [
+"required",
+"$",
+"required at $: attempt_id"
+]
+},
+{
+"input_sha256": "94006d018acd723234a34551e4b8bbc33f3e67d357661cddc91860497e6d0108",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "d5c25e29356d533eb735b46ccec6a7fc003e5944ff21ea7e12a2eec6380cb85d",
+"result": [
+"required",
+"payload.deterministic_commands[0]",
+"required at payload.deterministic_commands[0]: command_id"
+]
+},
+{
+"input_sha256": "d933edc8f7fa5ce46feea45e65580dca9b580a88dddf213289be3adf0ac0066c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "49f36b19a117f74b15eaab85fef36db527988cf238c27259673f140948f8236f",
+"result": [
+"required",
+"evidence_refs",
+"required at evidence_refs: kind"
+]
+},
+{
+"input_sha256": "a2f07cd8215d4785f69012814222e53f8458293daed337009dd32de6c2931c5c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "6b39cb494181c44e0dfcad14adab42f25b08ea3e723dc150fdf8db53b1d28b4d",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "32515c6aad174f95f8ceeba64a18a6ed30bf734c0da105de483c62d6ac685a4b",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "c993e7c82212e49487bf0c6afca748a0d92aeb9f6bf67a480a4fe9728fe79b03",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ae15065eefaa535ef14600dcbfc7dd0818d94052fb767716c7b5c25730e88142",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "864cbad08ed35bc1d53b3ca010d53f667cf3298157f66a4f57cad4adc3289f6c",
+"result": [
+"required",
+"$",
+"required at $: attempt_id"
+]
+},
+{
+"input_sha256": "b627e7f2f43d1c0ec96bb8d341b0b43165169591cb3df9db61a19c5f911f8a79",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: sha256"
+]
+},
+{
+"input_sha256": "571eef4f51b6d519bc5cfbacc0872fcc09dee65e15c5dc80d0d0d8cba57587c5",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "a8bf419cd684f2ff7337914b284baae5489bd825c2c2b00e37a2f9ce79d95f90",
+"result": [
+"causal_identity",
+"plan_id",
+"causal_identity at plan_id: must match predecessor"
+]
+},
+{
+"input_sha256": "e89dee5f715f7b36ce0cdbbe8a2f51ce629c12cf7e706bbb2881b07ca79c8cee",
+"result": [
+"required",
+"payload.comparison",
+"required at payload.comparison: plan_ref"
+]
+},
+{
+"input_sha256": "e8548e35da4637a66460543814aed48f8a56a006f8a68ce7ad5a9433aa065d31",
+"result": [
+"required",
+"payload",
+"required at payload: scope"
+]
+},
+{
+"input_sha256": "18a40d07f5d8c2ee4db2379dd676863ca5b1d3d6ac7d3263942591c0a071b517",
+"result": [
+"message_identity",
+"message_id",
+"message_identity at message_id: duplicate message identity"
+]
+},
+{
+"input_sha256": "9ad67ab2728f94ab9da49de3278e8634d8ae800e23a244458e25a2a2daef1fc1",
+"result": [
+"required",
+"$",
+"required at $: recipient"
+]
+},
+{
+"input_sha256": "e68eee1035be17a8eeb61c9c624e6634ee6eaf13fecf066141bead518d3c87df",
+"result": [
+"string",
+"in_reply_to",
+"string at in_reply_to: expected nonempty string, at most 128 characters"
+]
+},
+{
+"input_sha256": "e9bc0f5deebcaa27d5466e4e94e135500b662e2e06be80e9df6c9b109c968149",
+"result": [
+"required",
+"payload.oracle_ref",
+"required at payload.oracle_ref: sha256"
+]
+},
+{
+"input_sha256": "6053a7b3333842e43815568e2f545c06009197ea162257cd7a42abfd7d15dcba",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "f79e16349e556ded2585339336f6a24c5508bc93240e73933e497bac321e2d5f",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "48d8ff40b2ffd65cf753cf170c5d12b0ea349e90f907be95c63bc056ae8011f5",
+"result": [
+"required",
+"payload.candidate_ref",
+"required at payload.candidate_ref: sha256"
+]
+},
+{
+"input_sha256": "dc38f5dad95030c50b40eeb326eeceb8bdaebb75d32e0863d620530bd702da9d",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "d3f74c456c9f0bdfe91e385b28437c3bbc40627d4f0cd5caa58529030bf08793",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "cf82da9ba358d9c38edaeaffbfd9c9e7481d580027a3721216f219a89750016c",
+"result": [
+"artifact_identity",
+"evidence_refs",
+"artifact_identity at evidence_refs: same artifact identity cannot change content/path"
+]
+},
+{
+"input_sha256": "a29cc0ce30f61b07f9c67637c03f7b91de3a48008ba0da31a080313162c59add",
+"result": [
+"required",
+"payload.deterministic_commands[0]",
+"required at payload.deterministic_commands[0]: candidate_ref"
+]
+},
+{
+"input_sha256": "9ae6e1b0b0886b968bf073ae1a01df0ad4edec9a017a4af3b92d912fdcc7427d",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9540ec795bd01b71b0106421b9f621710718d839cc79ec33101c83bf9e4b5889",
+"result": [
+"type",
+"evidence_refs",
+"type at evidence_refs: expected object"
+]
+},
+{
+"input_sha256": "4df6fdeb536fbbe561e5bbf1ac79aecb2b852175c3ce028ab37225dafdcd520a",
+"result": [
+"comparison_evidence",
+"in_reply_to",
+"comparison_evidence at in_reply_to: Reviewer assignment must reply to the Tester report it names"
+]
+},
+{
+"input_sha256": "d42ddbae74a52f023b0050816b8f79a7812642dbcee56559667240ff5043cb1c",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "9e36efec67e3db0ca01fdb37d31335ef766ac78e5e2cc013c4971491a159f557",
+"result": "ok"
+},
+{
+"input_sha256": "7d333a0e224678ae9ca3c983179692e91e7095e27f02865d8bdc8f58350fa1c5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "7e3dde7dd5044872cd7cc9998c32b4a5b2052ac202c89d6054acac5d4c183c31",
+"result": [
+"required",
+"$",
+"required at $: message_type"
+]
+},
+{
+"input_sha256": "258905d90c7ff9a5e83dccd90fe27a262c488ff0c14d9125a075f61bcd9288c4",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "e57ba9d7c365fc0c28de0100aa489a46e4f66c503ed03d05b0673bd4a512d16e",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "ab97b264205d953ecd88c7e73568dcae700f450952b95dfb133fe53a7e79eab8",
+"result": [
+"required",
+"payload.deterministic_commands[0]",
+"required at payload.deterministic_commands[0]: acceptance_id"
+]
+},
+{
+"input_sha256": "bc692c0d8f7b15f31238a323393d90e6997986b3d5b694c575858f77d2e707ab",
+"result": [
+"required",
+"payload.checks.evidence_ref",
+"required at payload.checks.evidence_ref: artifact_id"
+]
+},
+{
+"input_sha256": "7896721ce1890ce946b43581526f833cb1dc6c9cbe2ca0e7ea37f96f8ee52ed8",
+"result": [
+"protocol",
+"protocol",
+"protocol at protocol: unsupported protocol"
+]
+},
+{
+"input_sha256": "c720acf55de22a0d19faa9673463553db1d5ff77fcfe0e5566057e8a14bbb5d1",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+},
+{
+"input_sha256": "5c821509c89672ab20045559d2d6293a691b0b58ea0d9087f2c24eced45487c5",
+"result": [
+"causal_reference",
+"in_reply_to",
+"causal_reference at in_reply_to: predecessor is not in supplied earlier context"
+]
+}
+]

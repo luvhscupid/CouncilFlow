@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "c5464f59f0098ef520afd972aa0753ae9ef0476d32eeaf893d88d25425281af2",
-  "entries": 220,
+  "sha256": "95f73a9240448854fac1374512cb1efd5fdd091a6df8288a0e836f022948d81e",
+  "entries": 222,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -90,8 +90,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 64941,
-      "sha256": "45e0af0d5e990bd542b0edaea2e592709c452d0949c36b1477b74f94b30e8499"
+      "size": 66815,
+      "sha256": "d487cb4f06dbe8c601f718e1293248010d94b9729079766ba2030891f20fef70"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
@@ -925,8 +925,8 @@
     },
     {
       "path": "tests/fixtures/README.md",
-      "size": 3143,
-      "sha256": "ba733dca7905d7356807437608a2931fc57f6947ed693b7de95e19eb3e163090"
+      "size": 3611,
+      "sha256": "58311ab97b8b575da143623e70e510049f7ac43e2bd43cddaa8899f90c61cb72"
     },
     {
       "path": "tests/fixtures/owner-version-original.txt",
@@ -957,6 +957,11 @@
       "path": "tests/fixtures/routing/vector-cases.json",
       "size": 138,
       "sha256": "2dedef868f0be2f3811afe8ba5eb05a7eef948f73757bc1636449e1781e77af9"
+    },
+    {
+      "path": "tests/fixtures/sequence-split-golden.json",
+      "size": 131433,
+      "sha256": "d06fb75824c34b1bbcfa021c7ea201624c789b2539608b3f3a36e396a13da4d5"
     },
     {
       "path": "tests/test_codebase_memory_integration.py",
@@ -1062,6 +1067,11 @@
       "path": "tests/test_routing_encoders.py",
       "size": 2665,
       "sha256": "5ff73656aeedd6c50a4273347fed2ec061d49c12ebe76247d484c41c21e0cdbc"
+    },
+    {
+      "path": "tests/test_sequence_split.py",
+      "size": 4186,
+      "sha256": "501c55dc507961bd34abfd9d20cbb65917e1ef0984bcc4c946dc5c935986b9eb"
     },
     {
       "path": "tests/test_skill_files.py",
