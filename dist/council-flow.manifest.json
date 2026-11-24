@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "bad59ef5bbc5598a8c3d5a53ab1f4c5114d8a1cdf67a85d22053a8dad781fdb1",
+  "sha256": "ffaa1551c7bfeae938509f934efdce089f2fbdfa24e6986bf6ce91b1338132e6",
   "entries": 194,
   "files": [
     {
@@ -175,8 +175,8 @@
     },
     {
       "path": "RELEASE.md",
-      "size": 14033,
-      "sha256": "b22449471c78524870dd3a1a14ab3627f61916af26af608743794026560c3ede"
+      "size": 14459,
+      "sha256": "533be3e9ae28353c418fc6bc39edd69b54dd1ebf92234a8f8e04572153537059"
     },
     {
       "path": "demo/README.md",

@@ -97,6 +97,13 @@ This is one successful run, not universal host compatibility. Upstream model
 identity, effective route, cost and quota remain unknown. No new model request
 was made for this maintenance task.
 
+The committed plugin ZIP was rebuilt on 2026-11-24 so that the shared runtime
+includes `dashboard/` (the templates `scripts/dashboard.py` reads); without them
+the plugin's dashboard step always failed. Only the offline unit suite was
+rerun for this rebuild. `claude plugin validate`, component discovery and a
+native `/councilflow:run` were **not** rerun against it, so those results above
+apply to the earlier package only.
+
 ## Historical Round 6 correction package (retained)
 
 The corrected release is built from the isolated copy at
