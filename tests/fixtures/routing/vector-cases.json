@@ -1,0 +1,4 @@
+[
+  {"input": "docs query", "status": "MATCHED", "route": "docs"},
+  {"input": "unknown query", "status": "UNAVAILABLE", "route": null}
+]

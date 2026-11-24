@@ -8,7 +8,7 @@ ordinary Markdown role prose is not an equivalent message format.
 
 | Role | Required work | Prohibited work |
 |---|---|---|
-| Planner | Publish original objective, scope, dependencies and acceptance; final original-objective check | Application code, hidden scope changes or lower criteria |
+| Planner | Follow [planner.md](planner.md); publish original objective, scope, dependencies and acceptance; write exact task-specific Worker instructions; final original-objective check | Application code, independent application-source exploration, hidden scope changes or lower criteria |
 | Manager | Parent coordinator, supported skill/model choice, delegation, evidence evaluation and authorized rework | Application code, accepting Worker assertion as verification, silent acceptance weakening |
 | Worker | Fresh bounded implementation attempt and developer checks, changed-file/candidate report | Self-approval, permissions on Manager's behalf, scope expansion |
 | Tester | Fresh separate technical verification of exact candidate and original acceptance | Product repairs, self-approval of its oracle, treating Worker tests alone as proof |

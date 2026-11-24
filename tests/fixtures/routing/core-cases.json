@@ -1,0 +1,6 @@
+[
+  {"input": "write project documentation", "status": "MATCHED", "route": "documentation_only"},
+  {"input": "make tea for the team", "status": "NO_MATCH", "route": "unclassified"},
+  {"input": "write project", "status": "NO_MATCH", "route": "needs_information"},
+  {"input": "write project security", "status": "AMBIGUOUS", "route": null}
+]
