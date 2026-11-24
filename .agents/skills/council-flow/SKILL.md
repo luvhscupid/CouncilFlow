@@ -37,7 +37,7 @@ Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md)
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate
    hashes, source fidelity and ordered context. Before Worker dispatch, validate plan coverage and exact
-   selected-task instruction transfer with scripts/planner_contract.py; never dispatch non-ready responses.
+   selected-task instruction transfer with scripts/planner_contract.py; copy Planner instructions exactly; never dispatch non-ready responses (ask the Owner via approval.request).
    Native transport is not enforced by this helper. Pass role instructions to native subagents when custom-role
    selection is unavailable, and disclose that fallback.
 4. **Worker.** Implement only bounded work, perform developer checks, return
@@ -76,7 +76,7 @@ Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md)
    using [acceptance](references/acceptance.md).
 
 ## Optional routing hint
-`scripts/route.py` is an opt-in local classifier. It emits hashes and confidence; Manager validates, ignores, or overrides the hint. It cannot dispatch roles, authorize tools, select an unobserved provider or model, expand scope, or alter packets.
+`scripts/route.py` is an opt-in local classifier, off unless the Owner supplies a route config. It emits hashes and confidence; Manager validates, accepts, ignores, or overrides the hint and records that choice (see [communication](references/communication.md)). It cannot dispatch roles, authorize tools, select an unobserved provider or model, expand scope, or alter packets.
 
 ## Evidence and limits
 Efficiency stays disabled unless explicitly requested; then follow [efficiency helpers](references/efficiency.md) using this installed skill's CLI, preserving full evidence and all mandatory roles/checks.

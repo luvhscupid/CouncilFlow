@@ -70,7 +70,10 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
    dispatch, validate the plan and exact selected-task instruction transfer with
    `python "${CLAUDE_SKILL_DIR}/scripts/planner_contract.py" assignment
    <plan.json> <frozen-criteria.json> <assignment.json>`. Do not dispatch a
-   non-ready plan or rewrite Planner-authored task instructions.
+   non-ready plan or rewrite Planner-authored task instructions; take a
+   NEEDS_INFORMATION or BLOCKED answer to the Owner. Supply Planner with bounded
+   verified project context. An optional `scripts/route.py` hint is advice you may
+   accept, ignore or override; record the choice.
 
    **Dispatch lifecycle (every role: Worker, Tester and Reviewer):**
    - The Manager writes each `job.assign` as a UTF-8 JSON file under

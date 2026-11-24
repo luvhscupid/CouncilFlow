@@ -9,7 +9,7 @@ ordinary Markdown role prose is not an equivalent message format.
 | Role | Required work | Prohibited work |
 |---|---|---|
 | Planner | Follow [planner.md](planner.md); publish original objective, scope, dependencies and acceptance; write exact task-specific Worker instructions; final original-objective check | Application code, independent application-source exploration, hidden scope changes or lower criteria |
-| Manager | Parent coordinator, supported skill/model choice, delegation, evidence evaluation and authorized rework | Application code, accepting Worker assertion as verification, silent acceptance weakening |
+| Manager | Parent coordinator, supported skill/model choice, bounded verified context for Planner, READY-plan check with `scripts/planner_contract.py` before each Worker dispatch, delegation, evidence evaluation and authorized rework; may accept, ignore or override an optional routing hint and records the choice | Application code, accepting Worker assertion as verification, silent acceptance weakening, dispatching a non-ready plan, rewriting Planner-authored task instructions, treating a routing hint as authorization |
 | Worker | Fresh bounded implementation attempt and developer checks, changed-file/candidate report | Self-approval, permissions on Manager's behalf, scope expansion |
 | Tester | Fresh separate technical verification of exact candidate and original acceptance | Product repairs, self-approval of its oracle, treating Worker tests alone as proof |
 | Reviewer | Independently compares frozen plan/criteria, Worker candidate and Tester evidence; reruns one declared deterministic command and reports discrepancies to Manager | Implementation, criteria changes, UX scoring, replacing Tester |

@@ -20,6 +20,8 @@ CF is inside the plugin install cache: read and execute from it, never write the
 | `$council-flow` | `/councilflow:run` |
 | `.agents/skills/council-flow/` (scripts, references, policies) | `CF/` — e.g. `python CF/scripts/contracts.py ...` |
 | `.agents/skills/council-flow/scripts/efficiency.py` | `CF/scripts/efficiency.py` (opt-in only) |
+| `.agents/skills/council-flow/scripts/planner_contract.py` | `CF/scripts/planner_contract.py` (Manager READY-plan check before Worker launch) |
+| `.agents/skills/council-flow/scripts/route.py` | `CF/scripts/route.py` (opt-in routing hint; advice only) |
 | `.codex/agents/council-*.toml`, "native TOML" | plugin agents `councilflow:council-planner`, `-worker`, `-tester`, `-reviewer` (Markdown files with YAML frontmatter in the plugin's `agents/`). Their body text is the `developer_instructions` equivalent. |
 | "native Codex subagents/transport/permissions", `inherit_native_codex` | Claude Code subagents (Agent tool), transport and permission system |
 | `mcp__codex_app__list_projects` example | irrelevant; only the Codebase Memory MCP namespace qualifies, discovered via the tools actually exposed in this session |
@@ -46,6 +48,14 @@ the table.
   subagent's `job.report.in_reply_to` must equal it. A missing or invalid
   assignment stops dispatch. The Manager must not create a backdated assignment
   to repair a report; rejected messages are preserved unchanged as evidence.
+- **READY plan check before Worker launch.** Before launching a Worker
+  subagent, the main session runs `python CF/scripts/planner_contract.py
+  assignment <plan.json> <frozen-criteria.json> <assignment.json>` from the
+  target repository. Exit 2 stops the launch. A Planner NEEDS_INFORMATION or
+  BLOCKED answer is saved as evidence and taken to the Owner, never dispatched.
+- **Routing hints are advice.** If the Owner supplied a route config, the main
+  session may run `CF/scripts/route.py`, then accept, ignore or override the
+  hint and record the choice. A hint never selects a subagent, model or tool.
 - **Every subagent report is persisted as a message file.** A `job.report` that
   exists only in the subagent's chat reply is not a controlled message. The
   Manager saves each report under `messages/` and validates it on receipt, with
