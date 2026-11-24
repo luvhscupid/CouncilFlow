@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "fb054f258c1a23f616b97307b9668dd4c29bcf15b240bad8d8b9a64370dacb35",
-  "entries": 245,
+  "sha256": "966ae271d75936d339f3ec3877cb93be7ca1e8b82c9122737bc6ae37123629a6",
+  "entries": 246,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -35,8 +35,8 @@
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
-      "size": 3696,
-      "sha256": "92bdf8a6086447025a168e3aa3684887ca7fe5b74d41871a73c206dd7949b491"
+      "size": 4217,
+      "sha256": "091dc6f1fd75ae378ea0d8024fa39338d5db3e1265bef6518598030cf4a7fe40"
     },
     {
       "path": ".agents/skills/council-flow/references/acceptance.md",
@@ -75,8 +75,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/roles.md",
-      "size": 4551,
-      "sha256": "d3d2415539b57ff7c8d512a06282064ba163dee6a78bdaa20375f7281fa8a13c"
+      "size": 5224,
+      "sha256": "9570afd75b3f5f1630003d05c6b3385c3033c3c1e60d45887b45dbf56e2f758e"
     },
     {
       "path": ".agents/skills/council-flow/references/source-fidelity.md",
@@ -200,13 +200,13 @@
     },
     {
       "path": ".codex/agents/council-reviewer.toml",
-      "size": 1630,
-      "sha256": "68810432dbffc892bf61a651581d3c163fa6eb322cf8316c05793e1af202cbf4"
+      "size": 2097,
+      "sha256": "1458a4b4b3e18bb39072ba949bd6c7a20a6c1266942ab6b8a530b93974475217"
     },
     {
       "path": ".codex/agents/council-tester.toml",
-      "size": 1904,
-      "sha256": "a9a55444b82bdf115fd40d46e8ea5feb377a1d2f132c9e1f77db2c5869da0712"
+      "size": 2587,
+      "sha256": "61e31f7c01b189b9abf88a7f989457383d9553e35eef9b76bf3edee201346355"
     },
     {
       "path": ".codex/agents/council-worker.toml",
@@ -1202,6 +1202,11 @@
       "path": "tests/test_task_graph.py",
       "size": 2669,
       "sha256": "2963f57edd4ce731d4bc464a44aef12913c4a525c7c35be0ad6060873337d4ef"
+    },
+    {
+      "path": "tests/test_tester_reviewer_upgrade.py",
+      "size": 9262,
+      "sha256": "3b8bc5894f492cb7a3c5aadd7e1a4943c1755e68655d15e503884a70e846d64c"
     },
     {
       "path": "tests/test_tester_selection.py",
