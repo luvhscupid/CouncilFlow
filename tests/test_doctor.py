@@ -64,6 +64,10 @@ class DoctorTests(unittest.TestCase):
             expected = hashlib.sha256(b"source bytes").hexdigest()
             result = diagnose({"schema_version": 1, "source_artifact": {"path": "source.txt", "sha256": expected}}, root)
             source = next(item for item in result if item["check"] == "source_integrity")
+            if not SAFE_DESCRIPTOR_READS:
+                # The doctor must refuse to vouch for bytes it cannot read safely.
+                self.assertEqual(source["status"], "UNVERIFIED")
+                return
             self.assertEqual(source["status"], "PASS")
             self.assertEqual(source["detail"], "referenced source bytes match the declared SHA-256")
 
@@ -86,7 +90,8 @@ class DoctorTests(unittest.TestCase):
                 "native_host": {"name": "Codex", "version": "caller-version", "evidence_ref": "host.json"},
             }, root)
             self.assertFalse(marker.exists())
-        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"], "PASS")
+        self.assertEqual(next(item for item in result if item["check"] == "executable_integrity")["status"],
+                         "PASS" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
         self.assertEqual(next(item for item in result if item["check"] == "native_host")["status"], "UNVERIFIED")
 
     def test_v2_malformed_records_digest_mismatch_and_missing_fields_fail(self):
@@ -143,7 +148,8 @@ class DoctorTests(unittest.TestCase):
 
     def test_source_path_traversal_fails_closed(self):
         result = diagnose({"schema_version": 1, "source_artifact": {"path": "../outside", "sha256": "0" * 64}}, Path.cwd())
-        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL" if SAFE_DESCRIPTOR_READS else "UNVERIFIED")
+        # The path is rejected before any read, so this fails closed on every platform.
+        self.assertEqual(next(item for item in result if item["check"] == "source_integrity")["status"], "FAIL")
 
     def test_source_symlink_escape_fails_closed(self):
         with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as outside:
