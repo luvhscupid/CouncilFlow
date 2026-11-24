@@ -151,6 +151,48 @@ existence/content. Codex native transport is outside this helper's control.
 Validate controlled packet/report files before dispatch/after receipt while
 respecting actual native sandbox and approval mechanisms.
 
+## READY plan check before Worker dispatch
+
+`scripts/planner_contract.py` complements `contracts.py`; it does not replace it.
+Before every Worker `job.assign`, the Manager runs:
+
+~~~sh
+python3 .agents/skills/council-flow/scripts/planner_contract.py assignment plan.json frozen-criteria.json assignment.json
+~~~
+
+`plan.json` is the READY plan artifact referenced by `plan.publish`;
+`frozen-criteria.json` is the ordered `[{id, criterion}]` array captured before
+Planner; `assignment.json` is the Worker `job.assign` envelope. Exit 0 prints
+`{"valid":true,"dispatchable":true}`. Exit 2 prints the error on stderr and means
+do not dispatch. The check covers plan shape, exact ordered criteria, coverage of
+every criterion, unique IDs, acyclic dependencies, plan ID/revision, the selected
+task, and exact Planner instruction text and order. `contracts.py` still checks
+envelopes, sequence, hashes and frozen-source fidelity. Neither helper
+authenticates a sender, proves work was done, or stops a host from dispatching.
+
+On failure the Manager does not dispatch, preserves the rejected files unchanged
+as evidence, and asks the Planner for a new plan revision, or the Owner when
+criteria or authority are in question. The Manager never edits Planner task
+instructions to make the check pass.
+
+A Planner `NEEDS_INFORMATION` or `BLOCKED` answer is not a published plan and
+has no council-flow message type. The Manager saves it unchanged as a plain UTF-8
+JSON evidence file in the run folder, sends no `job.assign`, and asks the Owner
+the Planner's precise question through `approval.request`, with
+`operation_ref` pointing at that file. The closed message contract is unchanged.
+
+## Optional routing hint
+
+`scripts/route.py` is opt-in and off unless the Owner supplies a route config;
+the skill ships none. Its output (route, confidence, threshold, margin, config
+and input hashes) is advice. The Manager may accept, ignore or override it and
+records that choice with `routing.decision.build_decision_record(decision,
+manager_action=...)` (`accepted`, `ignored` or `blocked`), or with
+`override_route(record, reason)` when overriding, which requires a reason. The
+sealed record is saved as an evidence file in the run folder. A route never changes
+scope, tools, permissions, model or provider choice, which role runs, or packet
+contents.
+
 ## Bounds and restricted YAML
 
 Messages: 65,536 UTF-8 bytes, 16 nested containers, 128 entries per container,

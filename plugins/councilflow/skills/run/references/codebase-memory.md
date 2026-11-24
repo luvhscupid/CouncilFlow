@@ -74,8 +74,11 @@ unknown coverage with direct reads/search of the reported ranges and dependencie
 If coverage tooling is unavailable, directly check every material source claim
 and disclose the limit. A clean coverage response is not proof of completeness.
 
-Manager supplies fresh Planner, Worker, Tester, and Reviewer sessions only the
-bounded findings each needs: exact project/root and source revision or working
+Planner does not independently explore application source (see
+[planner.md](planner.md)), so the Manager gathers and verifies the project facts
+the plan needs and supplies them to Planner before planning. Missing facts stay
+unknown; Planner asks rather than guesses. Manager supplies fresh Planner,
+Worker, Tester, and Reviewer sessions only the bounded findings each needs: exact project/root and source revision or working
 tree state, index generation/freshness, paths, qualified symbols, relevant edges,
 query scope and pagination, coverage gaps, source reads already performed, and
 unresolved uncertainty. Reuse these findings while still current. Put text in

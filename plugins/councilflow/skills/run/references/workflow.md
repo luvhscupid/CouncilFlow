@@ -9,8 +9,10 @@ Planner final check → Owner. Preserve that responsibility order.
    [Codebase Memory lifecycle](codebase-memory.md) and
    [original-input/oracle capture](source-fidelity.md) before Planner automatically.
    An optional routing hint may classify the bounded task before planning, but
-   Manager validates the route hint and may ignore or override it. Routing never
-   grants scope, tool authorization, model identity, or role dispatch.
+   Manager validates the route hint and may ignore or override it, recording the
+   choice (see communication.md). Routing never grants scope, tool authorization,
+   model identity, or role dispatch. Manager supplies Planner with the bounded
+   verified context the plan needs; Planner does not explore application source.
 2. Dedicated Planner follows [planner.md](planner.md) and returns plan.publish JSON with exact immutable acceptance
    and plan artifact/hash. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
@@ -32,7 +34,9 @@ Planner final check → Owner. Preserve that responsibility order.
    array exactly match that selected task using
    `scripts/planner_contract.py assignment <plan.json> <frozen-criteria.json> <assignment.json>`.
    Also validate the controlled packet, file hashes and any required criteria
-   fidelity before delegation. Non-ready responses are not published or dispatched.
+   fidelity before delegation. Non-ready responses are not published or dispatched;
+   Manager keeps them as evidence and asks the Owner through approval.request.
+   Manager copies Planner task instructions exactly and never rewrites them.
    Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
