@@ -55,7 +55,7 @@ FILES = (
 ROLES = {"council-planner", "council-worker", "council-tester", "council-reviewer"}
 FORBIDDEN_PARTS = {
     ".git", "__pycache__", ".pytest_cache", ".codex-runtime", ".codebase-memory",
-    "runtime", ".local-runs", "credentials", "secrets", ".env", ".env.local", "credentials.json", "token.json",
+    "runtime", ".local-runs", "node_modules", "credentials", "secrets", ".env", ".env.local", "credentials.json", "token.json",
 }
 SECRET = re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|"
                     rb"(?:ghp_|github_pat_|sk-proj-|sk-live-|xox[baprs]-)[A-Za-z0-9_-]{16,}|"
@@ -73,7 +73,9 @@ def safe_name(name: str) -> bool:
 
 
 # Claude Code plugin tests need plugins/ and its builder, which are not in this package.
-HOST_ONLY = {"tests/test_claude_plugin.py", "tests/test_journal.py", "tests/test_routing_package.py"}
+# Tests of the experimental prototypes in experiments/multi-agent-evolution/ are host-only too.
+HOST_ONLY = {"tests/test_claude_plugin.py", "tests/test_journal.py", "tests/test_routing_package.py",
+             "tests/test_experience.py", "tests/test_role_capabilities.py"}
 
 
 def excluded(name: str) -> bool:

@@ -4,89 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
-    <title>CouncilFlow · Run board</title>
+    <title>CouncilFlow</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="shell">
-      <header class="topbar">
-        <a class="wordmark" href="#main" aria-label="CouncilFlow run board">
-          <span>CouncilFlow</span>
-        </a>
-        <div class="top-actions">
-          <span id="connection-state" class="connection"><span class="connection-dot" aria-hidden="true"></span><span>Waiting for a run</span></span>
-          <button id="choose-folder" class="button button-primary" type="button">Open run folder</button>
-          <button id="choose-files" class="button button-quiet" type="button">Choose message files</button>
-          <button id="refresh-run" class="button button-quiet" type="button" disabled>Refresh</button>
-        </div>
-        <input id="folder-fallback" class="visually-hidden" type="file" multiple webkitdirectory aria-label="Choose a CouncilFlow run folder">
-        <input id="file-picker" class="visually-hidden" type="file" multiple accept=".json,application/json" aria-label="Choose CouncilFlow JSON messages">
-      </header>
-
-      <p id="loading-state" class="loading-state" role="status" aria-live="polite" hidden></p>
-
-      <section id="main" class="intro" aria-labelledby="page-title">
-        <div class="intro-copy">
-          <h1 id="page-title">The council at work</h1>
-          <p class="lede">Follow the recorded handoffs and acceptance checks for one CouncilFlow run.</p>
-        </div>
-        <div class="trust-note" role="note">
-          <span class="trust-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 2.2 16 4.4v4.7c0 4-2.5 6.7-6 8.7-3.5-2-6-4.7-6-8.7V4.4l6-2.2Z"/><path d="M10 6v4.4M10 13.3h.01"/></svg></span>
-          <span>Packet records are informational. They do not authenticate host activity.</span>
-        </div>
-      </section>
-
-      <section id="empty-state" class="empty-state" aria-labelledby="empty-title">
-        <div class="empty-symbol" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 12.5h30v23H9z"/><path d="M15 19h18M15 25h10M15 31h14"/><path d="m34 12.5 5 5"/></svg></div>
-        <h2 id="empty-title">Choose a run to begin</h2>
-        <p>Open a CouncilFlow run folder, or select its JSON messages. The board will stay empty until it has real records to read.</p>
-        <div class="empty-actions">
-          <button id="empty-open-folder" class="button button-primary" type="button">Open run folder</button>
-          <button id="empty-open-files" class="button button-quiet" type="button">Choose message files</button>
-        </div>
-        <p id="file-access-help" class="access-help">Folder monitoring is available in supported browsers. File import works as a manual snapshot.</p>
-      </section>
-
-      <div id="board" class="board" hidden>
-        <section class="workflow-panel" aria-labelledby="workflow-title">
-          <div class="section-heading">
-            <div>
-              <h2 id="workflow-title">Workflow</h2>
-              <p id="run-summary" class="section-detail">Recorded role handoffs for this run</p>
-            </div>
-            <span id="run-health" class="status-badge status-neutral">Reading records</span>
-          </div>
-          <ol id="role-list" class="role-list" aria-label="CouncilFlow role progression"></ol>
-          <div class="current-step">
-            <span class="current-mark" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 10h14M11 4l6 6-6 6"/></svg></span>
-            <div><p class="current-caption">Latest recorded handoff</p><p id="current-activity" class="current-value">Waiting for a packet</p></div>
-          </div>
-        </section>
-
-        <section class="acceptance-panel" aria-labelledby="acceptance-title">
-          <div class="section-heading acceptance-heading">
-            <div>
-              <h2 id="acceptance-title">Final acceptance</h2>
-              <p id="acceptance-caption" class="section-detail">Criteria reported by the Planner</p>
-            </div>
-          <p id="acceptance-count" class="acceptance-count">Not recorded</p>
-          </div>
-          <div class="progress-track" role="progressbar" aria-label="Recorded final acceptance progress" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" id="acceptance-progress"><span id="progress-fill"></span></div>
-          <div class="progress-meta"><span id="progress-label">No final check recorded</span><span id="progress-honesty">Informational record</span></div>
-          <ul id="criteria-list" class="criteria-list" aria-label="Acceptance criteria"></ul>
-        </section>
-
-        <section class="activity-panel" aria-labelledby="activity-title">
-          <div class="section-heading activity-heading">
-            <div><h2 id="activity-title">Activity</h2><p class="section-detail">Events ordered by packet references</p></div>
-            <span id="activity-count" class="section-detail">No events</span>
-          </div>
-          <div id="record-alert" class="record-alert" role="status" aria-live="polite" hidden></div>
-          <ol id="activity-list" class="activity-list"></ol>
-        </section>
-      </div>
-      <footer class="footnote"><span>Read-only view of selected run files</span><span>No agent dispatch or approval controls</span></footer>
-    </main>
+    <div id="councilflow-root" class="root">
+      <noscript><p class="noscript">The CouncilFlow dashboard needs JavaScript to read run records.</p></noscript>
+    </div>
     <script src="run-reader.js"></script>
     <script src="app.js"></script>
   </body>

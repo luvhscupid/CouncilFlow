@@ -190,7 +190,9 @@
   }
 
   function acceptanceFromPlan(plan, messages, issues, publication) {
-    const acceptance = Array.isArray(plan && plan.acceptance) ? plan.acceptance : [];
+    // Planner plans carry the original wording as `criterion`; older fixtures use `text`.
+    const acceptance = (Array.isArray(plan && plan.acceptance) ? plan.acceptance : [])
+      .map(item => isObject(item) && !nonEmpty(item.text) && nonEmpty(item.criterion) ? { ...item, text: item.criterion } : item);
     if (!acceptance.length || acceptance.some(item => !isObject(item) || !nonEmpty(item.id) || !nonEmpty(item.text)) || new Set(acceptance.map(item => item.id)).size !== acceptance.length) {
       recordIssue(issues, "invalid_plan_criteria", "The linked plan has no valid unique acceptance criteria.");
       return { criteria: [], passed: 0, total: 0, finalRecorded: false };

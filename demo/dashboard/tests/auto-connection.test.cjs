@@ -1,267 +1,32 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
-const vm = require("node:vm");
-const { buildSnapshot } = require("../run-reader.js");
+const reader = require("../run-reader.js");
+const loader = require("../app/src/data/run-loader.js");
+const { buildModel } = require("../app/src/data/council-model.js");
+const { scenario } = require("./fixtures/council-run.cjs");
 
-class Element {
-  constructor(id = "") {
-    this.id = id;
-    this.children = [];
-    this.dataset = {};
-    this.style = {};
-    this.listeners = {};
-    this.attributes = {};
-    this.hidden = false;
-    this.textContent = "";
-    this.className = "";
-    this.disabled = false;
-  }
-  get lastElementChild() { return this.children[this.children.length - 1] || null; }
-  append(...children) { this.children.push(...children); }
-  replaceChildren(...children) { this.children = children; }
-  setAttribute(name, value) { this.attributes[name] = String(value); }
-  addEventListener(type, listener) { this.listeners[type] = listener; }
-  remove() { this.removed = true; }
-  click() { this.clicked = true; }
+const dashboardRoot = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard");
+
+function fileHandle(file) { return { kind: "file", async getFile() { return file; } }; }
+function makeFile(name, size = 2, text = "{}", lastModified = Date.UTC(2026, 10, 24)) {
+  return { name, size, lastModified, async text() { return text; } };
 }
+function directoryHandle(entries) { return { kind: "directory", async *entries() { yield* entries(); } }; }
 
-function fixture() {
-  const taskId = "live-task";
-  const plan = {
-    plan_id: "live-plan", plan_revision: 1, task_id: taskId,
-    acceptance: [{ id: "LIVE-01", text: "Uses the current task's packet data." }]
-  };
-  const planText = JSON.stringify(plan);
-  const planHash = crypto.createHash("sha256").update(planText).digest("hex");
-  const publication = {
-    protocol: "council-flow", version: "1.0", message_id: "publish-live",
-    message_type: "plan.publish", plan_id: "live-plan", plan_revision: 1,
-    task_id: taskId, attempt_id: "attempt-1",
-    sender: { role: "planner", instance_id: "planner" },
-    recipient: { role: "manager", instance_id: "manager" }, in_reply_to: null,
-    payload: {
-      objective: "Test live bootstrap", scope: ["Current run"], acceptance_ids: ["LIVE-01"],
-      plan_ref: { artifact_id: "live-plan-file", path: "plan.json", sha256: planHash, kind: "plan" }
-    },
-    evidence_refs: []
-  };
-  return {
-    taskId,
-    files: [
-      { name: "plan.json", path: "plan.json", data: plan, isMessageFile: false, sha256: planHash },
-      { name: "plan-publish.json", path: "messages/plan-publish.json", data: publication, isMessageFile: true }
-    ]
-  };
-}
+/* Run reader bounds */
 
-test("embedded task packets render as an automatic connection without a folder picker", async () => {
-  const ids = [
-    "connection-state", "folder-fallback", "file-picker", "choose-folder", "choose-files",
-    "refresh-run", "empty-state", "board", "run-summary", "run-health", "current-activity",
-    "acceptance-count", "acceptance-progress", "progress-fill", "progress-label", "progress-honesty",
-    "acceptance-caption", "role-list", "criteria-list", "activity-count", "activity-list", "record-alert",
-    "loading-state"
-  ];
-  const elements = Object.fromEntries(ids.map(id => [id, new Element(id)]));
-  elements["record-alert"].hidden = true;
-  elements["connection-state"].append(new Element("dot"), new Element("label"));
-  elements["councilflow-run-data"] = new Element("councilflow-run-data");
-  elements["councilflow-run-data"].textContent = JSON.stringify(fixture());
-  const refreshMeta = new Element("refresh-meta");
-  const frames = [];
-  let reloads = 0;
-  const document = {
-    getElementById(id) { return elements[id] || (elements[id] = new Element(id)); },
-    createElement(tag) { return new Element(tag); },
-    createElementNS(_namespace, tag) { return new Element(tag); },
-    querySelector(selector) { return selector.includes("http-equiv") ? refreshMeta : null; }
-  };
-  const window = {
-    CouncilFlowRunReader: { buildSnapshot },
-    location: { reload() { reloads += 1; } },
-    setInterval() { return 1; },
-    clearInterval() {},
-    requestAnimationFrame(callback) { frames.push(callback); }
-  };
-  const appPath = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard/app.js");
-  vm.runInNewContext(fs.readFileSync(appPath, "utf8"), { document, window, crypto: null, console });
-
-  assert.equal(elements["loading-state"].hidden, false);
-  assert.match(elements["loading-state"].textContent, /Reading.*packets/i);
-  assert.equal(frames.length, 1);
-  frames.shift()();
-  await new Promise(resolve => setImmediate(resolve));
-
-  assert.equal(elements["loading-state"].hidden, true);
-  assert.equal(elements.board.hidden, false);
-  assert.equal(elements["empty-state"].hidden, true);
-  assert.equal(elements["run-summary"].textContent, "Task live-task");
-  assert.match(elements["connection-state"].lastElementChild.textContent, /Connected to live-task/);
-  assert.equal(typeof elements["choose-folder"].listeners.click, "function");
-  elements["refresh-run"].listeners.click({ currentTarget: elements["refresh-run"] });
-  assert.equal(reloads, 1);
-  elements["choose-folder"].listeners.click();
-  assert.equal(refreshMeta.removed, true);
-  assert.equal(elements["folder-fallback"].clicked, true);
-});
-
-test("dashboard copy uses an honest placeholder without an em dash", () => {
-  const dashboardRoot = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard");
-  const sources = ["index.html", "app.js", "styles.css"].map(name => fs.readFileSync(path.join(dashboardRoot, name), "utf8"));
-  assert.match(sources[0], /id="loading-state"[^>]*role="status"[^>]*aria-live="polite"/);
-  assert.ok(sources.every(source => !source.includes("—")));
-  assert.match(sources[2], /\.button:active:not\(:disabled\)/);
-  assert.match(sources[2], /\.wordmark:hover/);
-  assert.match(sources[2], /\.wordmark:active/);
-});
-
-test("manual file import reports what it is reading before rendering", async () => {
-  const ids = [
-    "connection-state", "folder-fallback", "file-picker", "choose-folder", "choose-files",
-    "refresh-run", "empty-state", "board", "run-summary", "run-health", "current-activity",
-    "acceptance-count", "acceptance-progress", "progress-fill", "progress-label", "progress-honesty",
-    "acceptance-caption", "role-list", "criteria-list", "activity-count", "activity-list", "record-alert",
-    "loading-state"
-  ];
-  const elements = Object.fromEntries(ids.map(id => [id, new Element(id)]));
-  elements["connection-state"].append(new Element("dot"), new Element("label"));
-  const frames = [];
-  const document = {
-    getElementById(id) { return elements[id] || (elements[id] = new Element(id)); },
-    createElement(tag) { return new Element(tag); },
-    createElementNS(_namespace, tag) { return new Element(tag); },
-    querySelector() { return null; }
-  };
-  const window = {
-    CouncilFlowRunReader: { buildSnapshot },
-    setInterval() { return 1; },
-    clearInterval() {},
-    requestAnimationFrame(callback) { frames.push(callback); },
-    async showDirectoryPicker() {
-      return {
-        async *entries() {
-          yield ["packet.json", {
-            kind: "file",
-            async getFile() { return { name: "packet.json", size: 9, text: async () => "{bad json" }; }
-          }];
-        }
-      };
-    }
-  };
-  const appPath = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard/app.js");
-  vm.runInNewContext(fs.readFileSync(appPath, "utf8"), { document, window, crypto: null, console });
-  elements["file-picker"].files = [{ name: "packet.json", size: 9, text: async () => "{bad json" }];
-
-  elements["file-picker"].listeners.change();
-
-  assert.equal(elements["loading-state"].hidden, false);
-  assert.equal(elements["loading-state"].textContent, "Reading selected message files");
-  frames.shift()();
-  await new Promise(resolve => setImmediate(resolve));
-  assert.equal(elements["loading-state"].hidden, false);
-  assert.equal(elements["loading-state"].textContent, "Reading selected run packets");
-  frames.shift()();
-  await new Promise(resolve => setImmediate(resolve));
-
-  assert.equal(elements["loading-state"].hidden, true);
-  assert.equal(elements.board.hidden, false);
-  assert.equal(elements["record-alert"].hidden, false);
-
-  elements["choose-folder"].listeners.click();
-  await new Promise(resolve => setImmediate(resolve));
-  assert.equal(elements["loading-state"].hidden, false);
-  assert.match(elements["loading-state"].textContent, /Reading.*packets/i);
-  frames.shift()();
-  await new Promise(resolve => setImmediate(resolve));
-
-  assert.equal(elements["loading-state"].hidden, true);
-  assert.equal(elements["record-alert"].hidden, false);
-});
-
-function mountDashboard(directoryHandle) {
-  const ids = [
-    "connection-state", "folder-fallback", "file-picker", "choose-folder", "choose-files",
-    "empty-open-folder", "empty-open-files", "file-access-help", "refresh-run", "empty-state", "board",
-    "run-summary", "run-health", "current-activity", "acceptance-count", "acceptance-progress",
-    "progress-fill", "progress-label", "progress-honesty", "acceptance-caption", "role-list",
-    "criteria-list", "activity-count", "activity-list", "record-alert", "loading-state"
-  ];
-  const elements = Object.fromEntries(ids.map(id => [id, new Element(id)]));
-  elements["connection-state"].append(new Element("dot"), new Element("label"));
-  const refreshMeta = new Element("refresh-meta");
-  const intervals = [];
-  const window = {
-    CouncilFlowRunReader: { buildSnapshot },
-    crypto: null,
-    requestAnimationFrame(callback) { queueMicrotask(callback); },
-    setInterval(callback, milliseconds) {
-      const interval = { callback, milliseconds, cleared: false };
-      intervals.push(interval);
-      return interval;
-    },
-    clearInterval(interval) { interval.cleared = true; },
-    async showDirectoryPicker() { return directoryHandle; }
-  };
-  const document = {
-    getElementById(id) { return elements[id] || (elements[id] = new Element(id)); },
-    createElement(tag) { return new Element(tag); },
-    createElementNS(_namespace, tag) { return new Element(tag); },
-    querySelector() { return refreshMeta; }
-  };
-  const appPath = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard/app.js");
-  vm.runInNewContext(fs.readFileSync(appPath, "utf8"), { document, window, crypto: null, console });
-  return { elements, intervals, refreshMeta };
-}
-
-function fileHandle(file) {
-  return { kind: "file", async getFile() { return file; } };
-}
-
-function makeFile(name, size = 2, text = "{}") {
-  return { name, size, async text() { return text; } };
-}
-
-function directoryHandle(entries) {
-  return {
-    kind: "directory",
-    async *entries() { yield* entries(); }
-  };
-}
-
-async function waitFor(predicate, message) {
-  for (let attempt = 0; attempt < 100; attempt += 1) {
-    if (predicate()) return;
-    await new Promise(resolve => setImmediate(resolve));
-  }
-  assert.fail(message);
-}
-
-async function chooseFolder(app) {
-  app.elements["choose-folder"].listeners.click();
-  await waitFor(() => /Watching selected folder|Folder access paused/.test(app.elements["connection-state"].lastElementChild.textContent),
-    "folder picker did not finish its first scan");
-}
-
-test("an oversized JSON file stops before reading it and shows an incomplete run", async () => {
+test("an oversized JSON file stops before reading it", async () => {
   let reads = 0;
   const folder = directoryHandle(async function* () {
-    yield ["oversized.json", fileHandle({
-      name: "oversized.json", size: 65537,
-      async text() { reads += 1; return "{}"; }
-    })];
+    yield ["oversized.json", fileHandle({ name: "oversized.json", size: 65537, async text() { reads += 1; return "{}"; } })];
   });
-  const app = mountDashboard(folder);
-  await chooseFolder(app);
+  await assert.rejects(loader.filesFromDirectory(folder, loader.createReadState()), /oversized\.json.*65,536/);
   assert.equal(reads, 0);
-  assert.match(app.elements["record-alert"].textContent, /oversized\.json.*65,?536|65,?536.*oversized\.json/i);
-  assert.equal(app.elements["run-health"].textContent, "Incomplete records");
-  assert.equal(app.elements["acceptance-count"].textContent, "Incomplete");
 });
 
-test("more than 1,024 JSON files stops traversal and shows an incomplete run", async () => {
+test("more than 1,024 JSON files stops traversal", async () => {
   let reads = 0;
   const folder = directoryHandle(async function* () {
     for (let index = 0; index < 1025; index += 1) {
@@ -269,28 +34,20 @@ test("more than 1,024 JSON files stops traversal and shows an incomplete run", a
       yield [name, fileHandle({ name, size: 2, async text() { reads += 1; return "{}"; } })];
     }
   });
-  const app = mountDashboard(folder);
-  await chooseFolder(app);
+  await assert.rejects(loader.filesFromDirectory(folder, loader.createReadState()), /1,024 JSON files/);
   assert.equal(reads, 1024);
-  assert.match(app.elements["record-alert"].textContent, /1,?024.*JSON|JSON.*1,?024/i);
-  assert.equal(app.elements["run-health"].textContent, "Incomplete records");
-  assert.equal(app.elements["acceptance-count"].textContent, "Incomplete");
 });
 
-test("directory depth above 16 stops traversal and shows an incomplete run", async () => {
-  let fileReads = 0;
+test("directory depth above 16 stops traversal", async () => {
+  let reads = 0;
   function nested(depth) {
     return directoryHandle(async function* () {
       if (depth < 17) yield [`level-${depth}`, nested(depth + 1)];
-      else yield ["packet.json", fileHandle({ name: "packet.json", size: 2, async text() { fileReads += 1; return "{}"; } })];
+      else yield ["packet.json", fileHandle({ name: "packet.json", size: 2, async text() { reads += 1; return "{}"; } })];
     });
   }
-  const app = mountDashboard(nested(0));
-  await chooseFolder(app);
-  assert.equal(fileReads, 0);
-  assert.match(app.elements["record-alert"].textContent, /depth.*16|16.*depth/i);
-  assert.equal(app.elements["run-health"].textContent, "Incomplete records");
-  assert.equal(app.elements["acceptance-count"].textContent, "Incomplete");
+  await assert.rejects(loader.filesFromDirectory(nested(0), loader.createReadState()), /depth exceeds 16/);
+  assert.equal(reads, 0);
 });
 
 test("aggregate JSON input above 16 MiB stops before reading the excess file", async () => {
@@ -301,94 +58,175 @@ test("aggregate JSON input above 16 MiB stops before reading the excess file", a
       yield [name, fileHandle({ name, size: 65536, async text() { reads += 1; return "{}"; } })];
     }
   });
-  const app = mountDashboard(folder);
-  await chooseFolder(app);
+  await assert.rejects(loader.filesFromDirectory(folder, loader.createReadState()), /16 MiB/);
   assert.equal(reads, 256);
-  assert.match(app.elements["record-alert"].textContent, /16 ?MiB|16,?777,?216/i);
-  assert.equal(app.elements["run-health"].textContent, "Incomplete records");
-  assert.equal(app.elements["acceptance-count"].textContent, "Incomplete");
 });
 
-test("a second refresh tick does not overlap the active directory scan", async () => {
+test("read files keep their path, parse errors and write time", async () => {
+  const files = await loader.filesFromList([
+    { ...makeFile("bad.json", 9, "{bad json"), webkitRelativePath: "run/messages/bad.json" },
+    makeFile("notes.txt")
+  ]);
+  assert.equal(files.length, 1);
+  assert.equal(files[0].path, "run/messages/bad.json");
+  assert.equal(files[0].isMessageFile, true);
+  assert.match(files[0].error, /could not read valid JSON/);
+  assert.equal(files[0].modified, "2026-11-24T00:00:00.000Z");
+});
+
+test("a folder watch never overlaps scans and can pause and resume", async () => {
   let scans = 0;
-  let releaseScan;
-  let markSlowScan;
-  const slowScanStarted = new Promise(resolve => { markSlowScan = resolve; });
-  const slowScanGate = new Promise(resolve => { releaseScan = resolve; });
+  let release;
+  const gate = new Promise(resolve => { release = resolve; });
   const folder = directoryHandle(async function* () {
     scans += 1;
-    if (scans === 2) {
-      markSlowScan();
-      await slowScanGate;
-    }
+    if (scans === 1) await gate;
     yield ["packet.json", fileHandle(makeFile("packet.json"))];
   });
-  const app = mountDashboard(folder);
-  await chooseFolder(app);
-  assert.equal(app.intervals.length, 1);
-  const firstRefresh = app.intervals[0].callback();
-  await slowScanStarted;
-  await app.intervals[0].callback();
-  assert.equal(scans, 2);
-  releaseScan();
-  await firstRefresh;
+  const timers = { intervals: [], setInterval(fn, ms) { const t = { fn, ms, cleared: false }; this.intervals.push(t); return t; }, clearInterval(t) { t.cleared = true; } };
+  const seen = [];
+  const watcher = loader.watchDirectory(folder, { timers, onFiles: files => seen.push(files.length) });
+  const first = watcher.scan();
+  assert.equal(await watcher.scan(), false, "second scan must not start while the first runs");
+  release();
+  assert.equal(await first, true);
+  watcher.start();
+  assert.equal(watcher.watching, true);
+  watcher.stop();
+  assert.equal(timers.intervals[0].cleared, true);
+  watcher.start();
+  assert.equal(timers.intervals.length, 2);
+  assert.deepEqual(seen, [1]);
 });
 
-test("the folder watch can pause and resume on the same selected directory", async () => {
-  const folder = directoryHandle(async function* () {
-    yield ["packet.json", fileHandle(makeFile("packet.json"))];
-  });
-  const app = mountDashboard({
-    kind: "directory",
-    async *entries() { for await (const entry of folder.entries()) yield entry; }
-  });
-  await chooseFolder(app);
-  assert.equal(app.intervals.length, 1);
-  const control = app.elements["refresh-run"];
-  control.listeners.click({ currentTarget: control });
-  assert.equal(app.intervals[0].cleared, true);
-  assert.equal(control.textContent, "Refresh");
-  control.listeners.click({ currentTarget: control });
-  await waitFor(() => app.intervals.length === 2, "folder watch did not resume");
-  assert.equal(control.textContent, "Pause watching");
+test("a failing folder scan stops the watch and reports the error", async () => {
+  const folder = directoryHandle(async function* () { yield ["big.json", fileHandle(makeFile("big.json", 70000))]; });
+  let reported = null;
+  const timers = { setInterval() { return 1; }, clearInterval() {} };
+  const watcher = loader.watchDirectory(folder, { timers, onError: error => { reported = error.message; } });
+  watcher.start();
+  assert.equal(await watcher.scan(), false);
+  assert.equal(watcher.watching, false);
+  assert.match(reported, /big\.json/);
 });
 
-test("a reader failure on the embedded path clears loading and reports an incomplete run", async () => {
-  const ids = [
-    "connection-state", "folder-fallback", "file-picker", "choose-folder", "choose-files",
-    "refresh-run", "empty-state", "board", "run-summary", "run-health", "current-activity",
-    "acceptance-count", "acceptance-progress", "progress-fill", "progress-label", "progress-honesty",
-    "acceptance-caption", "role-list", "criteria-list", "activity-count", "activity-list", "record-alert",
-    "loading-state"
-  ];
-  const elements = Object.fromEntries(ids.map(id => [id, new Element(id)]));
-  elements["record-alert"].hidden = true;
-  elements["connection-state"].append(new Element("dot"), new Element("label"));
-  elements["councilflow-run-data"] = new Element("councilflow-run-data");
-  elements["councilflow-run-data"].textContent = JSON.stringify(fixture());
-  const refreshMeta = new Element("refresh-meta");
-  const frames = [];
-  const document = {
-    getElementById(id) { return elements[id] || (elements[id] = new Element(id)); },
-    createElement(tag) { return new Element(tag); },
-    createElementNS(_namespace, tag) { return new Element(tag); },
-    querySelector(selector) { return selector.includes("http-equiv") ? refreshMeta : null; }
-  };
-  const window = {
-    CouncilFlowRunReader: { buildSnapshot() { throw new Error("reader exploded"); } },
-    location: { reload() {} },
-    setInterval() { return 1; },
-    clearInterval() {},
-    requestAnimationFrame(callback) { frames.push(callback); }
-  };
-  const appPath = path.resolve(__dirname, "../../../.agents/skills/council-flow/dashboard/app.js");
-  vm.runInNewContext(fs.readFileSync(appPath, "utf8"), { document, window, crypto: null, console });
-  while (frames.length) frames.shift()();
-  await new Promise(resolve => setImmediate(resolve));
-  await new Promise(resolve => setImmediate(resolve));
+/* Council view model */
 
-  assert.equal(elements["loading-state"].hidden, true, "loading message must not stay visible");
-  assert.match(elements["connection-state"].lastElementChild.textContent, /incomplete/i);
-  assert.match(elements["record-alert"].textContent, /reader exploded/);
-  assert.equal(elements["record-alert"].hidden, false);
+test("an empty run invents no activity, progress or model", () => {
+  const model = buildModel({ files: [] }, reader);
+  assert.equal(model.packets.length, 0);
+  assert.equal(model.lifecycle.done, 0);
+  assert.equal(model.acceptance.verified, false);
+  assert.equal(model.timing.available, false);
+  assert.equal(model.efficiency.available, false);
+  assert.ok(model.roles.every(role => role.model.value === null));
+  assert.ok(model.roles.every(role => ["idle", "planning"].includes(role.state.key)));
+});
+
+test("an active assignment shows the Worker working and the next step as current", () => {
+  const model = buildModel(scenario("working"), reader);
+  const worker = model.roles.find(role => role.role === "worker");
+  assert.equal(worker.state.key, "working");
+  assert.equal(worker.state.sourceId, "M002");
+  assert.equal(worker.currentTask.instructions.length, 3);
+  assert.equal(model.lifecycle.done, 2);
+  assert.equal(model.lifecycle.current.key, "worker-report");
+  assert.equal(model.latest.id, "M002");
+  assert.ok(model.routes.find(route => route.id === "manager>worker").latest);
+});
+
+test("a failed Tester report halts the attempt and later steps are skipped, not missing", () => {
+  const model = buildModel(scenario("sent_back"), reader);
+  const statuses = Object.fromEntries(model.lifecycle.steps.map(step => [step.key, step.status]));
+  assert.equal(statuses["tester-report"], "failed");
+  assert.equal(statuses["reviewer-assign"], "skipped");
+  assert.equal(statuses.decision, "rework");
+  assert.equal(model.lifecycle.gaps, 0);
+  assert.equal(model.roles.find(role => role.role === "tester").state.key, "failed");
+  assert.equal(model.roles.find(role => role.role === "manager").state.label, "Preparing the rework");
+});
+
+test("rework starts a new attempt and progress counts only that attempt", () => {
+  const model = buildModel(scenario("rework"), reader);
+  assert.equal(model.run.currentAttempt, "attempt-2");
+  assert.equal(model.attempts.length, 2);
+  assert.equal(model.attempts[0].decision, "rework");
+  assert.equal(model.roles.find(role => role.role === "tester").state.key, "testing");
+  assert.deepEqual(model.roles.find(role => role.role === "worker").instances, ["worker-1", "worker-2"]);
+  assert.equal(model.lifecycle.done, 4);
+});
+
+test("only a complete final check makes acceptance verified", () => {
+  const reviewing = buildModel(scenario("reviewing"), reader);
+  assert.equal(reviewing.acceptance.verified, false);
+  assert.equal(reviewing.acceptance.passed, 0);
+  const accepted = buildModel(scenario("accepted"), reader);
+  assert.equal(accepted.run.valid, true);
+  assert.equal(accepted.acceptance.verified, true);
+  assert.equal(accepted.acceptance.passed, 3);
+  assert.equal(accepted.lifecycle.complete, true);
+  assert.ok(accepted.roles.filter(role => role.role !== "owner").every(role => role.state.key === "completed"));
+  assert.deepEqual(accepted.plan.tasks.map(task => task.id), ["T1", "T2"]);
+});
+
+test("a record issue suppresses verified acceptance even with a passing chain", () => {
+  const run = scenario("accepted");
+  run.files.push({ name: "dashboard-validation.json", path: "dashboard-validation.json", data: {}, error: "M010.json: artifact_hash at evidence_refs." });
+  const model = buildModel(run, reader);
+  assert.equal(model.run.valid, false);
+  assert.equal(model.acceptance.verified, false);
+  assert.ok(model.issues.some(issue => issue.detail.includes("artifact_hash")));
+});
+
+test("times come from file write times and are absent when files carry none", () => {
+  const model = buildModel(scenario("testing"), reader);
+  assert.equal(model.timing.source, "file write times");
+  assert.equal(model.timing.span, (3 + 11 + 2) * 60000);
+  const worker = model.roles.find(role => role.role === "worker");
+  assert.deepEqual(worker.handlingMs, [11 * 60000]);
+  const bare = scenario("testing");
+  bare.files.forEach(file => { delete file.modified; });
+  const untimed = buildModel(bare, reader);
+  assert.equal(untimed.timing.available, false);
+  assert.equal(untimed.roles.find(role => role.role === "worker").handlingMs, null);
+});
+
+test("efficiency records are summarised only when supplied", () => {
+  const record = (model, input, output) => ({
+    schema_version: "1.0", run_id: "board-issues", task_class: null, harness: "codex", gateway: null,
+    route: "codex/native-or-configured", upstream_model: model, repository_revision: null, elapsed_ms: 1000,
+    usage_scope: "task", usage: { input, cached_input: null, cache_creation: null, output, reported_cost: null, availability: { input: "", cached_input: "not reported", cache_creation: "not reported", output: "", reported_cost: "not reported" } },
+    attempt: 1, acceptance: { status: "unknown", evidence_ref: null, provenance: "unknown" }, source_kind: "test", notes: []
+  });
+  const run = { ...scenario("working"), efficiency: { source: "records.jsonl", records: [record("model-a", 100, 20), record("model-a", 50, null)], matched: 2, other_runs: 0, invalid: 0, error: null } };
+  const model = buildModel(run, reader);
+  assert.equal(model.efficiency.available, true);
+  assert.equal(model.efficiency.totals.input.value, 150);
+  assert.equal(model.efficiency.totals.output.value, 20);
+  assert.equal(model.efficiency.totals.output.reported, 1);
+  assert.equal(model.efficiency.totals.cost.value, null);
+  assert.equal(model.efficiency.byModel[0].model, "model-a");
+  const none = buildModel({ ...scenario("working"), efficiency: { source: "records.jsonl", records: [], other_runs: 3, invalid: 0, error: null } }, reader);
+  assert.equal(none.efficiency.available, false);
+  assert.match(none.efficiency.reason, /match this task/);
+});
+
+/* Bundle and template */
+
+test("the committed app.js was built from the current dashboard sources", async () => {
+  const { sourceDigest } = await import("../app/source-digest.mjs");
+  const digest = sourceDigest(path.resolve(__dirname, "../app"));
+  const bundle = fs.readFileSync(path.join(dashboardRoot, "app.js"), "utf8");
+  assert.ok(bundle.startsWith(`/* CouncilFlow dashboard bundle. Source: demo/dashboard/app (sha256 ${digest}).`),
+    "app.js is stale: run `npm run build` in demo/dashboard/app");
+  assert.ok(!/<\/script/i.test(bundle), "the bundle must not close the inline script element");
+});
+
+test("the template keeps the publisher's inline points and an accessible loading status", () => {
+  const html = fs.readFileSync(path.join(dashboardRoot, "index.html"), "utf8");
+  assert.ok(html.includes('<link rel="stylesheet" href="styles.css">'));
+  assert.ok(html.includes('<script src="run-reader.js"></script>\n    <script src="app.js"></script>'));
+  assert.ok(html.includes('id="councilflow-root"'));
+  const app = fs.readFileSync(path.resolve(__dirname, "../app/src/App.jsx"), "utf8");
+  assert.match(app, /className="loading" role="status" aria-live="polite"/);
 });

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import importlib.util
 import json
@@ -17,6 +18,8 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 DASHBOARD_ROOT = SKILL_ROOT / "dashboard"
 MAX_INPUT_BYTES = 65536
 MAX_MESSAGE_FILES = 1024
+MAX_EFFICIENCY_BYTES = 1048576
+MAX_EFFICIENCY_RECORDS = 1000
 TASK_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
 
 
@@ -40,6 +43,99 @@ def _bounded_text(path: Path) -> tuple[bytes, object | None, str | None]:
         return raw, contracts.loads(raw), None
     except (OSError, contracts.ContractError) as error:
         return b"", None, f"{path.name}: could not read valid JSON ({error})."
+
+
+def _modified(path: Path) -> str | None:
+    """File write time as seen by the publisher; informational, not event time."""
+    try:
+        stamp = path.stat().st_mtime
+    except OSError:
+        return None
+    return datetime.fromtimestamp(stamp, tz=timezone.utc).isoformat(timespec="milliseconds")
+
+
+def _policy() -> dict | None:
+    """Read the role table from policies/roles.yaml for the read-only settings view.
+
+    The policy file is restricted block YAML whose list values are JSON arrays,
+    so only those lines are read. Anything unexpected leaves the policy out.
+    """
+    path = SKILL_ROOT / "policies" / "roles.yaml"
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError:
+        return None
+    roles: dict[str, dict] = {}
+    section = None
+    role = None
+    order = None
+    resources: dict[str, object] = {}
+    try:
+        for line in lines:
+            if not line.strip() or line.lstrip().startswith("#"):
+                continue
+            indent = len(line) - len(line.lstrip(" "))
+            key, _, value = line.strip().partition(":")
+            value = value.strip()
+            if indent == 0:
+                section, role = key, None
+                continue
+            if section == "roles" and indent == 2 and not value:
+                role = key
+                roles[role] = {}
+            elif section == "roles" and indent == 4 and role:
+                if key in {"responsibilities", "abilities"}:
+                    roles[role][key] = json.loads(value)
+                elif key == "application_code":
+                    roles[role][key] = value == "true"
+            elif section == "workflow" and key == "order":
+                order = json.loads(value)
+            elif section == "resources" and indent == 2:
+                resources[key] = int(value) if value.isdigit() else value.strip('"')
+    except (ValueError, TypeError):
+        return None
+    if not roles or not isinstance(order, list):
+        return None
+    return {"source": "policies/roles.yaml", "roles": roles, "order": order, "resources": resources}
+
+
+def _efficiency(path: Path | None, task_id: str) -> dict | None:
+    """Read optional, explicitly supplied Agent Efficiency records for this task."""
+    if path is None:
+        return None
+    result = {"source": path.name, "records": [], "matched": 0, "other_runs": 0,
+              "invalid": 0, "error": None}
+    recorder_path = SKILL_ROOT / "scripts" / "efficiency" / "recorder.py"
+    try:
+        spec = importlib.util.spec_from_file_location("councilflow_efficiency_recorder", recorder_path)
+        if spec is None or spec.loader is None:
+            raise OSError("efficiency recorder is unavailable")
+        recorder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(recorder)
+        with path.open("rb") as stream:
+            raw = stream.read(MAX_EFFICIENCY_BYTES + 1)
+        if len(raw) > MAX_EFFICIENCY_BYTES:
+            raise ValueError(f"records file exceeds {MAX_EFFICIENCY_BYTES} bytes")
+        lines = raw.decode("utf-8").splitlines()
+    except (OSError, UnicodeDecodeError, ValueError) as error:
+        result["error"] = f"{path.name}: {error}"
+        return result
+    for line in lines[:MAX_EFFICIENCY_RECORDS]:
+        if not line.strip():
+            continue
+        try:
+            item = recorder.validate(json.loads(line))
+        except (ValueError, TypeError, KeyError, AttributeError):
+            result["invalid"] += 1
+            continue
+        if item["run_id"] == task_id:
+            result["records"].append(item)
+            result["matched"] += 1
+        else:
+            result["other_runs"] += 1
+    if len(lines) > MAX_EFFICIENCY_RECORDS:
+        result["error"] = f"{path.name}: only the first {MAX_EFFICIENCY_RECORDS} records were read"
+    return result
 
 
 def _message_order(messages: list[dict]) -> list[dict]:
@@ -82,6 +178,7 @@ def _run_files(root: Path, task_id: str) -> tuple[list[dict], list[str]]:
             "error": error,
             "isMessageFile": False,
             "sha256": hashlib.sha256(raw).hexdigest() if raw else None,
+            "modified": _modified(plan_path),
         })
         if error:
             errors.append(error)
@@ -109,6 +206,7 @@ def _run_files(root: Path, task_id: str) -> tuple[list[dict], list[str]]:
             "error": error,
             "isMessageFile": True,
             "sha256": hashlib.sha256(raw).hexdigest() if raw else None,
+            "modified": _modified(path),
         }
         entries.append(entry)
         if error:
@@ -158,12 +256,13 @@ def _run_files(root: Path, task_id: str) -> tuple[list[dict], list[str]]:
     return entries, errors
 
 
-def _inline(source: str, stylesheet: str, reader: str, app: str, files: list[dict]) -> str:
+def _inline(source: str, stylesheet: str, reader: str, app: str, files: list[dict],
+            context: dict | None = None) -> str:
     source = source.replace(
         '<link rel="stylesheet" href="styles.css">',
         "<style>\n" + stylesheet + "\n</style>",
     )
-    initial = json.dumps({"files": files}, ensure_ascii=False, separators=(",", ":"))
+    initial = json.dumps({**(context or {}), "files": files}, ensure_ascii=False, separators=(",", ":"))
     initial = (initial.replace("&", "\\u0026").replace("<", "\\u003c")
                .replace(">", "\\u003e").replace("\u2028", "\\u2028")
                .replace("\u2029", "\\u2029"))
@@ -181,7 +280,8 @@ def _inline(source: str, stylesheet: str, reader: str, app: str, files: list[dic
     return source
 
 
-def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=None) -> dict:
+def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=None,
+                efficiency_records: Path | None = None) -> dict:
     """Validate one canonical task directory and atomically publish its HTML view."""
     if not isinstance(task_id, str) or not TASK_ID.fullmatch(task_id) or task_id in {".", ".."}:
         raise ValueError("task ID must be a single safe path segment")
@@ -202,6 +302,12 @@ def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=
         (DASHBOARD_ROOT / "run-reader.js").read_text(encoding="utf-8"),
         (DASHBOARD_ROOT / "app.js").read_text(encoding="utf-8"),
         files,
+        {
+            "taskId": task_id,
+            "generatedAt": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
+            "policy": _policy(),
+            "efficiency": _efficiency(efficiency_records, task_id),
+        },
     )
     output = run_dir / "dashboard.html"
     descriptor, temporary_name = tempfile.mkstemp(prefix=".dashboard-", suffix=".tmp", dir=run_dir)
@@ -235,9 +341,12 @@ def main(argv=None) -> int:
     publish.add_argument("--task-id", required=True)
     publish.add_argument("--open", action="store_true", dest="open_browser",
                          help="open the snapshot once in the host's default browser")
+    publish.add_argument("--efficiency-records", type=Path, default=None,
+                         help="optional Agent Efficiency JSONL; records whose run_id equals the task ID are shown")
     args = parser.parse_args(argv)
     try:
-        result = publish_run(args.root, args.task_id, open_browser=args.open_browser)
+        result = publish_run(args.root, args.task_id, open_browser=args.open_browser,
+                             efficiency_records=args.efficiency_records)
     except (OSError, RuntimeError, ValueError) as error:
         print(str(error), file=sys.stderr)
         return 2

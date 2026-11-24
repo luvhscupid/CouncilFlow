@@ -25,11 +25,11 @@ roles:
     abilities: ["implement"]
     application_code: true
   tester:
-    responsibilities: ["Independent technical verification of exact candidate", "Does not repair product", "Does not approve its own oracle"]
+    responsibilities: ["Independent technical verification of exact candidate", "Follows the assigned verification instructions and oracle exactly and in order", "Tests only; does not plan, change criteria or scope, or review code quality", "Does not repair product", "Reports blocked instead of guessing when instructions, oracle or candidate are unclear, missing or conflict", "Does not approve its own oracle"]
     abilities: ["technical_test"]
     application_code: false
   reviewer:
-    responsibilities: ["Independently compares frozen plan and acceptance, Worker candidate, and recorded Tester evidence", "Reruns one Tester-declared deterministic command and reports comparison findings to Manager", "Does not implement, alter criteria, or replace Tester"]
+    responsibilities: ["Independently compares frozen plan and acceptance, Worker candidate, and recorded Tester evidence", "Follows the assigned review instructions exactly and in order", "Reruns one Tester-declared deterministic command and reports comparison findings to Manager", "Compares only; does not plan, repair, retest or approve", "Reports blocked instead of guessing when the plan, candidate or Tester report is missing or does not match the assignment", "Does not implement, alter criteria, or replace Tester"]
     abilities: ["compare_evidence", "independent_rerun"]
     application_code: false
 workflow:
