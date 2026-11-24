@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "928b2f1ed8feedfe60b4d613d2ff60e79c9d6e28d5130f602e02f7119baf3829",
-  "entries": 218,
+  "sha256": "c5464f59f0098ef520afd972aa0753ae9ef0476d32eeaf893d88d25425281af2",
+  "entries": 220,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -90,8 +90,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 68832,
-      "sha256": "ca49ed13cb28729a625fdcb2cf76aa32001627888eff43098a5fad26f27d6134"
+      "size": 64941,
+      "sha256": "45e0af0d5e990bd542b0edaea2e592709c452d0949c36b1477b74f94b30e8499"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
@@ -100,8 +100,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 16852,
-      "sha256": "29be22ec2e6d327bbbda3af9972408296a950b744ca47c68f3264eb704d283ef"
+      "size": 16707,
+      "sha256": "8e75f45675be3a0c55a52d2d7ecd0ea00c9beb09dea32f3ed9211e8eb8201a6f"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
@@ -110,13 +110,13 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/claude_adapter.py",
-      "size": 18696,
-      "sha256": "5e05355dd9be80b1a3d8e0236dab3cf4f4ec2fadb4de0d000e1cda913ec49c06"
+      "size": 18775,
+      "sha256": "cefc118e79de0d95117c196a4897ed91400a53e8d7c3078e54f75489d24817f9"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/codex_adapter.py",
-      "size": 12056,
-      "sha256": "4721e6308c4476f34d8e2e64f5c05b3681ec8dce03ae11e87456592cbc8200c7"
+      "size": 11948,
+      "sha256": "7e9c93c6230876ffd7dded502f08692d4b8b1aa0eb020dc6187d866fca0c8140"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/digest.py",
@@ -140,8 +140,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/planner_contract.py",
-      "size": 9685,
-      "sha256": "6bf1887b8f51ba441e30275d38d9590fbd497c6b53bedfdd2b0b223b6b15e4cc"
+      "size": 12169,
+      "sha256": "041c3f52e9e8eb5d0c8059f508dc7837a6ff4eb0dd1982b21744c773257ec723"
     },
     {
       "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
@@ -182,6 +182,11 @@
       "path": ".agents/skills/council-flow/scripts/routing/encoders.py",
       "size": 2510,
       "sha256": "1c772570ab35ab6907ecaa5019d646dbc01390d8307644750b1eb253c9ab11b7"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/strict_json.py",
+      "size": 2653,
+      "sha256": "80c458b695087d897461c9a8181ddcfed2039fa7a17945e03f69804de7b2f847"
     },
     {
       "path": ".agents/skills/council-flow/scripts/task_graph.py",
@@ -1060,8 +1065,13 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 9882,
-      "sha256": "5c3b61f7da4e27c1bd56358e7d66f134bd8529d50f246f37422bffbb346e5994"
+      "size": 10281,
+      "sha256": "f85cc7764bc8bf8a266bb9af3d963b039ae0ae3ab971ef077d4fa6b033e5083e"
+    },
+    {
+      "path": "tests/test_strict_json.py",
+      "size": 6839,
+      "sha256": "f66cb0e08f8b87c8d43cbd9767f0f8cdb0c186af40966c413edbcb519c43ef5e"
     },
     {
       "path": "tests/test_task_graph.py",

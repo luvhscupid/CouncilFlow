@@ -1,7 +1,11 @@
-"""Fail-closed validation for READY Planner plans and Worker instruction transfer.
+"""The Plan contract: every rule a CouncilFlow plan file must meet.
 
-This is a standalone production copy of the tested experimental contract; it
-does not import from the experiments directory or enforce host permissions.
+- validate_plan_context: the plan file a plan.publish message points to
+  (identity, revision and acceptance; other plan metadata stays project-owned).
+- validate_plan / validate_plan_bytes: a dispatchable READY plan with tasks.
+- validate_worker_assignment: exact Planner-to-Worker instruction transfer.
+
+It does not import from the experiments directory or enforce host permissions.
 """
 from __future__ import annotations
 
@@ -10,17 +14,14 @@ import json
 from pathlib import Path
 import sys
 
+_SCRIPTS = str(Path(__file__).resolve().parent)
+if _SCRIPTS not in sys.path:
+    sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+
+import strict_json  # noqa: E402
+from strict_json import MAX_ITEMS, ContractError, criterion, fail as _fail, identity  # noqa: E402
+
 MAX_PLAN_BYTES = 65_536
-
-
-class ContractError(ValueError):
-    def __init__(self, code: str, field: str, detail: str):
-        self.code, self.field, self.detail = code, field, detail
-        super().__init__(f"{code} at {field}: {detail}")
-
-
-def _fail(code, field, detail):
-    raise ContractError(code, field, detail)
 
 
 def _object(value, field, fields):
@@ -61,6 +62,50 @@ def _cycles(tasks):
                     ready.append(key)
     if len(visited) != len(tasks):
         _fail("dependency_cycle", "plan.tasks.depends_on", "dependency graph contains a cycle")
+
+
+def validate_plan_context(plan, *, plan_id, plan_revision, acceptance_ids,
+                          expected_criteria=None, original_source_ref=None):
+    """Check the plan file a plan.publish message points to.
+
+    Plan metadata is project-owned, not a second wire schema: only identity,
+    revision and acceptance are checked, plus fidelity to caller-pinned criteria
+    and original source when the caller supplies them.
+    """
+    if type(plan) is not dict:
+        _fail("plan_artifact", "payload.plan_ref", "plan context must be an object")
+    identity(plan.get("plan_id"), "plan.plan_id")
+    revision = plan.get("plan_revision")
+    if type(revision) is not int or not 1 <= revision <= 2147483647:
+        _fail("plan_artifact", "plan.plan_revision", "expected positive integer, never bool")
+    if plan["plan_id"] != plan_id or revision != plan_revision:
+        _fail("plan_artifact", "payload.plan_ref", "plan identity differs")
+    acceptance = plan.get("acceptance")
+    if type(acceptance) is not list or not acceptance or len(acceptance) > MAX_ITEMS:
+        _fail("plan_artifact", "plan.acceptance", "expected bounded nonempty criterion array")
+    ids = []
+    for entry in acceptance:
+        if type(entry) is not dict:
+            _fail("plan_artifact", "plan.acceptance", "criterion entry must be an object")
+        identity(entry.get("id"), "plan.acceptance.id")
+        if "criterion" in entry:
+            criterion(entry["criterion"], "plan.acceptance.criterion")
+        ids.append(entry["id"])
+    if len(set(ids)) != len(ids):
+        _fail("plan_artifact", "plan.acceptance", "criterion identities must be unique")
+    if ids != acceptance_ids:
+        _fail("plan_artifact", "payload.acceptance_ids", "does not match original artifact")
+    if expected_criteria is not None:
+        if len(acceptance) != len(expected_criteria):
+            _fail("acceptance_fidelity", "plan.acceptance", "criteria count differs from authoritative source")
+        actual = [(identity(entry.get("id"), "plan.acceptance.id"),
+                   criterion(entry.get("criterion"), "plan.acceptance.criterion"))
+                  for entry in acceptance]
+        if actual != expected_criteria:
+            _fail("acceptance_fidelity", "plan.acceptance", "ordered criteria differ byte-for-byte from authoritative source")
+    if original_source_ref is not None and plan.get("original_source_ref") != original_source_ref:
+        _fail("criteria_source", "plan.original_source_ref", "plan must preserve the caller-pinned original source reference")
+    return None
 
 
 def validate_plan(plan, original_acceptance):
@@ -146,17 +191,8 @@ def validate_plan_bytes(data, original_acceptance):
     if len(raw) > MAX_PLAN_BYTES:
         _fail("size", "plan", f"maximum is {MAX_PLAN_BYTES} bytes")
 
-    def pairs(items):
-        result = {}
-        for key, value in items:
-            if key in result:
-                _fail("duplicate_key", "plan", f"duplicate JSON key {key!r}")
-            result[key] = value
-        return result
-
     try:
-        plan = json.loads(raw.decode("utf-8", "strict"), object_pairs_hook=pairs,
-                          parse_constant=lambda value: _fail("json", "plan", value))
+        plan = strict_json.loads(raw.decode("utf-8", "strict"), field="plan")
     except ContractError:
         raise
     except (UnicodeError, ValueError, TypeError, RecursionError) as exc:
