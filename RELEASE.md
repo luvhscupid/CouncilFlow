@@ -59,7 +59,10 @@ node --test demo/dashboard/tests/run-reader.test.cjs demo/dashboard/tests/auto-c
 ```
 
 The dashboard Python suite covers the packet publisher; the Node command runs
-both the packet reader and folder-import UI suites. The main `tests` suite includes recorder, digest/expand, both adapters,
+the packet reader suite and the dashboard data suite (folder-import bounds, the
+role/lifecycle view model, and a check that the committed `dashboard/app.js`
+bundle matches its React source in `demo/dashboard/app/`). Rebuilding the bundle
+needs Node and `npm install` in that folder; running the tests does not. The main `tests` suite includes recorder, digest/expand, both adapters,
 source-fidelity controls and release/extracted-install relocation controls.
 Separately run `python -m unittest discover -s experiments/agent-efficiency -v`
 for the preserved offline Package D unit tests in the checkout; Package D
@@ -103,6 +106,10 @@ the plugin's dashboard step always failed. Only the offline unit suite was
 rerun for this rebuild. `claude plugin validate`, component discovery and a
 native `/councilflow:run` were **not** rerun against it, so those results above
 apply to the earlier package only.
+
+The dashboard was rebuilt on 2026-11-24 as a React app bundled into the same
+single `dashboard/app.js`, and the plugin ZIP was rebuilt with it. As above, only
+the offline suites were rerun for that rebuild.
 
 ## Historical Round 6 correction package (retained)
 

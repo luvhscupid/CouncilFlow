@@ -1,0 +1,38 @@
+{
+ "status": "blocked",
+ "summary": "Stopped at instruction step 2 (pre-edit read) before changing any file. run-reader.js shows that two of the listed bare-id codes do not always carry a bare packet id as detail: unsupported_contract falls back to the text 'Unknown packet' and invalid_identity falls back to the sentence 'Packet identity or type is invalid.' when message_id is missing or empty. Step 2 names exactly this case ('a listed code does not use a bare id as detail') as a reason to stop and report to Manager before changing intended behaviour. No files were edited; no sync, rebuild or test commands were run.",
+ "acceptance_ids": [
+  "AC1",
+  "AC2",
+  "AC3",
+  "AC4",
+  "AC5",
+  "AC6"
+ ],
+ "changed_files": [],
+ "commands": [
+  {
+   "command": "git status --short; git branch --show-current",
+   "exit_code": 0,
+   "result_summary": "Working tree clean; branch claude/project-thread-wo5ook."
+  },
+  {
+   "command": "grep -n recordIssue .agents/skills/council-flow/dashboard/run-reader.js (plus sed reads of lines 15-60, 76-112, 200-230, 262-276)",
+   "exit_code": 0,
+   "result_summary": "Confirmed detail forms for all 15 listed codes; found two with non-id fallback details (see findings)."
+  },
+  {
+   "command": "grep -n record-alert demo/dashboard/tests/*.cjs",
+   "exit_code": 0,
+   "result_summary": "Existing assertions use single-line regexes against details of code-less issues (oversized.json/65536, 1024 JSON, depth 16, 16 MiB, 'reader exploded'); these would still match under the planned one-issue-per-line format, so no contradiction there."
+  }
+ ],
+ "findings": [
+  "CONTRADICTION (run-reader.js line 85): recordIssue(issues, 'unsupported_contract', message.message_id || 'Unknown packet') - detail is the literal text 'Unknown packet' when message_id is falsy, not a bare id.",
+  "CONTRADICTION (run-reader.js line 87): recordIssue(issues, 'invalid_identity', message.message_id || 'Packet identity or type is invalid.') - detail is already a full sentence when message_id is falsy; wrapping it in a phrase containing the 'id' verbatim would produce text like 'Packet Packet identity or type is invalid. has ...'. Note invalid_identity is also raised when message_id is present but other identity fields are bad, so the id form is the common case.",
+  "Other 13 listed codes confirmed to use a bare id: duplicate_message_id, cross_run_parent, cross_attempt_parent, invalid_envelope, invalid_route, invalid_plan_publication, invalid_assignment, invalid_report, invalid_final_check, invalid_decision, report_without_matching_assignment, final_check_without_progress use message.message_id; missing_criterion_evidence uses the criterion id. (invalid_envelope and later codes run only after invalid_identity has confirmed a non-empty message_id, so they always carry an id.)",
+  "Existing record-alert assertions in auto-connection.test.cjs do not depend on space-joining; no contradiction found there. antislop-markup.test.cjs has no record-alert text assertion.",
+  "Possible resolutions for Manager/Planner to choose (not applied): (a) for unsupported_contract and invalid_identity, show the detail unchanged when it equals the reader's fallback text, or (b) map those two codes only when the detail looks like an id, or (c) accept phrases that read acceptably with either form. Any of these changes the instruction-3 rule and needs an explicit decision."
+ ],
+ "errors": []
+}
