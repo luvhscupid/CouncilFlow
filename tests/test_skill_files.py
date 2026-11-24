@@ -162,7 +162,7 @@ class SkillFilesTests(unittest.TestCase):
                     # Only the packaged adapters may import their sibling helpers.
                     # Every sibling is scanned independently by this same guard.
                     if path.parent == SKILL / "scripts/efficiency":
-                        internal = {"recorder", "digest", "codex_adapter", "strict_json"}
+                        internal = {"recorder", "digest", "pipeline", "strict_json"}
                     elif path.parent == SKILL / "scripts/routing":
                         internal = {"contract", "core", "encoders", "composition", "decision"}
                     elif path == SKILL / "scripts" / "route.py":
