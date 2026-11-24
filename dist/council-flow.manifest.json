@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "bad59ef5bbc5598a8c3d5a53ab1f4c5114d8a1cdf67a85d22053a8dad781fdb1",
-  "entries": 194,
+  "sha256": "0a59e50ccb0630f8f291deae488d4adab5c5deb829e15b89fefb6395d43266a1",
+  "entries": 195,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -164,6 +164,11 @@
       "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
     },
     {
+      "path": ".github/workflows/verify-portable-release.yml",
+      "size": 6051,
+      "sha256": "eff6ecd13910044cb501817a2c9a4ed84ca25ae31e535d48cedec01c5a434831"
+    },
+    {
       "path": "AGENTS.md",
       "size": 2307,
       "sha256": "fea3456b991b66804d20e35c252f858595a8975cedc2fe929264266503d1139d"
@@ -175,8 +180,8 @@
     },
     {
       "path": "RELEASE.md",
-      "size": 14033,
-      "sha256": "b22449471c78524870dd3a1a14ab3627f61916af26af608743794026560c3ede"
+      "size": 14459,
+      "sha256": "533be3e9ae28353c418fc6bc39edd69b54dd1ebf92234a8f8e04572153537059"
     },
     {
       "path": "demo/README.md",
@@ -460,8 +465,8 @@
     },
     {
       "path": "docs/gate3/current-implementation-gaps.md",
-      "size": 10020,
-      "sha256": "40aea1183672b225e7b5e60dbd1147e868230b1891d711855bb8802878342bb9"
+      "size": 10502,
+      "sha256": "46e87cf3fa5024c4d0a01043832dae51cca45a942ac1a2b56a8aeeb21d26d541"
     },
     {
       "path": "docs/gate3/import-record.json",
@@ -895,8 +900,8 @@
     },
     {
       "path": "tests/test_doctor.py",
-      "size": 17508,
-      "sha256": "f030e18615a38224167820399a19d861f37cdf15782cc3cf6e71eb3b36ace4dd"
+      "size": 17834,
+      "sha256": "bc5370d73666b5700c5e38e4788899123750d35268799c38d66920510e919e9e"
     },
     {
       "path": "tests/test_efficiency_claude_adapter.py",
@@ -970,8 +975,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 8496,
-      "sha256": "5936c78090133b473c340752f9ed6b407ef82ca3e64ca8343d78706dc02509fd"
+      "size": 8549,
+      "sha256": "5d67a2b3da69f17c31bda629a9324c6dd91ceea4c427e8430c8b4e2564092dfe"
     }
   ],
   "crc": "PASS",

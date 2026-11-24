@@ -23,6 +23,7 @@ DIRECTORIES = (
 )
 FILES = (
     "README.md", "RELEASE.md", "docs/gate3/README.md", "tools/build_release.py",
+    ".github/workflows/verify-portable-release.yml",
     "AGENTS.md", "docs/gate3/current-implementation-gaps.md", "docs/gate3/import-record.json",
     "reports/README.md",
     "reports/councilflow-hardening/README.md",

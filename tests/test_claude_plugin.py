@@ -159,6 +159,19 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(record["acceptance"]["status"], "unknown")
             self.assertFalse((repo / ".councilflow").exists())  # nothing captured automatically
 
+    def test_relocated_plugin_publishes_dashboard(self):
+        # The synced workflow tells the Manager to run scripts/dashboard.py after
+        # plan.publish, so the installed plugin must ship the templates it reads.
+        with tempfile.TemporaryDirectory() as tmp:
+            installed = Path(tmp) / "cache/councilflow"
+            shutil.copytree(PLUGIN, installed)
+            repo = Path(tmp) / "other-repo"
+            repo.mkdir()
+            skill = installed / "skills/run"
+            out = py(repo, skill / "scripts/dashboard.py", "publish", "--root", repo, "--task-id", "t1")
+            self.assertEqual(out.returncode, 0, out.stderr + out.stdout)
+            self.assertTrue((repo / ".councilflow/runs/t1/dashboard.html").is_file())
+
     def test_contract_cli_surface(self):
         helped = py(ROOT, RUN / "scripts/contracts.py", "--help")
         self.assertEqual(helped.returncode, 0)
@@ -278,7 +291,8 @@ class PackageTests(unittest.TestCase):
                 self.assertEqual(names, sorted(names, key=lambda name: tuple(name.split("/"))),
                                  "ZIP entries must use portable case-sensitive component ordering")
                 for required in (".claude-plugin/plugin.json", "skills/run/SKILL.md",
-                                 "skills/run/scripts/contracts.py", "skills/run/scripts/efficiency.py"):
+                                 "skills/run/scripts/contracts.py", "skills/run/scripts/efficiency.py",
+                                 "skills/run/scripts/dashboard.py", "skills/run/dashboard/index.html"):
                     self.assertIn(required, names)
                 self.assertEqual(sum(n.startswith("agents/council-") for n in names), 4)
                 for n in names:

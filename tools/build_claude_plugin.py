@@ -1,6 +1,6 @@
 """Sync and package the Claude Code plugin from the canonical Codex skill.
 
-The shared runtime (references/, policies/, scripts/) is copied byte-for-byte
+The shared runtime (references/, policies/, scripts/, dashboard/) is copied byte-for-byte
 from .agents/skills/council-flow into plugins/councilflow/skills/run/ so the
 plugin is self-contained after installation. `--check` fails on drift.
 Output: dist/councilflow-claude-plugin.zip (+ .sha256), deterministic.
@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CANON = ROOT / ".agents/skills/council-flow"
 PLUGIN = ROOT / "plugins/councilflow"
 TARGET = PLUGIN / "skills/run"
-SHARED = ("references", "policies", "scripts")
+SHARED = ("references", "policies", "scripts", "dashboard")
 SKIP = {"__pycache__"}
 SKIP_SUFFIX = (".pyc", ".pyo")
 FORBIDDEN = {".git", ".councilflow", ".env", "credentials.json", "token.json"}
