@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "20319d847cfce13ddc9e9059768272f7dc8973cafd1a74c2fdd911fc674d35a6",
-  "entries": 222,
+  "sha256": "bb8f212dfffb1e7f0b82d2dcf2e00792f532b1eb03e4498364d4d83c4dfc89e3",
+  "entries": 224,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -90,8 +90,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 68981,
-      "sha256": "143ba1ec006c44c7ce4b6ff13326663931eeb8b58c2c6ca06fd3943235dc8880"
+      "size": 70855,
+      "sha256": "84dde82806b846aeeb3cd8d5e3b233f47d71b1f28c8dae733920c7e79a83f628"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
@@ -925,8 +925,8 @@
     },
     {
       "path": "tests/fixtures/README.md",
-      "size": 3589,
-      "sha256": "3149d7fb010ee8274d6f610226d27dc552c61aeb7f4dfd2a47ab8ca21de4af6b"
+      "size": 4057,
+      "sha256": "8098d336ff264de243725f9155957ea229022114aeb86257c78b425e43d052c5"
     },
     {
       "path": "tests/fixtures/bare-worker-report-M003.json",
@@ -962,6 +962,11 @@
       "path": "tests/fixtures/routing/vector-cases.json",
       "size": 138,
       "sha256": "2dedef868f0be2f3811afe8ba5eb05a7eef948f73757bc1636449e1781e77af9"
+    },
+    {
+      "path": "tests/fixtures/sequence-split-golden.json",
+      "size": 131433,
+      "sha256": "d06fb75824c34b1bbcfa021c7ea201624c789b2539608b3f3a36e396a13da4d5"
     },
     {
       "path": "tests/test_codebase_memory_integration.py",
@@ -1072,6 +1077,11 @@
       "path": "tests/test_routing_encoders.py",
       "size": 2665,
       "sha256": "5ff73656aeedd6c50a4273347fed2ec061d49c12ebe76247d484c41c21e0cdbc"
+    },
+    {
+      "path": "tests/test_sequence_split.py",
+      "size": 4186,
+      "sha256": "501c55dc507961bd34abfd9d20cbb65917e1ef0984bcc4c946dc5c935986b9eb"
     },
     {
       "path": "tests/test_skill_files.py",
