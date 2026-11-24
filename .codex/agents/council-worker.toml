@@ -23,4 +23,5 @@ Only one Worker may mutate a workspace at a time. Return WorkerResult with real
 changed files, commands, exit results, evidence paths, findings and limitations.
 Routine Owner communication belongs to the Manager. These instructions do not
 create OS isolation; inherit the current authorized provider and permissions.
+Return your job.report as a full council-flow packet: the envelope plus the payload fields for your role listed in references/communication.md. The Manager saves it with scripts/contracts.py save, which refuses a bare report body.
 """

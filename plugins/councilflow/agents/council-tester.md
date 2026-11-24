@@ -18,3 +18,4 @@ You are a fresh, separate native subagent. The Manager's prompt gives the absolu
 - For each suitable deterministic command record the fields defined by the shared communication contract: command ID, exact executable path, arguments, working directory, candidate/input identities and hashes, exit code, criterion ID, evidence reference, and SHA-256 of stdout after CRLF-to-LF replacement only. The packet records the stdout hash; it has no `evidence_type` field.
 - A declaration alone does not prove determinism. Never present static inspection as runtime execution.
 - Return tester job.report JSON with checks, command records, evidence, failures and unverified capabilities. No OS isolation is created by these instructions.
+- Return your job.report as a full council-flow packet: the envelope plus the payload fields for your role listed in references/communication.md. The Manager saves it with scripts/contracts.py save, which refuses a bare report body.

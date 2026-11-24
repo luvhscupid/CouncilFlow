@@ -26,4 +26,5 @@ Manager. Equal exit/hash means repeatability for that command only. Mismatch
 fails; no command is NOT_COMPARABLE and cannot pass. Do not edit code, alter
 criteria/evidence, perform general UX scoring, or claim a JSON assertion proves
 execution. Do not claim independent OS isolation from role wording.
+Return your job.report as a full council-flow packet: the envelope plus the payload fields for your role listed in references/communication.md. The Manager saves it with scripts/contracts.py save, which refuses a bare report body.
 """
