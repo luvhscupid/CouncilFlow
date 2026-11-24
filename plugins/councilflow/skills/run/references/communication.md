@@ -185,11 +185,20 @@ the Planner's precise question through `approval.request`, with
 
 `scripts/route.py` is opt-in and off unless the Owner supplies a route config;
 the skill ships none. Its output (route, confidence, threshold, margin, config
-and input hashes) is advice. The Manager may accept, ignore or override it and
-records that choice with `routing.decision.build_decision_record(decision,
-manager_action=...)` (`accepted`, `ignored` or `blocked`), or with
-`override_route(record, reason)` when overriding, which requires a reason. The
-sealed record is saved as an evidence file in the run folder. A route never changes
+and input hashes) is advice. The Manager may accept, ignore, block or override
+it and records that choice with the same command, never by importing Python:
+
+~~~sh
+python3 .agents/skills/council-flow/scripts/route.py --config routes.json --input task.txt > hint.json
+python3 .agents/skills/council-flow/scripts/route.py record --config routes.json --input task.txt --hint hint.json --action accepted --out .councilflow/runs/<task-id>/route-decision.json
+python3 .agents/skills/council-flow/scripts/route.py override --config routes.json --input task.txt --hint hint.json --reason "why" --out .councilflow/runs/<task-id>/route-decision.json
+~~~
+
+`record` takes `--action accepted`, `ignored` or `blocked`; `override` requires a
+nonblank `--reason`. Both classify the same input again, refuse a `--hint` that
+differs from that result, accept an optional `--evidence-ref`, and write the
+sealed record once (an existing `--out` file is refused). The record file is the
+evidence in the run folder. A route never changes
 scope, tools, permissions, model or provider choice, which role runs, or packet
 contents.
 

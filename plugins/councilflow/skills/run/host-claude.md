@@ -55,7 +55,8 @@ the table.
   BLOCKED answer is saved as evidence and taken to the Owner, never dispatched.
 - **Routing hints are advice.** If the Owner supplied a route config, the main
   session may run `CF/scripts/route.py`, then accept, ignore or override the
-  hint and record the choice. A hint never selects a subagent, model or tool.
+  hint and record the choice with `CF/scripts/route.py record` or `override`
+  (see references/communication.md). A hint never selects a subagent, model or tool.
 - **Every subagent report is persisted as a message file.** A `job.report` that
   exists only in the subagent's chat reply is not a controlled message. The
   Manager saves each report under `messages/` and validates it on receipt, with
