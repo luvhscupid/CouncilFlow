@@ -23,11 +23,12 @@
 
 ## Run record
 
-- Status: NOT AUTHORIZED
-- Starting SHA / branch:
-- Owner decisions (CI supported OSes; license; publishing):
-- Files changed:
-- CI and package evidence:
-- Remaining gaps:
-- Commit / push / PR / merge:
-- Owner decision / next action:
+- Status: PARTIAL. Owner approved slices A to C of the 2026-11-24 iteration plan in the project thread; this run covers the CI and historical-record items only.
+- Starting SHA / branch: `8a48abd` on `main`; work on `claude/project-thread-fejnjh`.
+- Owner decisions: CI stays Windows only for now. License left unset (no LICENSE added; plugin remains UNLICENSED). No publishing.
+- Files changed: `.github/workflows/verify-portable-release.yml` (push trigger is now `main` instead of two retired branches), `tools/build_release.py` (release now includes that workflow, which `tests/test_release.py` reads, so the suite also passes from a fresh extraction), `docs/gate3/current-implementation-gaps.md` (historical banner added above the unchanged findings), `dist/council-flow.zip`, `.sha256` and manifest rebuilt.
+- Already satisfied on `main` before this run: CI and `RELEASE.md` both list all nine documented suites; plugin `SKILL.md` already says the Manager must not write or edit a subagent's `job.report`; `AGENTS.md`, `CLAUDE.md` and `README.md` already describe Claude Code as a possible extension with one historical smoke run.
+- Evidence (Linux, local): `python3 -m unittest discover -s tests` 314 run OK (1 skipped); all other documented unittest directories OK; dashboard Node suites 30 pass; the same suites pass from a fresh extraction of the rebuilt archive (before this run, `tests` failed there with one error because the workflow file was missing). Windows CI result: pending on the PR.
+- Remaining gaps: license decision; whether to add a Linux CI job; package checks still run on Windows only.
+- Commit / push / PR / merge: committed and pushed to `claude/project-thread-fejnjh`; PR opened against `main`; not merged.
+- Owner decision / next action: review the PR.

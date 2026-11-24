@@ -3,8 +3,7 @@ name: Verify portable release on Windows
 on:
   push:
     branches:
-      - codex/portable-release-repair
-      - codex/councilflow-e10-recovery
+      - main
   pull_request:
     branches:
       - main

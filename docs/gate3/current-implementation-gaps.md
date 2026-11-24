@@ -1,5 +1,12 @@
 # Current implementation compared with the frozen Owner Charter
 
+> **Historical record.** This comparison was made against baseline
+> `8a7a39695b6dd50273f92f0f5b61f92daee00adb` on 2026-11-11 and is kept
+> unchanged as evidence. It does not describe the current `main`. The controlling
+> authority remains the [Owner Charter](CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md)
+> and the frozen Gate 3 v0.2 specification; later remediation status is tracked in
+> [the audit-remediation run index](../development-runs/2026-11-audit-remediation/README.md).
+
 **Scope: READ / static comparison only. Gate 3 not run.**
 
 Baseline inspected: `8a7a39695b6dd50273f92f0f5b61f92daee00adb`.

@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "ffaa1551c7bfeae938509f934efdce089f2fbdfa24e6986bf6ce91b1338132e6",
-  "entries": 194,
+  "sha256": "da5bc14bf37ada6aba5a06dc7794f67fdee500d9a61148a8da946d69075c1dcd",
+  "entries": 195,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -162,6 +162,11 @@
       "path": ".codex/agents/council-worker.toml",
       "size": 1319,
       "sha256": "24ee2ed3c57199156cafd7fb9ef12cdd9150e89bb530515f29f3f5d5cbd0410f"
+    },
+    {
+      "path": ".github/workflows/verify-portable-release.yml",
+      "size": 6051,
+      "sha256": "eff6ecd13910044cb501817a2c9a4ed84ca25ae31e535d48cedec01c5a434831"
     },
     {
       "path": "AGENTS.md",
@@ -460,8 +465,8 @@
     },
     {
       "path": "docs/gate3/current-implementation-gaps.md",
-      "size": 10020,
-      "sha256": "40aea1183672b225e7b5e60dbd1147e868230b1891d711855bb8802878342bb9"
+      "size": 10502,
+      "sha256": "46e87cf3fa5024c4d0a01043832dae51cca45a942ac1a2b56a8aeeb21d26d541"
     },
     {
       "path": "docs/gate3/import-record.json",
@@ -970,8 +975,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 8496,
-      "sha256": "5936c78090133b473c340752f9ed6b407ef82ca3e64ca8343d78706dc02509fd"
+      "size": 8549,
+      "sha256": "5d67a2b3da69f17c31bda629a9324c6dd91ceea4c427e8430c8b4e2564092dfe"
     }
   ],
   "crc": "PASS",
