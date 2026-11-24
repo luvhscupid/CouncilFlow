@@ -7,7 +7,12 @@ from pathlib import Path
 import sys
 import uuid
 
-from codex_adapter import _identifier, _reject_constant, _unique_object
+_SCRIPTS = str(Path(__file__).resolve().parents[1])
+if _SCRIPTS not in sys.path:
+    sys.path.append(_SCRIPTS)  # shared strict_json lives in the parent scripts folder
+
+from strict_json import loads as strict_loads  # noqa: E402
+from codex_adapter import _identifier  # noqa: E402
 from digest import build_digest
 from recorder import record, validate, append_jsonl
 
@@ -94,7 +99,7 @@ def parse_stream(raw, *, run_id=None, gateway=None, gateway_source='caller-suppl
     lines = raw.splitlines()
     input_format = 'jsonl'
     try:
-        whole = json.loads(raw, parse_constant=_reject_constant, object_pairs_hook=_unique_object)
+        whole = strict_loads(raw)
         if isinstance(whole, dict):
             lines = [raw]  # --output-format json may be pretty-printed.
             input_format = 'json'
@@ -104,7 +109,7 @@ def parse_stream(raw, *, run_id=None, gateway=None, gateway_source='caller-suppl
         if not line.strip():
             continue
         try:
-            event = json.loads(line, parse_constant=_reject_constant, object_pairs_hook=_unique_object)
+            event = strict_loads(line)
         except (ValueError, UnicodeDecodeError, RecursionError):
             issues.append(f'line {number}: malformed JSON/encoding; contents omitted')
             safe_events.append({'type': 'malformed'})

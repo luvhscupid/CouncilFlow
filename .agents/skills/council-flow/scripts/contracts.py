@@ -10,10 +10,19 @@ import re
 import sys
 from datetime import datetime
 
+_SCRIPTS = str(Path(__file__).resolve().parent)
+if _SCRIPTS not in sys.path:
+    sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+
+import planner_contract  # noqa: E402  (the Plan contract owns every plan-file rule)
+import strict_json  # noqa: E402
+from strict_json import (  # noqa: E402
+    MAX_ITEMS, MAX_STRING, ContractError, fail,
+    criterion as _criterion, identity as _identity, text as _string,
+)
+
 MAX_BYTES = 65536
 MAX_DEPTH = 16
-MAX_ITEMS = 128
-MAX_STRING = 8192
 ROLES = {"planner", "manager", "worker", "tester", "reviewer", "owner"}
 FIELDS = {"protocol", "version", "message_id", "message_type", "plan_id", "plan_revision",
           "task_id", "attempt_id", "sender", "recipient", "in_reply_to",
@@ -30,29 +39,6 @@ ROUTES = {
 }
 EVENT_TYPES = {"plan_published", "worker_dispatched", "worker_reported", "test_failed",
                "review_completed", "rework_requested", "acceptance_blocked", "task_completed"}
-
-
-class ContractError(ValueError):
-    def __init__(self, code, field, detail):
-        self.code, self.field, self.detail = code, field, detail
-        super().__init__(f"{code} at {field}: {detail}")
-
-
-def fail(code, field, detail):
-    raise ContractError(code, field, detail)
-
-
-def _pairs(pairs):
-    result = {}
-    for key, value in pairs:
-        if key in result:
-            fail("duplicate_key", "$", key)
-        result[key] = value
-    return result
-
-
-def _constant(value):
-    fail("nonfinite", "$", value)
 
 
 def _tree(value, depth=0):
@@ -83,8 +69,7 @@ def loads(source):
         raw = source.encode("utf-8", "strict") if isinstance(source, str) else bytes(source)
         if len(raw) > MAX_BYTES:
             fail("size", "$", f"maximum {MAX_BYTES} UTF-8 bytes")
-        value = json.loads(raw.decode("utf-8", "strict"), object_pairs_hook=_pairs,
-                           parse_constant=_constant)
+        value = strict_json.loads(raw.decode("utf-8", "strict"))
         _tree(value)
         return value
     except ContractError:
@@ -189,21 +174,6 @@ def _authoritative_criteria(reference, root, original_source_ref=None):
     return result
 
 
-def _compare_authoritative_criteria(plan, expected):
-    acceptance = plan.get("acceptance")
-    if type(acceptance) is not list or len(acceptance) != len(expected):
-        fail("acceptance_fidelity", "plan.acceptance", "criteria count differs from authoritative source")
-    actual = []
-    for entry in acceptance:
-        if type(entry) is not dict:
-            fail("acceptance_fidelity", "plan.acceptance", "criterion entry must be an object")
-        identity = _identity(entry.get("id"), "plan.acceptance.id")
-        criterion = _criterion(entry.get("criterion"), "plan.acceptance.criterion")
-        actual.append((identity, criterion))
-    if actual != expected:
-        fail("acceptance_fidelity", "plan.acceptance", "ordered criteria differ byte-for-byte from authoritative source")
-
-
 def _object(value, required, optional=(), field="$"):
     if type(value) is not dict:
         fail("type", field, "expected object")
@@ -211,30 +181,6 @@ def _object(value, required, optional=(), field="$"):
         fail("unknown_field", field, ",".join(sorted(set(value) - set(required) - set(optional))))
     if set(required) - set(value):
         fail("required", field, ",".join(sorted(set(required) - set(value))))
-
-
-def _string(value, field, limit=MAX_STRING):
-    if type(value) is not str or not value.strip() or len(value) > limit:
-        fail("string", field, f"expected nonempty string, at most {limit} characters")
-    if any(ord(c) < 32 or ord(c) == 127 for c in value):
-        fail("control", field, "control characters are not allowed")
-    return value
-
-
-def _criterion(value, field):
-    """Validate plan text while preserving tabs and LF or CRLF line breaks."""
-    if type(value) is not str or not value.strip() or len(value) > MAX_STRING:
-        fail("string", field, f"expected nonempty string, at most {MAX_STRING} characters")
-    if any((ord(char) < 32 and char not in "\t\r\n") or ord(char) == 127
-           for char in value):
-        fail("control", field, "control characters other than tabs and line breaks are not allowed")
-    if "\r" in value.replace("\r\n", ""):
-        fail("control", field, "carriage returns must be part of CRLF line breaks")
-    return value
-
-
-def _identity(value, field):
-    return _string(value, field, 128)
 
 
 def _strings(value, field, nonempty=False, unique=False):
@@ -623,35 +569,10 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
             plans.setdefault(key, m)
             if root is not None:
                 plan = read_json(Path(root) / p["plan_ref"]["path"])
-                # Plan metadata is project-owned, not a second wire schema. Its
-                # context identities and criteria still need strict type guards.
-                if type(plan) is not dict:
-                    fail("plan_artifact", "payload.plan_ref", "plan context must be an object")
-                _identity(plan.get("plan_id"), "plan.plan_id")
-                revision = plan.get("plan_revision")
-                if type(revision) is not int or not 1 <= revision <= 2147483647:
-                    fail("plan_artifact", "plan.plan_revision", "expected positive integer, never bool")
-                if plan["plan_id"] != m["plan_id"] or revision != m["plan_revision"]:
-                    fail("plan_artifact", "payload.plan_ref", "plan identity differs")
-                acceptance = plan.get("acceptance")
-                if type(acceptance) is not list or not acceptance or len(acceptance) > MAX_ITEMS:
-                    fail("plan_artifact", "plan.acceptance", "expected bounded nonempty criterion array")
-                ids = []
-                for entry in acceptance:
-                    if type(entry) is not dict:
-                        fail("plan_artifact", "plan.acceptance", "criterion entry must be an object")
-                    _identity(entry.get("id"), "plan.acceptance.id")
-                    if "criterion" in entry:
-                        _criterion(entry["criterion"], "plan.acceptance.criterion")
-                    ids.append(entry["id"])
-                if len(set(ids)) != len(ids):
-                    fail("plan_artifact", "plan.acceptance", "criterion identities must be unique")
-                if ids != p["acceptance_ids"]:
-                    fail("plan_artifact", "payload.acceptance_ids", "does not match original artifact")
-                if expected_criteria is not None:
-                    _compare_authoritative_criteria(plan, expected_criteria)
-                if original_source_ref is not None and plan.get("original_source_ref") != original_source_ref:
-                    fail("criteria_source", "plan.original_source_ref", "plan must preserve the caller-pinned original source reference")
+                planner_contract.validate_plan_context(
+                    plan, plan_id=m["plan_id"], plan_revision=m["plan_revision"],
+                    acceptance_ids=p["acceptance_ids"], expected_criteria=expected_criteria,
+                    original_source_ref=original_source_ref)
         elif kind != "plan.progress" and key not in plans:
             fail("plan_context", "plan_id", "published plan required")
         if key in plans and "acceptance_ids" in p:

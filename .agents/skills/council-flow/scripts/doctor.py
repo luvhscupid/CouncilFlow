@@ -10,6 +10,12 @@ import re
 import stat
 import sys
 
+_SCRIPTS = str(Path(__file__).resolve().parent)
+if _SCRIPTS not in sys.path:
+    sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+
+import strict_json  # noqa: E402
+
 
 ROLES = ("planner", "worker", "tester", "reviewer")
 _SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -18,23 +24,10 @@ _FIELDS_V1 = {"schema_version", "source_artifact", "source_hash_valid", "native_
 _FIELDS_V2 = _FIELDS_V1 | {"executable_artifact", "native_host"}
 
 
-def _unique_object(pairs):
-    result = {}
-    for key, value in pairs:
-        if key in result:
-            raise ValueError(f"duplicate JSON field: {key}")
-        result[key] = value
-    return result
-
-
-def _reject_constant(value):
-    raise ValueError(f"invalid JSON constant: {value}")
-
-
 def load_evidence(raw):
     """Parse strict JSON, rejecting duplicate fields and non-finite values."""
     try:
-        return json.loads(raw, object_pairs_hook=_unique_object, parse_constant=_reject_constant)
+        return strict_json.loads(raw)
     except (json.JSONDecodeError, TypeError) as exc:
         raise ValueError(f"invalid evidence JSON: {exc}") from exc
 

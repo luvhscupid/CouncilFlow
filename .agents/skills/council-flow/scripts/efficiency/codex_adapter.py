@@ -11,6 +11,11 @@ import re
 import sys
 import uuid
 
+_SCRIPTS = str(Path(__file__).resolve().parents[1])
+if _SCRIPTS not in sys.path:
+    sys.path.append(_SCRIPTS)  # shared strict_json lives in the parent scripts folder
+
+from strict_json import loads as strict_loads  # noqa: E402
 from digest import build_digest
 from recorder import record, validate, append_jsonl
 
@@ -25,19 +30,6 @@ SENSITIVE_ID = re.compile(r"sk-|bearer|secret|password|api[_-]?key", re.I)
 def _identifier(value):
     return (value if isinstance(value, str) and MODEL_ID.fullmatch(value)
             and not SENSITIVE_ID.search(value) else None)
-
-
-def _reject_constant(_):
-    raise ValueError("nonfinite JSON number")
-
-
-def _unique_object(pairs):
-    result = {}
-    for key, value in pairs:
-        if key in result:
-            raise ValueError("duplicate JSON field")
-        result[key] = value
-    return result
 
 
 def _usage(value, issues, line):
@@ -93,7 +85,7 @@ def parse_stream(raw, *, run_id=None, route="codex/native-or-configured",
         if not line.strip():
             continue
         try:
-            event = json.loads(line, parse_constant=_reject_constant, object_pairs_hook=_unique_object)
+            event = strict_loads(line)
         except (ValueError, UnicodeDecodeError, RecursionError):
             issues.append(f"line {number}: malformed JSON/encoding; contents omitted")
             safe_events.append({"type": "malformed"})
