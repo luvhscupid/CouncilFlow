@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "1feb9d36157fc04e56811807910b444baeddb5b799b1160ebda70126691352ed",
-  "entries": 193,
+  "sha256": "bad59ef5bbc5598a8c3d5a53ab1f4c5114d8a1cdf67a85d22053a8dad781fdb1",
+  "entries": 194,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -15,23 +15,23 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/app.js",
-      "size": 16336,
-      "sha256": "87af21083d2ba9931b5227f5d02211d322d2ba3b4e957167ed4824a017f470b4"
+      "size": 16732,
+      "sha256": "55b48ceea5e8f876a6d12e0bca362784a15ab474e877e2337cc92475ce6cfe10"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/index.html",
-      "size": 5840,
-      "sha256": "454d7912b09e326047b31c065619fe06bb63a7c1c982511925fcfe27e473418a"
+      "size": 5579,
+      "sha256": "16bdb29255aa85976429fa3b6f7efc5b625f5ca14e1113037dec382f4fb870d0"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/run-reader.js",
-      "size": 22791,
-      "sha256": "f9973cb479fa1f89f900e9998a040327efd9b20c9f6da5ecea654f1a8a9f9de8"
+      "size": 23152,
+      "sha256": "8402f8eec8a91cec096d153f44f53d27d52e861632552b9bebb116ee0b541fcc"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/styles.css",
-      "size": 12408,
-      "sha256": "880988f82983562786df54da94c61c12ac50db089a92bdafdcde7967d9c7bb77"
+      "size": 13881,
+      "sha256": "ffa0a5799ed27e69e9b9247405b93c66d68a4faaaeca587e62593d23e6db62df"
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
@@ -90,8 +90,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
-      "size": 10172,
-      "sha256": "0679d8fdbe697127d6a41ef140146a5027b73f7d9289865fdee97ebdb87766d4"
+      "size": 10131,
+      "sha256": "1557d1ece10e3e3ab9654e196cc8d807adbea7d3b4201757a4abec8943ff2bdc"
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
@@ -219,19 +219,24 @@
       "sha256": "bd7e668839710d8dc110010138373f52d08e52a7e9abbef38950eaf555a077c9"
     },
     {
+      "path": "demo/dashboard/tests/antislop-markup.test.cjs",
+      "size": 2260,
+      "sha256": "c7cf3b0b33b352e7567f96cb851f3d3c9cfaf88552f1124a1e06c6c0367fbe11"
+    },
+    {
       "path": "demo/dashboard/tests/auto-connection.test.cjs",
-      "size": 15265,
-      "sha256": "53068070f887f6de3d764ccdda14182d16d182fb9cbd0c7cbc82811174245e56"
+      "size": 17486,
+      "sha256": "3af2456ef568cf5aac4cedca8a26ca5b31f5cf6229314499a16d1057319f9981"
     },
     {
       "path": "demo/dashboard/tests/run-reader.test.cjs",
-      "size": 11197,
-      "sha256": "66f38fb6c54c3e83f24d2020cfd37a78e0da02c636f311c5918c00289cd36fa3"
+      "size": 11872,
+      "sha256": "e47c533cadc3812157238c7b7ea2345a5f7ff4a0524d5450cfa1c55519ee97e7"
     },
     {
       "path": "demo/dashboard/tests/test_publisher.py",
-      "size": 9155,
-      "sha256": "72d8dedd6639696a5d92c73d40985d11de861a97160551541c66ae2db3c92fa1"
+      "size": 10343,
+      "sha256": "566687729b9a85de57ddd8b93c3a9d3a4951fcf80d69fc07da444aedb1cb8999"
     },
     {
       "path": "demo/gate3-demo/README.md",
