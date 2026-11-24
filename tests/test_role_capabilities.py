@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 import sys
 
-SCRIPT_DIR = Path(__file__).resolve().parents[1] / ".agents" / "skills" / "council-flow" / "scripts"
+SCRIPT_DIR = Path(__file__).resolve().parents[1] / "experiments" / "multi-agent-evolution"  # offline prototype, not shipped
 sys.path.insert(0, str(SCRIPT_DIR))
 
 from role_capabilities import resolve_role, validate_profile
