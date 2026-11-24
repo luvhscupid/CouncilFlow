@@ -987,11 +987,82 @@ def validate_jsonl(source, *, messages=None, root=None):
     return len(lines)
 
 
+SAVE_NAME = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}")
+MAX_RUN_MESSAGES = 1024
+
+
+def _run_order(messages):
+    """Order saved packets by their reply links, ties by message_id (as the dashboard does)."""
+    pending = sorted(messages, key=lambda m: m["message_id"])
+    ordered, emitted = [], set()
+    while pending:
+        ready = [m for m in pending if m["in_reply_to"] is None or m["in_reply_to"] in emitted]
+        if not ready:
+            return ordered + pending
+        for m in ready:
+            ordered.append(m)
+            emitted.add(m["message_id"])
+            pending.remove(m)
+    return ordered
+
+
+def save_message(raw, run_dir, *, root=None, expected_sender=None):
+    """Save one full packet into run_dir/messages/<message_id>.json, or refuse.
+
+    The packet must pass validate_message, and the packets already saved in the run
+    plus this one must pass validate_sequence. Nothing is overwritten. The original
+    bytes are written unchanged, so any hash the caller recorded stays valid.
+    """
+    message = loads(raw)
+    if isinstance(message, dict) and "protocol" not in message and "message_type" not in message:
+        fail("bare_payload", "$", "this looks like a report or payload body; wrap it in the "
+             "council-flow envelope (protocol, message_id, message_type, sender, recipient, "
+             "payload, ...) before saving")
+    validate_message(message, root=root, expected_sender=expected_sender)
+    if not SAVE_NAME.fullmatch(message["message_id"]):
+        fail("message_file_name", "message_id", "save needs a message_id of letters, digits, '.', '_' or '-'")
+    run_dir = Path(run_dir)
+    if run_dir.is_symlink() or not run_dir.is_dir():
+        fail("run_folder", "run", "run folder must be an existing, unlinked directory")
+    folder = run_dir / "messages"
+    if folder.is_symlink() or (folder.exists() and not folder.is_dir()):
+        fail("run_folder", "messages", "messages must be an unlinked directory")
+    folder.mkdir(exist_ok=True)
+    target = folder / (message["message_id"] + ".json")
+    if target.exists() or target.is_symlink():
+        fail("message_exists", "message_id", f"{target.name} is already saved; packets are never overwritten")
+    saved = []
+    names = sorted(folder.glob("*.json"))
+    if len(names) >= MAX_RUN_MESSAGES:
+        fail("run_size", "messages", f"maximum {MAX_RUN_MESSAGES} saved packets")
+    for path in names:
+        if path.is_symlink() or not path.is_file():
+            fail("run_record", path.name, "linked or non-regular packet files are not read")
+        try:
+            saved.append(read_json(path))
+        except ContractError as error:
+            fail("run_record", path.name, f"saved file is not valid JSON: {error}")
+    validate_sequence(_run_order(saved) + [message], root=root)
+    temporary = folder / ("." + target.name + ".saving")
+    with temporary.open("xb") as stream:
+        stream.write(raw)
+    try:
+        if target.exists():
+            fail("message_exists", "message_id", f"{target.name} is already saved; packets are never overwritten")
+        temporary.replace(target)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+    return {"saved": True, "path": target.as_posix(), "message_id": message["message_id"],
+            "message_type": message["message_type"], "sha256": hashlib.sha256(raw).hexdigest()}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["message", "sequence", "capture", "policy", "events"])
+    parser.add_argument("mode", choices=["message", "sequence", "capture", "policy", "events", "save"])
     parser.add_argument("files", nargs="+")
     parser.add_argument("--root", type=Path, help="verify referenced artifact existence/hash inside this root")
+    parser.add_argument("--run", type=Path, help="save mode: the run folder, e.g. .councilflow/runs/<task-id>")
     parser.add_argument("--expected-sender", choices=sorted(ROLES))
     parser.add_argument("--expected-instance")
     parser.add_argument("--bindings", type=Path, help="trusted JSON map message_id -> externally observed actor")
@@ -1011,6 +1082,15 @@ def main(argv=None):
             if not args.expected_sender or not args.expected_instance:
                 fail("origin_binding", "$", "supply both expected sender and instance")
             expected = {"role": args.expected_sender, "instance_id": args.expected_instance}
+        if args.mode != "save" and args.run is not None:
+            fail("save_mode", "run", "--run applies only to save")
+        if args.mode == "save":
+            if len(args.files) != 1 or args.run is None:
+                fail("save_mode", "files", "save takes exactly one packet file and --run")
+            with Path(args.files[0]).open("rb") as stream:
+                raw = stream.read(MAX_BYTES + 1)
+            print(json.dumps(save_message(raw, args.run, root=args.root, expected_sender=expected)))
+            return 0
         if args.mode == "message":
             for path in args.files:
                 validate_message(read_json(path), root=args.root, expected_sender=expected)
