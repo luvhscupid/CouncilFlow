@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "c5464f59f0098ef520afd972aa0753ae9ef0476d32eeaf893d88d25425281af2",
-  "entries": 220,
+  "sha256": "20319d847cfce13ddc9e9059768272f7dc8973cafd1a74c2fdd911fc674d35a6",
+  "entries": 222,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 7780,
-      "sha256": "1b3d687a23714448b984d605ca6276e5e3c81cddbeb0628d927286e3c07d7d0e"
+      "size": 7898,
+      "sha256": "32f8e4230530478dcb12a505ee7ed71edbad75f591b1b7d769fb4a1c06dc4082"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -50,8 +50,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
-      "size": 17615,
-      "sha256": "835dad92d248b42255542364b842bac02ddefec4363c849115917f8090d3107e"
+      "size": 18589,
+      "sha256": "0980984385c80853125366422981153f06d4aca2bbaeb36e1d44fbb626537ac1"
     },
     {
       "path": ".agents/skills/council-flow/references/efficiency.md",
@@ -85,13 +85,13 @@
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 7684,
-      "sha256": "e00826ec22dbac9d28fe0b61275abb4464e86a9548eef404acabce3cf3d59a84"
+      "size": 8238,
+      "sha256": "bbf24061f293b8453dece815a1d3bdbc46bc6b108e700cef1ac78b9351682ca6"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 64941,
-      "sha256": "45e0af0d5e990bd542b0edaea2e592709c452d0949c36b1477b74f94b30e8499"
+      "size": 68981,
+      "sha256": "143ba1ec006c44c7ce4b6ff13326663931eeb8b58c2c6ca06fd3943235dc8880"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
@@ -925,8 +925,13 @@
     },
     {
       "path": "tests/fixtures/README.md",
-      "size": 3143,
-      "sha256": "ba733dca7905d7356807437608a2931fc57f6947ed693b7de95e19eb3e163090"
+      "size": 3589,
+      "sha256": "3149d7fb010ee8274d6f610226d27dc552c61aeb7f4dfd2a47ab8ca21de4af6b"
+    },
+    {
+      "path": "tests/fixtures/bare-worker-report-M003.json",
+      "size": 3407,
+      "sha256": "e54788dc453169f786e54bcd02ea08b376c4312b19a2eab7d3e5c9e1f02fa9f8"
     },
     {
       "path": "tests/fixtures/owner-version-original.txt",
@@ -1017,6 +1022,11 @@
       "path": "tests/test_original_source.py",
       "size": 14690,
       "sha256": "341ad9127bf7e0693a83fff658b9cf91564aa7d194338cee5cbb683c721f218f"
+    },
+    {
+      "path": "tests/test_packet_save.py",
+      "size": 6632,
+      "sha256": "3217c513ceaf589251f0085126d9654a92d675284acf1d69a3bd3b1f598ebb99"
     },
     {
       "path": "tests/test_planner_contract.py",

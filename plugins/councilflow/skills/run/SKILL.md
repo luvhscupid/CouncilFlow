@@ -79,9 +79,12 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
    - The Manager writes each `job.assign` as a UTF-8 JSON file under
      `.councilflow/runs/<task-id>/messages/` with its own `message_id`, and
      `in_reply_to` set to the message it answers (the plan, or the prior report).
-   - The Manager validates that file with `contracts.py message --root .
-     --expected-sender manager` and, where a chain exists, `contracts.py sequence`.
-     Only after both pass does it launch the native subagent.
+   - The Manager saves that file with `contracts.py save <file> --run
+     .councilflow/runs/<task-id> --root . --expected-sender manager
+     --expected-instance <id>`, which checks it like `message` and the saved run
+     like `sequence`. Only after the save passes does it launch the subagent.
+     Every packet, including each `job.report`, enters `messages/` only through
+     `save`; it refuses bare report bodies without the council-flow envelope.
    - The launch prompt passes the assignment's exact `message_id` and file path.
      The subagent writes its `job.report` with `in_reply_to` equal to that
      `message_id`. It must not invent or reuse another assignment.
