@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "c5464f59f0098ef520afd972aa0753ae9ef0476d32eeaf893d88d25425281af2",
-  "entries": 220,
+  "sha256": "f5e388cd3fbe6770c906e74c90d5dccfc77deac70828e9f4fdcd546130842b12",
+  "entries": 214,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -134,19 +134,9 @@
       "sha256": "9a0553fcf781624bb223e72336d26c32fc256c7de38bdef946505efe0334c574"
     },
     {
-      "path": ".agents/skills/council-flow/scripts/experience.py",
-      "size": 2058,
-      "sha256": "d388f398679bcf12d2f987b71a18956e3c44b2f317a5416dd821cf9a14f5e9e0"
-    },
-    {
       "path": ".agents/skills/council-flow/scripts/planner_contract.py",
       "size": 12169,
       "sha256": "041c3f52e9e8eb5d0c8059f508dc7837a6ff4eb0dd1982b21744c773257ec723"
-    },
-    {
-      "path": ".agents/skills/council-flow/scripts/role_capabilities.py",
-      "size": 2627,
-      "sha256": "194ce9988d41692a40f67c1f9172a5866f8b0cb4d453666830a1ee72ae3467c9"
     },
     {
       "path": ".agents/skills/council-flow/scripts/route.py",
@@ -187,11 +177,6 @@
       "path": ".agents/skills/council-flow/scripts/strict_json.py",
       "size": 2653,
       "sha256": "80c458b695087d897461c9a8181ddcfed2039fa7a17945e03f69804de7b2f847"
-    },
-    {
-      "path": ".agents/skills/council-flow/scripts/task_graph.py",
-      "size": 2778,
-      "sha256": "dbcb9ae67ba9a81d99817f9d3afd6fef1a0ad2ed3466a72b785bdf61d5a0a874"
     },
     {
       "path": ".codex/agents/council-planner.toml",
@@ -570,8 +555,8 @@
     },
     {
       "path": "docs/technical/multi-agent-evolution.md",
-      "size": 4719,
-      "sha256": "12147dcae9fc06788cac0681380824f4e820f35e31860d2bcc3c6513a089c952"
+      "size": 5370,
+      "sha256": "c5496cd2b21501d8559f24a390309b12e20a7b4671e00d9af29c0eff4c1db282"
     },
     {
       "path": "docs/technical/structured-communication.md",
@@ -1004,11 +989,6 @@
       "sha256": "91821708320d485fb1fff14c5de68ce64036b5b129627ede2795de13c8faf55e"
     },
     {
-      "path": "tests/test_experience.py",
-      "size": 2922,
-      "sha256": "b34e8269b3dd9f21e2f53faba5b1d3fab42fb614392cb1bf42655dc9de58b70e"
-    },
-    {
       "path": "tests/test_manager_upgrade.py",
       "size": 9372,
       "sha256": "ec61340e853aa97b825be56e388f040c2f2c47cd1c09c134edfef0aaf1dd24ed"
@@ -1027,11 +1007,6 @@
       "path": "tests/test_release.py",
       "size": 7391,
       "sha256": "be00e355c6412e88c408e4423b604d7a0dc4234f98e0f1982bb178638e0409f8"
-    },
-    {
-      "path": "tests/test_role_capabilities.py",
-      "size": 2893,
-      "sha256": "8338d06c5d8ac67df42687e82ecaf16cf233ce33012c607aac688ac706d58f0d"
     },
     {
       "path": "tests/test_routing_cli.py",
@@ -1074,11 +1049,6 @@
       "sha256": "f66cb0e08f8b87c8d43cbd9767f0f8cdb0c186af40966c413edbcb519c43ef5e"
     },
     {
-      "path": "tests/test_task_graph.py",
-      "size": 2669,
-      "sha256": "2963f57edd4ce731d4bc464a44aef12913c4a525c7c35be0ad6060873337d4ef"
-    },
-    {
       "path": "tests/test_tester_selection.py",
       "size": 7513,
       "sha256": "dae83a294d12b1923eac30008be41deb193fc4579c4f9f78a21361d21cc258f8"
@@ -1100,8 +1070,8 @@
     },
     {
       "path": "tools/build_release.py",
-      "size": 8582,
-      "sha256": "89789318cf191eaced227e2cd86bc4ab6e568d983f53206af14f1542b3999930"
+      "size": 8754,
+      "sha256": "a47b3b3b70d2f70550182ee17c1c7d1343d0d03e4602f4a17ac15da167f15caf"
     }
   ],
   "crc": "PASS",

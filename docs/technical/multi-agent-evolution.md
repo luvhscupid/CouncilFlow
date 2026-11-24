@@ -4,9 +4,18 @@ This branch adds offline helpers based on the proposal in
 [`docs/multi-agent-evolution-plan-2026-11-17/`](../multi-agent-evolution-plan-2026-11-17/).
 They do not change the default role workflow or prove native host behavior.
 
+On 2026-11-24 (cleanup slice 5) the helpers that no workflow step called were
+taken out of the shipped skill. `role_capabilities.py` and `experience.py` now
+live in `experiments/multi-agent-evolution/` next to `journal.py`; their tests
+stay in `tests/` but are not packed into the release archive. `task_graph.py`
+was removed, because the Plan contract (`scripts/planner_contract.py`) already
+rejects unknown dependencies and cycles for every plan. They came from backlog
+items CF-M20, CF-O50 and CF-G40 of the evolution proposal, which is not
+authorized to execute, and no frozen Gate 3 record names them.
+
 ## Role capability report
 
-`scripts/role_capabilities.py` validates a versioned role preference object and
+`experiments/multi-agent-evolution/role_capabilities.py` validates a versioned role preference object and
 combines it with explicitly supplied capability metadata. Capability input is
 caller-reported, so `capability_status` remains `UNKNOWN`. It never inspects host
 configuration or starts a model. `effective_model` and `route_verified` remain
@@ -38,9 +47,9 @@ following them, including links that resolve within the evidence root.
 
 ## Task graph and experience review claims
 
-`scripts/task_graph.py` validates prerequisites, revisions, cycles and blocked
-descendants. It returns a stable graph order but does not schedule or parallelize
-work. `scripts/experience.py` validates review-claim metadata and filters by
+`scripts/task_graph.py` validated prerequisites, revisions, cycles and blocked
+descendants; it was removed in favor of the Plan contract's dependency checks.
+`experiments/multi-agent-evolution/experience.py` validates review-claim metadata and filters by
 project scope/supersession. Its `review_claim` is caller-supplied, and every entry is
 returned with `review_status: UNVERIFIED`. It does not authenticate Owner
 review, ingest model output, or inject lessons into Worker context.
