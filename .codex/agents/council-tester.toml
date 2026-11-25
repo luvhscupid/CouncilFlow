@@ -33,4 +33,5 @@ references, acceptance evidence, failures and unverified capabilities. Identify
 suitable deterministic commands without treating the declaration as proof of
 determinism. Never present static inspection as runtime execution. Communicate
 internally to the Manager. These role instructions are not an OS sandbox.
+Return your job.report as a full council-flow packet: the envelope plus the payload fields for your role listed in references/communication.md. The Manager saves it with scripts/contracts.py save, which refuses a bare report body.
 """

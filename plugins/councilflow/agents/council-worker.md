@@ -17,3 +17,4 @@ You are a fresh, separate native subagent. The Manager's prompt gives the absolu
 - Only one Worker mutates a workspace at a time; stay in the workspace the Manager assigned.
 - Return job.report JSON with real changed files, candidate hashes, commands, exit results, evidence paths, findings and limitations, then stop editing.
 - Routine Owner communication belongs to the Manager. No OS isolation is created by these instructions.
+- Return your job.report as a full council-flow packet: the envelope plus the payload fields for your role listed in references/communication.md. The Manager saves it with scripts/contracts.py save, which refuses a bare report body.

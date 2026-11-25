@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "d62101673832dbd9985769cab03036c53be222cb00def0baeaa59111e56c5550",
-  "entries": 243,
+  "sha256": "7723cfe5886bc5d4a7de6db977b8fc1efa6d59ef6ae3f9144901807f635c9c05",
+  "entries": 244,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -190,18 +190,18 @@
     },
     {
       "path": ".codex/agents/council-reviewer.toml",
-      "size": 2097,
-      "sha256": "1458a4b4b3e18bb39072ba949bd6c7a20a6c1266942ab6b8a530b93974475217"
+      "size": 2328,
+      "sha256": "189f116147c86fbe23c81bd5046d549de53e7352e6111d5fc0f7160a260e0186"
     },
     {
       "path": ".codex/agents/council-tester.toml",
-      "size": 2587,
-      "sha256": "61e31f7c01b189b9abf88a7f989457383d9553e35eef9b76bf3edee201346355"
+      "size": 2818,
+      "sha256": "69395f36d1af563d5e3ac60023cf1fd61e1a3ab143cd3667b4933a3a9df21f9c"
     },
     {
       "path": ".codex/agents/council-worker.toml",
-      "size": 1813,
-      "sha256": "2d99cfda571c62386492769e0d81918b8cdd51ddbc399967e8b11fdebeccfc2e"
+      "size": 2044,
+      "sha256": "7299ef3d82d46632dfe3b2b16bd882e9302ba90deff5d2450bb43071b92da1c3"
     },
     {
       "path": ".github/workflows/verify-portable-release.yml",
@@ -1142,6 +1142,11 @@
       "path": "tests/test_release.py",
       "size": 7391,
       "sha256": "be00e355c6412e88c408e4423b604d7a0dc4234f98e0f1982bb178638e0409f8"
+    },
+    {
+      "path": "tests/test_report_packet_pointer.py",
+      "size": 1350,
+      "sha256": "8a7602a3b79cd4267893f0ee4ddfbe90e1a1a24d8fc7b5bda9d9cb4026e91491"
     },
     {
       "path": "tests/test_routing_cli.py",
