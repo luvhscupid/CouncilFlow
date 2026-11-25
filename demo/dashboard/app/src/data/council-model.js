@@ -257,6 +257,17 @@ function buildRoles(ctx, policy) {
   });
 }
 
+const RUN_HREF = /^(?:\.\.\/|\.\/)?(?:[A-Za-z0-9][A-Za-z0-9._-]*\/|\.\.\/)*dashboard\.html$/;
+
+function projectRuns(runs) {
+  return list(runs).filter(isObject).slice(0, 200).map(run => ({
+    taskId: text(run.taskId),
+    href: typeof run.href === "string" && RUN_HREF.test(run.href) ? run.href : null,
+    updated: text(run.updated) ? Date.parse(run.updated) : null,
+    current: run.current === true
+  })).filter(run => run.taskId && run.href);
+}
+
 function buildEfficiency(efficiency) {
   if (!isObject(efficiency)) return { available: false, reason: "No Agent Efficiency records were supplied when this board was published.", records: [] };
   const records = list(efficiency.records).filter(isObject);
@@ -420,6 +431,8 @@ function buildModel(input, reader) {
     analytics: { typeCounts, reportOutcomes, rework: attemptSummaries.filter(item => item.decision === "rework").length },
     efficiency: buildEfficiency(context.efficiency),
     policy: isObject(context.policy) ? context.policy : null,
+    board: context.board === "project" || context.board === "task" ? context.board : null,
+    projectRuns: projectRuns(context.runs),
     files: files.filter(isObject).map(entry => ({ path: entry.path || entry.name || "file", sha256: entry.sha256 || null, modified: entry.modified || null, error: entry.error || null, isMessageFile: Boolean(entry.isMessageFile) }))
   };
 }

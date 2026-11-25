@@ -32,7 +32,7 @@ Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md)
 2. **Planner.** Follow the canonical [Planner contract](references/planner.md). Manager supplies
    bounded verified context; Planner does not explore application source. Publish only a dispatchable
    READY plan. External mode preserves an Owner-approved plan and provenance. After validating publication,
-   Manager opens the task board once and republishes after packet writes/validated role results; see [workflow](references/workflow.md).
+   Each `contracts.py save` refreshes the project board `.councilflow/dashboard.html` and the run's first packet opens it once; see [workflow](references/workflow.md).
 3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate

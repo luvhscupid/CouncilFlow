@@ -670,3 +670,12 @@ a[href], button, summary, select, [role="button"], label.radio, label.toggle { c
   .scope-list { justify-content: flex-start; }
   .stage-table li { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Project list */
+.run-list { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 6px; }
+.run-link { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 12px; background: var(--night-2); box-shadow: inset 0 0 0 1px var(--line-soft); color: var(--ink); text-decoration: none; min-width: 0; }
+.run-link b { overflow-wrap: anywhere; font-weight: 500; }
+.run-link .muted { flex: none; font-size: 12.5px; }
+a.run-link:hover { background: var(--night-3); }
+a.run-link:focus-visible { outline: 2px solid var(--planner); outline-offset: 2px; }
+.run-link.is-current { box-shadow: inset 2px 0 0 var(--planner), inset 0 0 0 1px var(--line-soft); }

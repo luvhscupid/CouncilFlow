@@ -1,4 +1,4 @@
-"""Publish a read-only local dashboard snapshot for one CouncilFlow task."""
+"""Publish read-only local dashboard snapshots for one CouncilFlow task and its project."""
 from __future__ import annotations
 
 import argparse
@@ -280,9 +280,86 @@ def _inline(source: str, stylesheet: str, reader: str, app: str, files: list[dic
     return source
 
 
+MAX_LISTED_RUNS = 200
+
+
+def _write_atomic(output: Path, page: str) -> None:
+    descriptor, temporary_name = tempfile.mkstemp(prefix=".dashboard-", suffix=".tmp", dir=output.parent)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as stream:
+            stream.write(page)
+        Path(temporary_name).replace(output)
+    finally:
+        temporary = Path(temporary_name)
+        if temporary.exists():
+            temporary.unlink()
+
+
+def _last_write(run_dir: Path) -> float:
+    """Latest packet or board write time in one run folder; informational only."""
+    stamps = []
+    for path in [run_dir / "dashboard.html", run_dir / "plan.json"]:
+        try:
+            stamps.append(path.stat().st_mtime)
+        except OSError:
+            pass
+    messages = run_dir / "messages"
+    if messages.is_dir() and not messages.is_symlink():
+        for index, path in enumerate(messages.glob("*.json")):
+            if index >= MAX_MESSAGE_FILES:
+                break
+            try:
+                stamps.append(path.stat().st_mtime)
+            except OSError:
+                pass
+    return max(stamps, default=0.0)
+
+
+def _project_runs(root: Path, current: str) -> list[dict]:
+    """Published boards of this project's runs, newest first, for the Project list tab.
+
+    Only runs that already have a dashboard.html are listed, so each entry is a plain
+    link to an existing local file. Nothing here is read until the user follows it.
+    """
+    runs_dir = root / ".councilflow" / "runs"
+    if not runs_dir.is_dir() or runs_dir.is_symlink():
+        return []
+    found = []
+    for run_dir in runs_dir.iterdir():
+        name = run_dir.name
+        if not TASK_ID.fullmatch(name) or run_dir.is_symlink() or not run_dir.is_dir():
+            continue
+        board = run_dir / "dashboard.html"
+        if name != current and (not board.is_file() or board.is_symlink()):
+            continue
+        found.append((_last_write(run_dir), name))
+    found.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    listed = []
+    for stamp, name in found[:MAX_LISTED_RUNS]:
+        listed.append({
+            "taskId": name,
+            "path": f".councilflow/runs/{name}/dashboard.html",
+            "updated": datetime.fromtimestamp(stamp, tz=timezone.utc).isoformat(timespec="milliseconds") if stamp else None,
+            "current": name == current,
+        })
+    return listed
+
+
+def _with_hrefs(runs: list[dict], page_dir: str) -> list[dict]:
+    """Give each listed run a link relative to the page that embeds it."""
+    return [{**run, "href": os.path.relpath(run["path"], page_dir).replace(os.sep, "/")} for run in runs]
+
+
 def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=None,
                 efficiency_records: Path | None = None) -> dict:
-    """Validate one canonical task directory and atomically publish its HTML view."""
+    """Validate one canonical task directory and atomically publish its HTML views.
+
+    Two self-contained pages are written: the task's own board in
+    .councilflow/runs/<task-id>/dashboard.html, and the project board in
+    .councilflow/dashboard.html, which always shows the most recently published run
+    of this project. --open opens the project board, so the same browser tab keeps
+    following whichever run this project is working on.
+    """
     if not isinstance(task_id, str) or not TASK_ID.fullmatch(task_id) or task_id in {".", ".."}:
         raise ValueError("task ID must be a single safe path segment")
     root = Path(root).resolve()
@@ -294,40 +371,41 @@ def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=
         run_dir.mkdir(parents=True)
     if not run_dir.resolve().is_relative_to(root):
         raise ValueError("task run directory must stay inside the repository")
+    project_dir = root / ".councilflow"
+    if project_dir.is_symlink() or not project_dir.resolve().is_relative_to(root):
+        raise ValueError("the .councilflow folder must stay inside the repository")
 
     files, errors = _run_files(root, task_id)
-    page = _inline(
+    template = (
         (DASHBOARD_ROOT / "index.html").read_text(encoding="utf-8"),
         (DASHBOARD_ROOT / "styles.css").read_text(encoding="utf-8"),
         (DASHBOARD_ROOT / "run-reader.js").read_text(encoding="utf-8"),
         (DASHBOARD_ROOT / "app.js").read_text(encoding="utf-8"),
-        files,
-        {
-            "taskId": task_id,
-            "project": root.name or None,
-            "generatedAt": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
-            "policy": _policy(),
-            "efficiency": _efficiency(efficiency_records, task_id),
-        },
     )
+    context = {
+        "taskId": task_id,
+        "project": root.name or None,
+        "generatedAt": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
+        "policy": _policy(),
+        "efficiency": _efficiency(efficiency_records, task_id),
+    }
     output = run_dir / "dashboard.html"
-    descriptor, temporary_name = tempfile.mkstemp(prefix=".dashboard-", suffix=".tmp", dir=run_dir)
-    try:
-        with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as stream:
-            stream.write(page)
-        Path(temporary_name).replace(output)
-    finally:
-        temporary = Path(temporary_name)
-        if temporary.exists():
-            temporary.unlink()
+    project_output = project_dir / "dashboard.html"
+    # List the current run first so the task board exists before other pages link to it.
+    runs = _project_runs(root, task_id)
+    _write_atomic(output, _inline(*template, files, {
+        **context, "board": "task", "runs": _with_hrefs(runs, f".councilflow/runs/{task_id}")}))
+    _write_atomic(project_output, _inline(*template, files, {
+        **context, "board": "project", "runs": _with_hrefs(runs, ".councilflow")}))
 
     opened = None
     if open_browser:
         open_url = opener or webbrowser.open
-        opened = bool(open_url(output.resolve().as_uri()))
+        opened = bool(open_url(project_output.resolve().as_uri()))
     return {
         "task_id": task_id,
         "snapshot_path": str(output),
+        "project_path": str(project_output),
         "opened": opened,
         "issues": errors,
         "packet_count": sum(1 for item in files if item["isMessageFile"] and item["data"] is not None),
@@ -341,7 +419,7 @@ def main(argv=None) -> int:
     publish.add_argument("--root", type=Path, default=Path.cwd())
     publish.add_argument("--task-id", required=True)
     publish.add_argument("--open", action="store_true", dest="open_browser",
-                         help="open the snapshot once in the host's default browser")
+                         help="open the project board (.councilflow/dashboard.html) once in the default browser")
     publish.add_argument("--efficiency-records", type=Path, default=None,
                          help="optional Agent Efficiency JSONL; records whose run_id equals the task ID are shown")
     args = parser.parse_args(argv)

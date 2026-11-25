@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "bb749885e03b8152b6f26af391b8bd12bd76eaf886e451c3502bb4f42f016a2f",
+  "sha256": "adfbb1d14cdaf6bb2e90af144d1acfffee1a8a17bed204715ab44faad855eb1a",
   "entries": 244,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 7898,
-      "sha256": "32f8e4230530478dcb12a505ee7ed71edbad75f591b1b7d769fb4a1c06dc4082"
+      "size": 7929,
+      "sha256": "fc6e8fee44b3b83e1e3217f9273596354eaa355e4165c97b811b93dac61361df"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -15,8 +15,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/app.js",
-      "size": 237866,
-      "sha256": "659a59956b13b3004173d78ce7d788ecda79994f43ac83c136a214569410ba64"
+      "size": 239469,
+      "sha256": "d1f90e865c6082fd84d19a10ec610554321286869d6f2f889ee47242bc02b61d"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/index.html",
@@ -30,8 +30,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/styles.css",
-      "size": 46511,
-      "sha256": "87b756949a7cf1087c31c724d4ba4b619db1d8b40901e2909467a7419a6a6472"
+      "size": 47230,
+      "sha256": "6bd2e2302a858e6d025c219d911b4e2d91e7e9af76d4c298a91ed4b65271cca0"
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
@@ -85,18 +85,18 @@
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 8238,
-      "sha256": "bbf24061f293b8453dece815a1d3bdbc46bc6b108e700cef1ac78b9351682ca6"
+      "size": 8655,
+      "sha256": "d02758ae44abf421546c783ea9d8928f402eb485c2fbba3b78e63add52d1481d"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 70855,
-      "sha256": "84dde82806b846aeeb3cd8d5e3b233f47d71b1f28c8dae733920c7e79a83f628"
+      "size": 72795,
+      "sha256": "684283c4fbbfd753e30ebf46fd1f0399115ed1bb896ce00b465943b876793cbc"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
-      "size": 14838,
-      "sha256": "0e40af1d36b25d0ea8a7785373510adc30089d625a81eb3623ab3656a184d60d"
+      "size": 18238,
+      "sha256": "49edfc92a55f132e2d064f2e0c4289d7db7ddf9b856deaf669d94b0351f0c5f6"
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
@@ -250,8 +250,8 @@
     },
     {
       "path": "demo/dashboard/README.md",
-      "size": 2881,
-      "sha256": "12255f51e5ef27ab3c0de5b75d9517f92eb641247cf53ad15b0c10d7bea1939e"
+      "size": 3392,
+      "sha256": "32a7a13566eca262a643c99c9ce7840bd9107d1b3733690bb72066f0ffadc72e"
     },
     {
       "path": "demo/dashboard/app/build.mjs",
@@ -315,8 +315,8 @@
     },
     {
       "path": "demo/dashboard/app/src/data/council-model.js",
-      "size": 25753,
-      "sha256": "9e7e37bb7bb478cac55a2bb5bf0bca31ec95759212300e60281c26029c397c82"
+      "size": 26339,
+      "sha256": "98f530fac4933927ce3fa1a9037fa868a0ab2dc8df224d2a58321d6d5e74f737"
     },
     {
       "path": "demo/dashboard/app/src/data/run-loader.js",
@@ -350,8 +350,8 @@
     },
     {
       "path": "demo/dashboard/app/src/views/Views.jsx",
-      "size": 28724,
-      "sha256": "90449868da9c038ed4b2b5f910ebf1d85b25227475337548933ec85793e2f102"
+      "size": 30072,
+      "sha256": "cea7db63073eabf11deda50b3fdc182f5748f970dce435d4fd607b3cee9857a6"
     },
     {
       "path": "demo/dashboard/index.html",
@@ -385,8 +385,8 @@
     },
     {
       "path": "demo/dashboard/tests/test_publisher.py",
-      "size": 13619,
-      "sha256": "33e08059e01a7b117196480f27f953790b8864c1d1787e8983d8f820757c9a5a"
+      "size": 15152,
+      "sha256": "72c63a9280f2df3698ea9ed5097a4833e70afa0628582578d244619f527b51e1"
     },
     {
       "path": "demo/gate3-demo/README.md",
@@ -1130,8 +1130,8 @@
     },
     {
       "path": "tests/test_packet_save.py",
-      "size": 6632,
-      "sha256": "3217c513ceaf589251f0085126d9654a92d675284acf1d69a3bd3b1f598ebb99"
+      "size": 8717,
+      "sha256": "2e17ae6c31f5c8ac34d3bf716a750901645db3adb0f3f954a36c9d3a02a53251"
     },
     {
       "path": "tests/test_planner_contract.py",

@@ -84,14 +84,20 @@ attempt/candidate identities, published acceptance and known actor bindings.
 Refer to communication.md for exact schemas, CLI and limitations. This is not a
 database, message broker, Supervisor, agent simulator or transport adapter.
 
-After validating `plan.publish`, Manager opens the read-only dashboard once for
-the task with `scripts/dashboard.py publish --root . --task-id <task-id> --open`.
-After each Manager packet write and each validated role result, Manager reruns
-the helper without `--open` so the same self-contained board refreshes from the
-current task directory. The dashboard is an informational projection; packets
-remain authoritative, and no local service or watcher is started. If the host
-cannot open the browser, report the dashboard as blocked and continue the normal
-workflow without claiming a live connection.
+The read-only dashboard follows the run without a separate Manager step. Each
+successful `contracts.py save` into `.councilflow/runs/<task-id>` republishes the
+task board and the project board `.councilflow/dashboard.html`, which always shows
+the run this project saved to most recently. The run's first saved packet
+(normally `plan.publish`) opens the project board once in the default browser;
+`--no-open`, `CI` or `COUNCILFLOW_NO_BROWSER` keep it closed and `--no-dashboard`
+skips the refresh. The save output reports the board under `dashboard`. A board
+failure never undoes or blocks the save. Manager may still run
+`scripts/dashboard.py publish --root . --task-id <task-id> [--open]` by hand, for
+example to add `--efficiency-records`. The dashboard is an informational
+projection; packets remain authoritative, and no local service or watcher is
+started. If the host cannot open the browser (`"opened": false`), report the
+dashboard as blocked and continue the normal workflow without claiming a live
+connection.
 
 Native Codex transport may wrap these messages in an opaque protocol. CouncilFlow
 only controls the task packet/report files and instructions passed through
