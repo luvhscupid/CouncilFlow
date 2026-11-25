@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "adfbb1d14cdaf6bb2e90af144d1acfffee1a8a17bed204715ab44faad855eb1a",
+  "sha256": "fbe63d3885fb11c8fa3680b161768fd4054e1f4d80c763bcf3e587a27755e88a",
   "entries": 244,
   "files": [
     {
@@ -1185,8 +1185,8 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 10276,
-      "sha256": "02ddd49e2b8f0d844a64225eca86acd7747aaa989da2b726c80f546b8051df29"
+      "size": 10383,
+      "sha256": "7adb8de2c38ce5940af3359bb34ffa2fd7358c4e6b107cb173a5ce343c7d57ec"
     },
     {
       "path": "tests/test_strict_json.py",
