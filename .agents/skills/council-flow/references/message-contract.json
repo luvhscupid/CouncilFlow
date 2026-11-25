@@ -145,7 +145,7 @@
   ],
   "conditional_fields": {
     "job.assign": {
-      "worker": "candidate_ref optional immutable input",
+      "worker": "candidate_ref optional immutable input; optional plan_task_id names the Planner task dispatched (envelope task_id stays the run's task)",
       "tester": "candidate_ref and Manager-assigned oracle_ref required",
       "reviewer": "candidate_ref required exact verification output"
     },
@@ -156,6 +156,9 @@
     "task.decision.failed_acceptance_ids": "Only valid assigned/original criterion identities; accept cannot contain a nonempty failure list.",
     "plan.check.results": "Every passed criterion requires explicit nonempty evidence_refs; structural citations do not prove evidence semantics.",
     "plan.publish.plan_ref": "With root context: JSON object containing matching typed plan_id, positive nonboolean integer plan_revision, and nonempty acceptance objects with unique id strings; criterion text validated when present.",
-    "message.created_at": "Agent-authored messages omit created_at. Diagnostic created_at syntax validation does not prove trusted clock provenance."
+    "message.created_at": "Agent-authored messages omit created_at. Diagnostic created_at syntax validation does not prove trusted clock provenance.",
+    "job.assign.attempt_id": "The first Worker job.assign replying to plan.publish starts the implementation attempt and may use its own attempt_id; every later link keeps it, and rework needs a fresh one.",
+    "job.report.evidence_refs": "A completed Worker report may rely on its hashed candidate_ref; completed Tester and Reviewer reports need nonempty evidence_refs.",
+    "plan.publish.revision": "A higher plan_revision may be published in the same run by the original Planner to the original Manager with unchanged objective, scope and acceptance_ids and a plan_ref path and artifact_id no earlier revision used; later Worker job.assign packets for older revisions are refused."
   }
 }

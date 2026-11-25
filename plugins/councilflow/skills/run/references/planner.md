@@ -38,6 +38,8 @@ Use this exact shape for the dispatchable plan artifact; `original_source_ref` i
 }
 ```
 
+Save each revision in its own file named for the revision, for example `plan-r1.json` then `plan-r2.json`, and never rewrite an earlier revision's file: saved packets reference it by hash, and `contracts.py` refuses a revision that reuses an earlier plan path or artifact ID (`plan_ref_reused`). A revision republished in the same run keeps the first publication's objective, scope and acceptance IDs and changes only the tasks; changing those needs separately approved context. Before publishing, self-check the plan with `python3 -B scripts/planner_contract.py plan <plan-rN.json> <frozen-criteria.json>`, or with `--planner-generated-criteria` in place of the criteria file when the Owner supplied no frozen criteria.
+
 Use the actual workflow plan ID and positive revision; never invent transport identity. IDs must be unique and nonempty. Each task needs nonempty instructions, valid acceptance IDs, and existing dependencies. The dependency graph must be acyclic and task coverage must include every original criterion. The installed `scripts/planner_contract.py` validates the plan and selected Worker instruction transfer. Existing `scripts/contracts.py` validation still governs `council-flow 1.0` packets and required frozen-source fidelity. A structurally valid artifact does not authenticate its source or prove evidence.
 
 ## Final check

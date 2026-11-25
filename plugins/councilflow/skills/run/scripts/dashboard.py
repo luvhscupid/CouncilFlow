@@ -13,6 +13,9 @@ import sys
 import tempfile
 import webbrowser
 
+# Loading contracts.py must not write __pycache__ into the installed skill folder.
+sys.dont_write_bytecode = True
+
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 DASHBOARD_ROOT = SKILL_ROOT / "dashboard"

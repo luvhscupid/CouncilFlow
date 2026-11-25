@@ -13,6 +13,8 @@ from datetime import datetime
 _SCRIPTS = str(Path(__file__).resolve().parent)
 if _SCRIPTS not in sys.path:
     sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+# Roles must not find __pycache__ written into the installed skill folder.
+sys.dont_write_bytecode = True
 
 import planner_contract  # noqa: E402  (the Plan contract owns every plan-file rule)
 import strict_json  # noqa: E402
@@ -302,7 +304,10 @@ def validate_message(message, *, root=None, expected_sender=None):
         artifact(p["plan_ref"], root, "payload.plan_ref")
     elif kind == "job.assign":
         _object(p, {"objective", "scope", "acceptance_ids", "instructions"},
-                {"candidate_ref", "oracle_ref"}, "payload")
+                {"candidate_ref", "oracle_ref", "plan_task_id"}, "payload")
+        if "plan_task_id" in p:
+            # The Planner task being dispatched; the envelope task_id stays the run's task.
+            _identity(p["plan_task_id"], "payload.plan_task_id")
         _string(p["objective"], "payload.objective")
         _strings(p["scope"], "payload.scope", True)
         _strings(p["instructions"], "payload.instructions", True)
@@ -428,8 +433,10 @@ def validate_message(message, *, root=None, expected_sender=None):
                     fail("comparison", "payload.status", "mismatching independent rerun cannot pass")
             if comparison["discrepancies"] and p["status"] == "passed":
                 fail("comparison", "payload.status", "a comparison with unresolved discrepancies cannot pass")
-        if p["status"] != "in_progress" and not message["evidence_refs"]:
-            fail("evidence", "evidence_refs", "completed report requires evidence references")
+        # A Worker's hashed output candidate_ref is its evidence; verifiers cite evidence files.
+        if p["status"] != "in_progress" and not message["evidence_refs"] and role != "worker":
+            fail("evidence", "evidence_refs",
+                 f"completed {role} report requires evidence references; only a Worker report may rely on its candidate_ref")
     elif kind == "task.decision":
         _object(p, {"disposition", "reason", "acceptance_ids", "candidate_ref", "report_ids"},
                 {"failed_acceptance_ids"}, "payload")
@@ -570,6 +577,9 @@ def _check_identity_and_reply(state, m):
     if predecessor:
         for field in ("plan_id", "plan_revision", "task_id"):
             if m[field] != predecessor[field]:
+                if (field == "plan_revision" and kind == "plan.publish"
+                        and m["plan_revision"] > predecessor["plan_revision"]):
+                    continue  # a new plan revision may answer a message about an earlier one
                 fail("causal_identity", field, "must match predecessor")
     key = (m["plan_id"], m["plan_revision"])
     return predecessor, key
@@ -585,8 +595,8 @@ def _check_plan_context(state, m, predecessor, key):
             original = plans[key]
             if p != original["payload"] or any(m[actor] != original[actor] for actor in ("sender", "recipient")):
                 fail("plan_immutable", "payload", "published objective, scope, acceptance, plan or actors changed")
-        if any(plan == m["plan_id"] and revision != m["plan_revision"] for plan, revision in plans):
-            fail("plan_revision", "plan_revision", "amendments need separately approved context; not inferred")
+        else:
+            _check_plan_revision(plans, m)
         plans.setdefault(key, m)
         if root is not None:
             plan = read_json(Path(root) / p["plan_ref"]["path"])
@@ -596,6 +606,14 @@ def _check_plan_context(state, m, predecessor, key):
                 original_source_ref=original_source_ref)
     elif kind != "plan.progress" and key not in plans:
         fail("plan_context", "plan_id", "published plan required")
+    if kind == "job.assign" and m["recipient"]["role"] == "worker":
+        if any(plan == m["plan_id"] and revision > m["plan_revision"] for plan, revision in plans):
+            fail("plan_superseded", "plan_revision", "a newer plan revision is published; dispatch Workers from it")
+    if kind == "job.assign" and "plan_task_id" in p and root is not None and key in plans:
+        plan = read_json(Path(root) / plans[key]["payload"]["plan_ref"]["path"])
+        tasks = plan.get("tasks") if type(plan) is dict else None
+        if type(tasks) is list and p["plan_task_id"] not in {t.get("id") for t in tasks if type(t) is dict}:
+            fail("unknown_plan_task", "payload.plan_task_id", "names no task in the published plan")
     if key in plans and "acceptance_ids" in p:
         published = set(plans[key]["payload"]["acceptance_ids"])
         if not set(p["acceptance_ids"]) <= published:
@@ -609,6 +627,34 @@ def _check_plan_context(state, m, predecessor, key):
                and all(check[field] == m[field] for field in ("plan_id", "plan_revision", "task_id", "attempt_id"))
                for check in seen.values()):
             fail("failed_planner_check", "attempt_id", "an unmet original Planner check requires preserved rework and a fresh attempt")
+
+
+def _check_plan_revision(plans, m):
+    """A new revision changes only the Planner's tasks, in a new plan file, from the same actors.
+
+    Objective, scope and acceptance stay those of the first publication: changing them
+    needs separately approved context. Earlier revisions' plan files stay untouched so
+    every saved packet that references them keeps its hash.
+    """
+    earlier = sorted(((revision, msg) for (plan, revision), msg in plans.items() if plan == m["plan_id"]),
+                     key=lambda item: item[0])
+    if not earlier:
+        return
+    first, p = earlier[0][1], m["payload"]
+    if m["plan_revision"] < earlier[-1][0]:
+        fail("plan_revision", "plan_revision", "a new revision must be higher than every earlier revision")
+    if any(m[actor] != first[actor] for actor in ("sender", "recipient")):
+        fail("plan_revision", "sender/recipient", "a revision comes from the original Planner to the original Manager")
+    for field in ("objective", "scope", "acceptance_ids"):
+        if p[field] != first["payload"][field]:
+            fail("plan_revision", "payload." + field,
+                 "a revision changes only the Planner's tasks; objective, scope and acceptance changes need separately approved context")
+    for _, msg in earlier:
+        old = msg["payload"]["plan_ref"]
+        if old["path"] == p["plan_ref"]["path"] or old["artifact_id"] == p["plan_ref"]["artifact_id"]:
+            fail("plan_ref_reused", "payload.plan_ref",
+                 "each plan revision needs its own plan file and artifact id (for example plan-r2.json); "
+                 "rewriting an earlier revision's file breaks the hashes of packets already saved")
 
 
 def _check_report(state, m, predecessor, key):
@@ -711,6 +757,8 @@ def _check_assign(state, m, predecessor):
                     fail("fresh_worker", "recipient.instance_id", "repair requires fresh native Worker")
                 if any(x["attempt_id"] == m["attempt_id"] for x in earlier_workers):
                     fail("fresh_attempt", "attempt_id", "repair cannot reuse any earlier implementation attempt")
+        elif predecessor["message_type"] == "plan.publish" and m["recipient"]["role"] == "worker":
+            pass  # the first Worker assignment starts the implementation attempt
         elif m["attempt_id"] != predecessor["attempt_id"]:
             fail("attempt", "attempt_id", "unexpected attempt change")
 

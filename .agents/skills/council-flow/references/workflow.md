@@ -23,7 +23,9 @@ Planner final check → Owner. Preserve that responsibility order.
    The plan preserves `original_source_ref`; exact ordered text is derived from
    the raw source bytes. Missing, stale, substituted or mismatching sources block dispatch.
    Preserve rejected plans and evidence; corrections require a new plan through
-   the existing authorized workflow. All roles use stable IDs and the immutable
+   the existing authorized workflow. A Planner revision goes in a new file
+   (`plan-r2.json`), keeps objective, scope and acceptance, and is saved in the
+   same run folder (see communication.md). All roles use stable IDs and the immutable
    artifact instead of rewriting criterion text. Ordinary requests without
    supplied frozen criteria may generate a native plan, preserving the actual
    request and distinguishing generated acceptance.
@@ -32,7 +34,11 @@ Planner final check → Owner. Preserve that responsibility order.
    assignment, validate the READY plan against frozen criteria and verify the
    plan ID/revision, task ID, acceptance IDs and Planner-authored instruction
    array exactly match that selected task using
-   `scripts/planner_contract.py assignment <plan.json> <frozen-criteria.json> <assignment.json>`.
+   `scripts/planner_contract.py assignment <plan-rN.json> <frozen-criteria.json> <assignment.json>`
+   (or `--planner-generated-criteria` instead of the criteria file for native
+   planning). The envelope `task_id` stays the run's task; `payload.plan_task_id`
+   names the Planner task. The first Worker assignment replying to `plan.publish`
+   starts the implementation attempt with its own `attempt_id`.
    Also validate the controlled packet, file hashes and any required criteria
    fidelity before delegation. Non-ready responses are not published or dispatched;
    Manager keeps them as evidence and asks the Owner through approval.request.

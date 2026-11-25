@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "7723cfe5886bc5d4a7de6db977b8fc1efa6d59ef6ae3f9144901807f635c9c05",
-  "entries": 244,
+  "sha256": "35e6eac969c0de51a78669a9999f0d07cf5ce00ded3a6e06fbbf28618b875e1b",
+  "entries": 245,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
-      "size": 19219,
-      "sha256": "9eed77ec3ed0d8c89044961f5430f608504cf47332925f56e63c8ccf3c815126"
+      "size": 21740,
+      "sha256": "5a941036437bcfc7c90342f73b67d1d5d636f16106e4b80bc0188950fcb6fd56"
     },
     {
       "path": ".agents/skills/council-flow/references/efficiency.md",
@@ -60,13 +60,13 @@
     },
     {
       "path": ".agents/skills/council-flow/references/message-contract.json",
-      "size": 4771,
-      "sha256": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783"
+      "size": 5556,
+      "sha256": "a7f264558213f9db9d036a1af86667688cb995bfad76dc2e65e99c47135d9aba"
     },
     {
       "path": ".agents/skills/council-flow/references/planner.md",
-      "size": 4214,
-      "sha256": "dbdf6961386cdda0970add37998614b2b74b45f9d37db922b456e8e879dd3990"
+      "size": 4936,
+      "sha256": "25eb876b693a96112fc448139defa2c1276bdac90e62072dbcbe1da0f05d402b"
     },
     {
       "path": ".agents/skills/council-flow/references/recovery.md",
@@ -80,33 +80,33 @@
     },
     {
       "path": ".agents/skills/council-flow/references/source-fidelity.md",
-      "size": 5643,
-      "sha256": "d03f93bc8554d1e4d823b4f1dbdcc850e205a9220032610e66124ece9fbf020f"
+      "size": 5649,
+      "sha256": "204c4f22ee5b39d87be17bda1970af0c0666e434e49f32cdc61fd8450052eaff"
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 8238,
-      "sha256": "bbf24061f293b8453dece815a1d3bdbc46bc6b108e700cef1ac78b9351682ca6"
+      "size": 8707,
+      "sha256": "e6539d75ad7ec8066665e9c0751ea49895fafb2d139ef664b6d1a07cb609212e"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 70855,
-      "sha256": "84dde82806b846aeeb3cd8d5e3b233f47d71b1f28c8dae733920c7e79a83f628"
+      "size": 74056,
+      "sha256": "03fd46dfe6c538278f9494bbc352af53e64b79d638b6ff8f2e3717d1dee54174"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
-      "size": 14796,
-      "sha256": "726b45ab63d3c96d13228f2bccac728088826900c73e3e12b250c55baea8b490"
+      "size": 14911,
+      "sha256": "fd578ac1318ed398e4a99b45be402fd60c59d5dae0d8352d146401c50096d636"
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 16707,
-      "sha256": "8e75f45675be3a0c55a52d2d7ecd0ea00c9beb09dea32f3ed9211e8eb8201a6f"
+      "size": 16813,
+      "sha256": "3825cfadcbd3bc823293455785809329e3ed784026177650b7528dbe74197fd5"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
-      "size": 829,
-      "sha256": "10a6722a2eea376f54d0322cea163a8bb2f48fac0bac3343b233ba77efbf3a2e"
+      "size": 936,
+      "sha256": "31bc143eeae4d9ac7ee886f9d3905464a21a833cfc06531566b91e329cfcd31b"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/claude_adapter.py",
@@ -140,13 +140,13 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/planner_contract.py",
-      "size": 12169,
-      "sha256": "041c3f52e9e8eb5d0c8059f508dc7837a6ff4eb0dd1982b21744c773257ec723"
+      "size": 14575,
+      "sha256": "f34a7d36e8c6844a3dac80c9296f1f3af11323d2da4c01aee320ee4897b84791"
     },
     {
       "path": ".agents/skills/council-flow/scripts/route.py",
-      "size": 5575,
-      "sha256": "05e7d61db8004b81d12eb5449516866266d23903f3e439e5e02167d7cff26c0d"
+      "size": 5681,
+      "sha256": "720342fd340b2262af2ca6c3e1609d3919660cf08fc36879ac47d38cc4931ade"
     },
     {
       "path": ".agents/skills/council-flow/scripts/routing/__init__.py",
@@ -1120,8 +1120,8 @@
     },
     {
       "path": "tests/test_manager_upgrade.py",
-      "size": 9372,
-      "sha256": "ec61340e853aa97b825be56e388f040c2f2c47cd1c09c134edfef0aaf1dd24ed"
+      "size": 9477,
+      "sha256": "e61b9ed175bd27193548d034930a07993e8c30b95a41d7f7ca4af0d09dd1584b"
     },
     {
       "path": "tests/test_original_source.py",
@@ -1192,6 +1192,11 @@
       "path": "tests/test_strict_json.py",
       "size": 6839,
       "sha256": "f66cb0e08f8b87c8d43cbd9767f0f8cdb0c186af40966c413edbcb519c43ef5e"
+    },
+    {
+      "path": "tests/test_tabsplit_regressions.py",
+      "size": 14179,
+      "sha256": "a9952f29831f08e3cb5265cb3dd136fe6b8d56031c151f13ad9664a31127726a"
     },
     {
       "path": "tests/test_tester_reviewer_upgrade.py",
