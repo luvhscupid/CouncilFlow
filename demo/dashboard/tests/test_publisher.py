@@ -143,6 +143,8 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertIn('"task_id":"task-two"', second)
             self.assertIn("Open run folder", second)
             self.assertIn("Choose message files", second)
+            self.assertIn("Project list", second)
+            self.assertIn(f'"project":{json.dumps(root.resolve().name)}', second)
 
     def test_republishing_replaces_the_same_task_page_with_new_packets(self):
         with tempfile.TemporaryDirectory() as temporary:

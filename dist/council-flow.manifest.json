@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "7723cfe5886bc5d4a7de6db977b8fc1efa6d59ef6ae3f9144901807f635c9c05",
+  "sha256": "bb749885e03b8152b6f26af391b8bd12bd76eaf886e451c3502bb4f42f016a2f",
   "entries": 244,
   "files": [
     {
@@ -15,8 +15,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/app.js",
-      "size": 234983,
-      "sha256": "5a526cb8f1fe76f339bccb5bd64498178e7504068c6e60cc136ba08b6ddd8c91"
+      "size": 237866,
+      "sha256": "659a59956b13b3004173d78ce7d788ecda79994f43ac83c136a214569410ba64"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/index.html",
@@ -30,8 +30,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/styles.css",
-      "size": 45694,
-      "sha256": "0c4d43f6e29d1aa924b17c8701eb20133daa4d67f6a62896126692f65e6d0251"
+      "size": 46511,
+      "sha256": "87b756949a7cf1087c31c724d4ba4b619db1d8b40901e2909467a7419a6a6472"
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
@@ -95,8 +95,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
-      "size": 14796,
-      "sha256": "726b45ab63d3c96d13228f2bccac728088826900c73e3e12b250c55baea8b490"
+      "size": 14838,
+      "sha256": "0e40af1d36b25d0ea8a7785373510adc30089d625a81eb3623ab3656a184d60d"
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
@@ -250,8 +250,8 @@
     },
     {
       "path": "demo/dashboard/README.md",
-      "size": 2601,
-      "sha256": "00fb4a13a0e6488e94d7e9de5bec83d18b1a6b97daa5bf42927a839b35666377"
+      "size": 2881,
+      "sha256": "12255f51e5ef27ab3c0de5b75d9517f92eb641247cf53ad15b0c10d7bea1939e"
     },
     {
       "path": "demo/dashboard/app/build.mjs",
@@ -275,8 +275,8 @@
     },
     {
       "path": "demo/dashboard/app/src/App.jsx",
-      "size": 11226,
-      "sha256": "c19b37daded152e975cf6fd38a7671296322f57c744f667a7d4d831fd78edeb4"
+      "size": 10753,
+      "sha256": "e292c7977f43159c3115efa267743aa5702306a153b11dc3c0c141bcf58c3197"
     },
     {
       "path": "demo/dashboard/app/src/components/Activity.jsx",
@@ -315,8 +315,8 @@
     },
     {
       "path": "demo/dashboard/app/src/data/council-model.js",
-      "size": 25715,
-      "sha256": "f648aeeb092989ce4d957795f3fcf86a0806394f8f9700f214cb1782fc39189c"
+      "size": 25753,
+      "sha256": "9e7e37bb7bb478cac55a2bb5bf0bca31ec95759212300e60281c26029c397c82"
     },
     {
       "path": "demo/dashboard/app/src/data/run-loader.js",
@@ -350,8 +350,8 @@
     },
     {
       "path": "demo/dashboard/app/src/views/Views.jsx",
-      "size": 25388,
-      "sha256": "1cac1c128fee620b434f632f4561f8a7ce023434404026b646132c2a4f59eb3f"
+      "size": 28724,
+      "sha256": "90449868da9c038ed4b2b5f910ebf1d85b25227475337548933ec85793e2f102"
     },
     {
       "path": "demo/dashboard/index.html",
@@ -385,8 +385,8 @@
     },
     {
       "path": "demo/dashboard/tests/test_publisher.py",
-      "size": 13487,
-      "sha256": "1690f2c1f0ea55d60b05e7dfe1b25c9648fa0407b375a668183167eb53ce8091"
+      "size": 13619,
+      "sha256": "33e08059e01a7b117196480f27f953790b8864c1d1787e8983d8f820757c9a5a"
     },
     {
       "path": "demo/gate3-demo/README.md",

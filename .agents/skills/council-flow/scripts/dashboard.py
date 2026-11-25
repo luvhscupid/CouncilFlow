@@ -304,6 +304,7 @@ def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=
         files,
         {
             "taskId": task_id,
+            "project": root.name or None,
             "generatedAt": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
             "policy": _policy(),
             "efficiency": _efficiency(efficiency_records, task_id),

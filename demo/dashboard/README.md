@@ -20,8 +20,12 @@ which validates `.councilflow/runs/<task-id>/` and writes one self-contained
 starts no server; its **Follow live** button reloads the file every 3 seconds
 while the run is in progress and stops once the final check is recorded.
 
-`index.html` in this folder forwards to the bundled board, which can also open a
-run folder (watched for new packets in Chromium browsers) or a set of JSON files.
+The board opens on the run it was published for, headed by the project name
+(the repository folder) with the task objective in smaller text beneath it.
+Looking at a different run is a deliberate step: the **Project list** tab can open
+another run folder (watched for new packets in Chromium browsers) or a set of JSON
+files. `index.html` in this folder forwards to the bundled board, which starts on
+that tab's prompt when no run is embedded.
 
 ## What each number comes from
 

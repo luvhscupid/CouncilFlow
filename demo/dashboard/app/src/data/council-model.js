@@ -390,6 +390,7 @@ function buildModel(input, reader) {
   return {
     run: {
       taskId: snapshot.taskId || text(context.taskId),
+      project: text(context.project),
       planId: snapshot.planId,
       planRevision: publication ? publication.raw.plan_revision : null,
       objective: publication ? text(publication.raw.payload.objective) : null,

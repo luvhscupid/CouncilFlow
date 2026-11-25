@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import Icon from "./components/Icon.jsx";
 import Chamber from "./components/Chamber.jsx";
 import { Drawer, AgentDetail, PacketDetail } from "./components/Drawer.jsx";
-import { OverviewView, OrchestrationView, AgentsView, ExecutionsView, AnalyticsView, SettingsView } from "./views/Views.jsx";
+import { OverviewView, OrchestrationView, AgentsView, ExecutionsView, AnalyticsView, ProjectListView, SettingsView } from "./views/Views.jsx";
 import { useRunSource } from "./state/useRunSource.js";
 import { useNow, useSystemReducedMotion } from "./lib/hooks.js";
 import { read, write } from "./lib/storage.js";
@@ -14,6 +14,7 @@ const VIEWS = [
   { id: "agents", label: "Roles", icon: "agents" },
   { id: "executions", label: "Executions", icon: "executions" },
   { id: "analytics", label: "Analytics", icon: "analytics" },
+  { id: "projects", label: "Project list", icon: "layers" },
   { id: "settings", label: "Settings", icon: "settings" }
 ];
 
@@ -53,7 +54,7 @@ function useFreshIds(model) {
   return fresh;
 }
 
-function CommandBar({ source, model, onOpenFolder, onChooseFiles }) {
+function CommandBar({ source }) {
   const { connection, mode, follow, followActive, finished, setFollow, watching, toggleWatch, refresh } = source;
   return (
     <header className="command-bar">
@@ -78,24 +79,20 @@ function CommandBar({ source, model, onOpenFolder, onChooseFiles }) {
         {mode === "embedded" || mode === "folder" ? (
           <button type="button" className="button button-quiet" onClick={refresh}><Icon name="refresh" size={16} /><span>Refresh</span></button>
         ) : null}
-        <button type="button" className="button button-primary" onClick={onOpenFolder}><Icon name="folder" size={16} /><span>Open run folder</span></button>
-        <button type="button" className="button button-quiet" onClick={onChooseFiles}><Icon name="files" size={16} /><span>Choose files</span></button>
       </div>
     </header>
   );
 }
 
-function EmptyState({ onOpenFolder, onChooseFiles, reduced, idleModel }) {
+function EmptyState({ onOpenProjects, reduced, idleModel }) {
   return (
     <section className="empty" aria-labelledby="empty-title">
       <div className="empty-copy">
-        <h1 id="empty-title">Open a run to watch the council work</h1>
-        <p>Choose a CouncilFlow run folder, usually <code>.councilflow/runs/&lt;task-id&gt;</code>, or select its JSON packets. The board stays empty until it has real records to read.</p>
+        <h1 id="empty-title">No run is published here yet</h1>
+        <p>The Manager publishes the current run into <code>.councilflow/runs/&lt;task-id&gt;/dashboard.html</code>, and that board opens on it directly. To look at a different run, pick it from the project list.</p>
         <div className="empty-actions">
-          <button type="button" className="button button-primary" onClick={onOpenFolder}><Icon name="folder" size={16} /><span>Open run folder</span></button>
-          <button type="button" className="button button-quiet" onClick={onChooseFiles}><Icon name="files" size={16} /><span>Choose message files</span></button>
+          <button type="button" className="button button-primary" onClick={onOpenProjects}><Icon name="layers" size={16} /><span>Open project list</span></button>
         </div>
-        <p className="muted">In Chromium browsers an opened folder is watched for new packets. Elsewhere, file choices load as a snapshot.</p>
       </div>
       <div className="empty-art" aria-hidden="true">
         <Chamber model={idleModel} onSelectRole={() => {}} reduced={reduced} compact />
@@ -149,9 +146,10 @@ export default function App() {
   const selectedPacket = model && route.packet ? model.packets.find(packet => packet.id === route.packet) : null;
   const ui = {
     reduced, freshIds, now, mode: source.mode, follow: source.follow, setFollow: source.setFollow,
+    connection: source.connection, onOpenFolder, onChooseFiles, goOverview: () => go("overview"),
     selectedRole: route.role, openRole, openPacket
   };
-  const View = { overview: OverviewView, orchestration: OrchestrationView, agents: AgentsView, executions: ExecutionsView, analytics: AnalyticsView, settings: SettingsView }[route.view];
+  const View = { overview: OverviewView, orchestration: OrchestrationView, agents: AgentsView, executions: ExecutionsView, analytics: AnalyticsView, projects: ProjectListView, settings: SettingsView }[route.view];
   const accent = selectedRole ? selectedRole.role : selectedPacket ? selectedPacket.from : null;
 
   return (
@@ -162,7 +160,7 @@ export default function App() {
         <ul>
           {VIEWS.map(view => (
             <li key={view.id}>
-              <button type="button" className="rail-item" aria-current={route.view === view.id ? "page" : undefined} onClick={() => go(view.id)} disabled={!model && view.id !== "overview"}>
+              <button type="button" className="rail-item" aria-current={route.view === view.id ? "page" : undefined} onClick={() => go(view.id)} disabled={!model && view.id !== "overview" && view.id !== "projects"}>
                 <Icon name={view.icon} size={20} />
                 <span>{view.label}</span>
               </button>
@@ -171,19 +169,19 @@ export default function App() {
         </ul>
       </nav>
       <div className="frame">
-        <CommandBar source={source} model={model} onOpenFolder={onOpenFolder} onChooseFiles={onChooseFiles} />
+        <CommandBar source={source} />
         <input ref={folderInput} className="visually-hidden" type="file" multiple webkitdirectory="" tabIndex={-1} aria-label="Choose a CouncilFlow run folder"
           onChange={event => source.importFiles(event.target.files, true)} />
         <input ref={fileInput} className="visually-hidden" type="file" multiple accept=".json,application/json" tabIndex={-1} aria-label="Choose CouncilFlow JSON messages"
           onChange={event => source.importFiles(event.target.files, false)} />
         <p className="loading" role="status" aria-live="polite" hidden={!source.loading}>{source.loading ? <><span className="loading-bar" aria-hidden="true" />{source.loading}</> : null}</p>
         <main id="main" ref={mainRef} tabIndex={-1} className="main">
-          {model ? (
+          {model || route.view === "projects" ? (
             <div key={route.view} className="view-enter">
               <View model={model} ui={ui} prefs={prefs} setPrefs={setPrefs} />
             </div>
           ) : (
-            <EmptyState onOpenFolder={onOpenFolder} onChooseFiles={onChooseFiles} reduced={reduced} idleModel={idleModel} />
+            <EmptyState onOpenProjects={() => go("projects")} reduced={reduced} idleModel={idleModel} />
           )}
         </main>
         <footer className="footnote">
