@@ -113,6 +113,33 @@ validates before and after writing. It never touches `ledger/`, and it touches `
 Validation checks each retest record against the evidence it cites: the source must
 be `tester`, the slice must be listed, and pass and fail must match the reopen request.
 
+## Technical Audit (ADR-001 M6)
+
+    python project_state.py audit-select --project DIR --ledger-version N
+    python project_state.py audit-record --project DIR --ledger-version N --entries FILE         --route-used MODEL --route-source hint|role_default|host [--route-hint H]         --route-reason TEXT --created-at TS
+
+`audit-select` (read-only) reports whether the audit may run: N must be the latest ledger
+version, every slice that is not CANCELLED must be DONE, and N must not be audited yet.
+Blockers are returned as `not_eligible` errors. `FILE` is JSON with `entries` (one per
+ledger ID of the audited slices: `ledger_id`, `verdict` pass|gap|risk, `kind`
+none|implementation|requirement_change|owner_choice, `finding`, `slice_ids`, `consequence`)
+and `reruns` (at least one deterministic check the Reviewer reran: `command`, `exit_code`,
+`output` file). A pass has kind `none`; a gap or risk needs one of the other kinds.
+
+Routing, one rule per finding kind:
+- `implementation`: recorded in the audit only. No state changes.
+- `requirement_change`: writes `evidence/E####.json` (source_agent `reviewer`, the
+  cited ledger ID, the affected slices, a submitted reopen request with the finding as
+  contradiction and the given consequence). The Planner decides whether the ledger
+  changes. Plan and ledger are untouched.
+- `owner_choice`: sets each affected slice to PAUSED (plan status only) and lists the
+  finding in `owner_items`. The Manager presents it to the Owner.
+
+`audit-record` writes `audit/A####.json` plus any reopen evidence and any owner pause. It
+never writes the ledger. The audit is advisory: its record has no delivery or status field,
+and a fully passing audit leaves plan statuses unchanged. Reviewer routing must not be Haiku.
+Validation checks the record shape, routing rules, reopen evidence, owner items and reruns.
+
 ## Limitations
 
 Validation is structural. It does not authenticate who wrote a file, and role
