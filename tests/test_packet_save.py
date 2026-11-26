@@ -5,6 +5,7 @@ Reviewer reports were saved as bare payload bodies. Fixtures are synthetic packe
 from test_contracts plus a verbatim copy of that run's bare M003 report body.
 """
 import hashlib
+import os
 import json
 from pathlib import Path
 import subprocess
@@ -104,6 +105,36 @@ class SaveTests(unittest.TestCase):
         self.assertEqual(failure.exception.code, "run_folder")
         self.assertEqual(list(other.iterdir()), [])
 
+    def test_cli_save_refreshes_the_project_board(self):
+        """A save into .councilflow/runs/<task> republishes the run and project boards."""
+        env = {**os.environ, "CI": "1"}  # never open a browser from the test run
+        for script in COPIES:
+            if not script.exists():
+                continue
+            with self.subTest(copy=script.parent.parent.name), tempfile.TemporaryDirectory() as tmp:
+                project = Path(tmp) / "proj"
+                run = project / ".councilflow" / "runs" / "T1"
+                run.mkdir(parents=True)
+                packet = Path(tmp) / "M1.json"
+                packet.write_bytes(raw(fixtures.sequence()[0]))
+                ok = subprocess.run([sys.executable, "-I", str(script), "save", str(packet), "--run", str(run)],
+                                    capture_output=True, text=True, env=env)
+                self.assertEqual(ok.returncode, 0, ok.stderr)
+                board = json.loads(ok.stdout)["dashboard"]
+                self.assertNotIn("error", board)
+                self.assertIsNone(board["opened"])
+                self.assertEqual(Path(board["board"]), (project / ".councilflow/dashboard.html").resolve())
+                self.assertIn('"taskId":"T1"', (project / ".councilflow/dashboard.html").read_text(encoding="utf-8"))
+                self.assertTrue((run / "dashboard.html").is_file())
+                self.assertEqual(sorted(p.name for p in (run / "messages").iterdir()), ["M1.json"])
+
+                second = Path(tmp) / "M2.json"
+                second.write_bytes(raw(fixtures.sequence()[1]))
+                skipped = subprocess.run([sys.executable, "-I", str(script), "save", str(second), "--run", str(run),
+                                          "--no-dashboard"], capture_output=True, text=True, env=env)
+                self.assertEqual(skipped.returncode, 0, skipped.stderr)
+                self.assertNotIn("dashboard", json.loads(skipped.stdout))
+
     def test_cli_in_both_copies(self):
         """The Codex skill and the Claude plugin copy give the same save behavior."""
         for script in COPIES:
@@ -118,6 +149,7 @@ class SaveTests(unittest.TestCase):
                                     capture_output=True, text=True)
                 self.assertEqual(ok.returncode, 0, ok.stderr)
                 self.assertTrue(json.loads(ok.stdout)["saved"])
+                self.assertNotIn("dashboard", json.loads(ok.stdout), "only canonical run folders get a board")
                 bad = subprocess.run([sys.executable, "-I", str(script), "save", str(BARE), "--run", str(run)],
                                      capture_output=True, text=True)
                 self.assertEqual(bad.returncode, 1)

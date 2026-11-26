@@ -9,19 +9,32 @@ agents, approves work or changes packets. Packet records stay the source of trut
 
 The dashboard ships inside the skill at `.agents/skills/council-flow/dashboard/`:
 `index.html`, `styles.css`, `run-reader.js` (packet validation) and `app.js`
-(the built React app). During an explicit `$council-flow` task the Manager runs
+(the built React app). During an explicit `$council-flow` task every packet is saved with
+`scripts/contracts.py save … --run .councilflow/runs/<task-id>`, and each save
+republishes two self-contained pages:
+
+- `.councilflow/runs/<task-id>/dashboard.html`, the board for that run;
+- `.councilflow/dashboard.html`, the project board, which always shows the run this
+  project saved to most recently.
+
+The run's first packet opens the project board once in the default browser, so a
+CouncilFlow run in any project connects its own board with no file picking.
+Set `CI` or `COUNCILFLOW_NO_BROWSER`, or pass `--no-open`, to keep the browser
+closed. The same pages can be published by hand:
 
 ```sh
 python .agents/skills/council-flow/scripts/dashboard.py publish --root . --task-id <task-id> --open
 ```
 
-which validates `.councilflow/runs/<task-id>/` and writes one self-contained
-`dashboard.html` there. Reruns without `--open` refresh the same file. The page
-starts no server; its **Follow live** button reloads the file every 3 seconds
-while the run is in progress and stops once the final check is recorded.
+The page starts no server; its **Follow live** button reloads the file every 3
+seconds while the run is in progress and stops once the final check is recorded.
 
-`index.html` in this folder forwards to the bundled board, which can also open a
-run folder (watched for new packets in Chromium browsers) or a set of JSON files.
+The board opens on the run it was published for, headed by the project name
+(the repository folder) with the task objective in smaller text beneath it.
+Looking at a different run is a deliberate step: the **Project list** tab links
+to the other published runs of the same project, and can open a run folder (watched for new packets in Chromium browsers) or a set of JSON
+files. `index.html` in this folder forwards to the bundled board, which starts on
+that tab's prompt when no run is embedded.
 
 ## What each number comes from
 

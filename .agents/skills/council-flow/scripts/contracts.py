@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 import sys
@@ -1221,12 +1222,35 @@ def save_message(raw, run_dir, *, root=None, expected_sender=None):
             "message_type": message["message_type"], "sha256": hashlib.sha256(raw).hexdigest()}
 
 
+def refresh_dashboard(run_dir, *, open_browser=False):
+    """Republish the read-only board after a save; never affects the save itself.
+
+    Only a canonical run folder, <project>/.councilflow/runs/<task-id>, has a board.
+    Returns the publisher's summary, None when the folder is not canonical, or
+    {"error": ...} when publishing failed. The packet stays saved either way.
+    """
+    run_dir = Path(run_dir).resolve()
+    if run_dir.parent.name != "runs" or run_dir.parent.parent.name != ".councilflow":
+        return None
+    try:
+        import dashboard  # same scripts folder; loaded only when a board is refreshed
+        result = dashboard.publish_run(run_dir.parent.parent.parent, run_dir.name, open_browser=open_browser)
+        return {"board": result["project_path"], "task_board": result["snapshot_path"],
+                "opened": result["opened"]}
+    except Exception as error:  # noqa: BLE001  (the board is informational; the save already happened)
+        return {"error": f"dashboard not refreshed: {error}"}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=["message", "sequence", "capture", "policy", "events", "save"])
     parser.add_argument("files", nargs="+")
     parser.add_argument("--root", type=Path, help="verify referenced artifact existence/hash inside this root")
     parser.add_argument("--run", type=Path, help="save mode: the run folder, e.g. .councilflow/runs/<task-id>")
+    parser.add_argument("--no-dashboard", action="store_true",
+                        help="save mode: do not refresh .councilflow/dashboard.html after saving")
+    parser.add_argument("--no-open", action="store_true",
+                        help="save mode: refresh the board but never open a browser on the run's first packet")
     parser.add_argument("--expected-sender", choices=sorted(ROLES))
     parser.add_argument("--expected-instance")
     parser.add_argument("--bindings", type=Path, help="trusted JSON map message_id -> externally observed actor")
@@ -1253,7 +1277,16 @@ def main(argv=None):
                 fail("save_mode", "files", "save takes exactly one packet file and --run")
             with Path(args.files[0]).open("rb") as stream:
                 raw = stream.read(MAX_BYTES + 1)
-            print(json.dumps(save_message(raw, args.run, root=args.root, expected_sender=expected)))
+            messages = args.run / "messages"
+            first = not (messages.is_dir() and any(messages.glob("*.json")))
+            result = save_message(raw, args.run, root=args.root, expected_sender=expected)
+            if not args.no_dashboard:
+                # The run's first packet opens the project board once; later saves refresh it.
+                quiet = args.no_open or os.environ.get("CI") or os.environ.get("COUNCILFLOW_NO_BROWSER")
+                board = refresh_dashboard(args.run, open_browser=first and not quiet)
+                if board is not None:
+                    result["dashboard"] = board
+            print(json.dumps(result))
             return 0
         if args.mode == "message":
             for path in args.files:

@@ -114,6 +114,34 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertIn('id="councilflow-root"', page)
             self.assertIn("CouncilFlow dashboard bundle", page)
 
+    def test_project_board_follows_the_latest_run_and_links_the_others(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "my-project"
+            root.mkdir()
+            write_packet_run(root, "task-one")
+            write_packet_run(root, "task-two")
+            write_packet_run(root, "never-published")
+            opened = []
+
+            dashboard.publish_run(root, "task-one")
+            result = dashboard.publish_run(root, "task-two", open_browser=True,
+                                           opener=lambda url: opened.append(url) or True)
+
+            project = root / ".councilflow" / "dashboard.html"
+            self.assertEqual(Path(result["project_path"]), project.resolve())
+            self.assertTrue(opened[0].endswith("/my-project/.councilflow/dashboard.html"))
+            page = project.read_text(encoding="utf-8")
+            self.assertIn('"task_id":"task-two"', page)
+            self.assertNotIn('"task_id":"task-one"', page)
+            self.assertIn('"board":"project"', page)
+            self.assertIn('"project":"my-project"', page)
+            self.assertIn('"href":"runs/task-one/dashboard.html"', page)
+            self.assertIn('"href":"runs/task-two/dashboard.html"', page)
+            self.assertNotIn("never-published", page)
+            task_page = Path(result["snapshot_path"]).read_text(encoding="utf-8")
+            self.assertIn('"board":"task"', task_page)
+            self.assertIn('"href":"../task-one/dashboard.html"', task_page)
+
     def test_version_1_1_reopen_packet_is_not_reported_as_broken(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -166,6 +194,8 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertIn('"task_id":"task-two"', second)
             self.assertIn("Open run folder", second)
             self.assertIn("Choose message files", second)
+            self.assertIn("Project list", second)
+            self.assertIn(f'"project":{json.dumps(root.resolve().name)}', second)
 
     def test_republishing_replaces_the_same_task_page_with_new_packets(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -6,16 +6,29 @@ import ActivityFeed, { RecordHealth, RoleTag, OutcomeBadge } from "../components
 import Sequence from "../components/Sequence.jsx";
 import { BarRows, HoldTimeline, TokenStack, holdIntervals } from "../components/Charts.jsx";
 import { ROLE_NAMES, ROLE_ORDER } from "../data/council-model.js";
-import { clock, duration, plural, sentence, shortHash, tokens } from "../lib/format.js";
+import { clock, dateTime, duration, plural, relative, sentence, shortHash, tokens } from "../lib/format.js";
 
 function RunHeader({ model }) {
   const { run } = model;
+  const [expanded, setExpanded] = useState(false);
+  const name = run.project || run.taskId || "CouncilFlow run";
+  const long = Boolean(run.objective && run.objective.length > 160);
   return (
     <header className="run-header">
       <div className="run-title">
-        <h1>{run.objective || (run.taskId ? `Task ${run.taskId}` : "CouncilFlow run")}</h1>
+        <h1>{name}</h1>
+        {run.objective ? (
+          <div className="run-objective">
+            <p id="run-objective-text" className={long && !expanded ? "is-clamped" : undefined}>{run.objective}</p>
+            {long ? (
+              <button type="button" className="text-button" aria-expanded={expanded} aria-controls="run-objective-text" onClick={() => setExpanded(!expanded)}>
+                {expanded ? "Show less" : "Show full task"}
+              </button>
+            ) : null}
+          </div>
+        ) : null}
         <p className="run-ids">
-          {run.taskId ? <span>Task <b className="mono">{run.taskId}</b></span> : null}
+          {run.project && run.taskId ? <span>Task <b className="mono">{run.taskId}</b></span> : null}
           {run.planId ? <span>Plan <b className="mono">{run.planId}</b>{run.planRevision ? ` rev ${run.planRevision}` : ""}</span> : null}
           {run.currentAttempt ? <span>Current attempt <b className="mono">{run.currentAttempt}</b>{run.attemptCount > 1 ? `, ${run.attemptCount} recorded` : ""}</span> : null}
         </p>
@@ -349,6 +362,61 @@ export function AnalyticsView({ model }) {
           </Unavailable>
         )}
       </section>
+    </div>
+  );
+}
+
+export function ProjectListView({ model, ui }) {
+  const run = model ? model.run : null;
+  const source = ui.mode === "embedded" ? (model && model.board === "project" ? "Project board: follows this project's latest run" : "Published by the Manager") : ui.mode === "folder" ? "Opened from a folder" : ui.mode === "files" ? "Opened from files" : null;
+  return (
+    <div className="view">
+      <header className="view-head">
+        <h1>Project list</h1>
+        <p>The board opens on the run this project is working on by itself. Switching to another run is a separate, deliberate step: nothing here loads until you pick a run.</p>
+      </header>
+      <div className="split">
+        <section className="panel" aria-labelledby="current-run-title">
+          <header className="panel-head"><div><h2 id="current-run-title">Current run</h2><p className="panel-sub">{source || "No run is open"}</p></div></header>
+          {run && run.hasPackets ? (
+            <>
+              <dl className="facts">
+                {run.project ? <div><dt>Project</dt><dd>{run.project}</dd></div> : null}
+                <div><dt>Task</dt><dd className="mono">{run.taskId || "Unknown"}</dd></div>
+                {run.planId ? <div><dt>Plan</dt><dd className="mono">{run.planId}{run.planRevision ? ` rev ${run.planRevision}` : ""}</dd></div> : null}
+                <div><dt>Status</dt><dd>{run.disposition}</dd></div>
+              </dl>
+              <div className="empty-actions"><button type="button" className="button button-quiet" onClick={ui.goOverview}><Icon name="overview" size={16} /><span>Back to the council</span></button></div>
+            </>
+          ) : <p className="muted">Boards published by the Manager open on their run automatically. This one has no run records yet.</p>}
+        </section>
+        {model && model.projectRuns.length ? (
+          <section className="panel" aria-labelledby="project-runs-title">
+            <header className="panel-head"><div><h2 id="project-runs-title">Runs in {model.run.project || "this project"}</h2><p className="panel-sub">Boards the Manager published, newest first</p></div></header>
+            <ul className="run-list">
+              {model.projectRuns.map(item => (
+                <li key={item.taskId}>
+                  {item.current ? (
+                    <span className="run-link is-current" aria-current="true"><b className="mono">{item.taskId}</b><span className="muted">Showing now</span></span>
+                  ) : (
+                    <a className="run-link" href={item.href}><b className="mono">{item.taskId}</b><span className="muted" title={item.updated ? dateTime(item.updated) : undefined}>{item.updated ? `Updated ${relative(item.updated, ui.now) || dateTime(item.updated)}` : "Open board"}</span></a>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <p className="muted">Each link opens that run's own board. Nothing is read until you follow one.</p>
+          </section>
+        ) : null}
+        <section className="panel" aria-labelledby="other-run-title">
+          <header className="panel-head"><div><h2 id="other-run-title">Open a run from elsewhere</h2><p className="panel-sub">Reads the run you choose from this computer</p></div></header>
+          <p>Pick a run folder, usually <code>.councilflow/runs/&lt;task-id&gt;</code>, or select its JSON packets. The current view is replaced by the run you pick.</p>
+          <div className="empty-actions">
+            <button type="button" className="button button-primary" onClick={ui.onOpenFolder}><Icon name="folder" size={16} /><span>Open run folder</span></button>
+            <button type="button" className="button button-quiet" onClick={ui.onChooseFiles}><Icon name="files" size={16} /><span>Choose message files</span></button>
+          </div>
+          <p className="muted">In Chromium browsers an opened folder is watched for new packets. Elsewhere, file choices load as a snapshot.</p>
+        </section>
+      </div>
     </div>
   );
 }

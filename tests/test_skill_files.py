@@ -168,8 +168,9 @@ class SkillFilesTests(unittest.TestCase):
                     elif path == SKILL / "scripts" / "route.py":
                         internal = {"routing"}
                     elif path == SKILL / "scripts" / "contracts.py":
-                        # Messages delegate plan-file rules to the Plan contract.
-                        internal = {"planner_contract", "strict_json"}
+                        # Messages delegate plan-file rules to the Plan contract; a save
+                        # refreshes the read-only board through the sibling publisher.
+                        internal = {"planner_contract", "strict_json", "dashboard"}
                     elif path == SKILL / "scripts" / "planner_contract.py":
                         internal = {"strict_json", "project_state"}
                     elif path in {SKILL / "scripts" / "doctor.py", SKILL / "scripts" / "project_state.py"}:
