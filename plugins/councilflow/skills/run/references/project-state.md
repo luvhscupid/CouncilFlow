@@ -55,6 +55,17 @@ Plan slices: `slice_id`, `ledger_version`, `ledger_ids` (must exist in that vers
 `created_at`, `reopen_request` (null, or status, contradiction, consequence). A
 non-null reopen request needs ledger ids, affected slices and artifacts.
 
+## Packets that reference these files (version 1.1)
+
+- `ledger.publish`: `ledger_ref` is a `ledger/L####.json` file.
+- `evidence.reopen`: `evidence_ref` is an `evidence/E####.json` record and
+  `evidence_id` its `E####` id; `ledger_ids` and `affected_slices` come from it.
+- `job.assign` and `job.report`: `ledger_version` and `slice_id` name a ledger
+  version and a plan slice.
+- `approval.decision`: `owner_source_ref` is a `sources/S####.txt` file.
+- `approval.request`: `operation_ref` may be a readiness answer; its `questions`
+  are forwarded exactly.
+
 ## CLI
 
     python project_state.py init --project DIR [--budget N]

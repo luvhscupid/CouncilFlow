@@ -932,7 +932,7 @@
 "result": [
 "version",
 "version",
-"version at version: supported version is string 1.0"
+"version at version: supported versions are 1.0 and 1.1"
 ]
 },
 {
@@ -2044,7 +2044,7 @@
 "result": [
 "version",
 "version",
-"version at version: supported version is string 1.0"
+"version at version: supported versions are 1.0 and 1.1"
 ]
 },
 {
@@ -3352,7 +3352,7 @@
 "result": [
 "version",
 "version",
-"version at version: supported version is string 1.0"
+"version at version: supported versions are 1.0 and 1.1"
 ]
 },
 {

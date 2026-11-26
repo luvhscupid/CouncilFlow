@@ -270,6 +270,28 @@ def _load_project_state():
     return project_state
 
 
+def validate_question(question, field, seen=None):
+    """Validate one question packet; `seen` (a set of question ids) also rejects duplicates."""
+    _object(question, field, QUESTION_FIELDS)
+    _identifier(question["question_id"], field + ".question_id")
+    if seen is not None:
+        if question["question_id"] in seen:
+            _fail("duplicate_question", field + ".question_id", f"duplicate ID {question['question_id']!r}")
+        seen.add(question["question_id"])
+    _text(question["text"], field + ".text")
+    _text(question["reason"], field + ".reason")
+    if type(question["blocking"]) is not bool:
+        _fail("readiness_field", field + ".blocking", "expected boolean")
+    if type(question["decision_class"]) is not str or question["decision_class"] not in DECISION_CLASSES:
+        _fail("decision_class", field + ".decision_class", f"expected one of {list(DECISION_CLASSES)}")
+    _unique_ids(question["affected_slices"], field + ".affected_slices")
+    _optional_text(question["permitted_default"], field + ".permitted_default")
+    if question["decision_class"] != "cheap_reversible" and (
+            not question["blocking"] or question["permitted_default"] is not None):
+        _fail("class_downgrade", field,
+              "a class other than cheap_reversible must be blocking and carry no permitted_default")
+
+
 def validate_readiness(answer, project=None):
     """Validate a Planner readiness answer; return the dispatch summary.
 
@@ -301,23 +323,7 @@ def validate_readiness(answer, project=None):
     seen, blocking = set(), 0
     for index, question in enumerate(questions):
         field = f"readiness.questions[{index}]"
-        _object(question, field, QUESTION_FIELDS)
-        _identifier(question["question_id"], field + ".question_id")
-        if question["question_id"] in seen:
-            _fail("duplicate_question", field + ".question_id", f"duplicate ID {question['question_id']!r}")
-        seen.add(question["question_id"])
-        _text(question["text"], field + ".text")
-        _text(question["reason"], field + ".reason")
-        if type(question["blocking"]) is not bool:
-            _fail("readiness_field", field + ".blocking", "expected boolean")
-        if type(question["decision_class"]) is not str or question["decision_class"] not in DECISION_CLASSES:
-            _fail("decision_class", field + ".decision_class", f"expected one of {list(DECISION_CLASSES)}")
-        _unique_ids(question["affected_slices"], field + ".affected_slices")
-        _optional_text(question["permitted_default"], field + ".permitted_default")
-        if question["decision_class"] != "cheap_reversible" and (
-                not question["blocking"] or question["permitted_default"] is not None):
-            _fail("class_downgrade", field,
-                  "a class other than cheap_reversible must be blocking and carry no permitted_default")
+        validate_question(question, field, seen)
         blocking += question["blocking"]
 
     if status == "READY":

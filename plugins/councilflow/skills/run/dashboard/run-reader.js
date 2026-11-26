@@ -8,14 +8,16 @@
 
   const roles = ["planner", "manager", "worker", "tester", "reviewer"];
   const roleNames = { planner: "Planner", manager: "Manager", worker: "Worker", tester: "Tester", reviewer: "Reviewer" };
-  const messageTypes = new Set(["plan.publish", "job.assign", "job.report", "task.decision", "plan.progress", "plan.check", "approval.request", "approval.decision"]);
+  const messageTypes = new Set(["plan.publish", "job.assign", "job.report", "task.decision", "plan.progress", "plan.check", "approval.request", "approval.decision", "evidence.reopen", "ledger.publish"]);
   const messageFields = new Set(["protocol", "version", "message_id", "message_type", "plan_id", "plan_revision", "task_id", "attempt_id", "sender", "recipient", "in_reply_to", "payload", "evidence_refs"]);
   const routes = {
     "plan.publish": ["planner", "manager"], "plan.check": ["planner", "manager"],
     "plan.progress": ["manager", "planner"], "job.assign": ["manager", "worker|tester|reviewer"],
     "job.report": ["worker|tester|reviewer", "manager"], "task.decision": ["manager", "planner"],
-    "approval.request": ["manager", "owner"], "approval.decision": ["owner", "manager"]
+    "approval.request": ["manager", "owner"], "approval.decision": ["owner", "manager"],
+    "evidence.reopen": ["worker|tester|reviewer|manager", "manager|planner"], "ledger.publish": ["planner", "manager"]
   };
+  const version11Types = new Set(["evidence.reopen", "ledger.publish"]);
 
   function recordIssue(issues, code, detail) {
     issues.push({ code, detail });
@@ -82,13 +84,14 @@
     const required = ["protocol", "version", "message_id", "message_type", "plan_id", "plan_revision", "task_id", "attempt_id", "sender", "recipient", "in_reply_to", "payload", "evidence_refs"];
     const missing = required.filter(key => !(key in message));
     if (missing.length) { recordIssue(issues, "missing_fields", `${message.message_id || "Packet"}: ${missing.join(", ")}`); return false; }
-    if (message.protocol !== "council-flow" || message.version !== "1.0") { recordIssue(issues, "unsupported_contract", message.message_id || "Unknown packet"); return false; }
+    if (message.protocol !== "council-flow" || !["1.0", "1.1"].includes(message.version)) { recordIssue(issues, "unsupported_contract", message.message_id || "Unknown packet"); return false; }
     if (!nonEmpty(message.message_id) || !messageTypes.has(message.message_type) || !nonEmpty(message.plan_id) || !nonEmpty(message.task_id) || !nonEmpty(message.attempt_id) || !Number.isInteger(message.plan_revision) || message.plan_revision < 1) {
       recordIssue(issues, "invalid_identity", message.message_id || "Packet identity or type is invalid."); return false;
     }
     if (!isActor(message.sender) || !isActor(message.recipient) || !(message.in_reply_to === null || nonEmpty(message.in_reply_to)) || !Array.isArray(message.evidence_refs) || !isObject(message.payload)) {
       recordIssue(issues, "invalid_envelope", message.message_id); return false;
     }
+    if (version11Types.has(message.message_type) && message.version !== "1.1") { recordIssue(issues, "unsupported_contract", message.message_id || "Unknown packet"); return false; }
     const [senders, recipients] = routes[message.message_type];
     if (!senders.split("|").includes(message.sender.role) || !recipients.split("|").includes(message.recipient.role)) {
       recordIssue(issues, "invalid_route", message.message_id); return false;
@@ -122,6 +125,8 @@
     if (message.message_type === "plan.check") return `${sender} checked the acceptance criteria`;
     if (message.message_type === "approval.request") return `${sender} requested an Owner decision`;
     if (message.message_type === "approval.decision") return "Owner recorded an authorization decision";
+    if (message.message_type === "evidence.reopen") return `${sender} sent an evidence reopen request`;
+    if (message.message_type === "ledger.publish") return `${sender} published a ledger version`;
     return `${sender} added a packet`;
   }
 
