@@ -81,7 +81,7 @@ Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md)
 
 ## Evidence and limits
 Efficiency stays disabled unless explicitly requested; then follow [efficiency helpers](references/efficiency.md) using this installed skill's CLI, preserving full evidence and all mandatory roles/checks.
-Follow [workflow](references/workflow.md). Keep real task/plan/attempt/message IDs,
+Follow [workflow](references/workflow.md) and the [dispatch checklist](references/manager-dispatch-checklist.md) (validate every packet before dispatch and every report on receipt). Keep real task/plan/attempt/message IDs,
 validated causal order, causal references, commands/exits and evidence hashes.
 Agent-authored envelopes omit `created_at`; diagnostic timestamp syntax does not
 prove trusted clock provenance. Structural

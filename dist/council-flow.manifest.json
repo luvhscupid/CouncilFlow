@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "e3e73dd0cefd5f5fe4200066af6d57c19fedcbe1c9c23fb0c9c1f669fc6d51d0",
-  "entries": 255,
+  "sha256": "c43da14bfdf76c89b7805316feee8e95ffd369698213cbef034b70bd01baccd8",
+  "entries": 256,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 8338,
-      "sha256": "58ac976ad551c097b10beadb88e31190c2132e8fe2a67117478d8842eae013a2"
+      "size": 8477,
+      "sha256": "7d42e6651dfe55fafaa472c06be53d4129422bb604fc8deec2a7baa887a4f483"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -57,6 +57,11 @@
       "path": ".agents/skills/council-flow/references/efficiency.md",
       "size": 5829,
       "sha256": "bb41b5337e8d3038cb10e2ca87070ce52bc7690a7ea3dcad228eb1db8c7991c4"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/manager-dispatch-checklist.md",
+      "size": 1436,
+      "sha256": "91189a96808235ea3ff9f1aff8e3613570b5b01fa3a1ea526769813d91c005c0"
     },
     {
       "path": ".agents/skills/council-flow/references/message-contract.json",
