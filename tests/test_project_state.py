@@ -234,6 +234,97 @@ class ProjectStateTests(unittest.TestCase):
         (self.project / "sources/S0002.txt").write_bytes(b"x")
         self.assertIn("orphan_source_text", codes(self.validate()[1]))
 
+    def routing(self, **kw):
+        base = {"hint": "big", "used": "big", "source": "hint", "reason": "Planner hint accepted."}
+        base.update(kw)
+        return base
+
+    def test_model_routing_shape(self):
+        def check(routing):
+            item = self.slice("A")
+            item["model_routing"] = routing
+            self.write_plan([item])
+            return self.validate()[1]
+        self.assertEqual(check({"worker": self.routing(), "tester": self.routing(
+            hint=None, used="host-model", source="host")})["status"], "PASS")
+        self.assertEqual(check(None)["status"], "PASS")
+        for bad in ({"manager": self.routing()}, {"worker": self.routing(used="small")},
+                    {"worker": self.routing(hint=None)}, {"worker": self.routing(reason=" ")},
+                    {"worker": self.routing(source="guess")}, {"worker": {"used": "x"}},
+                    {"worker": dict(self.routing(), extra=1)}, ["worker"]):
+            self.assertIn("slice_model_routing", codes(check(bad)), bad)
+
+    def start_affected(self):
+        """Ledger v1 has G1, AC1, AC2; slices A (AC1), B (AC2); v2 supersedes AC1 with R1."""
+        self.write_plan([self.slice("A", ids=["AC1"]), self.slice("B", ids=["AC2"])])
+
+        def mutate(entries):
+            for e in entries:
+                if e["id"] == "AC1":
+                    e["status"] = "superseded"
+            entries.append(self.entry("R1", "Requirement", "active", 2, supersedes=["AC1"]))
+        return self.write_next(mutate)
+
+    def affected(self, *extra):
+        return run("affected", "--project", self.project, "--to-version", *extra)
+
+    def test_affected_new_entry_supersedes_cited_id(self):
+        v = self.start_affected()
+        code, result = self.affected(str(v))
+        self.assertEqual((code, result["status"]), (0, "PASS"))
+        self.assertEqual((result["from_version"], result["to_version"]), (1, 2))
+        self.assertEqual(result["changed_entry_ids"], ["AC1", "R1"])
+        self.assertEqual((result["affected_slices"], result["unaffected_slices"], result["closed_affected"]),
+                         (["A"], ["B"], []))
+
+    def test_affected_status_change_assumption_confirmed(self):
+        def first(entries):
+            entries.append(self.entry("AS1", "Assumption", "unconfirmed", 2))
+        self.write_next(first)
+        plan_slice = self.slice("C", ids=["AC1"])
+        self.write_plan([self.slice("A", ids=["AC2"]), plan_slice])
+        item = json.loads((self.project / "plan.json").read_text(encoding="utf-8"))
+        item["slices"][0]["ledger_version"] = 2
+        item["slices"][0]["ledger_ids"] = ["AS1"]
+        item["slices"][1]["ledger_version"] = 2
+        item["slices"].append(self.slice("D", ids=["AC1"]))
+        (self.project / "plan.json").write_text(json.dumps(item), encoding="utf-8")
+
+        def confirm(entries):
+            for e in entries:
+                if e["id"] == "AS1":
+                    e["status"] = "confirmed"
+            entries.append(self.entry("D1", "Decision", "active", 3))
+        v = self.write_next(confirm)
+        code, result = self.affected(str(v))
+        self.assertEqual(code, 0, result)
+        self.assertEqual(result["changed_entry_ids"], ["AS1", "D1"])
+        self.assertEqual((result["affected_slices"], result["unaffected_slices"]), (["A"], ["C", "D"]))
+
+    def test_affected_pinned_to_new_version_and_closed(self):
+        v = self.start_affected()
+        data = json.loads((self.project / "plan.json").read_text(encoding="utf-8"))
+        data["slices"][0]["ledger_version"] = 2
+        data["slices"][0]["ledger_ids"] = ["R1"]
+        data["slices"].append(dict(self.slice("C", ids=["AC1"]), status="DONE"))
+        data["slices"].append(dict(self.slice("E", ids=["AC2"]), status="DONE"))
+        (self.project / "plan.json").write_text(json.dumps(data), encoding="utf-8")
+        code, result = self.affected(str(v))
+        self.assertEqual(code, 0, result)
+        self.assertEqual((result["affected_slices"], result["unaffected_slices"], result["closed_affected"]),
+                         ([], ["A", "B"], ["C"]))
+
+    def test_affected_without_plan_and_bad_versions(self):
+        self.write_next(lambda entries: None)
+        code, result = self.affected("2")
+        self.assertEqual((code, result["affected_slices"], result["unaffected_slices"]), (0, [], []))
+        for args in (("2", "--from-version", "2"), ("1",), ("5",), ("2", "--from-version", "9")):
+            code, result = self.affected(*args)
+            self.assertEqual((code, result["status"]), (1, "FAIL"), args)
+            self.assertIn("bad_input", codes(result))
+        self.ledger_path(2).write_text("{}", encoding="utf-8")
+        self.assertEqual(self.affected("2")[0], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

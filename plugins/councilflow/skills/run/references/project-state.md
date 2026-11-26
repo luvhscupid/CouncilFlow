@@ -6,7 +6,7 @@ reference describes the plain-file form and its validator,
 `scripts/project_state.py`. Plain files are the authoritative record. Codebase
 Memory, where available, is only a lookup layer over them (Owner decision D5).
 
-Status: `planner_contract.py readiness --project` uses it (M2) to check assumptions and the budget. Later steps (M3, M4) wire in the rest.
+Status: `planner_contract.py readiness --project` uses it to check assumptions and the budget. The Manager procedure is in [workflow](workflow.md), section "Adaptive execution with project state".
 
 ## Layout (normally `.councilflow/project/`)
 
@@ -50,10 +50,15 @@ resolved or superseded. Everything else is active or superseded.
 
 Plan slices: `slice_id`, `ledger_version`, `ledger_ids` (must exist in that version),
 `depends_on` (acyclic), `readiness`, `status`, `run_dir` (relative, no `..`),
-`model_routing` (not interpreted). Evidence: `evidence_id`, `source_agent`, `finding`,
+`model_routing`. Evidence: `evidence_id`, `source_agent`, `finding`,
 `artifacts` (path and sha256, not hash-checked), `ledger_ids`, `affected_slices`,
 `created_at`, `reopen_request` (null, or status, contradiction, consequence). A
 non-null reopen request needs ledger ids, affected slices and artifacts.
+
+`model_routing` is null or an object keyed by role (`worker`, `tester`, `reviewer`).
+Each value has exactly `hint` (string or null), `used` (string), `source` (`hint`,
+`role_default` or `host`) and `reason` (nonempty). Source `hint` needs a non-null
+`hint` equal to `used`. Error code: `slice_model_routing`.
 
 ## Packets that reference these files (version 1.1)
 
@@ -73,6 +78,14 @@ non-null reopen request needs ledger ids, affected slices and artifacts.
     python project_state.py bootstrap --project DIR --criteria frozen-criteria.json \
         --source-id S0001 [--goal TEXT] --created-at 2026-11-26T10:00:00Z
     python project_state.py validate --project DIR
+    python project_state.py affected --project DIR --to-version M [--from-version N]
+
+`affected` is read-only. It validates first, then lists `changed_entry_ids` (entries
+new in M or with a different status than in N, default N = M - 1) and sorts plan
+slices into `affected_slices` (pinned below M and citing a changed id or an id
+superseded by a new entry), `unaffected_slices` and `closed_affected` (DONE or
+CANCELLED slices that would be affected; their verification may be stale). Bad
+versions fail with `bad_input`.
 
 Output is one JSON object with `status` (PASS or FAIL) and `errors` (code, path,
 detail). Exit 0 on PASS, 1 on FAIL, 2 on usage error. Existing files are never
