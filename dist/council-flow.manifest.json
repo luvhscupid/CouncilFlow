@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "3fe88df8775ab31e5c6dd1aa89e36e4587025682674b42907b3c2677a030994e",
+  "sha256": "59422241c380f2dedf8835fed24949ffb4e7154c42337a91f5ef97ee6c7c6302",
   "entries": 251,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 8338,
-      "sha256": "58ac976ad551c097b10beadb88e31190c2132e8fe2a67117478d8842eae013a2"
+      "size": 9776,
+      "sha256": "3e108614554ec9af65e6982eaea98910ea2b0401e6a142e626e0a8264693241c"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
