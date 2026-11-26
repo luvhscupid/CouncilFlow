@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "ba1649afd11be10fa71209f52795bb101dfa066a1ea64b78d761bce2db54f5ed",
+  "sha256": "1126748c8676610ee8b8020fe8641a776ac0ee3c050a0ab8f914e7085b9e6c1f",
   "entries": 250,
   "files": [
     {
@@ -395,8 +395,8 @@
     },
     {
       "path": "demo/dashboard/tests/test_publisher.py",
-      "size": 16983,
-      "sha256": "e9b3dbf1440bb8d6d4b758c00ca83b456c66763715fe39803c66ff0f6b0bb2a6"
+      "size": 16661,
+      "sha256": "69f9064cd7cf56951415cfc7c6a7db7fad61b2f468b5d54e92bc3294ca4e6ecf"
     },
     {
       "path": "demo/gate3-demo/README.md",
@@ -1210,8 +1210,8 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 10710,
-      "sha256": "04efbfcf491f312a74c338df4a2d3fa2412401b95c1a5faa2290c4e9ef382c5b"
+      "size": 10524,
+      "sha256": "d323a54580d0d51b8303a8f691df750b9119bf2b71bae2923d94f0d8e9a98da7"
     },
     {
       "path": "tests/test_strict_json.py",
