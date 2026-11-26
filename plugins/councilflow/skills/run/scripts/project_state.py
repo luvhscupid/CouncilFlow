@@ -613,24 +613,38 @@ def _retest_passed(project, to_version):
     return passed
 
 
+def _retest_failed(project, to_version):
+    """Slice ids with a recorded tester fail pinned to to_version (these were auto-paused)."""
+    scratch = Errors()
+    failed = set()
+    for path in _numbered(project / "retest", RETEST_RE, ".json", scratch, "retest").values():
+        record = _load(path, scratch)
+        if type(record) is dict and record.get("result") == "fail" and record.get("ledger_version") == to_version:
+            failed.add(record.get("slice_id"))
+    return failed
+
+
 def retest_select(project, to_version, from_version):
-    """Closed-but-affected slices the Tester must still re-check for to_version (M5)."""
+    """Slices the Tester must still re-check for to_version (M5): closed-but-affected slices,
+    plus slices whose retest failed for to_version, until a pass for that version is recorded."""
     errors, out = affected(project, to_version, from_version)
     if errors:
         return errors, {}
     passed = _retest_passed(project, to_version)
+    candidates = sorted(set(out["closed_affected"]) | _retest_failed(project, to_version))
     return errors, {"from_version": out["from_version"], "to_version": to_version,
-                    "retest": [s for s in out["closed_affected"] if s not in passed],
-                    "already_passed": [s for s in out["closed_affected"] if s in passed]}
+                    "retest": [s for s in candidates if s not in passed],
+                    "already_passed": [s for s in candidates if s in passed]}
 
 
 def retest_record(project, slice_id, to_version, from_version, result, finding, artifacts, oracle,
                   routing, contradiction, consequence, created_at):
-    """Record one Tester retest. Writes only evidence/ and retest/; never plan.json or the ledger.
+    """Record one Tester retest. Writes evidence/ and retest/; the ledger is never touched.
 
-    A pass carries no reopen request and leaves the slice's pin to the Manager. A fail carries a
-    submitted reopen request for the Manager to forward unchanged to the Planner; nothing reopens
-    automatically.
+    A pass carries no reopen request and leaves plan.json alone; the Manager re-pins the slice.
+    A fail carries a submitted reopen request for the Manager to forward unchanged to the Planner,
+    and auto-pauses the slice: plan.json changes only that slice's status, to PAUSED (ADR-001 M5,
+    Owner decision). Readiness and the re-pin remain with the Planner and Manager.
     """
     errors = Errors()
     if not _timestamp_ok(created_at):
@@ -692,6 +706,10 @@ def retest_record(project, slice_id, to_version, from_version, result, finding, 
     problem = _create(project / "retest" / f"{retest_id}.json", _dump(retest))
     if problem:
         return [problem], {}
+    if result == "fail":
+        plan["slices"] = [dict(s, status="PAUSED") if s["slice_id"] == slice_id else s
+                          for s in plan["slices"]]
+        (project / "plan.json").write_bytes(_dump(plan))
     final, _ = validate(project)
     if final:
         return final, {}

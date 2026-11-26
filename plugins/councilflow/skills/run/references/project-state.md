@@ -99,15 +99,17 @@ overwritten (error code `exists`).
         --route-used MODEL --route-source hint|role_default|host [--route-hint H] \
         --route-reason TEXT [--contradiction TEXT --consequence TEXT] --created-at TS
 
-`retest-select` (read-only) returns `retest`: the `closed_affected` slices with no
-recorded pass for ledger version M, and `already_passed`. `retest-record` accepts only a
-slice in `retest`. It writes two files: `evidence/E####.json` (source_agent `tester`,
+`retest-select` (read-only) returns `retest`: the `closed_affected` slices plus slices whose
+retest failed for ledger version M, minus those with a recorded pass for M, and
+`already_passed`. `retest-record` accepts only a slice in `retest`. A fail also sets that
+slice's plan status to PAUSED and changes nothing else in `plan.json`; a pass leaves
+`plan.json` alone. It writes two files: `evidence/E####.json` (source_agent `tester`,
 `affected_slices` = [slice], `ledger_ids` from the slice pin, and a submitted reopen
 request on a fail; none on a pass) and `retest/T####.json` (`slice_id`, `ledger_version`
 M, `result`, `evidence_id`, `oracle` path and sha256, `model_routing` with one
 `tester` choice, `created_at`). A fail needs `--contradiction` and `--consequence`; a pass
 takes neither. Artifacts and the oracle must exist; their sha256 is recorded. The command
-validates before and after writing and never touches `plan.json` or `ledger/`.
+validates before and after writing. It never touches `ledger/`, and it touches `plan.json` only to pause a failed slice.
 Validation checks each retest record against the evidence it cites: the source must
 be `tester`, the slice must be listed, and pass and fail must match the reopen request.
 

@@ -58,6 +58,9 @@ class RetestTests(unittest.TestCase):
         return {p.name: p.read_bytes() for p in sorted((self.project / "ledger").glob("L*.json"))} | {
             "plan.json": (self.project / "plan.json").read_bytes()}
 
+    def ledger_snapshot(self):
+        return {p.name: p.read_bytes() for p in sorted((self.project / "ledger").glob("L*.json"))}
+
     def slice(self, sid, ids=("AC1",), status="DONE"):
         return {"slice_id": sid, "ledger_version": 1, "ledger_ids": list(ids), "depends_on": [],
                 "readiness": "READY", "status": status, "run_dir": None, "model_routing": None}
@@ -165,10 +168,10 @@ class RetestTests(unittest.TestCase):
 
     def test_fail_creates_submitted_reopen_request_for_the_manager(self):
         v = self.start()
-        before = self.snapshot()
+        ledger_before = self.ledger_snapshot()
         code, result = self.record(v, result="fail")
         self.assertEqual((code, result["status"]), (0, "PASS"), result)
-        self.assertEqual(self.snapshot(), before)
+        self.assertEqual(self.ledger_snapshot(), ledger_before)
         evidence = json.loads((self.project / "evidence" / "E0001.json").read_text(encoding="utf-8"))
         self.assertEqual(evidence["reopen_request"], {"status": "submitted",
                                                       "contradiction": "A's check no longer matches R1.",
@@ -176,19 +179,23 @@ class RetestTests(unittest.TestCase):
         self.assertEqual((evidence["affected_slices"], evidence["ledger_ids"]), (["A"], ["AC1"]))
         self.assertEqual(self.validate()[1]["status"], "PASS")
 
-    def test_fail_leaves_slice_in_retest_and_status_unchanged(self):
+    def test_fail_auto_pauses_only_the_cited_slice_and_keeps_it_in_retest(self):
         v = self.start()
         self.assertEqual(self.record(v, result="fail")[0], 0)
         code, result = self.select(v)
         self.assertEqual((result["retest"], result["already_passed"]), (["A"], []))
         plan = json.loads((self.project / "plan.json").read_text(encoding="utf-8"))
-        self.assertEqual(plan["slices"][0]["status"], "DONE")
+        self.assertEqual([(s["slice_id"], s["status"], s["ledger_version"], s["ledger_ids"])
+                          for s in plan["slices"]],
+                         [("A", "PAUSED", 1, ["AC1"]), ("B", "DONE", 1, ["AC2"])])
 
-    def test_fail_then_pass_is_recorded_and_clears_retest(self):
+    def test_pass_never_changes_plan_and_fail_then_pass_clears_retest(self):
         v = self.start()
         self.assertEqual(self.record(v, result="fail")[0], 0)
         self.assertEqual(self.record(v, result="pass")[0], 0)
         self.assertEqual(self.select(v)[1]["retest"], [])
+        plan = json.loads((self.project / "plan.json").read_text(encoding="utf-8"))
+        self.assertEqual(plan["slices"][0]["status"], "PAUSED")  # resuming is the Manager's call
         self.assertEqual(self.validate()[1]["status"], "PASS")
 
     # --- independence rules --------------------------------------------------

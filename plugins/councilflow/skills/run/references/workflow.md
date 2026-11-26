@@ -151,8 +151,9 @@ The Manager never edits the ledger and never changes a requirement.
    only `evidence/` and `retest/`; it never edits `plan.json`, the ledger, the oracle
    or acceptance criteria, and never implements a fix. A `pass` keeps the slice
    closed. The Manager then re-pins the slice to M and its ledger ids. A `fail`
-   creates a submitted reopen request; the Manager forwards that `evidence_id`
-   unchanged to the Planner. Nothing reopens automatically. Tester routing is
+   creates a submitted reopen request and auto-pauses that slice (plan status
+   PAUSED, no other field changes). The Manager forwards that `evidence_id`
+   unchanged to the Planner and decides when the slice resumes. Tester routing is
    recorded under `model_routing.tester`. Reviewer is never Haiku.
 8. **Budget.** When the assumption budget is exhausted, slices that need new
    defaults stay BLOCKED while the others continue.
