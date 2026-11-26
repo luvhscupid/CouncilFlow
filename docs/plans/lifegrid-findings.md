@@ -553,3 +553,18 @@ and Batch 4 items 5 and 3) must therefore build on M3:
 
 Where earlier sections of this plan say "1.1" for new additions, read the rule
 above. The `1.0`-stays-valid and replay-fixture checks still apply.
+
+---
+
+## Base and version update (2026-11-26, after M3 and PR 21 merged)
+
+- **Base:** `main` now contains PR 21 (`3cd2c0b`) and ADR-001 M3 (`882b2c7`, PR #25).
+  This branch merges `origin/main` and builds on it, not on PR 21 alone.
+- **Version:** M3 added message contract `1.1` (`VERSIONS = ("1.0", "1.1")` in
+  `contracts.py`). Every version-bearing addition in this plan (Batch 3 items 2,
+  4, 13; item 16 `sender.model`; Batch 4 items 5 and 3) uses `1.2`. `1.0` and
+  `1.1` packets stay valid, and the replay fixtures must still pass for both.
+- **Batch 3 is unblocked.** It waits only on the M3 merge, which has happened.
+  Each new `1.2` rule is checked against M3's `1.1` rules (`_PIN`, `v11`
+  handling) before coding, so the 1.1 pins are not broken.
+- Where earlier sections say "1.1" for new additions, read "1.2".
