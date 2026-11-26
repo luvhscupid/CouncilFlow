@@ -679,3 +679,9 @@ a[href], button, summary, select, [role="button"], label.radio, label.toggle { c
 a.run-link:hover { background: var(--night-3); }
 a.run-link:focus-visible { outline: 2px solid var(--planner); outline-offset: 2px; }
 .run-link.is-current { box-shadow: inset 2px 0 0 var(--planner), inset 0 0 0 1px var(--line-soft); }
+
+/* Owner view: read-only summary generated from the ledger */
+.verbatim { white-space: pre-wrap; overflow-wrap: anywhere; }
+.stale-panel.is-stale { border-color: var(--blocked); }
+.questions { display: grid; gap: 16px; }
+.question { display: grid; gap: 8px; padding: 12px 0; border-top: 1px solid var(--line-soft); }

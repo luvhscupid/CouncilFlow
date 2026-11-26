@@ -141,6 +141,32 @@ def _efficiency(path: Path | None, task_id: str) -> dict | None:
     return result
 
 
+def _owner_view(root: Path) -> dict | None:
+    """Embed the generated Owner view (.councilflow/project/owner-view.json), if one exists.
+
+    The board only reads that static file. It never opens the ledger or any other project
+    state, and it marks the view stale when a newer ledger version exists (file names only).
+    """
+    project = root / ".councilflow" / "project"
+    path = project / "owner-view.json"
+    if project.is_symlink() or path.is_symlink() or not path.is_file():
+        return None
+    result = {"source": ".councilflow/project/owner-view.json", "view": None,
+              "freshness": None, "error": None}
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "councilflow_owner_view", SKILL_ROOT / "scripts" / "owner_view.py")
+        if spec is None or spec.loader is None:
+            raise OSError("the Owner view reader is unavailable")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        result["view"] = module.read_view(path)
+        result["freshness"] = module.freshness(project, result["view"], check_hash=False)
+    except (OSError, ValueError) as error:
+        result["error"] = f"owner-view.json: {error}"
+    return result
+
+
 def _message_order(messages: list[dict]) -> list[dict]:
     pending = list(messages)
     ordered = []
@@ -391,6 +417,7 @@ def publish_run(root: Path, task_id: str, *, open_browser: bool = False, opener=
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="milliseconds"),
         "policy": _policy(),
         "efficiency": _efficiency(efficiency_records, task_id),
+        "ownerView": _owner_view(root),
     }
     output = run_dir / "dashboard.html"
     project_output = project_dir / "dashboard.html"
