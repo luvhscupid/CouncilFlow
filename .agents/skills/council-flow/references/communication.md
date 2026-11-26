@@ -15,7 +15,7 @@ Never dump envelopes, YAML or long diagnostic streams into normal Owner chat.
 ## Envelope and closed payloads
 
 Exact envelope fields and routes are in [message-contract.json](message-contract.json).
-Every envelope has protocol="council-flow", version="1.0" (a string), message_id,
+Every envelope has protocol="council-flow", version="1.0" or "1.1" (a string; see Version 1.1 below), message_id,
 message_type, plan_id, positive integer plan_revision, task_id, attempt_id,
 sender, recipient, nullable in_reply_to, payload, evidence_refs. Agent-authored
 messages omit `created_at`; validated order and reply references preserve causality
@@ -72,6 +72,55 @@ oracle_ref. Tester may propose or write isolated oracle tests but cannot approve
 its own oracle or lower acceptance. No AI may manufacture an Owner decision.
 Actual external Owner input/provenance is required; synthetic unit fixtures are
 never actual approvals.
+
+## Version 1.1
+
+New runs that use project state (see [project-state](project-state.md)) use
+`"version": "1.1"`. Version 1.0 stays valid: every 1.0 packet validates exactly as
+before, with the same error codes. The new rules apply only to 1.1 packets, and a
+1.0 run may switch to 1.1 partway through.
+
+No downgrade: once a run contains a 1.1 packet, a later 1.0 packet fails with
+`version_downgrade`. The two new types fail on a 1.0 envelope with `message_type`.
+
+New types (1.1 only, published plan required like any other packet):
+
+| Purpose | Route | Required payload |
+|---|---|---|
+| evidence.reopen | Worker/Tester/Reviewer → Manager, or Manager → Planner | evidence_id (the `E####` record), ledger_ids (nonempty, unique), affected_slices (nonempty, unique), contradiction, consequence, evidence_ref (the evidence record file); the envelope `evidence_refs` must be nonempty |
+| ledger.publish | Planner → Manager | ledger_version (integer >= 1), ledger_ref (the `ledger/L####.json` file), changed_entry_ids (unique; empty only for version 1), reason, reopen_ids (unique message ids; may be empty) |
+
+A Manager-to-Planner `evidence.reopen` forwards an earlier one: its `in_reply_to`
+must name an earlier `evidence.reopen` from a Worker, Tester or Reviewer, and its
+payload must equal that payload exactly, else `reopen_forward`. Each `reopen_ids`
+entry of a `ledger.publish` must name an earlier `evidence.reopen` in the run
+(`reopen_reference`), and `ledger_version` must strictly increase across
+`ledger.publish` packets of a run (`ledger_version_order`).
+
+New fields on existing types (1.1 only; a 1.0 packet carrying them fails with
+`unknown_field`):
+
+- `job.assign` and `job.report` require `ledger_version` (integer >= 1) and
+  `slice_id`. A 1.1 `job.report` must carry the same `ledger_version` and
+  `slice_id` as the `job.assign` it replies to, else `ledger_pin`.
+- `approval.request` may carry `questions`: a list of question packets with the
+  seven readiness question fields (`question_id`, `text`, `blocking`,
+  `decision_class`, `affected_slices`, `permitted_default`, `reason`), checked by
+  the same rules as `planner_contract.py readiness`. With `--root`, when
+  `operation_ref` is a readiness answer (`schema` is `councilflow-readiness`),
+  every question must equal a question of that answer exactly, else
+  `question_text`. This is the exact-wording check: the Manager forwards the
+  Planner's wording unchanged.
+- `approval.decision` requires `owner_source_ref`, an artifact pointing at the
+  immutable Owner source text (for example `.councilflow/project/sources/S0001.txt`),
+  and may carry `interpretation` (text), which stays separate from the source.
+
+Limits: structure is not authentication, and 1.1 packets are checked like 1.0
+ones (see Validation below). The exact-text check proves only that the packet
+matches the stored readiness answer file. It does not prove that the host
+transport delivered the question to the Owner unchanged, and prompt instructions
+are not a transport guarantee. The checks need `--root` to read files; without it
+only structure is checked.
 
 ## Validation at controlled boundaries
 
@@ -199,6 +248,7 @@ Before every Worker `job.assign`, the Manager runs:
 ~~~sh
 python3 -B .agents/skills/council-flow/scripts/planner_contract.py assignment plan-r1.json frozen-criteria.json assignment.json
 python3 -B .agents/skills/council-flow/scripts/planner_contract.py assignment plan-r1.json assignment.json --planner-generated-criteria
+python3 -B .agents/skills/council-flow/scripts/planner_contract.py readiness readiness.json --project .councilflow/project
 ~~~
 
 `plan-r1.json` is the READY plan artifact referenced by `plan.publish`;
@@ -225,10 +275,11 @@ as evidence, and asks the Planner for a new plan revision, or the Owner when
 criteria or authority are in question. The Manager never edits Planner task
 instructions to make the check pass.
 
-A Planner `NEEDS_INFORMATION` or `BLOCKED` answer is not a published plan and
-has no council-flow message type. The Manager saves it unchanged as a plain UTF-8
+A non-ready Planner readiness answer (`BLOCKED`, formerly `NEEDS_INFORMATION`), or
+any answer that is not dispatchable, is not a published plan and has no
+council-flow message type. The Manager saves it unchanged as a plain UTF-8
 JSON evidence file in the run folder, sends no `job.assign`, and asks the Owner
-the Planner's precise question through `approval.request`, with
+the Planner's questions with their exact text through `approval.request`, with
 `operation_ref` pointing at that file. The closed message contract is unchanged.
 
 ## Optional routing hint

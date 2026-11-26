@@ -52,8 +52,8 @@ the table.
   subagent, the main session runs `python -B CF/scripts/planner_contract.py
   assignment <plan-rN.json> <frozen-criteria.json> <assignment.json>` (or
   `--planner-generated-criteria` in place of the criteria file for native
-  planning) from the target repository. Exit 2 stops the launch. A Planner NEEDS_INFORMATION or
-  BLOCKED answer is saved as evidence and taken to the Owner, never dispatched.
+  planning) from the target repository. Exit 2 stops the launch. A Planner BLOCKED (formerly NEEDS_INFORMATION) or
+  other non-dispatchable readiness answer is saved as evidence and taken to the Owner, never dispatched.
 - **Routing hints are advice.** If the Owner supplied a route config, the main
   session may run `CF/scripts/route.py`, then accept, ignore or override the
   hint and record the choice with `CF/scripts/route.py record` or `override`

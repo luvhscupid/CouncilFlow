@@ -14,7 +14,7 @@ Only parent **Manager** gives ordinary progress/results to the Owner.
 Read [communication](references/communication.md), [roles](references/roles.md)
 and the versioned [YAML policy](policies/roles.yaml).
 Agent task assignments, plans, reports and decisions **MUST be UTF-8 JSON**
-under council-flow 1.0. Markdown/prose cannot replace those controlled packets.
+under council-flow 1.0 (1.1 for new runs with project state). Markdown/prose cannot replace them.
 Keep large evidence in immutable files referenced by identity/path/SHA-256.
 YAML is role/workflow policy; native custom-agent configuration remains TOML.
 JSONL diagnostics are optional. Owner-facing communication stays concise natural
@@ -30,14 +30,15 @@ Before Planner, Manager follows [Codebase Memory](references/codebase-memory.md)
    acceptance. Before Planner, bind supplied frozen input and preserve test
    oracles using [source fidelity](references/source-fidelity.md). Never invent IDs or capabilities.
 2. **Planner.** Follow the canonical [Planner contract](references/planner.md). Manager supplies
-   bounded verified context; Planner does not explore application source. Publish only a dispatchable
+   bounded verified context; Planner may add read-only, cited research (documents, web, repository reads; no edits). Check a
+   readiness answer with `planner_contract.py readiness`; only READY, or PROCEED_WITH_ASSUMPTIONS checked against the project budget, is dispatchable. Publish only a dispatchable
    READY plan. External mode preserves an Owner-approved plan and provenance. After validating publication,
    Manager opens the task board once and republishes after packet writes/validated role results; see [workflow](references/workflow.md).
 3. **Manager.** Parent accepts plan and delegates job.assign JSON to a fresh
    Worker. Validate controlled packets before dispatch and results on receipt
    using the installed contracts.py helper, known actor bindings, candidate
    hashes, source fidelity and ordered context. Save every packet, including each role's job.report, only with `contracts.py save`, which refuses bare report bodies. Before Worker dispatch, validate plan coverage and exact
-   selected-task instruction transfer with scripts/planner_contract.py; copy Planner instructions exactly; never dispatch non-ready responses (ask the Owner via approval.request).
+   selected-task instruction transfer with scripts/planner_contract.py; copy Planner instructions exactly; apply a task's `model_hint` as advice (hint, then role default, then host model) and record the choice and reason in run evidence; never dispatch non-ready responses (ask the Owner via approval.request).
    Native transport is not enforced by this helper. Pass role instructions to native subagents when custom-role
    selection is unavailable, and disclose that fallback.
 4. **Worker.** Implement only bounded work, perform developer checks, return

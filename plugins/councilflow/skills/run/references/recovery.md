@@ -38,6 +38,14 @@
    an AI-created permission. No external-path, global-config, security-policy,
    paid-provider, ACL or authentication bypass may be self-authorized.
 
+Evidence that contradicts a ledger entry goes as `evidence.reopen` (version 1.1):
+cite the ledger ids, the evidence record, the affected slices and the consequence.
+A request without a ledger id is only evidence and is kept as such. Submitting a
+request does not change the ledger. The Manager forwards it to the Planner
+unchanged, the Planner answers with `ledger.publish`, and the Manager then
+reconciles the affected slices (M4 adds the detail). See
+[communication](communication.md#version-11).
+
 Newly discovered authorized follow-up work is distinct from failed mandatory
 acceptance. Preserve successful candidate verification and start a separate
 bounded task/plan publication boundary when appropriate. Record a real failed

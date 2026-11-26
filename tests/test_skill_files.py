@@ -170,7 +170,9 @@ class SkillFilesTests(unittest.TestCase):
                     elif path == SKILL / "scripts" / "contracts.py":
                         # Messages delegate plan-file rules to the Plan contract.
                         internal = {"planner_contract", "strict_json"}
-                    elif path in {SKILL / "scripts" / "planner_contract.py", SKILL / "scripts" / "doctor.py"}:
+                    elif path == SKILL / "scripts" / "planner_contract.py":
+                        internal = {"strict_json", "project_state"}
+                    elif path in {SKILL / "scripts" / "doctor.py", SKILL / "scripts" / "project_state.py"}:
                         internal = {"strict_json"}
                     else:
                         internal = set()

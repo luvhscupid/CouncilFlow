@@ -114,6 +114,29 @@ class DashboardPublisherTests(unittest.TestCase):
             self.assertIn('id="councilflow-root"', page)
             self.assertIn("CouncilFlow dashboard bundle", page)
 
+    def test_version_1_1_reopen_packet_is_not_reported_as_broken(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            run = write_packet_run(root, "task-v11")
+            evidence = run / "evidence.txt"
+            evidence.write_bytes(b"observation")
+            ref = {"artifact_id": "E1", "path": ".councilflow/runs/task-v11/evidence.txt",
+                   "sha256": hashlib.sha256(b"observation").hexdigest(), "kind": "evidence"}
+            publication = json.loads((run / "messages" / "plan-publish.json").read_text(encoding="utf-8"))
+            reopen = {**publication, "version": "1.1", "message_id": "reopen-1", "message_type": "evidence.reopen",
+                      "sender": {"role": "worker", "instance_id": "/root/worker"},
+                      "recipient": {"role": "manager", "instance_id": "/root"}, "in_reply_to": publication["message_id"],
+                      "payload": {"evidence_id": "E0001", "ledger_ids": ["R1"], "affected_slices": ["S1"],
+                                  "contradiction": "x", "consequence": "y", "evidence_ref": ref},
+                      "evidence_refs": [ref]}
+            (run / "messages" / "reopen.json").write_text(json.dumps(reopen) + "\n", encoding="utf-8")
+
+            result = dashboard.publish_run(root, "task-v11")
+
+            page = Path(result["snapshot_path"]).read_text(encoding="utf-8")
+            self.assertIn("reopen-1", page)
+            self.assertNotIn("sequence:", page)
+
     def test_malformed_message_is_embedded_as_a_visible_issue(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
