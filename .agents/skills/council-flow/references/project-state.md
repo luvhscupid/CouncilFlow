@@ -113,6 +113,56 @@ validates before and after writing. It never touches `ledger/`, and it touches `
 Validation checks each retest record against the evidence it cites: the source must
 be `tester`, the slice must be listed, and pass and fail must match the reopen request.
 
+## Technical Audit (ADR-001 M6)
+
+    python project_state.py audit-select --project DIR --ledger-version N
+    python project_state.py audit-record --project DIR --ledger-version N --entries FILE         --route-used MODEL --route-source hint|role_default|host [--route-hint H]         --route-reason TEXT --created-at TS
+
+`audit-select` (read-only) reports whether the audit may run: N must be the latest ledger
+version, every slice that is not CANCELLED must be DONE, and N must not be audited yet.
+Blockers are returned as `not_eligible` errors. `FILE` is JSON with `entries` (one per
+ledger ID of the audited slices: `ledger_id`, `verdict` pass|gap|risk, `kind`
+none|implementation|requirement_change|owner_choice, `finding`, `slice_ids`, `consequence`)
+and `reruns` (at least one deterministic check the Reviewer reran: `command`, `exit_code`,
+`output` file). A pass has kind `none`; a gap or risk needs one of the other kinds.
+
+Routing, one rule per finding kind:
+- `implementation`: recorded in the audit only. No state changes.
+- `requirement_change`: writes `evidence/E####.json` (source_agent `reviewer`, the
+  cited ledger ID, the affected slices, a submitted reopen request with the finding as
+  contradiction and the given consequence). The Planner decides whether the ledger
+  changes. Plan and ledger are untouched.
+- `owner_choice`: sets each affected slice to PAUSED (plan status only) and lists the
+  finding in `owner_items`. The Manager presents it to the Owner.
+
+`audit-record` writes `audit/A####.json` plus any reopen evidence and any owner pause. It
+never writes the ledger. The audit is advisory: its record has no delivery or status field,
+and a fully passing audit leaves plan statuses unchanged. Reviewer routing must not be Haiku.
+Validation checks the record shape, routing rules, reopen evidence, owner items and reruns.
+
+## Owner view (ADR-001 M7)
+
+    python owner_view.py generate --project DIR [--output FILE] [--generated-at TS]
+    python owner_view.py status --project DIR [--view FILE]
+
+`generate` writes one static, read-only file, `owner-view.json` (schema `councilflow-owner-view`
+1.0), built from the latest ledger version, `plan.json`, `retest/` and `audit/`. It shows the ADR-001
+section 4 fields: goal, confirmed requirements, provisional assumptions, open questions, decision
+history, ledger version (with the SHA-256 of that ledger file), slice readiness and status, QA
+results (Tester retests), audit findings and default budget usage. The ledger stays the source of
+truth. The generator never writes the ledger, the plan, evidence, retests, audits or sources and has no
+way to record an Owner decision; the Owner answers through the Manager. The output must be
+`DIR/owner-view.json` or a path outside the project, and may only replace an earlier Owner view
+(error `write_refused`). Nothing runs it automatically; generate it on demand.
+
+An open question's wording is the Open entry's `content`, unchanged. An optional
+`questions/<question_id>.json` (a Planner question packet) adds its permitted default,
+blocking flag, reversibility class and reason; the view says "no default is stored" otherwise.
+Nothing writes `questions/` yet. `status` is read-only and reports `stale` when a newer ledger
+version exists or the ledger file's bytes changed. `dashboard.py publish` embeds
+`.councilflow/project/owner-view.json` with a stale marker computed from ledger file names only; the
+board never opens the ledger.
+
 ## Limitations
 
 Validation is structural. It does not authenticate who wrote a file, and role

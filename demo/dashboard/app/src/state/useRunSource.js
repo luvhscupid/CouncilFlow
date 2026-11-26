@@ -170,6 +170,7 @@ export function useRunSource() {
     model, mode: source.mode, connection, loading, lastRead, watching,
     follow, followActive, finished, setFollow,
     openFolder, importFiles, toggleWatch, refresh,
+    ownerView: source.context && source.context.ownerView ? source.context.ownerView : null,
     generatedAt: source.context && source.context.generatedAt ? Date.parse(source.context.generatedAt) : null
   };
 }

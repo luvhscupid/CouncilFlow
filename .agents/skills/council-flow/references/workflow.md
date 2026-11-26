@@ -155,6 +155,13 @@ The Manager never edits the ledger and never changes a requirement.
    PAUSED, no other field changes). The Manager forwards that `evidence_id`
    unchanged to the Planner and decides when the slice resumes. Tester routing is
    recorded under `model_routing.tester`. Reviewer is never Haiku.
+7b. **Technical Audit (ADR-001 M6).** When `audit-select --ledger-version N` reports
+   eligible (N is the latest ledger version and every slice is DONE), a fresh
+   Reviewer-role agent (Sonnet, never Haiku) audits the Goal version once. It reruns at
+   least one deterministic check independently and records findings per ledger ID with
+   `audit-record`. A `requirement_change` becomes a Reopen Request for the Planner. An
+   `owner_choice` pauses the affected slice and goes to the Owner through the Manager.
+   Implementation findings are advisory. The audit never marks delivery as passed.
 8. **Budget.** When the assumption budget is exhausted, slices that need new
    defaults stay BLOCKED while the others continue.
 9. **Owner questions.** Ask only through `approval.request`, with `questions`

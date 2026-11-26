@@ -173,6 +173,8 @@ class SkillFilesTests(unittest.TestCase):
                         internal = {"planner_contract", "strict_json", "dashboard"}
                     elif path == SKILL / "scripts" / "planner_contract.py":
                         internal = {"strict_json", "project_state"}
+                    elif path == SKILL / "scripts" / "owner_view.py":
+                        internal = {"strict_json", "project_state", "planner_contract"}
                     elif path in {SKILL / "scripts" / "doctor.py", SKILL / "scripts" / "project_state.py"}:
                         internal = {"strict_json"}
                     else:
