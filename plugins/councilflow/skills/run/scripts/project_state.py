@@ -1,6 +1,7 @@
 """Plain-file project state for CouncilFlow (ADR-001 section 3).
 
-Commands: init, source-add, bootstrap, validate, affected (read-only). Every command prints one JSON
+Commands: init, source-add, bootstrap, validate, affected (read-only), retest-select (read-only),
+retest-record (writes evidence/ and retest/ only; ADR-001 M5). Every command prints one JSON
 object (`status` PASS or FAIL, `errors`, sorted keys) and exits 0 on PASS, 1 on
 FAIL and 2 on a usage error. Nothing is written outside --project and an
 existing file is never overwritten.
@@ -43,6 +44,10 @@ REOPEN_FIELDS = {"status", "contradiction", "consequence"}
 SOURCE_RE = re.compile(r"^S(\d{4,})$")
 LEDGER_RE = re.compile(r"^L(\d{4,})\.json$")
 EVIDENCE_RE = re.compile(r"^E(\d{4,})$")
+RETEST_FIELDS = {"retest_id", "slice_id", "ledger_version", "ledger_ids", "result",
+                 "evidence_id", "oracle", "model_routing", "created_at"}
+RETEST_RE = re.compile(r"^T(\d{4,})$")
+RETEST_RESULTS = ("pass", "fail")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -465,6 +470,61 @@ def _check_evidence(project, ledger_ids, errors):
     return names
 
 
+def _check_retests(project, ledger_ids, errors):
+    """Tester retest records (M5). Each must agree with the evidence record it cites."""
+    found = _numbered(project / "retest", RETEST_RE, ".json", errors, "retest")
+    for number, path in sorted(found.items()):
+        record = _load(path, errors)
+        if record is None:
+            continue
+        if type(record) is not dict or set(record) != RETEST_FIELDS:
+            errors.add("bad_fields", path, f"expected exactly {sorted(RETEST_FIELDS)}")
+            continue
+        if record["retest_id"] != path.stem:
+            errors.add("retest_id_mismatch", path, "retest_id differs from file name")
+        version = record["ledger_version"]
+        if not _int(version) or version not in ledger_ids:
+            errors.add("retest_ledger_version", path, "ledger_version does not exist")
+        if type(record["slice_id"]) is not str or not record["slice_id"].strip():
+            errors.add("bad_value", path, "slice_id must be a nonempty string")
+        if not _str_list(record["ledger_ids"]) or not record["ledger_ids"]:
+            errors.add("bad_value", path, "ledger_ids must be a nonempty list of strings")
+        elif _int(version) and version in ledger_ids:
+            for ref in record["ledger_ids"]:
+                if ref not in ledger_ids[version]:
+                    errors.add("retest_ledger_ref", path, f"{ref!r} not in ledger version {version}")
+        if record["result"] not in RETEST_RESULTS:
+            errors.add("bad_value", path, "result must be pass or fail")
+        if not _timestamp_ok(record["created_at"]):
+            errors.add("bad_timestamp", path, "created_at must be ISO-8601 UTC")
+        oracle = record["oracle"]
+        if (type(oracle) is not dict or set(oracle) != {"path", "sha256"}
+                or type(oracle["path"]) is not str or not oracle["path"]
+                or type(oracle["sha256"]) is not str or not HEX64.match(oracle["sha256"])):
+            errors.add("retest_oracle", path, "oracle needs path and 64-hex sha256")
+        routing = record["model_routing"]
+        if type(routing) is not dict or set(routing) != {"tester"}:
+            errors.add("slice_model_routing", path, "model_routing must hold exactly the tester choice")
+        else:
+            _check_routing(routing, str(path), errors)
+        evidence_id = record["evidence_id"]
+        evidence_path = project / "evidence" / f"{evidence_id}.json"
+        if type(evidence_id) is not str or not evidence_path.is_file():
+            errors.add("retest_evidence_ref", path, "evidence_id must name an existing evidence record")
+            continue
+        evidence = _load(evidence_path, Errors())
+        if type(evidence) is not dict:
+            errors.add("retest_evidence_ref", path, "cited evidence record is unreadable")
+            continue
+        if evidence.get("source_agent") != "tester":
+            errors.add("retest_evidence_agent", path, "retest evidence must come from the tester")
+        if record["slice_id"] not in (evidence.get("affected_slices") or []):
+            errors.add("retest_evidence_mismatch", path, "cited evidence does not name this slice")
+        if (evidence.get("reopen_request") is not None) != (record["result"] == "fail"):
+            errors.add("retest_evidence_mismatch", path,
+                       "a pass carries no reopen request; a fail carries one")
+
+
 # --- commands ----------------------------------------------------------------
 
 def validate(project):
@@ -489,6 +549,7 @@ def validate(project):
     ledger_ids, latest = _check_ledgers(project, sources, bad_sources, evidence_names, errors)
     _check_plan(project, ledger_ids, errors)
     _check_evidence(project, ledger_ids, errors)
+    _check_retests(project, ledger_ids, errors)
     if latest:
         used = sum(1 for e in latest[1] if e["type"] == "Assumption" and e["status"] == "unconfirmed")
         extra["ledger_version"] = latest[0]
@@ -539,6 +600,121 @@ def affected(project, to_version, from_version):
     for key in ("affected_slices", "unaffected_slices", "closed_affected"):
         out[key].sort()
     return errors, out
+
+
+def _retest_passed(project, to_version):
+    """Slice ids with a recorded tester pass pinned to to_version."""
+    scratch = Errors()
+    passed = set()
+    for path in _numbered(project / "retest", RETEST_RE, ".json", scratch, "retest").values():
+        record = _load(path, scratch)
+        if type(record) is dict and record.get("result") == "pass" and record.get("ledger_version") == to_version:
+            passed.add(record.get("slice_id"))
+    return passed
+
+
+def _retest_failed(project, to_version):
+    """Slice ids with a recorded tester fail pinned to to_version (these were auto-paused)."""
+    scratch = Errors()
+    failed = set()
+    for path in _numbered(project / "retest", RETEST_RE, ".json", scratch, "retest").values():
+        record = _load(path, scratch)
+        if type(record) is dict and record.get("result") == "fail" and record.get("ledger_version") == to_version:
+            failed.add(record.get("slice_id"))
+    return failed
+
+
+def retest_select(project, to_version, from_version):
+    """Slices the Tester must still re-check for to_version (M5): closed-but-affected slices,
+    plus slices whose retest failed for to_version, until a pass for that version is recorded."""
+    errors, out = affected(project, to_version, from_version)
+    if errors:
+        return errors, {}
+    passed = _retest_passed(project, to_version)
+    candidates = sorted(set(out["closed_affected"]) | _retest_failed(project, to_version))
+    return errors, {"from_version": out["from_version"], "to_version": to_version,
+                    "retest": [s for s in candidates if s not in passed],
+                    "already_passed": [s for s in candidates if s in passed]}
+
+
+def retest_record(project, slice_id, to_version, from_version, result, finding, artifacts, oracle,
+                  routing, contradiction, consequence, created_at):
+    """Record one Tester retest. Writes evidence/ and retest/; the ledger is never touched.
+
+    A pass carries no reopen request and leaves plan.json alone; the Manager re-pins the slice.
+    A fail carries a submitted reopen request for the Manager to forward unchanged to the Planner,
+    and auto-pauses the slice: plan.json changes only that slice's status, to PAUSED (ADR-001 M5,
+    Owner decision). Readiness and the re-pin remain with the Planner and Manager.
+    """
+    errors = Errors()
+    if not _timestamp_ok(created_at):
+        errors.add("bad_timestamp", "--created-at", "must be ISO-8601 UTC ending in Z or +00:00")
+    if result not in RETEST_RESULTS:
+        errors.add("bad_value", "--result", "must be pass or fail")
+    if type(finding) is not str or not finding.strip():
+        errors.add("bad_value", "--finding", "must be nonempty")
+    if result == "fail" and not ((contradiction or "").strip() and (consequence or "").strip()):
+        errors.add("bad_value", "--contradiction/--consequence", "a fail needs both")
+    if result == "pass" and (contradiction or consequence):
+        errors.add("bad_value", "--contradiction/--consequence", "a pass carries no reopen request")
+    if not artifacts:
+        errors.add("bad_value", "--artifact", "at least one artifact is required")
+    if errors:
+        return errors, {}
+    current, _ = validate(project)
+    if current:
+        return current, {}
+    selection_errors, selection = retest_select(project, to_version, from_version)
+    if selection_errors:
+        return selection_errors, {}
+    if slice_id not in selection["retest"]:
+        errors.add("not_retestable", "--slice", f"{slice_id!r} is not a closed-but-affected slice "
+                   f"awaiting retest for ledger version {to_version}")
+        return errors, {}
+    plan = _load(project / "plan.json", errors)
+    if plan is None:
+        return errors, {}
+    item = next(s for s in plan["slices"] if s["slice_id"] == slice_id)
+
+    def fingerprint(text, label):
+        path = Path(text)
+        if not path.is_file():
+            errors.add("bad_input", label, f"{text} is not a file")
+            return None
+        return {"path": text, "sha256": _sha(path.read_bytes())}
+
+    records = [fingerprint(a, "--artifact") for a in artifacts]
+    oracle_record = fingerprint(oracle, "--oracle")
+    tester = {"hint": routing["hint"], "used": routing["used"],
+              "source": routing["source"], "reason": routing["reason"]}
+    _check_routing({"tester": tester}, "--route", errors)
+    if errors or oracle_record is None or None in records:
+        return errors, {}
+    evidence_id = f"E{max(_numbered(project / 'evidence', EVIDENCE_RE, '.json', Errors(), 'evidence'), default=0) + 1:04d}"
+    retest_id = f"T{max(_numbered(project / 'retest', RETEST_RE, '.json', Errors(), 'retest'), default=0) + 1:04d}"
+    reopen = None if result == "pass" else {"status": "submitted", "contradiction": contradiction.strip(),
+                                            "consequence": consequence.strip()}
+    evidence = {"evidence_id": evidence_id, "source_agent": "tester", "finding": finding.strip(),
+                "artifacts": records, "ledger_ids": list(item["ledger_ids"]),
+                "affected_slices": [slice_id], "created_at": created_at, "reopen_request": reopen}
+    retest = {"retest_id": retest_id, "slice_id": slice_id, "ledger_version": to_version,
+              "ledger_ids": list(item["ledger_ids"]), "result": result, "evidence_id": evidence_id,
+              "oracle": oracle_record, "model_routing": {"tester": tester}, "created_at": created_at}
+    problem = _create(project / "evidence" / f"{evidence_id}.json", _dump(evidence))
+    if problem:
+        return [problem], {}
+    problem = _create(project / "retest" / f"{retest_id}.json", _dump(retest))
+    if problem:
+        return [problem], {}
+    if result == "fail":
+        plan["slices"] = [dict(s, status="PAUSED") if s["slice_id"] == slice_id else s
+                          for s in plan["slices"]]
+        (project / "plan.json").write_bytes(_dump(plan))
+    final, _ = validate(project)
+    if final:
+        return final, {}
+    return [], {"evidence_id": evidence_id, "ledger_version": to_version, "result": result,
+                "retest_id": retest_id, "slice_id": slice_id}
 
 
 def init(project, budget):
@@ -620,14 +796,27 @@ def _report(errors, extra):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("init", "source-add", "bootstrap", "validate", "affected"):
+    for name in ("init", "source-add", "bootstrap", "validate", "affected", "retest-select", "retest-record"):
         p = sub.add_parser(name)
         p.add_argument("--project", required=True)
         if name == "init":
             p.add_argument("--budget", type=int, default=5)
-        if name == "affected":
+        if name in ("affected", "retest-select", "retest-record"):
             p.add_argument("--to-version", type=int, required=True)
             p.add_argument("--from-version", type=int)
+        if name == "retest-record":
+            p.add_argument("--slice", required=True)
+            p.add_argument("--result", required=True, choices=RETEST_RESULTS)
+            p.add_argument("--finding", required=True)
+            p.add_argument("--artifact", action="append", default=[], required=True)
+            p.add_argument("--oracle", required=True, help="the acceptance checks the Manager assigned")
+            p.add_argument("--route-used", required=True)
+            p.add_argument("--route-source", required=True, choices=("hint", "role_default", "host"))
+            p.add_argument("--route-hint")
+            p.add_argument("--route-reason", required=True)
+            p.add_argument("--contradiction")
+            p.add_argument("--consequence")
+            p.add_argument("--created-at", required=True)
         if name == "source-add":
             p.add_argument("--file", required=True)
             p.add_argument("--received-at", required=True)
@@ -647,6 +836,14 @@ def main(argv=None):
         errors, extra = bootstrap(project, args.criteria, args.source_id, args.goal, args.created_at)
     elif args.command == "affected":
         errors, extra = affected(project, args.to_version, args.from_version)
+    elif args.command == "retest-select":
+        errors, extra = retest_select(project, args.to_version, args.from_version)
+    elif args.command == "retest-record":
+        routing = {"hint": args.route_hint, "used": args.route_used,
+                   "source": args.route_source, "reason": args.route_reason}
+        errors, extra = retest_record(project, args.slice, args.to_version, args.from_version, args.result,
+                                      args.finding, args.artifact, args.oracle, routing,
+                                      args.contradiction, args.consequence, args.created_at)
     else:
         errors, extra = validate(project)
     if errors and errors[0]["code"] == "usage":

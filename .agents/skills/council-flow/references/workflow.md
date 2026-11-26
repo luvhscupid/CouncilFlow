@@ -144,6 +144,17 @@ The Manager never edits the ledger and never changes a requirement.
    DIR --to-version M`. Set affected slices to PAUSED until a new readiness
    answer; unaffected slices continue. Closed slices listed as `closed_affected`
    may hold stale verification and are reported to the Planner.
+7a. **Tester retest (ADR-001 M5).** Run `project_state.py retest-select --project DIR
+   --to-version M` and give the `retest` list to a fresh independent Tester, one
+   slice at a time, with the slice's oracle (the acceptance checks the Manager
+   assigned). The Tester records each result with `retest-record`, which writes
+   only `evidence/` and `retest/`; it never edits `plan.json`, the ledger, the oracle
+   or acceptance criteria, and never implements a fix. A `pass` keeps the slice
+   closed. The Manager then re-pins the slice to M and its ledger ids. A `fail`
+   creates a submitted reopen request and auto-pauses that slice (plan status
+   PAUSED, no other field changes). The Manager forwards that `evidence_id`
+   unchanged to the Planner and decides when the slice resumes. Tester routing is
+   recorded under `model_routing.tester`. Reviewer is never Haiku.
 8. **Budget.** When the assumption budget is exhausted, slices that need new
    defaults stay BLOCKED while the others continue.
 9. **Owner questions.** Ask only through `approval.request`, with `questions`

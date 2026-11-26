@@ -91,6 +91,28 @@ Output is one JSON object with `status` (PASS or FAIL) and `errors` (code, path,
 detail). Exit 0 on PASS, 1 on FAIL, 2 on usage error. Existing files are never
 overwritten (error code `exists`).
 
+## Tester retests (ADR-001 M5)
+
+    python project_state.py retest-select --project DIR --to-version M [--from-version N]
+    python project_state.py retest-record --project DIR --slice S --to-version M \
+        --result pass|fail --finding TEXT --artifact F [--artifact F ...] --oracle F \
+        --route-used MODEL --route-source hint|role_default|host [--route-hint H] \
+        --route-reason TEXT [--contradiction TEXT --consequence TEXT] --created-at TS
+
+`retest-select` (read-only) returns `retest`: the `closed_affected` slices plus slices whose
+retest failed for ledger version M, minus those with a recorded pass for M, and
+`already_passed`. `retest-record` accepts only a slice in `retest`. A fail also sets that
+slice's plan status to PAUSED and changes nothing else in `plan.json`; a pass leaves
+`plan.json` alone. It writes two files: `evidence/E####.json` (source_agent `tester`,
+`affected_slices` = [slice], `ledger_ids` from the slice pin, and a submitted reopen
+request on a fail; none on a pass) and `retest/T####.json` (`slice_id`, `ledger_version`
+M, `result`, `evidence_id`, `oracle` path and sha256, `model_routing` with one
+`tester` choice, `created_at`). A fail needs `--contradiction` and `--consequence`; a pass
+takes neither. Artifacts and the oracle must exist; their sha256 is recorded. The command
+validates before and after writing. It never touches `ledger/`, and it touches `plan.json` only to pause a failed slice.
+Validation checks each retest record against the evidence it cites: the source must
+be `tester`, the slice must be listed, and pass and fail must match the reopen request.
+
 ## Limitations
 
 Validation is structural. It does not authenticate who wrote a file, and role
