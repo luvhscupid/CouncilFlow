@@ -16,6 +16,8 @@ Status: `planner_contract.py readiness --project` uses it to check assumptions a
   `sha256` of the .txt bytes exactly as stored.
 - `ledger/L0001.json`, `L0002.json`, ...: one full file per ledger version.
 - `plan.json` (optional) and `evidence/E0001.json`, ... (optional).
+- `retest/T0001.json`, ... (Tester retests, M5) and `audit/A0001.json`, ... (Technical
+  Audit, M6), both optional.
 
 Numbering is contiguous from 1 with no gaps.
 
@@ -58,7 +60,8 @@ non-null reopen request needs ledger ids, affected slices and artifacts.
 `model_routing` is null or an object keyed by role (`worker`, `tester`, `reviewer`).
 Each value has exactly `hint` (string or null), `used` (string), `source` (`hint`,
 `role_default` or `host`) and `reason` (nonempty). Source `hint` needs a non-null
-`hint` equal to `used`. Error code: `slice_model_routing`.
+`hint` equal to `used`. Error code: `slice_model_routing`. A `reviewer` choice whose
+`used` model names Haiku fails with `reviewer_haiku`: the Reviewer never runs on Haiku.
 
 ## Packets that reference these files (version 1.1)
 
@@ -112,6 +115,61 @@ takes neither. Artifacts and the oracle must exist; their sha256 is recorded. Th
 validates before and after writing. It never touches `ledger/`, and it touches `plan.json` only to pause a failed slice.
 Validation checks each retest record against the evidence it cites: the source must
 be `tester`, the slice must be listed, and pass and fail must match the reopen request.
+
+## Technical Audit (ADR-001 M6)
+
+    python project_state.py audit-select --project DIR --to-version M
+    python project_state.py audit-record --project DIR --to-version M --findings F.json         --rerun R.json --artifact F [--artifact F ...] --route-used MODEL         --route-source hint|role_default|host [--route-hint H] --route-reason TEXT --created-at TS
+
+The audit is advisory. It never marks delivery passed: delivery stays with the Manager
+presenting results and open findings to the Owner for final acceptance. No command output
+or audit record carries a delivery, approval or acceptance field; validation rejects an audit
+record with any key containing `deliver`, `approv` or `accept` (`audit_claims_delivery`).
+
+`audit-select` (read-only) requires M to be the latest ledger version
+(`stale_ledger_version`) with at least one active Goal entry (`no_goal`). It returns
+`goal_ids`, `goal_version` (the highest `version_introduced` among those Goal entries),
+`slices` (the DONE slices), `verified`, `unverified` (slice and reason), `audited` and
+`audit_id`. Verified means: at least one slice is DONE, every slice that is not CANCELLED
+is DONE, and no slice is in the `retest-select` list of any ledger version from 2 to M.
+One audit runs per Goal version; a later ledger version that leaves the Goal unchanged
+is not re-audited.
+
+`audit-record` refuses an unverified project (`not_verified`) and a Goal version that
+already has an audit (`already_audited`). `--findings` is a JSON array with one finding per
+ledger id: `ledger_id` (a current, not superseded, entry of version M; else
+`audit_ledger_ref`), `verdict` (`gap`, `risk` or `pass`; else `audit_verdict`), `finding`,
+`route`, and optional `affected_slices` (DONE slices), `evidence` (file paths), and the
+route fields below. Every active Goal entry needs a verdict (`audit_goal_missing`).
+Routes:
+
+- `reopen` (requirement change, R1): needs `contradiction`, `consequence` and
+  `affected_slices`. The evidence record carries a submitted reopen request; the Manager
+  forwards it unchanged to the Planner as `evidence.reopen`. The ledger is never written.
+- `owner_decision` (Owner-controlled, R2): needs `affected_slices` and `decision_class`, one
+  of `costly_reversible`, `irreversible_external`, `security_data_financial_legal`,
+  `owner_objective`. Those slices become PAUSED in `plan.json` (no other change); the
+  Manager presents the decision to the Owner. Unaffected slices are untouched.
+- `none` (R3, and every pass): an ordinary engineering gap or risk for Manager rework, or
+  a pass. Nothing outside `evidence/` and `audit/` changes. A pass must use `none`, so it
+  carries no reopen request and no pause (R5).
+
+`--rerun` is the Reviewer's independent rerun of one Tester-declared deterministic
+command: `command_id`, `command`, `arguments`, `workdir`, `exit_code`, `stdout_sha256`,
+`tester_exit_code`, `tester_stdout_sha256`, `tester_evidence` and `output` (file paths;
+their sha256 is recorded). `stdout_sha256` must be the SHA-256 of the output file after
+CRLF-to-LF replacement (`audit_rerun_hash`). The status is MATCH when exit code and hash
+equal the Tester's, else MISMATCH; a MISMATCH needs at least one gap or risk
+(`audit_contradiction`). A missing or NOT_COMPARABLE rerun fails with `audit_rerun_required`.
+Reviewer routing is recorded under `model_routing.reviewer` and must not be Haiku.
+
+It writes one `evidence/E####.json` per verdict (source_agent `reviewer`, `ledger_ids` =
+[that id]) and `audit/A####.json` (`audit_id`, `ledger_version`, `goal_ids`, `goal_version`,
+`verdicts` with `evidence_id`, `decision_class` and `affected_slices`, `independent_rerun`,
+`artifacts`, `model_routing`, `paused_slices`, `created_at`). Output lists `evidence_ids`,
+`reopen_evidence_ids`, `owner_decisions`, `paused_slices` and `rerun_status`. Validation
+checks each audit record against its pinned ledger version and the evidence it cites, and
+rejects two audits of one Goal version (`audit_duplicate_goal`).
 
 ## Limitations
 

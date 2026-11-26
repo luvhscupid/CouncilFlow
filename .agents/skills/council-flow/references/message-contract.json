@@ -179,6 +179,9 @@
     ]
   },
   "version_1_1_payload_optional": {
+    "job.report": [
+      "audit"
+    ],
     "approval.request": [
       "questions"
     ],
@@ -205,6 +208,7 @@
     "evidence.reopen": "Worker, Tester or Reviewer to Manager, or Manager to Planner. A Manager forward must reply to an earlier non-Manager evidence.reopen and carry the identical payload. evidence_refs must be nonempty.",
     "ledger.publish": "ledger_version must strictly increase within a run; changed_entry_ids may be empty only for version 1; each reopen_ids entry names an earlier evidence.reopen in the run.",
     "job.report.ledger_pin": "A 1.1 job.report carries the ledger_version and slice_id of the job.assign it replies to.",
+    "reviewer.job.report.audit": "Optional 1.1 Technical Audit (ADR-001 M6), Reviewer only: audit_ref (the audit/A####.json record, also cited in evidence_refs), goal_version (not above ledger_version) and a nonempty verdicts list of {ledger_id, verdict gap|risk|pass, finding, route none|reopen|owner_decision, nonempty evidence_refs}, one per ledger_id. A pass has route none. The comparison and its independent_rerun stay mandatory and cannot be NOT_COMPARABLE. The audit is advisory: it has no delivery or approval field and does not change task.decision rules.",
     "approval.request.questions": "Optional 1.1 list of readiness question packets. With root and a readiness answer as operation_ref, each must equal a question in that answer exactly.",
     "job.assign": {
       "worker": "candidate_ref optional immutable input; optional plan_task_id names the Planner task dispatched (envelope task_id stays the run's task)",

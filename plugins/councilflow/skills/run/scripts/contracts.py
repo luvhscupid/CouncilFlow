@@ -280,6 +280,47 @@ def _pin(p):
     _identity(p["slice_id"], "payload.slice_id")
 
 
+AUDIT_VERDICTS = {"gap", "risk", "pass"}
+AUDIT_ROUTES = {"none", "reopen", "owner_decision"}
+
+
+def _audit(p, message, root):
+    """Reviewer Technical Audit payload (1.1, ADR-001 M6). Advisory evidence for the Manager and
+    Owner: it holds no delivery or approval field, and it needs the mandatory independent rerun."""
+    if message["sender"]["role"] != "reviewer":
+        fail("role_payload", "payload.audit", "only the Reviewer submits a Technical Audit")
+    audit = p["audit"]
+    _object(audit, {"audit_ref", "goal_version", "verdicts"}, field="payload.audit")
+    artifact(audit["audit_ref"], root, "payload.audit.audit_ref")
+    if audit["audit_ref"] not in message["evidence_refs"]:
+        fail("evidence", "payload.audit.audit_ref", "the audit record must be cited in evidence_refs")
+    _ledger_version(audit["goal_version"], "payload.audit.goal_version")
+    if audit["goal_version"] > p["ledger_version"]:
+        fail("ledger_pin", "payload.audit.goal_version", "the Goal version cannot be newer than the pinned ledger version")
+    verdicts = audit["verdicts"]
+    if type(verdicts) is not list or not verdicts or len(verdicts) > MAX_ITEMS:
+        fail("array", "payload.audit.verdicts", "expected a bounded nonempty verdict array")
+    seen = set()
+    for index, item in enumerate(verdicts):
+        field = f"payload.audit.verdicts[{index}]"
+        _object(item, {"ledger_id", "verdict", "finding", "route", "evidence_refs"}, field=field)
+        _identity(item["ledger_id"], field + ".ledger_id")
+        _enum(item["verdict"], AUDIT_VERDICTS, field + ".verdict")
+        _string(item["finding"], field + ".finding")
+        _enum(item["route"], AUDIT_ROUTES, field + ".route")
+        _refs(item["evidence_refs"], root, field + ".evidence_refs")
+        if not item["evidence_refs"]:
+            fail("evidence", field + ".evidence_refs", "every verdict cites its evidence")
+        if item["verdict"] == "pass" and item["route"] != "none":
+            fail("audit_route", field + ".route", "a pass carries no reopen request and no pause")
+        if item["ledger_id"] in seen:
+            fail("duplicate_item", field + ".ledger_id", "one verdict per ledger id")
+        seen.add(item["ledger_id"])
+    if p["comparison"]["independent_rerun"]["status"] == "NOT_COMPARABLE":
+        fail("audit_rerun", "payload.comparison.independent_rerun",
+             "a Technical Audit requires the independent rerun of a Tester-declared deterministic command")
+
+
 def _questions(questions, operation_ref, root):
     """Question packets use the readiness rules; with root they must match the stored answer exactly."""
     if type(questions) is not list or len(questions) > MAX_ITEMS:
@@ -372,7 +413,7 @@ def validate_message(message, *, root=None, expected_sender=None):
     elif kind == "job.report":
         _object(p, {"status", "summary", "acceptance_ids", "candidate_ref", "findings", "errors"} | (_PIN if v11 else set()),
                 {"changed_files", "checks", "input_candidate_ref", "oracle_ref",
-                 "deterministic_commands", "comparison"}, "payload")
+                 "deterministic_commands", "comparison"} | ({"audit"} if v11 else set()), "payload")
         if v11:
             _pin(p)
         _enum(p["status"], {"passed", "failed", "blocked", "in_progress"}, "payload.status")
@@ -484,6 +525,8 @@ def validate_message(message, *, root=None, expected_sender=None):
                     fail("comparison", "payload.status", "mismatching independent rerun cannot pass")
             if comparison["discrepancies"] and p["status"] == "passed":
                 fail("comparison", "payload.status", "a comparison with unresolved discrepancies cannot pass")
+        if "audit" in p:
+            _audit(p, message, root)
         # A Worker's hashed output candidate_ref is its evidence; verifiers cite evidence files.
         if p["status"] != "in_progress" and not message["evidence_refs"] and role != "worker":
             fail("evidence", "evidence_refs",

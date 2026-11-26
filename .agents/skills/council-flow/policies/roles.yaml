@@ -29,7 +29,7 @@ roles:
     abilities: ["technical_test"]
     application_code: false
   reviewer:
-    responsibilities: ["Independently compares frozen plan and acceptance, Worker candidate, and recorded Tester evidence", "Follows the assigned review instructions exactly and in order", "Reruns one Tester-declared deterministic command and reports comparison findings to Manager", "Compares only; does not plan, repair, retest or approve", "Reports blocked instead of guessing when the plan, candidate or Tester report is missing or does not match the assignment", "Does not implement, alter criteria, or replace Tester"]
+    responsibilities: ["Independently compares frozen plan and acceptance, Worker candidate, and recorded Tester evidence", "Follows the assigned review instructions exactly and in order", "Reruns one Tester-declared deterministic command and reports comparison findings to Manager", "Compares only; does not plan, repair, retest or approve", "Reports blocked instead of guessing when the plan, candidate or Tester report is missing or does not match the assignment", "Does not implement, alter criteria, or replace Tester", "On a Technical Audit job assesses whether the delivered system meets the current Goal as advisory evidence; never approves delivery or edits code, requirements or the ledger"]
     abilities: ["compare_evidence", "independent_rerun"]
     application_code: false
 workflow:

@@ -155,6 +155,17 @@ The Manager never edits the ledger and never changes a requirement.
    PAUSED, no other field changes). The Manager forwards that `evidence_id`
    unchanged to the Planner and decides when the slice resumes. Tester routing is
    recorded under `model_routing.tester`. Reviewer is never Haiku.
+7b. **Technical Audit (ADR-001 M6).** When `project_state.py audit-select --project DIR
+   --to-version M` reports `verified` and not `audited`, assign one audit job to a fresh
+   Reviewer (Sonnet or Opus, never Haiku) against the current Goal and pinned version M.
+   The Reviewer reruns one Tester-declared deterministic command, records its verdicts with
+   `audit-record` and reports them in the 1.1 `job.report` `audit` payload. It edits no
+   code, requirements or ledger. A `reopen` finding goes to the Planner unchanged as
+   `evidence.reopen`. An `owner_decision` finding pauses only the slices it names (the one
+   plan change `audit-record` makes) and the Manager presents it to the Owner through
+   `approval.request`. A `none` finding is ordinary rework for the Manager.
+   The audit is advisory: it never accepts delivery. The Manager presents results and open
+   findings to the Owner for final acceptance.
 8. **Budget.** When the assumption budget is exhausted, slices that need new
    defaults stay BLOCKED while the others continue.
 9. **Owner questions.** Ask only through `approval.request`, with `questions`

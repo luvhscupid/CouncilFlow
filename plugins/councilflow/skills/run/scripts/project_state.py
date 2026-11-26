@@ -1,7 +1,9 @@
 """Plain-file project state for CouncilFlow (ADR-001 section 3).
 
 Commands: init, source-add, bootstrap, validate, affected (read-only), retest-select (read-only),
-retest-record (writes evidence/ and retest/ only; ADR-001 M5). Every command prints one JSON
+retest-record (writes evidence/ and retest/ only; ADR-001 M5), audit-select (read-only) and
+audit-record (writes evidence/ and audit/; an Owner-decision finding also pauses the slices it
+names; ADR-001 M6, advisory Technical Audit). Every command prints one JSON
 object (`status` PASS or FAIL, `errors`, sorted keys) and exits 0 on PASS, 1 on
 FAIL and 2 on a usage error. Nothing is written outside --project and an
 existing file is never overwritten.
@@ -49,6 +51,26 @@ RETEST_FIELDS = {"retest_id", "slice_id", "ledger_version", "ledger_ids", "resul
 RETEST_RE = re.compile(r"^T(\d{4,})$")
 RETEST_RESULTS = ("pass", "fail")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
+# Technical Audit (ADR-001 M6). Advisory: a record never claims delivery or approval.
+AUDIT_FIELDS = {"audit_id", "ledger_version", "goal_ids", "goal_version", "verdicts",
+                "independent_rerun", "artifacts", "model_routing", "paused_slices", "created_at"}
+VERDICT_FIELDS = {"ledger_id", "verdict", "finding", "route", "decision_class",
+                  "affected_slices", "evidence_id"}
+RERUN_INPUT = {"command_id", "command", "arguments", "workdir", "exit_code", "stdout_sha256",
+               "tester_exit_code", "tester_stdout_sha256", "tester_evidence", "output"}
+RERUN_FIELDS = RERUN_INPUT | {"status"}
+FINDING_INPUT = {"ledger_id", "verdict", "finding", "route", "affected_slices", "decision_class",
+                 "contradiction", "consequence", "evidence"}
+AUDIT_RE = re.compile(r"^A(\d{4,})$")
+VERDICTS = ("gap", "risk", "pass")
+# none: pass, or ordinary engineering for the Manager; reopen: a Reopen Request to the Planner;
+# owner_decision: pauses the named slices for the Manager to present to the Owner.
+AUDIT_ROUTES = ("none", "reopen", "owner_decision")
+# Owner-controlled classes from policies/roles.yaml adaptive.decision_classes (all but the
+# Planner's cheap_reversible default class).
+OWNER_CLASSES = ("costly_reversible", "irreversible_external", "security_data_financial_legal",
+                 "owner_objective")
+DELIVERY_KEY = re.compile(r"deliver|approv|accept", re.IGNORECASE)
 
 
 class Errors(list):
@@ -341,6 +363,8 @@ def _check_routing(routing, where, errors):
             errors.add("slice_model_routing", spot, "reason must be a nonempty string")
         elif choice["source"] == "hint" and (choice["hint"] is None or choice["hint"] != choice["used"]):
             errors.add("slice_model_routing", spot, "source hint needs a non-null hint equal to used")
+        elif role == "reviewer" and "haiku" in choice["used"].lower():
+            errors.add("reviewer_haiku", spot, "the Reviewer never runs on Haiku; use Sonnet or Opus")
 
 
 def _check_plan(project, ledger_ids, errors):
@@ -525,6 +549,168 @@ def _check_retests(project, ledger_ids, errors):
                        "a pass carries no reopen request; a fail carries one")
 
 
+def _delivery_claims(value):
+    """Keys anywhere in an audit record that claim delivery, approval or acceptance."""
+    found = []
+    if type(value) is dict:
+        for key, child in value.items():
+            if type(key) is str and DELIVERY_KEY.search(key):
+                found.append(key)
+            found += _delivery_claims(child)
+    elif type(value) is list:
+        for child in value:
+            found += _delivery_claims(child)
+    return found
+
+
+def _normalized_sha(data):
+    """SHA-256 of stdout after CRLF-to-LF replacement only (the Reviewer rerun rule)."""
+    return _sha(data.replace(b"\r\n", b"\n"))
+
+
+def _fingerprint_ok(value):
+    return (type(value) is dict and set(value) == {"path", "sha256"} and type(value["path"]) is str
+            and value["path"] != "" and type(value["sha256"]) is str and bool(HEX64.match(value["sha256"])))
+
+
+def _check_rerun(rerun, where, errors):
+    """The Reviewer's independent rerun of one Tester-declared deterministic command."""
+    if type(rerun) is not dict or set(rerun) != RERUN_FIELDS:
+        errors.add("audit_rerun_required", where,
+                   f"the audit needs an independent rerun with exactly {sorted(RERUN_FIELDS)}")
+        return None
+    ok = all(type(rerun[k]) is str and rerun[k].strip() for k in ("command_id", "command", "workdir"))
+    ok = ok and _str_list(rerun["arguments"]) and _int(rerun["exit_code"]) and _int(rerun["tester_exit_code"])
+    ok = ok and all(type(rerun[k]) is str and HEX64.match(rerun[k])
+                    for k in ("stdout_sha256", "tester_stdout_sha256"))
+    ok = ok and _fingerprint_ok(rerun["tester_evidence"]) and _fingerprint_ok(rerun["output"])
+    if not ok:
+        errors.add("audit_rerun_required", where, "rerun needs command, arguments, workdir, integer exit "
+                   "codes, 64-hex stdout hashes and hashed tester_evidence and output files")
+        return None
+    equal = (rerun["exit_code"] == rerun["tester_exit_code"]
+             and rerun["stdout_sha256"] == rerun["tester_stdout_sha256"])
+    if rerun["status"] not in ("MATCH", "MISMATCH"):
+        errors.add("audit_rerun_required", where, "status must be MATCH or MISMATCH; NOT_COMPARABLE cannot "
+                   "satisfy the mandatory rerun")
+        return None
+    if (rerun["status"] == "MATCH") != equal:
+        errors.add("audit_rerun_status", where, "status must equal the exit-code and stdout-hash comparison")
+    return rerun["status"]
+
+
+def _version_map(project, version):
+    """{id: entry} of one ledger version, or None; errors are already reported by validation."""
+    data = _load(project / "ledger" / f"L{version:04d}.json", Errors())
+    if type(data) is not dict or type(data.get("entries")) is not list:
+        return None
+    return {e["id"]: e for e in data["entries"] if type(e) is dict and type(e.get("id")) is str}
+
+
+def _check_audits(project, ledger_ids, errors):
+    """Technical Audit records (M6): advisory, pinned to one ledger version, one per Goal version."""
+    found = _numbered(project / "audit", AUDIT_RE, ".json", errors, "audit")
+    goal_versions = {}
+    for number, path in sorted(found.items()):
+        record = _load(path, errors)
+        if record is None:
+            continue
+        claims = _delivery_claims(record)
+        if claims:
+            errors.add("audit_claims_delivery", path, "the audit is advisory and cannot claim delivery, "
+                       f"approval or acceptance (keys {sorted(set(claims))}); the Owner gives final acceptance")
+            continue
+        if type(record) is not dict or set(record) != AUDIT_FIELDS:
+            errors.add("bad_fields", path, f"expected exactly {sorted(AUDIT_FIELDS)}")
+            continue
+        if record["audit_id"] != path.stem:
+            errors.add("audit_id_mismatch", path, "audit_id differs from file name")
+        if not _timestamp_ok(record["created_at"]):
+            errors.add("bad_timestamp", path, "created_at must be ISO-8601 UTC")
+        version = record["ledger_version"]
+        entries = _version_map(project, version) if _int(version) and version in ledger_ids else None
+        if entries is None:
+            errors.add("audit_ledger_version", path, "ledger_version does not exist")
+            entries = {}
+        goals = record["goal_ids"]
+        if not _str_list(goals) or not goals or any(
+                entries.get(g, {}).get("type") != "Goal" for g in goals):
+            errors.add("audit_goal", path, "goal_ids must name Goal entries of the pinned ledger version")
+            goals = []
+        goal_version = record["goal_version"]
+        if not _int(goal_version) or not (_int(version) and 1 <= goal_version <= version):
+            errors.add("bad_value", path, "goal_version must be an integer from 1 to ledger_version")
+        elif goal_version in goal_versions:
+            errors.add("audit_duplicate_goal", path,
+                       f"Goal version {goal_version} was already audited in {goal_versions[goal_version]}")
+        else:
+            goal_versions[goal_version] = path.stem
+        verdicts = record["verdicts"] if type(record["verdicts"]) is list else []
+        if not verdicts:
+            errors.add("bad_value", path, "verdicts must be a nonempty list")
+        seen, paused, kinds = set(), set(), []
+        for index, item in enumerate(verdicts):
+            where = f"{path}#verdicts[{index}]"
+            if type(item) is not dict or set(item) != VERDICT_FIELDS:
+                errors.add("bad_fields", where, f"expected exactly {sorted(VERDICT_FIELDS)}")
+                continue
+            ledger_id = item["ledger_id"] if type(item["ledger_id"]) is str else repr(item["ledger_id"])
+            if ledger_id not in entries or entries[ledger_id].get("status") == "superseded":
+                errors.add("audit_ledger_ref", where,
+                           f"{ledger_id!r} is not a current entry of ledger version {version}")
+            if ledger_id in seen:
+                errors.add("audit_duplicate", where, f"one verdict per ledger id; {ledger_id!r} repeats")
+            seen.add(ledger_id)
+            if item["verdict"] not in VERDICTS:
+                errors.add("audit_verdict", where, "verdict must be gap, risk or pass")
+            kinds.append(item["verdict"])
+            if type(item["finding"]) is not str or not item["finding"].strip():
+                errors.add("bad_value", where, "finding must be a nonempty string")
+            route, slices = item["route"], item["affected_slices"]
+            if route not in AUDIT_ROUTES:
+                errors.add("audit_route", where, f"route must be one of {list(AUDIT_ROUTES)}")
+            elif item["verdict"] == "pass" and route != "none":
+                errors.add("audit_route", where, "a pass carries no reopen request and no pause")
+            if not _str_list(slices):
+                errors.add("bad_value", where, "affected_slices must be a list of strings")
+                slices = []
+            if route in ("reopen", "owner_decision") and not slices:
+                errors.add("audit_route", where, f"route {route} needs affected_slices")
+            if (route == "owner_decision") != (item["decision_class"] is not None):
+                errors.add("audit_route", where, "decision_class is set exactly for route owner_decision")
+            elif route == "owner_decision" and item["decision_class"] not in OWNER_CLASSES:
+                errors.add("audit_route", where, f"decision_class must be one of {list(OWNER_CLASSES)}")
+            if route == "owner_decision":
+                paused.update(slices)
+            evidence_path = project / "evidence" / f"{item['evidence_id']}.json"
+            if type(item["evidence_id"]) is not str or not evidence_path.is_file():
+                errors.add("audit_evidence_ref", where, "evidence_id must name an existing evidence record")
+                continue
+            evidence = _load(evidence_path, Errors())
+            if (type(evidence) is not dict or evidence.get("source_agent") != "reviewer"
+                    or evidence.get("ledger_ids") != [ledger_id]
+                    or (evidence.get("reopen_request") is not None) != (route == "reopen")):
+                errors.add("audit_evidence_mismatch", where, "evidence must come from the reviewer, cite only "
+                           "this ledger id, and carry a reopen request exactly for route reopen")
+        missing = sorted(set(goals) - seen)
+        if missing:
+            errors.add("audit_goal_missing", path, f"no verdict for Goal entries {missing}")
+        status = _check_rerun(record["independent_rerun"], f"{path}#independent_rerun", errors)
+        if status == "MISMATCH" and kinds and all(k == "pass" for k in kinds):
+            errors.add("audit_contradiction", path, "a mismatching rerun needs at least one gap or risk")
+        arts = record["artifacts"]
+        if type(arts) is not list or not arts or not all(_fingerprint_ok(a) for a in arts):
+            errors.add("audit_artifacts", path, "artifacts must be a nonempty list of path and 64-hex sha256")
+        routing = record["model_routing"]
+        if type(routing) is not dict or set(routing) != {"reviewer"}:
+            errors.add("slice_model_routing", path, "model_routing must hold exactly the reviewer choice")
+        else:
+            _check_routing(routing, str(path), errors)
+        if record["paused_slices"] != sorted(paused):
+            errors.add("audit_paused_mismatch", path,
+                       "paused_slices must list exactly the slices of owner_decision findings, sorted")
+
+
 # --- commands ----------------------------------------------------------------
 
 def validate(project):
@@ -550,6 +736,7 @@ def validate(project):
     _check_plan(project, ledger_ids, errors)
     _check_evidence(project, ledger_ids, errors)
     _check_retests(project, ledger_ids, errors)
+    _check_audits(project, ledger_ids, errors)
     if latest:
         used = sum(1 for e in latest[1] if e["type"] == "Assumption" and e["status"] == "unconfirmed")
         extra["ledger_version"] = latest[0]
@@ -717,6 +904,247 @@ def retest_record(project, slice_id, to_version, from_version, result, finding, 
                 "retest_id": retest_id, "slice_id": slice_id}
 
 
+def _audit_records(project):
+    scratch = Errors()
+    records = {}
+    for path in _numbered(project / "audit", AUDIT_RE, ".json", scratch, "audit").values():
+        record = _load(path, scratch)
+        if type(record) is dict:
+            records[path.stem] = record
+    return records
+
+
+def audit_select(project, to_version):
+    """Whether the Technical Audit may run for ledger version M (M6). Read-only.
+
+    M must be the current (latest) ledger version and hold an active Goal. The Goal version is the
+    highest version_introduced among the active Goal entries. Verified means: at least one slice is
+    DONE, every slice that is not CANCELLED is DONE, and no slice waits in the Tester retest list of
+    any ledger version from 2 to M. One audit per Goal version: `audited` names an existing one.
+    """
+    errors, extra = validate(project)
+    if errors:
+        return errors, {}
+    latest = extra["ledger_version"]
+    if latest is None or to_version != latest:
+        errors.add("stale_ledger_version", "--to-version",
+                   f"the audit pins the current ledger version ({latest}), not {to_version}")
+        return errors, {}
+    entries = _version_entries(project, to_version, errors)
+    if errors:
+        return errors, {}
+    goals = sorted(i for i, e in entries.items() if e["type"] == "Goal" and e["status"] == "active")
+    if not goals:
+        errors.add("no_goal", "--to-version", f"ledger version {to_version} has no active Goal entry")
+        return errors, {}
+    goal_version = max(entries[g]["version_introduced"] for g in goals)
+    plan_path = project / "plan.json"
+    slices = _load(plan_path, errors)["slices"] if plan_path.exists() else []
+    unverified = [{"slice_id": s["slice_id"], "reason": f"status {s['status']}"}
+                  for s in slices if s["status"] not in ("DONE", "CANCELLED")]
+    pending = {}
+    for version in range(2, to_version + 1):
+        selection_errors, selection = retest_select(project, version, None)
+        if selection_errors:
+            return selection_errors, {}
+        for sid in selection["retest"]:
+            pending.setdefault(sid, version)
+    unverified += [{"slice_id": sid, "reason": f"awaiting Tester retest for ledger version {version}"}
+                   for sid, version in sorted(pending.items())]
+    done = sorted(s["slice_id"] for s in slices if s["status"] == "DONE")
+    if not done:
+        unverified.append({"slice_id": None, "reason": "no DONE slice to audit"})
+    unverified.sort(key=lambda u: (u["slice_id"] or "", u["reason"]))
+    audit_id = next((aid for aid, rec in sorted(_audit_records(project).items())
+                     if rec.get("goal_version") == goal_version), None)
+    return errors, {"ledger_version": to_version, "goal_ids": goals, "goal_version": goal_version,
+                    "verified": not unverified, "unverified": unverified, "slices": done,
+                    "audited": audit_id is not None, "audit_id": audit_id}
+
+
+def _finding_input(item, where, entries, done, errors):
+    """Check one Reviewer finding from --findings; returns True when usable."""
+    if type(item) is not dict or not {"ledger_id", "verdict", "finding", "route"} <= set(item) <= FINDING_INPUT:
+        errors.add("bad_findings", where, f"a finding needs ledger_id, verdict, finding and route, "
+                   f"and may hold only {sorted(FINDING_INPUT)}")
+        return False
+    ok = True
+    ledger_id = item["ledger_id"]
+    if type(ledger_id) is not str or ledger_id not in entries or entries[ledger_id]["status"] == "superseded":
+        errors.add("audit_ledger_ref", where, f"{ledger_id!r} is not a current entry of the pinned ledger version")
+        ok = False
+    if item["verdict"] not in VERDICTS:
+        errors.add("audit_verdict", where, "verdict must be gap, risk or pass")
+        ok = False
+    if type(item["finding"]) is not str or not item["finding"].strip():
+        errors.add("bad_value", where, "finding must be nonempty")
+        ok = False
+    route = item["route"]
+    slices = item.get("affected_slices", [])
+    if route not in AUDIT_ROUTES:
+        errors.add("audit_route", where, f"route must be one of {list(AUDIT_ROUTES)}")
+        return False
+    if item["verdict"] == "pass" and route != "none":
+        errors.add("audit_route", where, "a pass carries no reopen request and no pause")
+        ok = False
+    if not _str_list(slices) or any(s not in done for s in slices) or len(set(slices)) != len(slices):
+        errors.add("audit_slice_unknown", where, "affected_slices must be distinct DONE slices of the plan")
+        ok = False
+    elif route != "none" and not slices:
+        errors.add("audit_route", where, f"route {route} needs affected_slices")
+        ok = False
+    reopen = ("contradiction", "consequence")
+    if route == "reopen":
+        if any(type(item.get(k)) is not str or not item[k].strip() for k in reopen):
+            errors.add("audit_route", where, "route reopen needs contradiction and consequence")
+            ok = False
+    elif any(k in item for k in reopen):
+        errors.add("audit_route", where, "only route reopen carries contradiction and consequence")
+        ok = False
+    if route == "owner_decision":
+        if item.get("decision_class") not in OWNER_CLASSES:
+            errors.add("audit_route", where, f"route owner_decision needs decision_class in {list(OWNER_CLASSES)}")
+            ok = False
+    elif "decision_class" in item:
+        errors.add("audit_route", where, "only route owner_decision carries decision_class")
+        ok = False
+    if "evidence" in item and not _str_list(item["evidence"]):
+        errors.add("bad_findings", where, "evidence must be a list of file paths")
+        ok = False
+    return ok
+
+
+def audit_record(project, to_version, findings_file, artifacts, rerun_file, routing, created_at):
+    """Record the Technical Audit for the current Goal version (ADR-001 M6). Advisory only.
+
+    Writes one reviewer evidence record per verdict and audit/A####.json. The ledger is never
+    touched. A reopen finding carries a submitted reopen request for the Manager to forward
+    unchanged to the Planner. An owner_decision finding sets the status of the slices it names to
+    PAUSED (nothing else in plan.json changes) for the Manager to present to the Owner. A pass or an
+    ordinary engineering finding (route none) changes nothing outside evidence/ and audit/.
+    Delivery stays with the Manager presenting to the Owner; the output carries no delivery flag.
+    """
+    errors = Errors()
+    if not _timestamp_ok(created_at):
+        errors.add("bad_timestamp", "--created-at", "must be ISO-8601 UTC ending in Z or +00:00")
+    if not artifacts:
+        errors.add("bad_value", "--artifact", "at least one artifact is required")
+    findings = _load(Path(findings_file), errors)
+    rerun_in = _load(Path(rerun_file), errors)
+    if errors:
+        return errors, {}
+    current, _ = validate(project)
+    if current:
+        return current, {}
+    selection_errors, selection = audit_select(project, to_version)
+    if selection_errors:
+        return selection_errors, {}
+    if not selection["verified"]:
+        errors.add("not_verified", "--to-version", f"slices are not all verified for ledger version "
+                   f"{to_version}: {selection['unverified']}")
+        return errors, {}
+    if selection["audited"]:
+        errors.add("already_audited", "--to-version", f"Goal version {selection['goal_version']} was "
+                   f"already audited in {selection['audit_id']}")
+        return errors, {}
+    entries = _version_entries(project, to_version, errors)
+    done = set(selection["slices"])
+    if type(findings) is not list or not findings:
+        errors.add("bad_findings", findings_file, "expected a nonempty JSON array of findings")
+        return errors, {}
+    usable = [_finding_input(item, f"{findings_file}#[{i}]", entries, done, errors)
+              for i, item in enumerate(findings)]
+    if not all(usable):
+        return errors, {}
+    ids = [f["ledger_id"] for f in findings]
+    if len(set(ids)) != len(ids):
+        errors.add("audit_duplicate", findings_file, "one verdict per ledger id")
+    missing = sorted(set(selection["goal_ids"]) - set(ids))
+    if missing:
+        errors.add("audit_goal_missing", findings_file, f"no verdict for Goal entries {missing}")
+    reviewer = {"hint": routing["hint"], "used": routing["used"],
+                "source": routing["source"], "reason": routing["reason"]}
+    _check_routing({"reviewer": reviewer}, "--route", errors)
+
+    def fingerprint(text, label):
+        path = Path(text) if type(text) is str else None
+        if path is None or not path.is_file():
+            errors.add("bad_input", label, f"{text} is not a file")
+            return None
+        return {"path": text, "sha256": _sha(path.read_bytes())}
+
+    if type(rerun_in) is not dict or set(rerun_in) != RERUN_INPUT:
+        errors.add("audit_rerun_required", rerun_file,
+                   f"the independent rerun needs exactly {sorted(RERUN_INPUT)}")
+        return errors, {}
+    rerun = dict(rerun_in, tester_evidence=fingerprint(rerun_in["tester_evidence"], "--rerun tester_evidence"),
+                 output=fingerprint(rerun_in["output"], "--rerun output"))
+    if errors:
+        return errors, {}
+    equal = (rerun["exit_code"] == rerun["tester_exit_code"]
+             and rerun["stdout_sha256"] == rerun["tester_stdout_sha256"])
+    rerun["status"] = "MATCH" if equal else "MISMATCH"
+    if _check_rerun(rerun, "--rerun", errors) is None:
+        return errors, {}
+    if rerun["stdout_sha256"] != _normalized_sha(Path(rerun_in["output"]).read_bytes()):
+        errors.add("audit_rerun_hash", "--rerun output", "stdout_sha256 must be the CRLF-to-LF normalized "
+                   "SHA-256 of the captured output file")
+    if rerun["status"] == "MISMATCH" and all(f["verdict"] == "pass" for f in findings):
+        errors.add("audit_contradiction", findings_file, "a mismatching rerun needs at least one gap or risk")
+    shared = [fingerprint(a, "--artifact") for a in artifacts]
+    extra_evidence = [[fingerprint(p, f"{findings_file}#evidence") for p in f.get("evidence", [])]
+                      for f in findings]
+    if errors:
+        return errors, {}
+    plan = _load(project / "plan.json", errors)
+    if plan is None:
+        return errors, {}
+    first = max(_numbered(project / "evidence", EVIDENCE_RE, ".json", Errors(), "evidence"), default=0) + 1
+    audit_id = f"A{max(_numbered(project / 'audit', AUDIT_RE, '.json', Errors(), 'audit'), default=0) + 1:04d}"
+    evidence_records, verdicts, paused = [], [], set()
+    for offset, item in enumerate(findings):
+        evidence_id = f"E{first + offset:04d}"
+        route, slices = item["route"], sorted(item.get("affected_slices", []))
+        reopen = None
+        if route == "reopen":
+            reopen = {"status": "submitted", "contradiction": item["contradiction"].strip(),
+                      "consequence": item["consequence"].strip()}
+        if route == "owner_decision":
+            paused.update(slices)
+        evidence_records.append((evidence_id, {
+            "evidence_id": evidence_id, "source_agent": "reviewer", "finding": item["finding"].strip(),
+            "artifacts": shared + extra_evidence[offset], "ledger_ids": [item["ledger_id"]],
+            "affected_slices": slices, "created_at": created_at, "reopen_request": reopen}))
+        verdicts.append({"ledger_id": item["ledger_id"], "verdict": item["verdict"],
+                         "finding": item["finding"].strip(), "route": route,
+                         "decision_class": item.get("decision_class"), "affected_slices": slices,
+                         "evidence_id": evidence_id})
+    audit = {"audit_id": audit_id, "ledger_version": to_version, "goal_ids": selection["goal_ids"],
+             "goal_version": selection["goal_version"], "verdicts": verdicts, "independent_rerun": rerun,
+             "artifacts": shared, "model_routing": {"reviewer": reviewer},
+             "paused_slices": sorted(paused), "created_at": created_at}
+    for evidence_id, record in evidence_records:
+        problem = _create(project / "evidence" / f"{evidence_id}.json", _dump(record))
+        if problem:
+            return [problem], {}
+    problem = _create(project / "audit" / f"{audit_id}.json", _dump(audit))
+    if problem:
+        return [problem], {}
+    if paused:
+        plan["slices"] = [dict(s, status="PAUSED") if s["slice_id"] in paused else s for s in plan["slices"]]
+        (project / "plan.json").write_bytes(_dump(plan))
+    final, _ = validate(project)
+    if final:
+        return final, {}
+    return [], {"audit_id": audit_id, "ledger_version": to_version, "goal_version": selection["goal_version"],
+                "evidence_ids": [e for e, _ in evidence_records],
+                "reopen_evidence_ids": [v["evidence_id"] for v in verdicts if v["route"] == "reopen"],
+                "owner_decisions": [{"ledger_id": v["ledger_id"], "decision_class": v["decision_class"],
+                                     "affected_slices": v["affected_slices"], "evidence_id": v["evidence_id"]}
+                                    for v in verdicts if v["route"] == "owner_decision"],
+                "paused_slices": sorted(paused), "rerun_status": rerun["status"]}
+
+
 def init(project, budget):
     if budget < 0:
         return [{"code": "usage", "path": "--budget", "detail": "must be >= 0"}], {}
@@ -796,7 +1224,8 @@ def _report(errors, extra):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("init", "source-add", "bootstrap", "validate", "affected", "retest-select", "retest-record"):
+    for name in ("init", "source-add", "bootstrap", "validate", "affected", "retest-select", "retest-record",
+                 "audit-select", "audit-record"):
         p = sub.add_parser(name)
         p.add_argument("--project", required=True)
         if name == "init":
@@ -804,6 +1233,18 @@ def main(argv=None):
         if name in ("affected", "retest-select", "retest-record"):
             p.add_argument("--to-version", type=int, required=True)
             p.add_argument("--from-version", type=int)
+        if name in ("audit-select", "audit-record"):
+            p.add_argument("--to-version", type=int, required=True)
+        if name == "audit-record":
+            p.add_argument("--findings", required=True, help="JSON array of per-ledger-id findings")
+            p.add_argument("--rerun", required=True, help="JSON object: the independent rerun of one "
+                           "Tester-declared deterministic command")
+            p.add_argument("--artifact", action="append", default=[], required=True)
+            p.add_argument("--route-used", required=True)
+            p.add_argument("--route-source", required=True, choices=("hint", "role_default", "host"))
+            p.add_argument("--route-hint")
+            p.add_argument("--route-reason", required=True)
+            p.add_argument("--created-at", required=True)
         if name == "retest-record":
             p.add_argument("--slice", required=True)
             p.add_argument("--result", required=True, choices=RETEST_RESULTS)
@@ -844,6 +1285,13 @@ def main(argv=None):
         errors, extra = retest_record(project, args.slice, args.to_version, args.from_version, args.result,
                                       args.finding, args.artifact, args.oracle, routing,
                                       args.contradiction, args.consequence, args.created_at)
+    elif args.command == "audit-select":
+        errors, extra = audit_select(project, args.to_version)
+    elif args.command == "audit-record":
+        routing = {"hint": args.route_hint, "used": args.route_used,
+                   "source": args.route_source, "reason": args.route_reason}
+        errors, extra = audit_record(project, args.to_version, args.findings, args.artifact, args.rerun,
+                                     routing, args.created_at)
     else:
         errors, extra = validate(project)
     if errors and errors[0]["code"] == "usage":
