@@ -530,3 +530,26 @@ instance is refused; a 1.0 fixture still validates.
   say so in the doc.
 - Test: `tests/test_claude_plugin.py` checks each agent's frontmatter model
   matches the table.
+
+---
+
+## Version coordination with ADR-001 M3 (2026-11-26)
+
+Another thread (adaptive-execution migration) reports that Owner approved ADR-001
+step M3 today, on branch `claude/project-thread-xfit7x-m3`. M3 adds message
+contract version `1.1` to `contracts.py` (`evidence.reopen`, `ledger.publish`,
+`ledger_version` and `slice_id` on job packets, question packets on
+`approval.request`, `owner_source_ref` on `approval.decision`). It keeps `1.0`
+valid and refuses a `1.0` packet after a `1.1` packet in the same run.
+
+This plan's version-bearing items (Batch 3 items 2, 4, 13, item 16 `sender.model`,
+and Batch 4 items 5 and 3) must therefore build on M3:
+
+- If M3 is merged when Batch 3 starts, those additions use version `1.2`.
+- If M3 is not merged yet, they fold into `1.1` on top of M3's branch, and the
+  version rules here are rechecked against M3's text before coding.
+- Batch 3 does not start until the M3 merge is confirmed. Batches 0, 1, 2 and 5
+  packaging-independent work are not affected (Batch 1 and 2 add no version).
+
+Where earlier sections of this plan say "1.1" for new additions, read the rule
+above. The `1.0`-stays-valid and replay-fixture checks still apply.
