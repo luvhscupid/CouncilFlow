@@ -14,7 +14,7 @@ Only parent **Manager** gives ordinary progress/results to the Owner.
 Read [communication](references/communication.md), [roles](references/roles.md)
 and the versioned [YAML policy](policies/roles.yaml).
 Agent task assignments, plans, reports and decisions **MUST be UTF-8 JSON**
-under council-flow 1.0. Markdown/prose cannot replace those controlled packets.
+under council-flow 1.0 (1.1 for new runs with project state). Markdown/prose cannot replace them.
 Keep large evidence in immutable files referenced by identity/path/SHA-256.
 YAML is role/workflow policy; native custom-agent configuration remains TOML.
 JSONL diagnostics are optional. Owner-facing communication stays concise natural

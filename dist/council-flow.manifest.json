@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "8fcdeab2685ba91f7958badc37ea93d13b6735f5e569fd49118b420920ff5f7a",
-  "entries": 249,
+  "sha256": "f33bbfeecb2a7400f2f3b8f5179425c70d38b902ec0d4c220dc176d3ee8d5cca",
+  "entries": 250,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 8231,
-      "sha256": "711658239c790aaa204222b4011df9b77ae36de45fb2791d8747c32f91737255"
+      "size": 8249,
+      "sha256": "9cc716d01d85b2bed2c3d4ebecc7d0ba2e6c9d6451d303655142a38724c55389"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -25,8 +25,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/run-reader.js",
-      "size": 23375,
-      "sha256": "6bc8d84fba2d64805b1c3c51959f7b1e7a3a2c9dcb7a2e62e450374c0d2b8da3"
+      "size": 24005,
+      "sha256": "6481bd34b7dd5738b3ebda6f7105c2bc76e81dc9c80e0e28cb3ad08b45ad3dea"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/styles.css",
@@ -50,8 +50,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
-      "size": 21948,
-      "sha256": "c7614984b1f99529fdedb760253ced9fbb2264ef8fffbe52a8db12c4dc9ef44e"
+      "size": 25089,
+      "sha256": "381e95b341f53c56d57b94109b3e2069c5fe7c4ff02f5ed6d79c637f8dd7a775"
     },
     {
       "path": ".agents/skills/council-flow/references/efficiency.md",
@@ -60,8 +60,8 @@
     },
     {
       "path": ".agents/skills/council-flow/references/message-contract.json",
-      "size": 5556,
-      "sha256": "a7f264558213f9db9d036a1af86667688cb995bfad76dc2e65e99c47135d9aba"
+      "size": 7530,
+      "sha256": "bc6d7aa7cd4c540313995ca1cc403e31571099014f4c6a2bd5b4f91079c612f8"
     },
     {
       "path": ".agents/skills/council-flow/references/planner.md",
@@ -70,13 +70,13 @@
     },
     {
       "path": ".agents/skills/council-flow/references/project-state.md",
-      "size": 3893,
-      "sha256": "b96d55b57633a5d256c3054b3bfc33dd9e42eadde253056b135d181cac2d7f16"
+      "size": 4453,
+      "sha256": "96201fd85229dbe8f80f7537e4385183343c85229962af297a8b837283c997ff"
     },
     {
       "path": ".agents/skills/council-flow/references/recovery.md",
-      "size": 3832,
-      "sha256": "d14125b64519747390c8c801da31e2a6beb8a11413fa371a25e7c12c9504e3ec"
+      "size": 4332,
+      "sha256": "6c1d99494ce4d100df04efe7c9c1df556df9e0ac17c600ccff5e6b8e6abc89ce"
     },
     {
       "path": ".agents/skills/council-flow/references/roles.md",
@@ -90,13 +90,13 @@
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 9003,
-      "sha256": "3d4fc8c928af9a77f0fd0e05b02f6b923051684cfde0a3ea65d1a465089e89f8"
+      "size": 9213,
+      "sha256": "84a8dd57912a02f9bef1fe5a7cf659ec45390f2b776110899944b9e203fb802d"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 74694,
-      "sha256": "1a460e512d5cdc60ef276eba415d20f2df4cc37637568d2a50046017ed3624e3"
+      "size": 80863,
+      "sha256": "97636d3197b5ad58d9da36113d329fd0eb82317a03e6eccd6c6b25b5b6330c67"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
@@ -145,8 +145,8 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/planner_contract.py",
-      "size": 23416,
-      "sha256": "536c25902fe090057fdbd20571b6e83c906b484749d8ffaeaa1140679e2b8f79"
+      "size": 23583,
+      "sha256": "242d8565e56a355b544bc22ed8191850a8f01a4b7b7e1ca54f701c8b6f751b30"
     },
     {
       "path": ".agents/skills/council-flow/scripts/project_state.py",
@@ -390,13 +390,13 @@
     },
     {
       "path": "demo/dashboard/tests/run-reader.test.cjs",
-      "size": 12408,
-      "sha256": "5f8e57e5ff63fb2b08a6ef147b09259c6c3e08b63141a1b3f5ecc11aa697f95d"
+      "size": 13722,
+      "sha256": "6d023417405a6411735b67e6ec5a36e01960bbc7b41062203332b1b0963028a8"
     },
     {
       "path": "demo/dashboard/tests/test_publisher.py",
-      "size": 13487,
-      "sha256": "1690f2c1f0ea55d60b05e7dfe1b25c9648fa0407b375a668183167eb53ce8091"
+      "size": 14996,
+      "sha256": "f06300147c603e326c8f07d9bee8ac6fa6d3150206096aa446327f8a25450fe5"
     },
     {
       "path": "demo/gate3-demo/README.md",
@@ -1075,8 +1075,8 @@
     },
     {
       "path": "tests/fixtures/sequence-split-golden.json",
-      "size": 131433,
-      "sha256": "d06fb75824c34b1bbcfa021c7ea201624c789b2539608b3f3a36e396a13da4d5"
+      "size": 131442,
+      "sha256": "56123ffce2fca438e524525bf34e72c8b88998975b74a193f701828bc4db5f43"
     },
     {
       "path": "tests/test_codebase_memory_integration.py",
@@ -1084,9 +1084,14 @@
       "sha256": "031fa02d1d09446f193fd5416a8aca136e6e7e176ffdeee0868e96c90cad661e"
     },
     {
+      "path": "tests/test_contract_v11.py",
+      "size": 12411,
+      "sha256": "fe99f11c6a47ae9a61ab59c8b4c06b2db336c49ffd44d25254eab16ced858eef"
+    },
+    {
       "path": "tests/test_contracts.py",
-      "size": 68430,
-      "sha256": "db7245b333765b03c999f453550227383e9cc8af0f4b04b213269d11cb6140b4"
+      "size": 68444,
+      "sha256": "f6066cf2811ef78e7fef151cd71dc66d1ce9d1f13e42a5815cf22a56b2b54fd5"
     },
     {
       "path": "tests/test_dispatch_lifecycle.py",

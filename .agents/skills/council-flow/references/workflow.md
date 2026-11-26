@@ -45,6 +45,9 @@ Planner final check → Owner. Preserve that responsibility order.
    Manager copies Planner task instructions exactly and never rewrites them.
    Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
+   Runs that use project state use council-flow 1.1: assignments and reports pin
+   `ledger_version` and `slice_id`, and contradicting evidence goes as
+   `evidence.reopen` (see communication.md, recovery.md).
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not
    implement application code. Only one Worker mutates this workspace.
