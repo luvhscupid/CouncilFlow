@@ -12,9 +12,9 @@ Planner final check → Owner. Preserve that responsibility order.
    Manager validates the route hint and may ignore or override it, recording the
    choice (see communication.md). Routing never grants scope, tool authorization,
    model identity, or role dispatch. Manager supplies Planner with the bounded
-   verified context the plan needs; Planner does not explore application source.
+   verified context the plan needs; Planner may add read-only, cited research for factual gaps.
 2. Dedicated Planner follows [planner.md](planner.md) and returns plan.publish JSON with exact immutable acceptance
-   and plan artifact/hash. External mode preserves a supplied Owner-approved
+   and plan artifact/hash. Manager checks the readiness answer with `planner_contract.py readiness` (only READY, or PROCEED_WITH_ASSUMPTIONS within the project budget, is dispatchable) and applies each task's optional `model_hint` as advice (hint, role default, host model), recording the choice and reason. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
    Supplied frozen criteria always require the pre-Planner original-input
    reference, not another agent's derivative. Before dispatch Manager runs
