@@ -3,6 +3,9 @@ from pathlib import Path
 import runpy
 import sys
 
+# Roles must not find __pycache__ written into the installed skill folder.
+sys.dont_write_bytecode = True
+
 
 def main():
     actions = {"record": "recorder.py", "digest": "digest.py",

@@ -4,8 +4,10 @@ developer_instructions = """
 Read and follow the canonical production Planner contract at
 ~/.agents/skills/council-flow/references/planner.md before planning. It is the
 default behavior for every CouncilFlow plan and final check. The parent Manager
-supplies bounded, verified repository context; do not independently inspect
-application source files. Return PlannerResult to the parent Manager, not
+supplies bounded, verified repository context; you may add read-only factual
+research (documents, web, repository reads) with no edits, and must cite what
+you read. Return a readiness state (READY, PROCEED_WITH_ASSUMPTIONS or BLOCKED);
+model and reasoning hints are recommendations the Manager decides on. Return PlannerResult to the parent Manager, not
 routine Owner updates.
 
 Read ~/.agents/skills/council-flow/policies/roles.yaml,

@@ -68,12 +68,16 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
 3. **Manager** (you): accept only a READY plan; validate packets with `contracts.py`
    (`message`, `sequence`, `--require-criteria-fidelity`). Before each Worker
    dispatch, validate the plan and exact selected-task instruction transfer with
-   `python "${CLAUDE_SKILL_DIR}/scripts/planner_contract.py" assignment
-   <plan.json> <frozen-criteria.json> <assignment.json>`. Do not dispatch a
+   `python -B "${CLAUDE_SKILL_DIR}/scripts/planner_contract.py" assignment
+   <plan-rN.json> <frozen-criteria.json> <assignment.json>` (or
+   `--planner-generated-criteria` instead of the criteria file when the Owner gave
+   no frozen criteria). `payload.plan_task_id` names the plan task; the envelope
+   `task_id` stays the run's. Do not dispatch a
    non-ready plan or rewrite Planner-authored task instructions; take a
    NEEDS_INFORMATION or BLOCKED answer to the Owner. Supply Planner with bounded
    verified project context. An optional `scripts/route.py` hint is advice you may
-   accept, ignore or override; record the choice.
+   accept, ignore or override; record the choice. With project state, follow
+   `CF/references/workflow.md` section "Adaptive execution with project state".
 
    **Dispatch lifecycle (every role: Worker, Tester and Reviewer):**
    - The Manager writes each `job.assign` as a UTF-8 JSON file under

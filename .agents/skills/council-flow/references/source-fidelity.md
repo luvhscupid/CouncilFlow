@@ -27,7 +27,7 @@ Manager creates an ordinary artifact reference of kind `owner-original-source`
 to the preserved raw input, based on observed input provenance. For example:
 
 ```sh
-python3 .agents/skills/council-flow/scripts/contracts.py capture original-ref.json --root . --owner-provenance original-input
+python3 -B .agents/skills/council-flow/scripts/contracts.py capture original-ref.json --root . --owner-provenance original-input
 ```
 
 Here `original-input` must be the actual original reference's artifact_id, and
@@ -42,7 +42,7 @@ rework and the original Planner's final check, Manager validates the full ordere
 context with the same separately retained original reference:
 
 ```sh
-python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-publish.json assignment.json --root . --require-criteria-fidelity --original-source-ref original-ref.json --owner-provenance original-input
+python3 -B .agents/skills/council-flow/scripts/contracts.py sequence plan-publish.json assignment.json --root . --require-criteria-fidelity --original-source-ref original-ref.json --owner-provenance original-input
 ```
 
 Add actual binding/context files as available. `--authoritative-criteria-ref`

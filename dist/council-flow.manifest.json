@@ -1,12 +1,12 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "fbe63d3885fb11c8fa3680b161768fd4054e1f4d80c763bcf3e587a27755e88a",
-  "entries": 244,
+  "sha256": "ba1649afd11be10fa71209f52795bb101dfa066a1ea64b78d761bce2db54f5ed",
+  "entries": 250,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
-      "size": 7929,
-      "sha256": "fc6e8fee44b3b83e1e3217f9273596354eaa355e4165c97b811b93dac61361df"
+      "size": 8338,
+      "sha256": "58ac976ad551c097b10beadb88e31190c2132e8fe2a67117478d8842eae013a2"
     },
     {
       "path": ".agents/skills/council-flow/agents/openai.yaml",
@@ -25,8 +25,8 @@
     },
     {
       "path": ".agents/skills/council-flow/dashboard/run-reader.js",
-      "size": 23375,
-      "sha256": "6bc8d84fba2d64805b1c3c51959f7b1e7a3a2c9dcb7a2e62e450374c0d2b8da3"
+      "size": 24005,
+      "sha256": "6481bd34b7dd5738b3ebda6f7105c2bc76e81dc9c80e0e28cb3ad08b45ad3dea"
     },
     {
       "path": ".agents/skills/council-flow/dashboard/styles.css",
@@ -35,8 +35,8 @@
     },
     {
       "path": ".agents/skills/council-flow/policies/roles.yaml",
-      "size": 4217,
-      "sha256": "091dc6f1fd75ae378ea0d8024fa39338d5db3e1265bef6518598030cf4a7fe40"
+      "size": 5281,
+      "sha256": "e6779baceff7add74ae84dc0b6d9eff099d06e2493ccc6022c5d79780869795e"
     },
     {
       "path": ".agents/skills/council-flow/references/acceptance.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": ".agents/skills/council-flow/references/codebase-memory.md",
-      "size": 7827,
-      "sha256": "8901eaefc88865145772d48417e679d68bf65630c9fbb6d5f041af452063c105"
+      "size": 7835,
+      "sha256": "48cadc0a7950673206f278fef77e0e257a7e2a342c77c72e9a23bbb761629449"
     },
     {
       "path": ".agents/skills/council-flow/references/communication.md",
-      "size": 19219,
-      "sha256": "9eed77ec3ed0d8c89044961f5430f608504cf47332925f56e63c8ccf3c815126"
+      "size": 25089,
+      "sha256": "381e95b341f53c56d57b94109b3e2069c5fe7c4ff02f5ed6d79c637f8dd7a775"
     },
     {
       "path": ".agents/skills/council-flow/references/efficiency.md",
@@ -60,53 +60,58 @@
     },
     {
       "path": ".agents/skills/council-flow/references/message-contract.json",
-      "size": 4771,
-      "sha256": "80aac1d702b87482b892131dcb16e49beb6dd7f8e913c0f643b7424bc1172783"
+      "size": 7530,
+      "sha256": "bc6d7aa7cd4c540313995ca1cc403e31571099014f4c6a2bd5b4f91079c612f8"
     },
     {
       "path": ".agents/skills/council-flow/references/planner.md",
-      "size": 4214,
-      "sha256": "dbdf6961386cdda0970add37998614b2b74b45f9d37db922b456e8e879dd3990"
+      "size": 8422,
+      "sha256": "6d1ceef360c28e28c02e85c90bc8f699695747ee28a2ad03837d0a2a0b74b089"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/project-state.md",
+      "size": 5324,
+      "sha256": "89b4dd83c66cce0105f2c5a9ef15f8f3b648c24fca123e27a37bfa95635bd2bb"
     },
     {
       "path": ".agents/skills/council-flow/references/recovery.md",
-      "size": 3832,
-      "sha256": "d14125b64519747390c8c801da31e2a6beb8a11413fa371a25e7c12c9504e3ec"
+      "size": 4651,
+      "sha256": "fb2deedcb417324f31174988b22699d0d7c4a9cd01eea32a64e3d3632191def9"
     },
     {
       "path": ".agents/skills/council-flow/references/roles.md",
-      "size": 5224,
-      "sha256": "9570afd75b3f5f1630003d05c6b3385c3033c3c1e60d45887b45dbf56e2f758e"
+      "size": 5375,
+      "sha256": "86f5dde98381babe2b2040578213699b74f5c9ae60bf1063a9faedcdc92f2640"
     },
     {
       "path": ".agents/skills/council-flow/references/source-fidelity.md",
-      "size": 5643,
-      "sha256": "d03f93bc8554d1e4d823b4f1dbdcc850e205a9220032610e66124ece9fbf020f"
+      "size": 5649,
+      "sha256": "204c4f22ee5b39d87be17bda1970af0c0666e434e49f32cdc61fd8450052eaff"
     },
     {
       "path": ".agents/skills/council-flow/references/workflow.md",
-      "size": 8655,
-      "sha256": "d02758ae44abf421546c783ea9d8928f402eb485c2fbba3b78e63add52d1481d"
+      "size": 11899,
+      "sha256": "ec86b289498716206594765a9cbba31c1061cca0d607b3133889a088c1c109a0"
     },
     {
       "path": ".agents/skills/council-flow/scripts/contracts.py",
-      "size": 72795,
-      "sha256": "684283c4fbbfd753e30ebf46fd1f0399115ed1bb896ce00b465943b876793cbc"
+      "size": 82803,
+      "sha256": "5536cee32d1c10a0dbafcb718d9f9863f2775c3327fa3e07e8b285c863736268"
     },
     {
       "path": ".agents/skills/council-flow/scripts/dashboard.py",
-      "size": 18238,
-      "sha256": "49edfc92a55f132e2d064f2e0c4289d7db7ddf9b856deaf669d94b0351f0c5f6"
+      "size": 18353,
+      "sha256": "6050f8df5fa786cc6849424bad9153bef5b237a6eadab7f26b99b0bbfaddd896"
     },
     {
       "path": ".agents/skills/council-flow/scripts/doctor.py",
-      "size": 16707,
-      "sha256": "8e75f45675be3a0c55a52d2d7ecd0ea00c9beb09dea32f3ed9211e8eb8201a6f"
+      "size": 16813,
+      "sha256": "3825cfadcbd3bc823293455785809329e3ed784026177650b7528dbe74197fd5"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency.py",
-      "size": 829,
-      "sha256": "10a6722a2eea376f54d0322cea163a8bb2f48fac0bac3343b233ba77efbf3a2e"
+      "size": 936,
+      "sha256": "31bc143eeae4d9ac7ee886f9d3905464a21a833cfc06531566b91e329cfcd31b"
     },
     {
       "path": ".agents/skills/council-flow/scripts/efficiency/claude_adapter.py",
@@ -140,13 +145,18 @@
     },
     {
       "path": ".agents/skills/council-flow/scripts/planner_contract.py",
-      "size": 12169,
-      "sha256": "041c3f52e9e8eb5d0c8059f508dc7837a6ff4eb0dd1982b21744c773257ec723"
+      "size": 23583,
+      "sha256": "242d8565e56a355b544bc22ed8191850a8f01a4b7b7e1ca54f701c8b6f751b30"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/project_state.py",
+      "size": 32161,
+      "sha256": "a56080e9c2a25f05b4fde8bcf9e3dacc5c8f6c61eef84eda79d85bf926233568"
     },
     {
       "path": ".agents/skills/council-flow/scripts/route.py",
-      "size": 5575,
-      "sha256": "05e7d61db8004b81d12eb5449516866266d23903f3e439e5e02167d7cff26c0d"
+      "size": 5681,
+      "sha256": "720342fd340b2262af2ca6c3e1609d3919660cf08fc36879ac47d38cc4931ade"
     },
     {
       "path": ".agents/skills/council-flow/scripts/routing/__init__.py",
@@ -185,8 +195,8 @@
     },
     {
       "path": ".codex/agents/council-planner.toml",
-      "size": 1447,
-      "sha256": "b4a67fb7375a3e8721816415e40110015c7fa510a45f960fb7204b54a81020f1"
+      "size": 1651,
+      "sha256": "4ef8d83137348644f728c206d05f86cc64e9ebe848b0d1f175ab53df3049eaf1"
     },
     {
       "path": ".codex/agents/council-reviewer.toml",
@@ -210,8 +220,8 @@
     },
     {
       "path": "AGENTS.md",
-      "size": 2307,
-      "sha256": "fea3456b991b66804d20e35c252f858595a8975cedc2fe929264266503d1139d"
+      "size": 2460,
+      "sha256": "f58500677d8052dcbc48ff1f5259bf2686cc81cd5d89d2e71cd89948e71109ac"
     },
     {
       "path": "README.md",
@@ -380,13 +390,13 @@
     },
     {
       "path": "demo/dashboard/tests/run-reader.test.cjs",
-      "size": 12408,
-      "sha256": "5f8e57e5ff63fb2b08a6ef147b09259c6c3e08b63141a1b3f5ecc11aa697f95d"
+      "size": 13722,
+      "sha256": "6d023417405a6411735b67e6ec5a36e01960bbc7b41062203332b1b0963028a8"
     },
     {
       "path": "demo/dashboard/tests/test_publisher.py",
-      "size": 15152,
-      "sha256": "72c63a9280f2df3698ea9ed5097a4833e70afa0628582578d244619f527b51e1"
+      "size": 16983,
+      "sha256": "e9b3dbf1440bb8d6d4b758c00ca83b456c66763715fe39803c66ff0f6b0bb2a6"
     },
     {
       "path": "demo/gate3-demo/README.md",
@@ -1065,8 +1075,8 @@
     },
     {
       "path": "tests/fixtures/sequence-split-golden.json",
-      "size": 131433,
-      "sha256": "d06fb75824c34b1bbcfa021c7ea201624c789b2539608b3f3a36e396a13da4d5"
+      "size": 131442,
+      "sha256": "56123ffce2fca438e524525bf34e72c8b88998975b74a193f701828bc4db5f43"
     },
     {
       "path": "tests/test_codebase_memory_integration.py",
@@ -1074,9 +1084,14 @@
       "sha256": "031fa02d1d09446f193fd5416a8aca136e6e7e176ffdeee0868e96c90cad661e"
     },
     {
+      "path": "tests/test_contract_v11.py",
+      "size": 12411,
+      "sha256": "fe99f11c6a47ae9a61ab59c8b4c06b2db336c49ffd44d25254eab16ced858eef"
+    },
+    {
       "path": "tests/test_contracts.py",
-      "size": 68430,
-      "sha256": "db7245b333765b03c999f453550227383e9cc8af0f4b04b213269d11cb6140b4"
+      "size": 68444,
+      "sha256": "f6066cf2811ef78e7fef151cd71dc66d1ce9d1f13e42a5815cf22a56b2b54fd5"
     },
     {
       "path": "tests/test_dispatch_lifecycle.py",
@@ -1120,8 +1135,8 @@
     },
     {
       "path": "tests/test_manager_upgrade.py",
-      "size": 9372,
-      "sha256": "ec61340e853aa97b825be56e388f040c2f2c47cd1c09c134edfef0aaf1dd24ed"
+      "size": 9456,
+      "sha256": "82da3467f24aea6d1a49f3e99d5a1d0a5a507d16dbd3af553d51d0385017a871"
     },
     {
       "path": "tests/test_original_source.py",
@@ -1137,6 +1152,16 @@
       "path": "tests/test_planner_contract.py",
       "size": 4956,
       "sha256": "24806df0ab23cb55fd3e92d599a9d122ff05d9633a52b2ae697529fae1cd2cf1"
+    },
+    {
+      "path": "tests/test_planner_readiness.py",
+      "size": 11234,
+      "sha256": "b4fb8a9ed72f59dc93bee2f6f25e216e5ff162113d6c13b4872bccc4d0e7ec7a"
+    },
+    {
+      "path": "tests/test_project_state.py",
+      "size": 15611,
+      "sha256": "202668bf96868b7414c938c95b6788d38964b47e58031cebba26c83b78b17d6f"
     },
     {
       "path": "tests/test_release.py",
@@ -1185,13 +1210,18 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 10383,
-      "sha256": "7adb8de2c38ce5940af3359bb34ffa2fd7358c4e6b107cb173a5ce343c7d57ec"
+      "size": 10710,
+      "sha256": "04efbfcf491f312a74c338df4a2d3fa2412401b95c1a5faa2290c4e9ef382c5b"
     },
     {
       "path": "tests/test_strict_json.py",
       "size": 6839,
       "sha256": "f66cb0e08f8b87c8d43cbd9767f0f8cdb0c186af40966c413edbcb519c43ef5e"
+    },
+    {
+      "path": "tests/test_tabsplit_regressions.py",
+      "size": 14179,
+      "sha256": "a9952f29831f08e3cb5265cb3dd136fe6b8d56031c151f13ad9664a31127726a"
     },
     {
       "path": "tests/test_tester_reviewer_upgrade.py",

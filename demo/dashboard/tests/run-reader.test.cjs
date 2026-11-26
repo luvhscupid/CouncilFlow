@@ -213,3 +213,25 @@ test("a Planner plan that words criteria as `criterion` still counts its accepta
   assert.equal(snapshot.progress.passed, 2);
   assert.equal(snapshot.criteria[0].text, criteria[0].text);
 });
+
+test("a valid version 1.1 run with reopen and ledger packets is not flagged as broken", () => {
+  const messages = completeMessages().map(message => ({ ...message, version: "1.1" }));
+  const reopen = envelope("r1", "evidence.reopen", "worker", "manager", "m3", {
+    evidence_id: "E0001", ledger_ids: ["R1"], affected_slices: ["S1"], contradiction: "x", consequence: "y", evidence_ref: evidence
+  });
+  const ledger = envelope("r2", "ledger.publish", "planner", "manager", "m1", {
+    ledger_version: 2, ledger_ref: evidence, changed_entry_ids: ["R1"], reason: "z", reopen_ids: ["r1"]
+  });
+  const snapshot = buildSnapshot(input([...messages, { ...reopen, version: "1.1" }, { ...ledger, version: "1.1" }]));
+  assert.deepEqual(snapshot.issues, []);
+  assert.equal(snapshot.valid, true);
+  assert.ok(snapshot.activity.some(event => event.type === "evidence.reopen" && event.label.includes("reopen")));
+});
+
+test("a reopen packet claiming version 1.0 is still flagged", () => {
+  const reopen = envelope("r1", "evidence.reopen", "worker", "manager", "m3", {
+    evidence_id: "E0001", ledger_ids: ["R1"], affected_slices: ["S1"], contradiction: "x", consequence: "y", evidence_ref: evidence
+  });
+  const snapshot = buildSnapshot(input([...completeMessages(), reopen]));
+  assert.equal(snapshot.valid, false);
+});

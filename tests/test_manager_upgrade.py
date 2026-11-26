@@ -67,7 +67,7 @@ class ManagerTextTests(unittest.TestCase):
     def test_manager_supplies_planner_context(self):
         memory = text(SKILL / "references/codebase-memory.md")
         self.assertIn("supplies them to Planner before planning", memory)
-        self.assertIn("Planner does not independently explore application source", memory)
+        self.assertIn("the Planner may add read-only, cited", memory)
 
     def test_routing_hint_is_advice_with_recorded_choice(self):
         paths = [SKILL / "SKILL.md", SKILL / "references/communication.md", SKILL / "references/workflow.md"]
@@ -135,7 +135,8 @@ class ManagerDispatchCheckTests(unittest.TestCase):
                     result = self.run_check(script, tmp, plan_data, criteria, message)
                     self.assertEqual(result.returncode, code, result.stderr)
                     if code == 0:
-                        self.assertEqual(json.loads(result.stdout), {"valid": True, "dispatchable": True})
+                        self.assertEqual(json.loads(result.stdout), {"valid": True, "dispatchable": True,
+                                                                            "criteria_source": "frozen"})
 
     @unittest.skipUnless(HAS_PLUGIN, "plugin package not present in this extraction")
     def test_installed_plugin_copy_runs_check_and_route_from_another_repo(self):

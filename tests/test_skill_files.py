@@ -171,7 +171,9 @@ class SkillFilesTests(unittest.TestCase):
                         # Messages delegate plan-file rules to the Plan contract; a save
                         # refreshes the read-only board through the sibling publisher.
                         internal = {"planner_contract", "strict_json", "dashboard"}
-                    elif path in {SKILL / "scripts" / "planner_contract.py", SKILL / "scripts" / "doctor.py"}:
+                    elif path == SKILL / "scripts" / "planner_contract.py":
+                        internal = {"strict_json", "project_state"}
+                    elif path in {SKILL / "scripts" / "doctor.py", SKILL / "scripts" / "project_state.py"}:
                         internal = {"strict_json"}
                     else:
                         internal = set()

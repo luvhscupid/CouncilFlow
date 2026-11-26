@@ -12,9 +12,9 @@ Planner final check → Owner. Preserve that responsibility order.
    Manager validates the route hint and may ignore or override it, recording the
    choice (see communication.md). Routing never grants scope, tool authorization,
    model identity, or role dispatch. Manager supplies Planner with the bounded
-   verified context the plan needs; Planner does not explore application source.
+   verified context the plan needs; Planner may add read-only, cited research for factual gaps.
 2. Dedicated Planner follows [planner.md](planner.md) and returns plan.publish JSON with exact immutable acceptance
-   and plan artifact/hash. External mode preserves a supplied Owner-approved
+   and plan artifact/hash. Manager checks the readiness answer with `planner_contract.py readiness` (only READY, or PROCEED_WITH_ASSUMPTIONS within the project budget, is dispatchable) and applies each task's optional `model_hint` as advice (hint, role default, host model), recording the choice and reason. External mode preserves a supplied Owner-approved
    plan verbatim, with provenance; do not claim contact with external ChatGPT.
    Supplied frozen criteria always require the pre-Planner original-input
    reference, not another agent's derivative. Before dispatch Manager runs
@@ -23,7 +23,9 @@ Planner final check → Owner. Preserve that responsibility order.
    The plan preserves `original_source_ref`; exact ordered text is derived from
    the raw source bytes. Missing, stale, substituted or mismatching sources block dispatch.
    Preserve rejected plans and evidence; corrections require a new plan through
-   the existing authorized workflow. All roles use stable IDs and the immutable
+   the existing authorized workflow. A Planner revision goes in a new file
+   (`plan-r2.json`), keeps objective, scope and acceptance, and is saved in the
+   same run folder (see communication.md). All roles use stable IDs and the immutable
    artifact instead of rewriting criterion text. Ordinary requests without
    supplied frozen criteria may generate a native plan, preserving the actual
    request and distinguishing generated acceptance.
@@ -32,13 +34,20 @@ Planner final check → Owner. Preserve that responsibility order.
    assignment, validate the READY plan against frozen criteria and verify the
    plan ID/revision, task ID, acceptance IDs and Planner-authored instruction
    array exactly match that selected task using
-   `scripts/planner_contract.py assignment <plan.json> <frozen-criteria.json> <assignment.json>`.
+   `scripts/planner_contract.py assignment <plan-rN.json> <frozen-criteria.json> <assignment.json>`
+   (or `--planner-generated-criteria` instead of the criteria file for native
+   planning). The envelope `task_id` stays the run's task; `payload.plan_task_id`
+   names the Planner task. The first Worker assignment replying to `plan.publish`
+   starts the implementation attempt with its own `attempt_id`.
    Also validate the controlled packet, file hashes and any required criteria
    fidelity before delegation. Non-ready responses are not published or dispatched;
    Manager keeps them as evidence and asks the Owner through approval.request.
    Manager copies Planner task instructions exactly and never rewrites them.
    Supply known native
    actor bindings from actual tool metadata, never from self-asserted role text.
+   Runs that use project state use council-flow 1.1: assignments and reports pin
+   `ledger_version` and `slice_id`, and contradicting evidence goes as
+   `evidence.reopen` (see communication.md, recovery.md).
 4. Fresh Worker implements, runs developer checks and returns job.report JSON.
    Validate on receipt and wait for it to stop edits. Parent Manager does not
    implement application code. Only one Worker mutates this workspace.
@@ -108,6 +117,40 @@ Optional diagnostics are bounded one-object-per-line JSONL, tied to real message
 and evidence, never raw prompts/secrets/reasoning. No event file is represented
 as authoritative crash-safe accounting. Owner never has to inspect JSON/YAML/
 JSONL during ordinary work.
+
+## Adaptive execution with project state
+
+Applies to runs that use project state (ADR-001, [project state](project-state.md)).
+Runs without it keep the single-task workflow above. Packets are council-flow 1.1.
+The Manager never edits the ledger and never changes a requirement.
+
+1. **Intake.** Save every Owner message with `project_state.py source-add` before
+   any agent reads it. The Planner writes ledger v1 from those sources; with frozen
+   criteria supplied, use `project_state.py bootstrap`.
+2. **Plan.** The Manager proposes slices in `.councilflow/project/plan.json`. Each
+   slice is pinned to a ledger version and cites ledger ids. Run
+   `project_state.py validate` after each plan edit.
+3. **Readiness.** The Planner answers readiness per slice. Check it with
+   `planner_contract.py readiness --project`. Only a dispatchable slice gets a
+   `job.assign` carrying `ledger_version` and `slice_id`.
+4. **Run.** Each slice keeps its own run folder (`run_dir`) and the existing
+   per-task workflow inside it. One mutating Worker per workspace still applies, so
+   unrelated slices run one after another unless isolated workspaces are authorized.
+5. **Model choice.** For worker, tester and reviewer, apply the Planner hint, then
+   the role default from the approved split, then the host model. Record
+   `hint`, `used`, `source` and `reason` in the slice `model_routing`.
+6. **Reopen.** Forward an `evidence.reopen` request to the Planner unchanged.
+7. **Reconcile.** After `ledger.publish`, run `project_state.py affected --project
+   DIR --to-version M`. Set affected slices to PAUSED until a new readiness
+   answer; unaffected slices continue. Closed slices listed as `closed_affected`
+   may hold stale verification and are reported to the Planner.
+8. **Budget.** When the assumption budget is exhausted, slices that need new
+   defaults stay BLOCKED while the others continue.
+9. **Owner questions.** Ask only through `approval.request`, with `questions`
+   copied exactly from the readiness answer. Save each Owner reply with
+   `source-add` and cite it as `owner_source_ref` before any agent reads it.
+10. **Disagreement.** If Planner and Manager disagree, raise it to the Owner
+    (ADR-001 section 10). Do not change requirements to resolve it.
 
 ## Native compatibility and truthful gaps
 

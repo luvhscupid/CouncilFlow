@@ -13,6 +13,8 @@ import sys
 _SCRIPTS = str(Path(__file__).resolve().parent)
 if _SCRIPTS not in sys.path:
     sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+# Roles must not find __pycache__ written into the installed skill folder.
+sys.dont_write_bytecode = True
 
 import strict_json  # noqa: E402
 

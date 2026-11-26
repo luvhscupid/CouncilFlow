@@ -13,11 +13,11 @@ roles:
     abilities: []
     application_code: false
   planner:
-    responsibilities: ["Publishes original objectives and acceptance", "Writes exact task-specific Worker instructions from Manager-supplied verified context", "Does not independently explore application source", "Checks completed outcome against original plan", "Does not implement"]
+    responsibilities: ["Publishes original objectives and acceptance", "Writes exact task-specific Worker instructions from Manager-supplied verified context", "May do read-only factual research (documents, web, repository reads) with no edits and must cite what it read", "Returns a readiness state (READY, PROCEED_WITH_ASSUMPTIONS or BLOCKED) and classifies decisions without downgrading a blocking class", "Recommends, never chooses, a model and reasoning level per task", "Checks completed outcome against original plan", "Does not implement"]
     abilities: ["plan", "final_check"]
     application_code: false
   manager:
-    responsibilities: ["Parent coordinator selects compatible skills and models where supported", "Delegates and manages authorized engineering rework", "Evaluates independent evidence and approves test strategy", "Supplies Planner with bounded verified project context", "Dispatches only a validated READY plan with exact Planner task instructions", "Treats optional routing hints as advice and records the accept, ignore or override choice", "Does not implement"]
+    responsibilities: ["Parent coordinator selects compatible skills and models where supported", "Delegates and manages authorized engineering rework", "Evaluates independent evidence and approves test strategy", "Supplies Planner with bounded verified project context", "Dispatches only a validated READY plan with exact Planner task instructions", "Treats optional routing hints as advice and records the accept, ignore or override choice", "Applies Planner model hints as advice: hint, then role default, then host model, and records the choice", "Owns the execution plan: slices pinned to ledger versions, reconciliation after each new ledger version, pausing only affected slices", "Stores Owner messages as immutable sources before agents read them; forwards Planner questions verbatim", "Does not implement"]
     abilities: ["delegate", "request_rework", "evaluate_evidence"]
     application_code: false
   worker:
@@ -61,6 +61,15 @@ security:
   grants_os_permissions: false
   authenticates_senders: false
   native_transport_enforced: false
+adaptive:
+  readiness_states: ["READY", "PROCEED_WITH_ASSUMPTIONS", "BLOCKED"]
+  decision_classes: ["cheap_reversible", "costly_reversible", "irreversible_external", "security_data_financial_legal", "owner_objective"]
+  planner_default_classes: ["cheap_reversible"]
+  default_unconfirmed_budget: 5
+  discovery_cycles_per_slice: 2
+  planner_research: "read_only"
+  model_hint: "advice_manager_decides"
+  budget_accounting: "derived_from_ledger_files"
 native:
   format: "toml"
   fields: ["name", "description", "developer_instructions"]

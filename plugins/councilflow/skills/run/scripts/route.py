@@ -16,6 +16,8 @@ import sys
 
 SCRIPT_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_ROOT))
+# Roles must not find __pycache__ written into the installed skill folder.
+sys.dont_write_bytecode = True
 
 from routing.contract import RouteDecision, validate_route_config
 from routing.core import LexicalRouter, VectorRouter

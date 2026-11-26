@@ -38,6 +38,14 @@
    an AI-created permission. No external-path, global-config, security-policy,
    paid-provider, ACL or authentication bypass may be self-authorized.
 
+Evidence that contradicts a ledger entry goes as `evidence.reopen` (version 1.1):
+cite the ledger ids, the evidence record, the affected slices and the consequence.
+A request without a ledger id is only evidence and is kept as such. Submitting a
+request does not change the ledger. The Manager forwards it to the Planner
+unchanged, the Planner answers with `ledger.publish`, and the Manager then
+reconciles the affected slices (M4 adds the detail). See
+[communication](communication.md#version-11).
+
 Newly discovered authorized follow-up work is distinct from failed mandatory
 acceptance. Preserve successful candidate verification and start a separate
 bounded task/plan publication boundary when appropriate. Record a real failed
@@ -53,3 +61,8 @@ authorized work. Never replace unavailable native agents with scripted exchanges
 Contract restoration may pass while native activation is UNVERIFIED. Use
 CONTRACT_RESTORED — NATIVE_ACTIVATION_UNVERIFIED for that case. Only genuine
 invocation plus real required roles supports COUNCILFLOW_FULLY_VERIFIED.
+
+8. Reconciliation with project state: after a new ledger version, the Manager
+   runs `project_state.py affected` and pauses only the affected slices until a new
+   Planner readiness answer; other slices continue. Earlier ledger versions, packets
+   and evidence are preserved. A plan change never changes the ledger.

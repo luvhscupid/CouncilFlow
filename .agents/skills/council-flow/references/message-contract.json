@@ -1,6 +1,7 @@
 {
   "protocol": "council-flow",
   "version": "1.0",
+  "supported_versions": ["1.0", "1.1"],
   "description": "Closed CouncilFlow skill-level contract; not JSON Schema or ACP Supervisor transport.",
   "envelope_required": [
     "protocol",
@@ -72,8 +73,28 @@
     "approval.decision": [
       "owner",
       "manager"
+    ],
+    "evidence.reopen": [
+      [
+        "worker",
+        "tester",
+        "reviewer",
+        "manager"
+      ],
+      [
+        "manager",
+        "planner"
+      ]
+    ],
+    "ledger.publish": [
+      "planner",
+      "manager"
     ]
   },
+  "version_1_1_only_types": [
+    "evidence.reopen",
+    "ledger.publish"
+  ],
   "payload_required": {
     "plan.publish": [
       "objective",
@@ -127,6 +148,42 @@
       "decision",
       "approval_request_id",
       "provenance_ref"
+    ],
+    "evidence.reopen": [
+      "evidence_id",
+      "ledger_ids",
+      "affected_slices",
+      "contradiction",
+      "consequence",
+      "evidence_ref"
+    ],
+    "ledger.publish": [
+      "ledger_version",
+      "ledger_ref",
+      "changed_entry_ids",
+      "reason",
+      "reopen_ids"
+    ]
+  },
+  "version_1_1_payload_required": {
+    "job.assign": [
+      "ledger_version",
+      "slice_id"
+    ],
+    "job.report": [
+      "ledger_version",
+      "slice_id"
+    ],
+    "approval.decision": [
+      "owner_source_ref"
+    ]
+  },
+  "version_1_1_payload_optional": {
+    "approval.request": [
+      "questions"
+    ],
+    "approval.decision": [
+      "interpretation"
     ]
   },
   "role_report_requirements": {
@@ -144,8 +201,13 @@
     "Use root to verify artifact bytes, not merely hash syntax."
   ],
   "conditional_fields": {
+    "version_1_1": "Types evidence.reopen and ledger.publish and the 1.1 payload fields exist only when version is 1.1. A run that used 1.1 cannot go back to 1.0. Every 1.0 packet validates as before.",
+    "evidence.reopen": "Worker, Tester or Reviewer to Manager, or Manager to Planner. A Manager forward must reply to an earlier non-Manager evidence.reopen and carry the identical payload. evidence_refs must be nonempty.",
+    "ledger.publish": "ledger_version must strictly increase within a run; changed_entry_ids may be empty only for version 1; each reopen_ids entry names an earlier evidence.reopen in the run.",
+    "job.report.ledger_pin": "A 1.1 job.report carries the ledger_version and slice_id of the job.assign it replies to.",
+    "approval.request.questions": "Optional 1.1 list of readiness question packets. With root and a readiness answer as operation_ref, each must equal a question in that answer exactly.",
     "job.assign": {
-      "worker": "candidate_ref optional immutable input",
+      "worker": "candidate_ref optional immutable input; optional plan_task_id names the Planner task dispatched (envelope task_id stays the run's task)",
       "tester": "candidate_ref and Manager-assigned oracle_ref required",
       "reviewer": "candidate_ref required exact verification output"
     },
@@ -156,6 +218,9 @@
     "task.decision.failed_acceptance_ids": "Only valid assigned/original criterion identities; accept cannot contain a nonempty failure list.",
     "plan.check.results": "Every passed criterion requires explicit nonempty evidence_refs; structural citations do not prove evidence semantics.",
     "plan.publish.plan_ref": "With root context: JSON object containing matching typed plan_id, positive nonboolean integer plan_revision, and nonempty acceptance objects with unique id strings; criterion text validated when present.",
-    "message.created_at": "Agent-authored messages omit created_at. Diagnostic created_at syntax validation does not prove trusted clock provenance."
+    "message.created_at": "Agent-authored messages omit created_at. Diagnostic created_at syntax validation does not prove trusted clock provenance.",
+    "job.assign.attempt_id": "The first Worker job.assign replying to plan.publish starts the implementation attempt and may use its own attempt_id; every later link keeps it, and rework needs a fresh one.",
+    "job.report.evidence_refs": "A completed Worker report may rely on its hashed candidate_ref; completed Tester and Reviewer reports need nonempty evidence_refs.",
+    "plan.publish.revision": "A higher plan_revision may be published in the same run by the original Planner to the original Manager with unchanged objective, scope and acceptance_ids and a plan_ref path and artifact_id no earlier revision used; later Worker job.assign packets for older revisions are refused."
   }
 }

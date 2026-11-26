@@ -135,7 +135,7 @@ class JSONContractTests(unittest.TestCase):
                 {"status": "planning", "objective": "Fixture", "scope": ["demo/**"],
                  "acceptance_ids": AC, "verified_progress": ["Observed fixture"], "next_action": "Publish plan"})
         c.validate_message(progress)
-        self.assertEqual(set(c.ROUTES), {m["message_type"] for m in sequence() + data + [decision, progress]})
+        self.assertEqual(set(c.ROUTES) - c.V11_TYPES, {m["message_type"] for m in sequence() + data + [decision, progress]})
 
     def test_malformed_duplicate_nonfinite_overflow_and_utf8(self):
         for raw in ['{', '{"x":1,"x":2}', '{"a":{"x":1,"x":2}}',

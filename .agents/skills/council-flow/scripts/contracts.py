@@ -1,4 +1,4 @@
-"""CouncilFlow 1.0 controlled-file validation, not a transport or security sandbox."""
+"""CouncilFlow 1.0 and 1.1 controlled-file validation, not a transport or security sandbox."""
 from __future__ import annotations
 
 import argparse
@@ -14,6 +14,8 @@ from datetime import datetime
 _SCRIPTS = str(Path(__file__).resolve().parent)
 if _SCRIPTS not in sys.path:
     sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+# Roles must not find __pycache__ written into the installed skill folder.
+sys.dont_write_bytecode = True
 
 import planner_contract  # noqa: E402  (the Plan contract owns every plan-file rule)
 import strict_json  # noqa: E402
@@ -37,7 +39,12 @@ ROUTES = {
     "task.decision": ("manager", {"planner"}),
     "approval.request": ("manager", {"owner"}),
     "approval.decision": ("owner", {"manager"}),
+    # Version 1.1 only (see V11_TYPES); evidence.reopen pairs are checked in validate_message.
+    "evidence.reopen": ({"worker", "tester", "reviewer", "manager"}, {"manager", "planner"}),
+    "ledger.publish": ("planner", {"manager"}),
 }
+VERSIONS = ("1.0", "1.1")
+V11_TYPES = {"evidence.reopen", "ledger.publish"}
 EVENT_TYPES = {"plan_published", "worker_dispatched", "worker_reported", "test_failed",
                "review_completed", "rework_requested", "acceptance_blocked", "task_completed"}
 
@@ -259,6 +266,42 @@ def _actor(value, field):
     _identity(value["instance_id"], field + ".instance_id")
 
 
+_PIN = {"ledger_version", "slice_id"}
+
+
+def _ledger_version(value, field):
+    if type(value) is not int or not 1 <= value <= 2147483647:
+        fail("integer", field, "expected positive integer, never bool")
+
+
+def _pin(p):
+    """Version 1.1 assignments and reports name the ledger version and slice they work from."""
+    _ledger_version(p["ledger_version"], "payload.ledger_version")
+    _identity(p["slice_id"], "payload.slice_id")
+
+
+def _questions(questions, operation_ref, root):
+    """Question packets use the readiness rules; with root they must match the stored answer exactly."""
+    if type(questions) is not list or len(questions) > MAX_ITEMS:
+        fail("array", "payload.questions", "expected bounded question array")
+    seen = set()
+    for index, question in enumerate(questions):
+        planner_contract.validate_question(question, f"payload.questions[{index}]", seen)
+    if root is None or not questions:
+        return
+    try:
+        answer = read_json(Path(root) / operation_ref["path"])
+    except ContractError:
+        return  # not JSON, so not a readiness answer
+    if type(answer) is dict and answer.get("schema") == "councilflow-readiness":
+        stored = answer.get("questions")
+        stored = stored if type(stored) is list else []
+        for index, question in enumerate(questions):
+            if question not in stored:
+                fail("question_text", f"payload.questions[{index}]",
+                     "question differs from the readiness answer in operation_ref; forward the exact wording")
+
+
 def validate_message(message, *, root=None, expected_sender=None):
     # Re-serialization also bounds already-decoded Python callers and rejects surrogates.
     try:
@@ -271,8 +314,9 @@ def validate_message(message, *, root=None, expected_sender=None):
     _object(message, FIELDS)
     if message["protocol"] != "council-flow" or type(message["protocol"]) is not str:
         fail("protocol", "protocol", "unsupported protocol")
-    if message["version"] != "1.0" or type(message["version"]) is not str:
-        fail("version", "version", "supported version is string 1.0")
+    if type(message["version"]) is not str or message["version"] not in VERSIONS:
+        fail("version", "version", "supported versions are 1.0 and 1.1")
+    v11 = message["version"] == "1.1"
     for field in ("message_id", "plan_id", "task_id", "attempt_id"):
         _identity(message[field], field)
     if type(message["plan_revision"]) is not int or not 1 <= message["plan_revision"] <= 2147483647:
@@ -288,11 +332,15 @@ def validate_message(message, *, root=None, expected_sender=None):
     kind = message["message_type"]
     if type(kind) is not str or kind not in ROUTES:
         fail("message_type", "message_type", "unsupported type")
+    if kind in V11_TYPES and not v11:
+        fail("message_type", "message_type", "this type needs version 1.1")
     senders, recipients = ROUTES[kind]
     if isinstance(senders, str):
         senders = {senders}
     if message["sender"]["role"] not in senders or message["recipient"]["role"] not in recipients:
         fail("route", "sender/recipient", "role cannot send this message type to recipient")
+    if kind == "evidence.reopen" and (message["sender"]["role"] == "manager") != (message["recipient"]["role"] == "planner"):
+        fail("route", "sender/recipient", "evidence.reopen goes worker, tester or reviewer to manager, or manager to planner")
     _refs(message["evidence_refs"], root)
     p = message["payload"]
     if kind == "plan.publish":
@@ -302,8 +350,13 @@ def validate_message(message, *, root=None, expected_sender=None):
         _ids(p["acceptance_ids"], "payload.acceptance_ids")
         artifact(p["plan_ref"], root, "payload.plan_ref")
     elif kind == "job.assign":
-        _object(p, {"objective", "scope", "acceptance_ids", "instructions"},
-                {"candidate_ref", "oracle_ref"}, "payload")
+        _object(p, {"objective", "scope", "acceptance_ids", "instructions"} | (_PIN if v11 else set()),
+                {"candidate_ref", "oracle_ref", "plan_task_id"}, "payload")
+        if v11:
+            _pin(p)
+        if "plan_task_id" in p:
+            # The Planner task being dispatched; the envelope task_id stays the run's task.
+            _identity(p["plan_task_id"], "payload.plan_task_id")
         _string(p["objective"], "payload.objective")
         _strings(p["scope"], "payload.scope", True)
         _strings(p["instructions"], "payload.instructions", True)
@@ -317,9 +370,11 @@ def validate_message(message, *, root=None, expected_sender=None):
         if "oracle_ref" in p:
             artifact(p["oracle_ref"], root, "payload.oracle_ref")
     elif kind == "job.report":
-        _object(p, {"status", "summary", "acceptance_ids", "candidate_ref", "findings", "errors"},
+        _object(p, {"status", "summary", "acceptance_ids", "candidate_ref", "findings", "errors"} | (_PIN if v11 else set()),
                 {"changed_files", "checks", "input_candidate_ref", "oracle_ref",
                  "deterministic_commands", "comparison"}, "payload")
+        if v11:
+            _pin(p)
         _enum(p["status"], {"passed", "failed", "blocked", "in_progress"}, "payload.status")
         _string(p["summary"], "payload.summary")
         _ids(p["acceptance_ids"], "payload.acceptance_ids")
@@ -429,8 +484,10 @@ def validate_message(message, *, root=None, expected_sender=None):
                     fail("comparison", "payload.status", "mismatching independent rerun cannot pass")
             if comparison["discrepancies"] and p["status"] == "passed":
                 fail("comparison", "payload.status", "a comparison with unresolved discrepancies cannot pass")
-        if p["status"] != "in_progress" and not message["evidence_refs"]:
-            fail("evidence", "evidence_refs", "completed report requires evidence references")
+        # A Worker's hashed output candidate_ref is its evidence; verifiers cite evidence files.
+        if p["status"] != "in_progress" and not message["evidence_refs"] and role != "worker":
+            fail("evidence", "evidence_refs",
+                 f"completed {role} report requires evidence references; only a Worker report may rely on its candidate_ref")
     elif kind == "task.decision":
         _object(p, {"disposition", "reason", "acceptance_ids", "candidate_ref", "report_ids"},
                 {"failed_acceptance_ids"}, "payload")
@@ -481,23 +538,54 @@ def validate_message(message, *, root=None, expected_sender=None):
         if p["status"] == "passed" and any(r["status"] != "passed" for r in p["results"]):
             fail("acceptance", "payload.status", "cannot pass with unmet acceptance")
     elif kind == "approval.request":
-        _object(p, {"question", "reason", "options", "operation_ref"}, field="payload")
+        _object(p, {"question", "reason", "options", "operation_ref"}, {"questions"} if v11 else (), field="payload")
         _string(p["question"], "payload.question")
         _string(p["reason"], "payload.reason")
         _strings(p["options"], "payload.options", True, True)
         artifact(p["operation_ref"], root, "payload.operation_ref")
+        if "questions" in p:
+            _questions(p["questions"], p["operation_ref"], root)
     elif kind == "approval.decision":
-        _object(p, {"decision", "approval_request_id", "provenance_ref"}, field="payload")
+        _object(p, {"decision", "approval_request_id", "provenance_ref"} | ({"owner_source_ref"} if v11 else set()),
+                {"interpretation"} if v11 else (), field="payload")
         _enum(p["decision"], {"approved", "rejected"}, "payload.decision")
         _identity(p["approval_request_id"], "payload.approval_request_id")
         artifact(p["provenance_ref"], root, "payload.provenance_ref")
+        if v11:
+            artifact(p["owner_source_ref"], root, "payload.owner_source_ref")
+            if "interpretation" in p:
+                _string(p["interpretation"], "payload.interpretation")
+    elif kind == "evidence.reopen":
+        _object(p, {"evidence_id", "ledger_ids", "affected_slices", "contradiction", "consequence", "evidence_ref"}, field="payload")
+        _identity(p["evidence_id"], "payload.evidence_id")
+        _ids(p["ledger_ids"], "payload.ledger_ids")
+        _strings(p["affected_slices"], "payload.affected_slices", True, True)
+        _string(p["contradiction"], "payload.contradiction")
+        _string(p["consequence"], "payload.consequence")
+        artifact(p["evidence_ref"], root, "payload.evidence_ref")
+        if not message["evidence_refs"]:
+            fail("evidence", "evidence_refs", "evidence.reopen requires evidence references")
+    elif kind == "ledger.publish":
+        _object(p, {"ledger_version", "ledger_ref", "changed_entry_ids", "reason", "reopen_ids"}, field="payload")
+        _ledger_version(p["ledger_version"], "payload.ledger_version")
+        artifact(p["ledger_ref"], root, "payload.ledger_ref")
+        _strings(p["changed_entry_ids"], "payload.changed_entry_ids", unique=True)
+        for identity in p["changed_entry_ids"]:
+            _identity(identity, "payload.changed_entry_ids")
+        if not p["changed_entry_ids"] and p["ledger_version"] != 1:
+            fail("required", "payload.changed_entry_ids", "only ledger version 1 may list no changed entries")
+        _string(p["reason"], "payload.reason")
+        _strings(p["reopen_ids"], "payload.reopen_ids", unique=True)
+        for identity in p["reopen_ids"]:
+            _identity(identity, "payload.reopen_ids")
     return message
 
 
 class _RunState:
     """Shared state while one supplied run is checked in order; never reused between calls."""
     __slots__ = ("root", "expected_senders", "owner_provenance", "expected_criteria",
-                 "original_source_ref", "seen", "actors", "plans", "artifact_ids")
+                 "original_source_ref", "seen", "actors", "plans", "artifact_ids",
+                 "v11", "ledger_version")
 
 
 def _sequence_context(messages, root, expected_senders, owner_provenance,
@@ -545,6 +633,7 @@ def _sequence_context(messages, root, expected_senders, owner_provenance,
     state.root, state.expected_senders, state.owner_provenance = root, expected_senders, owner_provenance
     state.expected_criteria, state.original_source_ref = expected_criteria, original_source_ref
     state.seen, state.actors, state.plans, state.artifact_ids = seen, actors, plans, artifact_ids
+    state.v11, state.ledger_version = False, 0
     return state
 
 
@@ -571,6 +660,9 @@ def _check_identity_and_reply(state, m):
     if predecessor:
         for field in ("plan_id", "plan_revision", "task_id"):
             if m[field] != predecessor[field]:
+                if (field == "plan_revision" and kind == "plan.publish"
+                        and m["plan_revision"] > predecessor["plan_revision"]):
+                    continue  # a new plan revision may answer a message about an earlier one
                 fail("causal_identity", field, "must match predecessor")
     key = (m["plan_id"], m["plan_revision"])
     return predecessor, key
@@ -586,8 +678,8 @@ def _check_plan_context(state, m, predecessor, key):
             original = plans[key]
             if p != original["payload"] or any(m[actor] != original[actor] for actor in ("sender", "recipient")):
                 fail("plan_immutable", "payload", "published objective, scope, acceptance, plan or actors changed")
-        if any(plan == m["plan_id"] and revision != m["plan_revision"] for plan, revision in plans):
-            fail("plan_revision", "plan_revision", "amendments need separately approved context; not inferred")
+        else:
+            _check_plan_revision(plans, m)
         plans.setdefault(key, m)
         if root is not None:
             plan = read_json(Path(root) / p["plan_ref"]["path"])
@@ -597,6 +689,14 @@ def _check_plan_context(state, m, predecessor, key):
                 original_source_ref=original_source_ref)
     elif kind != "plan.progress" and key not in plans:
         fail("plan_context", "plan_id", "published plan required")
+    if kind == "job.assign" and m["recipient"]["role"] == "worker":
+        if any(plan == m["plan_id"] and revision > m["plan_revision"] for plan, revision in plans):
+            fail("plan_superseded", "plan_revision", "a newer plan revision is published; dispatch Workers from it")
+    if kind == "job.assign" and "plan_task_id" in p and root is not None and key in plans:
+        plan = read_json(Path(root) / plans[key]["payload"]["plan_ref"]["path"])
+        tasks = plan.get("tasks") if type(plan) is dict else None
+        if type(tasks) is list and p["plan_task_id"] not in {t.get("id") for t in tasks if type(t) is dict}:
+            fail("unknown_plan_task", "payload.plan_task_id", "names no task in the published plan")
     if key in plans and "acceptance_ids" in p:
         published = set(plans[key]["payload"]["acceptance_ids"])
         if not set(p["acceptance_ids"]) <= published:
@@ -612,6 +712,34 @@ def _check_plan_context(state, m, predecessor, key):
             fail("failed_planner_check", "attempt_id", "an unmet original Planner check requires preserved rework and a fresh attempt")
 
 
+def _check_plan_revision(plans, m):
+    """A new revision changes only the Planner's tasks, in a new plan file, from the same actors.
+
+    Objective, scope and acceptance stay those of the first publication: changing them
+    needs separately approved context. Earlier revisions' plan files stay untouched so
+    every saved packet that references them keeps its hash.
+    """
+    earlier = sorted(((revision, msg) for (plan, revision), msg in plans.items() if plan == m["plan_id"]),
+                     key=lambda item: item[0])
+    if not earlier:
+        return
+    first, p = earlier[0][1], m["payload"]
+    if m["plan_revision"] < earlier[-1][0]:
+        fail("plan_revision", "plan_revision", "a new revision must be higher than every earlier revision")
+    if any(m[actor] != first[actor] for actor in ("sender", "recipient")):
+        fail("plan_revision", "sender/recipient", "a revision comes from the original Planner to the original Manager")
+    for field in ("objective", "scope", "acceptance_ids"):
+        if p[field] != first["payload"][field]:
+            fail("plan_revision", "payload." + field,
+                 "a revision changes only the Planner's tasks; objective, scope and acceptance changes need separately approved context")
+    for _, msg in earlier:
+        old = msg["payload"]["plan_ref"]
+        if old["path"] == p["plan_ref"]["path"] or old["artifact_id"] == p["plan_ref"]["artifact_id"]:
+            fail("plan_ref_reused", "payload.plan_ref",
+                 "each plan revision needs its own plan file and artifact id (for example plan-r2.json); "
+                 "rewriting an earlier revision's file breaks the hashes of packets already saved")
+
+
 def _check_report(state, m, predecessor, key):
     """A Worker, Tester or Reviewer job.report against its own assignment; Reviewer comparison evidence."""
     root, seen, plans = state.root, state.seen, state.plans
@@ -622,6 +750,8 @@ def _check_report(state, m, predecessor, key):
         fail("assignment", "sender", "report actors differ from assignment")
     if m["attempt_id"] != predecessor["attempt_id"]:
         fail("attempt", "attempt_id", "report attempt differs from assignment")
+    if m["version"] == "1.1" and any(p.get(f) != predecessor["payload"].get(f) for f in _PIN):
+        fail("ledger_pin", "payload.ledger_version", "report must carry the ledger_version and slice_id of its assignment")
     assigned_input = predecessor["payload"].get("candidate_ref")
     if m["sender"]["role"] == "worker":
         if p.get("input_candidate_ref") != assigned_input:
@@ -712,6 +842,8 @@ def _check_assign(state, m, predecessor):
                     fail("fresh_worker", "recipient.instance_id", "repair requires fresh native Worker")
                 if any(x["attempt_id"] == m["attempt_id"] for x in earlier_workers):
                     fail("fresh_attempt", "attempt_id", "repair cannot reuse any earlier implementation attempt")
+        elif predecessor["message_type"] == "plan.publish" and m["recipient"]["role"] == "worker":
+            pass  # the first Worker assignment starts the implementation attempt
         elif m["attempt_id"] != predecessor["attempt_id"]:
             fail("attempt", "attempt_id", "unexpected attempt change")
 
@@ -804,6 +936,26 @@ def _check_final(state, m, predecessor, key):
             fail("final_check_context", "in_reply_to", "passing final check must follow Manager evidence acceptance, directly or through its progress packet")
 
 
+def _check_v11(state, m, predecessor):
+    """Version 1.1 run rules: no downgrade, reopen forwarding and ledger publication order."""
+    kind, p = m["message_type"], m["payload"]
+    if m["version"] == "1.0" and state.v11:
+        fail("version_downgrade", "version", "a run that has used version 1.1 cannot go back to 1.0")
+    if kind == "evidence.reopen" and m["sender"]["role"] == "manager":
+        if (predecessor is None or predecessor["message_type"] != "evidence.reopen"
+                or predecessor["sender"]["role"] == "manager" or predecessor["payload"] != p):
+            fail("reopen_forward", "in_reply_to",
+                 "a Manager reopen must forward, unchanged, an earlier reopen from a Worker, Tester or Reviewer")
+    if kind == "ledger.publish":
+        for index, reopen_id in enumerate(p["reopen_ids"]):
+            earlier = state.seen.get(reopen_id)
+            if earlier is None or earlier["message_type"] != "evidence.reopen":
+                fail("reopen_reference", f"payload.reopen_ids[{index}]", "must name an earlier evidence.reopen")
+        if p["ledger_version"] <= state.ledger_version:
+            fail("ledger_version_order", "payload.ledger_version", "must be higher than every earlier ledger.publish")
+        state.ledger_version = p["ledger_version"]
+
+
 def _check_approval(state, m, predecessor):
     """An Owner approval.decision answers an actual request and carries external Owner provenance."""
     owner_provenance = state.owner_provenance
@@ -820,7 +972,8 @@ def _record_artifacts(state, m):
     """One artifact identity keeps one content and path across the whole run."""
     artifact_ids, p = state.artifact_ids, m["payload"]
     refs = list(m["evidence_refs"])
-    refs.extend(p[name] for name in ("candidate_ref", "input_candidate_ref", "plan_ref", "oracle_ref", "operation_ref", "provenance_ref") if name in p)
+    refs.extend(p[name] for name in ("candidate_ref", "input_candidate_ref", "plan_ref", "oracle_ref", "operation_ref", "provenance_ref",
+                                     "evidence_ref", "ledger_ref", "owner_source_ref") if name in p)
     refs.extend(check["evidence_ref"] for check in p.get("checks", []))
     for command in p.get("deterministic_commands", []):
         refs.extend([command["candidate_ref"], command["evidence_ref"]] + command["input_refs"])
@@ -848,6 +1001,7 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
         predecessor, key = _check_identity_and_reply(state, m)
         kind = m["message_type"]
         _check_plan_context(state, m, predecessor, key)
+        _check_v11(state, m, predecessor)
         if kind == "job.report":
             _check_report(state, m, predecessor, key)
         if kind == "job.assign":
@@ -859,6 +1013,7 @@ def validate_sequence(messages, *, root=None, expected_senders=None, owner_prove
         if kind == "approval.decision":
             _check_approval(state, m, predecessor)
         _record_artifacts(state, m)
+        state.v11 = state.v11 or m["version"] == "1.1"
         state.seen[m["message_id"]] = m
     return messages
 
@@ -909,7 +1064,8 @@ def parse_policy(source):
 def validate_policy(policy):
     """Semantic invariants, not executable authorization or OS enforcement."""
     _object(policy, {"protocol", "version", "communication", "roles", "workflow", "authority",
-                     "evidence", "context", "resources", "security", "native"})
+                     "evidence", "context", "resources", "security", "native"},
+            optional={"adaptive"})
     if policy["protocol"] != "council-flow-policy" or policy["version"] != "1.0":
         fail("policy_version", "$", "unsupported policy")
     expected = {
@@ -934,6 +1090,14 @@ def validate_policy(policy):
         "native": {"format": "toml", "fields": ["name", "description", "developer_instructions"],
                    "mapping": "policy responsibilities become developer_instructions; no invented keys"},
     }
+    if "adaptive" in policy:
+        expected["adaptive"] = {
+            "readiness_states": ["READY", "PROCEED_WITH_ASSUMPTIONS", "BLOCKED"],
+            "decision_classes": ["cheap_reversible", "costly_reversible", "irreversible_external",
+                                 "security_data_financial_legal", "owner_objective"],
+            "planner_default_classes": ["cheap_reversible"], "default_unconfirmed_budget": 5,
+            "discovery_cycles_per_slice": 2, "planner_research": "read_only",
+            "model_hint": "advice_manager_decides", "budget_accounting": "derived_from_ledger_files"}
     for key, value in expected.items():
         # Python True == 1 is intentionally insufficient here.
         if json.dumps(policy[key], sort_keys=True) != json.dumps(value, sort_keys=True):
