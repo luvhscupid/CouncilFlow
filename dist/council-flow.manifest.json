@@ -1,6 +1,6 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "35e6eac969c0de51a78669a9999f0d07cf5ce00ded3a6e06fbbf28618b875e1b",
+  "sha256": "b98cd45c4a83310626dabf92c8d061c7f06cd6c204d6a0af492817f73dce8d7c",
   "entries": 245,
   "files": [
     {
@@ -210,8 +210,8 @@
     },
     {
       "path": "AGENTS.md",
-      "size": 2307,
-      "sha256": "fea3456b991b66804d20e35c252f858595a8975cedc2fe929264266503d1139d"
+      "size": 2460,
+      "sha256": "f58500677d8052dcbc48ff1f5259bf2686cc81cd5d89d2e71cd89948e71109ac"
     },
     {
       "path": "README.md",

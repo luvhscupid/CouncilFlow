@@ -19,7 +19,9 @@ adapters may support the skill; a skill/plugin extension must not silently
 become a standalone platform.
 
 Before changing workflow or roles, read `.agents/skills/council-flow/SKILL.md`
-and the controlling `docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md`.
+and the controlling `docs/gate3/CouncilFlow-Gate3-v0.2/01-OWNER-CHARTER.md`,
+as amended by `docs/decisions/CHARTER-AMENDMENT-001.md` (ADR-001, accepted
+2026-11-26; its implementation steps each need separate Owner authorization).
 Existing Owner decisions, frozen specifications and role policies retain their
 authority. This identity contract does not authorize simplifying, discarding or
 changing them. Manager coordinates rather than implements; Reviewer compares
