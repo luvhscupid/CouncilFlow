@@ -956,7 +956,8 @@ def parse_policy(source):
 def validate_policy(policy):
     """Semantic invariants, not executable authorization or OS enforcement."""
     _object(policy, {"protocol", "version", "communication", "roles", "workflow", "authority",
-                     "evidence", "context", "resources", "security", "native"})
+                     "evidence", "context", "resources", "security", "native"},
+            optional={"adaptive"})
     if policy["protocol"] != "council-flow-policy" or policy["version"] != "1.0":
         fail("policy_version", "$", "unsupported policy")
     expected = {
@@ -981,6 +982,14 @@ def validate_policy(policy):
         "native": {"format": "toml", "fields": ["name", "description", "developer_instructions"],
                    "mapping": "policy responsibilities become developer_instructions; no invented keys"},
     }
+    if "adaptive" in policy:
+        expected["adaptive"] = {
+            "readiness_states": ["READY", "PROCEED_WITH_ASSUMPTIONS", "BLOCKED"],
+            "decision_classes": ["cheap_reversible", "costly_reversible", "irreversible_external",
+                                 "security_data_financial_legal", "owner_objective"],
+            "planner_default_classes": ["cheap_reversible"], "default_unconfirmed_budget": 5,
+            "discovery_cycles_per_slice": 2, "planner_research": "read_only",
+            "model_hint": "advice_manager_decides", "budget_accounting": "derived_from_ledger_files"}
     for key, value in expected.items():
         # Python True == 1 is intentionally insufficient here.
         if json.dumps(policy[key], sort_keys=True) != json.dumps(value, sort_keys=True):

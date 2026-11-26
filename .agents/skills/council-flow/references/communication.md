@@ -199,6 +199,7 @@ Before every Worker `job.assign`, the Manager runs:
 ~~~sh
 python3 -B .agents/skills/council-flow/scripts/planner_contract.py assignment plan-r1.json frozen-criteria.json assignment.json
 python3 -B .agents/skills/council-flow/scripts/planner_contract.py assignment plan-r1.json assignment.json --planner-generated-criteria
+python3 -B .agents/skills/council-flow/scripts/planner_contract.py readiness readiness.json --project .councilflow/project
 ~~~
 
 `plan-r1.json` is the READY plan artifact referenced by `plan.publish`;
@@ -225,10 +226,11 @@ as evidence, and asks the Planner for a new plan revision, or the Owner when
 criteria or authority are in question. The Manager never edits Planner task
 instructions to make the check pass.
 
-A Planner `NEEDS_INFORMATION` or `BLOCKED` answer is not a published plan and
-has no council-flow message type. The Manager saves it unchanged as a plain UTF-8
+A non-ready Planner readiness answer (`BLOCKED`, formerly `NEEDS_INFORMATION`), or
+any answer that is not dispatchable, is not a published plan and has no
+council-flow message type. The Manager saves it unchanged as a plain UTF-8
 JSON evidence file in the run folder, sends no `job.assign`, and asks the Owner
-the Planner's precise question through `approval.request`, with
+the Planner's questions with their exact text through `approval.request`, with
 `operation_ref` pointing at that file. The closed message contract is unchanged.
 
 ## Optional routing hint

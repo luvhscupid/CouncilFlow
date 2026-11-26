@@ -67,7 +67,7 @@ class ManagerTextTests(unittest.TestCase):
     def test_manager_supplies_planner_context(self):
         memory = text(SKILL / "references/codebase-memory.md")
         self.assertIn("supplies them to Planner before planning", memory)
-        self.assertIn("Planner does not independently explore application source", memory)
+        self.assertIn("the Planner may add read-only, cited", memory)
 
     def test_routing_hint_is_advice_with_recorded_choice(self):
         paths = [SKILL / "SKILL.md", SKILL / "references/communication.md", SKILL / "references/workflow.md"]

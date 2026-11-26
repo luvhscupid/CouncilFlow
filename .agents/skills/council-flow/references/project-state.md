@@ -6,7 +6,7 @@ reference describes the plain-file form and its validator,
 `scripts/project_state.py`. Plain files are the authoritative record. Codebase
 Memory, where available, is only a lookup layer over them (Owner decision D5).
 
-Status: not yet wired into the workflow. Later steps (M2 to M4) call it.
+Status: `planner_contract.py readiness --project` uses it (M2) to check assumptions and the budget. Later steps (M3, M4) wire in the rest.
 
 ## Layout (normally `.councilflow/project/`)
 
