@@ -479,3 +479,54 @@ with a stdout that raises `BrokenPipeError`.
   CouncilFlow run that also serves as the end-to-end test of the fixes.
 - **Merge order (no decision needed unless cupid prefers otherwise):** this work
   stacks on PR 21; PR 21 should merge first, then this PR retargets to `main`.
+
+---
+
+## Per-role model split (approved by cupid, 2026-11-26)
+
+Approved as proposed. No model setting is changed by the plan's own commits
+until the split is applied in Batch 5 (plugin agent frontmatter and Codex TOML,
+each after its format is verified against the host docs).
+
+| Role | Model | Why |
+|---|---|---|
+| Planner | Opus | Holds frozen criteria; final criteria check. A missed criterion is costly. |
+| Worker | Sonnet | Multi-file code edits. |
+| Manager | Sonnet | Coordination and packet writing. |
+| Reviewer | Sonnet | Judgment across Worker, Tester and frozen plan; caught real defects in lifegrid-1. Never Haiku. |
+| Tester (oracle design) | Sonnet | Designs the independent reference and test strategy. |
+| Tester (command run and hashing) | Haiku | Mechanical: runs declared commands, records exit code and output hashes. |
+
+Caveats: the split is a hypothesis until measured. The first real run after
+Batch 5 must report whether Haiku's command runs and hashes match Sonnet's on the
+same commands; if not, revert the Tester split.
+
+### Item 16: record the model each role ran on (new, part of Batch 3)
+
+- Every saved packet that is produced by a role session records the model that
+  session actually ran on, as `sender.model` in version 1.1 (string, identity
+  shape, required on 1.1 packets, optional on 1.0 packets).
+- A Tester that delegates command runs to a Haiku sub-session records that
+  sub-session's model in `deterministic_commands[].runner_model`.
+- `save` and `sequence` check that `sender.model` is consistent for one role
+  instance across its packets. A model change for the same instance is refused
+  (`model_changed`).
+- Reviewer's independent rerun records `runner_model` too. A Reviewer rerun run on
+  a different model from the Tester's command run is allowed and reported, not
+  refused: the rerun is independent evidence either way.
+
+Files: `scripts/contracts.py`, `references/message-contract.json`,
+`references/communication.md`, dashboard reader.
+Test: a 1.1 packet without `sender.model` is refused; a model change within one
+instance is refused; a 1.0 fixture still validates.
+
+### Batch 5 addition: apply the split
+
+- `plugins/councilflow/agents/council-{planner,worker,reviewer,tester}.md`:
+  `model:` in frontmatter per the table (Tester gets Sonnet; its command runs are
+  delegated to a Haiku sub-session whose model is recorded per item 16).
+- `.codex/agents/*.toml`: the same mapping, only after the Codex custom-agent
+  `model` field is verified in the Codex docs; otherwise leave Codex inherited and
+  say so in the doc.
+- Test: `tests/test_claude_plugin.py` checks each agent's frontmatter model
+  matches the table.
