@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import Icon from "./components/Icon.jsx";
 import Chamber from "./components/Chamber.jsx";
 import { Drawer, AgentDetail, PacketDetail } from "./components/Drawer.jsx";
+import { OwnerView } from "./views/OwnerView.jsx";
 import { OverviewView, OrchestrationView, AgentsView, ExecutionsView, AnalyticsView, ProjectListView, SettingsView } from "./views/Views.jsx";
 import { useRunSource } from "./state/useRunSource.js";
 import { useNow, useSystemReducedMotion } from "./lib/hooks.js";
@@ -14,6 +15,7 @@ const VIEWS = [
   { id: "agents", label: "Roles", icon: "agents" },
   { id: "executions", label: "Executions", icon: "executions" },
   { id: "analytics", label: "Analytics", icon: "analytics" },
+  { id: "owner", label: "Owner view", icon: "overview" },
   { id: "projects", label: "Project list", icon: "layers" },
   { id: "settings", label: "Settings", icon: "settings" }
 ];
@@ -147,9 +149,9 @@ export default function App() {
   const ui = {
     reduced, freshIds, now, mode: source.mode, follow: source.follow, setFollow: source.setFollow,
     connection: source.connection, onOpenFolder, onChooseFiles, goOverview: () => go("overview"),
-    selectedRole: route.role, openRole, openPacket
+    selectedRole: route.role, openRole, openPacket, ownerView: source.ownerView
   };
-  const View = { overview: OverviewView, orchestration: OrchestrationView, agents: AgentsView, executions: ExecutionsView, analytics: AnalyticsView, projects: ProjectListView, settings: SettingsView }[route.view];
+  const View = { overview: OverviewView, orchestration: OrchestrationView, agents: AgentsView, executions: ExecutionsView, analytics: AnalyticsView, projects: ProjectListView, owner: OwnerView, settings: SettingsView }[route.view];
   const accent = selectedRole ? selectedRole.role : selectedPacket ? selectedPacket.from : null;
 
   return (
@@ -160,7 +162,7 @@ export default function App() {
         <ul>
           {VIEWS.map(view => (
             <li key={view.id}>
-              <button type="button" className="rail-item" aria-current={route.view === view.id ? "page" : undefined} onClick={() => go(view.id)} disabled={!model && view.id !== "overview" && view.id !== "projects"}>
+              <button type="button" className="rail-item" aria-current={route.view === view.id ? "page" : undefined} onClick={() => go(view.id)} disabled={!model && view.id !== "overview" && view.id !== "projects" && view.id !== "owner"}>
                 <Icon name={view.icon} size={20} />
                 <span>{view.label}</span>
               </button>
@@ -176,7 +178,7 @@ export default function App() {
           onChange={event => source.importFiles(event.target.files, false)} />
         <p className="loading" role="status" aria-live="polite" hidden={!source.loading}>{source.loading ? <><span className="loading-bar" aria-hidden="true" />{source.loading}</> : null}</p>
         <main id="main" ref={mainRef} tabIndex={-1} className="main">
-          {model || route.view === "projects" ? (
+          {model || route.view === "projects" || route.view === "owner" ? (
             <div key={route.view} className="view-enter">
               <View model={model} ui={ui} prefs={prefs} setPrefs={setPrefs} />
             </div>

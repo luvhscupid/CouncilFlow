@@ -140,6 +140,29 @@ never writes the ledger. The audit is advisory: its record has no delivery or st
 and a fully passing audit leaves plan statuses unchanged. Reviewer routing must not be Haiku.
 Validation checks the record shape, routing rules, reopen evidence, owner items and reruns.
 
+## Owner view (ADR-001 M7)
+
+    python owner_view.py generate --project DIR [--output FILE] [--generated-at TS]
+    python owner_view.py status --project DIR [--view FILE]
+
+`generate` writes one static, read-only file, `owner-view.json` (schema `councilflow-owner-view`
+1.0), built from the latest ledger version, `plan.json`, `retest/` and `audit/`. It shows the ADR-001
+section 4 fields: goal, confirmed requirements, provisional assumptions, open questions, decision
+history, ledger version (with the SHA-256 of that ledger file), slice readiness and status, QA
+results (Tester retests), audit findings and default budget usage. The ledger stays the source of
+truth. The generator never writes the ledger, the plan, evidence, retests, audits or sources and has no
+way to record an Owner decision; the Owner answers through the Manager. The output must be
+`DIR/owner-view.json` or a path outside the project, and may only replace an earlier Owner view
+(error `write_refused`). Nothing runs it automatically; generate it on demand.
+
+An open question's wording is the Open entry's `content`, unchanged. An optional
+`questions/<question_id>.json` (a Planner question packet) adds its permitted default,
+blocking flag, reversibility class and reason; the view says "no default is stored" otherwise.
+Nothing writes `questions/` yet. `status` is read-only and reports `stale` when a newer ledger
+version exists or the ledger file's bytes changed. `dashboard.py publish` embeds
+`.councilflow/project/owner-view.json` with a stale marker computed from ledger file names only; the
+board never opens the ledger.
+
 ## Limitations
 
 Validation is structural. It does not authenticate who wrote a file, and role
