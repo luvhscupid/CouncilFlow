@@ -1,7 +1,7 @@
 {
   "archive": "dist/council-flow.zip",
-  "sha256": "b98cd45c4a83310626dabf92c8d061c7f06cd6c204d6a0af492817f73dce8d7c",
-  "entries": 245,
+  "sha256": "5bffe51344b9e4f54bd93021dfde4715359778ae39afc5067acb4cc04afbf020",
+  "entries": 248,
   "files": [
     {
       "path": ".agents/skills/council-flow/SKILL.md",
@@ -67,6 +67,11 @@
       "path": ".agents/skills/council-flow/references/planner.md",
       "size": 4936,
       "sha256": "25eb876b693a96112fc448139defa2c1276bdac90e62072dbcbe1da0f05d402b"
+    },
+    {
+      "path": ".agents/skills/council-flow/references/project-state.md",
+      "size": 3827,
+      "sha256": "fe0bd6abccbd1afd798a4f47918a190e5d59d780963ec1de0d08d7aadd4f77aa"
     },
     {
       "path": ".agents/skills/council-flow/references/recovery.md",
@@ -142,6 +147,11 @@
       "path": ".agents/skills/council-flow/scripts/planner_contract.py",
       "size": 14575,
       "sha256": "f34a7d36e8c6844a3dac80c9296f1f3af11323d2da4c01aee320ee4897b84791"
+    },
+    {
+      "path": ".agents/skills/council-flow/scripts/project_state.py",
+      "size": 28596,
+      "sha256": "ec973e8c4796ef5be0f636423fde711cfcfdd0b969c2006d6ba2cf57b24f2c27"
     },
     {
       "path": ".agents/skills/council-flow/scripts/route.py",
@@ -1139,6 +1149,11 @@
       "sha256": "24806df0ab23cb55fd3e92d599a9d122ff05d9633a52b2ae697529fae1cd2cf1"
     },
     {
+      "path": "tests/test_project_state.py",
+      "size": 10853,
+      "sha256": "5cd606c3322aec2d9937ac213386d4a808bc164759478390f7ebfb46d4d247a2"
+    },
+    {
       "path": "tests/test_release.py",
       "size": 7391,
       "sha256": "be00e355c6412e88c408e4423b604d7a0dc4234f98e0f1982bb178638e0409f8"
@@ -1185,8 +1200,8 @@
     },
     {
       "path": "tests/test_skill_files.py",
-      "size": 10276,
-      "sha256": "02ddd49e2b8f0d844a64225eca86acd7747aaa989da2b726c80f546b8051df29"
+      "size": 10348,
+      "sha256": "81571d15e2735e806df27479f708e10232140cc160d57c23cf282ced8025f383"
     },
     {
       "path": "tests/test_strict_json.py",
