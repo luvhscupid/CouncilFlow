@@ -1,6 +1,6 @@
 """Plain-file project state for CouncilFlow (ADR-001 section 3).
 
-Commands: init, source-add, bootstrap, validate. Every command prints one JSON
+Commands: init, source-add, bootstrap, validate, affected (read-only). Every command prints one JSON
 object (`status` PASS or FAIL, `errors`, sorted keys) and exits 0 on PASS, 1 on
 FAIL and 2 on a usage error. Nothing is written outside --project and an
 existing file is never overwritten.
@@ -312,6 +312,32 @@ def _check_ledgers(project, sources, bad_sources, evidence, errors):
 
 # --- plan and evidence -------------------------------------------------------
 
+ROUTING_FIELDS = {"hint", "used", "source", "reason"}
+
+
+def _check_routing(routing, where, errors):
+    if routing is None:
+        return
+    if type(routing) is not dict:
+        errors.add("slice_model_routing", where, "model_routing must be an object or null")
+        return
+    for role, choice in routing.items():
+        spot = f"{where}.model_routing.{role}"
+        if role not in ("worker", "tester", "reviewer"):
+            errors.add("slice_model_routing", spot, "role must be worker, tester or reviewer")
+        elif type(choice) is not dict or set(choice) != ROUTING_FIELDS:
+            errors.add("slice_model_routing", spot, f"expected exactly {sorted(ROUTING_FIELDS)}")
+        elif (choice["hint"] is not None and type(choice["hint"]) is not str) or (
+                type(choice["used"]) is not str or not choice["used"].strip()):
+            errors.add("slice_model_routing", spot, "hint must be a string or null; used a nonempty string")
+        elif choice["source"] not in ("hint", "role_default", "host"):
+            errors.add("slice_model_routing", spot, "source must be hint, role_default or host")
+        elif type(choice["reason"]) is not str or not choice["reason"].strip():
+            errors.add("slice_model_routing", spot, "reason must be a nonempty string")
+        elif choice["source"] == "hint" and (choice["hint"] is None or choice["hint"] != choice["used"]):
+            errors.add("slice_model_routing", spot, "source hint needs a non-null hint equal to used")
+
+
 def _check_plan(project, ledger_ids, errors):
     path = project / "plan.json"
     if not path.exists():
@@ -363,8 +389,7 @@ def _check_plan(project, ledger_ids, errors):
             if (parts is None or not run_dir or run_dir.startswith(("/", "\\"))
                     or re.match(r"^[A-Za-z]:", run_dir) or ".." in parts):
                 errors.add("slice_run_dir", where, "run_dir must be a relative path without '..'")
-        if item["model_routing"] is not None and type(item["model_routing"]) is not dict:
-            errors.add("slice_model_routing", where, "model_routing must be an object or null")
+        _check_routing(item["model_routing"], where, errors)
         graph[sid] = item["depends_on"]
     for sid, deps in graph.items():
         if not _str_list(deps):
@@ -473,6 +498,49 @@ def validate(project):
     return errors, extra
 
 
+def _version_entries(project, number, errors):
+    path = project / "ledger" / f"L{number:04d}.json"
+    if not path.is_file():
+        errors.add("bad_input", path, f"ledger version {number} does not exist")
+        return None
+    data = _load(path, errors)
+    return {e["id"]: e for e in data["entries"]}
+
+
+def affected(project, to_version, from_version):
+    errors, extra = validate(project)
+    if errors:
+        return errors, extra
+    if from_version is None:
+        from_version = to_version - 1
+    if from_version >= to_version:
+        errors.add("bad_input", "--from-version", "from-version must be lower than to-version")
+        return errors, {}
+    old = _version_entries(project, from_version, errors)
+    new = _version_entries(project, to_version, errors)
+    if errors:
+        return errors, {}
+    added = [e for i, e in new.items() if i not in old]
+    changed = {e["id"] for e in added} | {
+        i for i, e in new.items() if i in old and e["status"] != old[i]["status"]}
+    touched = changed | {s for e in added for s in e["supersedes"]}
+    out = {"from_version": from_version, "to_version": to_version,
+           "changed_entry_ids": sorted(changed), "affected_slices": [],
+           "unaffected_slices": [], "closed_affected": []}
+    plan_path = project / "plan.json"
+    plan = _load(plan_path, errors) if plan_path.exists() else {"slices": []}
+    for item in plan["slices"]:
+        hit = item["ledger_version"] < to_version and bool(touched & set(item["ledger_ids"]))
+        if item["status"] in ("DONE", "CANCELLED"):
+            if hit:
+                out["closed_affected"].append(item["slice_id"])
+        else:
+            out["affected_slices" if hit else "unaffected_slices"].append(item["slice_id"])
+    for key in ("affected_slices", "unaffected_slices", "closed_affected"):
+        out[key].sort()
+    return errors, out
+
+
 def init(project, budget):
     if budget < 0:
         return [{"code": "usage", "path": "--budget", "detail": "must be >= 0"}], {}
@@ -552,11 +620,14 @@ def _report(errors, extra):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("init", "source-add", "bootstrap", "validate"):
+    for name in ("init", "source-add", "bootstrap", "validate", "affected"):
         p = sub.add_parser(name)
         p.add_argument("--project", required=True)
         if name == "init":
             p.add_argument("--budget", type=int, default=5)
+        if name == "affected":
+            p.add_argument("--to-version", type=int, required=True)
+            p.add_argument("--from-version", type=int)
         if name == "source-add":
             p.add_argument("--file", required=True)
             p.add_argument("--received-at", required=True)
@@ -574,6 +645,8 @@ def main(argv=None):
         errors, extra = source_add(project, args.file, args.received_at, args.kind)
     elif args.command == "bootstrap":
         errors, extra = bootstrap(project, args.criteria, args.source_id, args.goal, args.created_at)
+    elif args.command == "affected":
+        errors, extra = affected(project, args.to_version, args.from_version)
     else:
         errors, extra = validate(project)
     if errors and errors[0]["code"] == "usage":

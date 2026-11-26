@@ -76,7 +76,8 @@ empty/install-only projects; direct inspection when the MCP is unavailable).
    non-ready plan or rewrite Planner-authored task instructions; take a
    NEEDS_INFORMATION or BLOCKED answer to the Owner. Supply Planner with bounded
    verified project context. An optional `scripts/route.py` hint is advice you may
-   accept, ignore or override; record the choice.
+   accept, ignore or override; record the choice. With project state, follow
+   `CF/references/workflow.md` section "Adaptive execution with project state".
 
    **Dispatch lifecycle (every role: Worker, Tester and Reviewer):**
    - The Manager writes each `job.assign` as a UTF-8 JSON file under
