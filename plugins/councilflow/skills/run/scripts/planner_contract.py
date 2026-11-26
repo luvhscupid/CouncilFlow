@@ -5,6 +5,10 @@
 - validate_plan / validate_plan_bytes: a dispatchable READY plan with tasks.
 - validate_worker_assignment: exact Planner-to-Worker instruction transfer.
 
+The CLI checks a plan before publishing (`plan`) and a Worker job.assign before
+dispatch (`assignment`). Each takes the frozen Owner criteria file, or
+--planner-generated-criteria when the Owner supplied none (native planning).
+
 It does not import from the experiments directory or enforce host permissions.
 """
 from __future__ import annotations
@@ -17,6 +21,8 @@ import sys
 _SCRIPTS = str(Path(__file__).resolve().parent)
 if _SCRIPTS not in sys.path:
     sys.path.insert(0, _SCRIPTS)  # sibling modules also load when this file is imported by path
+# Roles must not find __pycache__ written into the installed skill folder.
+sys.dont_write_bytecode = True
 
 import strict_json  # noqa: E402
 from strict_json import MAX_ITEMS, ContractError, criterion, fail as _fail, identity  # noqa: E402
@@ -223,33 +229,61 @@ def _read(path):
     return json.loads(raw.decode("utf-8", "strict"))
 
 
+def _criteria(plan, files, generated, others):
+    """Return (criteria, remaining files, source label): frozen file XOR planner-generated flag."""
+    if generated and len(files) == others:
+        acceptance = plan.get("acceptance") if type(plan) is dict else None
+        return acceptance, files, "planner-generated"
+    if not generated and len(files) == others + 1:
+        return _read(files[0]), files[1:], "frozen"
+    _fail("criteria_source", "original_criteria",
+          "pass either the frozen criteria file or --planner-generated-criteria, exactly one")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    check = sub.add_parser("assignment", help="validate a READY plan and exact Worker assignment")
+    generated_help = ("the Owner supplied no frozen criteria (native planning): check the plan's own "
+                      "acceptance structurally and say so; never copy it into a frozen-criteria file")
+    check = sub.add_parser("assignment", help="validate a READY plan and exact Worker assignment",
+                           usage="%(prog)s plan.json (frozen-criteria.json | --planner-generated-criteria) assignment.json")
     check.add_argument("plan")
-    check.add_argument("original_criteria", help="JSON array of frozen {id, criterion} items")
-    check.add_argument("assignment", help="council-flow 1.0 job.assign envelope")
+    check.add_argument("files", nargs="+", metavar="file",
+                       help="[frozen-criteria.json] assignment.json: the criteria JSON array of "
+                            "{id, criterion} items, then the council-flow 1.0 job.assign envelope")
+    check.add_argument("--planner-generated-criteria", action="store_true", help=generated_help)
+    self_check = sub.add_parser("plan", help="validate a READY plan before publishing it",
+                                usage="%(prog)s plan.json (frozen-criteria.json | --planner-generated-criteria)")
+    self_check.add_argument("plan")
+    self_check.add_argument("files", nargs="*", metavar="frozen-criteria.json")
+    self_check.add_argument("--planner-generated-criteria", action="store_true", help=generated_help)
     args = parser.parse_args(argv)
     try:
         plan = _read(args.plan)
-        criteria = _read(args.original_criteria)
-        message = _read(args.assignment)
+        if args.command == "plan":
+            criteria, _, source = _criteria(plan, args.files, args.planner_generated_criteria, 0)
+            validate_plan(plan, criteria)
+            print(json.dumps({"valid": True, "criteria_source": source}, separators=(",", ":")))
+            return 0
+        criteria, rest, source = _criteria(plan, args.files, args.planner_generated_criteria, 1)
+        message = _read(rest[0])
         if type(message) is not dict or message.get("message_type") != "job.assign":
             _fail("assignment", "message_type", "expected job.assign envelope")
         payload = message.get("payload")
         if type(payload) is not dict:
             _fail("assignment", "payload", "expected object")
+        # payload.plan_task_id names the Planner task; the envelope task_id is the run's
+        # task and only selects a plan task when plan_task_id is absent (single-task runs).
         validate_worker_assignment(plan, plan_id=message.get("plan_id"),
                                    plan_revision=message.get("plan_revision"),
-                                   task_id=message.get("task_id"),
+                                   task_id=payload.get("plan_task_id", message.get("task_id")),
                                    acceptance_ids=payload.get("acceptance_ids"),
                                    instructions=payload.get("instructions"),
                                    original_acceptance=criteria)
     except (ContractError, OSError, UnicodeError, ValueError, TypeError) as exc:
         print(json.dumps({"valid": False, "error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2
-    print(json.dumps({"valid": True, "dispatchable": True}, separators=(",", ":")))
+    print(json.dumps({"valid": True, "dispatchable": True, "criteria_source": source}, separators=(",", ":")))
     return 0
 
 

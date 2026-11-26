@@ -78,11 +78,11 @@ never actual approvals.
 From the installed repository:
 
 ~~~sh
-python3 .agents/skills/council-flow/scripts/contracts.py message packet.json --root . --expected-sender worker --expected-instance /root/actual-worker
-python3 .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
-python3 .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
-python3 .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
-python3 .agents/skills/council-flow/scripts/contracts.py save report.json --run .councilflow/runs/<task-id> --root .
+python3 -B .agents/skills/council-flow/scripts/contracts.py message packet.json --root . --expected-sender worker --expected-instance /root/actual-worker
+python3 -B .agents/skills/council-flow/scripts/contracts.py sequence plan-packet.json assignment.json report.json --root . --bindings observed-bindings.json
+python3 -B .agents/skills/council-flow/scripts/contracts.py policy .agents/skills/council-flow/policies/roles.yaml
+python3 -B .agents/skills/council-flow/scripts/contracts.py events events.jsonl --root .
+python3 -B .agents/skills/council-flow/scripts/contracts.py save report.json --run .councilflow/runs/<task-id> --root .
 ~~~
 
 `save` is the only way packets enter a run's `messages/` folder. It checks the
@@ -90,7 +90,34 @@ packet like `message`, then checks the packets already saved plus this one like
 `sequence`, refuses to overwrite an existing `messages/<message_id>.json` or to
 use linked folders, writes the original bytes unchanged and prints their SHA-256.
 A bare payload (for example a report body with `status` and `summary` but no
-`protocol` or `message_type`) fails with `bare_payload`. Every role report is a
+`protocol` or `message_type`) fails with `bare_payload`. Plan files are named per
+revision (`plan-r1.json`, `plan-r2.json`, ...) and never rewritten, because every
+saved packet that references a plan keeps its hash. A new revision may be saved
+into the same run folder: it needs a higher `plan_revision`, the original Planner
+and Manager actors, the first publication's `objective`, `scope` and
+`acceptance_ids` unchanged (only the Planner's tasks change), and a plan path and
+artifact ID no earlier revision used (otherwise `plan_ref_reused`). It may have
+`in_reply_to` null or reply to an earlier-revision message of the same plan. Once
+a newer revision is published, a new Worker `job.assign` for an older revision is
+refused (`plan_superseded`); reports for assignments already sent still validate.
+
+The envelope `task_id` is the run's task and stays the same on every packet of the
+run. A Worker `job.assign` names the Planner task it dispatches in
+`payload.plan_task_id`; with `--root`, it must name a task in the published plan.
+Without `plan_task_id` the envelope `task_id` must itself equal a plan task id,
+which only works for a one-task plan.
+
+`attempt_id` follows the reply chain. The first Worker `job.assign` that replies
+to a `plan.publish` starts the implementation attempt and may use its own
+`attempt_id` (the publish's attempt is the planning attempt). Every later Tester
+and Reviewer assignment, report and decision keeps that attempt; rework needs a
+fresh one.
+
+A completed Worker report may have empty `evidence_refs`: its hashed output
+`candidate_ref` is its evidence. A completed Tester or Reviewer report must cite
+its evidence files in `evidence_refs`.
+
+Every role report is a
 full packet: envelope plus a `job.report` payload with `status`, `summary`,
 `acceptance_ids`, `candidate_ref`, `findings` and `errors`; Worker adds
 `changed_files`, Tester adds `checks`, `oracle_ref` and `deterministic_commands`,
@@ -170,14 +197,24 @@ respecting actual native sandbox and approval mechanisms.
 Before every Worker `job.assign`, the Manager runs:
 
 ~~~sh
-python3 .agents/skills/council-flow/scripts/planner_contract.py assignment plan.json frozen-criteria.json assignment.json
+python3 -B .agents/skills/council-flow/scripts/planner_contract.py assignment plan-r1.json frozen-criteria.json assignment.json
+python3 -B .agents/skills/council-flow/scripts/planner_contract.py assignment plan-r1.json assignment.json --planner-generated-criteria
 ~~~
 
-`plan.json` is the READY plan artifact referenced by `plan.publish`;
+`plan-r1.json` is the READY plan artifact referenced by `plan.publish`;
 `frozen-criteria.json` is the ordered `[{id, criterion}]` array captured before
-Planner; `assignment.json` is the Worker `job.assign` envelope. Exit 0 prints
-`{"valid":true,"dispatchable":true}`. Exit 2 prints the error on stderr and means
-do not dispatch. The check covers plan shape, exact ordered criteria, coverage of
+Planner; `assignment.json` is the Worker `job.assign` envelope, whose
+`payload.plan_task_id` selects the plan task. When the Owner supplied no frozen
+criteria (native planning), pass `--planner-generated-criteria` instead of a
+criteria file: the plan's own acceptance is checked structurally and the result
+says so. Never copy the Planner's criteria into a `frozen-criteria.json`; that
+compares the plan with itself. Exactly one of the two is required. Exit 0 prints
+`{"valid":true,"dispatchable":true,"criteria_source":"frozen"}` (or
+`"planner-generated"`). Exit 2 prints the error on stderr and means do not
+dispatch. The Planner can run the same plan checks before publishing with
+`planner_contract.py plan <plan-rN.json> (<frozen-criteria.json> | --planner-generated-criteria)`.
+The helper scripts do not write `__pycache__` into the skill folder; `-B` keeps
+that true for any other Python the command imports. The check covers plan shape, exact ordered criteria, coverage of
 every criterion, unique IDs, acyclic dependencies, plan ID/revision, the selected
 task, and exact Planner instruction text and order. `contracts.py` still checks
 envelopes, sequence, hashes and frozen-source fidelity. Neither helper

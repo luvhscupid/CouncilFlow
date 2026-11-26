@@ -135,7 +135,8 @@ class ManagerDispatchCheckTests(unittest.TestCase):
                     result = self.run_check(script, tmp, plan_data, criteria, message)
                     self.assertEqual(result.returncode, code, result.stderr)
                     if code == 0:
-                        self.assertEqual(json.loads(result.stdout), {"valid": True, "dispatchable": True})
+                        self.assertEqual(json.loads(result.stdout), {"valid": True, "dispatchable": True,
+                                                                            "criteria_source": "frozen"})
 
     @unittest.skipUnless(HAS_PLUGIN, "plugin package not present in this extraction")
     def test_installed_plugin_copy_runs_check_and_route_from_another_repo(self):
