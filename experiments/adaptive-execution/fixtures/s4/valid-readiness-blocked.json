@@ -1,0 +1,9 @@
+{
+  "schema_version": "adaptive-1",
+  "author_role": "planner",
+  "plan_id": "AP1",
+  "slice_id": "a",
+  "state": "BLOCKED",
+  "reason": "waiting",
+  "ledger_version": 3
+}

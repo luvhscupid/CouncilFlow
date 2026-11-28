@@ -1,0 +1,100 @@
+{
+  "schema_version": "adaptive-1",
+  "ledger_id": "ledger-s11",
+  "ledger_version": 2,
+  "author_role": "planner",
+  "entries": [
+    {
+      "id": "G1",
+      "type": "Goal",
+      "content": "Ship the export feature",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "a"
+      ]
+    },
+    {
+      "id": "R1",
+      "type": "Requirement",
+      "content": "Export rows as CSV",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "a"
+      ]
+    },
+    {
+      "id": "A1",
+      "type": "Assumption",
+      "content": "Default delimiter is a comma",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "provisional",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "a"
+      ]
+    },
+    {
+      "id": "D1",
+      "type": "Decision",
+      "content": "Use UTF-8",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "provisional",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "b"
+      ]
+    },
+    {
+      "id": "O1",
+      "type": "Open",
+      "content": "Which locale applies?",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "open",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "a"
+      ]
+    },
+    {
+      "id": "D2",
+      "type": "Decision",
+      "content": "Use UTF-8 with BOM",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "provisional",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 2,
+      "superseded_entry_ids": [
+        "D1"
+      ],
+      "affected_slices": [
+        "b"
+      ]
+    }
+  ]
+}

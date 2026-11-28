@@ -1,0 +1,11 @@
+{
+  "question_id": "Q-1",
+  "exact_text": "Which storage format should we use?\r\n",
+  "blocking": true,
+  "reversibility": "cheap_reversible",
+  "affected_slices": [
+    "S1"
+  ],
+  "permitted_default": "plain text",
+  "reason": "needed"
+}

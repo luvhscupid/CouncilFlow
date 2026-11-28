@@ -1,0 +1,14 @@
+{
+  "request_id": "RR-1",
+  "submitter_role": "tester",
+  "ledger_entry_ids": [
+    "A1"
+  ],
+  "contradiction_or_affected_assumption": "A1 assumes all users are admins but guests exist",
+  "supporting_evidence_ids": [
+    "EV-1"
+  ],
+  "affected_slices": [
+    "S1"
+  ]
+}

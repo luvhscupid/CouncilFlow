@@ -1,0 +1,36 @@
+[
+  {
+    "slice_id": "a",
+    "requires_new_defaults": 1,
+    "blocking_decision": false,
+    "depends_on": []
+  },
+  {
+    "slice_id": "b",
+    "requires_new_defaults": 0,
+    "blocking_decision": false,
+    "depends_on": [
+      "a"
+    ]
+  },
+  {
+    "slice_id": "c",
+    "requires_new_defaults": 0,
+    "blocking_decision": false,
+    "depends_on": []
+  },
+  {
+    "slice_id": "d",
+    "requires_new_defaults": 1,
+    "blocking_decision": true,
+    "depends_on": []
+  },
+  {
+    "slice_id": "e",
+    "requires_new_defaults": 0,
+    "blocking_decision": false,
+    "depends_on": [
+      "b"
+    ]
+  }
+]

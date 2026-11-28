@@ -1,0 +1,10 @@
+{
+  "evidence_id": "EV-1",
+  "source_agent": "tester",
+  "observation": "Admin-only flow fails for guest users",
+  "artifacts": [],
+  "ledger_ids": [],
+  "affected_slices": [],
+  "timestamp": "2026-11-27T11:00:00Z",
+  "reopen_status": "retained_as_evidence_only"
+}

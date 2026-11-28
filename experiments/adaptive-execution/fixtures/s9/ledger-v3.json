@@ -1,0 +1,70 @@
+{
+  "schema_version": "adaptive-1",
+  "ledger_id": "ledger-qa",
+  "ledger_version": 3,
+  "author_role": "planner",
+  "entries": [
+    {
+      "id": "R1",
+      "type": "Requirement",
+      "content": "R1 content",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "S0"
+      ]
+    },
+    {
+      "id": "R2",
+      "type": "Requirement",
+      "content": "R2 content",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "S2"
+      ]
+    },
+    {
+      "id": "G1",
+      "type": "Goal",
+      "content": "G1 content",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "S1"
+      ]
+    },
+    {
+      "id": "G1b",
+      "type": "Goal",
+      "content": "G1b content",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 3,
+      "superseded_entry_ids": [
+        "G1"
+      ],
+      "affected_slices": [
+        "S1"
+      ]
+    }
+  ]
+}
