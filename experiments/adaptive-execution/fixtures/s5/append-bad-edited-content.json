@@ -1,0 +1,102 @@
+{
+  "schema_version": "adaptive-1",
+  "ledger_id": "ledger-demo",
+  "ledger_version": 2,
+  "author_role": "planner",
+  "entries": [
+    {
+      "id": "G1",
+      "type": "Goal",
+      "content": "Ship something else",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": []
+    },
+    {
+      "id": "A1",
+      "type": "Assumption",
+      "content": "Users are admins",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "provisional",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R1",
+      "type": "Requirement",
+      "content": "Export CSV",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "established",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "S1"
+      ]
+    },
+    {
+      "id": "D1",
+      "type": "Decision",
+      "content": "Use CSV v1 format",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "provisional",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": [
+        "S1"
+      ]
+    },
+    {
+      "id": "O1",
+      "type": "Open",
+      "content": "Which locale?",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "open",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 1,
+      "superseded_entry_ids": [],
+      "affected_slices": []
+    },
+    {
+      "id": "D2",
+      "type": "Decision",
+      "content": "Use CSV v2 format",
+      "source_ids": [
+        "SRC-1"
+      ],
+      "status": "confirmed",
+      "timestamp": "2026-11-27T10:00:00Z",
+      "version_introduced": 2,
+      "superseded_entry_ids": [
+        "D1"
+      ],
+      "affected_slices": [
+        "S1"
+      ],
+      "approval_ref": {
+        "artifact_id": "owner-approval-1",
+        "path": "docs/decisions/2026-11-27-adaptive-execution-owner-decisions.md",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "kind": "approval"
+      }
+    }
+  ]
+}

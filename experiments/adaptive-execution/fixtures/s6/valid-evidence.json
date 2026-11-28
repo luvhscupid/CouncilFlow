@@ -1,0 +1,21 @@
+{
+  "evidence_id": "EV-1",
+  "source_agent": "tester",
+  "observation": "Admin-only flow fails for guest users",
+  "artifacts": [
+    {
+      "artifact_id": "log-1",
+      "path": "experiments/out/log.txt",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "test-log"
+    }
+  ],
+  "ledger_ids": [
+    "A1"
+  ],
+  "affected_slices": [
+    "S1"
+  ],
+  "timestamp": "2026-11-27T11:00:00Z",
+  "reopen_status": "none"
+}

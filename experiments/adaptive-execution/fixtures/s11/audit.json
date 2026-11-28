@@ -1,0 +1,14 @@
+{
+  "findings": [
+    {
+      "id": "F2",
+      "summary": "Minor wording",
+      "severity": "low"
+    },
+    {
+      "id": "F1",
+      "summary": "Missing test | for R1",
+      "severity": "high"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "slice_id": "a",
+    "requires_new_defaults": 1,
+    "blocking_decision": false,
+    "depends_on": []
+  },
+  {
+    "slice_id": "b",
+    "requires_new_defaults": 2,
+    "blocking_decision": false,
+    "depends_on": []
+  }
+]

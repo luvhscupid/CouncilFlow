@@ -1,0 +1,18 @@
+[
+  {
+    "slice_id": "a",
+    "cycle_kind": "discovery"
+  },
+  {
+    "slice_id": "a",
+    "cycle_kind": "discovery"
+  },
+  {
+    "slice_id": "b",
+    "cycle_kind": "discovery"
+  },
+  {
+    "slice_id": "a",
+    "cycle_kind": "reassessment"
+  }
+]

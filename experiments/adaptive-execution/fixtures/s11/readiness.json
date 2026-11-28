@@ -1,0 +1,12 @@
+{
+  "readiness": [
+    {
+      "slice_id": "a",
+      "state": "READY"
+    },
+    {
+      "slice_id": "b",
+      "state": "PROCEED_WITH_ASSUMPTIONS"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "adaptive-1",
+  "author_role": "planner",
+  "plan_id": "AP1",
+  "slice_id": "a",
+  "state": "READY",
+  "reason": "all inputs known",
+  "ledger_version": 3,
+  "task_instructions": [
+    "Do X",
+    "Then Y"
+  ]
+}

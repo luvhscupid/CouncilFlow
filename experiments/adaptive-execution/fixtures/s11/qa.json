@@ -1,0 +1,46 @@
+{
+  "schema_version": "adaptive-1",
+  "candidate_ref": {
+    "artifact_id": "cand-demo",
+    "path": "candidates/demo.json",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "kind": "candidate"
+  },
+  "records": [
+    {
+      "test_id": "T-1",
+      "tested_behavior": "behavior T-1",
+      "ledger_ids": [
+        "R1"
+      ],
+      "slice_id": "a",
+      "pinned_ledger_version": 2,
+      "result": "passed",
+      "evidence": {
+        "artifact_id": "ev-T-1",
+        "path": ".councilflow/runs/demo/evidence/T-1.txt",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "kind": "evidence"
+      },
+      "timestamp": "2026-11-27T11:00:00+00:00"
+    },
+    {
+      "test_id": "T-2",
+      "tested_behavior": "behavior T-2",
+      "ledger_ids": [
+        "D1"
+      ],
+      "slice_id": "b",
+      "pinned_ledger_version": 1,
+      "result": "failed",
+      "evidence": {
+        "artifact_id": "ev-T-2",
+        "path": ".councilflow/runs/demo/evidence/T-2.txt",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "kind": "evidence"
+      },
+      "timestamp": "2026-11-27T11:00:00+00:00"
+    }
+  ],
+  "check_links": []
+}

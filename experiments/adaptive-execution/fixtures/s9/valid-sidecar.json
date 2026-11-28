@@ -1,0 +1,76 @@
+{
+  "schema_version": "adaptive-1",
+  "candidate_ref": {
+    "artifact_id": "cand-demo",
+    "path": "candidates/demo.json",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "kind": "candidate"
+  },
+  "records": [
+    {
+      "test_id": "T-A",
+      "tested_behavior": "exports csv",
+      "ledger_ids": [
+        "R1"
+      ],
+      "slice_id": "S0",
+      "pinned_ledger_version": 1,
+      "result": "passed",
+      "evidence": {
+        "artifact_id": "ev-T-A",
+        "path": ".councilflow/runs/demo/evidence/T-A.txt",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "kind": "evidence"
+      },
+      "timestamp": "2026-11-27T11:00:00+00:00"
+    },
+    {
+      "test_id": "T-B",
+      "tested_behavior": "lists rows",
+      "ledger_ids": [
+        "R2"
+      ],
+      "slice_id": "S2",
+      "pinned_ledger_version": 1,
+      "result": "passed",
+      "evidence": {
+        "artifact_id": "ev-T-B",
+        "path": ".councilflow/runs/demo/evidence/T-B.txt",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "kind": "evidence"
+      },
+      "timestamp": "2026-11-27T11:00:00+00:00"
+    },
+    {
+      "test_id": "T-C",
+      "tested_behavior": "meets goal",
+      "ledger_ids": [
+        "G1"
+      ],
+      "slice_id": "S1",
+      "pinned_ledger_version": 1,
+      "result": "passed",
+      "evidence": {
+        "artifact_id": "ev-T-C",
+        "path": ".councilflow/runs/demo/evidence/T-C.txt",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "kind": "evidence"
+      },
+      "timestamp": "2026-11-27T11:00:00+00:00"
+    }
+  ],
+  "check_links": [
+    {
+      "check_name": "csv-export-check",
+      "test_id": "T-A"
+    },
+    {
+      "check_name": "rows-check",
+      "test_id": "T-B"
+    },
+    {
+      "check_name": "goal-check",
+      "test_id": "T-C"
+    }
+  ]
+}

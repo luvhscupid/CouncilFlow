@@ -1,0 +1,50 @@
+{
+  "schema_version": "adaptive-1",
+  "author_role": "manager",
+  "plan_id": "AP1",
+  "plan_revision": 1,
+  "mode": "adaptive",
+  "slices": [
+    {
+      "slice_id": "a",
+      "title": "Slice a",
+      "depends_on": [
+        "c"
+      ],
+      "assignment": {
+        "role": "worker",
+        "instance_hint": "worker-1"
+      },
+      "model_routing": "advisory: sonnet",
+      "execution_status": "pending",
+      "pinned_ledger_version": 3
+    },
+    {
+      "slice_id": "b",
+      "title": "Slice b",
+      "depends_on": [
+        "a"
+      ],
+      "assignment": {
+        "role": "worker",
+        "instance_hint": "worker-1"
+      },
+      "model_routing": "advisory: sonnet",
+      "execution_status": "pending",
+      "pinned_ledger_version": 3
+    },
+    {
+      "slice_id": "c",
+      "title": "Slice c",
+      "depends_on": [
+        "b"
+      ],
+      "assignment": {
+        "role": "tester"
+      },
+      "model_routing": "advisory: sonnet",
+      "execution_status": "pending",
+      "pinned_ledger_version": 3
+    }
+  ]
+}

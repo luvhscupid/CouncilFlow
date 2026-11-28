@@ -1,0 +1,50 @@
+{
+  "readiness": {
+    "schema_version": "adaptive-1",
+    "author_role": "planner",
+    "plan_id": "AP1",
+    "slice_id": "a",
+    "reason": "proceeding on defaults",
+    "ledger_version": 1,
+    "state": "NEEDS_INFORMATION"
+  },
+  "ledger": {
+    "schema_version": "adaptive-1",
+    "ledger_id": "ledger-s8",
+    "ledger_version": 1,
+    "author_role": "planner",
+    "entries": [
+      {
+        "id": "G1",
+        "type": "Goal",
+        "content": "c G1",
+        "source_ids": [
+          "SRC-1"
+        ],
+        "status": "established",
+        "timestamp": "2026-11-27T10:00:00Z",
+        "version_introduced": 1,
+        "superseded_entry_ids": [],
+        "affected_slices": [
+          "a"
+        ]
+      },
+      {
+        "id": "A1",
+        "type": "Assumption",
+        "content": "c A1",
+        "source_ids": [
+          "SRC-1"
+        ],
+        "status": "provisional",
+        "timestamp": "2026-11-27T10:00:00Z",
+        "version_introduced": 1,
+        "superseded_entry_ids": [],
+        "affected_slices": [
+          "a"
+        ]
+      }
+    ]
+  },
+  "mode": "adaptive"
+}
