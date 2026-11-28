@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "note": "Owner-facing display text only, never on the wire.",
+  "wire_roles": ["worker", "tester", "reviewer", "planner", "manager"],
+  "aliases": {
+    "Software Engineer": "worker",
+    "QA Engineer": "tester",
+    "Technical Audit Director": "reviewer"
+  }
+}

@@ -1,0 +1,1 @@
+{"version":1,"wire_roles":["worker","tester","reviewer","planner","manager"],"aliases":{"Software Engineer":"worker","QA Engineer":"tester","Technical Audit Director":"reviewer","Product Owner":"planner"}}
